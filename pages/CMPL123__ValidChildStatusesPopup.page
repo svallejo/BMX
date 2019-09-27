@@ -1,0 +1,43 @@
+<apex:page controller="CMPL123.ValidChildStatusesPopupController" sidebar="false" showHeader="false">
+    <apex:slds />
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/css/ValidChildStatusesPopup.css')}"/> 
+
+    <div class="slds-modal__container">
+        <header class="slds-modal__header">
+            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!$Label.WORKFLOW_MESSAGE_HEADING}</h2>
+            <br/>
+            <p>
+                {!$Label.WORKFLOW_MESSAGE_CONTENT}
+            </p>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium slds-scrollable embedded-table" id="modal-content-id-1">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="slds-text-title_caps">{!$Label.CHILD_TYPE}</th>
+                        <th class="slds-text-title_caps">{!$Label.REQUIRED_STATUSES}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <apex:repeat value="{!statusesMap}" var="relation">
+                        <tr class="slds-hint-parent">
+                            <td>
+                                {!relation}
+                            </td>
+                            <td>
+                                <apex:repeat value="{!statusesMap[relation]}" var="status">
+                                    <div>
+                                        <apex:outputText value="{!status}"/>
+                                    </div>
+                                </apex:repeat>
+                            </td>
+                        </tr>
+                    </apex:repeat>
+                </tbody>
+            </table>
+        </div>
+        <footer class="slds-modal__footer">
+            <button class="slds-button slds-button_brand" onclick="window.close();">{!$Label.cmpl123__ok}</button>
+        </footer>
+    </div>
+</apex:page>

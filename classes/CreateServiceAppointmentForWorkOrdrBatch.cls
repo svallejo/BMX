@@ -1,0 +1,121 @@
+/**
+*  --------------------------------------------------------------------------------------------------------------------------------------
+* @Who   : Copyright (c) 2017 - 2019  Sparta Systems, Inc.
+* @What  : CreateServiceAppointmentForWorkOrdrBatch
+* @Why   : Batch class to create Service Appointment custom records from Service Appointment External records and linking them to their respective
+*          custom Work Order parent records
+* @When  : 14-DEC-2018
+  
+*  --------------------------------------------------------------------------------------------------------------------------------------
+*  Modification Log:  
+*  --------------------------------------------------------------------------------------------------------------------------------------
+*   Developer                Date             Description 
+*  --------------------------------------------------------------------------------------------------------------------------------------
+*                        14-DEC-2018        Created.
+*  --------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+/* */
+
+
+global class CreateServiceAppointmentForWorkOrdrBatch implements Database.Batchable<SObject>, Database.Stateful,Database.AllowsCallouts{
+    
+    global CreateServiceAppointmentForWorkOrdrBatch(){}
+    Boolean chained;
+	
+	//Intializing external Service Appointment Ids in the constructor
+    global CreateServiceAppointmentForWorkOrdrBatch(Boolean chain){
+        this.chained = chain;
+    }
+    
+    // querying the external Service Appointment records
+    global Database.QueryLocator start(Database.BatchableContext bc) {
+        // collect the batches of records or objects to be passed to execute
+        DateTime dt = System.now().addHours(-24);
+        Integer count = [SELECT count() FROM ServiceAppointment__x WHERE LastModifiedDate__c >=: dt];
+        
+        if(!Test.isRunningTest()){
+            return Database.getQueryLocator('SELECT Id,WorkOrder_c__r.ExternalId,ExternalId,Description__c,Status__c,ParentRecordId__r.WorkOrderNumber__c FROM ServiceAppointment__x ORDER BY LastModifiedDate__c DESC LIMIT ' + count);
+        }else{
+            return Database.getQueryLocator('SELECT Id FROM Case LIMIT 1');
+        }        
+    }
+    
+    global void execute(Database.BatchableContext bc, List<sObject> serviceAppointList){
+        
+        List<ServiceAppointment__x> records = new List<ServiceAppointment__x>();
+        if(!Test.isRunningTest()){
+            for(Sobject sObj: serviceAppointList){
+                ServiceAppointment__x extServiceAppointObj = (ServiceAppointment__x) sObj;
+                records.add(extServiceAppointObj);
+            }
+        }
+        
+        if(Test.isRunningTest()){
+            records.add(BMX_TestDataFactory.getServiceAppointmentExRecord());
+        }
+        
+        List<Service_Appointment__c> serviceApppointmentList = new List<Service_Appointment__c>();
+        List<Database.upsertResult> upsertResultList = new List<Database.upsertResult>();
+        
+        for(ServiceAppointment__x  serviceAppointX: records){
+            
+            //mapping external Service Appointment fields to the Service Appointment custom object fields to create Service Appointment records
+            if(Test.isRunningTest() || serviceAppointX.WorkOrder_c__r.ExternalId != null){
+                //Integer workOrderCount = (!Test.isRunningTest()) ? [SELECT Count() FROM Work_Order__c WHERE ExternalId__c =: serviceAppointX.WorkOrder_c__r.ExternalId LIMIT 1] : 1;
+                //If( workOrderCount > 0){
+                Service_Appointment__c serviceAppoint = new Service_Appointment__c();
+                serviceAppoint.workOrderId__r = new Work_Order__c(ExternalId__c = serviceAppointX.WorkOrder_c__r.ExternalId);
+                serviceAppoint.ExternalId__c = serviceAppointX.ExternalId;
+                serviceAppoint.SA_Description__c = serviceAppointX.Description__c;
+                serviceAppoint.SA_Parent_record__c = serviceAppointX.ParentRecordId__r.WorkOrderNumber__c;
+                serviceAppoint.SA_Status__c = serviceAppointX.Status__c;                        
+                serviceApppointmentList.add(serviceAppoint);
+                //}
+            }
+        }
+        
+        
+        System.debug('-------serviceApppointmentList------'+serviceApppointmentList);
+        
+        if(!serviceApppointmentList.isEmpty()) {
+		
+		    // Upserting the external Service Appointment list of records
+            upsertResultList = Database.Upsert(serviceApppointmentList,Service_Appointment__c.ExternalId__c, false);
+        }
+        
+		// creating error log records if any record gets failed during the execution of the batch
+        if(!upsertResultList.isEmpty()) {
+            List<Error_Log__c> errLogList = new List<Error_Log__c>();
+            for(Integer i=0; i <upsertResultList.size(); i++) {
+                if(!upsertResultList[i].isSuccess() ) {
+                    Error_Log__c el = Utils_CreateComplaintForCaseBatch.returnErrorLog(upsertResultList[i].getErrors(), 
+                                                                                       'CreateServiceAppointmentForWorkOrdrBatch', 'Service_Appointment__c');
+                    el.Record_ID__c = serviceApppointmentList[i].Id;
+                    el.External_Case_Id__c = serviceApppointmentList[i].ExternalId__c;
+                    errLogList.add(el);
+                }
+            }
+            if(!errLogList.isEmpty()) {
+                Database.Insert(errLogList, false);
+            }
+        } 
+    }  
+    
+    global void finish(Database.BatchableContext bc){
+        // execute any post-processing operations
+        system.debug('Service Appointments inserted/updated');
+        
+        
+        Complaint_Creation_Batch_Time__c cs = Complaint_Creation_Batch_Time__c.getInstance();
+        Integer gap = Integer.valueOf(cs.Time_Interval__c);
+        
+        dateTime timeInterval  = System.now().addMinutes(gap);
+        String cronExp = '0 ' + timeInterval.minute() + ' ' + timeInterval.hour() + ' ' + timeInterval.day() + ' ' + timeInterval.month() + ' ? ' + timeInterval.year();
+        if(!Test.isRunningTest()){  
+		
+			// Scheduling the CreateAllChildSchedulableBatch batch class to run after 30 minutes since the finish of this batch class
+            System.schedule('Case External Sync Job ' + timeInterval, cronExp, new CreateAllChildSchedulableBatch());
+        }
+    } 
+}

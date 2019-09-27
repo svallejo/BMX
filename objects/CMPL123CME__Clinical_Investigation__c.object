@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <label>Clinical Investigation (Deprecated)</label>
+    <nameField>
+        <label>Title of Clinical Investigation</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Clinical Investigations</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>CMPL123CME__EUDAMED_ID__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__CIP_Number__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATEDBY_USER</customTabListAdditionalFields>
+        <customTabListAdditionalFields>UPDATEDBY_USER</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>CMPL123CME__All</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__EUDAMED_ID__c</columns>
+        <columns>CMPL123CME__CIP_Number__c</columns>
+        <columns>CMPL123CME__Date_of_Report__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+</CustomObject>

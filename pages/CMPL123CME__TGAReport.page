@@ -1,0 +1,484 @@
+<apex:page showheader="false" standardStylesheets="false" renderAs="PDF" applyBodyTag="false" applyHtmlTag="false" standardController="CMPL123CME__TGA__c">
+<html>
+
+
+
+<head>
+    <style>
+    body { font-family: 'Arial Unicode MS'; }
+    .sectionHeader{
+        width:98.5%;
+        float:left;
+        border-bottom:1px solid black;
+        height:25px;
+        padding-top:5px;
+        padding-left:5px;
+        background-color:#2EFEF7;
+        font-size:14px;
+        font-weight:bold;
+        font-family:'Arial Unicode MS',sans-serif;
+    }
+    .tableSection{
+        float:left;
+        font-size:11px;
+        width:100%;
+        border-bottom:1px solid black;
+        font-family:'Arial Unicode MS',sans-serif;
+    }
+    
+    .columnHeaders{
+        font-weight:bold;
+        text-decoration:underline;
+        font-family:'Arial Unicode MS';
+    }
+    
+    </style>
+</head>
+<body>
+    <!--===========Header Section==================-->
+    <div style="width:100%;font-family:'Arial Unicode MS';">
+        <apex:image url="{!$Resource.CMPL123CME__TGA_Form_Header}"/>
+        <table class="tableSection" cellspacing="0" cellpadding="0" style="float:right;width:30%;padding-top:15px;">
+            <tr style="line-height:8pt;">
+                <td style="border:1px solid black;border-right:0px solid black;border-bottom:0px solid black;" height="20px" width="35%"><b>-Mfr report #</b></td>
+                <td style="border:1px solid black;border-bottom:0px solid black;" height="20px">{!CMPL123CME__TGA__c.CMPL123CME__Mfr_report_Number__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td style="border:1px solid black;border-right:0px solid black;border-bottom:0px solid black;" height="20px"><b>-TGA DIR #</b></td>
+                <td style="border:1px solid black;border-bottom:0px solid black;" height="20px">{!CMPL123CME__TGA__c.CMPL123CME__TGA_DIR_Number__c}</td>
+            </tr>
+        </table><br/><br/>
+    
+    </div>
+    <!--========Header Section Ends Here=================-->
+    
+    <div style="width:48%;float:left;border:1px solid black;height:850px;font-family:'Arial Unicode MS';">
+        <div class="sectionHeader">I. Administrative Information</div>
+        <table class="tableSection">
+            <tr style="line-height:8pt;">
+                <td class="columnHeaders" colspan="4">Report Type (Select One)</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td>Initial &nbsp;<apex:image height="15px" width="15px" url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Report_Type__c,'Initial'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
+                <td>Follow-Up &nbsp;<apex:image height="15px" width="15px" url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Report_Type__c,'Follow-Up'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
+                <td>Final  &nbsp;<apex:image height="15px" width="15px" url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Report_Type__c,'Final'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
+                <td>Trend &nbsp;<apex:image height="15px" width="15px" url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Report_Type__c,'Trend'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
+            </tr>
+        </table>
+        <table class="tableSection">
+            <tr style="line-height:8pt;">
+                <td class="columnHeaders" colspan="3">Report Category</td>
+            </tr>
+            
+            <tr style="line-height:8pt;">
+                <td>S Pblc Hlth Threat &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Report_Category__c,'S Pblc Hlth Threat'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
+                <td>Death/Serious Injury &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Report_Category__c,'Death/Serious Injury'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
+                <!-- <td>Other &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.Report_Category__c,'Initial'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>-->
+                <td>Other &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Report_Category__c,'Other'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
+            </tr>
+        </table>
+        
+        <table class="tableSection" cellspacing="0" cellpadding="0">
+            <tr style="line-height:8pt;">
+                <td width="65%" height="25px">A) Date of this report (dd-mm-yyyy)</td>
+                <td width="45%" style="border-left:1px solid black;;border-bottom:1px solid black;">
+                    <apex:outputText value="{0,date, dd-MM-yyyy}" >
+                        <apex:param value="{!CMPL123CME__TGA__c.CMPL123CME__Date_of_this_report__c}" />
+                    </apex:outputText> 
+                </td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td width="65%" height="25px">B) Date of adverse event (dd-mm-yyyy)</td>
+                <td width="45%" style="border-left:1px solid black;border-bottom:1px solid black;">
+                    <apex:outputText value="{0,date, dd-MM-yyyy}" >
+                        <apex:param value="{!CMPL123CME__TGA__c.CMPL123CME__Date_of_adverse_event__c}" />
+                    </apex:outputText>
+                </td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td width="65%" height="25px">C) Date mfr aware (dd-mm-yyyy)</td>
+                <td width="45%" style="border-left:1px solid black;border-bottom:1px solid black;">
+                    <apex:outputText value="{0,date, dd-MM-yyyy}" >
+                        <apex:param value="{!CMPL123CME__TGA__c.CMPL123CME__Date_mfr_aware__c}" />
+                    </apex:outputText>
+                </td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td width="65%" height="25px">D) Date of next report (max 30 days from A)</td>
+                <td width="45%" style="border-left:1px solid black;">
+                    <apex:outputText value="{0,date, dd-MM-yyyy}" >
+                        <apex:param value="{!CMPL123CME__TGA__c.CMPL123CME__Date_of_next_report__c}" />
+                    </apex:outputText>
+                </td>
+            </tr>
+        </table>
+        
+        
+        <table class="tableSection" cellspacing="0" cellpadding="0">
+            <tr style="line-height:8pt;">
+                <td class="columnHeaders" height="20px" colspan="2">Person (authorised representative), Submitting This Report</td>
+            </tr>
+            
+            <tr style="line-height:8pt;">
+                <td width="20%" height="25px" style="border-right:1px solid black;">Name</td>
+                <td width="80%" style="border-bottom:1px solid black;border-top:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Authorised_Representative_Name__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td width="20%" height="25px" style="border-right:1px solid black;">Company</td>
+                <td width="80%" style="border-bottom:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Authorised_Representative_Company__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td width="20%" height="25px" style="border-bottom:1px solid black;border-right:1px solid black;">Address</td>
+                <td width="80%"  rowspan="2" style="vertical-align: text-top;">{!CMPL123CME__TGA__c.CMPL123CME__Authorised_Representative_Address__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td height="25px"></td>
+            </tr>
+        </table>
+        <table class="tableSection" cellpadding="0" cellspacing="0">
+            <tr style="line-height:8pt;">
+                <td width="10%" height="25px">Tel</td>
+                <td width="40%" height="25px" colspan="2" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Authorised_Representative_Tel__c}</td>
+                <td width="10%" height="25px" style="border-bottom:1px solid black;">Fax</td>
+                <td width="40%" height="25px" style="border-bottom:1px solid black;border-left:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Authorised_Representative_Fax__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td colspan="2" height="25px">Email</td>
+                <td colspan="3" height="25px" style="border-left:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Authorised_Representative_Email__c}</td>
+            </tr>
+        </table>
+        
+        <table class="tableSection" cellspacing="0" cellpadding="0">
+            <tr style="line-height:8pt;">
+                <td class="columnHeaders" height="20px" colspan="2">Identity of all other Regulatory Authorities, Notified Bodies, etc., where this report was also sent. </td>
+            </tr>
+            <tr style="line-height:8pt;"><td height="100px" style="vertical-align: text-top;">{!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Other_Regulatory_Authorities_Reported__c)>500, LEFT(CMPL123CME__TGA__c.CMPL123CME__Other_Regulatory_Authorities_Reported__c,500),CMPL123CME__TGA__c.CMPL123CME__Other_Regulatory_Authorities_Reported__c)}</td></tr>
+        </table>
+        
+        <div class="sectionHeader">II. Clinical Event Information</div>
+        
+        <table class="tableSection" style="border-bottom:0px solid black">
+            <tr style="line-height:8pt;">
+                <td class="columnHeaders" colspan="4">Description of event or problem</td>
+            </tr>
+            <tr style="line-height:8pt;"><td style="font-size:8px;font-family:sans-serif;font-style: italic;" colspan="4">If the device is an implantable device indicate both implant and explant dates below</td></tr>
+            <tr style="line-height:8pt;">
+                <td width="25%" height="20px">Implant Date:</td>
+                <td width="25%"  style="border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black;border-left:1px solid black;">
+                    <apex:outputText value="{0,date, dd-MM-yyyy}" >
+                        <apex:param value="{!CMPL123CME__TGA__c.CMPL123CME__Implant_Date__c}" />
+                    </apex:outputText> 
+                </td>
+                <td width="25%" height="20px">Explant Date:</td>
+                <td width="25%" style="border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black;border-left:1px solid black;">
+                    <apex:outputText value="{0,date, dd-MM-yyyy}" >
+                        <apex:param value="{!CMPL123CME__TGA__c.CMPL123CME__Explant_Date__c}" />
+                    </apex:outputText>
+                </td>
+            </tr>
+            <tr style="line-height:8pt;"><td colspan="4" style="vertical-align: text-top;">{!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Description_of_event_or_problem__c)>1200, LEFT(CMPL123CME__TGA__c.CMPL123CME__Description_of_event_or_problem__c,1200),CMPL123CME__TGA__c.CMPL123CME__Description_of_event_or_problem__c)}</td></tr>
+        </table>
+        
+    </div>
+    
+    <!--================Page 1 Right Side Section Starts here=============================-->
+    
+    <div style="width:50%;float:right;border:1px solid black;height:850px;font-family:'Arial Unicode MS';">
+        <div class="sectionHeader">III. Healthcare Facility Information</div>
+        <table class="tableSection" cellpadding="0" cellspacing="0">
+            <tr style="line-height:8pt;">
+                <td style="border-right:1px solid black;" height="25px" width="20%">Name</td>
+                <td style="border-bottom:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Healthcare_Facility_Name__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td style="border-right:1px solid black;border-bottom:1px solid black;" height="25px" width="20%">Address</td>
+                <td rowspan="2" style="vertical-align: text-top;">{!CMPL123CME__TGA__c.CMPL123CME__Healthcare_Facility_Address__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td height="25px"></td>
+            </tr>
+        </table>
+        <table class="tableSection" cellpadding="0" cellspacing="0">
+            <tr style="line-height:8pt;">
+                <td width="10%" height="25px">Tel</td>
+                <td width="40%" height="25px" colspan="2" style="border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Healthcare_Facility_Tel__c}</td>
+                <td width="10%" height="25px" style="border-bottom:1px solid black;">Fax</td>
+                <td width="40%" height="25px" style="border-bottom:1px solid black;border-left:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Healthcare_Facility_Fax__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td colspan="2" height="25px">Email</td>
+                <td colspan="3" height="25px" style="border-left:1px solid black;border-bottom:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Healthcare_Facility_Email__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td colspan="3" height="25px">Contact name at site of event</td>
+                <td colspan="2" height="25px" style="border-left:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Contact_name_at_site_of_event__c}</td>
+            </tr>
+        </table>
+        <div class="sectionHeader">IV. Device Information Primary Device </div>
+        <table class="tableSection" cellspacing="0" cellpadding="0">
+            <tr style="line-height:8pt;">
+                <td class="columnHeaders" colspan="2" >Generic Device Information<br/><br/></td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td width="50%" height="25px">Device ARTG #</td>
+                <td style="border-bottom:1px solid black;border-left:1px solid black;border-top:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Device_ARTG__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td width="50%" height="25px">GMDN Code</td>
+                <td style="border-bottom:1px solid black;border-left:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__GMDN_Code__c}</td>
+            </tr>
+            <tr style="line-height:9pt;">
+                <td colspan="2"><br/>GMDN Code Text (eg catheters, central venous, peripherally inserted)<br/><br/>
+                {!CMPL123CME__TGA__c.CMPL123CME__GMDN_Code_Text__c}</td>
+                
+            </tr>
+        </table>
+        <table class="tableSection" cellspacing="0" cellpadding="0">
+            <tr style="line-height:8pt;"><td height="40px" style="vertical-align: text-top;">Dermal tissue reconstructive material, bacteria derived, anaesthetic</td></tr>
+        </table>
+        
+        <table class="tableSection" cellspacing="0" cellpadding="0">
+            <tr style="line-height:8pt;">
+                <td class="columnHeaders" colspan="2" >Specific Device Information<br/><br/></td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td style="border-right:1px solid black;" height="25px" width="25%">Brand Name</td>
+                <td style="border-bottom:1px solid black;border-top:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Brand_Name__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td style="border-right:1px solid black;" height="25px" width="25%">Model #</td>
+                <td style="border-bottom:1px solid black;border-top:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Model__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td style="border-right:1px solid black;" height="25px" width="25%">Catalogue #</td>
+                <td style="border-bottom:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Catalogue__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td style="border-right:1px solid black;" height="25px" width="25%">Ser. or Lot #’s</td>
+                <td style="border-bottom:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Ser_or_Lot__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td style="border-right:1px solid black;" height="25px" width="25%">Mfr. Name</td>
+                <td style="border-bottom:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Mfr_Name__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td style="border-right:1px solid black;" height="25px" width="25%">Contact Name</td>
+                <td style="border-bottom:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Contact_Name__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td style="border-right:1px solid black;border-bottom:1px solid black;" height="25px" width="25%">Address</td>
+                <td  rowspan="2" style="vertical-align: text-top;">{!CMPL123CME__TGA__c.CMPL123CME__Specific_Device_Address__c}</td>
+            </tr>
+            <tr style="line-height:8pt;"><td height="25px"></td></tr>
+        </table>
+        <table class="tableSection" cellspacing="0" cellpadding="0">
+            <tr style="line-height:8pt;">
+                <td style="border-right:1px solid black;" height="25px" width="10%">Tel.</td>
+                <td colspan="2" style="border-bottom:1px solid black;border-right:1px solid black;" height="25px"  width="40%">{!CMPL123CME__TGA__c.CMPL123CME__Device_Information_Tel__c}</td>
+                <td height="25px" width="10%" style="border-right:1px solid black;border-bottom:1px solid black;">Fax</td>
+                <td height="25px" width="40%" style="border-bottom:1px solid black;border-right:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Device_Information_Fax__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td colspan="2"  height="25px" style="border-right:1px solid black;">Email</td>
+                <td colspan="3" style="border-bottom:1px solid black;">{!CMPL123CME__TGA__c.CMPL123CME__Device_Information_Email__c}</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td colspan="2"  height="25px" style="border-right:1px solid black;">ARTG Mfr. #</td>
+                <td colspan="3">{!CMPL123CME__TGA__c.CMPL123CME__ARTG_Mfr__c}</td>
+            </tr>
+        
+        </table>
+        <table class="tableSection" cellpadding="0" cellspacing="0">
+            <tr style="line-height:8pt;">
+                <td class="columnHeaders" colspan="4">Operator of Device at Time of Event (select one)<br/><br/></td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td>HC Prof’nal &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Operator_of_Device_at_Time_of_Event__c,'HC Profnal'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/><br/></td>
+                <td>Other Caregiver &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Operator_of_Device_at_Time_of_Event__c,'Other Caregiver'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/><br/></td>
+                <td>Patient &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Operator_of_Device_at_Time_of_Event__c,'Patient'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/><br/></td>
+                <td>N/A &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Operator_of_Device_at_Time_of_Event__c,'N/A'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/><br/></td>
+            </tr>
+        </table>
+        
+        <table class="tableSection" cellpadding="0" cellspacing="0">
+            <tr style="line-height:8pt;">
+                <td class="columnHeaders" colspan="2">Usage of Device<br/><br/></td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td>Single Use &nbsp;<apex:image height="15px" width="15px"  url="{!if(BEGINS(CMPL123CME__TGA__c.CMPL123CME__Usage_of_Device__c,'Single Use'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
+                <td>Reuse of Single Use &nbsp;<apex:image height="15px" width="15px"  url="{!if(BEGINS(CMPL123CME__TGA__c.CMPL123CME__Usage_of_Device__c,'Reuse of Single Use'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
+                
+            </tr>
+            <tr style="line-height:8pt;">
+                <td>Reuse of Reusable &nbsp;<apex:image height="15px" width="15px"  url="{!if(BEGINS(CMPL123CME__TGA__c.CMPL123CME__Usage_of_Device__c,'Reuse of Reusable'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
+                <td>Re-serviced/Refurbished &nbsp;<apex:image height="15px" width="15px"  url="{!if(BEGINS(CMPL123CME__TGA__c.CMPL123CME__Usage_of_Device__c,'Re-serviced/Refurbished'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
+                
+            </tr>
+        </table>
+        <table class="tableSection" cellpadding="0" cellspacing="0" style="border-bottom:0px solid black">
+            <tr style="line-height:8pt;">
+                <td >Device Disposition/Current Location <br/></td>
+            </tr>
+            <tr style="line-height:8pt;"><td style="vertical-align: text-top">{!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Device_Disposition_Current_Location__c)>250, LEFT(CMPL123CME__TGA__c.CMPL123CME__Device_Disposition_Current_Location__c,250),CMPL123CME__TGA__c.CMPL123CME__Device_Disposition_Current_Location__c)}</td></tr>
+        </table>
+    </div>
+    <!--====================Page 2 Starts here================================-->
+    
+    <div style="page-break-before:always;font-family:'Arial Unicode MS';">
+        <div style="width:48%;float:left;border:1px solid black;height:950px;">
+            <div class="sectionHeader">V. Results of Mfr’s Investigation</div>
+            <table class="tableSection">
+                <tr style="line-height:8pt;">
+                    <td class="columnHeaders" >Manufacturers Device Analysis Results</td>
+                </tr>
+                <tr style="line-height:8pt;">
+                    <td style="font-size:8px">(Specify, for this event, details of investigation methods, results, and conclusions)</td>
+                </tr>
+                <tr style="line-height:8pt;">
+                    <td height="420px" style="vertical-align: text-top;">{!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Manufacturers_Device_Analysis_Results__c)>2000, LEFT(CMPL123CME__TGA__c.CMPL123CME__Manufacturers_Device_Analysis_Results__c,2000),CMPL123CME__TGA__c.CMPL123CME__Manufacturers_Device_Analysis_Results__c)}</td>
+                </tr>
+                
+            </table>
+            <table class="tableSection" style="border-bottom:0px solid black;">
+                <tr style="line-height:8pt;">
+                    <td class="columnHeaders" >Remedial Action/Corrective Action/Preventive Action</td>
+                </tr>
+                <tr style="line-height:8pt;">
+                    <td style="font-size:8px">(Specify if/what action was taken for the reported specific event or for all similar type of events or products. Include what action was taken to prevent recurrence. Clarify the timeframes for completion of various action plans.)</td>
+                </tr>
+                <tr style="line-height:8pt;">
+                    <td height="330px" style="vertical-align: text-top;">{!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Remedial_Action_Corrective_Action__c)>2000, LEFT(CMPL123CME__TGA__c.CMPL123CME__Remedial_Action_Corrective_Action__c,2000),CMPL123CME__TGA__c.CMPL123CME__Remedial_Action_Corrective_Action__c)}</td>
+                </tr>
+                
+            </table>
+        
+        </div>
+        
+        <!--====================Page 2 Right Side Section Starts here================================-->
+        <div style="width:50%;float:right;border:1px solid black;height:770px;margin-bottom: 10px;font-family:'Arial Unicode MS';">
+            <div class="sectionHeader">VI. Patient Information</div>
+            <table class="tableSection" cellspacing="0" cellpadding="0">
+                <tr style="line-height:8pt;">
+                    <td style="border-left:1px solid black;border-right:1px solid black;" width="25%" height="25px">Age (yrs, mnths)</td>
+                    <td style="border-right:1px solid black;" width="20%">{!CMPL123CME__TGA__c.CMPL123CME__Age_yrs_mnths__c}</td>
+                    <td style="border-right:1px solid black;" width="15%">'M' or 'F'</td>
+                    <td style="border-right:1px solid black;" width="10%">{!CMPL123CME__TGA__c.CMPL123CME__Patient_Gender__c}</td>
+                    <td style="border-right:1px solid black;" width="15%">Wt. (kg)</td>
+                    <td style="border-right:1px solid black;" width="15%">{!CMPL123CME__TGA__c.CMPL123CME__Patient_Weight__c}</td>
+                </tr>
+            </table>
+            <table class="tableSection" >
+                <tr style="line-height:8pt;">
+                    <td class="columnHeaders" >Patient Focused Resolution of Events and Outcomes</td>
+                </tr>
+            </table>
+            <table class="tableSection" >
+                <tr style="line-height:8pt;">
+                    <td height="100px" style="vertical-align: text-top;">Corrective action taken relevant to the care of the patient:<br/>
+                    {!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Corrective_action_taken__c)>640, LEFT(CMPL123CME__TGA__c.CMPL123CME__Corrective_action_taken__c,640),CMPL123CME__TGA__c.CMPL123CME__Corrective_action_taken__c)}
+                    </td>
+                </tr>
+            </table>
+            <table class="tableSection" >
+                <tr style="line-height:8pt;">
+                    <td height="85px" style="vertical-align: text-top;">Patient history (co-morbidities and medication):<br/>
+                    {!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Patient_history_co_morbidities__c)>450, LEFT(CMPL123CME__TGA__c.CMPL123CME__Patient_history_co_morbidities__c,450),CMPL123CME__TGA__c.CMPL123CME__Patient_history_co_morbidities__c)}
+                    </td>
+                </tr>
+            </table>
+            <table class="tableSection" >
+                <tr style="line-height:8pt;">
+                    <td height="120px" style="vertical-align: text-top;">Patient outcome:<br/>
+                    {!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Patient_outcome__c)>500, LEFT(CMPL123CME__TGA__c.CMPL123CME__Patient_outcome__c,500),CMPL123CME__TGA__c.CMPL123CME__Patient_outcome__c)}
+                    
+                    </td>
+                </tr>
+            </table>
+            <table class="tableSection" >
+                <tr style="line-height:8pt;">
+                    <td  style="vertical-align: text-top;">List of other devices involved in the event<br/></td>
+                </tr>
+                <tr style="line-height:8pt;"><td style="font-size:8px;"><i>if other implants involved - list brand, model and ARTG #</i></td></tr>
+                <tr style="line-height:8pt;"><td style="vertical-align: text-top;" height="50px">{!if(LEN(CMPL123CME__TGA__c.CMPL123CME__List_of_other_devices_involved__c)>250, LEFT(CMPL123CME__TGA__c.CMPL123CME__List_of_other_devices_involved__c,250),CMPL123CME__TGA__c.CMPL123CME__List_of_other_devices_involved__c)}</td></tr>
+            </table>
+            <div class="sectionHeader">VII. Other Reporting Information</div>
+            <table class="tableSection" >
+                <tr style="line-height:8pt;">
+                    <td height="75px" style="vertical-align: text-top;">Mfr/Sponsor aware of other similar events? ( number or rate)<br/>
+                    {!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Mfr_Sponsor_aware_of_other_similar_event__c)>300, LEFT(CMPL123CME__TGA__c.CMPL123CME__Mfr_Sponsor_aware_of_other_similar_event__c,300),CMPL123CME__TGA__c.CMPL123CME__Mfr_Sponsor_aware_of_other_similar_event__c)}
+                    
+                    </td>
+                </tr>
+            </table>
+            <table class="tableSection" >
+                <tr style="line-height:8pt;">
+                    <td height="35px" style="vertical-align: text-top;">Countries where these similar adverse events occurred:<br/>
+                    {!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Countries_where_these_similar_AE_Occured__c)>120, LEFT(CMPL123CME__TGA__c.CMPL123CME__Countries_where_these_similar_AE_Occured__c,120),CMPL123CME__TGA__c.CMPL123CME__Mfr_Sponsor_aware_of_other_similar_event__c)}
+                    
+                    </td>
+                </tr>
+            </table>
+            <table class="tableSection" >
+                <tr style="line-height:8pt;">
+                    <td height="10px" style="vertical-align: text-top;">Additional Comments
+                    </td>
+                </tr>
+            </table>
+            <table class="tableSection" style="border-bottom:0px solid black;padding-top:0px;">
+                <tr style="line-height:8pt;">
+                    <td height="75px" style="vertical-align: text-top;">
+                    {!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Additional_Comments__c)>200, LEFT(CMPL123CME__TGA__c.CMPL123CME__Additional_Comments__c,200),CMPL123CME__TGA__c.CMPL123CME__Additional_Comments__c)}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+    
+    
+    
+    <div style="width:50%;float:right;border:1px solid black;height:100px;margin-bottom: 10px;font-family:'Arial Unicode MS';">
+        <table class="tableSection" cellspacing="0" cellpadding="0" style="border-bottom:0px solid black;font-size:10px">
+            <tr style="line-height:8pt;"><td class="columnHeaders" colspan="2">Submitting this report:<br/><br/></td></tr>
+            <tr style="line-height:8pt;">
+                <td width="20%">By mail:</td>
+                <td>Reply Paid 100</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td width="20%"></td>
+                <td>IRIS : Medical Device Incident Report Investigation Scheme</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td width="20%"></td>
+                <td>PO Box 100, Woden, ACT 2606</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td width="20%">By fax:</td>
+                <td>+61 (0) 2 6232 8555</td>
+            </tr>
+            <tr style="line-height:8pt;">
+                <td width="20%">By e-mail: </td>
+                <td style="text-color:blue;"><u>iris@health.gov.au</u></td>
+            </tr>
+        </table>
+    </div>
+    
+    
+    
+    <div style="width:50%;float:right;border:1px solid black;height:50px;font-family:'Arial Unicode MS';">
+        <table class="tableSection" cellspacing="0" cellpadding="0" style="border-bottom:0px solid black;font-size:9px;font-weight:bold">
+            <tr style="line-height:8pt;">
+                <td style="padding-top:4px">Submission of this report does not constitute an admission that medical personnel,
+                    healthcare facility, sponsor, distributor, manufacturer or product caused or
+                    contributed to the event.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+
+</body>
+
+</html>
+
+</apex:page>

@@ -1,0 +1,279 @@
+<apex:page standardcontroller="CMPL123__MDC_Ticket__c" extensions="CMPL123.MDC_TicketController" >
+    <apex:pageBlock title="{!$Label.cmpl123__mdc_related_record}"  >
+        <apex:pageBlockSection >
+        
+            <apex:outputField value="{!CMPL123__MDC_Ticket__c.CMPL123__Related_Record_Detail__c}"/>
+            <apex:outputField value="{!CMPL123__MDC_Ticket__c.CMPL123__Related_Record__c}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+    <apex:form id="ackBanner">
+
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/mdc_namespace.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/mdc_utils.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/mdc_jquery_plugins.js')}"/>
+
+    <apex:pageMessage summary="{!$Label.cmpl123__mdc_all_ack_recieved}" severity="confirm" strength="2" rendered="{!OR(CMPL123__MDC_Ticket__c.CMPL123__All_Acks_Received__c, allAcksRecieved)}" />
+
+    <apex:pageBlock title="{!$Label.cmpl123__mdc_affected_fields}">
+        <apex:pageBlockTable value="{!affectedFields}" var="entry">
+            <apex:column headerValue="{!$Label.cmpl123__mdc_field_name}"> {!entry.fn} </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_action}"> {!entry.action} </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_old_value}" >
+                    <apex:outputText value="{!entry.ov}" escape="false" />
+            </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_new_value}">
+                <apex:outputText value="{!entry.nv}" escape="false" />
+            </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_user}"> {!entry.user} </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_date}"> {!entry.timestamp} </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_field_condition}">  {!entry.condition} </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_field_name}"> {!entry.fn} </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_action}"> {!entry.action} </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_old_value}" >
+                    <apex:outputText value="{!entry.ov}" escape="false" />
+            </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_new_value}">
+                <apex:outputText value="{!entry.nv}" escape="false" />
+            </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_user}"> {!entry.user} </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_date}"> {!entry.timestamp} </apex:column>
+            <apex:column headerValue="{!$Label.cmpl123__mdc_field_condition}">  {!entry.condition} </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock> 
+
+        <div id="acknowledgementResultInputContainer">
+            <apex:inputHidden value="{!acknowledgementResult}" id="acknowledgementResultInput"/>
+        </div>
+    
+    
+        <apex:actionFunction name="createAcknowledgementEntryHelper" action="{!createAcknowledgementEntryHelper}" rerender="group, individual, field, ackBanner, acknowledgementResultInput" oncomplete="onAcknowledgementProcessingComplete()">
+            <apex:param name="userIdAck" assignTo="{!userIdAck}" value="" />
+            <apex:param name="groupOrFieldNameAck" assignTo="{!groupOrFieldNameAck}" value="" />
+            <apex:param name="typeAck" assignTo="{!typeAck}" value="" />
+            <apex:param name="ackId" assignTo="{!ackId}" value="" />
+            <apex:param name="commentText" assignTo="{!commentText}" value="" />
+        </apex:actionFunction>
+        
+        <apex:actionFunction name="openPopup" action="{!openPopup}" rerender="popup"  oncomplete="onViewAcknowledgementDataComplete()">
+            <apex:param name="groupNameforAckUserPopup" assignTo="{!groupNameforAckUserPopup}" value="" />
+        </apex:actionFunction>
+        
+        <apex:outputPanel id="individual"> 
+            <apex:pageBlock title="{!$Label.cmpl123__mdc_individual_acknowledgments}" rendered="{!individualAcks.size > 0}">
+                <apex:pageBlockTable value="{!individualAcks}" var="individualAck">
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_user}" id="indivCol1"> {!individualAck.userField} </apex:column>
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_acknowledgment_status}" id="indivCol2"> {!individualAck.ackStatus} </apex:column>
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_comments}" id="indivCol3" width="40%" style="white-space: pre-line"> {!individualAck.comment} </apex:column>
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_acknowledgment}">
+                        <apex:commandButton styleclass="ackButton" rendered="{!individualAck.ackStatus == $Label.cmpl123__mdc_not_acknowledged && CASESAFEID($User.Id) == individualAck.userId && didUserAcknowledge == false}" value="{!$Label.cmpl123__mdc_acknowledge}" onclick="onAcknowledge('{!CASESAFEID($User.Id)}', 'null', 'individual', '{!individualAck.entryId}');  return false;"  />
+                        <apex:commandButton styleClass="ackWithCommentsButton" rendered="{!individualAck.ackStatus == $Label.cmpl123__mdc_not_acknowledged && CASESAFEID($User.Id) == individualAck.userId && didUserAcknowledge == false}" value="{!$Label.cmpl123__mdc_acknowledge_with_comments}" onclick="onAcknowledgeWithComments('{!CASESAFEID($User.Id)}', 'null', 'individual', '{!individualAck.entryId}');  return false;"  />
+                
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:outputPanel>
+        
+        <apex:outputPanel id="field">
+            <apex:pageBlock title="{!$Label.cmpl123__mdc_field_acknowledgments}" rendered="{!fieldAcks.size > 0}">
+                <apex:pageBlockTable value="{!fieldAcks}" var="fieldAck">
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_user_field}" id="fieldCol1"> {!fieldAck.fieldLabel} </apex:column>
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_related_user}" id="fieldCol2"> {!fieldAck.relatedUser} </apex:column>
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_acknowledgment_status}" id="fieldCol3"> {!fieldAck.ackStatus} </apex:column>
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_comments}" id="fieldCol4" width="40%" style="white-space: pre-line"> {!fieldAck.comment} </apex:column>
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_acknowledgment}">
+                        <apex:commandButton styleclass="ackButton" rendered="{!fieldAck.ackStatus == $Label.cmpl123__mdc_not_acknowledged && CASESAFEID($User.Id) == fieldAck.relatedUserId && didUserAcknowledge == false}" value="{!$Label.cmpl123__mdc_acknowledge}" onclick="onAcknowledge('{!CASESAFEID($User.Id)}', '{!fieldAck.fieldNameJs}', 'field', '{!fieldAck.entryId}');  return false;"  />
+                        <apex:commandButton styleClass="ackWithCommentsButton" rendered="{!fieldAck.ackStatus == $Label.cmpl123__mdc_not_acknowledged && CASESAFEID($User.Id) == fieldAck.relatedUserId && didUserAcknowledge == false}" value="{!$Label.cmpl123__mdc_acknowledge_with_comments}" onclick="onAcknowledgeWithComments('{!CASESAFEID($User.Id)}', '{!fieldAck.fieldNameJs}', 'field', '{!fieldAck.entryId}');  return false;"  />
+                     </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:outputPanel>
+                <apex:outputPanel id="group">
+            <apex:pageBlock title="{!$Label.cmpl123__mdc_group_acknowledgments}" rendered="{!groupAcks.size > 0}">
+                <apex:pageBlockTable id="groupTable" value="{!groupAcks}" var="groupAck">
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_public_group}" id="groupCol1"> {!groupAck.groupName}</apex:column>
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_required_acknowledgments}" id="groupCol2"> {!groupAck.requiredAcks} </apex:column>
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_received_acknowledgments}" id="groupCol3"> {!groupAck.receivedAcks} &nbsp;
+                        <apex:commandButton value="{!$Label.cmpl123__mdc_view}" onclick="onViewAcknowledgementData('{!groupAck.groupNameJs}'); return false;" status="status" rendered="{!groupAck.receivedAcks != 0}" />
+                    </apex:column>
+                    <!--  
+                    <apex:column headerValue="Comments" id="groupCol4" width="40%" styleClass="encodedContent" style="{!IF(AND(groupAck.requiredAcks > 1, groupAck.receivedAcks > 1), 'font-style:italic', '')}"> {!groupAck.comment} </apex:column>
+                    -->
+                    <apex:column headerValue="{!$Label.cmpl123__mdc_acknowledgement}">
+                        <apex:commandButton styleclass="ackButton" value="{!$Label.cmpl123__mdc_acknowledge}" rendered="{!didUserAcknowledge == false && groupAck.isUserInGroup == true && groupAck.requiredAcks > groupAck.receivedAcks}" onclick="onAcknowledge('{!CASESAFEID($User.Id)}', '{!groupAck.groupNameJs}', 'group', '{!groupAck.entryId}'); return false;"  />
+                        <apex:commandButton styleClass="ackWithCommentsButton" value="{!$Label.cmpl123__mdc_acknowledge_with_comments}"  rendered="{!didUserAcknowledge == false && groupAck.isUserInGroup == true && groupAck.requiredAcks > groupAck.receivedAcks}" onclick="onAcknowledgeWithComments('{!CASESAFEID($User.Id)}', '{!groupAck.groupNameJs}', 'group', '{!groupAck.entryId}'); return false;"  />
+                    </apex:column>
+                    
+                    
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:outputPanel>
+        
+        <apex:outputPanel id="popup" styleClass="acknowledgementReceivedTable" style="visibility:hidden; float:right;padding-right:35%;">
+            <apex:outputPanel id="popInnerOutputPnl" layout="block" rendered="true">
+                <apex:pageBlock >
+                    <apex:pageBlockTable value="{!groupAckUsers}" var="user">
+                        <apex:column headerValue="{!$Label.cmpl123__mdc_user_name}" style="white-space:nowrap;padding-right: 20px"> {!user.User.Name} </apex:column>
+                        <apex:column headerValue="{!$Label.cmpl123__mdc_when_acknowledged}" style="padding-right: 20px"> {!user.whenAck} </apex:column>
+                        <apex:column headerValue="{!$Label.cmpl123__mdc_comments}" style="width:100%; white-space: pre-line"> {!user.comment} </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlock>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        
+        <apex:pageBlock rendered="{!errorFlag == true}">
+            {!$Label.cmpl123__mdc_ticket_admin_error} {!thrownError}
+        </apex:pageBlock>
+        
+    </apex:form>
+
+<script type="text/javascript">
+
+var processingViewAcknowledgementData = false;
+
+// Call this in the onclick of the commandButton "View" for group acks
+// then return false; This sets a flag in case the 
+// user double-clicks on the button and then sends
+// the view group acknowledgement request to the server
+// multiple times
+function onViewAcknowledgementData(groupName) {
+
+    if (!processingViewAcknowledgementData) {
+        processingViewAcknowledgementData = true;
+        openPopup(groupName);
+    }
+}
+
+function onViewAcknowledgementDataComplete() {
+
+    try {
+    
+        var tableContainer = $(".acknowledgementReceivedTable");
+    
+        // This line strips out salesforce styling from the pageBlock
+        $(".bPageBlock", tableContainer).removeClass();
+    
+        $("<div></div>")._123Popup({
+            width: 480,
+            title: "{!$Label.cmpl123__mdc_received_public_group_ack}",
+            buttons: "ok",
+            okButtonLabel: "{!$Label.cmpl123__mdc_ok}",
+            onOk: function() {
+                processingViewAcknowledgementData = false;
+                return true;
+            }
+        })
+        .message({
+            messageText: tableContainer.html()
+        });
+    }
+    catch (error) {
+        processingViewAcknowledgementData = false;
+    }
+}
+
+var processingAcknowledgements = false;
+
+// Call this in the onclick of the commandButton "Acknowledge"
+// then return false; This sets a flag in case the 
+// user double-clicks on the button and then sends
+// the acknowledgement request to the server
+function onAcknowledge(userId, userField, ackType, entryId) {
+
+    if (!processingAcknowledgements) {
+        processingAcknowledgements = true;
+        createAcknowledgementEntryHelper(userId, userField, ackType, entryId);
+        
+    }
+
+};
+
+// Call this in the onclick of the commandButton "Acknowledge With Comments"
+// then return false; This will show a dialog box for the user to enter
+// a comment, then verify that the user entered a comment and then
+// call the actionFunction that handles doing the actual acknowledgement
+function onAcknowledgeWithComments(userId, userField, ackType, entryId) {
+    
+    $(".ackWithCommentsButton").blur();
+    $(".ackButton").blur();
+
+    $("<div></div>")._123Popup({
+        title: "{!$Label.cmpl123__mdc_acknowledge_with_comments}",
+        buttons: "okCancel",
+        okButtonLabel: "{!$Label.cmpl123__mdc_acknowledge}",
+        cancelButtonLabel: "{!$Label.cmpl123__mdc_cancel}",
+        onOk: function(commentText, popup) {
+        
+            if (commentText.trim().length === 0) {
+                popup.setError("{!$Label.cmpl123__mdc_please_enter_a_comment}");
+                return false;
+            }
+            
+            createAcknowledgementEntryHelper(userId, userField, ackType, entryId, commentText);
+            return true;
+        }
+    })
+   .textAreaInput({
+        intro: "{!$Label.cmpl123__mdc_please_enter_your_comment}",
+        maxLength: 500
+    }); 
+}
+    
+function formatAcknowledgementResultDisplay(acknowledgementResults) {
+
+    var acknowledgementResult = acknowledgementResults[0];
+    var error = !acknowledgementResult.success;
+    var alreadyAcknowledged = acknowledgementResult.alreadyAcknowledged;
+    var errorOrAlreadyAcknowledged = error || alreadyAcknowledged;
+
+    var resultDisplay = $("<div></div>")
+        .append($("<img />")
+            .css({
+                width: "10px",
+                paddingRight: "5px"
+            })
+            .attr("src", "{!URLFOR($Resource.CMPL123__Compliance123, '/Image/" + (errorOrAlreadyAcknowledged ? "close_red_60.png" : "check_green_60.png") + "')}"))
+        .append($("<span></span>")
+            .css({color: errorOrAlreadyAcknowledged ? "red" : "black"})
+            .text(errorOrAlreadyAcknowledged ? acknowledgementResult.error : "{!$Label.cmpl123__mdc_single_acknowledgement_success_message}"));
+            
+    return resultDisplay.html();
+};
+
+function onAcknowledgementProcessingComplete() {
+    showAcknowledgementConfirmation();
+}    
+
+    
+function showAcknowledgementConfirmation() {
+
+    try {
+        var acknowledgementResults = $.parseJSON($("input", "#acknowledgementResultInputContainer").val());
+
+        $("<div></div>")._123Popup({
+            title: "{!$Label.cmpl123__mdc_acknowledgements}",
+            buttons: "ok",
+            okButtonLabel: "{!$Label.cmpl123__mdc_ok}",
+            width: 300,
+            height: 150,
+            onOk: function() {
+                processingAcknowledgements = false;
+                return true;
+            }       
+        })
+        .message({
+            messageText: formatAcknowledgementResultDisplay(acknowledgementResults)
+        });
+    }
+    catch (error) {
+        processingAcknowledgements = false
+    }
+}
+
+
+</script>
+
+
+</apex:page>

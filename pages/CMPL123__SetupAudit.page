@@ -1,0 +1,411 @@
+<apex:page controller="CMPL123.SetupAuditController" docType="html-5.0">
+<head>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-ui-1.8.20.custom.min.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/css/gtheme/jquery-ui-1.8.20.custom.css')}"/>
+  
+  <!--  
+    <apex:includeScript value="{!URLFOR($Resource.Compliance123, '/123Compliance/lib/jquery/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Compliance123, '/123Compliance/lib/jquery/jquery-ui-1.8.20/js/jquery-ui-1.8.20.custom.min.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Compliance123, '/123Compliance/lib/jquery/jquery-ui-1.8.20/css/gtheme/jquery-ui-1.8.20.custom.css')}"/>
+    
+   --> 
+    <style>
+        pre {padding: 9.5px; font-size: 12px;background-color: whiteSmoke; border: 1px solid #CCC; border: 1px solid rgba(0, 0, 0, 0.15);-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}
+    </style>
+</head>
+<body>
+    <apex:pageBlock title="{!$Label.cmpl123__audit_setup}">
+    <div style="padding:10px;">
+        <div id="fieldDetailas" >{!$Label.SELECT_OBJECT_TO_SETUP_AUDIT} : </div>
+        <div style="width:100%;padding:20px;display:none;" id="showtrigger">                
+            <b><font color="green" id="triggerMess">{!$Label.AUDIT_TRAIL_CREATED_AUTOMATICALLY}</font></b>           
+        </div>          
+        <div id="checkFieldSave" style="text-align:center;display:none;" >            
+            <button id="saveCheckedFields" class="btn-primary" type="button">{!$Label.SAVE}</button> <span style="color:green;" id="saveMessage"></span>       
+            <div id="showErrorMessage" style="width:100%;display:none;text-decoration:none;" >
+                <div style="color:green;font-size:12px;height:20px;float:left;" id="message"></div>
+                <!--<div ><img height="8"  src="/img/dismiss.gif" width="8" onclick="closeMessagediv();" style="cursor: pointer;float:left;padding-top:3px;padding-left:20px;"/></div>-->            
+            </div>
+        </div><br/>
+        
+        <div style="margin-top: 5px" >
+            <div style="display:none" id="bdcumbid">        
+                <pre><b>{!$Label.SELECT_FIELDS_TO_TRACK} </b><div id="deselectDiv" style="display:none;float:right;"><a href="#" id="deselect" >{!$Label.DESELECT_ALL_FIELDS}</a></div></pre><br/>
+                <table cellpadding="0" cellspacing="0" border="0" width="90%"  id="columns">
+                    <thead>
+                        <tr>
+                            <th></th><th></th><th></th>                    
+                        </tr>
+                    </thead> 
+                    <tbody></tbody>                     
+                </table>
+            </div>
+             <div style="display:none" id="bdchildid">        
+                <div id="expandCollapseDiv"><pre style="cursor:pointer;"><b><span id="expanderSign">+</span>&nbsp;{!$Label.CHILD_RELATIONSHIPS} </b><div id="deselectchildDiv" style="display:none;float:right;"><a href="#" id="deselect" >{!$Label.DESELECT_ALL_FIELDS}</a></div></pre></div><br/>
+                <div id="childContent" style="display:none;">
+                <table cellpadding="0" cellspacing="0" border="0" width="90%"  id="childcolumns">
+                    <thead>
+                        <tr>
+                            <th></th><th></th><th></th>                    
+                        </tr>
+                    </thead> 
+                    <tbody></tbody>                     
+                </table>
+                </div>
+            </div>
+            <div style="display:none" id="bdparentid">        
+                <div id="expandCollapseDiv1"><pre style="cursor:pointer;"><b><span id="expanderSign1">+</span>&nbsp;{!$Label.PARENT_RELATIONSHIPS} </b><div id="deselectchildDiv" style="display:none;float:right;"><a href="#" id="deselect" >{!$Label.DESELECT_ALL_FIELDS}</a></div></pre></div><br/>
+                <div id="parentContent" style="display:none;">
+                <table cellpadding="0" cellspacing="0" border="0" width="90%"  id="parentcolumns">
+                    <thead>
+                        <tr>
+                            <th></th><th></th><th></th>                    
+                        </tr>
+                    </thead> 
+                    <tbody></tbody>                     
+                </table>
+                </div>
+            </div>
+        </div>
+        <div id="checkFieldSave1" style="text-align:center;display:none;" >
+            <button id="saveCheckedFields1" class="btn-primary" type="button">{!$Label.SAVE}</button> <span style="color:green;" id="saveMessage1"></span>       
+            <div id="showErrorMessage1" style="width:100%;display:none;text-decoration:none;" >
+            <div style="color:green;font-size:12px;height:20px;float:left;" id="message1"></div>
+            </div>
+        </div>  
+    </div>
+     <script type="text/javascript">var __sfdcSessionId = '{!GETSESSIONID()}';</script>
+     <script src="../../soap/ajax/26.0/connection.js"  type="text/javascript"></script>
+     <script>
+         var triggerVal;
+         var colList;
+         var records,objnm;   
+         var objlistJson = sortObject(JSON.parse('{!JSENCODE(objList)}'),'value',true);      
+         $(document).ready(function() {
+             setObjects();
+             $("#expandCollapseDiv").click(function(){
+                $("#childContent").slideToggle();
+                if ($("#expanderSign").text() == "+"){
+                    $("#expanderSign").html("−")
+                }else {
+                    $("#expanderSign").text("+")
+                }
+            });
+            
+            $("#expandCollapseDiv1").click(function(){
+                $("#parentContent").slideToggle();
+                if ($("#expanderSign1").text() == "+"){
+                    $("#expanderSign1").html("−")
+                }else {
+                    $("#expanderSign1").text("+")
+                }
+            });
+            
+         });
+         
+         function setObjects(){                      
+            var sList = $('<select id=objectset class=input-xlarge  style=font-size:12px;width:170px onchange=showrelatedcolumns(this.value,this.options[this.selectedIndex].text)  />');
+             $('<option />', {value: '', text:'-'+'{!JSINHTMLENCODE($Label.SELECT)}'+'-'}).appendTo(sList);
+            for(var val in objlistJson) {                
+                $('<option />', {value: val, text:objlistJson[val]}).appendTo(sList);
+            }
+            sList.appendTo('#fieldDetailas');
+         } 
+         
+         function closeMessagediv(){
+            $("#showErrorMessage").hide();
+         } 
+        
+        function sortObject(obj, type, caseSensitive) {
+            var temp_array = [];
+            for (var key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    if (!caseSensitive) {
+                        key = (key['toLowerCase'] ? key.toLowerCase() : key);
+                    }
+                    temp_array.push(key);
+                }
+            }
+            if (typeof type === 'function') {
+                temp_array.sort(type);
+            } else if (type === 'value') {
+                temp_array.sort(function(a,b) {
+                    var x = obj[a];
+                    var y = obj[b];
+                    if (!caseSensitive) {
+                        x = (x['toLowerCase'] ? x.toLowerCase() : x);
+                        y = (y['toLowerCase'] ? y.toLowerCase() : y);
+                    }
+                    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+                });
+            } else {
+                temp_array.sort();
+            }
+            var temp_obj = {};
+            for (var i=0; i<temp_array.length; i++) {
+                temp_obj[temp_array[i]] = obj[temp_array[i]];
+            }
+            return temp_obj;
+        };
+        
+         function showrelatedcolumns(objName,objLabel){
+            $('#saveMessage').hide();
+            $('#saveMessage1').hide();       
+            if(objName != '' && objLabel != '-Select-'){ 
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.SetupAuditController.getSobjectFields}',objName,objLabel,function(result, event){
+                    if(event.status){ 
+                        objLabel = objLabel.replace(/Custom /g,"");
+                            $('#columns tbody').empty();
+                            $('#bdcumbid').show();
+                            $('#checkFieldSave').show();
+                            $('#checkFieldSave1').show();
+                            $('#deselectDiv').show();                            
+                            $('#showobjtrigger').show();                            
+                            triggerVal = result['isTrigger'];
+                            delete result['isTrigger'];
+                            if(triggerVal == 'false')
+                              $('#showtrigger').show();
+                            else
+                                $('#showtrigger').hide();
+                            colList = result; 
+                            showColumnList();  
+                            showrelatedChildcolumns(objName);
+                            showrelatedParentcolumns(objName);
+                    }
+                 }, {escape:true});
+             }else{
+                 $('#columns tbody').empty();
+                 $('#bdcumbid').hide();
+             }
+         }
+        
+         function getDuplicateFields(fieldsList){
+            var sortedFieldsArray = fieldsList.map(function(fieldName){
+                return fieldName.toUpperCase();
+                }).sort();
+            var results = [];
+            for (var i = 0; i < fieldsList.length - 1; i++) {
+                if (sortedFieldsArray[i + 1] == sortedFieldsArray[i]) {
+                    results.push(sortedFieldsArray[i]);
+                }
+            }
+            return results;
+         }
+
+         function showColumnList(){ 
+            var collistsize=Object.keys(colList).length;     
+            var count=0,countList=0;                
+            var rows;
+            var fieldsList =[];
+            var dupNames =[];
+            for(var val in  sortObject(colList,'label',true)){ 
+                fieldsList.push(colList[val]);
+            }
+            dupNames = getDuplicateFields(fieldsList);
+            
+            for(var val in  sortObject(colList,'label',true)){  
+               if(count == 0){    
+                    rows=$('<tr height=30px>');
+                    count++;
+                    if(dupNames.indexOf(colList[val].toUpperCase()) >= 0){ 
+                        rows.append( $('<td  style=font-weight:bold;width:30%;font-size:11px;  align=right>').html(
+                            "<span style='float:right'><input  type='checkbox'  name='type' class=checkCol value='"+val+"' /></span>"+"<span style='padding-right:20px' >"+colList[val]+"</span>"+"<span style='display:block;padding-right:37px'>"+"("+val+")</span>"
+                        ) ); 
+                    }else{
+                        rows.append( $('<td  style=font-weight:bold;width:30%;font-size:11px;  align=right>').html(
+                            "<span style='float:right'><input  type='checkbox'  name='type' class=checkCol value='"+val+"' /></span>"+"<span style='padding-right:20px' >"+colList[val]+"</span>"
+                        ) );   
+                    }
+                }else if(count == 1){
+                    count++;
+                    if(dupNames.indexOf(colList[val].toUpperCase()) >= 0){ 
+                        rows.append( $('<td  style=font-weight:bold;width:30%;font-size:11px;  align=right>').html(
+                            "<span style='float:right'><input  type='checkbox'  name='type' class=checkCol value='"+val+"' /></span>"+"<span style='padding-right:20px' >"+colList[val]+"</span>"+"<span style='display:block;padding-right:37px'>"+"("+val+")</span>"
+                        ) ); 
+                    }else{
+                        rows.append( $('<td  style=font-weight:bold;width:30%;font-size:11px;  align=right>').html(
+                            "<span style='float:right'><input  type='checkbox'  name='type' class=checkCol value='"+val+"' /></span>"+"<span style='padding-right:20px' >"+colList[val]+"</span>"
+                        ) );   
+                    }
+                }else if(count == 2){
+                    if(dupNames.indexOf(colList[val].toUpperCase()) >= 0){ 
+                        rows.append( $('<td  style=font-weight:bold;width:30%;font-size:11px;  align=right>').html(
+                            "<span style='float:right'><input  type='checkbox'  name='type' class=checkCol value='"+val+"' /></span>"+"<span style='padding-right:20px' >"+colList[val]+"</span>"+"<span style='display:block;padding-right:37px'>"+"("+val+")</span>"
+                        ) ); 
+                    }else{
+                        rows.append( $('<td  style=font-weight:bold;width:30%;font-size:11px;  align=right>').html(
+                            "<span style='float:right'><input  type='checkbox'  name='type' class=checkCol value='"+val+"' /></span>"+"<span style='padding-right:20px' >"+colList[val]+"</span>"
+                        ) )   
+                    }                    
+                    count=0;    
+                }
+               countList++;
+               if(collistsize == countList || count == 2)
+                   rows.appendTo('#columns tbody');               
+            }       
+         }
+         
+         function showrelatedChildcolumns(objName){
+              Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.SetupAuditController.getSobjectChilds}', objName, function(result, event){
+                    if(event.status){
+                       $('#childcolumns tbody').empty(); 
+                       if(result != null){
+                           showChildColumnList(result);
+                           $('#bdchildid').show();
+                       }else{
+                           $('#bdchildid').hide();
+                       }
+                    }
+                 }, {escape:true});
+         }
+         function showrelatedParentcolumns(objName){
+              Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.SetupAuditController.getSobjectParents}', objName, function(result, event){
+                    if(event.status){
+                       $('#parentcolumns tbody').empty();
+                       if(result != null){ 
+                           showParentColumnList(result);
+                           $('#bdparentid').show();
+                           queryResult();
+                       }else{
+                           $('#bdparentid').hide();
+                       }
+                    }
+                 }, {escape:true});
+         }
+         
+         function showChildColumnList(colList){ 
+            var collistsize=Object.keys(colList).length;     
+            var count=0,countList=0;                
+            var rows;                   
+            for(var val in sortObject(colList,'label',true)){       
+               rows=$('<tr height=30px>');
+               rows.append( $('<td  style=font-weight:bold;width:80%;font-size:11px;  align=left>').html(
+                   "<span style='float:left' id='childrecs'><input  type='checkbox'  id= 'chlbox-"+colList[val]+"' name='chtype' class=checkCol value='"+colList[val]+"' onclick=validateTrigger(this.checked,this.value); /></span>"+"<span style='padding-left:20px' >"+val+"</span>" 
+                ) ); 
+              
+               count++;     
+               rows.appendTo('#childcolumns tbody');         
+            } 
+                    
+         }    
+         
+        function validateTrigger(checked,objName){
+            if(checked && objName != ''){
+                createTrigger(objName); 
+               /* if(confirm('If there is no trigger for this object automatic one trigger will be created for this object.')){
+                    createTrigger(objName);
+                }else{
+                    $("#chlbox-"+objName).prop('checked',false);
+                } */
+            } 
+        } 
+         
+        function showParentColumnList(colList){ 
+            var collistsize=Object.keys(colList).length;     
+            var count=0,countList=0;                
+            var rows;                   
+            for(var val in sortObject(colList,'label',true)){                 
+                rows=$('<tr height=30px>');
+                rows.append( $('<td  style=font-weight:bold;width:80%;font-size:11px;  align=left>').html(
+                   "<span style='float:left'><input  type='checkbox'  name='ptype' class=checkCol value='"+colList[val]+"' /></span>"+"<span style='padding-left:20px' >"+val+"</span>" 
+                ) ); 
+                rows.appendTo('#parentcolumns tbody');               
+            }       
+         }           
+               
+           
+         $("#deselect").click(function () {
+             $(".checkCol").removeAttr("checked");
+         }); 
+         
+         $('[id^=saveCheckedField]').click(function (){
+             var fieldset=new Array();
+             $("input:checkbox[name=type]:checked").each(function(){
+                 fieldset.push($(this).val());
+             });
+             var childRelArr = new Array();
+             $("input:checkbox[name=chtype]:checked").each(function(){
+                 childRelArr.push($(this).val());               
+             });
+             var parentRelArr = new Array();
+             $("input:checkbox[name=ptype]:checked").each(function(){
+                 parentRelArr.push($(this).val());
+             });
+             
+             upsertObj(fieldset,childRelArr,parentRelArr);
+         });         
+         
+         function upsertObj(fieldlist, childRelArr,parentRelArr){
+             checkRecordPresentOrNot();
+             var sfn = new sforce.SObject("CMPL123__AuditTrail_Config__c");
+             sfn.Name = objnm;
+             sfn.CMPL123__Fields__c = (fieldlist == '' || fieldlist == null) ? ' ' : fieldlist.toString();
+             sfn.CMPL123__Child_Relationships_Object__c = (childRelArr == '' || childRelArr == null) ? ' ' : childRelArr.toString();
+             sfn.CMPL123__Parent_Relationship_Object__c = (parentRelArr == '' || parentRelArr == null) ? ' ' : parentRelArr.toString();;
+             if(records != null && records != '')
+                 sfn.Id=records[0].Id;              
+             var result = sforce.connection.upsert("Id", [sfn]); 
+             if(result[0].getBoolean("success")){
+                 $('#saveMessage').html('{!JSINHTMLENCODE($Label.SAVED_SUCCESSFULLY)}');
+                 $('#saveMessage1').html('{!JSINHTMLENCODE($Label.SAVED_SUCCESSFULLY)}');
+                 $('#saveMessage').show();     
+                 $('#saveMessage1').show();
+                 //Create trigger automatically 
+                 if(triggerVal == 'false'){
+                     if($('#objectset').val() != '' && $('#objectset').val() != null){
+                         var objName = $('#objectset').val();
+                         createTrigger(objName);
+                     }      
+                 }  
+             }
+                                                                
+         }
+         function checkRecordPresentOrNot(){
+             objnm=$(":selected", '#objectset').val();
+             var qresult=sforce.connection.query("Select Id,Name,CMPL123__Fields__c,CMPL123__Child_Relationships_Object__c,CMPL123__Parent_Relationship_Object__c, CMPL123__Is_Active__c from CMPL123__AuditTrail_Config__c where Name='"+objnm+"' Limit 1");
+             records = qresult.getArray("records");
+         }
+         function queryResult(){
+             objnm=$(":selected", '#objectset').val();
+             var qresult=sforce.connection.query("Select Id,Name,CMPL123__Fields__c,CMPL123__Child_Relationships_Object__c,CMPL123__Parent_Relationship_Object__c, CMPL123__Is_Active__c from CMPL123__AuditTrail_Config__c where Name='"+objnm+"' Limit 1");
+             records = qresult.getArray("records");
+             var jsonSelectList = new Object();
+             
+             if(records != null && records != ''){
+                 if(records[0].CMPL123__Fields__c != null){
+                     for(var fld in records[0].CMPL123__Fields__c.split(','))
+                         jsonSelectList[records[0].CMPL123__Fields__c.split(',')[fld]] = records[0].CMPL123__Fields__c.split(',')[fld];
+                 }
+                 
+                 if(records[0].CMPL123__Child_Relationships_Object__c != null){
+                     for(var fld in records[0].CMPL123__Child_Relationships_Object__c.split(','))
+                         jsonSelectList[records[0].CMPL123__Child_Relationships_Object__c.split(',')[fld]] = records[0].CMPL123__Child_Relationships_Object__c.split(',')[fld];
+                 }
+                 
+                 if(records[0].CMPL123__Parent_Relationship_Object__c != null){
+                     for(var fld in records[0].CMPL123__Parent_Relationship_Object__c.split(','))
+                         jsonSelectList[records[0].CMPL123__Parent_Relationship_Object__c.split(',')[fld]] = records[0].CMPL123__Parent_Relationship_Object__c.split(',')[fld];
+                 }
+                 
+                 if(records != null && records != ''){
+                     $('input[type=checkbox]').each(function () {
+                         if(jsonSelectList[$(this).val()] != undefined)
+                             $(this).attr('checked','checked');
+                     });
+                 }
+             }
+         }
+         
+         function createTrigger(objName){
+             Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.SetupAuditController.createTrigger}', objName, function(result, event){
+                    if(!event.status){                        
+                        alert(event.message);
+                    }
+            }, {escape:true});
+        }        
+    </script>    
+    </apex:pageBlock>
+</body>
+
+</apex:page>

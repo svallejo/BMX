@@ -1,0 +1,585 @@
+<!--
+  ~ Copyright (c) 2018 Sparta Systems, Inc.
+  -->
+
+<apex:page standardController="CMPL123__MDC_Trigger__c"
+    extensions="CMPL123.MDCTriggerController,CMPL123.MDCTriggerControllerTextExtension,CMPL123.LEXController"
+    docType="html-5.0"
+    id="pg"
+    tabStyle="CMPL123__MDC_Trigger__c">
+
+    <!-- START Custom Style Def Block -->
+    <style>
+        pre {
+            padding: 9.5px;
+            font-size: 12px;
+            background-color: Black;
+            border: 1px solid #CCC;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+    </style>
+    <!-- END Custom Style Def Block -->
+
+    <!-- Enable Lightning if we are in LEX -->
+    <apex:form rendered="{!isLEX}">
+        <apex:includeLightning />
+    </apex:form>
+
+    <apex:form id="fm" >
+
+        <!-- START VF Action Function Def Block -->
+        <apex:actionFunction name="deleteOneFieldMappingRow" action="{!deleteOneFieldMappingRow}" rerender="fieldMConditionsTable">
+            <apex:param name="fieldMappingDeleteIndex" assignTo="{!fieldMappingDeleteIndex}" value="" />
+        </apex:actionFunction>
+        <apex:actionFunction name="deleteOnePublicGroupAckRow" action="{!deleteOnePublicGroupAckRow}" rerender="publicGroupAcksTable">
+            <apex:param name="publicGroupAckDeleteIndex" assignTo="{!publicGroupAckDeleteIndex}" value="" />
+        </apex:actionFunction>
+        <apex:actionFunction name="deleteOneIndividualUserAckRow" action="{!deleteOneIndividualUserAckRow}" rerender="individualAcksTable">
+            <apex:param name="individualUserAckDeleteIndex" assignTo="{!individualUserAckDeleteIndex}" value="" />
+        </apex:actionFunction>
+        <apex:actionFunction name="deleteOneUsersFieldAckRow" action="{!deleteOneUsersFieldAckRow}" rerender="usersFieldAcksTable">
+            <apex:param name="usersFieldAckDeleteIndex" assignTo="{!usersFieldAckDeleteIndex}" value="" />
+        </apex:actionFunction>
+        <!-- END VF Action Function Def Block -->
+
+        <apex:pageblock title="{!getSectionTitleMDCTrigger}" mode="edit">
+
+            <!-- START `MDC Trigger` Section -->
+            <apex:pageBlockSection columns="1">
+
+                <!-- START Error/Validation Text Bubble -->
+                <apex:pageBlockSectionItem >
+                    <apex:pageMessages />
+                </apex:pageBlockSectionItem>
+                <!-- END Error/Validation Text Bubble -->
+
+                <!-- Help `(?)` Button -->
+                <apex:pageBlockSectionItem helpText="{!getHelpTextModifyTargetObject}">
+
+                    <!-- Dropdown Box Label -->
+                    <apex:outputPanel >
+
+                        <!-- LEX Label with Tooltip -->
+                        <apex:outputLabel rendered="{!isLEX}">
+                            <div id="lightningTargetObject"></div>
+                        </apex:outputLabel>
+
+                        <!-- VF Label -->
+                        <apex:outputLabel rendered="{!NOT(isLEX)}">
+                            {! getLabelTargetObject}
+                        </apex:outputLabel>
+
+                    </apex:outputPanel>
+
+
+                    <!-- START Target Object Drop Down List -->
+                    <apex:outputPanel >
+                        <apex:outputText value="{!selectedobj}" rendered="{!isTriggerInstanceValid}"/>
+
+                        <apex:selectList styleClass="objlist" id="selectlist" value="{!selectedobj}" size="1" style="width:180px;" rendered="{!NOT(isTriggerInstanceValid)}" html-formnovalidate="novalidate" readonly="{!isNameAndDescriptionValid}"  >
+                            <apex:selectOption itemLabel="{!getInitialDropdownSelection}" itemValue=""  />
+                            <apex:selectOptions value="{!objects}" />
+                            <apex:actionSupport event="onchange" action="{!setfields}" />
+                        </apex:selectList>
+                    </apex:outputPanel>
+                    <!-- END Target Object Drop Down List -->
+
+                </apex:pageBlockSectionItem>
+
+            </apex:pageBlockSection>
+            <!-- END `MDC Trigger` Section -->
+
+            <!-- START `MDC Trigger Details` Section -->
+            <apex:pageBlock rendered="{!isTriggerAndTargetObjectValid}" title="{!getSectionTitleMDCTriggerDetails}" >
+
+                <!-- Detail Input Container -->
+                <apex:pageBlockSection columns="1">
+
+                    <!-- START `Name` Text Input -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!getLabelName}" />
+
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                            <apex:inputText value="{!MDCRule.Name}"  html-placeholder="{!getPlaceholderEnterName}"  />
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <!-- END `Name` Text Input -->
+
+                    <apex:pageBlockSectionItem />
+
+                    <!-- START `Active` Toggle Input -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!getLabelActive}" />
+                        <apex:inputfield value="{!MDCRule.CMPL123__Active__c}"/>
+                    </apex:pageBlockSectionItem>
+                    <!-- END `Active` Toggle Input -->
+
+                    <!-- START `Description` Text Input -->
+                    <apex:pageBlockSectionItem helpText="{!getHelpTextDescriptionCharacterLimit}">
+
+                        <apex:outputPanel >
+
+                            <!-- LEX Label with Tooltip -->
+                            <apex:outputLabel rendered="{!isLEX}">
+                                <div id="lightningDescription"></div>
+                            </apex:outputLabel>
+
+                            <!-- VF Label -->
+                            <apex:outputLabel rendered="{!NOT(isLEX)}">
+                                {!getLabelDescription}
+                            </apex:outputLabel>
+
+                        </apex:outputPanel>
+
+                        <apex:outputPanel styleClass="requiredInput" layout="block" >
+                            <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                            <apex:inputTextarea value="{!MDCRule.CMPL123__Description__c}" rows="3" cols="50"  html-placeholder="{!getPlaceholderEnterDescription}"  />
+                        </apex:outputPanel>
+
+                    </apex:pageBlockSectionItem>
+                    <!-- END `Description` Text Input -->
+
+                    <apex:pageBlockSectionItem />
+
+                    <!-- START `Record Detail` Dropdown Box Input -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!getLabelRecordDetail}" />
+
+                        <apex:selectList value="{!MDCRule.CMPL123__Record_Detail_Field__c}" size="1" style="width:180px" >
+                            <apex:selectOption itemLabel="{!getInitialDropdownSelection}" itemValue=""   />
+                            <apex:selectOptions value="{!detailfields}"  />
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                    <!-- END `Record Detail` Dropdown Box Input -->
+
+                </apex:pageBlockSection>
+
+                <!-- `Add Conditions` Button -->
+                <apex:pageBlockButtons location="bottom" rendered="{!isTriggerAndTargetObjectValid}" >
+                    <apex:commandButton value="{!getButtonTextAddConditions}" action="{!Description}"  />
+                </apex:pageBlockButtons>
+
+                <!-- in LEX, render the LEX Labels and their associated Tooltips -->
+                <apex:outputPanel rendered="{!isLEX}">
+                    <script>
+                        // Init the Lightning App
+                        $Lightning.use("CMPL123:SpartaLabelTooltipApp", function () {
+
+                            // `Description`
+                            $Lightning.createComponent("CMPL123:spartaLabelTooltip",
+                                {
+                                    text: '{! JSENCODE(getLabelDescription)}',
+                                    tooltipText: '{! JSENCODE(getHelpTextDescriptionCharacterLimit)}'
+                                },
+                                "lightningDescription",
+                                function(cmp){});
+
+                        });
+                    </script>
+                </apex:outputPanel>
+
+            </apex:pageBlock>
+            <!-- END "MDC Trigger Details" Section -->
+
+            <!-- START `MDC Field Selection` Section -->
+            <!-- Conditional Render: on Name/Description Fields of `MDC Trigger Details` having values -->
+            <apex:pageBlock title="{!getSectionTitleMDCFieldSelection}" rendered="{!isNameAndDescriptionValid}" id="fieldSelectionTable"  >
+
+                <!-- START Field Selection Table -->
+                <apex:pageBlockTable value="{!editingFieldMapping}" var="fieldMapping" >
+
+                    <!-- START `Field Criteria` Column -->
+                    <apex:column headervalue="{!getHeaderFieldCriteria}">
+                        <apex:selectList value="{!MDCRule.CMPL123__Field__c}" size="1" style="width:180px">
+                            <apex:selectOption itemLabel="{!getInitialDropdownSelection}" itemValue=""/>
+                            <apex:selectOption itemLabel="{!getDefaultFieldSelection}" itemValue="{!getDefaultFieldSelection}"/>
+                            <apex:actionSupport event="onchange" action="{!setfields}"/>
+                        </apex:selectList>
+                    </apex:column>
+                    <!-- END `Field Criteria` Column -->
+
+                    <!-- START `Field Name` Column -->
+                    <apex:column headerValue="{!getHeaderFieldName}" >
+                        <apex:selectList value="{!selectedfield}" size="1" style="width:180px">
+                            <apex:selectOption itemLabel="{!getInitialDropdownSelection}" itemValue=""/>
+                            <apex:selectOptions value="{!fields}" rendered="{!isTriggerFieldEqualToDefaultValue}" />
+                            <apex:actionSupport event="onchange" action="{!datatype}" />
+                        </apex:selectList>
+                    </apex:column>
+                    <!-- END `Field Name` Column -->
+
+                    <!-- START `Data Type` Column -->
+                    <apex:column headervalue="{!getHeaderDataType}" >
+                        <apex:facet name="Data Type" />
+                        <apex:selectList value="{!selecteddata}"  size="1" style="width:180px"  readonly="true" rendered="{!isTriggerFieldEqualToDefaultValue}" >
+                            <apex:selectOptions value="{!dataoptions}"/>
+                        </apex:selectList>
+                    </apex:column>
+                    <!-- END `Data Type` Column -->
+
+                    <!-- START `Condition` Column -->
+
+                    <apex:column headervalue="{!getHeaderCondition}"  >
+                        <apex:facet name="Condition"/>
+                        <apex:inputField value="{!fieldMapping.CMPL123__Condition__c}" />
+                    </apex:column>
+                    <!-- END `Condition` Column -->
+
+                    <!-- START `Parameters` Column -->
+                    <apex:column headervalue="{!getHeaderParameters}"  >
+                        <apex:facet name="Parameters"/>
+                        <apex:inputField value="{!fieldMapping.CMPL123__Parameters__c}" html-placeholder="{!getPlaceholderEnterCustomClass}"/>
+                    </apex:column>
+                    <!-- END `Parameters` Column -->
+
+                </apex:pageBlockTable>
+                <!-- END Field Selection Table -->
+
+                <!-- `Add Row` Button -->
+                <!-- On Action Perform: Appends Row to Field Conditions Table -->
+                <div align="center">
+                    <apex:commandButton value="{!getButtonTextAddRow}" action="{!addOneFieldMappingRow}" reRender="fieldSelectionTable,fieldMConditionsTable"/>
+                </div>
+
+                <apex:outputPanel id="fieldMConditionsTable">
+
+                    <!-- START Field Conditions Table -->
+                    <apex:pageblocktable value="{!fieldMappings}" var="fieldMapping" >
+
+                        <!-- START `Number` Column -->
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:outputLabel value="{!getLabelNumber}" />
+                            </apex:facet>
+                            <apex:outputLabel value="{!fieldMapping.CMPL123__Index__c}" />
+                        </apex:column>
+                        <!-- END `Number` Column -->
+
+                        <!-- START `Field Name` Column -->
+                        <apex:column headerValue="{!getHeaderFieldName}" rendered="true"  >
+                            <apex:facet name="Field Name"/>
+                            <apex:outputPanel >{!fieldMapping.CMPL123__Field_API__c}</apex:outputPanel>
+                        </apex:column>
+                        <!-- END `Field Name` Column -->
+
+                        <!-- START `Condition` Column -->
+                        <apex:column headervalue="{!getHeaderCondition}">
+                            <apex:facet name="Condition"/>
+                            <c:ConditionComponent conditionName="{!fieldMapping.CMPL123__Condition__c}"></c:ConditionComponent>
+                        </apex:column>
+                        <!-- END `Condition` Column -->
+
+                        <!-- START `Parameters` Column -->
+                        <apex:column headervalue="{!getHeaderParameters}">
+                            <apex:facet name="Parameters"/>
+                            <apex:outputPanel >{!fieldMapping.CMPL123__Parameters__c}</apex:outputPanel>
+                        </apex:column>
+                        <!-- END `Parameters` Column -->
+
+                        <!-- START Delete Row Column -->
+                        <apex:column >
+                            <apex:commandButton value="{!getButtonTextX}" style="color:red" onclick="deleteOneFieldMappingRow({!fieldMapping.CMPL123__Index__c}); return false;" rerender="fieldMConditionsTable"  />
+                        </apex:column>
+                        <!-- END Delete Row Column -->
+
+                    </apex:pageblocktable>
+                    <!-- END Field Conditions Table -->
+
+                </apex:outputPanel>
+            </apex:pageBlock>
+            <!-- END `MDC Field Selection` Section -->
+
+            <!-- START `Condition Logic` section -->
+            <!-- Conditional Render: on Name/Description Fields of `MDC Trigger Details` having values -->
+            <apex:pageBlock title="{!getSectionTitleConditionalLogic}" rendered="{!isNameAndDescriptionValid}" >
+                <apex:pageBlockSection >
+
+                    <!-- Help `(?)` Button -->
+                    <apex:pageBlockSectionItem helpText="{!getHelpTextFieldConditionLogic}">
+
+                        <!-- `Logic` Label -->
+                        <apex:outputPanel >
+
+                            <!-- LEX Label with Tooltip -->
+                            <apex:outputLabel rendered="{!isLEX}">
+                                <div id="lightningLogic"></div>
+                            </apex:outputLabel>
+
+                            <!-- VF Label -->
+                            <apex:outputLabel rendered="{!NOT(isLEX)}">
+                                {!getLabelLogic}
+                            </apex:outputLabel>
+
+                        </apex:outputPanel>
+
+                        <!-- Textbox -->
+                        <apex:outputPanel styleClass="requiredInput" layout="block"   >
+                            <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                            <apex:inputText value="{!MDCRule.CMPL123__Logic__c}" html-placeholder="{!getPlaceholderEnterConditionalLogic}" style="width: 360px; height: 20px" />
+                        </apex:outputPanel>
+
+                    </apex:pageBlockSectionItem>
+
+                </apex:pageBlockSection>
+
+                <!-- in LEX, render the LEX Labels and their associated Tooltips -->
+                <apex:outputPanel rendered="{!isLEX}">
+                    <script>
+                        // Init the Lightning App
+                        $Lightning.use("CMPL123:SpartaLabelTooltipApp", function () {
+
+                            // `Description`
+                            $Lightning.createComponent("CMPL123:spartaLabelTooltip",
+                                {
+                                    text: '{!JSENCODE(getLabelLogic)}',
+                                    tooltipText: '{!JSENCODE(getHelpTextFieldConditionLogic)}'
+                                },
+                                "lightningLogic",
+                                function(cmp){});
+
+                        });
+                    </script>
+                </apex:outputPanel>
+
+
+            </apex:pageBlock>
+            <!-- END `Condition Logic` section -->
+
+            <!-- START Public Acknowledgement section -->
+            <apex:pageBlock title="{!getSectionTitlePublicGroupAcknowledgment}" rendered="{!isNameAndDescriptionValid}" >
+
+                <!-- START Public Ack Input Table -->
+                <apex:pageblocktable value="{!editingPublicGroupAcks}" var="publicGroupAck" id="therepeat1" columns="3" style="width:100%;">
+
+                    <!-- START `Public Group` Column -->
+                    <apex:column headerValue="{!getHeaderPublicGroup}" >
+                        <apex:facet name="Public Group"/>
+                        <apex:selectList styleClass="objlist" id="selectGrouplist" value="{!publicGroupAck.CMPL123__PublicGroupAcknowledgment__c}" size="1" style="width:180px;" >
+                            <apex:selectOption itemLabel="{!getInitialDropdownSelection}" itemValue="" />
+                            <apex:selectOptions id="gl" value="{!Groups}"/>
+                            <apex:actionSupport event="onchange" action="{!selectedPublicGroupAck}"  />
+                        </apex:selectList>
+                    </apex:column>
+                    <!-- END `Public Group` Column -->
+
+                    <!-- START `Number of Acks Required` Column -->
+                    <apex:column headervalue="{!getHeaderNumAcksRequired}">
+                        <apex:facet name="Number of Acknowledgments Required">
+                        </apex:facet>
+                        <apex:inputField id="AckNo" value="{!publicGroupAck.CMPL123__AckNumber__c}"  html-placeholder="{!getPlaceholderEnterNumAcks}"  />
+                    </apex:column>
+                    <!-- END `Number of Acks Required` Column -->
+
+                </apex:pageblocktable>
+                <!-- END Public Ack Input Table (#therepeat1) -->
+
+                <!-- START Public Ack Display Table -->
+                <apex:outputPanel id="publicGroupAcksTable">
+                    <apex:pageblocktable value="{!publicGroupAcks}" var="publicGroupAck" >
+
+                        <!-- START `Number` Column -->
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:outputLabel value="{!getLabelNumber}" />
+                            </apex:facet>
+                            <apex:outputLabel value="{!publicGroupAck.CMPL123__Index__c}" />
+                        </apex:column>
+                        <!-- END `Number` Column -->
+
+                        <!-- START `Public Group` Column -->
+                        <apex:column headerValue="{!getHeaderPublicGroup}" rendered="true"  >
+                            <apex:facet name="Public Group"/>
+                            <apex:outputPanel >{!publicGroupAck.CMPL123__PublicGroupAcknowledgment__c}</apex:outputPanel>
+                        </apex:column>
+                        <!-- END `Public Group` Column -->
+
+                        <!-- START `Ack No` Column -->
+                        <apex:column headervalue="{!getHeaderAckNo}" >
+                            <apex:facet name="Ack No" />
+                            <apex:outputPanel >{!publicGroupAck.CMPL123__AckNumber__c}</apex:outputPanel>
+                        </apex:column>
+                        <!-- END `Ack No` Column -->
+
+                        <!-- START Delete Row Column -->
+                        <apex:column >
+                            <apex:commandButton value="{!getButtonTextX}" style="color:red" onclick="deleteOnePublicGroupAckRow({!publicGroupAck.CMPL123__Index__c}); return false;" rerender="publicGroupAcksTable"  />
+                        </apex:column>
+                        <!-- END Delete Row Column -->
+
+                    </apex:pageblocktable>
+
+                </apex:outputPanel>
+                <!-- END Public Ack Display Table -->
+
+                <!-- `Add Row` Button -->
+                <!-- On Action Perform: Appends Row to Public Ack Display Table -->
+                <div align="center">
+                    <apex:commandButton id="PG" value="{!getButtonTextAddRow}" action="{!addOnePublicGroupAckRow}" reRender="therepeat1,publicGroupAcksTable" />
+                </div>
+
+            </apex:pageBlock>
+            <!--END Public Acknowledgement block -->
+
+            <!--START Individual Acknowledgement block -->
+            <!-- Conditional Render: on Name/Description Fields of `MDC Trigger Details` having values -->
+            <apex:pageBlock title="{!getSectionTitleIndividualAcknowledgment}"  rendered="{!isNameAndDescriptionValid}" >
+
+                <!-- START Individual Ack Input Table -->
+                <apex:pageblocktable value="{!editingIndividualUserAcks}" var="individualUserAck" id="therepeat2" columns="2" style="width:100%;">
+
+                    <!-- START `Users` Column -->
+                    <apex:column headervalue="{!getHeaderUsers}">
+                        <apex:facet name="Users"/>
+                        <apex:inputField id="user" value="{!individualUserAck.CMPL123__User_Field__c}" html-placeholder="{!getPlaceholderSelectUser}" />
+                    </apex:column>
+                    <!-- END `Users` Column -->
+
+                    <apex:column style="width:10%;text-align:right;"/>
+
+                </apex:pageblocktable>
+                <!-- END Individual Ack Input Table -->
+
+                <!-- START Individual Ack Display Table -->
+                <apex:outputPanel id="individualAcksTable"   >
+                    <apex:pageblocktable value="{!individualUserAcks}" var="individualAcks" >
+
+                        <!-- START `Number` Column -->
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:outputLabel value="{!getLabelNumber}" />
+                            </apex:facet>
+                            <apex:outputLabel value="{!individualAcks.CMPL123__Index__c}" />
+                        </apex:column>
+                        <!-- END `Number` Column -->
+
+                        <!-- START `Users Field` Column -->
+                        <apex:column headerValue="{!getHeaderIndividualUser}" rendered="true"  >
+                            <apex:facet name="Individual User"/>
+                            <apex:outputPanel >{!individualAcks.User_Field__r.Name}</apex:outputPanel>
+                        </apex:column>
+                        <!-- END `Users Field` Column -->
+
+                        <!-- START Delete Row Column -->
+                        <apex:column >
+                            <apex:commandButton value="{!getButtonTextX}" style="color:red" onclick="deleteOneIndividualUserAckRow({!individualAcks.CMPL123__Index__c}); return false;" rerender="individualAcksTable"  />
+                        </apex:column>
+                        <!-- END Delete Row Column -->
+
+                    </apex:pageblocktable>
+                </apex:outputPanel>
+                <!-- END Individual Ack Display Table -->
+
+                <!-- `Add Row` Button -->
+                <!-- On Action Perform: Appends Row to Individual Ack Display Table -->
+                <div align="center">
+                    <apex:commandButton id="UL" value="{!getButtonTextAddRow}" action="{!addOneIndividualUserAckRow}" reRender="therepeat2,individualAcksTable" />
+                </div>
+
+            </apex:pageBlock>
+            <!--END Individual Acknowledgement block -->
+
+            <!-- START User Acknowledgement block -->
+            <!-- Conditional Render: on Name/Description Fields of `MDC Trigger Details` having values -->
+            <apex:pageBlock title="{!getSectionTitleUserFieldAcknowledgment}" rendered="{!isNameAndDescriptionValid}" ondblclick="" >
+
+                <!-- START User Ack Input Table -->
+                <apex:pageblocktable value="{!editingUsersFieldAcks}" var="usersFieldAck" id="therepeat3" columns="3" style="width:100%;">
+
+                    <!-- START `Users Field` Column -->
+                    <apex:column headerValue="{!getHeaderUsersField}">
+
+                        <!-- START Dropdown box -->
+                        <apex:facet name="Users Field"/>
+                        <apex:selectList styleClass="styleLookupDataType"  id="idLookupDataType" value="{!usersFieldAck.CMPL123__UsersFieldAcknowledgment__c}" size="1" style="width:180px;" >
+                            <apex:selectOption itemLabel="{!getInitialDropdownSelection}" itemValue="" />
+                            <apex:selectOptions id="idLookupDataTypeSelectOption"  value="{!lookupDataTypeList }" />
+                            <apex:actionSupport event="onchange" action="{!usersField}" />
+                        </apex:selectList>
+                        <!-- END Dropdown box -->
+
+                    </apex:column>
+                    <!-- END `Users Field` Column -->
+
+                </apex:pageblocktable>
+                <!-- END User Ack Input Table -->
+
+                <!-- START User Ack Display Table -->
+                <apex:outputPanel id="usersFieldAcksTable">
+                    <apex:pageblocktable value="{!usersFieldAcks}" var="usersFieldAck" >
+
+                        <!-- START `Number` Column -->
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:outputLabel value="{!getLabelNumber}" />
+                            </apex:facet>
+                            <apex:outputLabel value="{!usersFieldAck.CMPL123__Index__c}" />
+                        </apex:column>
+                        <!-- END `Number` Column -->
+
+                        <!-- START `Users Field` Column -->
+                        <apex:column headerValue="{!getHeaderUsersField}" rendered="true"  >
+                            <apex:facet name="Users Field"/>
+                            <apex:outputPanel >{!usersFieldAck.CMPL123__UsersFieldAcknowledgment__c}</apex:outputPanel>
+                        </apex:column>
+                        <!-- END `Users Field` Column -->
+
+                        <!-- START Delete Row Column -->
+                        <apex:column >
+                            <apex:commandButton value="{!getButtonTextX}" style="color:red" onclick="deleteOneUsersFieldAckRow({!usersFieldAck.CMPL123__Index__c}); return false;" rerender="usersFieldAcksTable"  />
+                        </apex:column>
+                        <!-- END Delete Row Column -->
+
+                    </apex:pageblocktable>
+                </apex:outputPanel>
+                <!-- END User Ack Display Table -->
+
+                <!-- `Add Row` Button -->
+                <!-- On Action Perform: Appends Row to User Ack Display Table -->
+                <div align="center">
+                    <apex:commandButton id="UL" value="{!getButtonTextAddRow}" action="{!addOneUsersFieldAckRow}" reRender="therepeat3,usersFieldAcksTable"  />
+                </div>
+
+            </apex:pageBlock>
+            <!-- END User Acknowledgement block -->
+
+            <!-- START Button Footer -->
+            <apex:pageBlockButtons location="bottom" >
+
+                <!-- `Save` Button -->
+                <apex:commandButton value="{!getButtonTextSave}" action="{!saveMDCTrigger}" rendered="{!isNameAndDescriptionValid}"  />
+
+                <!-- `Cancel` Button -->
+                <apex:commandButton value="{!getButtonTextCancel}" action="{!cancel}"  html-formnovalidate="novalidate" />
+
+            </apex:pageBlockButtons>
+            <!-- END Button Footer -->
+
+        </apex:pageblock> <!-- END title="MDC Trigger" -->
+    </apex:form>  <!-- END #fm -->
+
+    <!-- in LEX, render the LEX Labels and their associated Tooltips -->
+    <apex:outputPanel rendered="{!isLEX}">
+        <script>
+
+            // Init the Lightning App
+            $Lightning.use("CMPL123:SpartaLabelTooltipApp", function () {
+
+                // `Target Object`
+                $Lightning.createComponent("CMPL123:spartaLabelTooltip",
+                    {
+                        text: '{!JSENCODE(getLabelTargetObject)}',
+                        tooltipText: '{!JSENCODE(getHelpTextModifyTargetObject)}'
+                    },
+                    "lightningTargetObject",
+                    function(cmp){});
+
+            });
+
+        </script>
+    </apex:outputPanel>
+
+</apex:page>

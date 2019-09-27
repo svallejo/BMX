@@ -1,0 +1,23 @@
+<apex:page standardController="CMPL123CME__Submission_History__c" extensions="CMPL123CME.SubmissionHistoryExtension" showHeader="false">
+    <apex:form >
+        
+        <apex:outputPanel style="text-align:center" rendered="{!if(submissionHistory.CMPL123CME__Status__c != 'Passed' && submissionHistory.CMPL123CME__Stage__c != 'ACK3',true,false)}">
+            <apex:pageBlock title="Acknowledgement Detail">
+                <apex:outputText value="{!submissionHistory.CMPL123CME__Description__c}" />
+            </apex:pageBlock>
+        </apex:outputPanel>
+        <apex:outputPanel style="text-align:center" rendered="{!if(submissionHistory.CMPL123CME__Status__c == 'Passed' && submissionHistory.CMPL123CME__Stage__c == 'ACK1',true,false)}">
+            <apex:pageBlock title="Acknowledgement Detail">
+                <apex:outputText value="{!submissionHistory.CMPL123CME__Description__c}" />
+            </apex:pageBlock>
+        </apex:outputPanel>
+        <apex:pageBlock title="Report Id : {!reportNumber}" rendered="{!if(messageList != null && messageList.size > 0,true,false)}">
+            <apex:pageBlockTable value="{!messageList}" var="message">
+                <apex:column headerValue="Section" value="{!message.section}" width="10%" />
+                <apex:column headerValue="Message" value="{!message.message}" width="40%" />
+                <apex:column headerValue="Value" value="{!message.value}" width="20%" />
+                <apex:column headerValue="XPath" value="{!message.xpath}" width="30%" />
+            </apex:pageBlockTable>        
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

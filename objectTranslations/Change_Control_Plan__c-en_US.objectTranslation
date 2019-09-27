@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Rule Field Update Key Value --></label>
+        <name>CMPL123Rule_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed By --></label>
+        <name>CMPL123_WF_Action_Performed_By__c</name>
+        <relationshipLabel><!-- Change Control Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed On --></label>
+        <name>CMPL123_WF_Action_Performed_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action --></label>
+        <name>CMPL123_WF_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Status --></label>
+        <name>CMPL123_WF_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Control Plan Approved? --></label>
+        <name>Change_Control_Plan_Approved__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Control --></label>
+        <name>Change_Control__c</name>
+        <relationshipLabel><!-- Change Control Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Plan SME Approved --></label>
+        <name>Plan_SME_Approved__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Change Control Plan</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Change Control Plans</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Change Control Plan Layout</layout>
+        <sections>
+            <label><!-- Workflow --></label>
+            <section>Workflow</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- No change control plans can be added after Complete Review Change Control. --></errorMessage>
+        <name>Prevent_Change_Control_Plan_Creation</name>
+    </validationRules>
+</CustomObjectTranslation>

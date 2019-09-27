@@ -1,0 +1,31 @@
+<apex:page controller="CMPL123.X123SAMLInitController" standardStylesheets="false" showHeader="false" id="pg">
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+        <script>
+            window.onload = function loadFunction(){
+                document.getElementById('pg:fm:clickIt').click();
+            }
+         
+         function autoSubmitSSOForm(){
+             document.getElementById('submitButtonId').click();
+         }
+           
+        </script>
+        <apex:outputPanel id="reload" ></apex:outputPanel>
+        <apex:form id="fm">
+            <apex:commandButton action="{!createRequest}" style="display:none" id="clickIt" rerender="reload" oncomplete="autoSubmitSSOForm();" />
+        </apex:form>
+        <body>
+            <apex:outputPanel layout="block">
+                <form action="{!IDP_Login_URL}" method="POST">
+                    <div>
+                        <input type="hidden" name="RelayState" value="{!relayState}"/>                
+                        <input type="hidden" name="SAMLRequest" value="{!samlRequest}"/>                
+                    </div>
+                     <div>
+                        <input type="submit" style="display:none" value="{!$Label.LOGIN_TO_SSO}" id="submitButtonId" />
+                     </div>
+                </form>
+            </apex:outputPanel>
+        </body>
+    </html>
+</apex:page>

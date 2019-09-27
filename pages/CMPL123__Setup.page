@@ -1,0 +1,63 @@
+<apex:page sidebar="false">
+    <apex:pageBlock title="{!$Label.cmpl123__x123compliance_application_setup}">
+        <div style="padding-left:3%">
+            <h4>{!$label.PLEASE_FOLLOW_THE_FOLLOWING_STEPS_TO_SETUP_THE_APPLICATION} : </h4><br /><br />
+            <span style="font-weight:bold;font-size:16px">{!$Label.STEP_1} :- {!$label.PERMISSION_SET_ASSIGNMENT} </span><br /><br />
+            <span style="font-size:16px">1. <u> {!$label.ASSIGNING_PERMISSION_SET_TO_USERS}</u></span><br /><br />
+            <span style="font-size:16px">{!$label.TWO_PERMISSION_SETS_ARE_CREATED_ADMIN_AND_USER} </span><br /><br />
+            <span style="font-size:14px;"><b> {!$Label.SETUP} -> {!$Label.ADMINISTRATION_SETUP} -> {!$Label.MANAGE_USERS} -> {!$Label.PERMISSION_SETS}</b></span><br /><br />
+            <div style="padding:10px;background-color:#E0E0E0 ;width:300px">
+                <!-- Trackwise permission sets -->
+                <span style="font-size:12px;"><b>1. {!$Label.TRACKWISE_DIGITAL} {!$Label.ADMIN}</b> </span><br /><br />
+                <span style="font-size:12px;"><b>2. {!$Label.TRACKWISE_DIGITAL} {!$Label.USER}</b> </span>
+            </div><br />
+            <span style="font-size:14px;">{!$Label.GO_TO} {!$Label.MANAGE_USERS} -> {!$Label.USERS} -> {!$Label.CLICK_ON_THE_USER_FOR_WHOM_PERMISSION_SET_NEEDS_TO_BE_PROVIDED}</span><br /><br />
+            <span style="font-size:14px;">{!$Label.GO_TO_SECTION_PERMISSION_SET_ASSIGNMENTS_AND_ASSIGN_THE_PERMISSION_SET_AS_PER}</span><br /><br />
+            <span style="font-weight:bold;font-size:16px">{!$Label.STEP_2} :- {!$Label.APPLICATION_SETUP_CONFIGURATION} </span><br /><br />
+            <div style="font-size:14px">
+                <!--Added to support redirecting URLs in Lightning Experience and Classic -->
+                <b> 1. </b><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app?source=alohaHeader#/setup/CustomSettings/home', '/setup/ui/listCustomSettings.apexp')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.TO_CONFIGURE_THE_APPLICATION}<br />
+                <br />
+                <b> 2. </b> {!$Label.CLICK_MANAGE_LINK_OF_APP_CONFIG_OBJECT}<br /><br />
+                <b> 3. </b> {!$Label.CLICK_NEW_AND_ENTER_THE_VALUES_FOR_ALL_FIELDS}
+            </div> <br />
+
+            <span style="font-weight:bold;font-size:16px">{!$Label.STEP_3} :- {!$Label.REMOTE_SITE_SETTINGS} </span><br /><br />
+            <!--Added support for redirecting URLs in Lightning Experience and Classic -->
+            <span style="font-size:14px"><b> 1.</b><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app?source=alohaHeader#/setup/SecurityRemoteProxy/page?address=/0rp/e', '/0rp/e')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.TO_SETUP_NEW_REMOTE_SITE_SETTINGS}</span><br /><br />
+            <span style="font-size:14px"><b> 2.</b> {!$Label.PROVIDE_THE_FOLLOWING} </span><br /><br />
+            <div style="padding-left:30px">
+                <div style="font-size:13px;">
+                    <table>
+                        <tr><td><b>a.</b> {!$Label.REMOTE_SITE_NAME}</td><td>: {!$Label.TRACKWISEDIGITAL_WITHOUT_SPACE}</td></tr>
+                        <tr><td><b>b.</b> {!$Label.REMOTE_SITE_URL}</td><td><span id="siteurl"></span></td></tr>
+                        <tr><td><b>c.</b> {!$Label.DISABLE_PROTOCAL_SECURITY}</td><td>: {!$Label.LEAVE_IT}</td></tr>
+                        <tr><td><b>d.</b> {!$Label.DESCRIPTION}</td><td>: {!$Label.PROVIDE_COMMENTS}</td></tr>
+                        <tr><td><b>e.</b> {!$Label.ACTIVE}</td><td>: {!$Label.CHECK_IT}</td></tr>
+                    </table>
+                </div>
+            </div>
+            <span style="font-size:14px"><b> 3.</b> {!$Label.CLICK_ON_SAVE} </span><br /><br />
+        </div>
+    </apex:pageBlock>
+    <apex:pageBlock title="{!$Label.cmpl123__x123compliance_application} {!$Label.cmpl123__utilities}">
+        <div style="padding-left:3%">
+            <h4>{!$Label.CMPL123__the_following_are_the_utilities_in_123_compliance} </h4><br /><br />
+            <span style="font-weight:bold;font-size:16px">1. {!$Label.CMPL123__x123_config_deploy}</span><br /><br />
+            <!--Added support for redirecting URLs in Lightning Experience and Classic -->
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__X123ConfigDeploy', '/apex/X123ConfigDeploy')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.CMPL123__to_do_the_config_deployment}</span><br /><br />
+            <span style="font-weight:bold;font-size:16px">2. {!$Label.CMPL123__x123_generate_test_class}</span><br /><br />
+            <!--Added support for redirecting URLs in Lightning Experience and Classic -->
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__X123GenerateTestClass', '/apex/X123GenerateTestClass')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.CMPL123__to_generate_the_sample_test_class}</span><br /><br />
+            <span style="font-weight:bold;font-size:16px">3. {!$Label.CMPL123__x123_report_template_builder}</span><br /><br />
+            <!--Added support for redirecting URLs in Lightning Experience and Classic -->
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__X123ManageReportTemplate', '/apex/X123ManageReportTemplate')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.cmpl123__to_build_report_templates}</span><br/><br/>
+        </div>
+    </apex:pageBlock>
+    <script>
+    window.onload = setup;
+    function setup(){
+        document.getElementById("siteurl").innerHTML=': https://'+window.location.hostname;
+    }
+    </script>
+</apex:page>

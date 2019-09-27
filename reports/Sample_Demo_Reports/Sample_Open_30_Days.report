@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_22070201</developerName>
+        <masterLabel>Days Open</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>CMPL123CME__Investigation__c.BMX_Days_Open__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>30</to>
+            </sourceValues>
+            <value>Open &lt;= 30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>30</from>
+            </sourceValues>
+            <value>Open &gt; 30 Days</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Investigation__c.CMPL123_WF_Status__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Investigation__c.BMX_EstimatedInvestigationDuration_Date__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Investigation__c.BMX_Days_Open__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$CMPL123CME__Complaint__c.BMX_PRE__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <filter>
+        <criteriaItems>
+            <column>CMPL123CME__Investigation__c.CMPL123_WF_Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Opened,Pending Expert Investigation,Pending GCS Review</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_22070201</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Open &gt; 30 Days</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_22070201</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Sample - Open &gt; 30 Days</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CMPL123CME__Investigation__c@CMPL123CME__Investigation__c.CMPL123CME__Complaint__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CMPL123CME__Investigation__c.BMX_Approver_1_Approved_On__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

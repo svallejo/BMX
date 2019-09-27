@@ -1,0 +1,12 @@
+<apex:page controller="CMPL123CME.OauthRedirectController" action="{!pageCallInit}" showHeader="false" showChat="false" sidebar="false">
+
+<apex:form rendered="{!showMessage}">
+    <apex:pageBlock >
+    <apex:pageMessages ></apex:pageMessages>
+    <div align="center" draggable="false" >
+        <apex:commandButton onclick="parent.window.close();" value="Close" />
+    </div>
+     
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,1806 @@
+<apex:page controller="CMPL123.MDC_TicketDashboardController" docType="html-5.0" id="ticketDashboardPage" >
+
+
+<apex:form id="ticketDashboardForm"> 
+
+	<apex:actionFunction name="processAcknowledgements" action="{!processAcknowledgements}" rerender="acknowledgementResultInput" oncomplete="UserTickets.onAcknowledgementsProcessed();">
+    	<apex:param name="ticketAcknowledgementData" assignTo="{!ticketAcknowledgementData}" value="" />
+    </apex:actionFunction>
+
+	<apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/DataTable/css/jquery.dataTables.min.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/css/loader.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/css/mdc_affected_fields_table.css')}"/>
+	
+	<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+	<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/DataTable/js/datatable.js')}"/>
+	<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/mdc_namespace.js')}"/>
+	<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/mdc_utils.js')}"/>
+	<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/mdc_jquery_plugins.js')}"/>
+
+	
+ 	<script src="/soap/ajax/23.0/connection.js"></script>
+    <script src="/soap/ajax/23.0/apex.js"></script>
+    
+    
+    <style>
+        pre {padding: 9.5px; font-size: 12px;background-color: whiteSmoke; border: 1px solid #CCC; border: 1px solid rgba(0, 0, 0, 0.15);-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}
+    </style>
+	
+	<br />
+	<div id="pageBlockContainer" style="display:none">
+	    <apex:pageBlock id="mdcTicketDashboard" title="{!$Label.cmpl123__mdc_ticket_dashboard}" >
+	
+	 		<div>
+				<div id="filterTableContainer" style="display:none; position:relative; padding-top: 20px; ">
+			 		<div id="filterContainer" style="margin:auto; width:350px;  padding: 15px; border-radius:5px; border: 1px solid #cccccc">
+			 		</div>
+		 		</div>
+		 		
+				<div id="ticketDashboardTableContainer">
+			    </div>
+			    
+			</div>
+			 
+	    	<div style="padding:20px 0px; text-align: center">
+				<apex:commandButton value="{!$Label.cmpl123__mdc_acknowledge}" style="display:none; padding:7px 12px; line-height:11px" styleClass="mdcBulkAcknowledgeButton" id="acknowledgementButton" onclick="UserTickets.onAcknowledgementButtonClicked();" rerender="false" />
+				<apex:commandButton value="{!$Label.cmpl123__mdc_acknowledge_with_comments}" style="display:none; padding:7px 12px; line-height:11px;margin-left:5px;" styleClass="mdcBulkAcknowledgeButton" id="acknowledgementWithCommentsButton" onclick="UserTickets.onAcknowledgementWithCommentsButtonClicked();" rerender="false" />
+			</div>
+	    
+		</apex:pageBlock>
+	</div>
+
+	<div id="acknowledgementResultInputContainer">
+		<apex:inputHidden value="{!acknowledgementResult}" id="acknowledgementResultInput"/>
+	</div>
+
+
+<script type="text/javascript">
+
+
+	var CURRENT_USER_ID = "{!$User.Id}";
+	var CURRENT_USER_NAME= "{!$User.FirstName} " + "{!$User.LastName}";
+	var CURRENT_USER_CURRENCY = "{!userDefaultCurrency}";
+	var CURRENT_USER_SALESFORCE_TIMEZONE_OFFSET = {!timeZoneOffset};
+	var ASSIGNMENT_TYPE_USER_FIELD = "User Field";
+	var ASSIGNMENT_TYPE_DIRECT_ASSIGNMENT = "Direct Assignment";
+	var ASSIGNMENT_TYPE_PUBLIC_GROUP = "Public Group";
+	var STRING_SPLITTER_PUBLIC_GROUP = "@";
+	var FIELD_LAST_MODIFIED_BY = "LastModifiedById";
+	var TICKET_TABLE_COLUMN_COUNT = 9;
+	var TABLE_BACKGROUND_COLOR = "#f8f8f8";
+	var TABLE_HEADER_COLOR = "#9c9c9c";
+	var TABLE_SEPARATOR_COLOR = "#999999";
+
+	// a single instance of the _123Popup window that is re-used
+	// for errors -- all other popups are created on demand --
+	// this is implemented in jquery-plugins.js	
+	var PopupWindow = $("<div></div>")._123Popup();
+	// used for the popup that appears when the user
+	// clicks the 'Acknowledge' button
+	var AcknowledgementPopup = $("<div></div>")._123Popup();
+	
+	
+	var UserTickets = new mdc.UserTickets();
+	var Util = new mdc.Utility();
+
+
+	
+	// field and table name constants
+	mdc.tables.TRIGGER = "CMPL123__MDC_Trigger__c";
+	mdc.fields.TRIGGER_TARGET_OBJECT = "CMPL123__Select_Target_Object__c";
+	mdc.fields.TRIGGER_RECORD_DETAIL_FIELD = "CMPL123__Record_Detail_Field__c";
+	
+	mdc.tables.TICKET = "CMPL123__MDC_Ticket__c";
+	mdc.fields.TICKET_TRIGGER = "CMPL123__MDC_Trigger__c";
+	mdc.fields.TICKET_ALL_ACKS_RECEIVED = "CMPL123__All_Acks_Received__c";
+	mdc.fields.TICKET_TRIGGER_REL = "CMPL123__MDC_Trigger__r";
+	mdc.fields.TICKET_ACKNOWLEDGEMENT_ENTRY_REL = "CMPL123__MDC_Acknowledgement_Entries__r";
+	mdc.fields.TICKET_AFFECTED_FIELDS = "CMPL123__Field_Name__c";
+	mdc.fields.TICKET_RELATED_RECORD_ID = "CMPL123__Related_Record_ID__c";
+	mdc.fields.TICKET_RELATED_RECORD_NAME = "CMPL123__Related_Record_Name__c";
+	mdc.fields.TICKET_RELATED_RECORD_TYPE = "CMPL123__Record_Type__c";
+
+	mdc.tables.ACKNOWLEDGEMENT = "CMPL123__AcknowledgementMapping__c";
+	mdc.fields.ACKNOWLEDGEMENT_TRIGGER = "CMPL123__MDC_Trigger_Acknowledgment__c";
+	mdc.fields.ACKNOWLEDGEMENT_INDIVIDUAL_USER = "CMPL123__User_Field__c";
+	mdc.fields.ACKNOWLEDGEMENT_PUBLIC_GROUP = "CMPL123__PublicGroupAcknowledgment__c";
+	mdc.fields.ACKNOWLEDGEMENT_USER_FIELD = "CMPL123__UsersFieldAcknowledgment__c";
+	mdc.fields.ACKNOWLEDGEMENT_TARGET_OBJECT = "CMPL123__SelectObject__c";
+	mdc.fields.ACKNOWLEDGEMENT_NUMBER_OF_ACKS = "CMPL123__AckNumber__c";
+	
+	mdc.tables.ACKNOWLEDGEMENT_ENTRY = "CMPL123__MDC_Acknowledgement_Entry__c";
+	mdc.fields.ACKNOWLEDGEMENT_ENTRY_TICKET_ID = "CMPL123__MDC_Ticket__c";
+	mdc.fields.ACKNOWLEDGEMENT_ENTRY_USER_ID = "CMPL123__User__c";
+	mdc.fields.ACKNOWLEDGEMENT_ENTRY_PUBLIC_GROUP = "CMPL123__Public_Group__c";
+	mdc.fields.ACKNOWLEDGEMENT_ENTRY_ACKNOWLEDGEMENTS_RECEIVED = "CMPL123__Number_Acknowledgments_Received__c";
+	mdc.fields.ACKNOWLEDGEMENT_ENTRY_REQUIRED_ACKNOWLEDGEMENTS = "CMPL123__Required_Acknowledgments__c";
+	mdc.fields.ACKNOWLEDGEMENT_ENTRY_GROUP_MEMBERS = "CMPL123__Group_Members__c";
+	mdc.fields.ACKNOWLEDGEMENT_ENTRY_TYPE_OF_ACKNOWLEDGEMENT = "CMPL123__Type_Of_Acknowledgment__c";
+	mdc.fields.ACKNOWLEDGEMENT_ENTRY_FIELD_NAME = "CMPL123__Field_Name__c";
+	mdc.fields.ACKNOWLEDGEMENT_ENTRY_IS_ACKNOWLEDGED = "CMPL123__Is_Acknowledged__c";
+
+	mdc.tables.AUDIT_TRAIL_ENTRY = "CMPL123__Audit_Trail_Entry__c";
+	mdc.tables.AUDIT_TRAIL_ENTRY_REL = "CMPL123__Audit_Trail_Entry__r";
+	mdc.fields.AUDIT_TRAIL_ENTRY_JSON = "CMPL123__Audit_Trail_JSON__c";
+
+	mdc.UserTickets.prototype.getTicketDashboardTable = function() {
+		return this.__ticketDashboardTable;
+	};
+		
+	mdc.UserTickets.prototype.__showFiltersBox = function() {
+		$("#filterTableContainer").show();		
+	};
+
+	mdc.UserTickets.prototype.__showAcknowledgementButton = function() {
+		$(".mdcBulkAcknowledgeButton").show();
+	};
+
+	mdc.UserTickets.prototype.__hideAcknowledgementButton = function() {
+		$(".mdcBulkAcknowledgeButton").hide();
+	};
+	
+	
+	mdc.UserTickets.prototype.__showTicketDashboardTableContainer = function() {
+		$("#ticketDashboardTableContainer").show();		
+	};
+
+	mdc.UserTickets.prototype.__hideTicketDashboardTableContainer = function() {
+		$("#ticketDashboardTableContainer").hide();		
+	};
+
+	// after done processing User Field tickets (all ticket types are now processed), 
+	// load the Record Detail Field values
+	mdc.UserTickets.prototype.__doneProcessUserFieldTickets = function() {
+
+		var __this = UserTickets;
+		
+		// if we're done loading record detail field values
+		if ($.isEmptyObject(__this.__ticketTableData)) {
+			__this.__doneLoadingRecordDetailFields();
+		}		
+		else {
+	
+			// convert ticketTableData from id-keyed map to an array and
+			// begin loading Record Detail Field values
+			__this.__ticketTableData = Util.objectValues(__this.__ticketTableData);
+			__this.__loadRecordDetailFields();
+		}
+	};
+
+	// This creates JS objects used to optimize the fetching of User Field values
+	// 1) The User Field tickets are grouped by the target object (e.g. Account)
+	// 2) All the requested User Fields are then gathered for that object
+	// 3) All the Ids of the target object are gathered together
+	// 4) There should be one set (objectName, userFields[], objectIds[]) for each
+	//    target object. these are passed one by one into the controller method 
+	//    getUserFieldTargetObjects to retrieve the actual users who are in
+	//    the User Fields	
+	mdc.UserTickets.prototype.__getUserFieldQueryData = function() {
+		
+		var userFieldQueryDataByObject = {};
+		
+		for (var i = 0; i < this.__unacknowledgedTickets.length; i++) {
+			var ticketData = this.__unacknowledgedTickets[i];
+			var ticketRelatedObjectName = ticketData[mdc.fields.TICKET_RELATED_RECORD_TYPE];
+			var ticketAcknowledgementData = ticketData[mdc.fields.TICKET_ACKNOWLEDGEMENT_ENTRY_REL];
+			
+			for (var j = 0; j < ticketAcknowledgementData.length; j++) {
+				
+				ticketAcknowledgementEntry = ticketAcknowledgementData[j];
+				if (ticketAcknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_TYPE_OF_ACKNOWLEDGEMENT] !== "Field") {
+					continue;
+				}
+				
+				if (!userFieldQueryDataByObject[ticketRelatedObjectName]) {
+					userFieldQueryDataByObject[ticketRelatedObjectName] = {
+						objectIds: {},
+						triggerUserFields: {}
+					};
+				}
+				
+				userFieldQueryDataByObject[ticketRelatedObjectName].objectIds[ticketData[mdc.fields.TICKET_RELATED_RECORD_ID]] = true;
+				userFieldQueryDataByObject[ticketRelatedObjectName].triggerUserFields[ticketAcknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_FIELD_NAME]] = true;
+			}
+		}
+		
+		var userFieldQueryData = [];
+		
+		for (var userFieldQueryDataObjectName in userFieldQueryDataByObject) {
+		
+			var userFieldQueryDataByObjectItem = userFieldQueryDataByObject[userFieldQueryDataObjectName];
+		
+			userFieldQueryData.push({
+				objectName: userFieldQueryDataObjectName,
+				objectIds: Object.keys(userFieldQueryDataByObjectItem.objectIds),
+				triggerUserFields: Object.keys(userFieldQueryDataByObjectItem.triggerUserFields)
+			});
+		}
+		
+		return userFieldQueryData;
+	};
+	
+	
+	// If one user has user-field acknowledged a ticket as a particular UserField,
+	// no other user (even if they assume the UserField role) can acknowledge the ticket 
+	//mdc.UserTickets.prototype.__userFieldTicket = function(ticket) {
+	//};
+	
+	
+	// Given a ticket, determine based on the field values whether the current
+	// user has already ackcnowledged it as a 'User Field' acknowledgement
+	mdc.UserTickets.prototype.__userHasAcknowledgedFieldTicket = function(ticket) {
+
+		var acknowledgementEntries = ticket[mdc.fields.TICKET_ACKNOWLEDGEMENT_ENTRY_REL];
+
+		for (var i = acknowledgementEntries.length - 1; i >= 0; i--) {
+			var acknowledgementEntry = acknowledgementEntries[i];
+			
+			if (acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_TYPE_OF_ACKNOWLEDGEMENT] === "Field") {
+				if (acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_IS_ACKNOWLEDGED]) {
+					
+					// if this ticket has been last-modified-by acknowledged by at least one user 
+					// then remove last-modified-by type of acknowledgement from the ticket
+					if (acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_FIELD_NAME] === FIELD_LAST_MODIFIED_BY) {
+						acknowledgementEntries.splice(i, 1);
+						continue;
+					}
+				
+					if (acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_USER_ID] === CURRENT_USER_ID) {
+						return true;
+					}
+				}
+			}
+		}
+		
+		return false	
+	};
+	
+
+	// Create User Field ticket data for showing on the Dashboard -- not all User Field
+	// tickets fetched will be shown - remove tickets that won't be shown. Gather 
+	// data for the ones that will be shown into the ticketTableData member
+	mdc.UserTickets.prototype.__processUserFieldTickets = function(userFieldQueryData) {
+		
+		var __this = UserTickets;
+		
+		try {
+		
+			// loop in reverse so we can remove items from the array		
+			for (var i = __this.__unacknowledgedTickets.length - 1; i >= 0; i--) {
+				var ticket = __this.__unacknowledgedTickets[i];
+
+				if (__this.__userHasAcknowledgedFieldTicket(ticket)) {
+					__this.__unacknowledgedTickets.splice(i, 1);
+					__this.__removeTicketTableData(ticket.Id);
+					continue;
+				}
+				
+				var acknowledgementEntries = ticket[mdc.fields.TICKET_ACKNOWLEDGEMENT_ENTRY_REL];
+				var ticketRelatedRecordId = ticket[mdc.fields.TICKET_RELATED_RECORD_ID];
+				var descriptor = new mdc.sfdc.Describe().describeSObject(ticket[mdc.fields.TICKET_RELATED_RECORD_TYPE]);				
+				
+				
+				for (var j = 0; j < acknowledgementEntries.length; j++) {
+					var acknowledgementEntry = acknowledgementEntries[j];
+					var userFieldName = acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_FIELD_NAME];
+					
+					if (acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_TYPE_OF_ACKNOWLEDGEMENT] === "Field") {
+
+						for (var k = 0; k < userFieldQueryData.length; k++) {
+						
+							var userFieldQueryDataItem = userFieldQueryData[k]; 
+						
+							if (ticketRelatedRecordId === userFieldQueryDataItem.Id &&
+								userFieldQueryDataItem[userFieldName] === CURRENT_USER_ID) {
+
+								// In cases where a UserField is re-assigned to another user after the assigned
+								// user acknowledges the ticket, the new assignee would be able to acknowledge
+								// the ticket again. This line prevents future assignees from seeing the ticket
+								if (acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_IS_ACKNOWLEDGED]) {
+									continue;
+								}
+
+								__this.__getTicketTableData(ticket).acknowledgementData.push({
+									dataItem: userFieldName,
+									dataItemLabel: descriptor.getFieldLabelWithoutID(userFieldName),
+									type: "field",
+									typeLabel: "{!$Label.MDC_USER_FIELD}"
+								});  
+							}
+						}
+					}
+				}
+			}
+			
+			// fetch next batch of user field data for the next target object
+			__this.__fetchUserFieldData();
+	
+		}
+		catch(error) {
+			__this.__displayError(error);
+		}
+	};
+
+	// Asynchronously fetch the User Field data -- i.e. the actual values
+	// of the User Ids who are in the User Field's
+	mdc.UserTickets.prototype.__fetchUserFieldData = function() {
+	
+		if (!this.__userFieldQueryData) {
+			this.__userFieldQueryData = this.__getUserFieldQueryData();
+		}
+
+		if (this.__userFieldQueryData.length === 0) {
+			this.__userFieldQueryData = null;
+			this.__doneProcessUserFieldTickets();
+			return;
+		}		
+		
+		var userFieldQueryData = this.__userFieldQueryData.pop();
+		
+		Visualforce.remoting.Manager.invokeAction(
+			"{!$RemoteAction.MDC_TicketDashboardController.getUserFieldTargetObjects}",
+			userFieldQueryData.objectName,     
+			userFieldQueryData.objectIds, 
+			userFieldQueryData.triggerUserFields,
+			this.__processUserFieldTickets);
+	};
+
+	// Asynchronous chain - when done processing public group tickets, then 
+	// start on User Field tickets by first fetching the values of the User
+	// Fields - i.e. the actual User Ids of the people in the User Fields
+	mdc.UserTickets.prototype.__doneProcessingPublicGroupTickets = function() {
+		
+		this.__fetchUserFieldData();
+	};
+
+	// Given a Ticket determine based on the field values whether the current user
+	// has already acknowledged it as a Public Group member
+	mdc.UserTickets.prototype.__userHasAcknowledgedGroupTicket = function(acknowledgementGroupMembersString) {
+
+		if (acknowledgementGroupMembersString) {
+			acknowledgementGroupMembers = $.parseJSON(Util.unencodeHtml(acknowledgementGroupMembersString));
+			
+			for (var i = 0; i < acknowledgementGroupMembers.length; i++) {
+				if (acknowledgementGroupMembers[i].userId === CURRENT_USER_ID) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	};
+
+	// Given a ticket, determine from field values whether the current user has acknowledged
+	// it at least once as a Public Group member
+	mdc.UserTickets.prototype.__atLeastOnePublicGroupAcknowledgementByUser = function(ticket) {
+		var acknowledgementEntries = ticket[mdc.fields.TICKET_ACKNOWLEDGEMENT_ENTRY_REL];
+
+		for (var i = 0; i < acknowledgementEntries.length; i++) {
+			var acknowledgementEntry = acknowledgementEntries[i];
+
+			if (acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_TYPE_OF_ACKNOWLEDGEMENT] === ASSIGNMENT_TYPE_PUBLIC_GROUP) {
+				if (this.__userHasAcknowledgedGroupTicket(acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_GROUP_MEMBERS])) {
+					return true;
+				}
+			}
+		}			
+		
+		return false;
+	};
+
+	// Create Public Group ticket data for showing on the Dashboard -- not all Public Group
+	// tickets fetched will be shown - remove tickets that won't be shown. Gather 
+	// data for the ones that will be shown into the ticketTableData member
+	mdc.UserTickets.prototype.__processPublicGroupTickets = function() {
+	
+		try {
+		
+			// loop backward so that individual members can be deleted
+			for (var i = this.__unacknowledgedTickets.length - 1; i >= 0; i--) {
+				var ticket = this.__unacknowledgedTickets[i];
+
+				// if at least one public group acknowledgement of this ticket by the user 
+				if (this.__atLeastOnePublicGroupAcknowledgementByUser(ticket)) {
+					this.__unacknowledgedTickets.splice(i, 1);
+					this.__removeTicketTableData(ticket.Id);
+					continue;
+				}
+
+				var acknowledgementEntries = ticket[mdc.fields.TICKET_ACKNOWLEDGEMENT_ENTRY_REL];
+
+				for (var j = 0; j < acknowledgementEntries.length; j++) {
+					var acknowledgementEntry = acknowledgementEntries[j];
+
+					if (acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_TYPE_OF_ACKNOWLEDGEMENT] === ASSIGNMENT_TYPE_PUBLIC_GROUP) {
+
+		        		if (acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_ACKNOWLEDGEMENTS_RECEIVED] < 
+		        			acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_REQUIRED_ACKNOWLEDGEMENTS]) {
+
+							if (!this.__userHasAcknowledgedGroupTicket(acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_GROUP_MEMBERS])) {	        			
+								this.__getTicketTableData(ticket).acknowledgementData.push({
+									dataItem: acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_PUBLIC_GROUP],
+									dataItemLabel: acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_PUBLIC_GROUP],
+									type: "group",
+									typeLabel: "{!$Label.MDC_PUBLIC_GROUP}"
+								});
+		        			}
+		        		}
+					}
+				}
+			}
+			
+			this.__doneProcessingPublicGroupTickets();
+		}
+		catch(error) {
+			this.__displayError(error);
+		}
+	};
+
+
+	// Asynchronous chain for when we're done processing Individual User tickets
+	mdc.UserTickets.prototype.__doneProcessingIndividualUserTickets = function() {
+		this.__processPublicGroupTickets();
+	};
+
+	// When a fetched Ticket is removed (maybe it's already been acknowledged),
+	// also remove the associated dashboard data so it doesn't show up on the
+	// dashboard
+	mdc.UserTickets.prototype.__removeTicketTableData = function(ticketId) {
+		
+		if (this.__ticketTableData[ticketId]) {
+			delete this.__ticketTableData[ticketId];
+		}
+	};
+
+	// There is a TicketTableData object for each row of the dashboard.
+	// This is a getter that returns either an existing one or creates
+	// a new one if it doesn't exist.
+	mdc.UserTickets.prototype.__getTicketTableData = function(ticket) {
+
+		if (!this.__ticketTableData[ticket.Id]) {
+			
+			var targetObject = ticket[mdc.fields.TICKET_TRIGGER_REL][mdc.fields.TRIGGER_TARGET_OBJECT];
+			var descriptor = new mdc.sfdc.Describe().describeSObject(targetObject);
+			var recordDetailField = ticket[mdc.fields.TICKET_TRIGGER_REL][mdc.fields.TRIGGER_RECORD_DETAIL_FIELD];
+
+			var ticketTableData = {
+				ticketId: ticket.Id,
+				ticketName: ticket.Name,
+				targetObjectName: targetObject,
+				targetObjectLabel: descriptor.label,
+				triggerName: ticket[mdc.fields.TICKET_TRIGGER_REL].Name,
+				triggerId: ticket[mdc.fields.TICKET_TRIGGER],
+				acknowledgementEntryJson: $.parseJSON(Util.unencodeHtml(ticket[mdc.tables.AUDIT_TRAIL_ENTRY_REL][mdc.fields.AUDIT_TRAIL_ENTRY_JSON])),
+				userId: CURRENT_USER_ID,
+				userName: CURRENT_USER_NAME,
+				relatedObjectId: ticket[mdc.fields.TICKET_RELATED_RECORD_ID],
+				affectedFields: ticket[mdc.fields.TICKET_AFFECTED_FIELDS],
+				recordDetailField: recordDetailField,
+				recordDetailFieldLabel: descriptor.getFieldLabel(recordDetailField),
+				acknowledgementData: []
+			};
+			
+			 this.__ticketTableData[ticket.Id] = ticketTableData;
+		}
+	
+		return this.__ticketTableData[ticket.Id];
+	};
+
+	// Create Individual User ticket data for showing on the Dashboard -- not all Individual User
+	// tickets fetched will be shown - remove tickets that won't be shown. Gather 
+	// data for the ones that will be shown into the ticketTableData member
+	mdc.UserTickets.prototype.__processIndividualUserTickets = function() {
+		try {
+		
+			// reverse-loop so we can remove array members
+			for (var i = this.__unacknowledgedTickets.length - 1; i >= 0; i--) {
+				var ticket = this.__unacknowledgedTickets[i];
+				var acknowledgementEntries = ticket[mdc.fields.TICKET_ACKNOWLEDGEMENT_ENTRY_REL];
+				
+				for (var j = 0; j < acknowledgementEntries.length; j++) {
+					var acknowledgementEntry = acknowledgementEntries[j];
+					
+					if (acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_TYPE_OF_ACKNOWLEDGEMENT] === "Individual") {
+					
+						// the user has already acknowledged this ticket as Individual
+						if (acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_IS_ACKNOWLEDGED]) {
+							this.__unacknowledgedTickets.splice(i, 1);
+							this.__removeTicketTableData(ticket.Id);
+							continue;
+						}
+					
+						this.__getTicketTableData(ticket).acknowledgementData.push({
+							dataItem: CURRENT_USER_NAME,
+							dataItemLabel: CURRENT_USER_NAME,
+							type: "individual",
+							typeLabel: "{!$Label.MDC_DIRECT_ASSIGNMENT}"
+						});
+					}
+				}
+			}
+			
+			this.__doneProcessingIndividualUserTickets();
+		}
+		catch(error) {
+			this.__displayError(error);
+		}
+	};
+
+	// Asynchronous chain for starting of processing of tickets (all ticket data has been loaded)
+	mdc.UserTickets.prototype.__beginProcessingUnacknowledgedTickets = function() {
+			
+		this.__processIndividualUserTickets();
+	};
+
+	// Asynchronous chain for starting of processing of tickets (all ticket data has been loaded)
+	mdc.UserTickets.prototype.__processUnacknowledgedTickets = function(unacknowledgedTickets) {
+		var __this = UserTickets;
+		__this.__unacknowledgedTickets = unacknowledgedTickets;
+		__this.__beginProcessingUnacknowledgedTickets();
+	};
+
+	// Callback for when Ticket data has been loaded
+	mdc.UserTickets.prototype.__onUnacknowledgedTickets = function(unacknowledgedTickets) {
+	
+		var __this = UserTickets;
+		__this.__processUnacknowledgedTickets(unacknowledgedTickets);
+	};
+
+	// call Asynchronous RemoteAction to get unacknowledged tickets
+	mdc.UserTickets.prototype.__loadUnacknowledgedTickets = function() {
+	
+		this.__ticketTableData = {};
+			
+		Visualforce.remoting.Manager.invokeAction(
+			"{!$RemoteAction.MDC_TicketDashboardController.getUnacknowledgedTickets}",
+			this.__onUnacknowledgedTickets);
+	};
+
+
+	// Gather ticket data in preparation for fetching the Record Detail Field values.
+	// Group tickets by target object and group related object Ids and 
+	// Record Detail Field names. Record Detail Fields are fetched in sets
+	// each set being for a different Target Object (.e.g. Account, then Lead)
+	// NOTE:
+	// The Name field will always be fetched even for objects where the trigger
+	// did not specify a Record Detail field--the Name Field will be used
+	// to fill in the "Related Record" column of the Dashboard
+	mdc.UserTickets.prototype.__loadRecordDetailFields = function() {
+	
+		this.__ticketTableDataByObjectType = {};
+		
+		for (var i = 0; i < this.__ticketTableData.length; i++) {
+			 var ticketTableDataItem = this.__ticketTableData[i];
+			 var objectType = ticketTableDataItem.targetObjectName;
+			 
+			if (!this.__ticketTableDataByObjectType[objectType]) {
+				this.__ticketTableDataByObjectType[objectType] = [];
+			}
+			
+			this.__ticketTableDataByObjectType[objectType].push(ticketTableDataItem);
+		}
+		
+		this.__recordDetailFieldParams = [];
+		
+		for (var objectType in this.__ticketTableDataByObjectType) {
+			
+			
+			var detailFieldList = {};
+			var detailObjectIds = {};
+			
+			var nameFieldName = Util.getNameFieldName(objectType);
+			detailFieldList[nameFieldName] = true;
+			
+			
+			for (var i = 0; i < this.__ticketTableDataByObjectType[objectType].length; i++) {
+
+				var detailObjectId = this.__ticketTableDataByObjectType[objectType][i].relatedObjectId;
+				detailObjectIds[detailObjectId] = true;
+
+				var recordDetailField = this.__ticketTableDataByObjectType[objectType][i].recordDetailField;
+
+				if (recordDetailField) {				
+					detailFieldList[recordDetailField] = true;
+				}
+			}
+			
+			this.__recordDetailFieldParams.push({
+				sObjectType: objectType,
+				recordDetailFieldNames: Object.keys(detailFieldList),
+				objectIds: Object.keys(detailObjectIds)
+			});
+		}
+		
+		this.__loadRecordDetailFieldSet();
+	};
+	
+	// Asynchronous chain - call this after a batch of Record Detail Field values have been
+	// fetched, we are either finished or have to do the next batch
+	mdc.UserTickets.prototype.__afterRecordDetailFieldSetLoaded = function() {
+		var __this = UserTickets;
+		
+		if (__this.__recordDetailFieldParams.length === 0) {
+			__this.__ticketTableDataByObjectType = null;
+			__this.__doneLoadingRecordDetailFields();
+		}
+		else {
+			__this.__loadRecordDetailFieldSet();
+		}
+	};
+
+	// After fetching a batch of Record Detail Field values, process them and then fetch
+	// the next batch
+	mdc.UserTickets.prototype.__onRecordDetailFieldSetLoaded = function(recordDetailFieldSet) {
+
+		try {
+			var __this = UserTickets;
+
+        	var descriptor = new mdc.sfdc.Describe().describeSObject(__this.__recordDetailFieldSetBeingProcessed);
+
+			// this is the ticket table data just for the current target object
+			var ticketTableDataObjectSet = __this.__ticketTableDataByObjectType[__this.__recordDetailFieldSetBeingProcessed]; 
+
+			for (var i = 0; i < ticketTableDataObjectSet.length; i++) {
+				var objectTicketTableData = ticketTableDataObjectSet[i]; 
+			
+				var recordDetailFieldName = objectTicketTableData.recordDetailField;
+				var recordDetailFieldType = descriptor.getFieldType(recordDetailFieldName);
+			
+				for (var objectId in recordDetailFieldSet) {
+					if (objectId === objectTicketTableData.relatedObjectId) {
+					
+						recordDetailFieldValue = recordDetailFieldSet[objectId][recordDetailFieldName];
+
+						if (recordDetailFieldValue) {
+							if (recordDetailFieldType === "date") {
+								recordDetailFieldValue += new Date().getTimezoneOffset() * 60000;
+							}
+							else if (recordDetailFieldType === "datetime") {
+								recordDetailFieldValue += (CURRENT_USER_SALESFORCE_TIMEZONE_OFFSET - (new Date().getTimezoneOffset() * -60000));
+							}
+							else if (recordDetailFieldType === "string") {
+								recordDetailFieldValue = Util.replaceCrLf(recordDetailFieldValue);
+							}
+						}
+						
+						objectTicketTableData.recordDetailFieldValue = 
+							Util.unencodeHtml(Util.formatFieldValue(recordDetailFieldValue, recordDetailFieldType));
+						
+						if (recordDetailFieldType === "currency") {
+							objectTicketTableData.recordDetailFieldValue = CURRENT_USER_CURRENCY + " " + objectTicketTableData.recordDetailFieldValue;
+						}
+
+						
+						// As a convenience, the object Name was fetched, so we can fill it in here
+						objectTicketTableData.relatedObjectName = recordDetailFieldSet[objectId][Util.getNameFieldName(__this.__recordDetailFieldSetBeingProcessed)];
+					}
+				}
+			}
+					
+			__this.__afterRecordDetailFieldSetLoaded();
+		}
+		catch(error) {
+			__this.__displayError(error);
+		}
+	};
+
+	// call out to the RemoteAction to load the next batch of 
+	// Record Detail Field values (for next target object)
+	mdc.UserTickets.prototype.__loadRecordDetailFieldSet = function() {
+		
+		var __this = UserTickets;
+		
+		var recordDetailFieldParamSet = __this.__recordDetailFieldParams.pop();
+		__this.__recordDetailFieldSetBeingProcessed = recordDetailFieldParamSet.sObjectType;
+
+		if (recordDetailFieldParamSet.recordDetailFieldNames.length === 0) {
+			__this.__afterRecordDetailFieldSetLoaded();
+			return;
+		}
+
+		Visualforce.remoting.Manager.invokeAction(
+			"{!$RemoteAction.MDC_TicketDashboardController.getRecordDetailFields}",
+			recordDetailFieldParamSet.sObjectType,
+			recordDetailFieldParamSet.recordDetailFieldNames,
+			recordDetailFieldParamSet.objectIds,
+			__this.__onRecordDetailFieldSetLoaded);
+	};
+
+	// after the user acknowledges some tickets, remove them from the
+	// dashboard -- NOTE: to speed things up, the dashboard is not being reloaded 
+	mdc.UserTickets.prototype.__removeTicketTableDataItem = function(ticketId) {
+
+		for (var i = 0; i < this.__ticketTableData.length; i++) {
+		
+			if (this.__ticketTableData[i].ticketId === ticketId) {
+				this.__ticketTableData.splice(i, 1);
+				break;
+			}
+		}
+	};
+	
+	// This is the main method that is called at page load
+	// to kick off the process of loading tickets and
+	// then filtering and showing them on the dashboard
+	mdc.UserTickets.prototype.load = function() {
+
+		try {	
+			this.__loadUnacknowledgedTickets();
+		}
+		catch(error) {
+			this.__displayError(error);
+		}
+	};
+	
+	// So we've loaded all the Ticket Data, and we've loaded the Record
+	// Detail Field Values - now we can generate the HTML <table> that 
+	// represents the dashboard - plus hide / show various dashboard UI
+	mdc.UserTickets.prototype.__doneLoadingRecordDetailFields = function () {
+		
+		PopupWindow.close();
+		$("#pageBlockContainer").show();
+
+		this.__generateTable();
+		
+		
+		this.__showFiltersBox();
+		this.__showTicketDashboardTableContainer();
+		this.__showAcknowledgementButton();
+	};
+
+	// Format the text shown in an item in the 'Acknowledge As' column on the Dashboard
+	mdc.UserTickets.prototype.__formatAcknowledgementItemText = function(acknowledgementData) {
+		return acknowledgementData.typeLabel + " (" + acknowledgementData.dataItemLabel + ")";
+	};
+
+	// set the content of the 'Acknowledge As' column of the Dashboard -
+	// it's either a drop-down or static text depending on whether the user
+	// has multiple or single way of acknowledging the ticket.
+	mdc.UserTickets.prototype.__setAcknowledgementTypeCellContent = function(ticketData, acknowledgementTypeCell) {
+	
+		var __this = this;
+	
+		var acknowledgementTypeSelect = $("<select></select>")
+			.css({
+				width: "200px",
+				textOverflow: "ellipsis"
+			})
+			.data("ticketData", ticketData)
+			.addClass("acknowledgementItemDataContainer")
+			.change(function(){
+
+				var row =  $(this).closest("tr");
+				var checkbox = row.find(".ticketcheckbox").eq(0);
+				var disabled = $(this).val() === "none";
+				
+				if (disabled) {
+					checkbox
+						.attr("checked", null)
+						.attr("disabled", "disabled")
+						.attr("title", "{!$Label.MDC_PLEASE_SELECT_ACKNOWLEDGEMENT_TYPE}");
+				}
+				else {
+					checkbox.attr("disabled", null)
+						.removeAttr("title");
+				}
+				
+				// save the data associated with the <option> to the <select>
+				var selectedOption = $(this).find(":selected").eq(0);
+				$(this).closest("tr").data("acknowledgementDataIndex", selectedOption.data("acknowledgementDataIndex"));
+				
+				// Enable or disable the selectAllCheckBox depending on whether
+				// any of the checkboxes are enabled
+				__this.__enableDisableSelectAllCheckBox();
+				
+				// if Acknowledgement Type is changed, check / uncheck the associated
+				// checkbox if selectAllCheckBox is checked / unchecked
+				if (__this.__getSelectAllCheckBox().prop("checked")) {
+					if (!disabled) {
+						checkbox.prop("checked", true);
+					}
+				}
+				else {
+					checkbox.removeProp("checked");
+				}
+			});
+		
+		
+		for (var i = 0; i < ticketData.acknowledgementData.length; i++) {
+		
+			var acknowledgementData = ticketData.acknowledgementData[i];
+			
+			if (!this.__includeAcknowledgementItemInFilter(acknowledgementData)) {
+				continue;
+			}
+		
+			acknowledgementTypeSelect.append($("<option></option>")
+				.data("acknowledgementDataIndex", i)
+				.html(this.__formatAcknowledgementItemText(acknowledgementData)));
+		}
+
+		var childOptions = acknowledgementTypeSelect.children("option");
+		
+		// if there is only one way to acknowledge a ticket, don't show a drop-down
+		// but show a <span> instead
+		if (childOptions.length === 1) {
+			var onlyChildOption = childOptions.eq(0);
+			
+			 var singleItemSpan = $("<span></span>")
+				.addClass("acknowledgementItemDataContainer")
+				.html(onlyChildOption.html())
+				.appendTo(acknowledgementTypeCell);
+				
+			singleItemSpan.closest("tr").data("acknowledgementDataIndex", onlyChildOption.data("acknowledgementDataIndex"));
+			return singleItemSpan;
+		}		
+		
+		acknowledgementTypeSelect
+			.appendTo(acknowledgementTypeCell)
+			.prepend($("<option></option>")
+				.html("--{!$Label.MDC_SELECT}--")
+				.data("acknowledgementDataIndex", -1)
+				.val("none")
+				.prop("selected", true));
+		
+		$(".acknowledgementItemDataContainer option[value='']").prop("selected", true);
+		
+		return acknowledgementTypeSelect;
+	};
+	
+	// reset the Dashboard filters by setting both drop-downn values to "All"
+	mdc.UserTickets.prototype.__removeFilters = function() {
+		if (this.__objectTypeFilter !== "all" || this.__ackTypeFilter !== "all") {
+		
+			this.__objectTypeFilter = "all";
+			this.__ackTypeFilter = "all";
+			
+			this.__generateTable();
+		}
+	};
+
+	// When a filter is applied, not all tickets are show on the dashboard. Call this method
+	// with the acknowledgement item data to determine if the item should be filtered out
+	mdc.UserTickets.prototype.__includeAcknowledgementItemInFilter = function(acknowledgementDataItem) {
+
+		if (this.__ackTypeFilter === "all") {
+			return true;
+		}
+
+		return (acknowledgementDataItem.type === this.__ackTypeFilter);
+	};
+		
+	// When a filter is applied, not all tickets are show on the dashboard. Call this method
+	// with the acknowledgement item data to determine if the item should be filtered out
+	// based on Ack Type filter	
+	mdc.UserTickets.prototype.__includeInAckTypeFilter = function(ticketData) {
+	
+		if (this.__ackTypeFilter === "all") {
+			return true;
+		}
+		
+		for (var i = 0; i < ticketData.acknowledgementData.length; i++) {
+			if (this.__includeAcknowledgementItemInFilter(ticketData.acknowledgementData[i])) {
+				return true;
+			}
+		}
+		
+		return false;
+	};
+
+	// When a filter is applied, not all tickets are show on the dashboard. Call this method
+	// with the acknowledgement item data to determine if the item should be filtered out
+	// based on Object Type filter	
+	mdc.UserTickets.prototype.__includeInObjectTypeFilter = function(ticketData) {
+	
+		if (this.__objectTypeFilter === "all") {
+			return true;
+		}
+		
+		return ticketData.targetObjectName === this.__objectTypeFilter;
+	};
+
+	
+	// Create a sub-table to display in every row of the Ticket Dashboard the sub-table
+	// displays the name of the field changed and the old and new values
+	mdc.UserTickets.prototype.__createAffectedFieldsHistoryTable = function(ticketData) {
+	
+		var historyTable = $("<table></table>")
+			.addClass("affectedFieldsHistoryTable")
+			.css({
+				margin: "0px 0px 15px 0px",
+				borderCollapse: "collapse", 
+				width: "100%"
+			})
+			// create table body and heading
+			.append($("<tbody></tbody>")
+				.addClass("affectedFieldsHistoryTableBody")
+				.append($("<tr></tr>")
+					.addClass("affectedFieldsHistoryTableRow")
+					.append($("<th></th>")
+						.addClass("affectedFieldsHistoryTableHead affectedFieldsHistoryTableHeading")
+						.css({whiteSpace: "nowrap"})
+						.text("{!$Label.MDC_FIELD_NAME}"))
+					.append($("<th></th>")
+						.addClass("affectedFieldsHistoryTableHead affectedFieldsHistoryTableHeading")
+						.css({whiteSpace: "nowrap"})
+						.text("{!$Label.MDC_OLD_VALUE}"))
+					.append($("<th></th>")
+						.addClass("affectedFieldsHistoryTableHead affectedFieldsHistoryTableHeading")
+						.css({whiteSpace: "nowrap"})
+						.text("{!$Label.MDC_NEW_VALUE}"))));
+
+
+		var affectedFields = this.__getAffectedFields(ticketData);
+
+
+		// fill in a row for every affected field old and new values
+		for (var i = 0; i < ticketData.acknowledgementEntryJson.length; i++) {
+
+			var fieldChangeData = ticketData.acknowledgementEntryJson[i];
+			
+			var found = false;
+			for (var j = 0; j < affectedFields.length; j++) {
+				if (affectedFields[j] === fieldChangeData.fn) {
+					found = true;
+					break;
+				}
+			}
+		
+			if (!found) {
+				continue;
+			}
+			
+			if (fieldChangeData.ov === "" && fieldChangeData.nv === "") {
+				continue;
+			}
+			
+			var formattedOldFieldValue = Util.replaceCrLf(!isNaN(fieldChangeData.ov) ?
+				Util.formatFieldValue(fieldChangeData.ov, "string") :
+				fieldChangeData.ov);
+			
+			var formattedNewFieldValue = Util.replaceCrLf(!isNaN(fieldChangeData.nv) ? 
+				Util.formatFieldValue(fieldChangeData.nv, "string") :
+				fieldChangeData.nv);
+			
+			$(".affectedFieldsHistoryTableBody", historyTable)
+				.append($("<tr></tr>")
+				.addClass("affectedFieldsHistoryTableRow")
+					.append($("<td></td>")
+						.addClass("affectedFieldsHistoryTableCell")
+						.css({whiteSpace: "nowrap"})
+						.text(fieldChangeData.fn))
+					.append($("<td></td>")
+						.addClass("affectedFieldsHistoryTableCell")
+						.html(formattedOldFieldValue))
+					.append($("<td></td>")
+						.addClass("affectedFieldsHistoryTableCell")
+						.html(formattedNewFieldValue)));
+		}
+
+		return historyTable;
+	};
+	
+	// Not all the fields in the Trigger that can create tickets were
+	// changed to generate a ticket. This method selects out of the 
+	// Trigger fields only those that were changed to create the ticket
+	mdc.UserTickets.prototype.__getAffectedFields = function(ticketData) {
+
+		var affectedFields = [];
+		var ticketAffectedFields = ticketData.affectedFields.split(",");
+		
+		for (var i = 0; i < ticketData.acknowledgementEntryJson.length; i++) {
+		
+			var fieldName = ticketData.acknowledgementEntryJson[i]["fn"];
+			var oldValue = ticketData.acknowledgementEntryJson[i]["ov"];
+			var newValue = ticketData.acknowledgementEntryJson[i]["nv"];
+			
+			if (oldValue === "" && newValue === "") {
+				continue;
+			}
+			
+			var found = false;
+			for (var j = 0; j < ticketAffectedFields.length; j++) {
+				if (Util.unencodeHtml(ticketAffectedFields[j]) === fieldName) {
+					found = true;
+					break;
+				}
+			}
+			
+			if (!found) {
+				continue;
+			}
+		
+			affectedFields.push(fieldName);
+		}
+		
+		return affectedFields;
+	};
+	
+	// Get the list of fields to display in the "Affected Fields" column of the 
+	// Ticket Dashboard. Note: this should not be just the list of field
+	// changes recorded by Audit Entry, but the subset of those that are
+	// defined in the trigger criteria (ticketAffectedFields variable)
+	mdc.UserTickets.prototype.__getAffectedFieldsCellContent = function(ticketData) {
+
+		var affectedFieldsString = this.__getAffectedFields(ticketData).join(", ");
+
+		var affectedFieldsBox = $("<div></div>")
+			.html(affectedFieldsString);
+
+		return $("<div></div>")
+			.append(affectedFieldsBox);
+	
+	};
+	
+	// when generating the <table> on which the Dashboard is based
+	// this will create the rows (the <td>'s) and add them to the table
+	mdc.UserTickets.prototype.__addTicketTableRows = function(tableBody) {
+	
+		var __this = this;
+		
+		for (var i = 0; i < this.__ticketTableData.length; i++) {
+			
+			var ticketData = this.__ticketTableData[i];
+			
+			var affectedFieldsHistoryTable = this.__createAffectedFieldsHistoryTable(ticketData);
+			
+			if (!this.__includeInAckTypeFilter(ticketData)) {
+				continue;
+			}
+			
+			if (!this.__includeInObjectTypeFilter(ticketData)) {
+				continue;
+			}
+			
+			var acknowledgementTypeCell = $("<td></td>");
+			var affectedFieldsCell = $("<td></td>")
+				.css({paddingLeft: "16px"});
+		
+			var input = $("<input></input>")
+				.addClass("ticketcheckbox")
+				.attr("type", "checkbox");
+		
+			var affectedFieldsCellContent = this.__getAffectedFieldsCellContent(ticketData);
+		
+			var relatedRecordCellContent = null;
+			if (ticketData.relatedObjectName) {
+				relatedRecordCellContent = $("<a></a>")
+					.attr("href", {! HTMLENCODE ('window.location.origin') } + "/" + ticketData.relatedObjectId)
+					.html(ticketData.relatedObjectName)
+			}
+			else {
+				relatedRecordCellContent = $("<span></span>")
+					.html("<i>{!$Label.MDC_RECORD_NOT_FOUND}</i>");
+			}
+		
+			var tableRow = $("<tr></tr>")
+				.addClass("ticketDashboardTableRow")
+				.data("ticketData", ticketData)
+				.data("affectedFieldsHistoryTable", affectedFieldsHistoryTable)
+				.append($("<td></td>")
+					.css({
+						textAlign: "center"
+					})
+					.append(input))
+				.append($("<td></td>") // Ticket #
+					.css({
+						textAlign: "center",
+						whiteSpace: "nowrap",
+					})
+					.append($("<a></a>")
+						.attr("href", {! HTMLENCODE ('window.location.origin') } + "/" + ticketData.ticketId)
+						.html(ticketData.ticketName)))
+					.append(acknowledgementTypeCell)
+					
+				.append($("<td></td")  // Related To
+					.css({paddingLeft: "16px"})
+					.html(ticketData.targetObjectLabel))
+						
+						
+				.append($("<td></td>") // Related Record
+					.css({paddingLeft: "16px"})
+					.append(relatedRecordCellContent))
+						
+				.append($("<td></td>") // Record Detail Field
+						.css({paddingLeft: "16px"})
+						.html(ticketData.recordDetailFieldValue))
+				.append($("<td></td>") // MDC Trigger
+					.css({paddingLeft: "16px"})
+					.html(ticketData.triggerName))	
+				.append(affectedFieldsCell) // Affected Fields
+				.append($("<td></td>") // View History
+					.css({
+						textAlign: "center",
+					})
+					.append($("<div></div>").expandCollapseBox({
+						openExpanded: true,
+						collapseImageSrc: "{!URLFOR($Resource.Compliance123, '/Image/chevronleft_120.png')}",
+						expandImageSrc: "{!URLFOR($Resource.Compliance123, '/Image/chevrondown_120.png')}",
+						relatedContent: affectedFieldsHistoryTable
+					})));
+				
+			var acknowledgementTypeCellContent = this.__setAcknowledgementTypeCellContent(ticketData, acknowledgementTypeCell);
+			
+			affectedFieldsCell.append(affectedFieldsCellContent);
+			
+			var enabled = (acknowledgementTypeCell.find("select").length === 0);
+					
+			if (!enabled) {
+				input.attr("disabled", "disabled")
+					.attr("title", "{!$Label.MDC_PLEASE_SELECT_ACKNOWLEDGEMENT_TYPE}");
+			}
+			
+			tableBody.append(tableRow);
+		}
+	};
+	
+	// add spacing around table
+	mdc.UserTickets.prototype.__formatDataTable = function() {
+		// do some formatting			
+		$(".dataTables_length")
+			.append("<br /><br />")
+			.css({
+				paddingLeft: "20px"
+		});
+		
+		$(".dataTables_filter")
+			.append("<br /><br />")
+			.css({
+				paddingRight: "20px"
+		});
+	};
+	
+	// add filter drop-downs and their change handlers	
+	mdc.UserTickets.prototype.__insertFilterDropDowns = function () {
+	
+		var __this = this;
+		this.__acknowledgementTypeFilterDropDown = $("<select></select>")
+			.css({
+				width: "150px",
+				textOverflow: "ellipsis"
+			})
+			.change(function() {
+				__this.__ticketDashboardTable.page(0);				
+				
+				__this.__ackTypeFilter = $(this).val();
+				__this.__generateTable();
+			})
+			.append($("<option></option>")
+				.attr("value", "all")
+				.html("{!$Label.MDC_ALL}"))
+			.append($("<option></option>")
+				.attr("value", "individual")
+				.html("{!$Label.MDC_DIRECT_ASSIGNMENT}"))
+			.append($("<option></option>")
+				.attr("value", "group")
+				.html("{!$Label.MDC_PUBLIC_GROUP}"))
+			.append($("<option></option>")
+				.attr("value", "field")
+				.html("{!$Label.MDC_USER_FIELD}"))
+			.val(this.__ackTypeFilter);
+		 
+		this.__targetObjectFilterDropDown = $("<select></select>")
+			.css({
+				width: "150px",
+				textOverflow: "ellipsis"
+			})
+			.change(function() {
+				__this.__ticketDashboardTable.page(0);				
+				__this.__objectTypeFilter = $(this).val();
+				__this.__generateTable();
+			})
+			.append($("<option></option>")
+				.attr("value", "all")
+				.html("{!$Label.MDC_ALL}"));
+			
+		var targetObjectFilters = {};
+		for (var i = 0; i < this.__ticketTableData.length; i++) {
+			var ticketTableDataItem = this.__ticketTableData[i];
+			targetObjectFilters[ticketTableDataItem.targetObjectName] = ticketTableDataItem.targetObjectLabel;
+		}
+		
+		for (var targetObjectName in targetObjectFilters) {
+			this.__targetObjectFilterDropDown.append($("<option></option>")
+				.attr("value", targetObjectName)
+				.html(targetObjectFilters[targetObjectName]));
+		}
+		
+		this.__targetObjectFilterDropDown.val(this.__objectTypeFilter);
+		
+		var filterBox = $("<table></table>")
+			.css({
+				margin: "auto",
+				borderCollapse: "collapse",
+				borderSpacing: "0px"
+			})
+			.append($("<tr></tr>")
+				.append($("<td></td>")
+					.css({
+						borderBottom: "1px solid #cccccc",
+						fontSize: "120%",
+						fontWeight: "bold",
+						paddingLeft: "3px"
+					})
+					.html("{!$Label.MDC_FILTERS}")
+					.attr("colspan", "2")))
+			.append($("<tr></tr>")
+				.append($("<td></td>")
+					.css({
+						paddingTop: "10px"
+					})
+					.append($("<div></div>")
+						.css({
+							paddingBottom: "5px",
+							lineHeight: "112%" // without this Japanese in the UI is not aligned
+						})
+						.html("{!$Label.MDC_ACKNOWLEDGEMENT_TYPE}"))
+					.append(this.__acknowledgementTypeFilterDropDown)
+					)
+				.append($("<td></td>")
+					.css({
+						paddingTop: "10px",
+						paddingLeft: "20px"
+					})
+					.append($("<div></div>")
+						.css({
+							paddingBottom: "5px",
+							lineHeight: "112%" // without this Japanese in the UI is not aligned
+						})
+						.html("{!$Label.MDC_RELATED_TO}"))
+					.append(this.__targetObjectFilterDropDown)));
+			
+		$("#filterContainer")
+			.empty()
+			.append(filterBox);
+	};
+
+	// initialize filters
+	mdc.UserTickets.prototype.__initializeFilters = function() {
+		if (!this.__ackTypeFilter) {
+			this.__ackTypeFilter = "all";
+		}
+		
+		if (!this.__objectTypeFilter) {
+			this.__objectTypeFilter = "all";
+		}
+	};
+	
+	// Insert the history table (sub-row to each row of the Dashboard). The
+	// tables are created once and stored as a data item of the <tr>. Create
+	// the table row <tr> below the ticket <tr> and insert the table
+	// which is being stored in the ticket <tr>
+	mdc.UserTickets.prototype.__insertAffectedFieldsHistoryTable = function() {
+	
+		$("tr", this.__ticketDashboardTableBase)
+			.not(document.getElementById("dashboardTableHeader"))
+			.after($("<tr></tr>")
+				.addClass("affectedFieldsDisplayRow")
+				.append($("<td></td>"))
+				.append($("<td></td>"))
+				.append($("<td></td>")
+					.addClass("historyTableCell")
+					.attr("colspan", TICKET_TABLE_COLUMN_COUNT - 3 + ""))
+				.append($("<td></td>")));
+			
+		$(".affectedFieldsDisplayRow > td", this.__ticketDashboardTableBase)			
+			.css({
+				border: "1px solid " + TABLE_BACKGROUND_COLOR,
+				borderBottom: "2px solid " + TABLE_SEPARATOR_COLOR
+			});
+	
+		var __this = this;
+
+		$(".affectedFieldsDisplayRow > td.historyTableCell", this.__ticketDashboardTableBase).each(function(){
+			
+			var historyTable = $(this).closest("tr").prev("tr").data("affectedFieldsHistoryTable");
+			$(this).append(historyTable)			
+		});
+	};
+	
+	// Modify styles of the Ticket Dashboard table
+	mdc.UserTickets.prototype.__styleTable = function() {
+		$("tr not(.affectedFieldsDisplayRow), tr > td", this.__ticketDashboardTableBase).css({
+			background: TABLE_BACKGROUND_COLOR
+		});
+		
+		$("tr:hover, tr > td:hover", this.__ticketDashboardTableBase).css({
+			background: TABLE_BACKGROUND_COLOR
+		});
+		
+		$("td not(.affectedFieldsDisplayRow > td)", this.__ticketDashboardTableBase).css({
+			border: "1px solid " + TABLE_BACKGROUND_COLOR,
+		});
+		
+		$("#dashboardTableHeader > th", this.__ticketDashboardTableBase).css({
+			backgroundColor: TABLE_HEADER_COLOR,
+			color: "white" 
+		})
+	};
+	
+	
+	mdc.UserTickets.prototype.__getCountOfEnabledCheckBoxes = function() {
+		return $(".ticketcheckbox:checkbox", this.__ticketDashboardTableBase).filter(function() {
+		   return !this.disabled;
+		}).length;
+	};	
+	
+	mdc.UserTickets.prototype.__getSelectAllCheckBox = function() {
+		return $("#selectAllCheckBox", this.__ticketDashboardTableBase);
+	};
+	
+	mdc.UserTickets.prototype.__enableDisableSelectAllCheckBox = function() {
+		
+		var selectAllCheckBox = this.__getSelectAllCheckBox();
+		
+		if (this.__getCountOfEnabledCheckBoxes() > 0) {
+			selectAllCheckBox
+				.removeAttr("title")
+				.removeProp("disabled");
+		}
+		else {
+			selectAllCheckBox
+				.attr("title", "{!$Label.MDC_PLEASE_SELECT_AT_LEAST_ONE_ACKNOWLEDGEMENT_TYPE}")
+				.prop("disabled", true);
+		}
+		
+	};
+	
+	// this is the main function to clear the Dashboard and
+	// regenerate it - this can be called e.g. when the filter
+	// changes and tickets shown changes
+	mdc.UserTickets.prototype.__generateTable = function() {
+
+		this.__initializeFilters();	
+
+	    var container = $("#ticketDashboardTableContainer");
+	    container.empty();
+	    
+		this.__ticketDashboardTableBase = $("<table></table>")
+			.appendTo(container)
+			.attr("id", "ticketDashboardTable")
+			.addClass("display")
+			.css({
+				width: "100%",
+				borderCollapse: "collapse",
+				borderSpacing: "0px"
+			});
+
+		var tableBody = $("<tbody></tbody>");
+		
+		this.__addTicketTableRows(tableBody);
+
+		var selectAllCheckBox = $("<input></input>")
+			.attr("id", "selectAllCheckBox")
+			.attr("disabled", "disabled")
+			.attr("type", "checkbox")
+			.change(function(){
+				
+				var selectAllChecked = $(this).prop("checked");
+				
+				var enabledCheckBoxes = $(".ticketcheckbox:checkbox", this.__ticketDashboardTableBase).filter(function() {
+				   return !this.disabled;
+				});
+				
+				if (selectAllChecked) {
+					enabledCheckBoxes.prop("checked", true);
+				}
+				else {
+					enabledCheckBoxes.removeProp("checked");
+				}				
+			});
+		
+		
+		this.__ticketDashboardTableBase
+			.empty()
+			.append($("<thead></thead>")
+				.append($("<tr></tr>")
+					.attr("id", "dashboardTableHeader")
+					
+					.append($("<th></th>")
+						.attr("data-orderable", "false")
+						.css({
+							width: "25px",
+							textAlign: "center"
+						})
+						.append(selectAllCheckBox))
+
+
+					.append($("<th></th>")
+						.css({maxWidth: "80px", textAlign: "center"})
+						.html("{!$Label.MDC_TICKET_NUMBER}"))
+					.append($("<th></th>")
+						.html("{!$Label.MDC_ACKNOWLEDGEMENT_TYPE}"))
+					.append($("<th></th>")
+						.html("{!$Label.MDC_RELATED_TO}"))
+					.append($("<th></th>")
+						.html("{!$Label.MDC_RELATED_RECORD}"))
+					.append($("<th></th>")
+						.html("{!$Label.MDC_RECORD_DETAIL}"))
+					.append($("<th></th>")
+						.html("{!$Label.MDC_MDC_TRIGGER}"))
+					.append($("<th></th>")
+						.html("{!$Label.MDC_AFFECTED_FIELDS}"))
+					.append($("<th></th>")
+						.css({maxWidth: "80px", textAlign: "center", whiteSpace: "normal"})
+						.html("{!$Label.MDC_VIEW_HISTORY}"))))
+			.append(tableBody);
+					
+					
+			var options = {
+				// remove the page-size drop-down
+				lengthChange: false,
+				
+		    	// un-check all checkboxes when the page changes
+			    fnDrawCallback: function() {
+			      	$(".ticketcheckbox:checkbox:checked").prop("checked", false);
+			    },
+				// change empty table text to standard Salesforce message
+				oLanguage: {
+					sEmptyTable: "{!$Label.MDC_NO_RECORDS_TO_DISPLAY}",
+					sZeroRecords: "{!$Label.MDC_NO_MATCHING_RECORDS_FOUND}",
+					sInfo: "{!$Label.MDC_SHOWING_START_TO_END}",
+					sInfoEmpty: "{!$Label.MDC_SHOWING_0_TO_0}",
+					sInfoFiltered : "({!$Label.MDC_FILTERED_FROM_TOTAL_ENTRIES})",
+					sSearch: "{!$Label.MDC_SEARCH}" + ":",
+					oPaginate: {
+						sNext: "&gt;",
+						sPrevious: "&lt;"
+					}
+				},
+				
+				// disable sorting, but sort the "Ticket #" column descending
+				columnDefs: [{orderable: false, targets: "_all"}],
+				order: [1, "desc"],
+				
+				// remove alternate row coloring
+				asStripeClasses: []
+			};					
+
+
+			// whenever the DataTable is re-drawn, insert our history table 
+			var __this = this;
+			this.__ticketDashboardTable = this.__ticketDashboardTableBase
+				.on("draw.dt", function(){
+					__this.__insertAffectedFieldsHistoryTable();
+					__this.__styleTable();
+
+
+					selectAllCheckBox.removeProp("checked");
+					__this.__enableDisableSelectAllCheckBox();
+
+					// remove the sort arrow icon which is shown even though
+					// user sorting is disabled - Ticket # col is sorted					
+					$(".sorting_desc, .sorting_asc").removeClass("sorting_desc", "sorting_asc");
+
+				})
+				.DataTable(options);
+
+			try {		
+				this.__hardSearchFilter = false;
+				if (urlParams.searchText) {
+				
+					this.__ticketDashboardTable.search(urlParams.searchText, false, false).draw();
+
+					$(".dataTables_filter input").prop("disabled", true);
+					this.__hardSearchFilter = true;
+				}
+			}
+			catch(error) {
+				console.info(error.stack);
+			}
+			
+			this.__formatDataTable();
+			this.__insertFilterDropDowns();
+	};
+	
+	// when the Acknowledge button is clicked, this method formats
+	// the data values to pass to 
+	mdc.UserTickets.prototype.__formatTicketAcknowledgementData = function(commentText) {
+	
+		var allCheckboxes = $(".ticketcheckbox:checkbox:checked");
+		var ticketAcknowledgementData = [];
+		var comment = typeof(commentText) === "undefined" ? "" : commentText;
+
+		for (var i = 0; i < allCheckboxes.length; i++) {
+			var checkbox = allCheckboxes.eq(i);
+			
+			var row = checkbox.closest("tr");
+			var ticketData = row.data("ticketData");
+			var acknowledgementDataIndex = row.data("acknowledgementDataIndex");
+			var acknowledgementData = ticketData.acknowledgementData[acknowledgementDataIndex];
+
+			ticketAcknowledgementData.push([
+				ticketData.ticketId,
+				CURRENT_USER_ID,
+				Util.unencodeHtml(acknowledgementData.dataItem),
+				acknowledgementData.type,
+				comment
+			]);
+		}
+
+		return JSON.stringify(ticketAcknowledgementData);
+	}
+
+	// Validation check. First, blur the buttons so that they aren't
+	// accidentally re-submitted. Second, If the user clicked either 
+	// the 'Acknowledge' button or the 'Acknowledge With Comments' 
+	// button, check to see if any Tickets have been selected 
+	mdc.UserTickets.prototype.onAcknowledgeClicked = function() {
+		$(".mdcBulkAcknowledgeButton").blur();
+		$(".mdcBulkAcknowledgeWithCommentsButton").blur();
+
+		if ($(".ticketcheckbox:checkbox:checked").length === 0) {
+		
+			$("<div></div>")._123Popup({
+				title: "{!$Label.MDC_ACKNOWLEDGEMENTS}",
+				buttons: "ok",
+				okButtonLabel: "{!$Label.MDC_OK}",
+				width: 300,
+				height: 150
+			})
+			.message({
+				messageText: "{!$Label.MDC_PLEASE_SELECT_TICKETS}"
+			});
+			
+			return false;
+		}
+	
+		return true;
+	};
+
+	// Called immediately when the 'Acknowledge With Comments' button is clicked.
+	// Show the popup with a text area so they can enter comments. The onOk function
+	// here will submit any selected tickets for acknowledgement by calling the
+	// handler for the 'Acknowledge' button
+	mdc.UserTickets.prototype.onAcknowledgementWithCommentsButtonClicked = function() {
+
+		if (!this.onAcknowledgeClicked()) {
+			return false;
+		}
+		
+		var __this = this;
+
+		$("<div></div>")._123Popup({
+			title: "{!$Label.MDC_ACKNOWLEDGE_WITH_COMMENTS}",
+			buttons: "okCancel",
+			okButtonLabel: "{!$Label.cmpl123__mdc_acknowledge}",
+			cancelButtonLabel: "{!$Label.MDC_CANCEL}",
+			onOk: function(commentText, popup) {
+				if (commentText.trim().length === 0) {
+					popup.setError("{!$Label.MDC_PLEASE_ENTER_A_COMMENT}");
+					return false;
+				}
+				__this.onAcknowledgementButtonClicked(commentText)
+				 return true;
+			} 
+		})
+		.textAreaInput({
+			intro: "{!$Label.MDC_PLEASE_ENTER_YOUR_COMMENT}",
+			maxLength: 500
+		});
+
+		return false;	
+	};
+	
+	mdc.UserTickets.prototype.__getCheckedRows = function() {
+		return this.__ticketDashboardTableBase
+			.find("tr.ticketDashboardTableRow")
+			.has(".ticketcheckbox:checkbox:checked");
+	};
+	
+	// JavaScript called when the 'Acknowledge' button is clicked. Prepare
+	// the ticket acknowledgement data for submission and the submit
+	// the data by calling the actionFunction processAcknowledgements 
+	mdc.UserTickets.prototype.onAcknowledgementButtonClicked = function(commentText) {
+
+		if (!this.onAcknowledgeClicked()) {
+			return false;
+		}
+
+		// this.__processingAcknowledgements flag is used to 
+		// prevent multiple firing of this code when the user
+		// double-clicks the 'Acknowledge' button
+		if (typeof(this.__processingAcknowledgements) === "undefined") {
+			this.__processingAcknowledgements = false;
+		}
+
+		if (this.__processingAcknowledgements) {
+			return false;
+		}
+		
+		this.__processingAcknowledgements = true;
+
+		var ticketAcknowledgementData = this.__formatTicketAcknowledgementData(commentText);
+
+		var acknowledgementCount = this.__getCheckedRows().length;
+
+		AcknowledgementPopup
+			.setTitle("{!$Label.MDC_ACKNOWLEDGE_TICKETS}")
+			.waiter({
+				waitText: (acknowledgementCount > 1) ? "{!$Label.MDC_ACKNOWLEDGING_TICKETS}".replace("_N_", acknowledgementCount) : "{!$Label.MDC_ACKNOWLEDGING_TICKET}"
+			});
+
+
+
+
+		processAcknowledgements(ticketAcknowledgementData);
+
+		return false;
+	};
+
+	// After acknowledging some tickets, those tickets rows are removed
+	// from the Dashboard and the Data Table is regenerated.
+	// A check is made first to see if there were any errors 
+	// with the acknowledgement
+	mdc.UserTickets.prototype.__purgeAcknowledgedTickets = function(acknowledgementResults) {
+	
+		var __this = this;
+		var checkedRows = this.__getCheckedRows();
+		var acknowledgedCount = checkedRows.length;
+		
+		checkedRows.each(function(index) {
+			for (var i = 0; i < acknowledgementResults.length; i++) {
+				var acknowledgementResult = acknowledgementResults[i];
+				var ticketId = $(this).data("ticketData").ticketId;
+				if (acknowledgementResult.ticketId === ticketId) {
+					if (acknowledgementResult.error === "" || acknowledgementResult.alreadyAcknowledged) {
+						__this.__removeTicketTableDataItem(ticketId);
+						break;
+					}
+				}
+			}
+		});
+
+		this.__generateTable();
+
+		if (this.__ticketDashboardTable.data().count() === 0) {
+			this.__removeFilters();
+		}		
+
+		return acknowledgedCount;
+	};
+	
+	mdc.UserTickets.prototype.__formatAcknowledgementResultDisplay = function(acknowledgementResults) {
+	
+		var resultDisplayList = $("<div></div>");
+	
+		
+		var successCount = 0;
+		for (var i = 0; i < acknowledgementResults.length; i++) {
+			successCount += (acknowledgementResults[i].success ? 1 : 0);
+		}
+	
+		var resultDisplayMessage = "";
+		if (successCount === 1) {
+			resultDisplayMessage = "{!$Label.MDC_SINGLE_ACKNOWLEDGEMENT_SUCCESS_MESSAGE}";
+		}
+		else {
+			resultDisplayMessage = "{!$Label.MDC_MULTIPLE_ACKNOWLEDGEMENT_SUCCESS_MESSAGE}"
+				.replace("_N_", successCount)
+				.replace("_TOTAL_", acknowledgementResults.length);
+		}
+		resultDisplayMessage += "<br/><br/>"
+	
+		resultDisplayList.append($("<div></div>")
+			.html(resultDisplayMessage));
+			
+		for (var i = 0; i < acknowledgementResults.length; i++) {
+			var acknowledgementResult = acknowledgementResults[i];
+			var error = !acknowledgementResult.success;
+
+			resultDisplayList.append($("<div></div>")
+				.css({
+					padding: "3px 0px",
+					paddingLeft: "15px", // hanging indent
+					textIndent: "-15px", // hanging indent
+					marginBottom: "5px"
+				})
+				.append($("<img />")
+					.css({
+						width: "10px",
+						paddingRight: "5px"
+					})
+					.attr("src", "{!URLFOR($Resource.Compliance123, '/Image/" + (error ? "close_red_60.png" : "check_green_60.png") + "')}"))
+				.append($("<span></span>")
+					.css({
+						fontWeight: "bold"
+					})
+					.append($("<a></a>")
+						.text(acknowledgementResult.ticketName)
+						.attr("href", {! HTMLENCODE ('window.location.origin') } + "/" +  acknowledgementResult.ticketId))
+					.append(": "))
+				.append($("<span></span>")
+					.css({color: (error ? "red" : "green")})
+					.text(error ? (acknowledgementResult.error) : "{!$Label.MDC_ACKNOWLEDGED}")));
+		}
+		
+		return resultDisplayList.html();
+	};
+	
+	// This is the oncomplete of the action function  
+	// Display a message to the user about the tickets acknowledged
+	mdc.UserTickets.prototype.onAcknowledgementsProcessed = function() {
+
+		AcknowledgementPopup.close();
+
+		var acknowledgementResults = $.parseJSON($("input", "#acknowledgementResultInputContainer").val());
+		var acknowledgedCount = this.__purgeAcknowledgedTickets(acknowledgementResults);
+		
+		$("<div></div>")._123Popup({
+			title: "{!$Label.MDC_ACKNOWLEDGEMENTS}",
+			buttons: "ok",
+			okButtonLabel: "{!$Label.MDC_OK}",
+			width: 300,
+			height: 240		
+		})
+		.message({
+			messageText: this.__formatAcknowledgementResultDisplay(acknowledgementResults)
+		});
+		
+		this.__processingAcknowledgements = false;
+	};
+	
+	mdc.UserTickets.prototype.__displayError = function(error) {
+		PopupWindow
+			.setTitle("{!$Label.cmpl123__mdc_ticket_dashboard}")
+			.setButtons("ok")
+			.setOkButtonLabel("{!$Label.MDC_OK}")
+			.message({
+				messageText: "{!$Label.MDC_ERROR_LOADING_DASHBOARD}" + ": " + error
+			});
+		console.info(error + ": " + error.stack);
+	
+	};	
+
+	// ********************************************************//
+	// Everything above is the definition of the UserTickets class
+	// ********************************************************//
+	
+	// ********************* START UP *************************//
+	
+	// connect to salesforce
+    try {
+        sforce.connection.init("{!$Api.Session_ID}", "{!$Api.Partner_Server_URL_230}");
+    }
+    catch (error) {
+        alert("{!$Label.MDC_CONNECTION_TO_SALESFORCE_FAILED}" + ": " + error);
+    }
+
+	// show a waiter and start loading the Dashboard by calling load();
+	try {
+
+		Visualforce.remoting.timeout = 120000; 
+	
+		PopupWindow
+			.setTitle("{!$Label.cmpl123__mdc_ticket_dashboard}")
+			.waiter({
+				waitText: "{!$Label.MDC_LOADING_TICKET_DASHBOARD}"
+			});
+		
+		setTimeout(function(){
+		    UserTickets.load();
+		}, 0);
+	}
+	catch (error) {
+	    console.info(error.stack)
+	}
+
+	// clear the text in the DataTable filter input when focus returns to the tab
+	$(window).focus(function(){
+		if (!UserTickets.__hardSearchFilter && $(".dataTables_filter input").val() !== "") {
+			UserTickets.getTicketDashboardTable().search("").draw();
+			$(".dataTables_filter input").val("");
+		}
+	});
+
+	// add jquery-ui tooltip support to the page
+	document.onload = function() {
+	    $(document).tooltip();
+	}
+	
+	
+	
+</script>
+
+</apex:form>
+</apex:page>

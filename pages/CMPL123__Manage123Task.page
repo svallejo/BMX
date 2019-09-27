@@ -1,0 +1,277 @@
+<apex:page sidebar="false" standardController="CMPL123__X123Task__c" extensions="CMPL123.Manage123TaskController" showHeader="true" >
+
+
+<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/CMP123_New/js/jquery-ui.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/CMP123_New/css/typeahead.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/css/custom_manage123task.css')}"/>
+
+<script>
+     
+    var objlistJson = sortObject(JSON.parse('{!JSENCODE(objListORDetail)}'),'value',true);
+    var ids;
+    var reverseObjJson = new Object();
+    $(function(){
+        for(var rev in objlistJson)
+            reverseObjJson[objlistJson[rev]] = rev;
+    
+        ids = '{!JSENCODE($CurrentPage.parameters.id)}';
+        $(".headerDiv").empty();
+        if(ids.length >0){
+             $(".headerDiv").append('<span class="header"><h4>{!$Label.EDIT} </h4></span>&nbsp;&nbsp;<span style="font-size:14px;color:#395c82;font-weight:bolder;" id="taskname"></span>');
+             setValue(objlistJson);
+        }else{
+            $(".headerDiv").append('<span class="header"><h4>{!$Label.CREATE_NEW_TASK}</h4></span>');            
+            //setObjects(objlistJson);
+            createTypeAhead(objlistJson);
+            
+        }
+        $("#objectTypeAhead").blur(function(){
+            var textBoxValue = $(this).val();
+            if(reverseObjJson[textBoxValue.toLowerCase()] != undefined){
+                $(this).attr('name',reverseObjJson[textBoxValue.toLowerCase()]);   
+            }else{
+                $(this).val('');
+                $(this).attr('name','');   
+            }
+        
+        });
+    });
+   
+    
+    function toTitleCase(str) {
+        str = str.toLowerCase();
+        return str.replace(/(?:^|\s)\w/g, function(match) {
+            return match.toUpperCase();
+        });
+    }
+
+    
+    function setValue(objlistJson){
+        for(var a in objlistJson){
+            var name = objlistJson[a];
+            if(a == 'Name'){
+                $("#taskname").text(name);
+                $("[name='"+a+"']").val(name);
+            }else if(a == 'CMPL123__Is_Active__c'){
+                $("[name='"+a+"']").prop('checked',name);
+            }else if( a == 'CMPL123__Related_Object__c'){
+                $("#fieldDetailas").append("<span class='fetchDataCss ' name='CMPL123__Related_Object__c'>"+'{!JSENCODE(targetObjApiLabelMap["Label"])}'+"</span>");
+                $("[id=relatedRequireBlock]").hide();
+            }else if(a =='CMPL123__Description__c'){
+                $("[name='"+a+"']").html(name);
+            }else{
+                $("[name='"+a+"']").attr('value',name);
+            }
+        }
+    }
+    
+    
+    function createTypeAhead(result){
+        $("#fieldDetailas").append("<input id='objectTypeAhead' type='text' placeholder='{!$Label.TYPE_OBJECT_NAME}' class='input-form-control' />");
+        var objectmap = [];
+        for(var a in result){
+            var obj = new Object();
+            obj["label"] = toTitleCase(result[a]);
+            obj["key"] = a;
+            objectmap.push(obj);
+        }
+     
+        $("#objectTypeAhead").autocomplete({
+            source:objectmap,
+            select:function(event,ui){
+              
+                $(this).attr("name",ui.item.key)
+            },
+           minLength: 0
+        }).focus(function(){
+            $(this).autocomplete("search");
+        });
+      }
+      
+     
+    
+    // Remote call to save Intelligence task record on save button click
+    
+    function saveItObjectRecord(){
+       if(ids.length == 0){
+            if($("[name=Name]").val().length ==0){
+                $("[id=itErrorMessage]").show();
+                $("[id=itErrorMessage]").empty();
+                $("[id=itErrorMessage]").append("<img src='/img/msg_icons/error16.png' />&nbsp;&nbsp;<span style='color:#b94a48;'>{!$Label.PLEASE_ENTER_NAME}</span>").addClass("popover");
+                hideErrorMessage($("[id=itErrorMessage]"),7000);
+            }else if( $("#fieldDetailas").children().val().length ==0){
+                $("[id=itErrorMessage]").show();
+                $("[id=itErrorMessage]").empty();
+                $("[id=itErrorMessage]").append("<img src='/img/msg_icons/error16.png' />&nbsp;&nbsp;<span style='color:#b94a48;'>{!$Label.PLEASE_SELECT_RELATED_OBJECT}</span>").addClass("popover");
+                hideErrorMessage($("[id=itErrorMessage]"),7000);
+             }else{
+                   var itTaskObject = createJson(true);
+                   saveRecord(itTaskObject);
+             }
+        }else if(ids.length > 0){
+             if($("[name=Name]").val().length ==0){
+                $("[id=itErrorMessage]").show();
+                $("[id=itErrorMessage]").empty();
+                $("[id=itErrorMessage]").append("<img src='/img/msg_icons/error16.png' />&nbsp;&nbsp;<span style='color:#b94a48;'>{!$Label.PLEASE_ENTER_NAME}</span>").addClass("popover");
+                hideErrorMessage($("[id=itErrorMessage]"),7000);
+            }else{
+                var itTaskObject = createJson(false);
+                saveRecord(itTaskObject);
+            }
+        }
+    } 
+    
+    function createJson(idExist){
+        var itTaskObject = new Object();
+        removeLoadingImage();
+        showLoadingImage();
+        itTaskObject["Name"] = $("[name=Name]").val();
+        itTaskObject["CMPL123__Is_Active__c"] = $("[name=CMPL123__Is_Active__c]").prop('checked');
+        itTaskObject["CMPL123__Description__c"] = $("[name=CMPL123__Description__c]").val();
+        itTaskObject["CMPL123__Key_Value__c"] = $("[name=CMPL123__Key_Value__c]").val();
+        if(idExist){            
+          itTaskObject["CMPL123__Related_Object__c"] =  $("#fieldDetailas").children().attr('name');  
+        } else{
+          itTaskObject["CMPL123__Related_Object__c"] = '{!JSENCODE(targetObjApiLabelMap["Api"])}';
+          itTaskObject["Id"] = ids; 
+        }
+        console.log('-----------------itTaskObject----------------'+JSON.stringify(itTaskObject));   
+        return itTaskObject;
+    
+    }
+    function saveRecord(itTaskObject){
+        Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Manage123TaskController.saveIntelligentTasksRecord}',JSON.stringify(itTaskObject),function(result,event){
+            if(event.status){
+                if(result.length >18){
+                    $("[id=itErrorMessage]").empty();
+                    $("[id=itErrorMessage]").append("<img src='/img/msg_icons/error16.png' />&nbsp;&nbsp;<span style='color:#b94a48;'>"+result+"</span>").addClass("popover");
+                }else{
+                    $("[id=itErrorMessage]").remove();
+                    if(lexUtil.inLEX()){
+						lexUtil.lexNavigateToURL("/"+result);
+					}
+					else{
+						parent.document.location.href= "/"+result;
+                    }
+                }
+            }else{	
+                $("[id=itErrorMessage]").empty();
+                $("[id=itErrorMessage]").append("<img src='/img/msg_icons/error16.png' />&nbsp;&nbsp;<span style='color:#b94a48;'>"+event.message+"</span>").addClass("popover");
+            }  
+            $("[id=itErrorMessage]").show();
+            removeLoadingImage();
+            hideErrorMessage($("[id=itErrorMessage]"),5000);
+        },{escape:true});
+    }
+    
+  // function is call to show loading image 
+   
+   function showLoadingImage(){
+       $("[id=showimage]").append("<img src='{!URLFOR($Resource.CMPL123__Compliance123,"/CMP123_New/image/ajax-loader.gif")}' />"); 
+      // $("[id=showimage]").append("<img src='{!URLFOR($Resource.CMPL123__Compliance123,"/123Compliance/image/ajax-loader.gif")}' />");
+   }
+   
+   function removeLoadingImage(){
+       $("[id=showimage]").empty();
+   }
+   
+    function hideErrorMessage(obj,time){
+        setTimeout(function(){
+            obj.hide();
+            $("[id=itErrorMessage]").empty();
+        },time);
+    }
+    
+    function sortObject(obj, type, caseSensitive) {
+        var temp_array = [];
+        for (var key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                if (!caseSensitive) {
+                    key = (key['toLowerCase'] ? key.toLowerCase() : key);
+                }
+                temp_array.push(key);
+            }
+        }
+        if (typeof type === 'function') {
+            temp_array.sort(type);
+        } else if (type === 'value') {
+            temp_array.sort(function(a,b) {
+                var x = obj[a];
+                var y = obj[b];
+                if (!caseSensitive) {
+                    x = (x['toLowerCase'] ? x.toLowerCase() : x);
+                    y = (y['toLowerCase'] ? y.toLowerCase() : y);
+                }
+                return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+            });
+        } else {
+            temp_array.sort();
+        }
+        var temp_obj = {};
+        for (var i=0; i<temp_array.length; i++) {
+            temp_obj[temp_array[i]] = obj[temp_array[i]];
+        }
+        return temp_obj;
+    };
+
+    
+    //fuction call on cancel button
+    function redirectToEditOrViewPage(targetPageId){
+		if(lexUtil.inLEX()){
+			lexUtil.lexNavigateToURL("/"+targetPageId);
+		}
+	    else{
+	    	if(ids.length >0)
+	        	parent.document.location.href= "/"+targetPageId; 
+	        else
+	     	    parent.document.location.href =  "/"+targetPageId+"/o";
+	    }
+	} 
+    
+</script>
+
+<div class="back" style="padding:1%;width:100%">
+   <div class="wrapper">
+      <div style="padding:1.5%;border-bottom:1px solid #dddddd;" class='headerDiv'></div>
+         <div style="padding-left:32%;padding-right:32%;margin-top:0.7%;"><div id='itErrorMessage'></div></div>
+         <div style='margin-top:0.2%;' class="itForm">
+            <apex:form >
+               <apex:pageBlock mode="maindetail">                   
+                   <apex:pageBlockSection columns="2">
+                      <apex:pageBlockSectionItem >
+                             <apex:outputLabel styleClass="input-Label">{!$Label.cmpl123__name}</apex:outputLabel>
+                             <div class="requiredInput"><div class="requiredBlock"></div>&nbsp;
+                             <input type="text" class="input-form-control" name='Name' placeholder="{!$Label.TYPE_NAME}" onkeydown="$('[id=itErrorMessage]').hide();" /></div>
+                         </apex:pageBlockSectionItem>
+                         <apex:pageBlockSectionItem >
+                             <apex:outputLabel styleClass="input-Label" >{!$Label.cmpl123__is_active}</apex:outputLabel>
+                             <input type="checkbox" name='CMPL123__Is_Active__c' checked="checked"/>
+                         </apex:pageBlockSectionItem>
+                         <apex:pageBlockSectionItem >
+                             <apex:outputLabel styleClass="input-Label" >{!$Label.cmpl123__related_object}</apex:outputLabel>
+                              <div class="requiredInput"><div class="requiredBlock" id='relatedRequireBlock'></div>&nbsp;<span clas="inut-selectList" id="fieldDetailas"></span></div>
+                         </apex:pageBlockSectionItem>
+                         <apex:pageBlockSectionItem >
+                             <apex:outputLabel styleClass="input-Label" >{!$Label.cmpl123__key_value}</apex:outputLabel>
+                             <input type="text" class="input-form-control" placeholder="{!$Label.TYPE_KEY_VALUE}" name="CMPL123__Key_Value__c"/>
+                         </apex:pageBlockSectionItem>
+                         <apex:pageBlockSectionItem >
+                             <apex:outputLabel styleClass="input-Label" >{!$Label.cmpl123__description}</apex:outputLabel>
+                             <textarea rows="2" cols="50" class="input-form-control input-textarea" placeholder="{!$Label.TYPE_DESCRIPTION}" name="CMPL123__Description__c" /> 
+                         </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockButtons >
+                        <div style='margin-left:20%;'>
+                            <input style="padding:1%;cursor:pointer;" class="Input-btn btn" type="button" value="{!$Label.SAVE}" onclick="saveItObjectRecord();"/>
+                            <input style="padding:1%;cursor:pointer;" class="Input-btn-cancel btn" type="button" value="{!$Label.CANCEL}" onclick="redirectToEditOrViewPage('{!JSENCODE(keyPrefixOrId)}');" />
+                            <span id="showimage"></span> 
+                       </div> 
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+            </apex:form>
+        </div>
+        </div>
+    </div>    
+</apex:page>

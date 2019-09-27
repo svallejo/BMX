@@ -1,0 +1,203 @@
+<apex:page StandardController="CMPL123CME__Investigation__c" extensions="CMPL123CME.CMPL_123_INV_PItems" showheader="false" sidebar="false" id="pg">
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+    <!-- JS to handle lightning navigation-->
+    <apex:includeScript value="/support/console/26.0/integration.js"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+    <style>
+        .popupBackground {background-color:black;opacity: 0.20;filter: alpha(opacity = 20);position: absolute;width: 100%;height: 100%;top: 0;left: 0;z-index: 9998;}    
+        .custPopup {width:520px;height:auto;left:25%;top:20px;background-color:white;border-width: 2px;border-style:solid;z-index: 9999;align:center;padding:10px;position: absolute;}        
+        .btn{color: #333;border: 1px solid #b5b5b5;border-bottom-color: #7f7f7f;background: #e8e8e9 url('/img/alohaSkin/btn_sprite.png') repeat-x right top;font-weight: bold;font-size: .9em;border-radius: 3px;}        
+    </style>
+    <script type="text/javascript">
+        var __sfdcSessionId = '{!GETSESSIONID()}';        
+    </script>
+    <apex:includeScript value="/soap/ajax/26.0/connection.js"/> 
+    <script>
+        //Variables to store record and page Ids
+        var recordId = "{!JSENCODE(CMPL123CME__Investigation__c.id)}";
+        var pageId = "{!JSENCODE(pageId)}";
+        var relatedId;
+        
+        //Fix for on page load auto focus for datepicker
+        function setFocusOnLoad() {}
+
+        function switchMenu(obj,obj1,obj2) {
+            var el = document.getElementById(obj);                                       
+            if( el.style.display != 'none' ){
+                el.style.display = 'none';
+            }else{
+                el.style.display = '';
+            }
+            
+            var e2 = document.getElementById(obj1);                                       
+            if ( e2.style.display != 'none' ){
+                e2.style.display = 'none';
+            }else{
+                e2.style.display = '';
+            }
+            
+            var e3 = document.getElementById(obj2);                                       
+            if ( e2.style.display != 'none' ) {
+                e3.style.display = 'none';
+            }else{
+                e3.style.display = '';
+            }
+        }
+        relatedId = "{!JSENCODE($CurrentPage.parameters.id)}";
+
+        function checkInvest(elementObj) {
+            disableButton(elementObj);
+            var invArr = [];
+            $("input[type='checkbox']:checked").each(function(){
+                if($(this).attr("class") != 'headerChkBox' && $(this).attr("class") != undefined)                                 
+                    invArr.push($(this).attr("class").split('-')[1]);
+            });
+
+            if (invArr.length > 0) {
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.CMPL_123_INV_PItems.setInvestgations}',invArr,relatedId,function(result, event) {               
+                    if (event.status) {
+                        //Fix will support for Classic, Console app and Lightning experience page navigation.
+                        lexUtil.navigateByUserTheme(recordId, pageId);
+                    }           
+                },{escape:true});
+            } else {
+                $('#oneQt').css("display", "block");
+            }
+
+        }
+        
+        function doCancel(){            
+            document.getElementById("pg:fm:investPopup").style.display='none';    
+        }
+        
+        function checkAll(cb,cbid){            
+            var inputElem = document.getElementsByTagName("input");                              
+            for(var i=0; i<inputElem.length; i++){            
+                 if(inputElem[i].id.indexOf(cbid) != -1){                                       
+                    inputElem[i].checked = cb.checked;
+                }
+            }
+        }
+        
+        function unCheckHeader(){
+            $('.headerChkBox').removeAttr("checked");                        
+        }
+        
+        function unChkHeader(val){            
+            if (val.checked == false){                
+                $(".headerChkBox").removeAttr("checked");  
+            }else{                
+                var flag = 0;                 
+                $("input[type='checkbox']").each(function(){
+                    if($(this).attr("class") != 'headerChkBox'){                                              
+                         if(this.checked == false){                             
+                             flag = 1;   
+                         }
+                     }
+                 });                 
+                 if(flag == 0)
+                     $(".headerChkBox").prop("checked", true);
+            }    
+        }
+        
+        function loadPage(elementObj) {
+          var errorMsg = $(".messageText").text();
+          if ( errorMsg == '' || errorMsg == null) {
+              //Fix will support for Classic, Console app and Lightning experience page navigation.
+              lexUtil.navigateByUserTheme(recordId, pageId);
+          } else {
+              elementObj.disabled = false;
+              elementObj.value = '{!$Label.cmpl123cme__cmplt_save}';
+              elementObj.classList.remove("btnDisabled");
+          }
+        }
+
+        function disableButton(elementObj){
+            elementObj.disabled = true;
+            elementObj.value = '{!$Label.cmpl123cme__cmplt_saving}';
+            elementObj.classList.add("btnDisabled");
+        }
+    </script>
+    
+    <apex:form id="fm"> 
+        <apex:pageBlock title="{!$Label.cmpl123cme__cmplt_hello} {!$User.FirstName}! {!$Label.cmpl123cme__cmplt_investigation_steps_are_below}" mode="edit">
+            <apex:pageMessages id="showMsg"/>
+            <apex:outputPanel rendered="{!if(linesMap != null,false,true)}">
+               <apex:outputText style="color:red;margin-left:10px;" value="{!$Label.cmpl123cme__cmplt_no_investigations_found}"></apex:outputText>
+           </apex:outputPanel>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!saveChanges}" rendered="{!if(linesMap != null,true,false)}" oncomplete="loadPage(this);" reRender="showMsg" onclick="disableButton(this);"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_add_investigations}" action="{!getInvestigations}" reRender="fm" rendered="{!$Setup.CMPL123__CMPL_App_Config__c.CMPL123CME__Show_Add_Investigation_Button__c}"/>  
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockTable value="{!linesMap}" var="key" rendered="{!if(linesMap != null,true,false)}">
+                <apex:column >
+                   <apex:outputpanel id="plusimage" style="display:none;">
+                       <apex:image url="/img/alohaSkin/setup/setup_plus_lev1.gif" onclick="switchMenu('{!$Component.inlinetablesec}','{!$Component.minusimage}','{!$Component.plusimage}')" title="Expand - {!key} Questions"/> 
+                   </apex:outputpanel>
+                   <apex:outputpanel id="minusimage" >
+                       <apex:image url="/img/alohaSkin/setup/setup_minus_lev1.gif" onclick="switchMenu('{!$Component.inlinetablesec}','{!$Component.plusimage}','{!$Component.minusimage}')" title="Collapse - {!key} Questions"/>
+                   </apex:outputpanel> 
+                   {!key}
+                   <apex:outputpanel id="inlinetablesec" >
+                       <apex:pageblocktable value="{!linesMap[key]}" var="tsk">
+                           <apex:column value="{!tsk.Row_No__c}" width="10%"/>
+                           <apex:column value="{!tsk.Investigation_Step_Description__c}" width="40%"/>   
+                           <apex:column headerValue="{!$Label.cmpl123cme__cmplt_value}" width="25%">                               
+                               <apex:inputField value="{!tsk.Value__c}" rendered="{!if(tsk.Investigation_Template_Item__r.Field_Type__c== 'Text',true,false)}"/>
+                               <apex:inputField value="{!tsk.CMPL123CME__Checkbox_Value__c}" rendered="{!if(tsk.Investigation_Template_Item__r.Field_Type__c == 'Checkbox',true,false)}"/>
+                               <apex:inputField value="{!tsk.CMPL123CME__Date_Value__c}" rendered="{!if(tsk.Investigation_Template_Item__r.Field_Type__c == 'Date',true,false)}"/>
+                               <apex:inputField value="{!tsk.CMPL123CME__Datetime_Value__c}" rendered="{!if(tsk.Investigation_Template_Item__r.Field_Type__c == 'Datetime',true,false)}"/>
+                               <apex:inputField value="{!tsk.CMPL123CME__Number_Value__c}" rendered="{!if(tsk.Investigation_Template_Item__r.Field_Type__c == 'Number',true,false)}"/>
+                               <apex:selectList size="1" multiselect="false" value="{!tsk.Value__c}" rendered="{!if(tsk.Investigation_Template_Item__r.Field_Type__c == 'Picklist',true,false)}">
+                                   <apex:selectOptions value="{!selectOptionIdMap[tsk.Id]}"/>
+                               </apex:selectList>
+                           </apex:column> 
+                           <apex:column headerValue="{!$Label.cmpl123cme__cmplt_completed}" width="15%">
+                               <apex:inputField value="{!tsk.Completed__c}" />
+                           </apex:column> 
+                       </apex:pageblocktable>
+                   </apex:outputpanel>    
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:outputPanel id="investPopup" rendered="{!displayPopup}"> 
+           <apex:outputPanel styleClass="popupBackground" layout="block" id="popup"/>
+           <apex:outputPanel styleClass="custPopup" layout="block" id="pop">
+               <apex:pageBlock title="{!$Label.cmpl123cme__cmplt_add_investigations}">                  
+                   {!$Label.CMPL123CME__CMPLT_INVESTIGATION_NUMBER}:&nbsp;&nbsp;
+                    <apex:selectList value="{!invTempName}" size="1" onchange="invLst();">
+                        <apex:actionFunction name="invLst" action="{!getInvs}" reRender="inv,fm" oncomplete="unCheckHeader();"/>
+                        <apex:selectOptions value="{!InvAdminNames}"/>                       
+                    </apex:selectList><br/><br/>
+                    <div id="oneQt" style="display:none;color:red;" > {!$Label.CMPL123CME__CMPLT_SELECT_ATLEAST_ONE_QUESTION} </div>
+                    <apex:outputPanel rendered="{!dispalyClose}" >
+                       <input type="button" value="{!$Label.CMPL123CME__CMPLT_CLOSE}" onclick="doCancel();" style="margin-left:200px;" class="btn"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!displayBlock}" id="inv">                  
+                        <apex:pageBlock rendered="{!IF(invTempItemLst != null && invTempItemLst.size > 0,true,false)}">
+                           <apex:pageBlockTable value="{!invTempItemLst}" var="inv" >
+                               <apex:column >
+                                   <apex:facet name="header">
+                                       <apex:inputCheckbox onclick="checkAll(this,'chk');" styleClass="headerChkBox"/>
+                                   </apex:facet>
+                                   <apex:inputCheckbox id="chk" styleClass="chk-{!inv.Id}" onclick="unChkHeader(this);"/>
+                               </apex:column>
+                               <apex:column value="{!inv.CMPL123CME__Investigation_Item_Description__c}"/>
+                               <!-- <apex:column value="{!inv.CMPL123CME__Investigation_Template__r.Key_Value__c}"/> -->
+                           </apex:pageBlockTable>
+                           <apex:pageBlockButtons location="bottom">                          
+                               <input type="button" value="{!$Label.cmpl123cme__cmplt_save}" onclick="checkInvest(this);" class="btn" /> 
+                               <input type="button" value="{!$Label.CMPL123CME__CMPLT_CANCEL}" onclick="doCancel();" class="btn" /> 
+                           </apex:pageBlockButtons>                
+                        </apex:pageBlock>
+                    <!-- <apex:pageBlock rendered="{!IF(invTempItemLst.size == 0,true,false)}">
+                       <div style="text-align:center;">No investigations found to add</div><br/>                   
+                           <input type="button" value="Close" onclick="doCancel();" style="margin-left:200px;" />                   
+                    </apex:pageBlock> --> 
+                    </apex:outputPanel>                 
+                </apex:pageBlock>   
+           </apex:outputPanel>
+       </apex:outputPanel>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__B5_Describe_Event_or_Problem__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__D1_Brand_Name__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__D2_Common_Device_Name__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__G7_Type_of_Report_MultiSelect__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__G9_MFR_Report_Number__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <description>US-AER-077</description>
+    <filter>
+        <criteriaItems>
+            <column>CMPL123CME__EMDR__c.CMPL123CME__CMPL123_WF_Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Review In Progress</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Review in Progress eMDR</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CMPL123CME__EMDR__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

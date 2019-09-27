@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Checkbox Value --></label>
+        <name>CMPL123CME__Checkbox_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>CMPL123CME__Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Completed --></label>
+        <name>CMPL123CME__Completed__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Date Value --></label>
+        <name>CMPL123CME__Date_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Datetime Value --></label>
+        <name>CMPL123CME__Datetime_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Level --></label>
+        <name>CMPL123CME__Decision_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Type --></label>
+        <name>CMPL123CME__Field_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investigation Comment Required Options --></label>
+        <name>CMPL123CME__Investigation_Comment_Required_Options__c</name>
+    </fields>
+    <fields>
+        <label><!-- Step Description --></label>
+        <name>CMPL123CME__Investigation_Step_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investigation Template Item --></label>
+        <name>CMPL123CME__Investigation_Template_Item__c</name>
+        <relationshipLabel><!-- Investigation Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Parent Investigation --></label>
+        <name>CMPL123CME__Investigation__c</name>
+        <relationshipLabel><!-- Investigation Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Number Value --></label>
+        <name>CMPL123CME__Number_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Row No --></label>
+        <name>CMPL123CME__Row_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Score --></label>
+        <name>CMPL123CME__Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value --></label>
+        <name>CMPL123CME__Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weight --></label>
+        <name>CMPL123CME__Weight__c</name>
+    </fields>
+    <layouts>
+        <layout>Investigation Items Layout</layout>
+        <sections>
+            <label><!-- Audit --></label>
+            <section>Audit</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Cannot edit when Investigation is in Pending Approval --></errorMessage>
+        <name>Cannot_edit_when_Inv_is_pending_approval</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot edit, Investigation is Closed --></errorMessage>
+        <name>Cannot_edit_when_Investigation_is_closed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot change investigation Completed Value --></errorMessage>
+        <name>Do_nott_change_Investigation</name>
+    </validationRules>
+</CustomObjectTranslation>

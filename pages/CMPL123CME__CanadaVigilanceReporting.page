@@ -1,0 +1,808 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" renderAs="PDF"  standardController="CMPL123CME__CVR__c">
+  <html>
+        <head>
+         <style>
+            body { font-family: 'Arial Unicode MS'; }
+           </style>   
+        </head>
+        
+        <body>
+            <div>
+                <apex:image height="45px" width="100%" url="{!URLFOR($Resource.CMPL123CME__CVRHeader, '')}" />
+                <p style="color:#550367;font-size:32px;">Mandatory Medical Device Problem Reporting Form for Industry</p> 
+                <p>Report of problems related to medical devices marketed in Canada </p>
+                <p><b>CANADA VIGILANCE - MEDICAL DEVICE PROBLEM REPORTING PROGRAM(CV-MD)</b></p>
+                <hr/>
+            </div>
+            <div>
+                <p style="color:#550367;"><b>How to Submit the Report</b></p>
+                <p>Completed forms should be</p>
+                <table width="100%" style="font-size:14px;">
+                    <tr>
+                        <td width="20%"><b>emailed</b> to:</td>
+                        <td>mdpr@hc-sc.dc.ca</td>
+                    </tr>
+                    <tr>
+                        <td width="20%">or</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td width="20%"><b>faxed</b> to:</td>
+                        <td>613-954-0941</td>
+                    </tr>
+                    <tr>
+                        <td width="20%">or</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td width="20%" style="vertical-align: text-top;"><b>mailed</b> to:</td>
+                        <td>Canada Vigilance - Medical Device Problem Reporting Program <br/>
+                            Marketed Health Products Directorate<br/>
+                            Health Canada<br/>
+                            Address Locator 0701E<br/>
+                            200 Tunney’s Pasture Driveway<br/>
+                            Ottawa (Ontario) K1A0K9
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="20%" colspan="2" style="padding-top:20px">Submission of a report does not constitute an admission that medical personnel or the health product caused or contributed to the incident.</td>
+                    </tr>
+                </table>
+            </div>
+            <hr></hr>
+            <div style="font-size:14px;">
+                <p>For further information on the Mandatory Medical Device Problem Reporting by Industry, please refer to: Guidance
+                Document for Mandatory Problem Reporting for Medical Devices</p>
+                <p>http://www.hc-sc.gc.ca/dhp-mps/pubs/medeff/_guide/2011-devices-materiaux/index-eng.php</p>
+            </div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            
+            <apex:image height="50px" width="100%" url="{!URLFOR($Resource.CMPL123CME__CVRFooter, '')}"/>
+            
+            
+            <!-- End of Page 1-->
+            
+            <!--Start of Page 2-->
+                <div style="background:#480157;color:white;text-align:center;font-size:13px;font-weight:bold;height:20px;page-break-before:always;">
+                        INSTRUCTIONS ON COMPLETING THE MANDATORY MEDICAL DEVICE PROBLEM REPORTING FORM
+                </div><br/>
+                
+                <div style="float:left;width:47%;font-size:10px;font-family: sans-serif;">
+                    <table width="100%">
+                        <tr>
+                            <td  colspan="2" ><hr/></td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>A.</b></td>
+                            <td><b><span style="color:#33003E;">REPORTER INFORMATION</span></b><br/><br/>
+                                This section contains information about the reporter, who is submitting the report
+                                to Canada Vigilance – Medical Devices Problem Reporting Program (CV-MD) to
+                                fulfil their obligations under sections 59, 60, 61 and 61.1 of the Medical Devices
+                                Regulations. It also includes details about the manufacturer and importer of the
+                                medical device that are responsible to submit the report to CV-MD.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>A1.</b></td>
+                            <td><b>Reporter Type:</b><br/>
+                                i. Indicate if the reporter submitting this report to CV-MD is the manufacturer or the importer.<br/>
+                                ii. Indicates if the importer submitting this report to CV-MD has also submitted reported this problem to the manufacturer of the device.<br/>
+                                iii. Indicates if the importer is submitting on behalf of the manufacturer.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>A2.</b></td>
+                            <td><b>Reporter Contact Information: </b> 
+                                Includes the name of the individual, email, telephone and fax number of the reporter or his/her representative
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>A3.</b></td>
+                            <td><b>Reporter File Number:</b>
+                                Indicates the manufacturer’s or importer’s file number for the case. For final reports, the report number should be the same as the preliminary report.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>A4.</b></td>
+                            <td><b>Health Canada File Number:</b>
+                                A number provided in the acknowledgement letter for the preliminary report. It’s a unique number assigned by Health Canada for the report.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>A5.</b></td>
+                            <td><b>Type of Report:</b>
+                                Indicates if the report being submitted is a preliminary, update, final, or a preliminary and final. It also includes the anticipated date for the submission of the final report.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>A6.</b></td>
+                            <td><b>Date Submitted:</b>
+                                Indicates the date at which the report is being submitted by the manufacturer/importer to CV-MD.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>A7.</b></td>
+                            <td><b>Name and Address:</b>
+                                Indicates the name and address of the manufacturer and importer of the medical device.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>A8.</b></td>
+                            <td><b>Health Canada assigned company identification number (if known):</b>
+                                The company identification number can be found either on the medical device licence or on the medical device establishment licence, as appropriate.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>A9.</b></td>
+                            <td><b>Establishment Licence Number (if applicable):</b>
+                                Indicates the establishment licence (MDEL) number of the manufacturer and importer of the medical device in Canada.
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td  colspan="2" ><hr/></td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>B.</b></td>
+                            <td><b><span style="color:#33003E;">INCIDENT INFORMATION</span></b><br/><br/>
+                                This section contains information about the incident that occurred with the medical
+                                device requiring a mandatory problem report to be submitted to CV-MD. It
+                                includes details about the incident and the patient consequences that
+                                occurred/could have occurred. In the context of mandatory problem reporting,
+                                information on the incident refers to the circumstances requiring reporting under
+                                section 59 of the Medical Devices Regulations.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>B1.</b></td>
+                            <td><b>Classification of Incident: </b><br/>
+                                i. Indicates if the report is a 10 day or 30 day report, based on the seriousness of the incident associated with the medical device
+                                ii. whether the incident occurred inside or outside Canada
+                                iii. whether the incident occurred during investigational testing, or was caused by a medical device available only through the special access program or is a radiation emitting device (RED).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>B2.</b></td>
+                            <td><b>Date of Incident:</b><br/>
+                                Indicates the date at which the incident with the medical device occurred.<br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>B3.</b></td>
+                            <td><b>Reporter’s Awareness Date:</b><br/>
+                                Indicates the date at which the manufacturer/importer of the medical device became aware of the potential problem associated with the device.<br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>B4.</b></td>
+                            <td><b>Patient Consequences:</b><br/>
+                                Includes information on the patient who was involved in the incident, and the consequences (or potential consequences) to the patient, user or other person(s) involved.<br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>B5.</b></td>
+                            <td><b>Details of Incident:</b><br/>
+                                Includes description of device(s), equipment, or drugs involved in the incident, and a detailed description of what happened in the incident.<br/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div style="width:50%;float:right;font-size:10px;font-family: sans-serif;">
+                    <table width="100%">
+                        <tr>
+                            <td  colspan="2" ><hr/></td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>C.</b></td>
+                            <td><b><span style="color:#33003E;">MEDICAL DEVICE INFORMATION</span></b><br/><br/>
+                                This section contains details about the medical device involved in the incident, including its brand name and licence number.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>C1.</b></td>
+                            <td><b>Trade/Brand Name:</b>
+                                Indicates the trade/brand name of the device and reported on the label.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>C2.</b></td>
+                            <td><b>Control/Lot/Serial #:</b>
+                                Indicates the control number, lot number and/or serial number for the device.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>C3.</b></td>
+                            <td><b>Expiration Date:</b>
+                                Indicates the expiration date issued to the medical device(if applicable).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>C4.</b></td>
+                            <td><b>i. Device Classification:</b>
+                                Indicates the class of the device (I-IV).<br/>
+                                <b>ii. Device Licence Number:</b> Indicates the medical device licence number issued by the Medical Devices Bureau on behalf of the Minister for Class II, III and IV medical devices sold in Canada.<br/>
+                                <b>iii. Device Identification No:</b> Indicates the device identification number assigned by Health Canada in the license issued for the device.<br/>
+                                <b>iv. Manufacturer’s Medical Device Identifier:</b> Indicates the unique series of letters or numbers or any combination of these or a bar code that is assigned to a medical device by the manufacturer and that identifies it and distinguishes it from similar devices. Examples of an identifier for a device are a catalogue, model or part number. <br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>C5.</b></td>
+                            <td><b>Software Version: </b>
+                                Indicates the version of the software contained within the device, if applicable for the device.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>C6.</b></td>
+                            <td><b>Age of Device: </b>Indicates the number of years since the manufacturing date of the device.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>C7.</b></td>
+                            <td><b>How long was the device in use?</b>
+                                Indicates how long the device was used.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>C8.</b></td>
+                            <td><b>Was the device labelled as sterile?</b>
+                                Indicates if the device sold was manufactured and packaged in sterile conditions.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>C9.</b></td>
+                            <td><b>Availability of Device:</b>
+                                Indicates if the device has been destroyed, or is available for the company/Health Canada for further evaluation to determine the root cause of the failure associated with the device.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><hr></hr></td>
+                        </tr>
+                       
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>D.</b></td>
+                            <td><b><span style="color:#33003E;">COMPLAINANT INFORMATION</span></b><br/><br/>
+                                This section contains information about the complainant that contacted the reporter to inform them about the incident.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>D1.</b></td>
+                            <td><b>Complainant is a:</b>
+                                Indicates if the complainant reporting to the manufacturer/importer was a consumer, a health professional etc.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>D2.</b></td>
+                            <td><b>Name of Complainant:</b>
+                                Indicates the name of the person who informed the reporter about the incident
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>D3.</b></td>
+                            <td><b>Name of Health Care Facility:</b>
+                                This section indicates the name of the health care facility where the problem occurred.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>D4.</b></td>
+                            <td><b>Address:</b>
+                                Indicates the complete address of the complainant, including the postal code.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>D5.</b></td>
+                            <td><b>Contact Information:</b>
+                                Indicates the telephone number and/or email address of the complainant.
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2"><hr></hr></td>
+                        </tr>
+                        
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>E.</b></td>
+                            <td><b><span style="color:#33003E;">INVESTIGATION INFORMATION</span></b><br/><br/>
+                                This section contains information about the investigation being carried out by the
+                                manufacturer/importer of the medical device to determine if there’s any problem
+                                with the medical device, and if any corrective actions are necessary.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>E1.</b></td>
+                            <td><b>Investigative Actions and Timeline:</b>
+                                Includes the rationale for the course of action taken to investigate the incident, the details of the action to be completed, and the timeline for its completion. If no investigation is to be done, a rational needs to be provided here.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>E2.</b></td>
+                            <td><b>Root Cause of Problem:</b>
+                                To be completed once the investigation of the incident is complete, and the root cause of the incident identified. The root cause would ascertain the most likely reason why the problem occurred with the medical device. This section only applies for final reports.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: text-top;"><b>E3.</b></td>
+                            <td><b>Corrective actions taken as a result of the investigation:</b>
+                                Includes information on actions taken to correct the problem, including any post-market surveillance, recalls or corrective or preventive actions and the design and manufacture of the device. This should also include the rationale for performing the corrective action. This section only applies for final reports. If no corrective action is to be taken, a rationale needs to be provided here.  
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- End of Page 2 -->
+                
+                <!-- Start of Page 3 -->
+                
+                <div width="100%" style="page-break-before:always;">
+                    <table width="100%" style="background:#480157;color:white;font-size:12px;font-weight:bold;text-align:center"><tr><td>INSTRUCTIONS ON COMPLETING THE MANDATORY MEDICAL DEVICE PROBLEM REPORTING FORM</td></tr></table>
+                </div>
+                <hr></hr><br/>
+                <div style="float:left;width:50%;font-size:9px;font-family:sans-serif;">
+                    <table width="100%">
+                        <tr>
+                            <td><b><span style="color:#33003E;">NOTE ON SUBMITTING REPORTS</span></b><br/><br/>
+                                Manufacturers and importers should ensure that all information requested in the
+                                form has been submitted to Health Canada through the use of preliminary, updates
+                                or final reports. Preliminary reports require that all sections (except E2 and E3) be
+                                filled. Sections of the form which must be filled when submitting a follow up to a
+                                preliminary report are indicated by an *. In addition to these sections, it’s
+                                imperative that manufacturer/importers fill any other sections in the form that need
+                                to be updated to reflect any corrections to the information submitted previously to
+                                the Canada Vigilance - Medical Device Problem Reporting Program. <br/><br/>
+                                For example, if during the course of the investigation, additional steps were added
+                                as part of the course of action to investigate the incident, or there was additional
+                                information about patient outcomes, manufacturers and importers must submit this
+                                information in the relevant field.
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                
+                
+                <!-- End of Page 3 -->
+                
+                <!-- Start of Page 4-->
+                    <div style="page-break-before:always;">
+                        <apex:image height="45px" width="100%" url="{!URLFOR($Resource.CMPL123CME__CVRHeader, '')}"/>
+                        <h1 style="font-size:18px;color:#550367;">Mandatory Medical Device Problem Reporting Form for Industry</h1>
+                            <p style="font-size:12px"><b>CANADA VIGILANCE - MEDICAL DEVICE PROBLEM REPORTING PROGRAM </b><br/>
+                            <span style="font-size:10px">If more space is required, please attach additional sheets<br/>
+                                Fields required to be completed for updates/final reports are indicated by an *
+                            </span>
+                        </p>
+                    </div>
+                    <div style="background:#480157;color:white;text-align:left;font-size:14px;font-weight:bold;height:20px">
+                        A. REPORTER INFORMATION
+                    </div>
+                    <table  width="100%" style="font-size:12px">   
+                        <tr>
+                            <td width="45%" style="border-right:solid 1px black;" >
+                                <table width="100%" style="vertical-align: text-top;">
+                                    <tr>
+                                        <td class="fieldNames">1.&nbsp; i.&nbsp; Reporter Type</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%">
+                                                <tr>
+                                                    <td width="50%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Reporter_Type__c == 'Manufacturer','/radio_yes.png','/radio_no.png'))}"/>Manufacturer</td> 
+                                                    <td width="50%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Reporter_Type__c == 'Importer','/radio_yes.png','/radio_no.png'))}"/>Importer</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td >In the case where the reporter is the importer:</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>ii.&nbsp; Did the importer report the incident to the manufacturer?</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%">
+                                                <tr>
+                                                    <td width="50%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Did_Importer_Reportred_Incid_to_Manufact__c == 'Yes','/radio_yes.png','/radio_no.png'))}"/>Yes</td>
+                                                    <td width="50%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Did_Importer_Reportred_Incid_to_Manufact__c == 'No','/radio_yes.png','/radio_no.png'))}"/>No</td> 
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>iii.&nbsp; Is the importer also submitting the report on behalf of the manufacturer?</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%">
+                                                <tr>
+                                                    <td width="50%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Is_Importer_Submitting_Report__c == 'Yes','/radio_yes.png','/radio_no.png'))}"/>Yes </td>
+                                                    <td width="50%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Is_Importer_Submitting_Report__c == 'No','/radio_yes.png','/radio_no.png'))}"/>No </td> 
+                                                </tr>
+                                            </table>
+                                        <hr></hr>
+                                        </td>
+                                    </tr>   
+                                    <tr>
+                                        <td>2. Reporter Contact Information*
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 50px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Reporter_Contact_Information__c)>150, LEFT(CMPL123CME__CVR__c.CMPL123CME__Reporter_Contact_Information__c,150), CMPL123CME__CVR__c.CMPL123CME__Reporter_Contact_Information__c) }</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="55%" >
+                                <table width="100%" >
+                                    <tr>
+                                        <td>3.&nbsp; Reporter File No.*
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 15px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Reporter_File_No__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Reporter_File_No__c,50), CMPL123CME__CVR__c.CMPL123CME__Reporter_File_No__c) }</div>
+                                            <hr></hr>
+                                            4. Health Canada File No. (if applicable) *
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 15px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Health_Canada_File_No__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Health_Canada_File_No__c,50), CMPL123CME__CVR__c.CMPL123CME__Health_Canada_File_No__c) }</div>
+                                            <hr></hr>
+                                            5. Type of Report*
+                                        </td>                                       
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td width="20%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Type_of_Report__c == 'Preliminary','/radio_yes.png','/radio_no.png'))}"/>Preliminary</td>
+                                                    <td width="20%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Type_of_Report__c == 'Update','/radio_yes.png','/radio_no.png'))}"/>Update</td>
+                                                    <td width="20%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Type_of_Report__c == 'Final','/radio_yes.png','/radio_no.png'))}"/>Final</td>
+                                                    <td width="30%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Type_of_Report__c == 'Preliminary and Final','/radio_yes.png','/radio_no.png'))}"/>Preliminary and Final</td>
+                                                
+                                                </tr>
+                                            </table>
+                                        </td>                                       
+                                    </tr>
+                                    <tr>
+                                        <td>If “preliminary” only, anticipated date for the final report:
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 15px;font-weight: 100;">
+                                                <apex:outputText value="{0,date, yyyy/MM/dd}" >
+                                                    <apex:param value="{!CMPL123CME__CVR__c.CMPL123CME__If_Preliminary_final_report_date__c}" />
+                                                </apex:outputText> 
+                                            </div>
+                                            
+                                        </td>                                       
+                                    </tr>
+                                    <tr>
+                                        <td>If “update/final”, date the previous report was submitted to Health Canada:
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 15px;font-weight: 100;">
+                                                <apex:outputText value="{0,date, yyyy/MM/dd}" >
+                                                    <apex:param value="{!CMPL123CME__CVR__c.CMPL123CME__If_Update_Final_Previous_Date__c}" />
+                                                </apex:outputText> 
+                                            </div>
+                                            <hr></hr>
+                                        </td>   
+                                    </tr>
+                                    <tr>
+                                        <td>6. Date Submitted *
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 15px;font-weight: 100;">
+                                            <apex:outputText value="{0,date, yyyy/MM/dd}" >
+                                                <apex:param value="{!CMPL123CME__CVR__c.CMPL123CME__Date_Submitted__c}" />
+                                            </apex:outputText> 
+                                            </div>
+                                        </td>                                       
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table width="100%" border="1" cellspacing="0" cellpadding="3" style="border-left:0px;font-size:12px;">
+                        <tr>
+                            <td  width="40%"></td>
+                            <td  width="33.33%" style="text-align:center">Manufacturer</td>
+                            <td  width="33.33%" style="text-align:center">Importer</td>
+                        </tr>
+                         <tr>
+                            <td width="40%" height="30px">7. Name and Address</td>
+                            <td width="33.33%">
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 30px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Name_and_Address__c)>150, LEFT(CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Name_and_Address__c,150), CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Name_and_Address__c) }</div>   
+                            </td>
+                            <td  width="33.33%">
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 30px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Importer_Name_and_Address__c)>150, LEFT(CMPL123CME__CVR__c.CMPL123CME__Importer_Name_and_Address__c,150), CMPL123CME__CVR__c.CMPL123CME__Importer_Name_and_Address__c) }</div>   
+                            </td>
+                        </tr>
+                         <tr>
+                            <td  width="40%">8. Health Canada assigned company identification number (if known):</td>
+                            <td  width="33.33%">
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 30px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Health_Canada_Id_No__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Health_Canada_Id_No__c,50), CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Health_Canada_Id_No__c) }</div>   
+                            </td>
+                            <td  width="33.33%">
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 30px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Importer_Health_Canada_ID_No__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Importer_Health_Canada_ID_No__c,50), CMPL123CME__CVR__c.CMPL123CME__Importer_Health_Canada_ID_No__c) }</div>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  width="40%">9. Establishment License Number (if applicable):</td>
+                            <td  width="33.33%">
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 20px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Establishment_License__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Establishment_License__c,50), CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Establishment_License__c) }</div>   
+                            </td>
+                            <td  width="33.33%">
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 20px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Importer_Establishment_Licence_Number__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Importer_Establishment_Licence_Number__c,50), CMPL123CME__CVR__c.CMPL123CME__Importer_Establishment_Licence_Number__c) }</div>   
+                            </td>
+                        </tr>
+                    </table>        
+                    <br/>
+                    <div style="background:#480157;color:white;text-align:left;font-size:14px;font-weight:bold;height:20px">
+                        B. INCIDENT INFORMATION
+                    </div>
+                    
+                    <table width="100%" style="font-size:12px">
+                        <tr>
+                            <td width="50%" style="border-right:solid 1px black;">
+                                <table width="100%">
+                                    <tr>
+                                        <td>1. &nbsp; Classification of Incident*</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%">
+                                                <tr>
+                                                    <td width="50%">i.&nbsp;&nbsp;<apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__How_Many_Days_Report__c == '10-Day','/radio_yes.png','/radio_no.png'))}"/>10-Day</td> 
+                                                    <td width="50%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__How_Many_Days_Report__c == '30-Day','/radio_yes.png','/radio_no.png'))}"/>30-Day</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td width="50%">ii.&nbsp;<apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Where_did_the_Incident_Occured__c == 'Canadian','/radio_yes.png','/radio_no.png'))}"/>Canadian</td> 
+                                                    <td width="50%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Where_did_the_Incident_Occured__c == 'Foreign','/radio_yes.png','/radio_no.png'))}"/>Foreign</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td width="50%">iii.<apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Incident_Occurred_During__c == 'Investigational testing','/radio_yes.png','/radio_no.png'))}"/>Investigational Testing</td> 
+                                                    <td width="50%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Incident_Occurred_During__c == 'Special Access Program','/radio_yes.png','/radio_no.png'))}"/>Special Access Program</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td width="50%" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Incident_Occurred_During__c == 'Radiation emitting device (if applicable)','/radio_yes.png','/radio_no.png'))}"/>Radiation emitting device(if applicable)</td> 
+                                                </tr>
+                                            </table>
+                                            <hr/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2. &nbsp; Date of Incident
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 15px;font-weight: 100;">
+                                                <apex:outputText value="{0,date, yyyy/MM/dd}" >
+                                                    <apex:param value="{!CMPL123CME__CVR__c.CMPL123CME__Date_of_Incident__c}" />
+                                                </apex:outputText> 
+                                            </div>
+                                            <hr/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3. &nbsp; Reporter's Awareness Date
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 15px;font-weight: 100;">
+                                                <apex:outputText value="{0,date, yyyy/MM/dd}" >
+                                                    <apex:param value="{!CMPL123CME__CVR__c.CMPL123CME__Reporter_Awareness_Date__c}" />
+                                                </apex:outputText> 
+                                            </div>
+                                            <hr/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4. &nbsp; Patient Consequences
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 50px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Patient_Consequences__c)>400, LEFT(CMPL123CME__CVR__c.CMPL123CME__Patient_Consequences__c,400), CMPL123CME__CVR__c.CMPL123CME__Patient_Consequences__c) }</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="vertical-align: text-top;">5. Details of Incident 
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:270px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Details_of_Incident__c)>5000, LEFT(CMPL123CME__CVR__c.CMPL123CME__Details_of_Incident__c,5000), CMPL123CME__CVR__c.CMPL123CME__Details_of_Incident__c) }</div>   
+                            </td>
+                        </tr>
+                    </table>
+                    <hr/>
+                   <apex:image height="50px" width="100%" url="{!URLFOR($Resource.CMPL123CME__CVRFooter, '')}"/>
+                <!-- End of Page 4-->
+                
+                
+                <!--Start Of Page 5 -->
+                    <table width="100%" style="page-break-before:always;font-size:12px;" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td width="50%" style="border-right:solid 1px black;">
+                                <table width="100%">
+                                    <tr>
+                                        <td>
+                                            <div style="background:#480157;color:white;text-align:left;font-size:14px;font-weight:bold;height:20px">
+                                                C. MEDICAL DEVICE INFORMATION
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1.&nbsp; Trade/Brand Name *
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:15px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Trade_Brand_Name__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Trade_Brand_Name__c,50), CMPL123CME__CVR__c.CMPL123CME__Trade_Brand_Name__c) }</div>      
+                                            <hr></hr>
+                                            2.&nbsp; Control/Lot/Serial No
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:20px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Control_Lot_Serial_No__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Control_Lot_Serial_No__c,50), CMPL123CME__CVR__c.CMPL123CME__Control_Lot_Serial_No__c) }</div>      
+                                            <hr></hr>
+                                            
+                                            3.&nbsp; Expiration Date
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:20px;font-weight: 100;">
+                                                <apex:outputText value="{0,date, yyyy/MM/dd}" >
+                                                    <apex:param value="{!CMPL123CME__CVR__c.CMPL123CME__Expiration_Date__c}" />
+                                                </apex:outputText> 
+                                            </div>      
+                                            <hr></hr>
+                                            4.&nbsp; i. Device Classification 
+                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%">
+                                                <tr>
+                                                    <td width="25%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Device_Classification__c == 'I','/radio_yes.png','/radio_no.png'))}"/>I</td>
+                                                    <td width="25%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Device_Classification__c == 'II','/radio_yes.png','/radio_no.png'))}"/>II</td>
+                                                    <td width="25%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Device_Classification__c == 'III','/radio_yes.png','/radio_no.png'))}"/>III</td>
+                                                    <td width="25%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Device_Classification__c == 'IV','/radio_yes.png','/radio_no.png'))}"/>IV</td>
+                                                    
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>ii.&nbsp; Device License No.
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:20px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Device_License_No__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Device_License_No__c,50), CMPL123CME__CVR__c.CMPL123CME__Device_License_No__c) }</div>      
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>iii.&nbsp;Device Identification No
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:20px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Device_Identification_No__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Device_Identification_No__c,50), CMPL123CME__CVR__c.CMPL123CME__Device_Identification_No__c) }</div>      
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>iv.&nbsp; Manufacturer’s Medical Device Identifier(catalogue/model no.)
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:15px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Medical_Device_Identifier__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Medical_Device_Identifier__c,50), CMPL123CME__CVR__c.CMPL123CME__Manufacturer_Medical_Device_Identifier__c) }</div>      
+                                            <hr></hr>
+                                            5. &nbsp; Software Version
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:15px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Software_Version__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Software_Version__c,50), CMPL123CME__CVR__c.CMPL123CME__Software_Version__c) }</div>      
+                                            <hr></hr>
+                                            6.&nbsp; Age of Device
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:15px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Age_of_Device__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Age_of_Device__c,50), CMPL123CME__CVR__c.CMPL123CME__Age_of_Device__c) }</div>      
+                                            <hr></hr>
+                                            7.&nbsp; How long was the device in use?
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:15px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__How_long_was_the_device_in_use__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__How_long_was_the_device_in_use__c,50), CMPL123CME__CVR__c.CMPL123CME__How_long_was_the_device_in_use__c) }</div>      
+                                            <hr></hr>
+                                            8.&nbsp; Was the device labelled as sterile?
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <table width="100%">
+                                                <tr>
+                                                    <td width="50%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Was_the_device_labelled_as_sterile__c == 'Yes','/radio_yes.png','/radio_no.png'))}"/>Yes</td>
+                                                    <td width="50%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Was_the_device_labelled_as_sterile__c == 'No','/radio_yes.png','/radio_no.png'))}"/>No</td>
+                                                </tr>
+                                            </table>
+                                            <hr></hr>
+                                            9.&nbsp; Availability of device for evaluation
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%">
+                                                <tr>
+                                                    <td width="20%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Availability_of_device_for_evaluation__c == 'Destroyed','/radio_yes.png','/radio_no.png'))}"/>Destroyed</td>
+                                                    <td width="33.33%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Availability_of_device_for_evaluation__c == 'Returned to Manufacturer/Importer','/radio_yes.png','/radio_no.png'))}"/>Returned to Manufacturer/Importer</td>
+                                                    <td width="40.33%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Availability_of_device_for_evaluation__c == 'Neither(with explanation)','/radio_yes.png','/radio_no.png'))}"/>Neither (with explanation)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <table border="1" cellspacing="0" cellpadding="3" style="width:100%;height:20px">
+                                                            <tr>
+                                                                <td>
+                                                                    <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:15px;font-weight: 100;">
+                                                                    {!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Explanation_if_Neither__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Explanation_if_Neither__c,50), CMPL123CME__CVR__c.CMPL123CME__Explanation_if_Neither__c) }</div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <hr></hr>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="background:#480157;color:white;text-align:left;font-size:14px;font-weight:bold;height:20px">
+                                                D. COMPLAINANT INFORMATION
+                                            </div>    
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1. &nbsp; Complainant is a:</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%">
+                                                <tr> 
+                                                    <td width="33.33%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Complainant_is_a__c == 'Consumer','/radio_yes.png','/radio_no.png'))}" />Consumer</td>
+                                                    <td width="33.33%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Complainant_is_a__c == 'Health Professional','/radio_yes.png','/radio_no.png'))}" />Health Professional</td>
+                                                    <td width="33.33%"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__CVR__c.CMPL123CME__Complainant_is_a__c == 'Other','/radio_yes.png','/radio_no.png'))}" />Other</td>
+                                                </tr>
+                                            </table>
+                                            <hr></hr>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.&nbsp; Name of Complainant
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:15px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Name_of_Complainant__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Name_of_Complainant__c,50), CMPL123CME__CVR__c.CMPL123CME__Name_of_Complainant__c) }</div>      
+                                            <hr></hr>
+                                            3.&nbsp;Name of Health Care Facility (if applicable)
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:15px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Name_of_Health_Care_Facility__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Name_of_Health_Care_Facility__c,50), CMPL123CME__CVR__c.CMPL123CME__Name_of_Health_Care_Facility__c) }</div>      
+                                            <hr></hr>
+                                            4.&nbsp;Address
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:15px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Address__c)>150, LEFT(CMPL123CME__CVR__c.CMPL123CME__Address__c,150), CMPL123CME__CVR__c.CMPL123CME__Address__c) }</div>      
+                                            <hr></hr>
+                                            5.&nbsp; Telephone No. and/or E-mail Address
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:15px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Telephone_No_Email_Address__c)>50, LEFT(CMPL123CME__CVR__c.CMPL123CME__Telephone_No_Email_Address__c,50), CMPL123CME__CVR__c.CMPL123CME__Telephone_No_Email_Address__c) }</div>      
+                                            <hr></hr>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="1" cellspacing="0" cellpadding="3" style="font-size:7px">
+                                                <tr>
+                                                    <td>Privacy Notice Statement: For the purposes of the Canada Vigilance -
+                                                        Medical Device Problem Reporting Program, information related to the identity
+                                                        of the complainant and/or reporter will be protected as personal information
+                                                        under the Privacy Act, and under the Access to Information Act in the case of
+                                                        an access to information request. For details with regard to personal
+                                                        information collected under this program, visit the Personal Information Bank;
+                                                        Health Canada; Health Products and Food Branch; Branch Incident Reporting
+                                                        System; HC PPU 088 at: http://infosource.gc.ca/inst/1476/1476-fedemp00-
+                                                        eng.asp
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            
+                            <td width="45%" style="vertical-align: text-top;">
+                                <table width="100%">
+                                    <tr>
+                                        <td>
+                                            <div style="background:#480157;color:white;text-align:left;font-size:14px;font-weight:bold;height:20px">
+                                               E. INVESTIGATION INFORMATION
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            1. Investigative Actions and Timeline
+                                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:300px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Investigative_Actions_and_Timeline__c)>1500, LEFT(CMPL123CME__CVR__c.CMPL123CME__Investigative_Actions_and_Timeline__c,1500), CMPL123CME__CVR__c.CMPL123CME__Investigative_Actions_and_Timeline__c) }</div>      
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <table border="1" cellpadding="3" cellspacing="0" width="100%">
+                                                <tr>
+                                                    <td style="font-size:7px; text-align:center;">This section only applies for preliminary and final, and final reports</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2.&nbsp;Root Cause of Problem
+                                                        <div style="background-color: rgb(222,229,255);line-height:7pt;font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:250px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Root_Cause_of_Problem__c)>1500, LEFT(CMPL123CME__CVR__c.CMPL123CME__Root_Cause_of_Problem__c,1500), CMPL123CME__CVR__c.CMPL123CME__Root_Cause_of_Problem__c) }</div>      
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3.&nbsp; Corrective Actions taken as a result of the investigation
+                                                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:270px;font-weight: 100;">{!if(LEN(CMPL123CME__CVR__c.CMPL123CME__Corrective_Actions_taken__c)>1500, LEFT(CMPL123CME__CVR__c.CMPL123CME__Corrective_Actions_taken__c,1500), CMPL123CME__CVR__c.CMPL123CME__Corrective_Actions_taken__c) }</div>      
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="100%">
+                        <tr><td><hr></hr></td></tr>   
+                    </table>
+                <!--End of Page 5 -->
+        </body>
+  </html>
+</apex:page>

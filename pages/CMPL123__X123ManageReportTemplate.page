@@ -1,0 +1,386 @@
+<apex:page standardStylesheets="false" sidebar="false" showHeader="false" controller="CMPL123.X123ReportTemplateBuilderController" applyBodyTag="false" applyhtmlTag="false">
+    <html ng-app="ManageReportTemplateApp"  lang="en">
+    <head>
+        <meta charset="utf-8"/>
+
+        <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/Angular/js/Angular.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/Angular/js/BootstrapAngular.js')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/Angular/css/Bootstrap.css')}"/>
+
+        <!-- START Custom Style Def Block -->
+        <style>
+            .navbar {
+                margin:2px;
+                padding-left: 0;
+                padding-right: 0;
+                border-width: 0;
+                border-radius: 10;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                min-height: 45px;
+                background: #438eb9;
+            }
+            [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+                display: none !important;
+            }
+        </style>
+        <!-- END Custom Style Def Block -->
+
+        <script>
+
+            var app = angular.module('ManageReportTemplateApp', ['ui.bootstrap']);
+
+            app.controller('TemplateListCtrl',
+                function($scope, $window){
+                    //Remote action to get list of record
+                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.getAllSObjects}',
+                        function(response, event){
+                            if(event.status){
+                                $scope.typeObjList  = JSON.parse(htmlDecode(response));
+                                var selectionList = '{!JSENCODE(objApiName)}';
+                                if(selectionList.length > 0){
+                                    var selectedObject  = filterObject($scope.typeObjList, selectionList);
+                                    $scope.selected = selectedObject;
+                                    $scope.fetchTemplateList(selectedObject);
+                                }
+                            } else {
+                                alert(event.message);
+                            }
+                        },
+                        {escape:true}
+                    );
+
+                /**
+                 * @param {Object}  selectedTypeObj
+                 * @method fetchTemplateList
+                 * @description Fetch the list of templates based on the selected object
+                 * @return none
+                 */
+                $scope.fetchTemplateList = function(selectedTypeObj){
+                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.getReportTemplates}', selectedTypeObj.Name,
+                        function(response, event){
+                            if(event.status){
+                                var result = JSON.parse(htmlDecode(response));
+                                if(result.length > 0){
+                                    $scope.templateList = result;
+                                    $scope.alertMsg = false;
+                                    $scope.$apply();
+                                }else{
+                                    $scope.templateList = [];
+                                    $scope.alertMsg = true;
+                                    $scope.$apply();
+                                }
+                            }else {
+                                alert(event.message);
+                            }
+                        },
+                        {escape:true}
+                    );
+                };
+
+                /**
+                 * @param {String}  recordId
+                 * @param {String}  index
+                 * @method removeTemplate
+                 * @description deletes the template
+                 * @return none
+                 */
+                $scope.removeTemplate = function(recordId, index){
+                    if($window.confirm('{!$Label.ARE_YOU_SURE}')){
+                        Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.deleteTemplate}', recordId,
+                            function(result,event){
+                                if(event.status){
+                                    $scope.templateList.splice(index, 1);
+                                    $scope.$apply();
+                                }
+                            },
+                            {escape:true}
+                        );
+                    }
+                };
+
+                /**
+                 *
+                 * @param {String}  index
+                 * @method toggleActivationStatus
+                 * @description Toggles the activation status for the given template
+                 * @return none
+                 */
+                $scope.toggleActivationStatus = function(index){
+
+                    var record = $scope.templateList[index];
+
+                    var recordId = record.Id;
+
+                    var curActiveState = $scope.isTemplateActive(index);
+                    var targetActiveState = (!(curActiveState)).toString(); // we want to new state to be opposite to what it currently is
+
+                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.doActivate}', recordId, targetActiveState,
+                        function(response, event){
+                            if(event.status){
+                                $scope.templateList[index] = JSON.parse(htmlDecode(response));
+                                $scope.$apply();
+                            }
+                        },
+                        {escape:true}
+                    );
+                };
+
+                /**
+                 * @param {String}  label
+                 * @param {String}  name
+                 * @method createTemplate
+                 * @description Navigates to the new Template creation page
+                 * @return none
+                 */
+                $scope.createTemplate = function(label, name) {
+                    var url = $scope.getTemplateBuilderURL(label, name);
+                    if(lexUtil.inLEX()) {
+                        lexUtil.lexNavigateToURL(url);
+                    } else {
+                        parent.top.location.href = url;
+                    }
+                };
+
+                /**
+                 *
+                 * @param {String}  index
+                 * @method isTemplateActive
+                 * @description checks whether the template is active or not
+                 * @return boolean
+                 */
+                $scope.isTemplateActive = function(index) {
+                    //pull target template object from scope template map
+                    var targetObject = $scope.templateList[index];
+
+                    // verify the index was valid, and returned an object
+                    if(targetObject){
+                        // check if the template object has an isActive property
+                        if(targetObject.CMPL123__IsActive__c){
+                            return targetObject.CMPL123__IsActive__c === true;
+                        }else{
+                            // far a template not of template type, return false
+                            return false;
+                        }
+                    } else {
+                        // for a template that does not exist in the map, return false
+                        return false;
+                    }
+                };
+
+                /**
+                 * @param {String}  label
+                 * @param {String}  name
+                 * @param {String}  templateId
+                 * @method getTemplateBuilderURL
+                 * @description Constructs a valid x123ReportBuilder URL
+                 * @return String|null
+                 */
+                $scope.getTemplateBuilderURL = function(label, name, templateId){
+                    var url = "/apex/CMPL123__X123ReportTemplateBuilder";
+                    var isFirstAttribute = true;
+
+                    // if a label was provided, then add it to then URL
+                    if(label){
+                        url =  url + "?" + "label=" + label;
+                        isFirstAttribute = false;
+                    }
+
+                    // if a name was provided, then add it to then URL
+                    if(name){
+                        if(isFirstAttribute){
+                            url = url + "?";
+                        }else{
+                            url = url + "&";
+                            isFirstAttribute = false;
+                        }
+                        url = url + "Name=" + name;
+                    }
+
+                    // if a name was provided, then add it to then URL
+                    if(templateId){
+                        if(isFirstAttribute){
+                            url = url + "?";
+                        }else{
+                            url = url + "&";
+                        }
+                        url = url + "Id=" + templateId;
+                    }
+
+                    return url;
+                };
+
+                /**
+                 * @param {String}  index
+                 * @method getTemplateActivationLabel
+                 * @description fetches the label corresponding to the correct template activation state
+                 * @return String
+                 */
+                $scope.getTemplateActivationLabel = function(index){
+                    if ($scope.isTemplateActive(index)) {
+                        return "{!$Label.DEACTIVATE}";
+                    } else {
+                        return "{!$Label.ACTIVATE}";
+                    }
+                }
+
+            });
+
+            /**
+             * @param {Array}   array
+             * @param {String}  objectApiName
+             * @method filterObject
+             * @description Selects the object in the array matching the api name
+             * @return Object
+             */
+            function filterObject(array, objectApiName){
+                for(var index in array){
+                    if(array[index].Name === objectApiName) {
+                        return array[index];
+                    }
+                }
+            }
+
+            /**
+             * @param {String}  input
+             * @method htmlDecode
+             * @description Injects input onto the DOM, and pulls the text
+             * @return String|null
+             */
+            function htmlDecode(input){
+                var e = document.createElement('div');
+                e.innerHTML = input;
+                return e.textContent;
+            }
+
+        </script>
+
+    </head>
+
+    <body class="ng-cloak">
+
+        <!-- START `123 Report Templates` Header Section -->
+        <div class="navbar">
+
+            <!-- START `123 Report Templates` Header Text -->
+            <div class="col-md-3">
+                <h4>
+                    <span style="color:white; padding:5px;"> {!$Label.X123_REPORT_TEMPLATES}</span>
+                </h4>
+            </div>
+            <!-- END `123 Report Templates` Header Text -->
+
+            <!-- START `Back to Salesforce` Header Link -->
+            <div  class="col-md-3 col-md-push-6" style="margin-top:1%; text-align:right;">
+                <a href="/home/home.jsp" style="color:white;" target="_top">{!$Label.BACK_TO_SALESFORCE}</a>
+            </div>
+            <!-- END `Back to Salesforce` Header Link -->
+
+        </div>
+        <!-- END `123 Report Templates` Header Section -->
+
+        <!-- START `Report Templates` Section-->
+        <div class="container" ng-controller="TemplateListCtrl">
+
+            <!-- START `Select Type Object` Subsection -->
+            <div class="row" style="margin-top:1%;">
+                <div class="panel panel-default">
+
+                    <!-- `Report Templates` Header Text -->
+                    <div class="panel-heading">{!$Label.REPORT_TEMPLATES}</div>
+
+                    <!-- START `Select Type Object` Controls Subsection -->
+                    <div class="panel-body">
+
+                        <!-- `Type Object` Select Component -->
+                        <div class="col-md-4 col-sm-6">
+                            <input type="text" ng-model="selected" placeholder="{!$Label.TYPE_OBJECT}" typeahead="state as state.label  for state in  typeObjList| orderBy : 'label'| filter:$viewValue" class="form-control" typeahead-on-select="fetchTemplateList($item);"  />
+                        </div>
+
+                        <!-- `Create Template` Button -->
+                        <a href='{{getTemplateBuilderURL(selected.label, selected.Name)}}' target="_self" ng-show="templateList || alertMsg" class="btn btn-sm btn-primary">{!$Label.CREATE_TEMPLATE}</a>
+
+                    </div>
+                    <!-- END `Select Type Object` Controls Subsection -->
+
+                </div>
+            </div>
+            <!-- END `Select Type Object` Subsection-->
+
+            <!-- START `Manage Templates` Subsection -->
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- START `Manage Templates` Table Component -->
+                    <table class="table table-striped" ng-show="templateList">
+
+                        <!-- START `Manage Templates` Table Header -->
+                        <thead>
+                            <tr ng-hide="templateList.length == 0">
+                                <th>{!$Label.ACTION}</th>
+                                <th>{!$Label.OBJECT_NAME}</th>
+                                <th>{!$Label.TEMPLATE_NAME}</th>
+                                <th width="20%">{!$Label.TITLE}</th>
+                                <th>{!$Label.CREATED_BY}</th>
+                            </tr>
+                        </thead>
+                        <!-- END `Manage Templates` Table Header -->
+
+                        <!-- START `Manage Templates` Table Rows -->
+                        <tbody>
+                            <tr ng-repeat ="templateObject in templateList">
+
+                                <!-- START `Action` Table Column -->
+                                <td>
+
+                                    <!-- `Activate` Button -->
+                                    <a href="#" ng-click="toggleActivationStatus($index);">{{getTemplateActivationLabel($index)}}</a>
+                                    &nbsp;
+
+                                    <!-- `Edit` Button -->
+                                    <a href="{{getTemplateBuilderURL(selected.label, selected.Name, templateObject.Id)}}" target="_self" ng-show="isTemplateActive($index)">{!$Label.EDIT}</a>
+                                    &nbsp;
+
+                                    <!-- `Delete` Button -->
+                                    <a href="#" ng-click="removeTemplate(templateObject.Id, $index);"> {!$Label.DELETE}</a>
+
+                                </td>
+                                <!-- END `Action` Table Column -->
+
+                                <!-- `Object Name` Table Column -->
+                                <td>{{templateObject.CMPL123__Object_Name__c}}</td>
+
+                                <!-- `Template Name` Table Column -->
+                                <td>{{templateObject.Name}}</td>
+
+                                <!-- `Title` Table Column -->
+                                <td>{{templateObject.CMPL123__Title__c}}</td>
+
+                                <!-- `Created By` Table Column -->
+                                <td>{{templateObject.CreatedBy.Name}}</td>
+
+                            </tr>
+                        </tbody>
+                        <!-- END `Manage Templates` Table Rows -->
+
+                    </table>
+                    <!-- END `Manage Templates` Table Component -->
+
+                    <!-- START `No Templates` Subsection -->
+                    <div class="alert alert-info" role="alert" ng-show="alertMsg || templateList.length == 0">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only"> :</span>
+                        {!$Label.NO_TEMPLATE_FOUND_FOR} {{selected.label}} {!$Label.OBJECT}.
+                    </div>
+                    <!-- END `No Templates` Subsection -->
+
+                </div>
+            </div>
+            <!-- END `Manage Templates` Subsection -->
+
+        </div>
+        <!-- END `Report Templates` Section-->
+
+    </body>
+    </html>
+</apex:page>

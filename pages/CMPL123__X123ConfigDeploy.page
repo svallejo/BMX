@@ -1,0 +1,418 @@
+<apex:page controller="CMPL123.X123ConfigController">
+  <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123,'/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/> 
+
+ <!-- <apex:includeScript value="{!URLFOR($Resource.Compliance123, '/123Compliance/lib/jquery/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>  -->
+   
+    <style>
+         .form-input{background:white;border: 1px solid  #CCC;border-radius:5px;padding: 8px 27px 8px 10px;width:250px;}    
+         .back{background:white;border: 1px solid #ddd;padding:1%;}
+         .check{width:15px;height:15px;}
+         .back table{width:100%;}
+         .label{color:#3E648D;}
+         .back table td{padding:0.9%;}
+         .deployingStatus{width:230px;transition:all 1s;-o-transition:all 1s;color:white;-webkit-transition:all 1s;-moz-transition:all 1s;-webkit-transition:all 1s;opacity:0;height:0;padding-top:0.5%;z-index:3;border-radius:3px;background-color:#1797C0;text-align:center;font-weight:bold}
+         .statusMsgeffect{opacity:1;height:25px;}
+         .bPageBlock .detailList tr td, .bPageBlock .detailList tr th, .hoverDetail .bPageBlock .detailList tr td, .hoverDetail .bPageBlock .detailList tr th {border-bottom: none;}
+    </style>
+    <script>
+        var sessionid,endpoint,checkedConfigTyp;var objectExist;var deploykey=0;
+        var errorOrSuccessMessage = new Object();
+        $(function(){
+             appConfigDetail ='{!JSENCODE(appConfig)}';
+             objectExist = '{!JSENCODE(obj)}'.length;
+             $("body").bind('click',function(){
+                 $("[id$=errror]").parent().hide(); 
+                 $(".configerror").hide();
+             });
+            $("[id$=initialDeploy]").hide();
+            $("[id$=checkConfig]").hide(); 
+            $("[id$=deployStatus]").hide();   
+                 
+        })
+        
+        function removeId(obj){
+            for(var key in obj){
+                   for(var key1 in obj[key]){
+                        delete obj[key][key1]['Id'];
+                   }
+               }
+               obj  = JSON.stringify(obj);
+               return obj  ;
+        } 
+        
+         function login(obj){
+            var currentEnv;
+            var userName = $("[id$=userName]").val();
+            var passWord = $("[id$=passWord]").val();
+            var orgtype = 'https://'+$("[id$=orgtype]").val()+'.salesforce.com';
+            if(userName.length == 0){
+               //Added JSENCODE to fix error due to single and double quotes present in Label values.
+               errorMessage('{!JSENCODE($Label.PLEASE_TYPE_USER_NAME)}');
+            }else if(passWord.length == 0){
+                errorMessage('{!JSENCODE($Label.PLEASE_TYPE_PASSWORD)}');
+            }else{
+                obj.next().empty();
+                obj.next().show();
+                obj.next().append("&nbsp;&nbsp;<img src='/img/loading32.gif' />");
+                 Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ConfigController.doConnect}',userName,passWord,orgtype,function(result,event){
+                    if(event.status){    
+                        var requireLoginInfo =  JSON.parse($("<div />").html(result).text());    
+                        if(requireLoginInfo["error"] != null || requireLoginInfo["error"] != undefined){
+                            errorMessage(requireLoginInfo["error"]);
+                            obj.next().hide();
+                        }else{                            
+                            sessionid = requireLoginInfo["access_token"];
+                            endpoint = requireLoginInfo["instance_url"];
+                            createUserInfoDiv(requireLoginInfo);
+                            if(appConfigDetail.length >0){
+                                 currentEnv = (orgtype == "Test" )? "https://test.salesforce.com":"https://login.salesforce.com";
+                                 createCustomSetting(currentEnv);
+                            }else{
+                                //Added JSENCODE to fix error due to single and double quotes present in Label values.
+                                errorMessage('{!JSENCODE($Label.NO_ORGANIZATION_CONFIG_SETTING)}');
+                            }
+                           
+                        } 
+                    }else{
+                        errorMessage(event.message);
+                        obj.next().hide();
+                    }
+                 },{escape:true});
+            }
+           return false;
+        }
+        
+        
+        function createCustomSetting(orgEnvironment){
+               $.ajax({
+                    type:"POST",
+                    data: appConfigDetail,
+                    dataType: "json",
+                    url:"/services/proxy",
+                    async:false,
+                    error: function(error){
+                        errorMessage(JSON.stringify(error));
+                    },
+                    success: function(result){
+                        
+                    },
+                    beforeSend: function(jqXHR) {
+                        jqXHR.setRequestHeader("Authorization", "OAuth "+sessionid);
+                        jqXHR.setRequestHeader('SalesforceProxy-Endpoint', endpoint+'/services/apexrest/CMPL123/ComplianceData/v1.0?orgEnvironment='+encodeURI(orgEnvironment));
+                        jqXHR.setRequestHeader("Content-Type", "application/json");
+                    }
+            });
+        }
+        
+        function createUserInfoDiv(obj){
+            var userId = obj['id'].split('/')[5];
+            var orgId = obj['id'].split('/')[4];
+            var endPoint = obj['instance_url'];
+            var userName = $("[id$=userName]").val();
+            var table="<table><tr>";           
+            table +="<td style='color:#3E648D;font-weight:bold;text-align:right;'>{!$Label.cmpl123__user_name}</td>"+"<td style='text-align:left;'>"+userName+"</td>";
+            table +="<td style='color:#3E648D;font-weight:bold;text-align:right;'>{!$Label.ENDPOINT}</td>"+"<td style='text-align:left;'>"+endPoint+"</td></tr>";  
+            table +="<tr><td style='color:#3E648D;font-weight:bold;text-align:right;'>{!$Label.USERID}</td>"+"<td style='text-align:left;'>"+userId+"</td>";
+            table +="<td style='color:#3E648D;font-weight:bold;text-align:right;'>{!$Label.ORGID}</td>"+"<td style='text-align:left;'>"+orgId+"</td>";        
+            table +="</table><div style='padding-left:40%;'><input type='button' value='{!$Label.PROCEED}' style='padding:6px;' class='btn' onclick='activateDeploy();' /></div>";
+            $("[id$=configDetail]").append(table);
+            $("[id$=loginDiv]").hide();
+            $("[id$=checkConfig]").show();
+        }
+        
+        function activateDeploy(){
+            var configType = ['Workflow Rule Config', 'Task Config','Audit Config','Report Config', 'Record Access Rule Config'];
+             if(objectExist >0){
+                //Added JSENCODE to fix error due to single and double quotes present in Label values.
+                configType.push('{!JSENCODE($Label.ASSESSMENT_ADMIN)}');
+                configType.push('{!JSENCODE($Label.INVESTIGATION_ADMIN)}');
+                configType.push('{!JSENCODE($Label.EMDR_MAPPINGS_AND_LAYOUT_SETTINGS)}');
+            }
+            var table = '<table style="width:40%;">';
+            for(var key=0;key<configType.length;key++){
+                table += '<tr><td style="text-align:center;padding:0;"><input type="checkbox" value="'+configType[key]+'" class="checkedConfig" /></td><td style="color:#3E648D;font-weight:bold;padding:0;">'+configType[key]+'</td></tr>';
+            }
+            table +='<tr><td></td><td><input type="button" value="{!$Label.DEPLOY}" style="padding:6px;" class="btn" onclick="deploy();" /></td></tr></table>';
+            $(".deployStart").append(table);
+            $("[id$=checkConfig]").hide();
+            $("[id$=initialDeploy]").show();
+        }
+        
+        function deploy(){
+            var selectedConfig =[];
+            checkedConfigTyp = $('input[class="checkedConfig"]:checked').length;
+            if($('input[class="checkedConfig"]:checked').length == 0){
+                //Added JSENCODE to fix error due to single and double quotes present in Label values.
+                errorMessage('{!JSENCODE($Label.PLEASE_SELECT_ATLEAST_ONE_CHECKBOX)}')
+            }else{
+                $('input[class="checkedConfig"]:checked').each(function(){
+                    selectedConfig.push($(this).val());
+                });
+                if(selectedConfig.indexOf('{!$Label.WORKFLOW_RULE_CONFIG}') == -1){
+                    if(selectedConfig.indexOf('Task Config') > -1){
+                        var success = window.confirm("{!JSENCODE($Label.WORKFLOW_RULE_CONFIG_CONNECTED_WITH_TASK_CONFIG)}");
+                    if(success)
+                        callExtervalOrganization(selectedConfig);
+                    else
+                        $('input[class="checkedConfig"]').attr('checked',false);
+                    }else{
+                        callExtervalOrganization(selectedConfig);
+                    }
+                }else{
+                    callExtervalOrganization(selectedConfig);
+                }
+            }
+         }
+         
+         function callExtervalOrganization(configType){
+            $(".deployingStatus").addClass("statusMsgeffect");
+            var complaintSelectedObject ='';
+            for(var key=0;key<configType.length;key++){
+                if(configType[key] == 'Workflow Rule Config'){
+                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ConfigController.createWorkflowRuleJson}',function(result,event){
+                        if(event.status){
+                            deploykey++;
+                            callRestService('Workflow Rule Config',JSON.parse($("<div />").html(result).text()),deploykey);
+                        }
+                    },{escape:true});
+                }else if(configType[key] == 'Task Config'){
+                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ConfigController.createTaskConfigMap}',function(result,event){
+                        if(event.status){
+                            deploykey++;
+                            callRestService('Task Config',JSON.stringify(JSON.parse($("<div />").html(result).text())),deploykey);
+                        
+                        }
+                    
+                    },{escape:true});
+                
+                 }else if(configType[key] == 'Audit Config'){
+                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ConfigController.createAuditConfigJson}',function(result,event){
+                        if(event.status){
+                            deploykey++;
+                            callRestService('Audit Config',JSON.stringify(JSON.parse($("<div />").html(result).text())),deploykey);
+                        
+                        }
+                    },{escape:true});
+                   }else if(configType[key] == 'Record Access Rule Config'){
+                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ConfigController.createRecordAccessRuleConfigJson}',function(result,event){
+                        if(event.status){
+                            deploykey++;
+                            callRestService('Record Access Rule Config',JSON.stringify(JSON.parse($("<div />").html(result).text())),deploykey);
+                        
+                        }
+                    },{escape:true});
+                   }else if(configType[key] == 'Report Config'){
+                       Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ConfigController.createReportConfigJson}',function(result,event){
+                        if(event.status){
+                            deploykey++;
+                           
+                            callRestService('Report Config',JSON.stringify(JSON.parse($("<div />").html(result).text())),deploykey);
+                        
+                        }
+                    },{escape:true});
+                   
+                   }
+                else{ 
+                    complaintSelectedObject = complaintSelectedObject+'~'+configType[key];
+                 }   
+             }
+             
+             if(objectExist >0){
+                 complaintSelectedObject = complaintSelectedObject.substring(1);
+                 if(complaintSelectedObject.length >0){
+                     if(complaintSelectedObject.split('~').length >0){
+                          classComplaintRestService(complaintSelectedObject.trim());
+                     }
+                 }
+             }
+            
+       }  
+        
+        function errorMessage(msg){
+            setTimeout(function(){
+                $("[id$=errror]").parent().show();
+                $("[id$=errror]").contents().find("span").html(msg);
+            },100);
+        }
+        
+        
+        function classComplaintRestService(configType){
+            var currentOrgSessionid = '{!GETSESSIONID()}';
+            var host = "{!JSENCODE($Setup.CMPL123__CMPL_App_Config__c.CMPL123__SF_Base_Url__c)}";
+            $.ajax({
+                type:"GET",
+                dataType: "json",
+                url:"/services/proxy",
+                async:false,
+                error: function(error){
+                    errorMessage(JSON.stringify(error));
+                },
+                success: function(result){
+                   /* if(configType.split('~').length >1){
+                        result = JSON.parse(result);
+                        for(var key in result){
+                            deploykey++;
+                            deployComplaintObject(key,JSON.stringify(result[key]),deploykey);
+                        }
+                    }else{
+                       deploykey++;
+                        deployComplaintObject(configType,result,deploykey);
+                    }*/
+                    
+                    /* Added later while EMDR and Report config deployed on 17/07/2015  */
+                    result = JSON.parse(result);
+                    for(var key in result){
+                        deploykey++;
+                        deployComplaintObject(key,JSON.stringify(result[key]),deploykey);
+                    }
+                    
+                },
+                beforeSend: function(jqXHR) {
+                    jqXHR.setRequestHeader("Authorization", "OAuth "+currentOrgSessionid);  
+                    jqXHR.setRequestHeader('SalesforceProxy-Endpoint', host+'/services/apexrest/CMPL123CME/ConfigService/v1.0?configType='+encodeURI(configType));
+                    jqXHR.setRequestHeader("Content-Type", "application/json");
+                }
+            });
+        }
+        
+        
+        function deployComplaintObject(configType,requireJson,selectedConfigKey){
+           
+             $.ajax({
+                type:"POST",
+                data: requireJson,
+                dataType: "json",
+                url:"/services/proxy",
+                async:false,
+                error: function(error){
+                    var requireKey = configType +'~'+'error';
+                    var key = JSON.parse(error["responseText"]);
+                    errorOrSuccessMessage[requireKey] =  key[0]["message"];
+                    if(checkedConfigTyp == selectedConfigKey){
+                        createMessage(errorOrSuccessMessage);
+                    }   
+                },
+                success: function(result){
+                    var requireKey = configType +'~'+'success';
+                    //Added JSENCODE to fix error due to single and double quotes present in Label values.
+                    errorOrSuccessMessage[requireKey] = '{!JSENCODE($Label.DEPLOYED_SUCCESSFULLY)}';
+                    if(checkedConfigTyp == selectedConfigKey){
+                        createMessage(errorOrSuccessMessage);
+                    }    
+                      
+                },
+                beforeSend: function(jqXHR) {
+                    jqXHR.setRequestHeader("Authorization", "OAuth "+sessionid);
+                    jqXHR.setRequestHeader('SalesforceProxy-Endpoint', endpoint+'/services/apexrest/CMPL123CME/ConfigService/v1.0?configType='+encodeURI(configType));
+                    jqXHR.setRequestHeader("Content-Type", "application/json");
+                }
+            });
+        }
+        
+        function callRestService(configType,requireJson,selectedConfigKey){
+            console.log('-----requireJson---'+requireJson);
+            $.ajax({
+                type:"POST",
+                data: requireJson,
+                dataType: "json",
+                url:"/services/proxy",
+                async:false,
+                error: function(error){
+                    var requireKey = configType +'~'+'error';
+                    var key = JSON.parse(error["responseText"]);
+                    errorOrSuccessMessage[requireKey] =  key[0]["message"];
+
+                    // Format the error message
+                    if (errorOrSuccessMessage[requireKey].includes('CMPL123.ConfigurationDeploymentException: ')) {
+                        errorOrSuccessMessage[requireKey] = errorOrSuccessMessage[requireKey].split('\n')[0].split('CMPL123.ConfigurationDeploymentException: ')[1];
+                    }
+
+                    if(checkedConfigTyp == selectedConfigKey){
+                        createMessage(errorOrSuccessMessage);
+                    }   
+                },
+                success: function(result){
+                    console.log('----result-----'+result);
+                    var requireKey = configType +'~'+'success';
+                    //Added JSENCODE to fix error due to single and double quotes present in Label values.
+                    errorOrSuccessMessage[requireKey ] = '{!JSENCODE($Label.DEPLOYED_SUCCESSFULLY)}';
+                    if(checkedConfigTyp == selectedConfigKey){
+                        createMessage(errorOrSuccessMessage);
+                    }    
+                      
+                },
+                beforeSend: function(jqXHR) {
+                    jqXHR.setRequestHeader("Authorization", "OAuth "+sessionid);
+                    jqXHR.setRequestHeader('SalesforceProxy-Endpoint', endpoint+'/services/apexrest/CMPL123/ComplianceData/v1.0?configType='+encodeURI(configType));
+                    jqXHR.setRequestHeader("Content-Type", "application/json");
+                }
+            });
+        }
+        
+        function createMessage(obj){
+            $("[id$=errorMessage]").empty();
+            var table="<table style='width:80%;margin-left:10%;'><tr><td style='width:30%;font-weight:bold;'>{!$Label.CONGIF_TYPE}</td><td style='font-weight:bold;'>{!$Label.STATUS}</td></tr>";
+            for(var key in obj){
+                if(key.split('~')[1] == 'success')
+                    table +="<tr><td style='width:30%;color:#3E648D;font-weight:bold;'>"+key.split('~')[0]+"</td>"+"<td style='color:green;'>"+obj[key]+"</td></tr>";
+                else
+                   table +="<tr><td style='width:30%;width:30%;color:#3E648D;font-weight:bold;'>"+key.split('~')[0]+"</td>"+"<td style='color:red;'>"+obj[key]+"</td></tr>";      
+            }
+            table +="<tr><td><input type='button' value='{!$Label.DONE}' class='btn' style='padding:6px;' onclick='window.location.reload();'  /></td><td></td></tr></table>";
+            $("[id$=errorMessage]").append(table);
+            $("[id$=errorMessage]").show();  
+            $("[id$=deployStatus]").show(); 
+            $("[id$=initialDeploy]").hide();
+            $(".deployingStatus").removeClass("statusMsgeffect");
+        }
+        
+    </script>
+    <div style="width:80%; display:none;"><apex:pageMessage summary="" severity="error" strength="1" id="errror"/></div>
+    <apex:pageBlock title="{!$Label.cmpl123__configuration_deployment}" id="loginDiv">
+        <div class="back" style="padding-left:20%;">
+            <apex:form >
+                <apex:pageBlockSection columns="1">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >{!$Label.cmpl123__user_name}</apex:outputLabel>
+                        <apex:inputText styleClass="form-input" id="userName"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >{!$Label.cmpl123__password}</apex:outputLabel>
+                        <apex:inputSecret styleClass="form-input" id="passWord"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >{!$Label.cmpl123__environment}</apex:outputLabel>
+                        <apex:selectList styleClass="form-input" id="orgtype" size="1" style="height: ">
+                            <apex:selectOption itemLabel="{!$Label.cmpl123__production_or_developer}" itemValue="login"></apex:selectOption>
+                            <apex:selectOption itemLabel="{!$Label.cmpl123__sandbox}" itemValue="test"></apex:selectOption>
+                        </apex:selectList>                               
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel ></apex:outputLabel>
+                        <apex:outputPanel >
+                            <apex:commandButton value="{!$Label.cmpl123__login}" style="padding:8px;" onclick="if(!login($(this))) return false;"/>
+                            <span style="vertical-align:-8px;"></span>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:form>  
+        </div>
+    </apex:pageBlock>
+    <apex:pageBlock title="{!$Label.cmpl123__deployment_configuration_component}" id="initialDeploy">
+        <div class="back">
+            <div class="deployingStatus" style="margin-left:39%;">
+                <span class="color:#3C763D;font-weight:bold;">{!$Label.cmpl123__deploying}...</span>
+            </div>  
+            <div class="deployStart" style="padding-left:40%;margin-top:1%;">
+            </div>
+       </div> 
+    </apex:pageBlock>
+    <apex:pageBlock title="{!$Label.cmpl123__target_organization_details}" id="checkConfig">
+       <div class="back" id="configDetail">
+       </div>
+    </apex:pageBlock>
+    <apex:pageBlock title="{!$Label.cmpl123__deployment_status}" id="deployStatus">
+        <div class="back" id="errorMessage" style="display:none;">
+        </div>  
+    </apex:pageBlock>
+</apex:page>

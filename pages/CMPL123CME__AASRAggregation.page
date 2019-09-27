@@ -1,0 +1,513 @@
+<apex:page controller="CMPL123CME.AASRAggregationController" applyBodyTag="false" applyHtmlTag="false" showHeader="false"  standardStylesheets="false"  id="pg" docType="html-5.0">
+    
+    <apex:stylesheet value="{!$Resource.CMPL123CME__EMDRLayout}/css/EMDR_CSS_Min.css" /> 
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/jquery-3.2.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/moment2.14.1.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/Bootstrap/css/bootstrap.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/bootstrap3.3.7.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/bootstrap-datetimepicker4.17.47.js')}"/>
+
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/DataTable1.10.16JS.js')}"/> 
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/DataTable/DataTableMinCss.css')}"/>
+    <!-- Adding LexUtil.js and integration js for lightning excperience. Integration js being used for sforce console method. -->
+    <apex:includeScript value="/support/console/26.0/integration.js"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+    
+    
+    <script>
+        var table;
+        var iasrObjArray = [];
+        var aasrObjArray = [];
+        var iasrIndexArray = [];
+        var aasrIndexArray = [];
+        var first = "{!$Label.cmpl123cme__cmplt_first}";
+        var previous = "{!$Label.cmpl123cme__cmplt_prev}";
+        var next = "{!$Label.cmpl123cme__cmplt_next}";
+        var last = "{!$Label.cmpl123cme__cmplt_last}";
+        var noDataAvailable = "{!$Label.cmpl123cme__cmplt_no_data_available}";
+        var showing = "{!$Label.cmpl123cme__cmplt_showing}" + " ";
+        var to = " " + "{!$Label.cmpl123cme__cmplt_to}" + " ";
+        var of = " " + "{!$Label.cmpl123cme__cmplt_of}" + " ";
+        var entries = ' '+"{!$Label.cmpl123cme__cmplt_entries}";
+        var search = "{!$Label.cmpl123cme__cmplt_search_in_table}";
+        var show = "{!$Label.cmpl123cme__cmplt_show}"+' ';
+        var noMatchingRecords = "{!$Label.cmpl123cme__cmplt_no_matching_records_found}";
+        var filteredFrom = "{!$Label.cmpl123cme__cmplt_filtered_from}";
+        var totalEntries = "{!$Label.cmpl123cme__cmplt_total_entries}";
+
+        var dateFormat = '{!JSENCODE(dateLocaleFormat)}';
+        var dateFormat = '{!JSENCODE(dateLocaleFormat)}';
+        var userLang = '{!JSENCODE(userLanguage)}';
+                var calendarTitle = {
+                    selectMonth     : '{!$Label.cmpl123cme__cmplt_select}'    + ' ' + '{!$Label.cmpl123cme__cmplt_month}',
+                    prevMonth       : '{!$Label.cmpl123cme__cmplt_prev}'      + ' ' + '{!$Label.cmpl123cme__cmplt_month}',
+                    nextMonth       : '{!$Label.cmpl123cme__cmplt_next}'      + ' ' + '{!$Label.cmpl123cme__cmplt_month}',
+                    selectYear      : '{!$Label.cmpl123cme__cmplt_select}'    + ' ' + '{!$Label.cmpl123cme__cmplt_year}',
+                    prevYear        : '{!$Label.cmpl123cme__cmplt_prev}'      + ' ' + '{!$Label.cmpl123cme__cmplt_year}',
+                    nextYear        : '{!$Label.cmpl123cme__cmplt_next}'      + ' ' + '{!$Label.cmpl123cme__cmplt_year}',
+                    selectDecade    : '{!$Label.cmpl123cme__cmplt_select}'    + ' ' + '{!$Label.cmpl123cme__cmplt_decade}',
+                    prevDecade      : '{!$Label.cmpl123cme__cmplt_prev}'      + ' ' + '{!$Label.cmpl123cme__cmplt_decade}',
+                    nextDecade      : '{!$Label.cmpl123cme__cmplt_next}'      + ' ' + '{!$Label.cmpl123cme__cmplt_decade}',
+                    prevCentury     : '{!$Label.cmpl123cme__cmplt_prev}'      + ' ' + '{!$Label.cmpl123cme__cmplt_century}', 
+                    nextCentury     : '{!$Label.cmpl123cme__cmplt_next}'      + ' ' + '{!$Label.cmpl123cme__cmplt_century}',
+                    incrementHour   : '{!$Label.cmpl123cme__cmplt_increment}' + ' ' + '{!$Label.cmpl123cme__cmplt_hour}',
+                    pickHour        : '{!$Label.cmpl123cme__cmplt_pick}'      + ' ' + '{!$Label.cmpl123cme__cmplt_hour}',
+                    decrementHour   : '{!$Label.cmpl123cme__cmplt_decrement}' + ' ' + '{!$Label.cmpl123cme__cmplt_hour}',
+                    incrementMinute : '{!$Label.cmpl123cme__cmplt_increment}' + ' ' + '{!$Label.cmpl123cme__cmplt_minute}',
+                    pickMinute      : '{!$Label.cmpl123cme__cmplt_pick}'      + ' ' + '{!$Label.cmpl123cme__cmplt_minute}',
+                    decrementMinute : '{!$Label.cmpl123cme__cmplt_decrement}' + ' ' + '{!$Label.cmpl123cme__cmplt_minute}',
+                    incrementSecond : '{!$Label.cmpl123cme__cmplt_increment}' + ' ' + '{!$Label.cmpl123cme__cmplt_second}',
+                    pickSecond      : '{!$Label.cmpl123cme__cmplt_pick}'      + ' ' + '{!$Label.cmpl123cme__cmplt_second}',
+                    decrementSecond : '{!$Label.cmpl123cme__cmplt_decrement}' + ' ' + '{!$Label.cmpl123cme__cmplt_second}',
+                    selectTime      : '{!$Label.cmpl123cme__cmplt_select}'    + ' ' + '{!$Label.cmpl123cme__cmplt_time}',
+                    togglePeriod    : '{!$Label.cmpl123cme__cmplt_toggle_period}',
+                }
+                
+                console.log(calendarTitle.selectTime);
+
+        $(document).ready(function() {
+            var iasrMdrRecords = '{!JSENCODE(iasrMdrRecords)}';
+            $('#sDate').datetimepicker({
+                format:"MM/DD/YYYY",
+                locale : userLang,
+            });
+            $('#eDate').datetimepicker({
+                format:"MM/DD/YYYY",
+                locale : userLang,
+            });
+            if(iasrMdrRecords.length > 0)
+            iasrObjArray = JSON.parse('{!JSENCODE(iasrMdrRecords)}');
+            setIASR();
+            setAASR();
+            
+        });
+        
+        function setIASR(){
+            $('#iasr_table').dataTable().fnDestroy();
+            table =  $('#iasr_table').dataTable( {
+                "data":iasrObjArray,
+                "aaSorting": [],
+            "oLanguage":{
+               "sZeroRecords":    noMatchingRecords,
+               "sEmptyTable":     noDataAvailable,
+               "sInfo":           showing+"_START_"+ to +" _END_"+ of + "_TOTAL_"+ entries,
+               "sInfoEmpty":      showing +"_START_"+ to+ "_END_"+ of + "_TOTAL_" + entries,
+               "sInfoFiltered":   filteredFrom +" "+ "_MAX_"+" "+ totalEntries,
+               "sSearch":         search,
+               "sLengthMenu":     show +"_MENU_" + entries,
+               "oPaginate": {
+                           "sFirst":       first,
+                           "sPrevious":    previous,
+                           "sNext":        next,
+                           "sLast":        last
+                       },
+            },
+            "pagingType": "full_numbers",
+            responsive: {
+                details: {
+                    type: 'column'
+                }
+            },
+            "aoColumns": [    
+                { "mDataProp": "active",
+                    render: function ( data, type, row) {
+                        if ( type === 'display' ) {
+                            return '<input type="checkbox" class="checkbox" id='+row.id+' class="editor-active">';
+                        }
+                        return data;
+                    }, 
+                },
+                { "mDataProp": "name",sDefaultContent:'' },
+                { "mDataProp": "model",sDefaultContent:'' },
+                { "mDataProp": "codes",sDefaultContent:'' }
+            ],
+            "createdRow": function( row, data, dataIndex ) {
+                $(row).attr('name',dataIndex);
+                
+            }
+            });
+           
+            $('#iasr_table>tbody').off('click');
+            $('#iasr_table>tbody').on('click','tr>td>input', function(event){
+                setIasrIndexArray(event.target);
+            });
+            
+            
+            
+            //Manage check box
+            $('#selectallLeft').on('click',function(){
+            
+                $("[name=iasr_table_length]").append("<option selected>"+iasrObjArray.length+"</option>");
+                $("[name=iasr_table_length]").trigger("change");
+                iasrIndexArray = [];
+                if(this.checked){
+                    $('.checkbox').each(function(){
+                        this.checked = true;
+                        setIasrIndexArray(this);
+                    });
+                }else{
+                     $('.checkbox').each(function(){
+                        this.checked = false;
+                        setIasrIndexArray(this);
+                    });
+                }
+                
+                removeSelectedOptionFromDataTable(iasrObjArray.length,'iasr_table_length');
+            });
+        }
+        
+        function setAASR(){
+            $('#aasr_table').dataTable().fnDestroy();
+            table =  $('#aasr_table').dataTable( {
+                "data":aasrObjArray,
+                "aaSorting": [],
+            "oLanguage":{
+               "sZeroRecords":    noMatchingRecords,
+               "sEmptyTable":     noDataAvailable,
+               "sInfo":           showing +"_START_"+ to +" _END_"+ of + "_TOTAL_"+ entries,
+               "sInfoEmpty":      showing +"_START_"+ to+ "_END_"+ of + "_TOTAL_" + entries,
+               "sInfoFiltered":   filteredFrom +" "+ "_MAX_"+" "+ totalEntries,
+               "sSearch":         search,
+               "sLengthMenu":     show +"_MENU_" + entries,
+               "oPaginate": {
+                           "sFirst":       first,
+                           "sPrevious":    previous,
+                           "sNext":        next,
+                           "sLast":        last
+                       },
+            },
+            "pagingType": "full_numbers",
+            responsive: {
+                details: {
+                    type: 'column'
+                }
+            },
+            "aoColumns": [    
+                { "mDataProp": "active",
+                    render: function ( data, type, row) {
+                        if ( type === 'display' ) {
+                            return '<input type="checkbox" class="checkboxRight" id='+row.id+' class="editor-active">';
+                        }
+                        return data;
+                    }, 
+                },
+                { "mDataProp": "name",sDefaultContent:'' },
+                { "mDataProp": "model",sDefaultContent:'' },
+                { "mDataProp": "codes",sDefaultContent:'' }
+            ],
+            "createdRow": function( row, data, dataIndex ) {
+                $(row).attr('name',dataIndex);
+            }
+            });
+            
+            $('#aasr_table>tbody').off('click');
+            $('#aasr_table>tbody').on('click','tr>td>input', function(event){
+                setAasrIndexArray(event.target);
+            });
+            
+            
+            // Manage check box
+            $('#selectallRight').on('click',function(){
+                $("[name=aasr_table_length]").append("<option selected>"+aasrObjArray.length+"</option>");
+                $("[name=aasr_table_length]").trigger("change");
+                aasrIndexArray = [];
+                if(this.checked){
+                    $('.checkboxRight').each(function(){
+                        this.checked = true;
+                        setAasrIndexArray(this);
+                    });
+                }else{
+                     $('.checkboxRight').each(function(){
+                        this.checked = false;
+                        setAasrIndexArray(this);
+                    });
+                }
+                removeSelectedOptionFromDataTable(aasrObjArray.length,'aasr_table_length');
+            });
+        }
+        
+        
+        function setIasrIndexArray(obj){
+             var ind = obj.parentNode.parentNode.getAttribute('name');
+             if(obj.checked)
+                iasrIndexArray.push(ind);
+             else{
+                iasrIndexArray.splice(iasrIndexArray.indexOf(ind),1);
+             }
+             
+             $('.checkbox').on('click',function(){
+                if($('.checkbox:checked').length == $('.checkbox').length){
+                    $('#selectallLeft').prop('checked',true);
+                }else{
+                    $('#selectallLeft').prop('checked',false);
+                }
+            });
+        }
+        
+        function setAasrIndexArray(obj){
+             var ind = obj.parentNode.parentNode.getAttribute('name');
+             if(obj.checked)
+                 aasrIndexArray.push(ind);
+             else{
+                 aasrIndexArray.splice(aasrIndexArray.indexOf(ind),1);
+             }
+             
+             $('.checkboxRight').on('click',function(){
+                if($('.checkboxRight:checked').length == $('.checkboxRight').length){
+                    $('#selectallRight').prop('checked',true);
+                }else{
+                    $('#selectallRight').prop('checked',false);
+                }
+            });
+        }
+        
+        function assignIASRToAASRJson(){
+            if(iasrIndexArray.length > 0){
+                var idArray = [];
+                for(var key=0;key<iasrIndexArray.length;key++){
+                    aasrObjArray.push(iasrObjArray[iasrIndexArray[key]]);
+                    idArray.push(iasrObjArray[iasrIndexArray[key]].id);
+                }
+                
+                setAASR();
+                
+                for(var key=0;key<idArray.length;key++){
+                   for(var key1 in iasrObjArray){
+                       if(idArray[key] ==  iasrObjArray[key1].id){
+                           iasrObjArray.splice(key1,1);
+                           break;    
+                       }    
+                   }  
+                }
+               
+                setIASR();
+                iasrIndexArray = [];
+                $('#selectallLeft').attr('checked', false);
+            }    
+        }
+        
+        
+        function assignAASRToIASRJson(){
+            if(aasrIndexArray.length > 0){
+                var idArray = [];
+                for(var key=0;key<aasrIndexArray.length;key++){
+                    iasrObjArray.push(aasrObjArray[aasrIndexArray[key]]);
+                    idArray.push(aasrObjArray[aasrIndexArray[key]].id);
+                }
+                
+                setIASR();
+                
+                for(var key=0;key<idArray.length;key++){
+                   for(var key1 in aasrObjArray){
+                       if(idArray[key] ==  aasrObjArray[key1].id){
+                           aasrObjArray.splice(key1,1);
+                           break;    
+                       }    
+                   }  
+                }
+               
+                setAASR();
+                aasrIndexArray = [];
+                $('#selectallRight').attr('checked', false);
+            }    
+        }
+        
+        
+        function createAASR(){
+            if(aasrObjArray != null && aasrObjArray != undefined && aasrObjArray.length > 0){
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.AASRAggregationController.createAASR}',JSON.stringify(aasrObjArray),function(result,event){
+                    if(event.status){
+                        // Redirecting the url to lightning user interface if the current user in lightning experience else redirects to classic user interface.
+                        if (lexUtil.inLEX()) {
+                            lexUtil.lexNavigateToSObject(result);
+                        } else if (lexUtil.inConsole()) {
+                            parent.top.location.href =  "/"+result;
+                        } else {
+                            parent.location.href = "/"+result;
+                       }
+                        
+                    }else{
+                        
+                        //deferred.reject(event);
+                    }                            
+                },{escape:true});
+            }else{
+                alert('{!$Label.cmpl123cme__cmplt_aasr_no_records_selected}');
+            }    
+        }
+        
+        function removeSelectedOptionFromDataTable(index,clsname){
+             $("[name="+clsname+"] option").each(function(){
+                 if($(this).val() == index){
+                     $(this).remove();
+                     $("[name="+clsname+"]").trigger("change");
+                     
+                 }
+             });
+        }
+        
+        
+    </script>
+    
+    
+    
+     <apex:form >
+         <div style="margin-left:3%;margin-right:3%;margin-top:1%;">
+            <div class="row" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">{!$Label.CMPLT_AASR_AGGREGATION}</div>
+                    <div class="panel-body">
+                        <div class="row" >
+                            <div class="col-sm-3">
+                                <h5>{!$Label.CMPLT_START_DATE}</h5>
+                                 <div class="form-group">
+                                    <div class='input-group date' id='sDate'>
+                                        <apex:inputText styleClass="form-control" value="{!startDateString}" />
+                                        <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <h5>{!$Label.CMPL123CME__cmplt_end_date}</h5>
+                                <div class="form-group">
+                                    <div class='input-group date' id='eDate'>
+                                        <apex:inputText styleClass="form-control" value="{!endDateString}" />
+                                        <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2" style="margin-top:2.5%;">
+                                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_get_filter_values}" id="iasrbutton" styleClass="btn btn-primary" action="{!getIasrMdrs}"/>
+                            </div>
+                            <div>
+                                <apex:outputPanel id="errorMsg" layout="block" style="color:red;margin-top:2.5%;">
+                                    <apex:pageMessages />
+                                </apex:outputPanel>
+                            </div>
+                        </div>  
+                        <div class="row" style="margin-top:1%;" >
+                            <div class="col-sm-3">
+                                <h6>{!$Label.CMPLT_MODEL_NO}</h6>
+                                <apex:selectList multiselect="false" styleClass="form-control" size="1" style="width:90%;" value="{!modelNoVal}" >
+                                    <apex:selectOption itemLabel="{!$Label.cmpl123cme__cmplt_aasr_select}" itemValue="" />
+                                       <!--<apex:actionSupport event="onchange" action="{!setCodes}" reRender="one"/>-->
+                                       <apex:selectOptions value="{!modelNumbers}">
+                                    </apex:selectOptions> 
+                                </apex:selectList>
+                            </div>
+                            <div class="col-sm-2">
+                                <h6>{!$Label.cmpl123cme__cmplt_mdr_device_code}</h6>
+                                <apex:selectList multiselect="false" size="1" style="width:100%;" styleClass="form-control" value="{!deviceCodeVal}">
+                                    <apex:selectOption itemLabel="{!$Label.cmpl123cme__cmplt_aasr_select}" itemValue="" />
+                                   <apex:selectOptions value="{!deviceCodes}"/>
+                                </apex:selectList>
+                            </div>
+                            <div class="col-sm-2">
+                                <h6>{!$Label.cmpl123cme__cmplt_mdr_component_code}</h6>
+                                <apex:selectList multiselect="false" size="1" style="width:100%;" styleClass="form-control" value="{!componentCodeVal}">
+                                    <apex:selectOption itemLabel="{!$Label.cmpl123cme__cmplt_aasr_select}" itemValue="" />
+                                  <apex:selectOptions value="{!componentCodes}"/>
+                                </apex:selectList>
+                            </div>
+                            <div class="col-sm-2">
+                                <h6>{!$Label.cmpl123cme__cmplt_mdr_eval_result_code}</h6>
+                                <apex:selectList multiselect="false" size="1" style="width:100%;" styleClass="form-control" value="{!evalResultCodeVal}">
+                                    <apex:selectOption itemLabel="{!$Label.cmpl123cme__cmplt_aasr_select}" itemValue="" />
+                                   <apex:selectOptions value="{!evalResultCodes}"/>
+                                </apex:selectList>
+                            </div>
+                            <div class="col-sm-2">
+                                <h6>{!$Label.cmpl123cme__cmplt_mdr_eval_conclusion_code}</h6>
+                                <apex:selectList multiselect="false" size="1" style="width:100%;" styleClass="form-control" value="{!evalConcCodeVal}">
+                                    <apex:selectOption itemLabel="{!$Label.cmpl123cme__cmplt_aasr_select}" itemValue="" />
+                                    <apex:selectOptions value="{!evalConclusionCodes}"/>
+                                </apex:selectList>
+                            </div>
+                            <div class="col-sm-1" style="margin-top:2%;">
+                                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_search_button}" styleClass="btn btn-primary" action="{!searchMDR}" disabled="{!IF(startDateString != null && endDateString != null ,false,true)}"/>
+                            </div>
+                        </div>    
+                    </div>
+                 </div>
+            </div>
+         </div>
+     </apex:form> 
+    <apex:outputPanel id="thePanel" layout="block" rendered="{!showCreatAasr}">
+        <div class="row">
+            <div class="col-sm-5" style="float:right">
+                <button type="button" class="btn btn-primary" onclick="createAASR()">{!$Label.CMPLT_CREATE_AASR}</button>
+            </div>    
+        </div>
+        <div class="row" style="margin:1%">
+        
+            <div class="col-sm-5">
+            <h5 align="center">{!$Label.CMPLT_UNASSIGNED_IASR_LIST}</h5>
+                <div class="panel panel-default" id="manage_iasr"> 
+                    <!--<div class="panel-heading">AASR Aggregation</div> -->
+                        <div class="panel-body" >
+                            <apex:outputPanel rendered="{!IF(iasrMdrRecords != null,false,true)}">
+                                <span>{!$Label.cmpl123cme__cmplt_no_data_available}</span>   
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(iasrMdrRecords != null,true,false)}">
+                                <div>
+                                
+                                    <table  id="iasr_table"  class="table" rules="none">
+                                        <thead style="background:#54698D ;color:white;" >                       
+                                             <tr>
+                                                <th><small><input type="checkbox" id="selectallLeft" /></small></th>
+                                                <th><small>{!$Label.CMPLT_NAME}</small></th>
+                                                <th><small>{!$Label.CMPLT_MODEL}</small></th>
+                                                <th><small>{!$Label.CMPLT_CODE}</small></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </apex:outputPanel>
+                        </div>    
+                    </div>
+               </div>
+               
+               <div class="col-sm-2" style="margin-top:2%">
+                   <div class="row" style="text-align:center;">
+                       <button type="button" class="btn btn-default" id="forwardbtn" onclick="assignIASRToAASRJson()"><img src="/img/func_icons/cal/rightArrow.gif" /></button>
+                   </div>
+                   <div class="row" style="text-align:center;margin-top:10px;">
+                       <button type="button" class="btn btn-default" id="backwardbtn" onclick="assignAASRToIASRJson()"><img src="/img/func_icons/cal/leftArrow.gif" /></button>
+                   </div>
+               </div>
+               
+               <div class="col-sm-5">
+               <h5 align="center">{!$Label.CMPLT_ASSIGNED_IASR_LIST}</h5>
+                 <div class="panel panel-default" id="manage_aasr"> 
+                    <!--<div class="panel-heading">AASR Aggregation</div> -->
+                    
+                        <div class="panel-body" >
+                            <!--<apex:outputPanel rendered="{!IF(aasrMdrRecords != null,false,true)}">
+                                <span>{!$Label.cmpl123cme__cmplt_no_data_available}</span>   
+                            </apex:outputPanel> -->
+                            
+                            <apex:outputPanel >
+                                <div>
+                                
+                                    <table  id="aasr_table"  class="table" rules="none">
+                                        <thead style="background:#54698D ;color:white;" >                       
+                                             <tr>
+                                                <th><small><input type="checkbox" id="selectallRight"/></small></th>
+                                                <th><small>{!$Label.CMPLT_NAME}</small></th>
+                                                <th><small>{!$Label.CMPLT_MODEL}</small></th>
+                                                <th><small>{!$Label.CMPLT_CODE}</small></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </apex:outputPanel>
+                        </div>    
+                    </div>
+               </div>
+        </div>            
+    </apex:outputPanel>
+</apex:page>

@@ -1,0 +1,429 @@
+<apex:page standardController="CMPL123CME__EMDR__c"  docType="html-5.0"   StandardStylesheets="false" applyHtmlTag="false" showHeader="false" applyBodyTag="false" extensions="CMPL123CME.EMDRController">  
+    <html ng-app="app" style="overflow-x:hidden;">        
+       <head>
+            <meta name="EMDR" content="CSS,JavaScript"/>
+            <script>       
+                Visualforce.remoting.timeout = 120000;     
+                var  isPanelEnabled = {!showWFPanel};
+                var urlParams = JSON.parse('{!JSENCODE(urlParamsMapString)}');
+                var dateFormat = '{!JSENCODE(dateLocaleFormat)}';
+                var dateTimeFormat = '{!JSENCODE(dateTimeLocaleFormat)}';
+                var dateLocaleCode = '{!JSENCODE(dateLocaleCode)}';
+                var emdrName = '{!JSENCODE(EMDR__c.Name)}';
+                var recid = '{!JSENCODE($CurrentPage.parameters.id)}'.length > 0 ? '{!JSENCODE($CurrentPage.parameters.id)}':'';
+                //var recType = '{!JSENCODE($CurrentPage.parameters.RecordType)}'.length > 0 ? '{!JSENCODE($CurrentPage.parameters.RecordType)}':'';    
+                var recType = '{!JSENCODE(recordType)}';
+                var recTypeName = '{!JSENCODE(recordTypeName)}';
+                var isClone = '{!JSENCODE($CurrentPage.parameters.clone)}'.length > 0 ? true : false;
+                var sectionDetails = '{!$RemoteAction.EMDRController.getSectionDetail}';
+                var fields = '{!$RemoteAction.EMDRController.getFieldDetails}';               
+                var relatedList = '{!$RemoteAction.EMDRController.queryRelatedList}';
+                var lookupFields = '{!$RemoteAction.EMDRController.getLookupFields}';
+                var saveEMDR = '{!$RemoteAction.EMDRController.saveRecord}';
+                var codeList = '{!$RemoteAction.EMDRController.complaintCodeList}';
+                var treeJson = '{!$RemoteAction.EMDRController.createTreeJson}';
+                var emdrKeyPrefix = '{!$ObjectType.CMPL123CME__EMDR__c.keyPrefix}';
+                var placeHolderMap  = '{!JSENCODE(plcHolderMap)}';
+                var initialCodeMap = '{!JSENCODE(parentEMDRCodeMap)}';
+                var emdrFormVersionWithNS = 'CMPL123CME__EMDR_Form_Version__c';
+                var emdrComplaintCode = '{!JSENCODE(translateCCode)}';
+                var userLang = '{!JSENCODE(userLanguage)}';
+                //Handles clone record
+                var cloneId = '{!JSENCODE(cloneId)}';
+                var passDataToEMDRCustomJS = {
+                    selectAll: '{!$Label.CMPLT_SELECT_ALL}',
+                    selectNone: '{!$Label.CMPLT_SELECT_NONE}', 
+                    reset: '{!$Label.CMPLT_RESET}',
+                    search: '{!$Label.CMPLT_SEARCH}...',
+                    nothingSelected: '{!$Label.CMPLT_NONE_SELECTED}'
+                };
+                var calendarTitle = {
+                    selectMonth     : '{!$Label.CMPLT_SELECT}'    + ' ' + '{!$Label.CMPLT_MONTH}',
+                    prevMonth       : '{!$Label.CMPLT_PREV}'      + ' ' + '{!$Label.CMPLT_MONTH}',
+                    nextMonth       : '{!$Label.CMPLT_NEXT}'      + ' ' + '{!$Label.CMPLT_MONTH}',
+                    selectYear      : '{!$Label.CMPLT_SELECT}'    + ' ' + '{!$Label.CMPLT_YEAR}',
+                    prevYear        : '{!$Label.CMPLT_PREV}'      + ' ' + '{!$Label.CMPLT_YEAR}',
+                    nextYear        : '{!$Label.CMPLT_NEXT}'      + ' ' + '{!$Label.CMPLT_YEAR}',
+                    selectDecade    : '{!$Label.CMPLT_SELECT}'    + ' ' + '{!$Label.CMPLT_DECADE}',
+                    prevDecade      : '{!$Label.CMPLT_PREV}'      + ' ' + '{!$Label.CMPLT_DECADE}',
+                    nextDecade      : '{!$Label.CMPLT_NEXT}'      + ' ' + '{!$Label.CMPLT_DECADE}',
+                    prevCentury     : '{!$Label.CMPLT_PREV}'      + ' ' + '{!$Label.CMPLT_CENTURY}', 
+                    nextCentury     : '{!$Label.CMPLT_NEXT}'      + ' ' + '{!$Label.CMPLT_CENTURY}',
+                    incrementHour   : '{!$Label.CMPLT_INCREMENT}' + ' ' + '{!$Label.CMPLT_HOUR}',
+                    pickHour        : '{!$Label.CMPLT_PICK}'      + ' ' + '{!$Label.CMPLT_HOUR}',
+                    decrementHour   : '{!$Label.CMPLT_DECREMENT}' + ' ' + '{!$Label.CMPLT_HOUR}',
+                    incrementMinute : '{!$Label.CMPLT_INCREMENT}' + ' ' + '{!$Label.CMPLT_MINUTE}',
+                    pickMinute      : '{!$Label.CMPLT_PICK}'      + ' ' + '{!$Label.CMPLT_MINUTE}',
+                    decrementMinute : '{!$Label.CMPLT_DECREMENT}' + ' ' + '{!$Label.CMPLT_MINUTE}',
+                    incrementSecond : '{!$Label.CMPLT_INCREMENT}' + ' ' + '{!$Label.CMPLT_SECOND}',
+                    pickSecond      : '{!$Label.CMPLT_PICK}'      + ' ' + '{!$Label.CMPLT_SECOND}',
+                    decrementSecond : '{!$Label.CMPLT_DECREMENT}' + ' ' + '{!$Label.CMPLT_SECOND}',
+                    selectTime      : '{!$Label.CMPLT_SELECT}'    + ' ' + '{!$Label.CMPLT_TIME}',
+                    togglePeriod    : '{!$Label.CMPLT_TOGGLE_PERIOD}',
+                }
+           </script>            
+             <!-- Resources for lightning experience support -->
+            <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+            <apex:stylesheet value="{!$Resource.CMPL123CME__EMDRLayout}/css/EMDR_CSS_Min.css" /> 
+            <apex:stylesheet value="{!$Resource.CMPL123CME__EMDRLayout}/css/datetime.css" /> 
+            <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/skin/ui.dynatree.css')}" /> 
+            <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery/jquery.js' )}" />
+            <apex:includeScript value="{!$Resource.CMPL123CME__EMDRLayout}/js/EMDR_Without_Custom.js" />
+            <apex:includeScript value="{!$Resource.CMPL123CME__EMDRLayout}/js/angulardatetime_min.js" />
+            <apex:includeScript value="{!$Resource.CMPL123CME__EMDRLayout}/js/datepicker.js" />
+            <apex:includeScript value="{!$Resource.CMPL123CME__EMDRLayout}/js/EMDR_Custom_Js.js" />
+
+            
+            
+            <style>
+                .multiSelect >button{
+                   overflow: hidden;
+                    text-overflow: ellipsis;
+                    width:300px;
+                }.input-group-addon{
+                    padding:6px;
+                }        
+            </style>
+       </head>
+       <body class="ng-cloak">
+          
+             <div class="container-fluid"  ng-controller="EMDRLayout" style="font-size:12px;"> 
+                <div class="row well" style="padding:12px;margin-bottom: 0px"> 
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a ng-if="!isFromEMDRConsole || {!$User.UIThemeDisplayed == 'Theme4d'}" href="/{!$ObjectType.CMPL123CME__EMDR__c.keyPrefix}/o"><span class="glyphicon glyphicon-circle-arrow-left" style="font-size:15px;" title="{!$Label.CMPLT_BACK_TO_EMDR}"></span></a>
+                            <p> <b>{{id.length > 0 ? '{!$Label.CMPLT_EDIT} ' :'{!$Label.CMPLT_NEW_EMDR}'}}</b> <strong><span ng-hide="id.length == 0">{!CMPL123CME__EMDR__c.Name}</span></strong></p>
+                        </div> 
+                         <div class="col-md-6" style="text-align:center;">
+                             <button  type="submit"  style="width:100px;" ng-click="saveRecord();" ng-show="(loginForm.$dirty || isClone) && ({!$ObjectType.CMPL123CME__EMDR__c.updateable || !$ObjectType.CMPL123CME__EMDR__c.createable})" ng-disabled="loginForm.$invalid || search" class="btn btn-primary btn-sm">{!$Label.CMPLT_SAVE}</button>
+                             <button type="button"  style="width:100px;" ng-show="(loginForm.$dirty || isClone) && ({!$ObjectType.CMPL123CME__EMDR__c.updateable || !$ObjectType.CMPL123CME__EMDR__c.createable})" ng-click="refreshPage();" class="btn btn-primary btn-sm">{!$Label.CMPLT_CANCEL}</button>
+                             <button type="button" ng-click="navigatePage(key.CMPL123CME__URL__c,key.CMPL123CME__Behavior__c);" ng-hide="id.length == null || loginForm.$dirty || isClone ? true : false" style="margin:2px;" class="btn btn-primary btn-sm" ng-repeat="key in Buttons | orderBy : 'CMPL123CME__Order__c'">{{key.Name}}</button>
+                         </div>  
+                        <div class="col-md-3" >
+                             <p class="input-group" style="float:right;width:85%;">
+                                 <input type="text"  id="search" style="border-radius-left:15px;" class="form-control" ng-keyup="filterTab();" ng-model="search" Placeholder="{!$Label.CMPLT_SEARCH_FIELDS}"  />
+                                 <span class="input-group-btn">
+                                     <button type="button" title="{!$Label.CMPLT_CLEAR}" class="btn btn-primary" ng-click="search ='';"><i class="glyphicon glyphicon-remove"></i></button>
+                                 </span>
+                             </p>
+                         </div>                    
+                    </div>
+                    <div class="row" style="text-align:center;">
+                        <div ng-repeat="key in relatedListDown" style="display:inline;">
+                            <a  href="#{{key.relationShip}}{{$index}}"  ng-mouseleave="hideDiv();"  ng-mouseenter="showDiv(key.relationShip);">{{key.relatedName}} [{{relatedListItem[key.relationShip] == null  ? 0 : relatedListItem[key.relationShip].totalSize}}]</a><span ng-hide="relatedList.length == $index+1">&nbsp;&nbsp;<span ng-hide="$index == relatedListDown.length-1">|</span>&nbsp;&nbsp;</span>
+                        </div>
+                    </div>
+                     <div  id="{{key.relationShip}}" style="top:{{loginForm.$dirty == false && Buttons.length == 0 ? '37px':'73px'}}" class="container-fluid ng-cloak relatedDiv" ng-repeat="key in relatedListDown" ng-mouseleave="hideDiv();" ng-mouseenter="showDiv1();" ng-show="displayDiv">
+                           <div class="row" ng-if="key.relationShip == relName" >
+                                <div class="col-md-5"><h4>{{key.relatedName}}</h4></div>
+                                <div class="col-md-6" style="padding:4px;" ng-if="key.config.CMPL123CME__Show_Related_List_New_Button__c"><button type="button" ng-click="openRelatedListNewButton(key.buttonLink,key.config.CMPL123CME__Behavior__c, key.config.CMPL123CME__Related_Api__c, key.relatedFieldAPIName);" style="padding:5px;" class="btn btn-primary btn-sm"> {!$Label.CMPLT_NEW} {{key.newButtonLabel}}</button></div>
+                    
+                           </div>
+                           <div  ng-show ="relatedListItem[key.relationShip] == null &&  key.relationShip == relName"  class="alert alert-info"><strong>{!$Label.CMPLT_NO_REC_TO_DISPLAY}</strong></div>    
+                           <table ng-show ="relatedListItem[key.relationShip] != null &&  key.relationShip == relName" class="table table-bordered"  border="0">                        
+                            <thead><tr><th style="padding:4px;background:#f2f3f3;"  ng-repeat="key1 in key.columnList">{{key1}}</th></tr></thead>    
+                            <tbody>
+                                <tr ng-repeat="key1 in relatedListItem[key.relationShip].records">
+                                    <td style="padding:4px;" ng-repeat="key2 in key.apiList"  ng-if="key2 != 'Id'">
+                                           <a href="/{{key1['Id']}}" ng-if="key2 == 'Name' || key2 == 'Subject'" target="_blank">{{key2== 'Name' ? key1['Name'] : key1['Subject'] }}</a>
+                                           <a href="/{{key1['Id']}}" ng-if="key2 == 'Title'"  target="_blank">{{key1['Title'] }}</a>
+                                           <span ng-if="key2 != 'Name' && key2 != 'Subject' &&  key2 != 'Title'">
+                                                {{(key2.indexOf('.') > 0 ? key1[key2.split('.')[0]][key2.split('.')[1]] : key1[key2]).indexOf('+0000') > -1 ? (key2.indexOf('.') > 0 ? key1[key2.split('.')[0]][key2.split('.')[1]] : key1[key2] | date : dateTimeFormat : timeZoneOffset) :  (key2.indexOf('.') > 0 ? key1[key2.split('.')[0]][key2.split('.')[1]] : key1[key2])}}
+                                           </span>                  
+                                    </td> 
+                                </tr>
+                            </tbody>
+                        </table>             
+                           
+                    </div>
+                </div>
+                 <div class="row" ng-show="worlflowPanelError" style="font-weight:bold;color:#c00;text-align:center;margin-top:1%;">
+                            <span>{{worlflowPanelError}}</span>
+                 </div>
+                <div id="reload" ng-hide="loginForm.$dirty || !showWFPanel"><CMPL123:WorkflowPanelComponent id="wfpanel" RecordId="{!$CurrentPage.parameters.id}" isPartialRefresh="false" isEMDRLayout="true" ></CMPL123:WorkflowPanelComponent></div>
+                <div class="container" style="text-align:center;margin-top:2%;font-weight: bold;color: #c00;" ng-if="remoteExceptionMsg.length > 0">
+                    <span style="font-size:14px;" class="glyphicon glyphicon-warning-sign"></span>&nbsp;&nbsp;<span>{{remoteExceptionMsg}}</span>
+                </div>
+                
+               
+               
+                <div style="margin-top:1%;padding-left:0px;" class="container-fluid">
+                    <div class="col-sm-3" style="border-right:1px solid #ddd;height:500px;padding:5px;">
+                        <ul class="nav nav-tabs nav-stacked nav-pills" style="border:0px;">
+                           <li  ng-repeat="(key,value) in tabs" ng-class="{'active' : value.tabPosition == tabSelected,'searchResult': value.searchResult == true && search.length > 0,'panelResult':value.panelResult == true}"  ng-style="{'border-left': value.class == 'requiredBlock' ? '3px solid #c00':''}" style="border-radius:5px;">
+                             <a ng-style="{'border-top':value.color}" style="cursor:pointer;border:1px solid #CCC;" ng-click="changeTab(value.tabPosition);" href="">
+                                     {{value.tabLabel}}
+                                     
+                                     <image ng-show="value.isValid && isSubmitted" src="/img/msg_icons/error16.png" style="float:right;height:12px;"/>
+                                     <image ng-show="!value.isValid && isSubmitted" src="/img/msg_icons/confirm16.png" style="float:right;height:12px;"/>
+                                  </a>
+                            </li>
+                        </ul>
+                    </div>
+                     <div class="col-sm-9" style="margin-top:1%;" ng-show="pageLabelErrorMessage || exceptionMsg || globalError">
+                            <div class="container-fluid" style="text-align:center;" ng-show="exceptionMsg == 'config'">
+                                <div style="font-weight: bold;color: #c00;">
+                                    {!$Label.CMPLT_UNABLE_TO_SAVE_ERROR} <a href="#" onclick="clearLocalStorage();">{!$Label.CMPLT_CLICK_HERE}</a> {!$Label.CMPLT_CONTACT_SYS_ADMIN}.
+                                </div><br/>
+                            </div>
+                             <div class="container-fluid" style="text-align:center;" ng-show="exceptionMsg != 'config'">
+                                 <div style="font-weight: bold;color: #c00;"> {{exceptionMsg}}</div>
+                             </div>
+                            <div class="alert alert-danger" style="text-align:center;psdding:10px;margin-top:-1%;"  ng-show="pageLabelErrorMessage || globalError">
+                                <button type="button" style="margin-top: -1%;" class="close"><span class="glyphicon glyphicon-remove-circle" ng-click="pageLabelErrorMessage='';globalError=false"></span></button>
+                                <strong>{!$Label.CMPLT_REVIEW_ERROR_MESSAGE}.</strong>
+                                <div ng-repeat="key in pageLabelErrorMessage">
+                                    <strong>{{key}}</strong>
+                                </div>
+                            </div> 
+                     </div> 
+                    <div class="container" style="text-align:center;margin-top:4%;" ng-if="fields == null">
+                    <button class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> {!$Label.CMPLT_LOADING}...</button>
+                    </div> 
+                    <div class="col-sm-9" ng-show="fields != null && fields != ''">
+                      
+                       <form name="loginForm" novalidate ="true" class="loginForm">
+                          <div ng-repeat="key in tabs">
+                              <span ng-hide="true">{{key.isValid = false}}</span>
+                             
+                              <span ng-show="hide">{{order = $index}}</span>
+                              <div ng-repeat="key1 in key.fieldList | filter : search track by $index" ng-show="key1.tabPosition == tabSelected;">
+                                    <span ng-show="false" ng-if="key1.isRequired == 'true'"> {{key.class = key1.isRequired == 'true' ? 'requiredBlock':''}}  </span> 
+                                    <div class="col-md-5 col-md-offset-{{$customIndex%2 == 0 ? 0 : 0}}"  ng-if="fields[key1.apiName].type != 'LONGTEXTAREA' &&  key1.apiName != 'CMPL123CME__H6_Evaluation_Codes__c' &&  key1.apiName != 'CMPL123CME__F10_Event_Problem_Code__c'">
+                                        <label data-placement="right" data-toggle="popover" name="{{fields[key1.apiName].type}}"  content="{{placeHolderMap[key1.apiName]}}" data-html="true" createpopover=' ' data-trigger="hover" style="font-size:12px;font-weight:bold;">{{key1.label}}</label>&nbsp;&nbsp;
+                                       
+                                        <span ng-if="fields[key1.apiName].message.length > 0">
+                                          <span  ng-show="hide">{{key.isValid = true}}</span>
+                                        </span>
+                                        
+                                        <div class="requiredBlock" ng-show="key1.isRequired == 'true'"></div>
+                                        <span ng-if="key1.apiName == 'CMPL123CME__MFR_Report_Ref__c' && isClone">
+                                            {{key1.value = ''}}
+                                        </span>
+                                        <div ng-show="false">
+                                            <span style="font-size:12px;">({{key1.type == 'STRING' ? key1.type = 'text':key1.type}})</span>
+                                        </div>
+                                        <img src="/img/loading32.gif" style="width:17px;margin-left:6px;height:17px;display:none;"  ng-if="key1.type == 'REFERENCE' && key1.isReadOnly == false"  />
+
+                                        <input style="width:92%;" class= "form-control" ng-keyup="changeTabColor(order);"  placeholder="{{recordTypeName == 'Supplemental' ? (placeHolderMap[key1.apiName] != null ? placeHolderMap[key1.apiName] : '')  : (key1.isReadOnly == true ? '':'Type '+key1.label)}}" ng-disabled="key1.isReadOnly" ng-if="fields[key1.apiName].type != 'REFERENCE' && fields[key1.apiName].type != 'MULTIPICKLIST' && fields[key1.apiName].type != 'PICKLIST' && fields[key1.apiName].type != 'DATE' && fields[key1.apiName].type != 'DATETIME' && fields[key1.apiName].type != 'BOOLEAN' && key1.apiName != 'CMPL123CME__C2_Concom_Med_Prod_and_Therapy_Dates__c'" type="text" ng-model="fields[key1.apiName].value"  name="{{key1.apiName}}{{order}}"  ng-required ="{{key1.isRequired}}" ng-maxlength="{{(key1.apiName == 'CMPL123CME__G3_Report_Source_Other__c') && fields['CMPL123CME__EMDR_Form_Version__c'].value =='2018' ? (fields[key1.apiName].value).length  > 40 ? key1.length = 255 : key1.length = 40 : key1.length > 0 ? key1.length : -1}}" />
+                                        
+                                        <div class="form-control" name="{{key1.apiName}}{{order}}"  ng-if="fields[key1.apiName].type == 'DATE'" style="border: 0px solid #ccc;padding:0px;" >
+                                           <div class="form-group">
+                                                    <div class='input-group date datetimepicker' datetimepicker=" " id="{{key1.apiName}}~{{order}}" type="date">
+                                                    <input type='text' ng-required ="{{key1.isRequired}}" class="form-control"  ng-change="changeTabColor(order);" placeholder="{{recordTypeName == 'Supplemental' ? (placeHolderMap[key1.apiName] != null ? placeHolderMap[key1.apiName] : '')  : (key1.isReadOnly == true ? '':'{!$Label.CMPLT_TYPE} '+key1.label)}}" ng-disabled="key1.isReadOnly"  ng-model="fields[key1.apiName].value"  />
+                                                        <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar" style="color:#337ab7;"></span>
+                                                        </span>
+                                                    </div>
+                                             </div>
+                                        </div>                                 
+                                        
+                                        <div class="form-control"  name="{{key1.apiName}}{{order}}" ng-if="fields[key1.apiName].type == 'DATETIME'" style="border: 0px solid #ccc;padding:0px;" >
+                                                <div class="form-group">
+                                                    <div class='input-group date datetimepicker' datetimepicker=" " id="{{key1.apiName}}~{{order}}"  type="datetime">
+                                                    <input type='text' ng-required ="{{key1.isRequired}}" class="form-control"  ng-change="changeTabColor(order);" placeholder="{{recordTypeName == 'Supplemental' ? (placeHolderMap[key1.apiName] != null ? placeHolderMap[key1.apiName] : '')  : (key1.isReadOnly == true ? '':'{!$Label.CMPLT_TYPE} '+key1.label)}}" ng-disabled="key1.isReadOnly"  ng-model="fields[key1.apiName].value"  />
+                                                        <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar" style="color:#337ab7;"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                        </div> 
+                                        <span  ng-if="key1.type == 'BOOLEAN'" ng-show="hide">{{fields[key1.apiName].value = fields[key1.apiName].value.length == 0 ? 'null' : fields[key1.apiName].value}}</span>
+                                        <select ng-disabled="key1.isReadOnly"  ng-change="changeTabColor(order);" class="form-control" ng-if="fields[key1.apiName].type == 'BOOLEAN'" ng-model="fields[key1.apiName].value"><option value="null">--{!$Label.CMPLT_SELECT}--</option><option value="true">{!$Label.CMPLT_TRUE}</option><option value="false">{!$Label.CMPLT_FALSE}</option></select>
+                                       
+                                        <a href="/{{fields[key1.apiName].value}}" style="cursor:pointer;" id="{{key1.apiName}}{{order}}"  ng-mouseover="LookupHoverDetail('mouseover',fields[key1.apiName].value,order,key1.apiName);" ng-mouseout="LookupHoverDetail('mouseout',fields[key1.apiName].value,order,key1.apiName);" target="_blank" ng-if="fields[key1.apiName].type == 'REFERENCE' && fields[key1.apiName].formatValue.length > 0 && key1.apiName != 'RecordTypeId' && key1.apiName != 'OwnerId'" title="{!$Label.CMPLT_VIEW}">
+                                             <span style="color:#337ab7;font-size: 15px;vertical-align:-5px;" class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        
+                                        <a href=""  title="{{key1.label}} {!$Label.CMPLT_LOOKUP_NEW_WINDOW}" style="cursor:pointer;" ng-click="openWindow(key1.apiName,fields[key1.apiName].formatValue,key1.referenceObjKeyPrefix);" ng-if="fields[key1.apiName].type == 'REFERENCE' && key1.isReadOnly == false && key1.apiName != 'RecordTypeId' && key1.apiName != 'OwnerId'">
+                                            <img src="/s.gif" class="lookupIcon" />
+                                        </a>
+                                        <div class="input-group" name="{{key1.apiName}}{{order}}"  ng-if="fields[key1.apiName].type == 'REFERENCE' && key1.apiName != 'RecordTypeId' && key1.apiName != 'OwnerId' && key1.apiName != 'RecordTypeId'">
+                                         
+                                            <span ng-hide="true">
+                                                {{fields[key1.apiName].formatValue = urlParamsMapString["CF"+RelatedApiIdMap[key1.apiName]] != null ? urlParamsMapString["CF"+RelatedApiIdMap[key1.apiName]] : fields[key1.apiName].formatValue}}
+                                                {{fields[key1.apiName].value =  urlParamsMapString["CF"+RelatedApiIdMap [key1.apiName]+"_lkid"] != null ? urlParamsMapString["CF"+RelatedApiIdMap[key1.apiName]+"_lkid"] :  fields[key1.apiName].value}}
+                                            </span>
+                                            
+                                            <input  type="hidden" name="CF{{RelatedApiIdMap[key1.apiName]}}_lkid"  ng-if="fields[key1.apiName].type == 'REFERENCE' && key1.apiName != 'RecordTypeId' && key1.apiName != 'OwnerId' && key1.apiName != 'RecordTypeId'"  id="CF{{RelatedApiIdMap[key1.apiName]}}_lkid"  value=""  />
+                                            <input type="hidden" name="CF{{RelatedApiIdMap[key1.apiName]}}_lkold" ng-if="fields[key1.apiName].type == 'REFERENCE' && key1.apiName != 'RecordTypeId' && key1.apiName != 'OwnerId'"  id="CF{{RelatedApiIdMap[key1.apiName]}}_lkold" value="" ng-model="fields[key1.apiName].formatValue"/>
+
+                                            <input  ng-required="key1.isRequired == 'true'" ng-style="{'border-left':key1.isRequired == 'true' ? '2px solid #c00' : '1px solid #ccc;padding:10px'}" readonly="true" placeholder="{{recordTypeName == 'Supplemental' ? (placeHolderMap[key1.apiName] != null ? placeHolderMap[key1.apiName] : '')  : (key1.isReadOnly == true ? '':'{!$Label.CMPLT_TYPE} '+key1.label)}}" class="form-control" order="{{order}}~{{$index}}"  ng-if="fields[key1.apiName].type == 'REFERENCE' && key1.apiName != 'RecordTypeId' && key1.apiName != 'OwnerId'" ng-model="fields[key1.apiName].formatValue"  name="CF{{RelatedApiIdMap[key1.apiName]}}" maxlength="255"  size="20" tabindex="12" type="text" onchange="setLookupValue(this.id,this.name,$(this).attr('order'),$(this));"   />
+                                            <span class="input-group-btn" >
+                                                <button class="btn btn-primary"  style="width:27px;height:34px;visibility:{{fields[key1.apiName].value.length > 0  && !key1.isReadOnly ? 'visible' : 'hidden'}};" order="{{key1.apiName}}"   onclick="removeLookupValue($(this).attr('order'));" type="button">
+                                                    <i class="glyphicon glyphicon-remove"></i>
+                                                </button>
+                                            </span>
+                                         </div>
+
+                                       <input class="form-control" style="width:92%;" ng-model="fields[key1.apiName].formatValue" ng-required="key1.isRequired"  ng-disabled="true" ng-if="fields[key1.apiName].formatValue && (key1.apiName == 'RecordTypeId' || key1.apiName == 'OwnerId' || key1.apiName == 'CMPL123CME__C2_Concom_Med_Prod_and_Therapy_Dates__c')"  placeholder="{{key1.isReadOnly == true ? '': 'Type '+key1.label+' Name'}}" type="text" id="{{key1.apiName}}{{order}}"   name="{{key1.apiName}}{{order}}"  ng-keyup="getLookup(key1.apiName,order,$index);" />
+
+                                       <!-- Added to disable the form format -->
+                                       <input class="form-control" style="width:92%;" ng-model="fields[key1.apiName].value" ng-required="key1.isRequired"  ng-disabled="true" 
+                                              ng-if="(key1.apiName == 'CMPL123CME__EMDR_Form_Version__c' 
+                                                     && ((recordTypeName == 'Initial' && id.length > 0) 
+                                                     || (recordTypeName == 'Supplemental' 
+                                                     && ( formVersionDisabled) )))"  placeholder="{{key1.isReadOnly == true ? '': '{!$Label.CMPLT_TYPE} '+key1.label+' {!$Label.CMPLT_NAME}'}}" type="text" name="{{key1.apiName}}{{order}}"  ng-keyup="getLookup(key1.apiName,order,$index);" />
+
+                                       
+                                       <div class="form-control"  name="{{key1.apiName}}{{order}}"  is-disabled="key1.isReadOnly == true ? true : false"  style="border: 0px solid #ccc;padding:0px;padding-left: 3px;width:93%;" ng-if="fields[key1.apiName].type == 'PICKLIST' && key1.apiName != 'CMPL123CME__EMDR_Form_Version__c'" isteven-multi-select=" "  input-model="fields[key1.apiName].pickVals"   output-model="picklistValue"  button-label="Label"  item-label="Label"  tick-property="ticked" selection-mode="single" on-item-click="setPicklistValue(data,key1,$index,order,key1.apiName,picklistValue);"  on-select-none="resetMultiselect(order,$index,key1.apiName);"  on-reset="resetMultiselect(order,$index,key1.apiName);"> </div>
+                                       
+                                       <div class="form-control" name="{{key1.apiName}}{{order}}"  is-disabled="key1.isReadOnly == true ? true : false" style="border: 0px solid #ccc;padding:0px;padding-left: 3px;width:93%;" ng-if="fields[key1.apiName].type == 'MULTIPICKLIST'" isteven-multi-select=" " input-model="fields[key1.apiName].pickVals"    output-model="picklistValue"  button-label="Label"  item-label="Label"  tick-property="ticked" on-item-click="setMultiPicklistValue(data,$index,picklistValue,order,key1.apiName);"  on-select-all="selectAll(data,$index,key1.pickVals,order,key1.apiName);" on-select-none="resetMultiselect(order,$index,key1.apiName);" on-reset="resetMultiselect(order,$index,key1.apiName);"> </div>
+
+                                       <!-- Added for EMDR Version picklist -->
+                                       <div class="form-control"  name="{{key1.apiName}}{{order}}" helper-elements=" "  
+                                            style="border: 0px solid #ccc;padding:0px;padding-left: 3px;width:93%;" 
+                                            ng-if="((fields[key1.apiName].type == 'PICKLIST' && key1.apiName == 'CMPL123CME__EMDR_Form_Version__c') 
+                                                && ((formVersionDisabled == false && recordTypeName == 'Supplemental') 
+                                                    || (recordTypeName == 'Initial' && id.length == 0)))" 
+                                            isteven-multi-select=" "  input-model="fields[key1.apiName].pickVals" output-model="picklistValue"  button-label="Label"  item-label="Label"  tick-property="ticked" selection-mode="single" on-item-click="setPicklistValue(data,key1,$index,order,key1.apiName,picklistValue);"  on-select-none="resetMultiselect(order,$index,key1.apiName);" on-reset="resetMultiselect(order,$index,key1.apiName);"> </div>
+                                      
+                                       <div style="min-height:20px;color:red;">
+                                            <span class="{{key1.apiName}}"></span>
+                                          
+                                            <span>
+                                                  {{fields[key1.apiName].message}}
+                                            </span>
+                                            <span ng-show="loginForm[key1.apiName+order].$error.required  && loginForm[key1.apiName+order].$dirty">{{key1.label}} {!$Label.CMPLT_IS_REQ_FIELD}.</span>
+                                            <span ng-show="loginForm[key1.apiName+order].$error.maxlength && loginForm[key1.apiName+order].$dirty">{{key1.label}} {!$Label.CMPLT_MAX_VAL} {{key1.length}}.</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10" ng-if="fields[key1.apiName].type == 'LONGTEXTAREA'" ng-show="key1.tabPosition == tabSelected">
+                                        <span ng-hide="true" ng-if="fields[key1.apiName].message.length > 0">{{key.isValid = true}}</span>
+                                        <label data-placement="right" data-toggle="popover" name="{{fields[key1.apiName].type}}"  content="{{placeHolderMap[key1.apiName]}}" data-html="true" createpopover=' ' data-trigger="hover" style="font-size:12px;font-weight:bold;">{{key1.label}}</label>&nbsp;&nbsp;
+                                        <div class="requiredBlock" style="height:54px;" ng-if="key1.isRequired == 'true'"></div>
+                                        <textarea class="form-control"  ng-change="changeTabColor(order);" ng-disabled="key1.isReadOnly" placeholder="{{recordTypeName == 'Supplemental' ? (placeHolderMap[key1.apiName] != null ? placeHolderMap[key1.apiName] : '')  : (key1.isReadOnly == true ? '':'{!$Label.CMPLT_TYPE} '+key1.label)}}"  ng-model="fields[key1.apiName].value"  name="{{key1.apiName}}{{order}}"  ng-required ="{{key1.isRequired}}" ng-maxlength="{{key1.length}}"   />
+                                        <div style="min-height:20px;color:red;">
+                                          
+                                            <span class="{{key1.apiName}}"></span>
+                                            <span>
+                                                {{fields[key1.apiName].message}}
+                                            </span>
+                                            <span ng-show="loginForm[key1.apiName+order].$error.required  && loginForm[key1.apiName+order].$dirty">{{key1.label}} {!$Label.CMPLT_IS_REQ_FIELD}.</span>
+                                            <span ng-show="loginForm[key1.apiName+order].$error.maxlength && loginForm[key1.apiName+order].$dirty">{{key1.label}} {!$Label.CMPLT_MAX_VAL} {{key1.length}}.</span>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-10" ng-if="key1.apiName =='CMPL123CME__F10_Event_Problem_Code__c' || key1.apiName == 'CMPL123CME__H6_Evaluation_Codes__c'" ng-show="key1.tabPosition == tabSelected">
+                                            <span ng-if="fields[key1.apiName].message.length > 0"><span ng-hide="true">{{key.isValid = true}}</span></span>
+                                            <div class="panel panel-primary" style="border-color:white;">
+                                                <div>
+                                                    <div>
+                                                         <label style="font-size:12px;font-weight:bold;">{{key1.label}}</label>
+                                                    </div>
+                                                    <span ng-hide="true">{{fldOrder = $index}}</span>                                                    
+                                                    <div class="panel-body panel-body{{order}}{{fldOrder}}" ng-style="{'border-left':cloneTab[tabSelected].fieldList[$index].isRequired == 'true' ? '2px solid #c00' : '1px solid #ccc'}" style="border:1px solid #ccc;padding:10px;" > 
+                                                    <span style="display:none;" ng-if="key1.isRequired == 'true'">{{ key1.isCloneRequired  = 'true'}}</span>
+                                                    <span style="display:none"><input type="text" class="form-control" ng-required ="key1.isCloneRequired == 'true'" ng-model="key1.value" /></span> 
+                                                        <div class="row" ng-repeat="KeyType in fields[key1.apiName].cCodes" style="margin-top:{{$index == 0 ? '1%' : '2%'}}">
+                                                            <div class="col-md-3">
+                                                                <div class="col-md-9" style="margin-top:10px;">
+                                                                    <span data-placement="right" data-toggle="popover" name="code" content="{{initialCodeMap[key1.apiName][KeyType.type]}}" data-html="true" createpopover=' ' data-trigger="hover"  style="font-size:12px;font-weight:bold;">{{emdrCCode[KeyType.type]}}</span>
+                                                                </div>
+                                                                <div style="margin-top:10px;"><span  ng-hide="key1.isReadOnly" class="glyphicon glyphicon-plus-sign" ng-click="openCodePopup(KeyType.type,order,fldOrder,$index,key1.apiName);"  style="color:#337ab7;font-size: 15px;vertical-align:-2px;padding-left:14px;"></span></div>
+                                                            </div>
+                                                            <span style="display:none"> {{ filterval = (KeyType.codes | filter: {action: '!' +'D'}) }} </span>
+                                                            <span style="display:none;" ng-if="filterval.length > 0 && key1.isCloneRequired =='true'">{{ key1.isCloneRequired = 'false' }}</span>
+                                                            <div class="col-md-9">
+                                                                <div class="col-md-2" title="{{keyinn.code}}" style="margin-top:5px;margin-right:5px;" ng-repeat="keyinn in KeyType.codes track by $index" ng-show="keyinn.action != 'D'">
+                                                                    <div class="row" style="border:1px solid #ccc;border-radius:4px;padding:4px">
+                                                                        <div class="col-md-11" style="text-overflow:ellipsis;white-space:nowrap;overflow: hidden;padding-left:3px;">
+                                                                            {{keyinn.code}}
+                                                                        </div>
+                                                                        <div class="col-md-1" style="padding:0px;">
+                                                                            <span style="color:grey;cursor:pointer;float:right;" ng-hide="key1.isReadOnly"  ng-click="checkRequired(tabSelected, fldOrder);removeCode($index,keyinn,KeyType.codes);changeTabColor(order);loginForm.$dirty = true;makeCodeDivDirty(order,fldOrder);" class="glyphicon glyphicon-remove"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>    
+                                                        </div>
+                                                    </div>
+                                                </div>    
+                                            </div>    
+                                     </div>
+                              </div>
+                         </div>
+                      </form>
+                  </div>
+                </div>
+                <div id="noteRelatedModal" class="noteModal">
+                    <div class="noteModalcontent">
+                        <apex:form >
+                            <div class="modal-header">
+                                <span class="close" id="closeNoteModal" onclick="closeNoteModal()">&times;</span><h2 class="noteModalHeader"><apex:outputLabel value="{!$Label.cmpl123cme__cmplt_new} {!$ObjectType.Note.Label}" /></h2>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <apex:outputLabel value="{!$ObjectType.Note.fields.Title.Label}" /><apex:inputField styleClass="form-control" value="{!noteObject.Title}"/>
+                                </div>
+                                <div class="noteFormElement">
+                                    <apex:outputLabel value="{!$ObjectType.Note.fields.IsPrivate.Label}" />&nbsp;&nbsp;<apex:inputField value="{!noteObject.IsPrivate}"/> 
+                                </div>
+                                <div class="noteFormElement">
+                                    <apex:outputLabel value="{!$ObjectType.Note.fields.Body.Label}" /> <apex:inputField styleClass="form-control noteModalBody" value="{!noteObject.Body}"/>
+                                </div>
+                            </div>                          
+                            <div class="modal-footer noteAlignRight">
+                                <apex:commandButton action="{!saveRelatedNote}" styleClass="btn btn-primary" value="{!$Label.cmpl123cme__cmplt_save}" />
+                                <input type="button" class="btn btn-primary" onclick="closeNoteModal()" value="{!$Label.CMPL123CME__cmplt_cancel}"/>
+                            </div>
+                        </apex:form>
+                    </div>
+                </div> 
+                <div  class="container-fluid">
+                    <div  class="row" id="{{key.relationShip}}{{$index}}" ng-repeat="key in relatedListDown" style="border:1px solid #ddd;border-top:4px solid #337ab7;margin-top:12px;margin-bottom:12px;">
+                        <div class="row">
+                            <div class="col-md-5" style="margin-left:1%;"><h4>{{key.relatedName}}</h4></div>
+                            <div class="col-md-6" style="padding:4px;" ng-if="key.config.CMPL123CME__Show_Related_List_New_Button__c"><button type="button" ng-click="openRelatedListNewButton(key.buttonLink,key.config.CMPL123CME__Behavior__c, key.config.CMPL123CME__Related_Api__c, key.relatedFieldAPIName);" style="padding:5px;margin-top:1px;" class="btn btn-primary btn-sm">{!$Label.CMPLT_NEW} {{key.newButtonLabel}}</button></div>
+                        </div>
+                        <div  ng-show ="relatedListItem[key.relationShip] == null"  class="alert alert-info"><strong>{!$Label.CMPLT_NO_REC_TO_DISPLAY}</strong></div>             
+                        <table ng-show ="relatedListItem[key.relationShip] != null" class="table table-bordered"  border="0">                        
+                            <thead><tr><th style="padding:4px;background:#f2f3f3;"  ng-repeat="key1 in key.columnList">{{key1}}</th></tr></thead>    
+                            <tbody>
+                                <tr ng-repeat="key1 in relatedListItem[key.relationShip].records">
+                                    <td style="padding:4px;" ng-repeat="key2 in key.apiList"  ng-if="key2 != 'Id'">
+                                           <a href="/{{key1['Id']}}" ng-if="key2 == 'Name' || key2 == 'Subject'" target="_blank">{{key2== 'Name' ? key1['Name'] : key1['Subject'] }}</a>
+                                           <a href="/{{key1['Id']}}" ng-if="key2 == 'Title'"  target="_blank">{{key1['Title'] }}</a>
+                                           <span ng-if="key2 != 'Name' && key2 != 'Subject' &&  key2 != 'Title'">
+                                                    {{(key2.indexOf('.') > 0 ? key1[key2.split('.')[0]][key2.split('.')[1]] : key1[key2]).indexOf('+0000') > -1 ? (key2.indexOf('.') > 0 ? key1[key2.split('.')[0]][key2.split('.')[1]] : key1[key2] | date : dateTimeFormat : timeZoneOffset) :  (key2.indexOf('.') > 0 ? key1[key2.split('.')[0]][key2.split('.')[1]] : key1[key2])}}
+                                           </span>                  
+                                    </td> 
+                                </tr>
+                            </tbody>
+                        </table>    
+                    </div>
+                </div>
+           </div>  
+                <script type="text/ng-template" id="CodePopUp.html">
+                    <div class="modal-header" style="padding:5px;">
+                       <h4 class="modal-title" style="font-weight:bold;font-size:15px;">{{title}}</h4>
+                       <button type="button" style="margin-top:-4%;" class="close"><span class="glyphicon glyphicon-remove-circle" ng-click="cancel();"></span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input  type="text"  ng-disabled="keySet.length == 0"  placeholder="{!$Label.CMPLT_PARTIAL_CODE_OR_NAME}" ng-model="seachComp" id="selectedCode" class="form-control" ng-keyup="enableSearchOption($event);"  />
+                                <div ng-if="keySet.length == 0">
+                                    <span style="color:red;">{!$Label.CMPLT_NO} {{title}} {!$Label.CMPLT_FOUND}</span>
+                                </div>
+                            </div>
+                             <div class="col-md-4">
+                                 <input type="button"  class="btn btn-primary" value="{!$Label.CMPLT_FIND}" ng-show="disablesSearch" ng-click="complaintCodeList(title,seachComp);" />
+                            </div> 
+                        </div>
+                        <div id="tree" class="typeCodeDiv" style="padding:1%;"></div> 
+                        <div class="loadingLyer" style="display:none;">
+                            <div style="text-align:center;margin-top:5%;"><img src="/img/loading32.gif" /></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-click="save()">{!$Label.CMPLT_OK}</button>
+                    </div>     
+               </script>
+               <script type="text/ng-template" id="loading.html">
+                    <div class="panel panel-body" style="text-align:center;height:45px;">
+                        <img src="/img/loading32.gif" title="/img/loading32.gif" />
+                    </div>
+              </script>   
+      </body> 
+     </html>
+   </apex:page>

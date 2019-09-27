@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- CAPA_ParentWorkFlowAction --></label>
+        <name>CAPA_ParentWorkFlowAction__c</name>
+    </fields>
+    <fields>
+        <label><!-- CAPA --></label>
+        <name>CAPA__c</name>
+        <relationshipLabel><!-- CAPA Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rule Field Update Key Value --></label>
+        <name>CMPL123Rule_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed By --></label>
+        <name>CMPL123_WF_Action_Performed_By__c</name>
+        <relationshipLabel><!-- CAPA Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed On --></label>
+        <name>CMPL123_WF_Action_Performed_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action --></label>
+        <name>CMPL123_WF_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Status --></label>
+        <name>CMPL123_WF_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Summary --></label>
+        <name>Plan_Summary__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>CAPA Plan</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CAPA Plans</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>CAPA Plan Layout</layout>
+        <sections>
+            <label><!-- CAPA Plan Detail --></label>
+            <section>CAPA Plan Detail</section>
+        </sections>
+        <sections>
+            <label><!-- Work Flow --></label>
+            <section>Work Flow</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Record Locked --></errorMessage>
+        <name>Prevent_Edit_CAPA_plan</name>
+    </validationRules>
+</CustomObjectTranslation>

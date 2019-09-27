@@ -1,0 +1,1412 @@
+<apex:page docType="html-5.0" standardStylesheets="false" sidebar="false" showHeader="false" controller="CMPL123.X123ReportTemplateBuilderController" applyBodyTag="false" applyhtmlTag="false">
+    <html ng-app="myApp"  lang="en">
+        <head>
+            <meta charset="utf-8"/>
+            <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/Angular/css/Bootstrap.css')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/Angular/js/Angular.js')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/Angular/js/ListDragDrop.js')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/Angular/js/BootstrapAngular.js')}"/>
+            
+             <style>
+                    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+                        display: none !important;
+                    }
+                 .objectFields:hover{
+                    border-radius:1px;
+                    background-color: #ddd;
+                    transition: all 0.5 ease;
+                   -webkit-transition all 0.5 ease;
+                   cursor:move;
+                 }
+                  .glyphicon-refresh-animate {
+                        -animation: spin .7s infinite linear;
+                        -webkit-animation: spin2 .7s infinite linear;
+                    }
+                    
+                    @-webkit-keyframes spin2 {
+                        from { -webkit-transform: rotate(0deg);}
+                        to { -webkit-transform: rotate(360deg);}
+                    }
+                    
+                    @keyframes spin {
+                        from { transform: scale(1) rotate(0deg);}
+                        to { transform: scale(1) rotate(360deg);}
+                    }
+                 .hideOverflow {
+                    width: 100px
+                    white-space: nowrap
+                    overflow: hidden
+                    text-overflow: ellipsis;
+                    border:1px solid #438eb9;
+                    border-radius:1px;
+                    background:#f5f5f5;
+                 }
+                  .dndPlaceholder {
+                    display: block;
+                    border-style:dashed;
+                    background-color: #f8faff;
+                    border-color: #337ab7;
+                    min-height: 30px;
+                    border-width: 2px;
+                    
+                   
+                }
+                
+                .simpleDemo ul[dnd-list] .dndDraggingSource {
+                    display: none;
+                
+                }
+                 .simpleDemo ul li:hover{
+                     cursor:move;
+                 }
+                .relativePosition{
+                    position: relative;
+                    z-index: 3;
+                    top: 5%;
+                    width: 100%
+                    transition: all 1s ease;
+                   -webkit-transition all 1s ease;
+                }.selectBox{
+                    margin-top:1%;
+                }
+                .dropdown-menu >li >a:hover{
+                    background-color:#337ab7;
+                    color:white;
+                    border-radius:2px;
+                }
+                .msgDiv{
+                    background: none repeat scroll 0 0 #EEE;
+                    border: 0 none;
+                    color: #666666;
+                    font-family: Georgia,serif;
+                    font-style: italic;
+                    margin: 0;
+                    padding: 5px 20px;
+                    position: relative;
+                    
+                }
+                .closeSlider{
+                    height:0;
+                    overflow:hidden;
+                    transition: all 1s ease;
+                    -webkit-transition all 1s ease;
+                    opacity:0;
+                   
+                
+                }
+                .margintop{
+                    margin-top:10%;
+                }
+                .marginBottom{
+                    margin-top:0;
+                }
+                .OpenSlider{
+                     height:130px;
+                     opacity:1;
+                     transition: opacity 1s ease;
+                    -webkit-transition opacity 1s ease;
+                   
+                }
+                 .progress{
+                    border-radius:0;
+                    height:15px;
+                    position: absolute;
+                    top: 0%;
+                    left: 0%;
+                    width: 100%;
+                    
+                }
+                .hideForm{
+                    height:0;
+                    overflow:hidden;
+                    transition: all 1s ease;
+                    -webkit-transition all 1s ease;
+                    opacity:0;
+                }
+                .showForm{
+                     height:100px;
+                     transition: all 1s ease;
+                    -webkit-transition all 1s ease;
+                     opacity:1;
+                }
+                
+                 .fixedPosition{
+                    position: fixed;
+                    z-index: 3;
+                    left:4%;
+                    top: 1%;
+                    width: 95%;
+                    transition: all 1s ease;
+                   -webkit-transition all 1s ease;
+                }
+                .upload-drop-zone{height: 200px;border-width: 2px;margin-bottom: 20px; }
+                .fields{border:1px solid #9daab2;background-color: #ddd;}               
+                .upload-drop-zone {color: #ccc; border-style: dashed;border-color: #ccc;100px;min-height:50px;}
+                .upload-drop-zone.drop {color: #222; border-color: #222;}
+                  .sectionHeader{
+                    color: #333;
+                    padding:0.2%;
+                    background-color: transparent;
+                    border-style: solid dotted dotted;
+                    border-top-color:#337ab7;
+                    border-left-color: #ccc;
+                    border-bottom-color: #ccc;
+                    border-right-color: #ccc;
+                    border-width: 2px 0 0;
+                    border-bottom:1px solid #ddd;
+                }
+                
+                .btn[disabled]{
+                    pointer-events: none;
+                }
+                .fields:hover{border:1px solid #438eb9;border-radius:1px;background:#f5f5f5;}
+                .panel-body {padding:4px;}
+             
+                .navbar{margin:2px;padding-left: 0;padding-right: 0;border-width: 0;border-radius: 10;-webkit-box-shadow: none;
+                    box-shadow: none;
+                    min-height: 45px;
+                    background: #438eb9;
+                }.check{
+                    color:white;
+                    padding:0.9%;
+                    font-weight:bold;
+                    background-color:#337ab7;
+                }.check:hover{
+                    color:black;
+                }.heightAuto{
+                    height:auto;
+                }
+           
+            
+            .modal.modal-wide .modal-dialog {
+                width: 90%;
+            }
+            .modal-wide .modal-body {
+                overflow-y: auto;
+            }
+            .simpleDemo ul[dnd-list],
+            .simpleDemo ul[dnd-list] > li {
+                position: relative;
+            }
+            
+            .simpleDemo ul[dnd-list] {
+                min-height: 42px;
+                padding-left: 0px;
+            }
+
+
+            .simpleDemo ul[dnd-list] .dndDraggingSource {
+                display: none;
+            }
+
+            .simpleDemo ul[dnd-list] .dndPlaceholder {
+                display: block;
+                background-color: #ddd;
+                min-height: 42px;
+            }
+
+    
+            .simpleDemo ul[dnd-list] li {
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-top-right-radius: 4px;
+                border-top-left-radius: 4px;
+                display: block;
+                padding: 10px 15px;
+                margin-bottom: -1px;
+            }
+    
+            .simpleDemo ul[dnd-list] li.selected {
+                background-color: #dff0d8;
+                color: #3c763d;
+            }
+
+            #errorMessageDiv {
+                background-color: #FF9999;
+                width: calc( 100% + 30px );
+                padding: 5px;
+                padding-left:15px;
+                border:1px solid #CC6666;
+                margin:0px 0px 10px -15px;
+                display: none;
+            }
+           
+            body {
+
+                height: 800px;
+                background-color: #FFF;
+            }
+            </style>
+              <script>
+              
+               var app =  angular.module('myApp',['ui.bootstrap','dndLists']);
+               app.directive("uiDragitem",function($parse, $rootScope){
+                     return function (scope, element, attrs) {
+                        if (window.jQuery && !window.jQuery.event.props.dataTransfer) {
+                            window.jQuery.event.props.push('dataTransfer');
+                        }
+                        element.attr("draggable", false);
+                        attrs.$observe("uiDragitem", function (newValue) {
+                            element.attr("draggable", newValue);
+                        });
+                        var dragData = "";
+                        scope.$watch(attrs.drag, function (newValue) {
+                            dragData = newValue;
+                        });
+                        element.bind("dragstart", function (e) {
+                            var sendData = angular.toJson(dragData);
+                            var sendChannel = attrs.dragChannel || "defaultchannel";
+                            e.dataTransfer.setData('text', sendData);
+                            $rootScope.$broadcast("ANGULAR_DRAG_START", sendChannel);
+        
+                        });
+        
+                        element.bind("dragend", function (e) {
+                            var sendChannel = attrs.dragChannel || "defaultchannel";
+                            $rootScope.$broadcast("ANGULAR_DRAG_END", sendChannel);
+                            if (e.dataTransfer.dropEffect !== "none") {
+                                if (attrs.onDropSuccess) {
+                                    var fn = $parse(attrs.onDropSuccess);
+                                    scope.$apply(function () {
+                                        fn(scope, {$event: e});
+                                    });
+                                }
+                            }
+                        });
+        
+        
+                    };
+            });
+            app.directive("uiOnDropItem",function($parse, $rootScope){
+                return function (scope, element, attr) {
+                    var dropChannel = "defaultchannel";
+                    var dragChannel = "";
+                    var dragEnterClass = attr.dragEnterClass || "on-drag-enter";
+    
+                    function onDragEnter(e) {
+                        if(dragChannel === dropChannel){
+                            element.addClass(dragEnterClass);
+                        }
+    
+                    }
+    
+                    function onDragLeave(e) {
+                        if(dragChannel === dropChannel){
+                            element.removeClass(dragEnterClass);
+                        }
+                    }
+    
+                    function onDragOver(e) {
+    
+                        if (e.preventDefault) {
+                            e.preventDefault(); // Necessary. Allows us to drop.
+                        }
+    
+                        if (e.stopPropagation) {
+                            e.stopPropagation();
+                        }
+                        e.dataTransfer.dropEffect = 'move';
+                        return false;
+                    }
+    
+                    function onDrop(e) {
+                        if (e.preventDefault) {
+                            e.preventDefault(); // Necessary. Allows us to drop.
+                        }
+                        if (e.stopPropagation) {
+                            e.stopPropagation(); // Necessary. Allows us to drop.
+                        }
+                        var data = e.dataTransfer.getData("text");
+                        data = angular.fromJson(data);
+                        var fn = $parse(attr.uiOnDropItem);
+                        scope.$apply(function () {
+                            fn(scope, {$data: data, $event: e});
+                        });
+                        element.removeClass(dragEnterClass);
+                    }
+    
+    
+                    $rootScope.$on("ANGULAR_DRAG_START", function (event, channel) {
+                        dragChannel = channel;
+                        if (dropChannel === channel) {
+                            element.bind("dragenter", onDragEnter);
+    
+                            element.bind("dragleave", onDragLeave);
+    
+                            element.bind("dragover", onDragOver);
+    
+                            element.bind("drop", onDrop);
+                        }
+    
+                    });
+    
+                    $rootScope.$on("ANGULAR_DRAG_END", function (e, channel) {
+                        dragChannel = "";
+                        if (dropChannel === channel) {
+                            element.unbind("dragenter", onDragEnter);
+    
+                            element.unbind("dragleave", onDragLeave);
+    
+                            element.unbind("dragover", onDragOver);
+    
+                            element.unbind("drop", onDrop);
+                        }
+                    });
+    
+    
+                    attr.$observe('dropChannel', function (value) {
+                        if (value) {
+                            dropChannel = value;
+                        }
+                    });
+    
+    
+                };
+            });
+            
+            app.filter('startFrom', function() {
+                    return function(input, start) {
+                        if(input) {
+                            start = +start; //parse to int
+                            start  = start *4;
+                            return input.slice(start);
+                         }
+                            return [];
+                    }
+                });
+                app.filter('unique', function () {
+                        return function (items, filterOn) {
+                            if (filterOn === false) {
+                                return items;
+                            }
+                            if ((filterOn || angular.isUndefined(filterOn)) && angular.isArray(items)) {
+                                var hashCheck = {}, newItems = [];
+                                var extractValueToCompare = function (item) {
+                                    if (angular.isObject(item) && angular.isString(filterOn)) {
+                                        return item[filterOn];
+                                    } else {
+                                        return item;
+                                    }
+                                };
+                                
+                                angular.forEach(items, function (item) {
+                                    var valueToCheck, isDuplicate = false;
+                                    
+                                    for (var i = 0; i < newItems.length; i++) {
+                                        if (angular.equals(extractValueToCompare(newItems[i]), extractValueToCompare(item))) {
+                                            isDuplicate = true;
+                                            break;
+                                        }
+                                    }
+                                    if (!isDuplicate) {
+                                        newItems.push(item);
+                                    }
+                                    
+                                });
+                                items = newItems;
+                            }
+                            return items;
+                        };
+                    });
+                    
+                 app.filter("removeDraggableList",function(){
+                      return function(actualList,draggedList){
+                         for(var k=0;k<draggedList.length;k++){
+                             for(var a=0;a<actualList.length;a++){
+                                 if(actualList[a].value.trim() == draggedList[k].value.trim() || actualList[a].value.trim() == draggedList[k].formula.trim()){
+                                     actualList.splice(a,1); 
+                                     break;
+                                 }
+                             }
+                        }                   
+                        return actualList;
+                      };
+              
+              });
+                
+                app.controller("templateDetail",function($scope,$modal,$window,$filter){
+                    //get object name from query parameter 
+                    $scope.active1 ='active';
+                    $scope.classChange = "relativePosition";
+                    $scope.fieldsList =[];
+                    $scope.formObject = {};
+                    $window.onscroll = function(){
+                       var x=window.scrollY;
+                       if( x < 1)
+                        $scope.classChange = "relativePosition";
+                       else
+                          $scope.classChange = "fixedPosition";   
+                       $scope.$apply();   
+                    };
+                    
+                    var selectedObjectApi = new Object();
+                    selectedObjectApi.label = '{!JSENCODE($CurrentPage.parameters.label)}';  
+                    selectedObjectApi.Name= '{!JSENCODE($CurrentPage.parameters.Name)}'; 
+                    selectedObjectApi  = JSON.stringify(selectedObjectApi);
+                    $scope.toggleDiv = "hideForm";
+                    $scope.templateRecordId = '{!$CurrentPage.parameters.Id}';
+                    $scope.dynamicMargin = "marginBottom";  
+                    $scope.selectedObject = JSON.parse(selectedObjectApi).label;
+                    $scope.selectedObjectApiName = JSON.parse(selectedObjectApi).Name;
+                    $scope.formObject.Object_Name__c =  $scope.selectedObjectApiName;
+                    $scope.formObject.Name =  '{!JSENCODE($CurrentPage.parameters.label)}'+' Template'; 
+                  
+                    if($scope.templateRecordId.length >0){
+                         Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.getReportTemplatesDetail}','{!$CurrentPage.parameters.Id}',function(result,event){
+                            if(event.status){
+                                 $scope.formObject =  JSON.parse(JSON.parse(htmlDecode(result)).templateDetail);
+                                 if($scope.formObject.Logo_Details__c.length >0)
+                                     $scope.formObject.Logo_Details__c = JSON.parse($scope.formObject.Logo_Details__c);
+                                  else
+                                       $scope.formObject.Logo_Details__c  =  {"Alignment":"Left","Width":"","Height":"","LogoName":""};    
+                                 $scope.formObject.Id =  $scope.templateRecordId;
+                                 $scope.sectionList = JSON.parse(JSON.parse(htmlDecode(result)).sectionDetail);
+                                 $scope.sectionList = $filter('orderBy')($scope.sectionList, 'sequence', false)
+                             } else {
+                                showError(event.message);
+                            }
+                               
+                         },{escape:true});
+                    }else
+                       $scope.formObject.Id = null;
+                    
+                   
+                      if(JSON.parse(selectedObjectApi).Name.length >0){
+                            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.getAllFields}',JSON.parse(selectedObjectApi).Name,function(result,event){
+                                if(event.status){
+                                   $scope.selectedObjectRecordId = result.split("~")[1].length >0 ? result.split("~")[1] :'';
+                                   $scope.relatedOrObjectList= JSON.parse(htmlDecode(result.split("~")[0]));
+                                   
+                                   $scope.fieldsList = $filter('orderBy')($scope.relatedOrObjectList, 'label', false)
+                                   $scope.fieldsList = filteResult($scope.fieldsList,"Fields");
+                                   $scope.typeAheadList = $scope.fieldsList;
+                                   $scope.objLength = ($scope.fieldsList.length % 4 == 0) ?  parseInt( $scope.fieldsList.length/4) : parseInt( $scope.fieldsList.length/4) + 1;
+                                   $scope.$apply();                          
+                                  
+                                }else {
+                                    showError(event.message);
+                                }
+                            },{escape:true});
+                        }
+                    
+                        $scope.displayRelateList= function(type){
+                            $scope.active ='';
+                            $scope.fieldsList = $filter('orderBy')($scope.relatedOrObjectList, 'label', false)
+                            $scope.fieldsList = filteResult($scope.fieldsList,type);
+                            $scope.objLength = ($scope.fieldsList.length % 4 == 0) ?  parseInt( $scope.fieldsList.length/4) : parseInt( $scope.fieldsList.length/4) + 1;
+                           
+                        };
+                        
+                       
+                        
+                       
+                         $scope.sectionList = [];
+                         $scope.onDrop = function($event,$data,array){
+                            $event.target.style.paddingBottom = $event.target.className.indexOf("container") >-1  ? "5%":"";
+                            $data.fields = [];
+                            $data.type="Section";
+                            $data.showHeader = true;
+                            array.push($data);
+                            
+                        };  
+                        $scope.onFieldDrop = function($event,$data,key,array){
+                          if($data.type == 'Related List'){
+                                if(array.length == 0){
+                                    $scope.sectionList[key].label = $data.label;
+                                    $scope.sectionList[key].value = $data.value;
+                                    $scope.sectionList[key].type ="Related List";
+                                    
+                                }
+                             }
+                             else{
+                                   if(array.length > 0){
+                                         if($scope.sectionList[key].fields[0].type != 'Related List' && $scope.sectionList[key].type != 'Related List'){
+                                              array.push($data);
+                                         }
+                                            
+                                    }     
+                                    else{
+                                       array.push($data);
+                                    }
+                                  if($data.dataType == 'REFERENCE')  
+                                      $data.formula = $data.value;
+                                   else
+                                      $data.formula ='';    
+                                  $scope.sectionList[key].fields  = $filter('unique')($scope.sectionList[key].fields,true);         
+                              }   
+                        };
+                        
+                        $scope.dropSuccessHandler = function($event,index,key,array){
+                          if(array[key].label != 'Section'){
+                               array.splice(index,1);
+                          }
+                        };
+                        
+                        $scope.removeSection = function($event){
+                             $scope.sectionList.splice($event.target.id,1);
+                        };
+                        $scope.sliderImage = "/img/ple/collapseTargetbg.gif";
+                        $scope.sliderAction = "OpenSlider";
+                        $scope.closeSlider = function(){
+                            if($scope.sliderAction == 'OpenSlider'){
+                                  $scope.sliderImage = "/img/ple/expandTargetbg.gif";
+                                  $scope.sliderAction = "closeSlider";
+                               }else if($scope.sliderAction == 'closeSlider'){
+                                  $scope.sliderImage = "/img/ple/collapseTargetbg.gif";
+                                  $scope.sliderAction = "OpenSlider";
+                               }   
+                        };
+                        
+                         $scope.removeFields= function($event,keyObj){
+                             //$scope.fieldsList.push($scope.sectionList[keyObj].fields[$event.target.id]);
+                             $scope.sectionList[keyObj].fields.splice($event.target.id,1);
+                             if($scope.sectionList[keyObj].fields.length == 0){
+                                 $scope.sectionList[keyObj].label = "Section";
+                                 $scope.sectionList[keyObj].type = "Section";
+                             }    
+                           
+                        };
+                        $scope.toggleDiv = "hideForm";
+                        $scope.toggleDivFunction = function(){
+                         if($scope.toggleDiv == 'showForm'){
+                              $scope.toggleDiv = 'hideForm'
+                              $scope.dynamicMargin = "marginBottom";
+                          }else if($scope.toggleDiv == 'hideForm'){
+                              $scope.toggleDiv = 'showForm'
+                              $scope.dynamicMargin = "margintop";
+                          }
+                        };
+                       
+                       $scope.openPreviewAs = function(templateId, recordId){
+                            window.open("/apex/CMPL123__X123PrintReport?tid="+templateId+"&rid="+recordId,"","width=800,height=620,top=40,left=300");
+                        
+                        };
+                       // $scope.fieldLabel = false;
+                        $scope.dynamic = 0;
+                        $scope.maxVal = 100;
+                        $scope.hideLoading = false;
+                        $scope.finalJson = function($event){
+                           if($scope.formObject.Name != undefined){
+                               if($event.target.id == 'quickSave'){
+                                    $scope.hideLoading = true;
+                                    $scope.dynamic +=50;
+                               }
+                               var finalJson = new Object();
+                                if($scope.formObject.Logo_Details__c.Height == undefined)
+                                    $scope.formObject.Logo_Details__c.Height ='';
+                                if($scope.formObject.Logo_Details__c.Width == undefined)
+                                    $scope.formObject.Logo_Details__c.Width=''
+                                if($scope.formObject.Logo_Details__c.LogoName == undefined)
+                                    $scope.formObject.Logo_Details__c.LogoName ='';
+                               $scope.formObject.Logo_Details__c = JSON.stringify($scope.formObject.Logo_Details__c);
+                               finalJson.templateDetail = $scope.formObject;
+                               finalJson.sectionDetail = $scope.sectionList;
+                               Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.saveReportTemplate}',angular.toJson(finalJson),function(result,event){
+                                    if(event.status){
+                                        if($event.target.id =='save')
+                                            window.location.href = "/apex/CMPL123__X123ManageReportTemplate?objApiName="+$scope.selectedObjectApiName;
+                                         else if($event.target.id == 'quickSave'){
+                                            $scope.dynamic = 100;
+                                            $scope.formObject.Id = result;
+                                            $scope.formObject.Logo_Details__c = JSON.parse($scope.formObject.Logo_Details__c);
+                                            setTimeout(function(){
+                                                $scope.hideLoading = false;
+                                                $scope.dynamic = 0;
+                                                $scope.$apply();
+                                            },1000);
+                                            $scope.$apply();
+                                         }
+                                    } else {
+                                        showError(event.message);
+                                    }
+                                },{escape:true}); 
+                           }else{
+                               $scope.validation = true;
+                               $scope.toggleDiv = 'showForm';
+                           } 
+                           
+                           
+                        };
+                    
+                        $scope.open = function (relationShipname,key) {
+                            $scope.reqKey = key;
+                            var modalInstance = $modal.open({
+                                templateUrl: 'myModalContent.html',
+                                controller: 'ModalInstanceCtrl',
+                                size: 'lg',
+                                resolve: {
+                                    items: function () {
+                                        return  JSON.parse(selectedObjectApi).Name+"~"+relationShipname;
+                                    },
+                                    key:function(){
+                                        return $scope.sectionList[key];
+                                    },
+                                    draggableList: function(){
+                                          return $scope.sectionList[key].fields;
+                                    },
+                                }
+                            });  
+                            modalInstance.result.then(function (selectedItem) {
+                              $scope.sectionList[$scope.reqKey].fields = [];
+                              for(var a=0;a< selectedItem.length;a++){
+                                   selectedItem[a].formula = selectedItem[a].value;
+                              }
+                              selectedItem = selectedItem.length > 10 ? selectedItem.splice(0,10) : selectedItem;
+                              $scope.sectionList[$scope.reqKey].fields =  $scope.sectionList[$scope.reqKey].fields.concat(selectedItem);
+                             
+                            }, function () {
+                            
+                            });
+                        };
+                        
+                         $scope.openFormulaModel = function (key,key1) {
+                          var fieldList1 = $scope.fieldsList;
+                           var val = $scope.sectionList[key].value  != undefined ? $scope.sectionList[key].value : '';
+                           var modalInstance = $modal.open({
+                                templateUrl: 'Formula.html',
+                                controller: 'formulaController',
+                                 size: 'lg',
+                                 resolve: {
+                                    fieldApi: function () {
+                                         return  $scope.sectionList[key].fields[key1].formula +'~'+$scope.sectionList[key].fields[key1].value;
+                                    },
+                                    objectApi:function(){
+                                        return $scope.selectedObjectApiName;
+                                    },
+                                    relation:function(){
+                                        return val;
+                                    },
+                                    fieldList1:function(){
+                                        return fieldList1;
+                                    },
+                                    
+                                }
+                            });   
+                            modalInstance.result.then(function (selectedItem) {
+                                 if(selectedItem != undefined && selectedItem.length >0)
+                                      $scope.sectionList[key].fields[key1].value = selectedItem;
+                                 
+                            }, function () {
+                            
+                            });
+                        };
+                        
+                        
+                        
+                         $scope.openSaveAsModel = function(templateId) {
+                           var modalInstance = $modal.open({
+                                templateUrl: 'saveAsModel.html',
+                                controller: 'saveAsModelController',
+                                size: 'lg',
+                                resolve: {
+                                    templateName:function(){
+                                        return $scope.formObject.Name;
+                                        
+                                    }
+                                }
+                            });  
+                            modalInstance.result.then(function (selectedItem) {
+                               $scope.hideLoading = true;
+                               $scope.formObject.Name = selectedItem;
+                               $scope.formObject.Id = null;
+                               var finalJson = new Object();
+                               if($scope.formObject.Logo_Details__c.Height == undefined)
+                                    $scope.formObject.Logo_Details__c.Height ='';
+                               if($scope.formObject.Logo_Details__c.Width == undefined)
+                                    $scope.formObject.Logo_Details__c.Width=''
+                               if($scope.formObject.Logo_Details__c.LogoName == undefined)
+                                    $scope.formObject.Logo_Details__c.LogoName ='';
+                               $scope.formObject.Logo_Details__c = JSON.stringify($scope.formObject.Logo_Details__c);
+                               finalJson.templateDetail = $scope.formObject;
+                               finalJson.sectionDetail = $scope.sectionList;
+                               $scope.dynamic = 100;
+                                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.saveAsReportTemplate}',angular.toJson(finalJson),function(result,event){
+                                      if(event.status){
+                                            $scope.formObject =  JSON.parse(JSON.parse(htmlDecode(result)).templateDetail);
+                                            $scope.formObject.Logo_Details__c = JSON.parse($scope.formObject.Logo_Details__c);
+                                           // $scope.sectionList = JSON.parse(JSON.parse(htmlDecode(result)).sectionDetail);
+                                            $scope.dynamic = 100;
+                                            setTimeout(function(){
+                                                $scope.hideLoading = false;
+                                                $scope.dynamic = 0;
+                                                $scope.$apply();
+                                            },1000); 
+                                            $scope.$apply();
+                                      }else {
+                                          showError(event.message);
+                                      }
+                                 },{escape:true});
+                             }, function () {
+                               
+                            });
+                        
+                        };
+                         $scope.openManageOrder = function() {
+                           var modalInstance = $modal.open({
+                                templateUrl: 'ManageOrder.html',
+                                controller: 'ManageOrderContoller',
+                                size: 'lg',
+                                resolve: {
+                                    sectionObject:function(){
+                                        return $scope.sectionList;
+                                        
+                                    }
+                                }
+                            });
+                            modalInstance.result.then(function (selectedItem) {
+                                 if(selectedItem.length >0)
+                                      $scope.sectionList[key].fields[key1].value = selectedItem;
+                                 
+                            }, function () {
+                            
+                            }); 
+                            
+                        };
+                      
+                });
+                app.controller('saveAsModelController',function($scope,$modalInstance,templateName){
+                     $scope.TemplateNameReq = "Copy of "+templateName ;
+                     $scope.cancel = function () {
+                            $modalInstance.dismiss('cancel');
+                     };
+                     $scope.selected = {
+                         item1:''
+                      };
+                     
+                     $scope.ok = function () {
+                             $scope.selected.item1 = document.getElementById("templatename").value;
+                             $modalInstance.close($scope.selected.item1);
+                     };
+                });
+                
+                
+                 app.controller('ModalInstanceCtrl', function ($scope,$filter, $modalInstance,items,key,draggableList) {
+                        $scope.dragRelatedListFields  = [];
+                        if(draggableList.length >0){
+                            $scope.dragRelatedListFields = $scope.dragRelatedListFields.concat(draggableList);
+                        }
+                        var parentObj =  items.split("~")[0];
+                        var relationShipName  = items.split("~")[1];
+                        Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.getRelationShipNameObjectNameMap}',parentObj,relationShipName,function(result,event){
+                            if(event.status){
+                                $scope.relatedList =  JSON.parse(htmlDecode(result));
+                                if(draggableList.length >0){
+                                    $scope.relatedList = $filter('removeDraggableList')($scope.relatedList,$scope.dragRelatedListFields);
+                                   
+                                }
+                               $scope.relatedList = $filter('orderBy')($scope.relatedList,'label', false)
+                               $scope.$apply();
+                            }
+                                
+                        },{escape:true});
+                       
+                        $scope.selected = {
+                            item: $scope.dragRelatedListFields
+                           
+                        };
+                        $scope.ok = function () {
+                            $modalInstance.close($scope.selected.item);
+                        };
+                        
+                        $scope.cancel = function () {
+                            $modalInstance.dismiss('cancel');
+                        };
+                    });
+
+                    app.controller('ManageOrderContoller',function($scope,$modalInstance,sectionObject){
+                         $scope.reqObj = sectionObject;
+                         
+                         $scope.ok = function () {
+                            $modalInstance.close();
+                         };
+                        
+                        $scope.cancel = function () {
+                            $modalInstance.dismiss('cancel');
+                        };
+                    });
+               
+                
+                     app.controller('formulaController',function($scope,$modalInstance,fieldApi,objectApi,relation,fieldList1){
+                       $scope.fieldList2 = angular.copy(fieldList1);
+                       $scope.fieldList2  =  $scope.fieldList2.splice(1, $scope.fieldList2.length);
+                       if(relation.length == 0){
+                              $scope.reqField = fieldApi.split("~")[1];
+                              if(fieldApi.split("~")[1].indexOf('ISNULL') > -1){
+                                  $scope.selectedFormula = "ISNULL";
+                              }
+                        }else{
+                             $scope.reqField = fieldApi.split("~")[1];
+                        }
+                        $scope.fieldApi = fieldApi.split("~")[0];
+                       
+                        $scope.relation = relation;
+                        $scope.formulaObject = {"TEXT":"TEXT(value) Converts a value to text using standard display format","ISNULL":"ISNULL(Field1,Field2) Checks whether an Field1 is null and return Field2"};
+                        if($scope.fieldApi.length >0){
+                            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.getFieldOptionList}', $scope.fieldApi,objectApi,$scope.relation,function(result,event){
+                                   if(event.status){
+                                       $scope.referenceObject = result.split("~")[1]
+                                       var option =  JSON.parse(htmlDecode(result.split("~")[0]));
+                                       if($scope.referenceObject == 'CMPL123CME__Complaint_Code__c'){
+                                            $scope.codes = JSON.parse(htmlDecode(result.split("~")[2]));
+                                           
+                                        }    
+                                       $scope.reqObjectApiName = option;
+                                       $scope.$apply();
+                                   }
+                                  
+                                 },{escape:true});
+                        }else{
+                        
+                        }    
+                        $scope.selected = {
+                            item1:''
+                        };
+                        $scope.cancel = function () {
+                            $modalInstance.dismiss('cancel');
+                        };
+                        $scope.ok = function () {
+                          
+                           if(relation.length > 0){
+                                $scope.selected.item1 =  document.getElementById("formulaTextArea").value;
+                                $modalInstance.close( $scope.selected.item1);
+                           }     
+                           else
+                               $scope.checkSyntax('ISNULL','ok');
+                            
+                        };
+                        
+                        $scope.createFormula = function(){
+                           var selectedFormulaExpression =  document.getElementById("formulaTextArea").value;
+                           var selectedFormula =  document.getElementById("formulaOption").value;
+                           if(selectedFormula == 'ISNULL'){
+                                if(document.getElementById("formulaTextArea").value.indexOf('ISNULL') == -1)
+                                  $scope.reqField = "ISNULL("+$scope.reqField+",Field2)";
+                           }
+                           
+                        };
+                        
+                        $scope.createCode = function(selectedCode){
+                            
+                            var str =  document.getElementById("formulaTextArea").value; 
+                            if(str.indexOf('GET') > -1){
+                               str =  str.substring(str.lastIndexOf("(")+1,str.length-2);
+                               document.getElementById("formulaTextArea").value =  selectedCode.substring(0,selectedCode.lastIndexOf(")"))+"("+str+"))";
+                            }else{
+                                document.getElementById("formulaTextArea").value =   selectedCode.substring(0,selectedCode.lastIndexOf(")"))+"("+str+"))";
+                            }
+                           
+                        
+                        };
+                        
+                        $scope.checkSyntax = function(selectedFormula,buttonClick){
+                             var selectedFormulaExpression =  document.getElementById("formulaTextArea").value;
+                             if(selectedFormulaExpression.trim().indexOf(selectedFormula) > 0){
+                                 $scope.formulaErrorMessage = "Invalid Syntax";
+                                 $scope.msgColor = "red";
+                             }
+                             else if(selectedFormulaExpression.trim().indexOf("selectedFormula") != -1){
+                                if((selectedFormulaExpression.trim().indexOf(")") != selectedFormulaExpression.length - 1) || (selectedFormulaExpression.trim().indexOf("selectedFormula") != -1)){
+                                    $scope.formulaErrorMessage = "Invalid Syntax";
+                                    $scope.msgColor = "red";
+                                }
+                             }else{
+                                 if(selectedFormula == 'ISNULL'){
+                                     var index = selectedFormulaExpression.indexOf('(');
+                                     if(index > -1){
+                                         var selectedFormulaExpression1   = selectedFormulaExpression.split(",")[0].substring(index+1);
+                                         var selectedFormulaExpression2   = selectedFormulaExpression.split(",")[1].substring(0,selectedFormulaExpression.split(",")[1].length -1);
+                                         selectedFormulaExpression = selectedFormulaExpression1 +','+selectedFormulaExpression2;
+                                     }
+                                    
+                                 }
+                                 Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.checkFormulaSyntax}',objectApi,selectedFormulaExpression,function(result,event){
+                                    if(event.status){
+                                         $scope.formulaErrorMessage = result;
+                                         if(result == 'No syntax error.'){
+                                             $scope.msgColor = "green";
+                                             if(buttonClick == 'ok'){
+                                                 $scope.selected.item1 = document.getElementById("formulaTextArea").value;
+                                                 $modalInstance.close($scope.selected.item1);
+                                             }
+                                         }    
+                                         else
+                                             $scope.msgColor = "red";
+                                           
+                                         $scope.$apply();
+                                         
+                                    }
+                                },{escape:true});
+                             
+                             }
+                          
+                        };
+                        
+                        $scope.insertField = function(selectedField){
+                           if(selectedField != null){
+                                var index = $scope.reqField.lastIndexOf(",");
+                                var index1 = $scope.reqField.indexOf('(');
+                                if(selectedField.length > 0){
+                                    if(index > -1){
+                                        if($scope.reqField.substring(index1+1,index) !== selectedField)
+                                            $scope.reqField = $scope.reqField.replace($scope.reqField.substring(index+1,$scope.reqField.length-1),selectedField);
+                                    }        
+                                }else{
+                                    $scope.reqField =    $scope.reqField.replace($scope.reqField.substring(index+1,$scope.reqField.length-1),"Field2");
+                                }  
+                                document.getElementById("formulaTextArea").value = $scope.reqField;
+                           } 
+                        };
+                        $scope.getRelatedOptions = function(selectValue,selectId){
+                            
+                            $scope.selectedCode = " ";
+                            $scope.reqField  = $scope.fieldApi.indexOf('__c') > -1 ?  $scope.fieldApi.replace('__c','__r') : $scope.fieldApi.substring(0,$scope.fieldApi.length -2);
+                           
+                            if(selectId == 'relationSelectOption'){
+                                $scope.reqObjectApiName1 = '';
+                                $scope.reqObjectApiName2 ='';  
+                                $scope.reqObjectApiName3 ='';  
+                            }    
+                            else if(selectId == 'relationSelectOption1'){
+                                $scope.reqObjectApiName2 =''; 
+                                $scope.reqObjectApiName3 ='';  
+                            }else if(selectId == 'relationSelectOption2'){
+                                  $scope.reqObjectApiName3 ='';  
+                            }
+                            var selectOption = document.getElementById(selectId);
+                            var selectedLabel = htmlDecode(selectOption.options[selectOption.selectedIndex].innerHTML);
+                            if(selectedLabel.indexOf(">>") > -1){
+                                 Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.getFieldOptionS}',selectValue,function(result,event){
+                                     if(event.status){
+                                          if(selectId == 'relationSelectOption')
+                                             $scope.reqObjectApiName1 = JSON.parse(htmlDecode(result));
+                                          else if(selectId == 'relationSelectOption1')
+                                             $scope.reqObjectApiName2 = JSON.parse(htmlDecode(result)); 
+                                          else if(selectId == 'relationSelectOption2')  
+                                           $scope.reqObjectApiName3 = JSON.parse(htmlDecode(result)); 
+                                           var selectedOption =  getSelectedValue();
+                                           var str ='';
+                                            for(var a=0;a < selectedOption.length;a++){
+                                              //$scope.reqField +="."+selectedOption[a].trim();
+                                               str +="."+selectedOption[a].trim();
+                                            }
+                                            $scope.reqField += str;
+                                          $scope.$apply();
+                                     }
+                                 },{escape:true});
+                            }else{
+                                
+                                 setTimeout(function(){
+                                    var selectedOption =  getSelectedValue();
+                                    var str ='';
+                                    var textFormulaField = document.getElementById("formulaTextArea").value
+                                    for(var a=0;a < selectedOption.length;a++){
+                                       // $scope.reqField +="."+selectedOption[a].trim();
+                                        str  +="."+selectedOption[a].trim();
+                                     }
+                                      $scope.reqField += str;
+                                     
+                                    $scope.$apply();
+                                },700);
+                            }
+                        };
+
+
+                    });
+                
+                //Filter record from Arrey List 
+
+
+               function showError(message) {
+                   let errorDiv = document.getElementById('errorMessageDiv')
+
+                   errorDiv.innerText = message;
+                   errorDiv.style.display = 'block';
+               }
+                function filteResult(obj,type1){
+                   var reqObj = [];
+                   reqObj.push({"label":"Section","type":type1});
+                   for(var a in obj){
+                         if(obj[a].type == type1){
+                             reqObj.push(obj[a]);
+                         }
+                    }
+                    return reqObj;
+                }
+                
+                function htmlDecode(input){
+                    var e = document.createElement('div');
+                    e.innerHTML = input;
+                    return e.textContent;
+                }
+                
+                function getSelectedValue(){
+                   var obj = [];
+                   var selectBox = document.getElementsByClassName("selectBox");
+                   for(var i=0;i<document.getElementsByClassName("selectBox").length;i++){
+                           var selectedIndex = selectBox[i].selectedIndex
+                            if(selectedIndex >0){
+                                var reqval =  htmlDecode(selectBox[i].options[selectedIndex].innerHTML);
+                                if(reqval.indexOf(">>") == -1){
+                                    var reqval =  selectBox[i].options[selectedIndex].value;
+                                    if(reqval.length >0)
+                                        obj.push(reqval);
+                                 }else
+                                     obj.push(reqval.replace(">>",""));       
+                            }
+                           
+                   }
+                   return obj;
+                   
+                }
+               
+            </script>
+          </head>
+             <body class="ng-cloak">
+        
+            <nav class="navbar navbar-default">
+                <div class="col-md-3">
+                    <h4><span style="color:white;padding:5px;"> {!$Label.X123_REPORT_TEMPLATE_BUILDER}</span></h4>
+                </div>
+                <div  class="col-md-3 col-md-push-6" style="margin-top:1%;text-align:right;">
+                    <a href="/home/home.jsp" style="color:white;"  target="_top"> {!$Label.BACK_TO_SALESFORCE}</a>
+                </div>
+            </nav>
+
+
+            <div class="container"  style="padding:1.3%;" ng-controller="templateDetail" ng-show="fieldsList">
+                   <!---Loading image on page load---->
+                <div class="container" style="text-align:center;margin-top:4%;" ng-if="fieldsList.length ==0">
+                    <button class="btn btn-lg" style="background:#438eb9;color:white;"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> {!$Label.LOADING}...</button>
+                </div>
+
+
+               <div class="row well" ng-class="classChange" style="padding-bottom:0;padding-top:1.5%;border-radius:0;" id="hangDiv" ng-if="fieldsList.length > 0">
+                   <div id="errorMessageDiv">
+                   </div>
+                    <progressbar  animate="true"  ng-show="hideLoading" max="maxVal" value="dynamic"><span style="color:white; white-space:nowrap;">{{dynamic}} /{{maxVal}}</span></progressbar>
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{templateRecordId.length >0 ? "{!$Label.EDIT} ":"{!$Label.CREATE} "}}{{selectedObject}} {!$Label.TEMPLATE}
+                        </div>
+
+                        <div class="col-md-8" style="padding-bottom:0.5%;margin-top:-0.3%;">
+                            <div class="btn-group" style="margin-left:5%;">
+                                <button type="button" style="border-right:2px solid white;" ng-click="openManageOrder();" class="btn btn-default btn-primary btn-sm"> {!$Label.SECTION_ORDER}</button>
+                                <button type="button" style="border-right:2px solid white;"  ng-click="toggleDivFunction();" class="btn btn-default btn-primary btn-sm"> {!$Label.LAYOUT_PROPERTIES}</button>
+                                <button type="button"  ng-disabled="selectedObjectRecordId.length == 0 ? true : false"    ng-click="openPreviewAs(formObject.Id,selectedObjectRecordId);"  class="btn btn-default btn-primary btn-sm" ng-show="formObject.Id.length > 0" > {!$Label.PREVIEW}</button>
+                            </div>
+                            <div class="btn-group" style="float:right;">
+                                 <button type="button" id="quickSave" style="border-right:2px solid white;" class="btn btn-default btn-primary btn-sm" ng-click="finalJson($event);"> {!$Label.QUICK_SAVE}</button>
+                                 <button type="button" class="btn btn-primary btn-sm" id="save" ng-click="finalJson($event);">{!$Label.SAVE}</button>
+                                    <button style="border-left: 1px solid white;border-right:1px solid white;" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;</button>
+                                    <ul class="dropdown-menu" style="padding:2px;">
+                                      <li><a href="javascript:void(0)" ng-show="formObject.Id.length > 0" ng-click="openSaveAsModel(formObject.Id);">{!$Label.SAVE_AS}..</a></li>
+                                    </ul>
+                                
+                                <a href="/apex/CMPL123__X123ManageReportTemplate?objApiName={{selectedObjectApiName}}" class="btn btn-primary btn-sm">{!$Label.CANCEL}</a>
+      
+                            </div>
+                         </div>  
+                    </div>
+                   
+                    <div class="row" style="border-radius:0;" ng-class="sliderAction">
+                        <div class="col-md-2" style="border-right:4px solid #bfc0c6;border-top:1px solid #ddd;">
+                           <div style="margin-top:4%;">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><input type="text" class="form-control" ng-model="searchText" placeholder="{!$Label.SEARCH_FIELDS}" /></li>
+                                    <li ng-class="active1"><a href="javascript:void(0)" style="font-size:12px;" ng-click="active1 ='active';inactive='';displayRelateList('Fields');">{!$Label.FIELDS}</a></li>
+                                    <li ng-class="inactive"><a href="javascript:void(0)" style="font-size:12px;"  ng-click="active1 ='';inactive='active';displayRelateList('Related List')">{!$Label.RELATED_LIST}</a></li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                     
+                        <div class="col-md-10" style="border-top:1px solid #ddd;overflow-x:auto;" ng-style="{width:fieldsList.length  <= 16 ? 'auto':'83.33333333'}">
+                            <table style="border-top:0;font-size:91%;border-collapse:separate;border-spacing: 2px;" width="100%;">
+                                   <tbody>
+                                       <tr> 
+                                            <td ng-repeat="(key,value) in fieldsList | limitTo:objLength" style="border-top:0;vertical-align:top;overflow: hidden;">
+                                                <!-- <div style="width:200px;background-color: #337ab7;color:white;" class="fields" ng-show="key == 0">Section</div>-->
+                                                <div id="{{key}}"  drag-channel="{{filter[key].label =='Section'?'A':'B'}}" title="Label:{{filter[key].label}}" ui-dragitem="true" drag="value"  ng-class="filter[key].label =='Section' ? 'check':''" ng-repeat ="(key,value) in filter = (fieldsList  |filter:searchText | startFrom:key | limitTo:'4')"  class="fields" style="width:200px;padding:5px;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;">
+                                                <span>{{filter[key].label}}</span>
+                                                </div>
+                                            </td>
+                                       </tr>
+                                   </tbody>
+                             </table>
+                         </div>
+                    </div>
+                    <div class="row"><div style="text-align:center;cursor:pointer;"><img  ng-click="closeSlider();" src="{{sliderImage}}" /></div></div>  
+                </div>
+                <div class="row" style="margin-top:1%;">
+                    <div class="row container-fluid" ng-class="toggleDiv">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        {!$Label.TEMPLATE_PROPERTIES}
+                                    </div>
+                                    <div class="col-md-1 col-md-push-9" style="text-align:right;">
+                                       <a href="javascript:void(0);"><span class="glyphicon glyphicon-remove-sign"  ng-click="toggleDiv ='hideForm';dynamicMargin ='marginBottom';" style="color:#337ab7;"></span></a> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-12">
+                                    <div class="col-md-3">
+                                        <label><span style="color:red;">*</span>{!$Label.TEMPLATE_NAME}</label>
+                                        <input  ng-model="formObject.Name" class="form-control" required="true" ng-focus="validation=false;"  placeholder="{!$Label.ENTER_TEMPLATE_NAME}" />
+                                        <span ng-show="validation" style="color:red;"> {!$Label.NAME_IS_REQUIRED}</span>
+                                        <!--  <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p> -->
+                                    </div>   
+                                    <div class="col-md-3">    
+                                        <label>{!$Label.FOOTER}</label>
+                                        <input placeholder="{!$Label.ENTER_FOOTER}" ng-model="formObject.Footer__c" class="form-control" typeahead="state.value as state.label  for state in  typeAheadList | orderBy : 'label'| filter:$viewValue" typeahead-on-select="formObject.Footer__c= '{'+$item.value+'}'"  />
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <label>{!$Label.TITLE}</label>
+                                        <input placeholder="{!$Label.ENTER_TITLE}" ng-model="formObject.Title__c" class="form-control" typeahead="state.value as state.label  for state in  typeAheadList | orderBy : 'label'| filter:$viewValue" typeahead-on-select="formObject.Title__c = '{'+$item.value+'}'"  />
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <label>{!$Label.DESCRIPTION}</label>
+                                        <input placeholder="{!$Label.ENTER_DESCRIPTION}" ng-model="formObject.Description__c" class="form-control" typeahead="state.value as state.label  for state in  typeAheadList | orderBy : 'label'| filter:$viewValue" typeahead-on-select="formObject.Description__c = '{'+$item.value+'}'"  />
+                                    </div>
+                              </div>
+                              <div class="col-md-12" style="margin-top:2%;">
+                                    <div class="col-md-3">
+                                        <label> {!$Label.LOGO_NAME}</label>
+                                        <input  ng-model="formObject.Logo_Details__c.LogoName" class="form-control" required="true"  placeholder="{!$Label.ENTER_LOGO_NAME}" />
+                                   </div>   
+                                   <div class="col-md-3">    
+                                        <label>{!$Label.ALIGNMENT}</label>
+                                        <select class="form-control" ng-model="formObject.Logo_Details__c.Alignment" ng-init="formObject.Logo_Details__c.Alignment = 'Left'">
+                                            <option  value="Left">{!$Label.LEFT}</option>
+                                             <option value="Center">{!$Label.CENTER}</option>
+                                            <option value="Right">{!$Label.RIGHT}</option>
+                                        </select>
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <label> {!$Label.HEIGHT}</label>
+                                        <input placeholder="{!$Label.ENTER_HEIGHT}" ng-model="formObject.Logo_Details__c.Height" class="form-control" />
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <label> {!$Label.WIDTH}</label>
+                                        <input placeholder="{!$Label.ENTER_WIDTH}" ng-model="formObject.Logo_Details__c.Width" class="form-control"  />
+                                    </div>
+                               </div>
+                         </div>
+                       </div> 
+                    </div>
+                </div>  
+               <!------------------------------FORM SECTION----------------------------->
+                <div class="row" style="margin-bottom:1%;" ng-class="dynamicMargin" ng-if="fieldsList.length > 0">
+               
+                        <div class="container"  drop-channel="A" style="border-style:dashed;100px;min-height:200px;padding-bottom:4%;height:auto;border-color:#ccc;" ui-on-Drop-Item="onDrop($event,$data,sectionList)">
+                            <div  ui-dragitem="false" drag="value" style="margin-top:1%;"    on-drop-success="dropSuccessHandler($event,$index,value)"  ng-repeat="(key,value) in sectionList">
+                               <span ng-hide="true">{{sectionList[key].sequence = $index}}</span>
+                               <div class="sectionHeader">
+                                   <span style="font-weight:bold;" ng-hide="a">{{sectionList[key].label}}</span>
+                                   <input type="text" ng-show="a" maxlength="80" ng-model="sectionList[key].label" ng-blur="a=false;" autofocus="{{a}}" style="border:1px solid #ccc;border-radius:4px;outline:0" place-holder="{!$Label.TYPE_SECTION_NAME}"/>
+                                   <span class="glyphicon glyphicon-pencil"  ng-click="a=true" style="color:#337ab7;" />
+                                   <span style="color:#337ab7;" ng-show="a">({!$Label.MAX_80_CHARS})</span>
+                                 
+                                   <a href="javascript:void(0)"  ng-click="removeSection($event)"><span id="{{key}}" class="glyphicon glyphicon-remove-sign" style="color:#337ab7;float:right;padding-left:0.7%;"></span></a>
+                                   <a href="javascript:void(0)"  ng-click="open(sectionList[key].value,key)"><span class="glyphicon glyphicon-wrench" style="color:#337ab7;float:right;" ng-show="sectionList[key].type =='Related List'?true:false"></span></a>
+                                   <span style="color:#337ab7;float:right;margin-right:1%;"><input type="checkbox" ng-model="sectionList[key].showHeader"/>&nbsp; {!$Label.SHOW_HEADER}</span>
+                                   <span style="color:#337ab7;float:right;margin-right:1%;" ng-show="sectionList[key].type == 'Related List'"><input type="checkbox" ng-model="sectionList[key].showBorder"/>&nbsp; {!$Label.SHOW_BORDER}</span>
+                                </div>
+                                  
+                                 <div class="container-fluid" drop-channel="B"  ui-on-Drop-Item="onFieldDrop($event,$data,{{key}},sectionList[{{key}}].fields)"  style="border-bottom:1px solid #ddd;min-height:70px;margin-top:0.8%;margin-bottom:0.5%;" name="{{value.type}}">
+                                      <ul   class="list-unstyled" style="width:50%;" ng-show="sectionList[key].type !='Related List'? true:false" dnd-list="sectionList[key].fields" >
+                                          <li style="padding:0.5%;" class="objectFields" title="Label:({{key1.label}})  API Name:({{key1.value}})" ng-repeat="key1 in sectionList[key].fields"  dnd-draggable="key1" dnd-effect-allowed="move" draggable="true" dnd-moved="sectionList[key].fields.splice($index, 1)">
+                                               <div ng-hide="fieldLabel" style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{key1.label}}</div>
+                                               <input type="text" draggable ="false" style="outline:0;" ng-model="key1.label" ng-show="fieldLabel" ng-blur="fieldLabel = false" class="fieldLabel" />
+                                               <div style="color: #666666;font-style: italic;width:230px;display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">( {{key1.value}} )</div>
+                                               <a href="javascript:void(0)"  ng-click="removeFields($event,sectionList[key].sequence)"><span id="{{$index}}" class="glyphicon glyphicon-minus-sign" style="color:#a94442;float:right;"></span></a>
+                                               <a href="javascript:void(0)"  ng-click="fieldLabel = true;"><span iid="{{$index}}" class="glyphicon glyphicon-pencil" style="color:#337ab7;float:right;margin-right:0.5%;"></span></a> 
+                                               <a href="javascript:void(0)"  ng-click="openFormulaModel(sectionList[key].sequence,$index);"  ><span  class="glyphicon glyphicon-wrench" style="color:#337ab7;float:right;margin-right:0.5%;"></span></a>   
+                                          </li>
+                                      </ul>
+                                      <div  ng-show="sectionList[key].type =='Related List'?true:false">
+                                       <table width="100%" class="table">
+                                             <thead>
+                                             </thead>
+                                             <tbody>
+                                                 <tr>
+                                                     <td style="padding:0;border:1px solid #9daab2;background:white;width:{{100/sectionList[key].fields.length}}%"  class="fields" ng-repeat="(key1,value) in sectionList[key].fields">
+                                                        <div style="height:auto;">
+                                                                <div style="height:15px;border-bottom:1px solid #9daab2;font-size:10px;text-align:center;background-color: #ddd;">
+                                                                    <a href="javascript:void(0)" ng-click="removeFields($event,key)"><span id="{{key1}}" class="glyphicon glyphicon-minus-sign" style="color:#a94442;float:right;margin-right:1%;"></span></a>  
+                                                                    <a href="javascript:void(0)"  ng-click="sectionFieldLabel = true;"><span id="{{key1}}" class="glyphicon glyphicon-pencil" style="color:#337ab7;float:right;margin-right:1%;"></span></a> 
+                                                                    <a href="javascript:void(0)" ng-show="sectionList[key].fields[key1].dataType =='REFERENCE'" ng-click="openFormulaModel(key,key1);" ><span  class="glyphicon glyphicon-wrench"  style="color:#337ab7;float:right;margin-right:1%;"></span></a>
+                                                                </div>
+                                                                <div style="padding:3px;">
+                                                                    <span ng-hide="sectionFieldLabel" style="word-break:break-word;">{{sectionList[key].fields[key1].label}}</span>
+                                                                     <input placeholder="{!$Label.TYPE_LABEL}"  type="text" draggable ="false" style="outline:0;" ng-model="sectionList[key].fields[key1].label" ng-show="sectionFieldLabel" ng-blur="sectionFieldLabel = false" />
+                                                                </div>
+                                                           </div>
+                                                     </td>
+                                                 </tr>
+                                             </tbody>
+                                         </table>
+                                     </div>
+                                     <div style="text-align:center;margin-top:2%;" ng-show="sectionList[key].fields.length ==0 ?true:false"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;<span style="color:#337ab7;">{!$Label.DRAG_AND_DROP} <b>{!$Label.FIELDS}</b> {!$Label.HERE}</span></div>
+                                 </div>
+                            </div>
+                             <div style="text-align:center;margin-top:7%;" ng-show="sectionList.length ==0 ?true:false"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;<span style="color:#337ab7;">{!$Label.DRAG_AND_DROP} <b>{!$Label.SECTION}</b> {!$Label.HERE}</span></div>
+                         </div>  
+                  </div>
+                 
+                <script type="text/ng-template" id="myModalContent.html">
+                   
+                    <div class="modal-header" style="background:#438eb9;border-radius:4px;">
+                        <span style="font-weight:bold;color:white;"> {!$Label.FIELDS_LIST}</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                           <table width="100%">
+                                <tr>
+                                    <td style="width:50%;">
+                                        <div style="height:200px;overflow:scroll;overflow-x:hidden;" class="simpleDemo" ng-show="relatedList" dnd-list="relatedList" >
+                                           <ul class="list-group" id="sortable" dnd-list="relatedList">
+                                                <li style="padding:4px 15px;" class="list-group-item" dnd-moved="relatedList.splice($index, 1)"  ng-repeat="key in relatedList" dnd-draggable="key" dnd-effect-allowed="move">
+                                                    {{key.label}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td style="width:50%;">
+                                        <div style="height:200px;overflow:scroll;overflow-x:hidden;border-style:dashed;100px;border-color:#ccc;"  ng-show="relatedList" class="simpleDemo" dnd-list="dragRelatedListFields">
+                                          <ul class="list-group" id="sortable" dnd-list="dragRelatedListFields">
+                                               <li style="padding:4px 15px;" class="list-group-item" class="ng-scope ng-binding" dnd-selected="models.selected = key"   ng-repeat="key in dragRelatedListFields" dnd-draggable="key" dnd-effect-allowed="move" draggable="true" dnd-moved="dragRelatedListFields.splice($index, 1);">
+                                                     {{key.label}}
+                                                </li>
+                                            </ul>
+                                            <div style="text-align:center;margin-top:30%;" ng-show="dragRelatedListFields.length ==0 ? true:false"><span style="color:#337ab7;" class="glyphicon glyphicon-hand-down"></span><span style="color:#337ab7;">{!$Label.DROP_HERE}</span></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                          </div>  
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-click="ok()">{!$Label.OK}</button>
+                        <button class="btn btn-primary" ng-click="cancel()">{!$Label.CANCEL}</button>
+                    </div>
+                 
+                </script>
+                
+                 <script type="text/ng-template" id="ManageOrder.html">
+                    <div class="modal-header" style="background:#438eb9;">
+                        <span style="font-weight:bold;color:white;"> {!$Label.SECTION_ORDER}</span>
+                    </div>
+                     <div class="modal-body" style="padding:10px;">
+                        <div class="container-fluid simpleDemo">
+                          <ul class="list-group" dnd-list="reqObj" >
+                              <li ng-repeat="key in reqObj" class="list-group-item" dnd-draggable="key" dnd-effect-allowed="move" draggable="true" dnd-moved="reqObj.splice($index, 1)">
+                                  {{key.label}} 
+                              </li>
+                          </ul>
+                        </div>  
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-click="ok()">{!$Label.OK}</button>
+                        <button class="btn btn-primary" ng-click="cancel()">{!$Label.CANCEL}</button>
+                    </div>
+                 
+                </script>
+                
+                <script type="text/ng-template" id="saveAsModel.html">
+                    <div class="modal-header" style="background:#438eb9;border-radius:4px;">
+                        <span style="font-weight:bold;color:white;"> {!$Label.SAVE_AS}</span>
+                    </div>
+                    <div class="modal-body">
+                          <div>
+                              <label> {!$Label.TEMPLATE_NAME}</label>
+                              <input type="text" ng-model="TemplateNameReq" id="templatename" class="form-control" placeholder="{!$Label.TYPE_TEMPLATE_NAME}"/>
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-click="ok()">{!$Label.OK}</button>
+                        <button class="btn btn-primary" ng-click="cancel()">{!$Label.CANCEL}</button>
+                    </div>
+                 
+                </script>
+                
+                <script type="text/ng-template" id="Formula.html">
+                   
+                    <div class="modal-header" style="background:#438eb9;border-radius:0;padding:8px;">
+                        <span style="font-weight:bold;color:white;"> {!$Label.FORMULA_EDITOR}</span>
+                    </div>
+                    <div class="modal-body">
+                       <div class="row">
+                            <div class="col-md-6" ng-show="fieldApi">
+                                <select  class="selectBox form-control" id="relationSelectOption" ng-show="reqObjectApiName"  ng-model="select1"  ng-change="getRelatedOptions(select1,'relationSelectOption');selectedCode = '';">
+                                    <option value="">--{!$Label.SELECT_FIELD}--</option>
+                                    <option ng-repeat="(key,value) in reqObjectApiName"  value="{{value}}">{{key}}</option>
+                                </select>
+                                <select class="selectBox form-control" id="relationSelectOption1"  ng-model="select2" ng-show="reqObjectApiName1" ng-change="getRelatedOptions(select2,'relationSelectOption1');selectedCode = '';">
+                                    <option value="">--{!$Label.SELECT_FIELD}--</option>
+                                    <option ng-repeat="(key,value) in reqObjectApiName1"  value="{{value}}">{{key}}</option>
+                                </select>
+                                <select class="selectBox form-control" id="relationSelectOption2" ng-model="select3" ng-show="reqObjectApiName2" ng-change="getRelatedOptions(select3,'relationSelectOption2');selectedCode = '';">
+                                    <option value="">--{!$Label.SELECT_FIELD}--</option>
+                                    <option ng-repeat="(key,value) in reqObjectApiName2"  value="{{value}}">{{key}}</option>
+                                </select>
+                                <select  class="selectBox form-control" id="relationSelectOption3" ng-model="select4" ng-show="reqObjectApiName3" ng-change="getRelatedOptions(select4,'relationSelectOption3');selectedCode = '';">
+                                    <option value="">--{!$Label.SELECT_FIELD}--</option>
+                                    <option ng-repeat="(key,value) in reqObjectApiName3"  value="{{value}}">{{key}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6" style="border-left:4px solid #bfc0c6;" ng-hide="relation">
+                                 <select class="form-control" ng-model="selectedFormula" id="formulaOption">
+                                    <option value="">--{!$Label.SELECT_FORMULA}--</option>
+                                    <option>ISNULL</option>
+                                </select>
+                                <div ng-show="fieldApi.length > 0 && selectedFormula">
+                                       <div class="msgDiv row">{{formulaObject[selectedFormula]}}</div>
+                                </div>
+                              
+                                <select ng-show="reqField.indexOf('ISNULL') > -1" class="form-control"  ng-model="selectedField" ng-change="insertField(selectedField);" ng-options="key.value as key.label for key in fieldList2">
+                                   <option value="">--{!$Label.SELECT_FIELD}--</option>
+                                </select>
+                                </select>
+                               <div clas="row" style="margin-top:1%;">
+                                    <input type="button" class="btn btn-primary btn-xs" value="Insert Formula" ng-disabled="!selectedFormula" ng-click="createFormula();" />
+                                </div>
+                            </div>
+                            <div class="col-md-6" ng-show="referenceObject =='CMPL123CME__Complaint_Code__c' && relation">
+                                
+                                <select class="form-control" ng-model="selectedCode" ng-options="key.label as key.label for key in codes" ng-change="createCode(selectedCode);">
+                                <option value="">--{!$Label.SELECT_CODE}--</option>
+                                </select>
+                            </div>
+                           
+                             <div class="col-md-6"  ng-show="fieldApi.length == 0 && selectedFormula">
+                                <div class="row msgDiv" style="border-left:4px solid #bfc0c6;">
+                                       {{formulaObject[selectedFormula]}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row container-fluid" style="margin-top:1%;">
+                            <textarea class="form-control" ng-model="reqField"  id="formulaTextArea"  placeholder="{!$Label.TYPE_FORMULA}" style="height:100px;"></textarea>
+                        </div>
+                        <div style="margin-top:1%;" ng-hide="relation">
+                             <button class="btn btn-primary btn-xs" ng-disabled="reqField.indexOf('ISNULL') == -1" ng-click="checkSyntax(selectedFormula,'check');"> {!$Label.CHECK_SYNTAX}</button>
+                             <span style="color:{{msgColor}}">{{formulaErrorMessage}}</span>
+                         </div> 
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-click="ok()">{!$Label.OK}</button>
+                        <button class="btn btn-primary" ng-click="cancel()">{!$Label.CANCEL}</button>
+                    </div>
+                
+                
+                </script>
+              
+                 <!----------------------------fieldsSECTION----------------------------->
+            </div>
+         
+         </body>
+    </html>
+</apex:page>

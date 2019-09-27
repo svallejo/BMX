@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Rule Field Update Key Value --></label>
+        <name>CMPL123Rule_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed By --></label>
+        <name>CMPL123_WF_Action_Performed_By__c</name>
+        <relationshipLabel><!-- Quality Event Investigations (Workflow Action Performed By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed On --></label>
+        <name>CMPL123_WF_Action_Performed_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action --></label>
+        <name>CMPL123_WF_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Status --></label>
+        <name>CMPL123_WF_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Due Date --></label>
+        <name>Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investigation Results --></label>
+        <name>Investigation_Results__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investigation Summary --></label>
+        <name>Investigation_Summary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investigation Type --></label>
+        <name>Investigation_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investigator --></label>
+        <name>Investigator__c</name>
+        <relationshipLabel><!-- Quality Event Investigations (Investigator) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>Priority__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quality Event --></label>
+        <name>Quality_Event_Investigation__c</name>
+        <relationshipLabel><!-- Quality Event Investigations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Quality Event Investigation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quality Event Investigations</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Quality Event Investigation Layout</layout>
+        <sections>
+            <label><!-- Investigation Detail --></label>
+            <section>Investigation Detail</section>
+        </sections>
+        <sections>
+            <label><!-- Investigation Summary --></label>
+            <section>Investigation Summary</section>
+        </sections>
+        <sections>
+            <label><!-- Work Flow --></label>
+            <section>Work Flow</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Lock Record --></errorMessage>
+        <name>Prevent_Edit_QEI_for_closed_QE</name>
+    </validationRules>
+</CustomObjectTranslation>

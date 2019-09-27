@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CMPL123CME__Investigation__c.Investigation_Evaluation_Number__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Investigation__c.BMX_Days_Open__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Investigation__c.CMPL123_WF_Status__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <description>Investigation user can access and run a preset report that filters investigation records that are open (ie. not in a Closed - Done or Closed - Canceled&quot; status) for more than 100 days with &quot;Yes&quot; for the &quot;Patient Data Copied to BMX System?&quot; field/question.</description>
+    <filter>
+        <criteriaItems>
+            <column>CMPL123CME__Investigation__c.CMPL123_WF_Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CMPL123CME__Investigation__c.BMX_Days_Open__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>100</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CMPL123CME__Investigation__c.BMX_Patient_Data_Copied_to_BMX_System__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Investigation with Patient Data Answer</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CMPL123CME__Investigation__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

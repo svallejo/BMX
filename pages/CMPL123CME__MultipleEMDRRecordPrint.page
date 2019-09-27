@@ -1,0 +1,29 @@
+<apex:page standardController="CMPL123CME__EMDR__c" extensions="CMPL123CME.MultipleEMDRRecordPrintController" recordSetVar="EMDR"> 
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+    <script>
+        var errorMsg = '{!JSENCODE(errorMsg)}';
+        var recIds = '{!JSENCODE(recordIds)}';
+        
+        //Checking condition for error message and showing it in frontend
+        if (errorMsg.trim() != '') {
+            alert(errorMsg);
+            
+            if (lexUtil.inLEX()) {
+                lexUtil.lexRefresh(); 
+            } else {
+                //This method loads the previous URL in the history list
+                window.history.back();
+            }   
+        } else {       
+            var baseUrl = window.location.origin;
+            var url = '/apex/CMPL123CME__MultipleEMDRPrint?ids=' + recIds;
+            //Added support for Lightning Experience and classic
+            if (lexUtil.inLEX()) {
+                lexUtil.lexNavigateToURL(url); 
+            } else {
+                window.open(baseUrl + url, '_blank');
+                window.history.back();
+            }
+        }
+    </script>
+</apex:page>

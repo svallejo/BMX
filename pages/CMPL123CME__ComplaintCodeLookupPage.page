@@ -1,0 +1,276 @@
+<apex:page controller="CMPL123CME.ComplaintCodeLookupController" showHeader="false">
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery/jquery.js' )}" />
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery/jquery-ui.js' )}" />
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/jquery.dynatree.js' )}" /> 
+     <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__Keyboard)}" /> 
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/skin/ui.dynatree.css')}" /> 
+    <!-- JS supports for Lightning Experience navigations -->
+    <apex:includeScript value="/support/console/26.0/integration.js"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, 'jquery-ui-1.8.20/css/gtheme/jquery-ui-1.8.20.custom.css')}" />
+    <style>
+        .ui-dialog{z-index:1;}.actionLink {color: #015BA7;text-decoration: none;font-weight: normal;}
+        .form-input{background:white;border: 1px solid  #CCC;border-radius:1px;box-shadow: 0 0 5px #CCC;padding: 8px 27px 8px 10px;width:350px;outline:none}  
+        .ui-menu .ui-menu-item{padding:1%;}
+        .ui-menu-item:hover{color:white;border:0px;background:#446e9b;}  
+        .ui-autocomplete{max-height: 200px;overflow-y: auto;overflow-x: hidden;}
+        .ui-autocomplete{z-index: 9999;}
+        .ui-dialog .ui-dialog-buttonpane {text-align: center;}.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {float:none; }
+        .loadingLayer{  background-color:#F5F5F5;width:150px;height:50px;position:relative;z-index:3;border: 1px solid #E3E3E3;top:50px;left:200px;border-radius:8px;}       
+    </style>
+    <script>
+        var imageType = {"hlgt":"URL(/resource/CMPL123CME__TreeStructure/image/hlgt.png)","hlt":"URL(/resource/CMPL123CME__TreeStructure/image/hlt.png)","llt":"URL(/resource/CMPL123CME__TreeStructure/image/llt.png)","pt":"URL(/resource/CMPL123CME__TreeStructure/image/pt.png)","soc":"URL(/resource/CMPL123CME__TreeStructure/image/soc.png)"};
+        var jobtype;var selectedComplCodeId='';var recordId='';
+        var subTypeMap = new Object(); 
+        var fieldApi;var objApiName;var fieldType; var win;      
+        $(function(){
+            subTypeMap['soc'] = 1;
+            subTypeMap['hlgt'] = 2;
+            subTypeMap['hlt'] = 3;
+            subTypeMap['pt'] = 4;
+            subTypeMap['llt'] = 5;
+            recordId = '{!JSENCODE($CurrentPage.parameters.id)}'; 
+            fieldApi =  '{!JSENCODE($CurrentPage.parameters.fieldApi)}'; 
+            fieldType = '{!JSENCODE($CurrentPage.parameters.fieldType)}'; 
+            objApiName = '{!JSENCODE($CurrentPage.parameters.objApiName)}';   
+            jobtype =  '{!JSENCODE($CurrentPage.parameters.codeType)}';
+            initialize();
+            $( "#dialog" ).dialog(opt).dialog("open");
+            $("[id$=dialog]").bind('click',function(){
+                  $(".expandAll").hide();
+            });
+            if(jobtype.length >0){
+                $(".ui-dialog-title").html(jobtype +"&nbsp;"+"{!$Label.CMPL123CME__CMPLT_SEARCH1}");
+                getSearchResult(jobtype);
+            }else{
+                $(".ui-dialog-title").html("{!$Label.CMPL123CME__CMPLT_SEARCH_CODE}");
+                createCodeTypeSelectOption();
+            }
+           (recordId.length == 0 || fieldApi.length == 0)?$(".ui-dialog-buttonset").find("button")[0].style.display = "none":$(".ui-dialog-buttonset").find("button")[0].style.display = "inline";
+          
+       
+        });
+        
+        
+        function createCodeTypeSelectOption(){
+                var mdrType = JSON.parse('{!mdrTypes}');
+                var select ="<select id='codeType' style='padding:0.5%;width:250px;'><option value=''>--{!$Label.CMPL123CME__CMPLT_SELECT}--</option>";
+                for(var key=0;key< mdrType.length;key++){
+                    select += "<option>"+mdrType[key]+"</option>";
+                }
+                select +="</select>";
+                $(".divType").append("<div style='padding:0.5%;'><label style='font-weight:bold;'>{!$Label.CMPL123CME__CMPLT_CODE_TYPE}</label>&nbsp;&nbsp;"+select+"</div>");
+                $("[id$=codeType]").change(function(){
+                    $(".ui-menu-item").css('display','none');
+                    $("[id$='errorContent']").hide();
+                    $("[id$=selectedCode]").val('');
+                    $(".ui-dialog-title").html($(this).val()+"&nbsp;"+"{!$Label.CMPL123CME__CMPLT_SEARCH1}");
+                        if($(this).val().length >0){
+                            jobtype = $(this).val();
+                            getSearchResult($(this).val());
+                        }    
+                });
+        
+        }
+        
+        function initialize(){
+            opt={
+                autoOpen: false,
+                width:640,
+               
+                autoOpen: true,
+                height:400,
+                closeOnEscape: false,
+                modal:true,
+                buttons: {
+                    "{!$Label.CMPL123CME__CMPLT_SAVE}": function() {
+                        saveRecord();
+                    },
+                    "{!$Label.CMPL123CME__CMPLT_CANCEL}":function() {
+                        //close function will support for Classic, Console app and Lightning experience page navigation.
+                        close();
+                    },   
+                },
+                open:function(){
+                    $(".ui-dialog-titlebar").find("button").html('<span class=" ui-icon ui-icon-closethick" style="margin:0px;position:static;"></span>');
+                     
+                },
+                close:function(){
+                    //Fix will support for Classic, Console app and Lightning experience page navigation.
+                    if (lexUtil.inLEX()) {
+                        lexUtil.lexNavigateToSObject(recordId);
+                    } else if (lexUtil.inConsole()) {
+                        parent.top.close();
+                    } else {
+                        parent.top.close();
+                    } 
+                },
+             }
+            $( "#dialog" ).dialog(opt);
+        
+        }
+        
+        function searchCode(){
+           jobtype = $("[id$=codeType]").val();
+           if(jobtype.length >0)
+               getSearchResult(jobtype);
+        }
+        function getSearchResult(obj){
+             $(".loadingLayer").show();
+             Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.ComplaintCodeLookupController.complaintCodeList}',obj,$("[id$=selectedCode]").val().trim(),function(result,event){
+                if(event.status){
+                    var codeMapJson= JSON.parse($("<div/>").html(result).text());
+                    if(Object.keys(codeMapJson).length >0){
+                       $("[id$=dialogContent]").show();
+                       createTypeAhead(Object.keys(codeMapJson),codeMapJson,jobtype);
+                    }else{
+                        $(".loadingLayer").hide();
+                        $("[id$=errorContent]").empty();
+                        var error ='<span style="font-size:14px;color:red;">{!$Label.CMPL123CME__CMPLT_NO} '+obj+' {!$Label.CMPL123CME__CMPLT_FOUND}</span>';
+                        $("[id$=errorContent]").append(error);
+                        $("[id$=errorContent]").show();
+                         $(".loadingLayer").hide();
+                    }   
+                }else{
+                    $(".loadingLayer").hide();
+                }
+            
+            },{escape:true});
+        }
+        
+         function getComplaintCodeList(obj){
+            if(obj.val().length >3){
+                obj.next().show();
+            }else
+                obj.next().hide();
+         }
+         
+          function createTypeAhead(codeMapArrey,codeMapJson,jobtype){           
+                $(".loading").remove(); 
+                $( "#dialog" ).dialog(opt).dialog("open");
+                $("#tree").empty();
+                $("#selectedCode").autocomplete({
+                    source:codeMapArrey,
+                    select:function(event,ui){
+                        selectedComplCodeId ='';
+                        $(".loadingLayer").show();
+                        subtype = codeMapJson[ui.item.label].split('~')[0];
+                        $("[id$=errorContent]").hide();
+                        callController(codeMapJson[ui.item.label].split('~')[1],jobtype);
+                    },
+                    open:function(event,ui){
+                        $(".ui-menu-item").hover(function(){
+                           if(codeMapJson[$(this).html()].split('~')[2] == 'null')
+                                $(this).attr("title","");
+                             else 
+                                $(this).attr("title",codeMapJson[$(this).html()].split('~')[2]);
+                        });
+                    },
+                    minLength: 0
+                
+                });
+                 $("[id$=errorContent]").hide();
+                $("#selectedCode").autocomplete( "search", "" );
+                $(".ui-menu-item").css('display','block');
+                (recordId.length == 0 || fieldApi.length == 0)?$(".ui-dialog-buttonset").find("button")[0].style.display = "none":$(".ui-dialog-buttonset").find("button")[0].style.display = "inline";
+                $(".loadingLayer").hide();
+        
+        }   
+        
+         function callController(selectedCodeId,type){
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.ComplaintCodeLookupController.createTreeJson}',selectedCodeId,type,function(result,event){
+                if(event.status){
+                    createTree(JSON.parse($("<div />").html(result).text()));   
+                }else{
+                    alert(event.message);
+                } 
+            },{escape:true});
+        
+        }    
+        
+        function saveRecord(){
+           if(selectedComplCodeId.length >0){
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.ComplaintCodeLookupController.saveRecord}',selectedComplCodeId,recordId,fieldApi,objApiName,fieldType, function(result,event){
+                    //close function will support for Classic, Console app and Lightning experience page navigation.
+                    close(); 
+                },{escape:true});                
+            }else{
+                $(".expandAll").show();
+            }
+            selectedComplCodeId = '';
+        }
+        
+        
+        function createTree(result){    
+            $("#tree").empty(); 
+            $("#tree").dynatree({
+                children: result,
+                onActivate: function(node) {
+                    $(".expandAll").hide();
+                    selectedComplCodeId = node.data.key;
+                },
+                minExpandLevel: subTypeMap[subtype],
+                persist: false,
+                checkbox: false,
+                generateIds: false,
+                isFolder:true,
+                classNames: {
+                    checkbox: "dynatree-checkbox",
+                    expanded: "dynatree-expanded"
+                
+                },
+                selectMode: 3,                
+                onSelect: function(select, node) {
+                    var selKeys = $.map(node.tree.getSelectedNodes(), function(node){
+                        return node.data.key;
+                    });
+                    jQuery(document.getElementById("{!$Component.selectedKeys}")).val(selKeys.join(", "));
+                    var selRootNodes = node.tree.getSelectedNodes(true);
+                    var selRootKeys = $.map(selRootNodes, function(node){
+                        return node.data.key;
+                    });
+                },
+                onRender: function(node, nodeSpan) {                    
+                    var ssubType = $(nodeSpan).find("a").html().split('~')[1];
+                    var  path = imageType[ssubType];
+                    if(path != undefined)
+                    $(nodeSpan).find(".dynatree-icon").css({"background":path+" no-repeat","padding":"0.6%"});
+                    $(nodeSpan).find("a").html($(nodeSpan).find("a").html().split('~')[0]);
+                    if($(nodeSpan).find("a").html() == $("[id$=selectedCode]").val() && subtype == ssubType){
+                        $(nodeSpan).find("a").css({'background-color':'green','color':'white'});
+                    }
+                    
+                }
+                
+            }); 
+            $("#tree").dynatree("getRoot").visit(function(node){
+                node.expand(false);
+            }); 
+            
+            $(".loadingLayer").hide();
+        
+        }      
+       
+    </script>
+     <div id="dialog"  class="ui-widget">
+         <div class="divType"></div>
+        <div id="dialogContent" style="display:none;">
+           <input type="hidden" autofocus="autofocus" />
+            <div>
+            <input  type="text" placeholder="{!$Label.CMPL123CME__CMPLT_TYPE_PARTIAL_CODE_OR_DESCRIPTION}" style="width:475px;" id="selectedCode" class="form-input ui-autocomplete-loading" onkeyup="getComplaintCodeList($(this));" />
+            <input type="button"  class="btn find" value="{!$Label.CMPL123CME__CMPLT_FIND}"  style="display:none;" onclick="searchCode();"/>
+            </div>
+            <div  class="expandAll" style="padding:1%;display:none;">
+                <span style="font-size:12px;color:red;;">{!$Label.CMPL123CME__CMPLT_NO_CODE_SELECTED}</span>
+            </div>
+            <div id="tree" class="typeCodeDiv" style="padding:1%;"></div> 
+        </div>
+        <div id="errorContent" style="display:none;">
+            
+        </div>
+        <div class="loadingLayer" style="display:none;">
+            <div style="text-align:center;margin-top:5%;"><img src="/img/loading32.gif" /></div>
+        </div> 
+        
+    </div> 
+</apex:page>

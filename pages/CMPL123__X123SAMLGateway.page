@@ -1,0 +1,14 @@
+<!-- X123Gateway Page used as Site Active Home Page to receive the SAMLResponse from IDP SSO Server--> 
+<apex:page showHeader="false" controller="CMPL123.X123SAMLGatewayController">
+    <script>
+        window.onload = function loadFunction(){
+            if(!{!isError})
+               document.getElementById('submitButtonId').click();        
+        }
+    </script>
+    <form action="{!redirectUrl}" method="POST"> 
+            <input type="hidden" name="samlParams" value="{!samlResponse}"/>              
+            <input type="submit" style="display:none" value="{!$Label.SUBMIT}" id="submitButtonId"/>  
+    </form> 
+    <apex:pageMessages />
+</apex:page>

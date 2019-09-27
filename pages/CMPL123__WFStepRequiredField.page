@@ -1,0 +1,17 @@
+<!-- Page renders all target object mandatory fields as checked for workflow step -->
+<apex:page standardController="CMPL123__WF_Step__c" extensions="CMPL123.WFStepRequiredFieldController">
+    <apex:form id="fmId">
+        <apex:outputPanel id="mandateFields">
+            <apex:pageBlock >
+                <apex:pageBlockSection columns="3">
+                    <apex:repeat value="{!workflowStepWrapperList}" var="field">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputText > {!field.fieldLabel} </apex:outputText>
+                            <apex:inputCheckbox styleClass="checkField" value="{!field.isChecked}" disabled="true" />
+                        </apex:pageBlockSectionItem>
+                    </apex:repeat>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

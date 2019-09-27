@@ -1,0 +1,77 @@
+<apex:page standardController="CMPL123CME__EMDR__c" extensions="CMPL123CME.EMDRMedWatchController" showHeader="false" sidebar="false">
+
+    <!-- JS support for lightning navigations --> 
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+
+    <style>
+        .popup
+        {
+            background-color: white;
+            border-width: 1px;
+            border-style: solid;
+            z-index: 9999;
+            left: 45%;
+            padding:10px;
+            position: absolute;
+            width: 50%;
+            margin-left: -20%;
+            top:30%;
+        }
+
+        .popupBg
+        {
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 70);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+        }
+    </style>
+
+    <script>
+        var formVersion = '{!JSENCODE(formVersion)}';
+
+        //On page load DOMContentLoaded function to call redirectToEMDRMedWatch() based on condition.
+        document.addEventListener('DOMContentLoaded', function(){
+            if ({!!showPopup}) {
+                redirectToEMDRMedWatch();
+            }
+        })
+        
+        //Redirects to specific medwatch form based on formversion and user experience
+        function redirectToEMDRMedWatch() {
+            var medWatchURL = '/apex/CMPL123CME__EMDRMedWatch2015?id={!mdr.Id}';
+            
+            if (formVersion == '2018') {
+                medWatchURL = '/apex/CMPL123CME__EMDRMedWatch?id={!mdr.Id}';
+            }
+            
+            if (lexUtil.inLEX()) {
+                lexUtil.lexNavigateToURL(medWatchURL);
+            } else {
+                window.parent.location = medWatchURL;
+            }    
+        }
+    </script>
+
+    <apex:form >
+    <apex:outputPanel id="outText">
+        <apex:outputPanel rendered="{!showPopup}">
+                <apex:outputPanel styleClass="popupBg" layout="block" />
+                <apex:outputPanel styleClass="popup" layout="block">
+                    <b>{!$Label.cmpl123cme__cmplt_warning}: </b><br/><br/>
+                    {!$Label.cmpl123cme__cmplt_medwatch_print_message}: <br/><br/>
+                    <div style="font-size:10px;">
+                        <apex:outputText value="{!fieldsTruncated}" escape="false"/>
+                    </div> <br/><br/>
+                    <div style="float:right;"><apex:commandButton value="{!$Label.cmpl123cme__cmplt_ok}" action="{!setRenderFormatAsPDF}" reRender="outText" oncomplete="redirectToEMDRMedWatch();"/>
+                    </div>
+               </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:outputPanel>
+    </apex:form>    
+</apex:page>

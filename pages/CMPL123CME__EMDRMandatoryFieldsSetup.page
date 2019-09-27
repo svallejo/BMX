@@ -1,0 +1,32 @@
+<apex:page controller="CMPL123CME.EMDRMandatoryFieldsController"  standardStylesheets="true">
+    <script>
+        function changeVal(apiName, obj) {
+            var elements = document.getElementsByClassName(apiName);
+            for (var i=0; i< elements.length; i++) {
+                elements[i].checked =  obj.checked;
+            }
+        }
+    </script>    
+    <apex:form id="theFrm">
+        <apex:pageBlock id="pb" tabStyle="EMDR__c" title="{!$Label.cmpl123cme__cmplt_select_fields_to_make_mandatory}">
+            <apex:outputPanel layout="block" html-align="center" style="padding-bottom:10px">
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!Save}"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_cancel}" action="{!Cancel}" immediate="true" style="margin-left:5px"/>
+            </apex:outputPanel>
+            <apex:repeat value="{!fieldsetsWrapList}" var="flsWrap">
+                <apex:pageBlockSection id="pbs" collapsible="true" title="{!flsWrap.fieldSetLabel}" columns="2">
+                    <apex:repeat value="{!flsWrap.fieldsList}" var="fld">
+                        <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!fld.fieldLabelName}"/>
+                        <apex:inputCheckbox value="{!fld.isSelected}" onchange="changeVal('{!fld.fieldApiName}', this)" styleClass="{!fld.fieldApiName}"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:repeat>
+                </apex:pageBlockSection>
+            </apex:repeat>
+            <apex:outputPanel layout="block"  html-align="center" style="padding-bottom:10px">
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!Save}"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_cancel}" action="{!Cancel}" immediate="true" style="margin-left:5px"/>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,121 @@
+<apex:page controller="CMPL123CME.OauthRegistrationController" tabStyle="Account" showChat="false" id="pg1">
+    <style>
+         .form-input{background:white;border: 1px solid  #CCC;border-radius:5px;padding: 8px 27px 8px 10px;width:250px;}             
+    </style>
+    <script>
+        var openWindow;
+        function popupwindow(url,sfurl, title, w, h) {
+          var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+          var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+          width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+          height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+          var left = ((width / 2) - (w / 2)) + dualScreenLeft;
+          var top = ((height / 2) - (h / 2)) + dualScreenTop;
+          var left = (screen.width/2)-(w/2);
+          var top = (screen.height/2)-(h/2);
+          var callurl = url.replace("/rest/fda/register", "");
+          if(sfurl == 'production'){
+              url= callurl+'/oauth?sfUrl=https://login.salesforce.com&endUrl='+callurl+'&clientId={!JSENCODE(clientId)}&clientSecret={!JSENCODE(clientSecret)}&hstoken={!JSENCODE(hsToken)}';
+              //url= callurl+'/oauth?sfUrl=https://login.salesforce.com&endUrl='+callurl+'&clientId='+{!JSENCODE(clientId)}+'&clientSecret='+{!JSENCODE(clientSecret)}+'&hstoken='+{!JSENCODE(hsToken)};
+             // url= 'http://localhost:9092/oauth?SfUrl=https://login.salesforce.com&EndUrl=http://localhost:9090' ;
+          }
+          else if(sfurl == 'sandbox'){
+              url= callurl+'/oauth?sfUrl=https://test.salesforce.com&endUrl='+callurl+'&clientId={!JSENCODE(clientId)}&clientSecret={!JSENCODE(clientSecret)}&hstoken={!JSENCODE(hsToken)}';
+             // url= callurl+'/oauth?sfUrl=https://test.salesforce.com&endUrl='+callurl+'&clientId={!JSENCODE(clientId)}&clientSecret={!JSENCODE(clientSecret)}&hstoken={!JSENCODE(hsToken)}';
+             //url= callurl+'/oauth?sfUrl=https://test.salesforce.com&endUrl='+callurl+'&clientId='+{!JSENCODE(clientId)}+'&clientSecret='+{!JSENCODE(clientSecret)}+'&hstoken='+{!JSENCODE(hsToken)};
+              //url= callurl+'/oauth?SfUrl=https://test.salesforce.com&EndUrl='+callurl ;
+              //url= 'http://localhost:9092/oauth?SfUrl=https://test.salesforce.com&EndUrl=http://localhost:9090' ;
+          }else if(sfurl == 'custom'){
+              customUrl = document.getElementById('{!$Component.pg1:regform:pg:pbs2:pbsi2:customurl}').value;
+              url= callurl+'/oauth?sfUrl='+customUrl+'&endUrl='+callurl+'&clientId={!JSENCODE(clientId)}&clientSecret={!JSENCODE(clientSecret)}&hstoken={!JSENCODE(hsToken)}';
+              //url= callurl+'/oauth?SfUrl='+customUrl+'&EndUrl='+callurl;
+              //url= callurl+'/oauth?sfUrl='+customUrl+'&endUrl='+callurl+'&clientId='+{!JSENCODE(clientId)}+'&clientSecret='+{!JSENCODE(clientSecret)}+'&hstoken='+{!JSENCODE(hsToken)};
+              //&clientId={!JSENCODE(clientId)}&clientSecret={!JSENCODE(clientSecret)}&hstoken={!JSENCODE(hsToken)}';
+          }
+          console.log('========url=========>'+url);
+          //Added support for Lightning Experience and Classic
+          window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+          insetOauthDetails();
+        } 
+        
+    </script>
+    <apex:form style="font-size:13px;" id="regform">        
+        <apex:pageBlock title="TrackWise Digital FDA Gateway Registration" id="pg">
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Registration Type:</apex:outputLabel>
+                    <apex:selectList id="regtype" value="{!registrationType}" size="1">
+                        <apex:selectOption itemValue="type1" itemLabel="Username, password & token"/>
+                        <apex:selectOption itemValue="type2" itemLabel="OAuth"/>
+                        <apex:actionSupport event="onchange" reRender="pg"/>
+                    </apex:selectList> 
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" rendered="{!IF(showOrgDetail == true && registrationType == 'type1',true,false)}" collapsible="false" title="Username & password registration"> 
+                <apex:pageMessages />
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >User Name</apex:outputLabel>
+                        <apex:inputText styleClass="form-input"  value="{!userName}"></apex:inputText>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Password</apex:outputLabel>
+                        <apex:inputSecret styleClass="form-input" id="passWord" value="{!password}"/>
+                    </apex:pageBlockSectionItem>  
+                    <apex:pageBlockSectionItem >
+                         <apex:outputLabel >Security Token</apex:outputLabel>
+                         <apex:inputText value="{!securityToken}" styleClass="form-input" id="secToken"></apex:inputText>
+                    </apex:pageBlockSectionItem>
+                    <!--<apex:pageBlockSectionItem >
+                         <apex:outputLabel >Active</apex:outputLabel>
+                         <apex:inputCheckbox value="{!isActive}" disabled="{!IF(hsToken != null && hsToken != '', true,false)}">
+                             <apex:actionSupport event="onchange" reRender="pg"/>
+                         </apex:inputCheckbox>
+                    </apex:pageBlockSectionItem>-->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel ></apex:outputLabel>
+                        <apex:outputPanel id="op">
+                            <apex:commandButton value="{!if(hsToken != null && hsToken != '','Reregister','Register')}" action="{!fdaConnect}" style="padding:8px;" rendered="{!if(hsToken != null && hsToken != '' && !isActivate,false,true)}"/>                                
+                            <span style="vertical-align:-8px;"></span>
+                            <apex:commandButton value="{!if(isActivate,'Deactivate','Activate')}" style="padding:8px;" action="{!doActivate}" rendered="{!if(hsToken != null && hsToken != '',true,false)}" reRender="pg"/>                                
+                            <span style="vertical-align:-8px;"></span>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection columns="1" collapsible="false" title="OAuth Registration" rendered="{!IF(registrationType == 'type2',true,false)}" id="pbs2">
+                <apex:pageMessages />
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Environment :</apex:outputLabel>
+                        <apex:selectList id="endpoint" value="{!endPoint}" size="1">
+                            <apex:selectOption itemValue="production" itemLabel="Production"/>
+                            <apex:selectOption itemValue="sandbox" itemLabel="Sandbox"/>
+                            <apex:selectOption itemValue="custom" itemLabel="Custom"/>
+                            <apex:actionSupport event="onchange" reRender="pg"/>
+                        </apex:selectList> 
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem id="pbsi2" rendered="{!IF(endPoint == 'custom',true,false)}">
+                        <apex:outputLabel >Custom URL :</apex:outputLabel>
+                        <apex:outputPanel >
+                        <apex:inputText styleClass="form-input" id="customurl" value="{!customUrl}"/>&nbsp;&nbsp;&nbsp;<apex:outputLabel >for ex: "https://xyz.salesforce.com"</apex:outputLabel>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>  
+                    <!--<apex:pageBlockSectionItem >
+                         <apex:outputLabel >Active :</apex:outputLabel>
+                         <apex:inputCheckbox value="{!isActive}" disabled="{!IF(hsToken != null && hsToken != '', true,false)}">
+                         <apex:actionSupport event="onchange" reRender="pg"/>
+                         </apex:inputCheckbox>
+                    </apex:pageBlockSectionItem>-->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel ></apex:outputLabel>
+                        <apex:outputPanel >
+                            <apex:commandButton value="{!if(hsToken != null && hsToken != '','Reregister','Register')}"  style="padding:8px;" onclick="popupwindow('{!FDAEndpoint}','{!endPoint}','','400','400');return false;" reRender="false" rendered="{!if(hsToken != null && hsToken != '' && !isActivate,false,true)}"/> <!--onclick="popupwindow('http://localhost:9090/oauth?SfUrl=gdsggs&EndUrl=dfgdd','','width=500,height=500');return false;" style="padding:8px;" rendered="{!if(hsToken != null && hsToken != '' && !isActivate,false,true)}" -->                               
+                            <span style="vertical-align:-8px;"></span>
+                            <apex:commandButton value="{!if(isActivate,'Deactivate','Activate')}" style="padding:8px;" action="{!doActivate}" rendered="{!if(hsToken != null && hsToken != '',true,false)}" reRender="pg"/>                                
+                            <span style="vertical-align:-8px;"></span>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:actionFunction action="{!OauthInsert}"  name="insetOauthDetails"/>
+                </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:actionPoller action="{!setRegisterMessage}" rendered="{!showRegisterMessage}" reRender="regmsg" interval="8"/> 
+    </apex:form>
+</apex:page>

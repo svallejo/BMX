@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>CMPL123__Description</fullName>
+        <field>CMPL123__Description__c</field>
+        <formula>CMPL123__MDC_Trigger__r.CMPL123__Description__c</formula>
+        <name>Description</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>CMPL123__MDC Ticket Description</fullName>
+        <actions>
+            <name>CMPL123__Description</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CMPL123__MDC_Ticket__c.Name</field>
+            <operation>notEqual</operation>
+            <value>Null</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CMPL123__MDC_Ticket__c.CMPL123__All_Acks_Received__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

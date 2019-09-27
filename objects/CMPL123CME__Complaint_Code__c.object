@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Code Name</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <label>Complaint Code</label>
+    <nameField>
+        <label>Code</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Complaint Codes</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>CMPL123CME__Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Parent_CCode__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__ParentCCode__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Sub_Type__c</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>CMPL123CME__Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CMPL123CME__Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CMPL123CME__Description__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Name__c</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Type__c</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Description__c</searchFilterFields>
+        <searchResultsAdditionalFields>CMPL123CME__Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__Description__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>CMPL123CME__ANALYSIS_CODE</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>ANALYSIS CODE</value>
+        </filters>
+        <label>ANALYSIS CODES</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__All</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__COMPLAINT_CODE</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <columns>CMPL123CME__ParentCCode__c</columns>
+        <columns>CMPL123CME__Parent_CCode__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>COMPLAINT CODE</value>
+        </filters>
+        <label>COMPLAINT CODES</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__COUNTRY_CODES</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>BMX_Competent_Authority__c</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>BMX_Is_Meddev__c</columns>
+        <columns>Local_Subsidiary_Text__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <columns>CMPL123CME__Inactive__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>COUNTRY CODE</value>
+        </filters>
+        <label>COUNTRY CODES</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__DEVICE_CODE</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>DEVICE CODE</value>
+        </filters>
+        <label>DEVICE CODES</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__EVAL_CONCLUSION_CODE</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>EVAL CONCLUSION CODE</value>
+        </filters>
+        <label>EVAL CONCLUSION CODES</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__EVAL_METHOD_CODE</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>EVAL METHOD CODE</value>
+        </filters>
+        <label>EVAL METHOD CODES</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__EVAL_RESULT_CODE</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>EVAL RESULT CODE</value>
+        </filters>
+        <label>EVAL RESULT CODES</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__FINDING_CODES</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>FINDING CODE</value>
+        </filters>
+        <label>FINDING CODES</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__MEDDRA_CODES</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Sub_Type__c</columns>
+        <columns>CMPL123CME__Version__c</columns>
+        <columns>CMPL123CME__ParentCCode__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>MEDDRA CODE</value>
+        </filters>
+        <label>MEDDRA CODES</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__PATIENT_CODE</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__ParentCCode__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>PATIENT CODE</value>
+        </filters>
+        <label>PATIENT CODES</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__ROOT_CAUSE_CODES</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>ROOT CAUSE CODE</value>
+        </filters>
+        <label>ROOT CAUSE CODES</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__STATE_CODES</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <columns>CMPL123CME__Inactive__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>STATE CODE</value>
+        </filters>
+        <label>STATE CODES</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__SYMPTOM_CODES</fullName>
+        <columns>CMPL123CME__Name__c</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type__c</columns>
+        <columns>CMPL123CME__Description__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Type__c</field>
+            <operation>equals</operation>
+            <value>SYMPTOM CODE</value>
+        </filters>
+        <label>SYMPTOM CODES</label>
+    </listViews>
+</CustomObject>

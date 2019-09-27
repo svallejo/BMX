@@ -1,0 +1,1489 @@
+<apex:page standardController="CMPL123CME__EMDR__c" extensions="CMPL123CME.EMDRMedWatchController" standardStylesheets="false" showHeader="false" sidebar="false" renderAs="PDF">
+  <html>
+    <head>
+      <style type="text/css">
+        @page {   size: 8.5in 11in;/* width height */ }
+        #main{
+          width:100%;
+        }
+        #mainpg2{
+          width:100%;
+        }
+        #mainpg3{
+          width:100%;
+        }
+        #mainHeader2{
+          margin: 20px;
+        }
+        #mainHeader3{
+          margin: 20px;
+        }
+        #mainbody{
+          margin: 20px;
+          width:100%;
+          float:left;
+        }
+        #mainbody2{
+          margin: 20px;
+          width:100%;
+          float:left;
+        }
+        #mainbody3{
+          margin: 20px;
+          width:100%;
+          float:left;
+        }
+        .leftmain{
+          border-width:1px;
+          border-style: solid ;
+        }
+        .rightmain{
+          border-width:1px;
+          border-style: solid ;
+        }
+        .secA{
+          valign:top;
+        }
+        .secB{
+          width:100;
+        }
+        .box{
+          border-width: 1px;
+          border-style: solid;
+        }
+        .udiValueRowHeight {
+          height: 20px;
+        }
+      </style>
+    </head>
+    <body>
+      <div id="main" style="font-size:8px;">
+        <div id="mainHeader" style="width:100%; float:left;">
+          <div id="lefthead"  style="float:left; width:34%;">
+            <apex:image url="{!URLFOR($Resource.CMPL123CME__MedWatch15_Header, '')}"/>
+          </div>
+          <div  id="middlehead" style="float:left; width:30%">
+            <p style="text-align: center;">For use by user facilites,<br/>
+              importers, distributors and manufactures<br/>
+              for MANDATORY reporting<br/><br/>
+              <b>Page 1 of {!if(LEN(mdr.B5_Describe_Event_or_Problem__c) < 2055 && LEN(mdr.B6_Relevant_Test_Laboratory_Data__c) < 990 && LEN(mdr.B7_Other_Relevant_History__c) < 990 && LEN(mdr.H10_Addtl_Mfg_Narrative__c) < 365 && LEN(mdr.CMPL123CME__H11_Corrected_Data__c) < 365, '2', '3')}</b>
+            </p>
+          </div>
+          <div id="righthead" style="float:right; width:34%">
+            <span style="text-align:right;">
+              <p style="text-align: right;">Form Approved: OMB No. 09 10-029 1, Expires 6/30/2015<br/>
+                see OMB statement on reverse.
+              </p>
+            </span>
+            <table border="0" rules="rows" width="100%" cellspacing="0" cellpadding="0" style="border-top:1px solid #000000;border-left:1px solid #000000;border-right:1px solid #000000;border-bottom:1px solid #000000;">
+              <tr>
+                <td style="border-bottom:1px solid #000000;">
+                  Mfr Report # &nbsp; {!if(LEN(mdr.G9_MFR_Report_Number__c) > 20,LEFT(mdr.G9_MFR_Report_Number__c,20), mdr.G9_MFR_Report_Number__c) }
+                </td>
+              </tr>
+              <tr>
+                <td style="border-bottom:1px solid #000000;">
+                  UF/Importer Report # &nbsp; {!if(LEN(mdr.F2_UF_Importer_Report_Number__c) > 20,LEFT(mdr.F2_UF_Importer_Report_Number__c,20), mdr.F2_UF_Importer_Report_Number__c) }
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: right;">
+                  FDA Use Only
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id="mainbody">
+          <div id="leftmain" class="leftmain" style="float:left; width:48%;">
+            <div style="border-left:2px solid #000000;border-right:2px solid #000000;">
+              <table style="width:100%" rules="cols" border="0" cellspacing="0" cellpadding="0">
+                <th style="background : #1C1C1C;color:#ffffff;text-align:left;font-size:10px;font-weight:bold" colspan="4">
+                  A. PATIENT INFORMATION
+                </th>
+                <tr>
+                  <td style="width:25%;height:50px;vertical-align:top;border-right:1px solid #000000;">
+                    <b>1. Patient Identifier</b><br/>
+                    <apex:outputText value="{!if(LEN(mdr.CMPL123CME__A1_Patient_Identifier__c) > 10, LEFT(mdr.CMPL123CME__A1_Patient_Identifier__c, 10), mdr.CMPL123CME__A1_Patient_Identifier__c)}"></apex:outputText>
+                    <br/><br/>
+                    <br/><br/><span style="padding-left:20px">In Confidence</span>
+                  </td>
+                  <td  style="width:35%;height:50px;vertical-align:top;border-right:1px solid #000000;">
+                    <b>2. Age at Time of Event:</b><br/> 
+                    <apex:outputText value="{!mdr.CMPL123CME__A2_Age_at_Time_of_Event__c}" />
+                    &nbsp;
+                    <apex:outputText value="{!mdr.CMPL123CME__A2_Age_Units_Patient__c}" />
+                    <br/> or <br/> 
+                    <b>Date of Birth:</b> &nbsp;&nbsp;
+                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                      <apex:param value="{!mdr.CMPL123CME__A2_DOB__c}" />
+                    </apex:outputText>
+                  </td>
+                  <td style="width:20%;height:50px;vertical-align:top;border-right:1px solid #000000;">
+                    <b>3. Sex</b> <br/><br/>
+                    &nbsp;&nbsp;&nbsp;
+                    <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(mdr.CMPL123CME__A3_Sex__c == 'Female','/checkbox_yes.png','/checkbox_no.png'))}"/>
+                    Female<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(mdr.CMPL123CME__A3_Sex__c == 'Male','/checkbox_yes.png','/checkbox_no.png'))}"/>
+                    Male
+                  </td>
+                  <td style="width:20%;height:50px;vertical-align:top;">
+                    <b>4. Weight</b><br/><br/>
+                    <div style="text-align:right; width:90%;">
+                      <apex:outputText value="{!if(mdr.CMPL123CME__A4_Weight_Units_Patient__c == 'LBS',mdr.CMPL123CME__A4_Weight__c,'' )}" />
+                      &nbsp; lb<br/>or<br/>
+                      <apex:outputText value="{!if(mdr.CMPL123CME__A4_Weight_Units_Patient__c == 'KG',mdr.CMPL123CME__A4_Weight__c,'' )}" />
+                      &nbsp; kg
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <!------------- Section B ------------->
+              <table class="secB" rules="rows" width="100%" cellspacing="0" cellpadding="0">
+                <th style="background : #1C1C1C;color:#ffffff;text-align:left;font-size:10px;font-weight:bold">
+                  B. ADVERSE EVENT OR PRODUCT PROBLEM
+                </th>
+                <tr>
+                  <td class="secA" style="width:100%;height:20px;border-bottom:1px solid #000000;">
+                    1. &nbsp;
+                    <apex:image width="10px" height="10px" url="{!IF(CONTAINS(mdr.CMPL123CME__B1_AdverseEvent_ProductProblem__c,'Adverse Event') || CONTAINS(mdr.CMPL123CME__B1_AdverseEvent_ProductProblem__c,'Both'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                    &nbsp;<b>Adverse Event &nbsp;&nbsp;&nbsp; </b>and/or &nbsp;&nbsp;&nbsp;
+                    <apex:image width="10px" height="10px" url="{!IF(CONTAINS(mdr.CMPL123CME__B1_AdverseEvent_ProductProblem__c,'Product Problem')  || CONTAINS(mdr.CMPL123CME__B1_AdverseEvent_ProductProblem__c,'Both'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                    &nbsp;<b>Product Problem</b>(e.g., defects/malfunctions) 
+                  </td>
+                </tr>
+                <tr>
+                  <td  style="width:100%;height:80px;vertical-align:top;border-bottom:1px solid #000000;">
+                    2. <b>Outcomes Attributed to Adverse Event</b><br/>(Check all that apply)<br/>
+                    <table cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="55%">
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__B2_Outcomes_attributed_to_AE__c,'Death'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          &nbsp;Death: &nbsp;&nbsp;
+                          <apex:outputText value="{0,date,MM/dd/yyyy}">
+                            <apex:param value="{!mdr.CMPL123CME__B2_Date_of_Death__c}" />
+                          </apex:outputText>
+                        </td>
+                        <td>
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__B2_Outcomes_attributed_to_AE__c,'Disability or Permanent Damage'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Disability or Permanent Damage
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__B2_Outcomes_attributed_to_AE__c,'Life-threatening'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          &nbsp; Life-threatening
+                        </td>
+                        <td>
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(JSENCODE(mdr.CMPL123CME__B2_Outcomes_attributed_to_AE__c),'Congenital Anomaly/Birth Defect'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Congential Anomaly/Birth Defect
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__B2_Outcomes_attributed_to_AE__c,'Hospitalization-initial or prolonged'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          &nbsp; Hospitalization-initial or prolonged
+                        </td>
+                        <td>
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__B2_Outcomes_attributed_to_AE__c,'Other Serious'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Other Serious(Important Medical Events)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2">
+                          &nbsp;&nbsp;&nbsp; 
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__B2_Outcomes_attributed_to_AE__c,'Required Intervention'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Required Intervention to Prevent Permanent Impairment/Damage(Devices)
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:100%;border-bottom:1px solid #000000;">
+                    <table cellspacing="0" cellpadding="0" width="100%">
+                      <tr>
+                        <td style="width:50%;height:25px;vertical-align:top; border-right:1px solid #000000;">
+                          3. <b>Date of Event(mm/dd/yyyy) </b><br/>
+                          <apex:outputText value="{0,date,MM/dd/yyyy}" >
+                            <apex:param value="{!mdr.CMPL123CME__B3_Date_of_Event__c}" />
+                          </apex:outputText>
+                        </td>
+                        <td style="width:50%;height:25px;vertical-align:top; ">
+                          4. <b>Date of This Report(mm/dd/yyyy) </b><br/>
+                          <apex:outputText value="{0,date,MM/dd/yyyy}">
+                            <apex:param value="{!mdr.CMPL123CME__B4_Report_Date__c}" />
+                          </apex:outputText>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:100%;border-bottom:1px solid #000000;" >
+                    5. <b>Describe Event or Problem</b>
+                    <div class="box" style="width:100%; height:300px">
+                      <div style="word-wrap: break-word; width:330px">
+                        <apex:outputText value="{!if(LEN(mdr.CMPL123CME__B5_Describe_Event_or_Problem__c) > 2055, LEFT(mdr.CMPL123CME__B5_Describe_Event_or_Problem__c, 2055), mdr.CMPL123CME__B5_Describe_Event_or_Problem__c)}" />
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:100%;border-bottom:1px solid #000000;" >
+                    6. <b>Relavant Tests/Laboratory Data, Including Dates</b>
+                    <div class="box" style="width:100%; height:150px">
+                      <apex:outputText style="height:150px;" value="{!if(LEN(mdr.CMPL123CME__B6_Relevant_Test_Laboratory_Data__c  ) > 990, LEFT(mdr.CMPL123CME__B6_Relevant_Test_Laboratory_Data__c  , 990), mdr.CMPL123CME__B6_Relevant_Test_Laboratory_Data__c  )}" />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:2px solid #000000;">
+                    7. <b>Other Relevant History, Including Preexisting Medical Conditions (e.g., allergies, race, pregnancy, smoking and alcohol use, hepatic/renal dysfunction, etc.)</b>
+                    <div class="box" style="width:100%; height:150px">
+                      <apex:outputText value="{!if(LEN(mdr.CMPL123CME__B7_Other_Relevant_History__c ) > 990, LEFT(mdr.CMPL123CME__B7_Other_Relevant_History__c  , 990), mdr.CMPL123CME__B7_Other_Relevant_History__c  )}" />
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <span><b>Submission of a report does not constitute an addimission that medical personel, user facility, importer, distributor,manufacturer or product caused or contributed to the event.</b></span>
+          </div>
+          <!------------- Section C -------------->    
+          <div id="rightmain" class="rightmain" style="float:right; width:50%; margin-left:1% ;border-left:2px solid #000000;border-right:2px solid #000000; border-bottom:2px solid #000000;">
+            <div style="width:100%; height:180px" >
+              <table rules="rows" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <th style="background : #1C1C1C;color:#ffffff;text-align:left;font-size:10px;font-weight:bold">
+                  C. SUSPECT PRODUCT(S)
+                </th>
+                <tr>
+                  <td><br/>Not Applicable</td>
+                </tr>
+              </table>
+            </div>
+            <br/>
+            <!------------- Section D -------------->
+            <table rules="rows" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <th style="background : #1C1C1C;color:#ffffff;text-align:left;font-size:10px;font-weight:bold">
+                D. SUSPECT MEDICAL DEVICE
+              </th>
+              <tr>
+                <td style="width:100%;height:30px;vertical-align:top;border-bottom:1px solid #000000;">
+                  1. <b>Brand Name</b><br/>
+                  <apex:outputText value="{!if(LEN(mdr.CMPL123CME__D1_Brand_Name__c) < 70, mdr.CMPL123CME__D1_Brand_Name__c, LEFT(mdr.CMPL123CME__D1_Brand_Name__c, 70))}" />
+                </td>
+              </tr>
+              <tr>
+                <td >
+                  <table cellspacing="0" cellpadding="0" width="100%">
+                    <tr>
+                      <td style="width:70%;height:30px;vertical-align:top;border-bottom:1px solid #000000;border-right:1px solid #000000;">
+                        2. <b>Common Device Name</b><br/>
+                        <apex:outputText value="{!if(LEN(mdr.CMPL123CME__D2_Common_Device_Name__c) < 45, mdr.CMPL123CME__D2_Common_Device_Name__c, LEFT(mdr.CMPL123CME__D2_Common_Device_Name__c, 45))}" />
+                      </td>
+                      <td style="width:30%;height:30px;vertical-align:top;border-bottom:1px solid #000000;">
+                        2b. <b>Procode</b><br/>
+                        <apex:outputText value="{!if(LEN(mdr.CMPL123CME__D2b_Procode__c ) < 25, mdr.CMPL123CME__D2b_Procode__c , LEFT(mdr.CMPL123CME__D2b_Procode__c, 25))}" />
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td class="secA" style="width:100%;border-bottom:1px solid #000000;">
+                  3. <b>Manufacturer Name, City and State</b><br/>
+                  <div class="box" style="width:100%; height:50px">
+                    <div>
+                      <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D3_Name__c)> 0, true, false)}">{!mdr.CMPL123CME__D3_Name__c},</apex:outputPanel>
+                    </div>
+                    <div>
+                      <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D3_Address__c)> 0, true, false)}">{!mdr.CMPL123CME__D3_Address__c}, </apex:outputPanel>
+                      <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D3_Address2__c)> 0, true, false)}">{!mdr.D3_Address2__c},&nbsp;</apex:outputPanel>
+                    </div>
+                    <div>
+                      <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D3_City__c)> 0, true, false)}">{!mdr.D3_City__c},&nbsp;</apex:outputPanel>
+                      <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D3_Region_State__c)> 0, true, false)}">
+                        <apex:outputField value="{!mdr.CMPL123CME__D3_Region_State__c}"/>
+                      </apex:outputPanel>
+                    </div>
+                    <div>
+                      <apex:outputText value="{!IF( OR(UPPER(mdr.D3_Country__r.Name) = 'USA', UPPER(mdr.D3_Country__r.Name) = 'US') , IF( ISBLANK(mdr.CMPL123CME__D3_Zip_Code_Ext__c) , mdr.CMPL123CME__D3_Zip_Code__c , mdr.CMPL123CME__D3_Zip_Code__c + '-'+mdr.CMPL123CME__D3_Zip_Code_Ext__c), mdr.CMPL123CME__D3_Postal_Code__c)}"/>
+                      &nbsp;
+                      <apex:outputField value="{!mdr.CMPL123CME__D3_Country__c}"/>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="secA" style="width:100%;border-bottom:1px solid #000000;">
+                  <table cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td style="valign:top;width:75%;border-right:1px solid #000000;">
+                        <table width="100%" rules="all" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td style="height:30px;vertical-align:top;width:50%;border-right:1px solid #000000;border-bottom:1px solid #000000;" >
+                              <b>4. Model #</b> <br/>
+                              <apex:outputText value="{!if(LEN(mdr.CMPL123CME__D4_Model_No__c) < 30, mdr.CMPL123CME__D4_Model_No__c, LEFT(mdr.CMPL123CME__D4_Model_No__c, 30))}"  />
+                            </td>
+                            <td style="width:50%;height:30px;vertical-align:top;border-bottom:1px solid #000000;" >
+                              <b>Lot #</b> <br/>
+                              <apex:outputText value="{!if(LEN(mdr.CMPL123CME__D4_Lot_No__c) < 30, mdr.CMPL123CME__D4_Lot_No__c, LEFT(mdr.CMPL123CME__D4_Lot_No__c, 30))}" />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="height:30px;vertical-align:top;width:50%;border-right:1px solid #000000;border-bottom:1px solid #000000;">
+                              <b>Catalog #</b> <br/>
+                              <apex:outputText value="{!if(LEN(mdr.CMPL123CME__D4_Catalog_No__c) < 30, mdr.CMPL123CME__D4_Catalog_No__c, LEFT(mdr.CMPL123CME__D4_Catalog_No__c, 30))}" />
+                            </td>
+                            <td style="height:30px;vertical-align:top;width:50%;border-bottom:1px solid #000000;" >
+                              <b>Expiration Date # </b>(mm/dd/yyyy) <br/>
+                              <apex:outputText value="{0,date,MM/dd/yyyy}" >
+                                <apex:param value="{!mdr.CMPL123CME__D4_Expiration_Date__c}" />
+                              </apex:outputText>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="height:30px;vertical-align:top;width:50%;border-right:1px solid #000000;">
+                              <b>Serial #</b> <br/>
+                              <apex:outputText value="{!if(LEN(mdr.CMPL123CME__D4_Serial_No__c) < 30, mdr.CMPL123CME__D4_Serial_No__c, LEFT(mdr.CMPL123CME__D4_Serial_No__c, 30))}" />
+                            </td>
+                            <td style="height:30px;vertical-align:top;width:50%;" >
+                              <b>Unique Identifier (UDI)#</b> <br/>
+                              <div class="udiValueRowHeight">
+                                <apex:outputText value="{!LEFT(mdr.CMPL123CME__Unique_Identifier_UDI__c, 30)}"/>
+                                <apex:outputPanel rendered="{!LEN(mdr.CMPL123CME__Unique_Identifier_UDI__c) > 30}">
+                                  <apex:outputText value="{!IF(LEN(mdr.CMPL123CME__Unique_Identifier_UDI__c) > 60, MID(mdr.CMPL123CME__Unique_Identifier_UDI__c, 31, 30), MID(mdr.CMPL123CME__Unique_Identifier_UDI__c, 31, LEN(mdr.CMPL123CME__Unique_Identifier_UDI__c) - 30))}"/>
+                                </apex:outputPanel>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td class="SecA" style="width:30%;height:90px;vertical-align:top;">
+                        <b>5. Operator of Device</b><br/><br/>
+                        <apex:outputText value="{!mdr.CMPL123CME__D5_Operator_of_Device__c}" />
+                        <br/>
+                        <apex:outputText value="{!if(LEN(mdr.CMPL123CME__D5_Other_operator_of_Device__c) < 60, mdr.CMPL123CME__D5_Other_operator_of_Device__c, LEFT(mdr.CMPL123CME__D5_Other_operator_of_Device__c, 60))}" rendered="{!IF(mdr.CMPL123CME__D5_Operator_of_Device__c =='Other', true, false)}"/>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td class="secA" style="width:100%;border-bottom:1px solid #000000;">
+                  <table cellspacing="0" cellpadding="0" width="100%">
+                    <tr>
+                      <td style="width:50%;height:30px;vertical-align:top;border-right:1px solid #000000;">
+                        6. <b>If Implanted, Give Date</b>(mm/dd/yyyy)<br/>
+                        <apex:outputText value="{0,date,MM/dd/yyyy}" >
+                          <apex:param value="{!mdr.CMPL123CME__D6_Implant_Date__c}" />
+                        </apex:outputText>
+                      </td>
+                      <td style="width:50%;height:30px;vertical-align:top;">
+                        7. <b>If Explanted, Give Date</b>(mm/dd/yyyy)<br/>
+                        <apex:outputText value="{0,date,MM/dd/yyyy}" >
+                          <apex:param value="{!mdr.CMPL123CME__D7_Explant_Date__c}" />
+                        </apex:outputText>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="width:100%;height:30px;vertical-align:top;border-bottom:1px solid #000000;">
+                  8. <b>Is this a single-use device that was reprocessed and reused on a patient?</b><br/><br/>
+                  &nbsp;&nbsp;&nbsp;
+                  <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__D8_Single_Use_Device__c == 'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                  &nbsp; Yes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__D8_Single_Use_Device__c == 'No'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                  No 
+                </td>
+              </tr>
+              <tr>
+                <td class="secA" style="width:100%;border-bottom:1px solid #000000;">
+                  9. <b>If Yes to Item No. 8, Enter Name and Address of Reprocessor </b><br/>
+                  <div class="box" style="width:100%; height:60px">
+                    <div style="word-wrap: break-word; width:360px">
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D9_Name__c)> 0, true, false)}">{!mdr.CMPL123CME__D9_Name__c},</apex:outputPanel>
+                      </div>
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D9_Address__c)> 0, true, false)}">{!mdr.D9_Address__c},&nbsp;</apex:outputPanel>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D9_Address2__c)> 0, true, false)}">{!mdr.D9_Address2__c},&nbsp;</apex:outputPanel>
+                      </div>
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D9_City__c)> 0, true, false)}">{!mdr.D9_City__c},&nbsp;</apex:outputPanel>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D3_Region_State__c)> 0, true, false)}">
+                          <apex:outputField value="{!mdr.CMPL123CME__D9_Region_State__c}"/>
+                          ,&nbsp;
+                        </apex:outputPanel>
+                        <apex:outputText value="{!IF( OR(UPPER(mdr.D9_Country__r.Name) = 'USA', UPPER(mdr.D9_Country__r.Name) = 'US') , IF( ISBLANK(mdr.CMPL123CME__D9_Zip_Code_Ext__c) , mdr.CMPL123CME__D9_Zip_Code__c , mdr.CMPL123CME__D9_Zip_Code__c + '-'+mdr.CMPL123CME__D9_Zip_Code_Ext__c), mdr.CMPL123CME__D9_Postal_Code__c)}"/>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D9_Country__c)> 0, true, false)}">
+                          ,&nbsp;
+                          <apex:outputField value="{!mdr.CMPL123CME__D9_Country__c}"/>
+                          ,&nbsp;
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D9_Fax_Number__c)>0, true, false)}">
+                          ,&nbsp;Fax &nbsp;{!mdr.D9_Fax_Number__c}
+                        </apex:outputPanel>
+                      </div>
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__D9_E_mail__c)>0, true, false)}">
+                          Email &nbsp;
+                          <apex:outputField value="{!mdr.CMPL123CME__D9_E_mail__c}"/>
+                        </apex:outputPanel>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="secA" style="width:100%;height:35px;vertical-align:top;border-bottom:1px solid #000000;">
+                  10. <b>Device Available for Evaluation ? </b>(Do not send to FDA)<br/><br/>
+                  &nbsp;&nbsp;&nbsp;
+                  <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__D10_Device_available_for_Eval__c == 'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                  &nbsp;Yes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__D10_Device_available_for_Eval__c == 'No'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                  &nbsp; No &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__D10_Date_returned_to_MFG__c != null),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                  &nbsp; Returned to Manufacturer on: 
+                  <apex:outputText value="{0,date,MM/dd/yyyy}" >
+                    <apex:param value="{!mdr.CMPL123CME__D10_Date_returned_to_MFG__c}" />
+                  </apex:outputText>
+                </td>
+              </tr>
+              <tr>
+                <td class="secA" style="width:100%">
+                  11. <b>Concomitant Medical Products </b>(Exclude treatment of event)<br/>
+                  <div class="box" style="width:100%;height:110px">
+                    <apex:outputPanel rendered="{!IF(ISBLANK(secondPageProductList), false, true)}">
+                      <apex:pageBlock >
+                        <apex:pageBlockTable value="{!secondPageProductList}" var="item" width="100%" cellpadding="1px">
+                          <apex:column value="{!item.CMPL123CME__D11_Product__c}"/>
+                          <apex:column headerValue="{!$ObjectType.CMPL123CME__Concomitant_Product__c.Fields.CMPL123CME__D11_Start_Date__c.Label}">
+                            <apex:outputPanel rendered="{!IF(ISBLANK(item.CMPL123CME__D11_Start_Date__c), false, true)}">
+                              <apex:outputText value="{0,date,dd-MMM-yyyy}">
+                                <apex:param value="{!item.CMPL123CME__D11_Start_Date__c}" />
+                              </apex:outputText>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(ISBLANK(item.CMPL123CME__D11_Start_Date__c), true, false)}">
+                              <apex:outputText value="{!item.CMPL123CME__D11_Start_Date_Null__c}" />
+                            </apex:outputPanel>
+                          </apex:column>
+                          <apex:column headerValue="{!$ObjectType.CMPL123CME__Concomitant_Product__c.Fields.CMPL123CME__D11_End_Date__c.Label}">
+                            <apex:outputPanel rendered="{!IF(ISBLANK(item.CMPL123CME__D11_End_Date__c), false, true)}">
+                              <apex:outputText value="{0,date,dd-MMM-yyyy}">
+                                <apex:param value="{!item.CMPL123CME__D11_End_Date__c}" />
+                              </apex:outputText>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(ISBLANK(item.CMPL123CME__D11_End_Date__c), true, false)}">
+                              <apex:outputText value="{!item.CMPL123CME__D11_End_Date_Null__c}" />
+                            </apex:outputPanel>
+                          </apex:column>
+                        </apex:pageBlockTable>
+                      </apex:pageBlock>
+                    </apex:outputPanel>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <!------------- Section E ------------->
+            <table rules="rows" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <th style="background : black;color:white;text-align:left;font-size:10px;">
+                E. INITIAL REPORTER
+              </th>
+              <tr>
+                <td class="secA" style="width:100%;border-bottom:1px solid #000000;">
+                  <table width="100%" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td style="width:100%">
+                        1. <b>Name and Address</b><br/>
+                        <div class="box" style="width:100%; height:60px">
+                          <div>
+                            <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__E1_Name__c)> 0, true, false)}">{!mdr.CMPL123CME__E1_Name__c},</apex:outputPanel>
+                          </div>
+                          <div>
+                            <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__E1_Address_1__c)> 0, true, false)}">{!mdr.E1_Address_1__c},&nbsp;</apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__E1_Address2__c)> 0, true, false)}">{!mdr.E1_Address2__c},&nbsp;</apex:outputPanel>
+                          </div>
+                          <div>
+                            <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__E1_City__c)> 0, true, false)}">{!mdr.E1_City__c},&nbsp;</apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__E1_Region_State__c)> 0, true, false)}">
+                              <apex:outputField value="{!mdr.CMPL123CME__E1_Region_State__c}"/>
+                              ,&nbsp;
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__E1_Country__c)> 0, true, false)}">
+                              <apex:outputField value="{!mdr.CMPL123CME__E1_Country__c}"/>
+                              ,&nbsp;
+                            </apex:outputPanel>
+                            <apex:outputText value="{!IF( OR(UPPER(mdr.E1_Country__r.Name) = 'USA', UPPER(mdr.E1_Country__r.Name) = 'US') , IF( ISBLANK(mdr.CMPL123CME__E1_Zip_Code_Ext__c) , mdr.CMPL123CME__E1_Zip_Code__c , mdr.CMPL123CME__E1_Zip_Code__c + '-'+mdr.CMPL123CME__E1_Zip_Code_Ext__c), mdr.CMPL123CME__E1_Postal_Code__c)}"/>
+                            <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__E1_Fax__c)>0, true, false)}">
+                              ,&nbsp;fax &nbsp;{!mdr.E1_Fax__c}
+                            </apex:outputPanel>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td class="secA" style="width:100%">
+                  <table cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td style="width:30%;height:25px;vertical-align:top;border-bottom:1px solid #000000;border-right:1px solid #000000;" >
+                        <b>Phone #</b> <br/> &nbsp;&nbsp;
+                        <apex:outputText value="{!mdr.CMPL123CME__E1_Phone__c}" />
+                      </td>
+                      <td style="width:60%;vertical-align:top;border-bottom:1px solid #000000;" colspan="2"><b>Email Address</b><br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;{!mdr.E1_Email__c}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width:20%;height:35px;vertical-align:top;border-right:1px solid #000000;">
+                        2. <b>Health Professional ?</b><br/>
+                        &nbsp;&nbsp;&nbsp;
+                        <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__EMDR_E2_Healthcare_Professional__c == 'Y'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                        &nbsp;Yes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(mdr.CMPL123CME__EMDR_E2_Healthcare_Professional__c == 'N','/checkbox_yes.png','/checkbox_no.png'))}"/>
+                        &nbsp; No
+                      </td>
+                      <td style="width:40%;height:35px;vertical-align:top;border-right:1px solid #000000;">
+                        3. <b>Occupation</b><br/>
+                        <apex:outputText value="{!mdr.CMPL123CME__E3_Occupation__c}"/>
+                        <br/>  
+                      </td>
+                      <td style="width:40%;height:35px;vertical-align:top;">
+                        4. <b>Initial Reporter Also Sent Report to FDA </b><br/>
+                        &nbsp;&nbsp;&nbsp;
+                        <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__E4_Initial_Report_sent_to_FDA__c == 'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                        &nbsp;Yes &nbsp;&nbsp;&nbsp;&nbsp;
+                        <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__E4_Initial_Report_sent_to_FDA__c == 'No'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                        No &nbsp;&nbsp;&nbsp;&nbsp;
+                        <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__E4_Initial_Report_sent_to_FDA__c == 'Unk'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                        Unk
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!------- Page 2 ------------->
+      <div id="mainpg2" style="page-break-before:always; font-size:8px;width:100%" >
+        <div id="mainHeader2"  >
+          <div id="lefthead"  style="float:left; width:34%;">
+            <apex:image url="{!URLFOR($Resource.CMPL123CME__MedWatch15_Header2, '')}"/>
+          </div>
+          <div id="middlehead2" style="float:left; width:30%;">
+            <p style="text-align: center; vertical-align: bottom;">
+              <b>Page 2 of {!if(LEN(mdr.B5_Describe_Event_or_Problem__c) < 2055 && LEN(mdr.B6_Relevant_Test_Laboratory_Data__c  ) < 990 && LEN(mdr.B7_Other_Relevant_History__c  ) < 990 && LEN(mdr.H10_Addtl_Mfg_Narrative__c) < 365 && LEN(mdr.CMPL123CME__H11_Corrected_Data__c) < 365, '2', '3')}</b>
+            </p>
+          </div>
+          <div id="righthead2" style="float:left; width:36%">
+            <table border="0" rules="rows" width="100%" cellspacing="0" cellpadding="0" style="border-top:1px solid #000000;border-left:1px solid #000000;border-right:1px solid #000000;border-bottom:1px solid #000000;">
+              <th style="background : black;color:white;text-align:center;font-size:9px;">
+                FDA USE ONLY
+              </th>
+              <tr>
+                <td>
+                  <div class="box" style="width:100%; height:35px"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id="mainbody2" style="width:100%">
+          <div id="leftmain2" class="leftmain" style="float:left; width:49%;">
+            <div style="border-left:2px solid #000000;border-right:2px solid #000000;border-bottom:2px solid #000000;">
+              <table  rules="rows" border="0" width="100%" cellspacing="0" cellpadding="0">
+                <th style="background : #1C1C1C;color:#ffffff;text-align:left;font-size:10px;font-weight:bold">
+                  F . FOR USE BY USER FACILITY/IMPORTER (Device only)
+                </th>
+                <tr>
+                  <td class="secA" style="width:100%;border-bottom:1px solid #000000;">
+                    <table cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td style="width:50%;height:30px;vertical-align:top;border-right:1px solid #000000;">
+                          <b>1. Check One</b><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__F1_Type_of_Reporter__c == 'User Facility'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                          &nbsp; User Facility &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__F1_Type_of_Reporter__c == 'Importer'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                          Importer
+                        </td>
+                        <td style="width:50%;height:30px;vertical-align:top;">
+                          <b>2. UF/Importer Report Number :</b> 
+                          <apex:outputText value="{!if(LEN(mdr.CMPL123CME__F2_UF_Importer_Report_Number__c) < 30, mdr.CMPL123CME__F2_UF_Importer_Report_Number__c, LEFT(mdr.CMPL123CME__F2_UF_Importer_Report_Number__c, 30))}" />
+                          <br/>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:100%;border-bottom:1px solid #000000;" >
+                    3. <b>User Facility or Importer Name/Address </b><br/>
+                    <div class="box" style="width:100%; height:80px">
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F3_Name__c)> 0, true, false)}">{!mdr.CMPL123CME__F3_Name__c},</apex:outputPanel>
+                      </div>
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F3_Address__c)> 0, true, false)}">{!mdr.F3_Address__c},&nbsp;</apex:outputPanel>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F3_Address2__c)> 0, true, false)}">{!mdr.F3_Address2__c},&nbsp;</apex:outputPanel>
+                      </div>
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F3_City__c)> 0, true, false)}">{!mdr.F3_City__c},&nbsp;</apex:outputPanel>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F3_Region_State__c)> 0, true, false)}">
+                          <apex:outputField value="{!mdr.CMPL123CME__F3_Region_State__c}"/>
+                          ,&nbsp;
+                        </apex:outputPanel>
+                      </div>
+                      <div>
+                        <apex:outputText value="{!IF( OR(UPPER(mdr.F3_Country__r.Name) = 'USA' , UPPER(mdr.F3_Country__r.Name) = 'US') , IF(ISBLANK(mdr.CMPL123CME__F3_Zip_Code_Ext__c) , mdr.CMPL123CME__F3_Zip_Code__c , mdr.CMPL123CME__F3_Zip_Code__c + '-'+mdr.CMPL123CME__F3_Zip_Code_Ext__c), mdr.CMPL123CME__F3_Postal_Code__c)}"/>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F3_Country__c)> 0, true, false)}">
+                          &nbsp;
+                          <apex:outputField value="{!mdr.CMPL123CME__F3_Country__c}"/>
+                        </apex:outputPanel>
+                      </div>
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F5_Contact_Email__c) >0, true, false)}">
+                          Email &nbsp;
+                          <apex:outputField value="{!mdr.CMPL123CME__F5_Contact_Email__c}"/>
+                        </apex:outputPanel>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="secA" style="width:100%;border-bottom:1px solid #000000;">
+                    <table cellspacing="0" cellpadding="0" width="100%">
+                      <tr>
+                        <td style="width:50%;height:30px;vertical-align:top;border-right:1px solid #000000;">
+                          <b>4. Contact Person :</b> 
+                          <apex:outputText value="{!if(LEN(mdr.CMPL123CME__F4_Contact_Name__c) < 50, mdr.CMPL123CME__F4_Contact_Name__c, LEFT(mdr.CMPL123CME__F4_Contact_Name__c, 50))}" />
+                          <br/>
+                        </td>
+                        <td style="width:50%;height:30px;vertical-align:top;">
+                          <b>5. Phone Number :</b>&nbsp;&nbsp; 
+                          <apex:outputText value="{!if(LEN(mdr.CMPL123CME__F5_Phone__c) < 30, mdr.CMPL123CME__F5_Phone__c, LEFT(mdr.CMPL123CME__F5_Phone__c, 30))}" />
+                          <br/>  
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="secA" style="width:100%;border-bottom:1px solid #000000;">
+                    <table cellspacing="0" cellpadding="0" width="100%">
+                      <tr>
+                        <td style="width:35%;height:50px;vertical-align:top;border-right:1px solid #000000;">
+                          6. <b>Date User Facility or Importer Became Aware of Event</b>(mm/dd/yyyy)<br/>
+                          <apex:outputText value="{0,date,MM/dd/yyyy}" >
+                            <apex:param value="{!mdr.CMPL123CME__F6_Date_facility_dist_was_aware__c}" />
+                          </apex:outputText>
+                        </td>
+                        <td style="width:35%;height:30px;vertical-align:top;border-right:1px solid #000000;">
+                          <b>7. Type of Report</b><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(mdr.CMPL123CME__F7_Type_Report_Device__c == 'Initial','/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Initial<br/><br/>   
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__F7_Type_Report_Device__c == 'Follow Up'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                          Follow Up # &nbsp;&nbsp;
+                          <apex:outputText value="{!if(LEN(mdr.CMPL123CME__F7_Follow_up_No__c) < 40, mdr.CMPL123CME__F7_Follow_up_No__c, LEFT(mdr.CMPL123CME__F7_Follow_up_No__c, 40))}" />
+                        </td>
+                        <td style="width:30%;height:30px;vertical-align:top;">
+                          8. <b>Date of this Report </b>(mm/dd/yyyy)<br/>
+                          <apex:outputText value="{0,date,MM/dd/yyyy}" >
+                            <apex:param value="{!mdr.CMPL123CME__F8_Date_of_This_Report__c}" />
+                          </apex:outputText>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="secA" style="width:100%;border-bottom:1px solid #000000;">
+                    <table border="0" rules="cols" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td style="width:20%;height:60px;vertical-align:top;border-right:1px solid #000000;">
+                          <b>9. Approxmiate Age of Device</b><br/>
+                          <apex:outputText value="{!mdr.CMPL123CME__F9_Approximate_Age_of_Device__c}" />
+                          &nbsp;
+                          <apex:outputText value="{!mdr.CMPL123CME__F9_Approximate_Age_of_Device_Units__c}" />
+                        </td>
+                        <td style="width:80%;height:60px;vertical-align:top;">
+                          <b>10. Event Problem Codes</b>(Refer to coding manual)<br/><br/>
+                          Patient code :&nbsp;&nbsp;
+                          <apex:variable var="count" value="{!0}"/>
+                          <apex:repeat value="{!eventPatientCodes}" var="p">
+                            <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
+                              {!IF(LEN(p) < 6, p, LEFT(p, 6))}
+                            </div>
+                            <apex:variable var="count" value="{!count + 1}"/>
+                            <span style="visibility:{!IF((count <= 2), 'visible', 'hidden')}">&nbsp;-&nbsp;</span>
+                          </apex:repeat>
+                          <br/><br/>
+                          Device code :&nbsp;&nbsp;
+                          <apex:variable var="count1" value="{!0}"/>
+                          <apex:repeat value="{!eventDeviceCodes}" var="d">
+                            <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
+                              {!if(LEN(d) < 6, d, LEFT(d, 6))}
+                            </div>
+                            <apex:variable var="count1" value="{!count1 + 1}"/>
+                            <span style="visibility:{!IF((count1 <= 2), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
+                          </apex:repeat>
+                          <br/><br/>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="secA" style="width:100%;border-bottom:1px solid #000000;" >
+                    <table width="100%" border="0" rules="cols" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td style="width:40%;border-right:1px solid #000000;">
+                          <table width="100%" rules="rows" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td style="height:50px;vertical-align:top;border-bottom:1px solid #000000;">
+                                <b>11. Report Sent to FDA ?</b><br/>
+                                &nbsp;&nbsp;&nbsp;
+                                <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__F11_Report_Sent_to_FDA__c == 'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                                &nbsp;Yes :&nbsp;
+                                <!-- Date delimiters changed --> 
+                                <apex:outputText value="{0,date,MM/dd/yyyy}" rendered="{!IF(mdr.CMPL123CME__F11_Report_Sent_to_FDA__c == 'Yes', true, false)}">
+                                  <apex:param value="{!mdr.CMPL123CME__F11_Date_Report_Sent_to_FDA__c}" />
+                                </apex:outputText>
+                                &nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(mm/dd/yyyy)<br/>
+                                &nbsp;&nbsp;&nbsp;
+                                <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__F11_Report_Sent_to_FDA__c == 'No'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                                No 
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="height:50px;vertical-align:top;">
+                                <b>13. Report Sent to Manufacturer ?</b><br/>
+                                &nbsp;&nbsp;&nbsp;
+                                <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__F13_Report_Sent_to_MFG__c == 'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                                &nbsp;Yes : &nbsp;&nbsp;
+                                <!-- Date delimiters changed -->
+                                <apex:outputText value="{0,date,MM/dd/yyyy}" rendered="{!IF(mdr.CMPL123CME__F13_Report_Sent_to_MFG__c == 'Yes', true, false)}">
+                                  <apex:param value="{!mdr.CMPL123CME__F13_Date_Report_Sent_to_MFG__c}" />
+                                </apex:outputText>
+                                <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(mm/dd/yyyy)<br/>
+                                &nbsp;&nbsp;&nbsp;
+                                <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__F13_Report_Sent_to_MFG__c == 'No'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                                No 
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                        <td style="width:60%;height:100px;vertical-align:top;">
+                          <b>12. Location Where Event Occurred</b>
+                          <table width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td>
+                                <apex:outputText value="{!mdr.CMPL123CME__F12_Loc_where_event_occurred__c}"/>
+                                <!-- Changes to display comma next to Other -->
+                                <apex:outputPanel rendered="{!IF(mdr.CMPL123CME__F12_Loc_where_event_occurred__c == 'Other', true, false)}">
+                                  :<br/>
+                                  <apex:outputText value="{!if(LEN(mdr.CMPL123CME__F12_Loc_where_event_occured_other__c) < 50, mdr.CMPL123CME__F12_Loc_where_event_occured_other__c, LEFT(mdr.CMPL123CME__F12_Loc_where_event_occured_other__c, 50))}" />
+                                </apex:outputPanel>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:100%;border-bottom:1px solid #000000;" >
+                    14. <b>Manufacturer Name/Address </b><br/>
+                    <div class="box" style="width:100%; height:70px">
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F14_Name__c)> 0, true, false)}">{!mdr.CMPL123CME__F14_Name__c},</apex:outputPanel>
+                      </div>
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F14_Address__c)> 0, true, false)}">{!mdr.CMPL123CME__F14_Address__c}, </apex:outputPanel>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F14_Address2__c)> 0, true, false)}">{!mdr.F14_Address2__c},&nbsp;</apex:outputPanel>
+                      </div>
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F14_City__c)> 0, true, false)}">{!mdr.F14_City__c},&nbsp;</apex:outputPanel>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F14_Region_State__c)> 0, true, false)}">
+                          <apex:outputField value="{!mdr.CMPL123CME__F14_Region_State__c}"/>
+                        </apex:outputPanel>
+                      </div>
+                      <div>
+                        <apex:outputText value="{!IF( OR(UPPER(mdr.F14_Country__r.Name) = 'USA' , UPPER(mdr.F14_Country__r.Name) = 'US') , IF( ISBLANK(mdr.CMPL123CME__F14_Zip_Code_Ext__c) , mdr.CMPL123CME__F14_Zip_Code__c , mdr.CMPL123CME__F14_Zip_Code__c + '-'+mdr.CMPL123CME__F14_Zip_Code_Ext__c), mdr.CMPL123CME__F14_Postal_Code__c)}"/>
+                        &nbsp;
+                        <apex:outputField value="{!mdr.CMPL123CME__F14_Country__c}"/>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F14_Fax__c)>0, true, false)}">
+                          ,&nbsp;fax &nbsp;{!mdr.F14_Fax__c}
+                        </apex:outputPanel>
+                      </div>
+                      <div>
+                        <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__F14_Email__c)>0, true, false)}">
+                          Email &nbsp;
+                          <apex:outputfield value="{!mdr.CMPL123CME__F14_Email__c}"/>
+                        </apex:outputPanel>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <!------------- Section G ----------------->
+              <table  rules="rows" border="0" width="100%" cellspacing="0" cellpadding="0">
+                <th style="background : #1C1C1C;color:#ffffff;text-align:left;font-size:10px;font-weight:bold">
+                  G . ALL MANUFACTURERS
+                </th>
+                <tr>
+                  <td class="secA" style="width:100%;border-bottom:1px solid #000000;">
+                    <table rules="cols" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td class="secA" style="width:75%;border-right:1px solid #000000;">
+                          <table  cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td style="border-bottom:1px solid #000000;">
+                                <b>1. Contact Office (and Manufacturing Site for devices)</b>
+                                <hr/>
+                                <div class="box" style="width:100%; height:20px">
+                                  Name <br/>
+                                  <div>{!mdr.G1_Contact_Office_First_Name__c} &nbsp;{!mdr.G1_Contact_Office_Middle_Name__c} &nbsp;{!mdr.G1_Contact_Office_Last_Name__c} &nbsp; 
+                                  </div>
+                                </div>
+                                <hr/>
+                                <div class="box" style="width:100%; height:50px">
+                                  Address <br/>
+                                  <div>
+                                    <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__G1_Contact_Office_Address__c)> 0, true, false)}">{!mdr.CMPL123CME__G1_Contact_Office_Address__c}, </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__G1_Contact_Office_Address2__c)> 0, true, false)}">{!mdr.G1_Contact_Office_Address2__c},&nbsp;</apex:outputPanel>
+                                  </div>
+                                  <div>
+                                    <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__G1_Contact_Office_City__c)> 0, true, false)}">{!mdr.G1_Contact_Office_City__c},&nbsp;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(LEN(mdr.CMPL123CME__G1_Contact_Office_Region_State__c)> 0, true, false)}">
+                                      <apex:outputField value="{!mdr.CMPL123CME__G1_Contact_Office_Region_State__c}"/>
+                                    </apex:outputPanel>
+                                  </div>
+                                  <div>
+                                    <apex:outputText value="{!IF( OR(UPPER(mdr.G1_Contact_Office_Country__r.Name) = 'USA' , UPPER(mdr.G1_Contact_Office_Country__r.Name) = 'US') , IF( ISBLANK(mdr.CMPL123CME__G1_Contact_Office_Zip_Code_Extension__c) , mdr.CMPL123CME__G1_Contact_Office_Zip_Code__c , mdr.CMPL123CME__G1_Contact_Office_Zip_Code__c + '-'+mdr.CMPL123CME__G1_Contact_Office_Zip_Code_Extension__c), mdr.CMPL123CME__G1_Contact_Office_Postal_Code__c)}"/>
+                                    &nbsp;
+                                    <apex:outputField value="{!mdr.CMPL123CME__G1_Contact_Office_Country__c}"/>
+                                  </div>
+                                </div>
+                                <hr/>
+                                <div class="box" style="width:100%; height:20px">
+                                  Email Address<br/>
+                                  <apex:outputField value="{!mdr.CMPL123CME__G1_Contact_Office_E_mail__c}" />
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="width:100%">
+                                <table  cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td style="width:55%;border-right:1px solid #000000;">
+                                      <table rules="rows" width="100%" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td style="height:40px;vertical-align:top;border-bottom:1px solid #000000;">
+                                            <b>4. Date Received by Manufacturer</b>(mm/dd/yyyy)<br/>
+                                            <apex:outputText value="{0,date,MM/dd/yyyy}" >
+                                              <apex:param value="{!mdr.CMPL123CME__G4_Date_received_by_MFG__c}" />
+                                            </apex:outputText>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td style="height:30px;vertical-align:top;border-bottom:1px solid #000000;">
+                                            <div style="height:40px;width:140px;">
+                                              <b>6. If IND, Give Protocol # </b><br/>
+                                              <apex:outputText value="{!LEFT(mdr.CMPL123CME__G6_If_ind_protocol_no__c,35)}"/>
+                                              <apex:outputPanel rendered="{!LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c) > 35}">
+                                                <div>
+                                                  <apex:outputText value="{!IF(LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)>70, MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,35,35), MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,35,LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)-35))}"/>
+                                                  <apex:outputPanel rendered="{!LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c) > 70}">
+                                                    <div>
+                                                      <apex:outputText value="{!IF(LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)>105, MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,70,35), MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,70,LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)-70))}"/>
+                                                      <apex:outputPanel rendered="{!LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)>105}">
+                                                        <div>
+                                                          <apex:outputText value="{!IF(LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)>140, MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,105,35), MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,105,LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)-105))}"/>
+                                                          <apex:outputPanel rendered="{!LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)>140}">
+                                                            <div>
+                                                              <apex:outputText value="{!IF(LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)>175, MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,140,35), MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,140,LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)-140))}"/>
+                                                              <apex:outputPanel rendered="{!LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)>175}">
+                                                                <div>
+                                                                  <apex:outputText value="{!IF(LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)>210, MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,175,35), MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,175,LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)-175))}"/>
+                                                                  <apex:outputPanel rendered="{!LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)>210}">
+                                                                    <div>
+                                                                      <apex:outputText value="{!IF(LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)>210, MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,210,35), MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,210,LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)-210))}"/>
+                                                                    </div>
+                                                                  </apex:outputPanel>
+                                                                  <apex:outputPanel rendered="{!LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)>245}">
+                                                                    <div>
+                                                                      <apex:outputText value="{!MID(mdr.CMPL123CME__G6_If_ind_protocol_no__c,210,LEN(mdr.CMPL123CME__G6_If_ind_protocol_no__c)-245)}"/>
+                                                                    </div>
+                                                                  </apex:outputPanel>
+                                                                </div>
+                                                              </apex:outputPanel>
+                                                            </div>
+                                                          </apex:outputPanel>
+                                                        </div>
+                                                      </apex:outputPanel>
+                                                    </div>
+                                                  </apex:outputPanel>
+                                                </div>
+                                              </apex:outputPanel>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td style="height:100px;vertical-align:top;">
+                                            <table width="100%" cellspacing="1">
+                                              <tr>
+                                                <td colspan="2"><b>7. Type of Report</b><br/>(Check all that apply)</td>
+                                              </tr>
+                                              <tr>
+                                                <td>
+                                                  &nbsp;&nbsp;
+                                                  <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains( mdr.CMPL123CME__G7_Type_of_Report_MultiSelect__c,'5-day' ),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                                  5-day &nbsp;
+                                                </td>
+                                                <td>
+                                                  <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains( mdr.CMPL123CME__G7_Type_of_Report_MultiSelect__c,'30-day' ),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                                  30-day
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td>
+                                                  &nbsp;&nbsp;
+                                                  <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains( mdr.CMPL123CME__G7_Type_of_Report_MultiSelect__c,'7-day' ),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                                  7-day &nbsp;&nbsp;&nbsp;
+                                                </td>
+                                                <td>
+                                                  <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains( mdr.CMPL123CME__G7_Type_of_Report_MultiSelect__c,'Periodic' ),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                                  Periodic
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td>
+                                                  &nbsp;&nbsp;
+                                                  <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains( mdr.CMPL123CME__G7_Type_of_Report_MultiSelect__c,'10-day' ),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                                  10-day &nbsp;&nbsp;&nbsp;
+                                                </td>
+                                                <td>
+                                                  <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains( mdr.CMPL123CME__G7_Type_of_Report_MultiSelect__c,'Initial' ),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                                  Initial
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td>
+                                                  &nbsp;&nbsp;
+                                                  <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains( mdr.CMPL123CME__G7_Type_of_Report_MultiSelect__c,'15-day' ),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                                  15-day &nbsp;&nbsp;&nbsp;
+                                                </td>
+                                                <td>
+                                                  <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains( mdr.CMPL123CME__G7_Type_of_Report_MultiSelect__c,'Follow Up' ),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                                  Follow-Up# &nbsp; 
+                                                  <apex:outputText value="{!IF( LEN(mdr.CMPL123CME__G7_Follow_Up_No__c) < 20, mdr.CMPL123CME__G7_Follow_Up_No__c, LEFT(mdr.CMPL123CME__G7_Follow_Up_No__c, 20))}" rendered="{!IF( CONTAINS( mdr.CMPL123CME__G7_Type_of_Report_MultiSelect__c,'Follow Up'), true, false)}"/>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                    <td style="width:45%;height:100px;vertical-align:top;">
+                                      <b>5. </b><br/>
+                                      <table width="100%" cellspacing="0" cellpadding="1">
+                                        <tr>
+                                          <td>
+                                            <div style="width:30px;">&nbsp;(A)NDA # </div>
+                                          </td>
+                                          <td>
+                                            <div style="width:60px;">
+                                              <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G5_A_NDA_No__c) < 15, mdr.CMPL123CME__G5_A_NDA_No__c, LEFT(mdr.CMPL123CME__G5_A_NDA_No__c, 15))}" />
+                                              <div>
+                                                <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G5_A_NDA_No__c) >30, MID(mdr.CMPL123CME__G5_A_NDA_No__c,15,15), MID(mdr.CMPL123CME__G5_A_NDA_No__c, 15,LEN(mdr.CMPL123CME__G5_A_NDA_No__c)-15))}" />
+                                              </div>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <div style="width:25px;">&nbsp;IND # </div>
+                                          </td>
+                                          <td>
+                                            <div style="width:60px;">
+                                              <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G5_IND_No__c) < 15, mdr.CMPL123CME__G5_IND_No__c, LEFT(mdr.CMPL123CME__G5_IND_No__c, 15))}" />
+                                              <div>
+                                                <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G5_IND_No__c) >30, MID(mdr.CMPL123CME__G5_IND_No__c,15,15), MID(mdr.CMPL123CME__G5_IND_No__c, 15,LEN(mdr.CMPL123CME__G5_IND_No__c)-15))}" />
+                                              </div>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <div style="width:25px;">&nbsp;BLA # </div>
+                                          </td>
+                                          <td>
+                                            <div style="width:60px;">
+                                              <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G5_STN_No__c) < 15, mdr.CMPL123CME__G5_STN_No__c, LEFT(mdr.CMPL123CME__G5_STN_No__c, 15))}" />
+                                              <div>
+                                                <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G5_STN_No__c) >15, MID(mdr.CMPL123CME__G5_STN_No__c,15,15), MID(mdr.CMPL123CME__G5_STN_No__c, 15,LEN(mdr.CMPL123CME__G5_STN_No__c)-15))}" />
+                                              </div>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <div style="width:25px;">&nbsp;PMA/<br/>&nbsp;510(k) # </div>
+                                          </td>
+                                          <td>
+                                            <div style="width:60px;">
+                                              <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G5_PMA_510_K__c) < 15, mdr.CMPL123CME__G5_PMA_510_K__c, LEFT(mdr.CMPL123CME__G5_PMA_510_K__c, 15))}" />
+                                              <div>
+                                                <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G5_PMA_510_K__c) >15, MID(mdr.CMPL123CME__G5_PMA_510_K__c,15,15), MID(mdr.CMPL123CME__G5_PMA_510_K__c, 15,LEN(mdr.CMPL123CME__G5_PMA_510_K__c)-15))}" />
+                                              </div>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td colspan="2">
+                                            <div>
+                                              &nbsp;Combination<br/>&nbsp;Product &nbsp;&nbsp;&nbsp;&nbsp;
+                                              <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__G5_CombinationProduct__c == 'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                                              Yes<br/>
+                                            </div>
+                                            <div>
+                                              &nbsp;Pre-1938 &nbsp;&nbsp;
+                                              <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__G5_Pre1938__c == 'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                                              Yes<br/>
+                                            </div>
+                                            <div>
+                                              &nbsp;OTC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                              <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__G5_OTCProduct__c == 'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                                              Yes
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                        <td style="width:25%">
+                          <table cellspacing="0" cellpadding="0" width="100%">
+                            <tr>
+                              <td style="width:100%;height:50px;vertical-align:top;border-bottom:1px solid #000000;">
+                                <b>2. Phone Number</b><br/>
+                                <apex:outputText value="{!mdr.CMPL123CME__G2_Contact_Office_Phone__c}" />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="height:265px;vertical-align:top;">
+                                <b>3. Report Source </b><br/>(Check all that apply)<br/><br/>
+                                <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__G3_Report_Source__c,'Foreign'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                Foreign <br/><br/>
+                                <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__G3_Report_Source__c,'Study'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                Study <br/><br/>
+                                <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__G3_Report_Source__c,'Literature'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                Literature <br/><br/>
+                                <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__G3_Report_Source__c,'Consumer'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                Consumer <br/><br/>
+                                <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__G3_Report_Source__c,'Health Professional'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                Health Professional <br/><br/>
+                                <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__G3_Report_Source__c,'User Facility'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                User Facility <br/><br/>
+                                <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__G3_Report_Source__c,'Company Representative'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                Comapany &nbsp;Representative<br/>
+                                <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__G3_Report_Source__c,'Distributor'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                Distributor <br/><br/>
+                                <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__G3_Report_Source__c,'Other'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                Other : 
+                                <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G3_Report_Source_Other__c) < 80, mdr.CMPL123CME__G3_Report_Source_Other__c, LEFT(mdr.CMPL123CME__G3_Report_Source_Other__c, 80))}" />
+                                <br/><br/> 
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:100%" >
+                    <table cellspacing="0" cellpadding="0" width="100%">
+                      <tr>
+                        <td style="width:40%;border-right:1px solid #000000;">
+                          9. <b>Manufacturer Report Number </b><br/>
+                          <div class="box" style="width:100%; height:30px">
+                            <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G9_MFR_Report_Number__c) < 50, mdr.CMPL123CME__G9_MFR_Report_Number__c, LEFT(mdr.CMPL123CME__G9_MFR_Report_Number__c, 50))}" />
+                          </div>
+                        </td>
+                        <td style="width:60%">
+                          8. <b>Adverse Event Term(s) </b><br/>
+                          <div class="box" style="width:100%; height:30px">
+                            <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G8_Adverse_Event_Term__c) < 90, mdr.CMPL123CME__G8_Adverse_Event_Term__c, LEFT(mdr.CMPL123CME__G8_Adverse_Event_Term__c, 90))}" />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>This section applies only to requirements of the Paperwork Reduction Act of 1995.</b><br/>The public reporting burden for this collection of information has been estimated to average 66 minutes per response, including the time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing collection of information. Send comments regarding this burden estimate or any other aspect of this collection of information,including suggestions for reducing this burden to :</span>
+          </div>
+          <div id="rightmain2" class="rightmain" style="float:right; width:49%; margin-left:1%">
+            <div style="border-left:2px solid #000000;border-right:2px solid #000000;border-bottom:2px solid #000000;">
+              <table rules="rows" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <!------------- Section H ------------->
+                <th style="background : #1C1C1C;color:#ffffff;text-align:left;font-size:10px;font-weight:bold">
+                  H. DEVICE MANUFACTURERS ONLY
+                </th>
+                <tr>
+                  <td style="width:100%;border-bottom:1px solid #000000;" cellspacing="0" cellpadding="0">
+                    <table border="0" rules="cols" width="100%" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td style="width:50%;height:80px;vertical-align:top;border-right:1px solid #000000;">
+                          <b>1. Type of Reportable Event </b><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__H1_Type_of_Reportable_Event__c == 'Death'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                          &nbsp;Death <br/><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__H1_Type_of_Reportable_Event__c == 'Serious Injury'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                          &nbsp;Serious Injury <br/><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__H1_Type_of_Reportable_Event__c == 'Malfunction'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                          &nbsp;Malfunction <br/><br/>
+                        </td>
+                        <td style="width:50%;height:80px;vertical-align:top;">
+                          <b>2. If Follow-up, What Type ?</b><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H2_If_follow_up_What_Type__c, 'Correction'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          &nbsp;Correction <br/><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H2_If_follow_up_What_Type__c, 'Additional Information'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          &nbsp;Additional Information <br/><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H2_If_follow_up_What_Type__c, 'Response to FDA Request'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          &nbsp;Response to FDA Request <br/><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H2_If_follow_up_What_Type__c, 'Device Evaluation'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          &nbsp;Device Evaluation <br/>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:100%;border-bottom:1px solid #000000;" >
+                    <table border="0" rules="cols" width="100%" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td style="width:60%;height:90px;vertical-align:top;border-right:1px solid #000000;">
+                          <b>3. Device Evaluated by Manufacturer? </b><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!IF(CONTAINS(mdr.CMPL123CME__H3_Device_Returned__c, 'Yes'),'/resource/CMPL123CME__MDR/checkbox_no.png', '/resource/CMPL123CME__MDR/checkbox_yes.png')}"/>
+                          &nbsp;Not Returned to Manufacturer <br/><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!IF(CONTAINS(mdr.CMPL123CME__H3_DEVICE_EVAL_BY_MFG__c,'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                          &nbsp;Yes  &nbsp;&nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!IF(CONTAINS(mdr.CMPL123CME__H3_Evaluation_Summary_Attached__c,  'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                          &nbsp;Evaluation Summary Attached <br/><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H3_DEVICE_EVAL_BY_MFG__c, 'No'),'/checkbox_yes.png','/checkbox_no.png'))}"  />
+                          &nbsp;No (Attach page to explain why not) or provide code:&nbsp;&nbsp;<br/>
+                          <!-- Render the reason if Eval by MFG is No -->
+                          <apex:outputPanel rendered="{!IF(contains(mdr.CMPL123CME__H3_DEVICE_EVAL_BY_MFG__c, 'No'), true, false)}">
+                            <div>&nbsp;&nbsp;&nbsp;{!mdr.H3_REASON_NO_EVAL_BY_MFG__c}</div>
+                          </apex:outputPanel>
+                        </td>
+                        <td style="width:40%;height:90px;vertical-align:top;">
+                          <table width="100%" border="0" rules="rows" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td style="height:45px;vertical-align:top;border-bottom:1px solid #000000;">
+                                <b>4. Device Manufacturer Date</b><br/>(mm/dd/yyyy) <br/>
+                                <apex:outputText value="{0,date,MM/dd/yyyy}" >
+                                  <apex:param value="{!mdr.CMPL123CME__H4_Device_mfg_date__c}" />
+                                </apex:outputText>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="height:45px;vertical-align:top;">
+                                <b>5. Labeled for Single Use</b><br/><br/>
+                                &nbsp;&nbsp;&nbsp;
+                                <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__H5_Labeled_for_Single_Use__c == 'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                                &nbsp;Yes &nbsp;&nbsp;&nbsp;
+                                <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(mdr.CMPL123CME__H5_Labeled_for_Single_Use__c == 'No','/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                &nbsp;No  <br/>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:100%;height:120px;vertical-align:top;border-bottom:1px solid #000000;" >
+                    <b>6. Evaluation Codes</b> (Refer to coding manual)<br/><br/>
+                    <div style="padding-left:40px">
+                      Patient code :&nbsp;&nbsp;
+                      <apex:variable var="count" value="{!0}"/>
+                      <apex:repeat value="{!patientCodes}" var="p">
+                        <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
+                          {!if(LEN(p) < 6, p, LEFT(p, 6))}
+                        </div>
+                        <apex:variable var="count" value="{!count + 1}"/>
+                        <span style="visibility:{!IF((count <= 2), 'visible', 'hidden')}">&nbsp;-&nbsp;</span>
+                      </apex:repeat>
+                      <br/><br/>
+                      <apex:variable var="count1" value="{!0}"/>
+                      Device code :&nbsp;&nbsp;
+                      <apex:repeat value="{!deviceCodes}" var="d">
+                        <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
+                          {!if(LEN(d) < 6, d, LEFT(d, 6))}
+                        </div>
+                        <apex:variable var="count1" value="{!count1 + 1}"/>
+                        <span style="visibility:{!IF((count1 <= 2), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
+                      </apex:repeat>
+                      <br/><br/>
+                      Method : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <apex:variable var="count2" value="{!0}"/>
+                      <apex:repeat value="{!EvalMethodCodes}" var="m">
+                        <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
+                          {!if(LEN(m) < 6, m, LEFT(m, 6))}
+                        </div>
+                        <apex:variable var="count2" value="{!count2 + 1}"/>
+                        <span style="visibility:{!IF((count2 <= 3), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
+                      </apex:repeat>
+                      <br/><br/>
+                      Results : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <apex:variable var="count3" value="{!0}"/>
+                      <apex:repeat value="{!EvalResultCodes}" var="r">
+                        <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
+                          {!if(LEN(r) < 6, r, LEFT(r, 6))}
+                        </div>
+                        <apex:variable var="count3" value="{!count3 + 1}"/>
+                        <span style="visibility:{!IF((count3 <= 3), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
+                      </apex:repeat>
+                      <br/><br/>
+                      Conclusions :&nbsp;&nbsp;
+                      <apex:variable var="count4" value="{!0}"/>
+                      <apex:repeat value="{!EvalConCodes}" var="cs">
+                        <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
+                          {!if(LEN(cs) < 6, cs, LEFT(cs, 6))}
+                        </div>
+                        <apex:variable var="count4" value="{!count4 + 1}"/>
+                        <span style="visibility:{!IF((count4 <= 3), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
+                      </apex:repeat>
+                      <br/><br/>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:100%;border-bottom:1px solid #000000;" >
+                    <table border="0" rules="cols" width="100%" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td style="width:55%;height:120px;vertical-align:top;border-right:1px solid #000000;">
+                          <b>7. If Remedial Action Initiated, Check Type </b><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Recall'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Recall  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Notification'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Notification <br/><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Repair'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Repair  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Inspection'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Inspection <br/><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Replace'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Replace  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Patient Monitoring'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Patient Monitoring<br/><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Relabeling'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Relabeling  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Modification/Adjustment'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Modification/Adjustment<br/><br/>
+                          &nbsp;&nbsp;&nbsp;
+                          <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Other'),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                          Other: &nbsp;<br/>
+                          <apex:outputPanel rendered="{!IF(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Other'), true, false)}">
+                            <div width="100%">&nbsp;&nbsp;&nbsp;{!mdr.H7_Other_Remedial_Action__c}</div>
+                          </apex:outputPanel>
+                        </td>
+                        <td style="width:45%">
+                          <table rules="rows" width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td style="height:75px;vertical-align:top;border-bottom:1px solid #000000;">
+                                <b>8. Usage of Device</b><br/><br/>
+                                &nbsp;&nbsp;&nbsp;
+                                <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__H8_Usage_of_Device__c == 'Initial Use of Device'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                                Initial Use of Device <br/><br/>
+                                &nbsp;&nbsp;&nbsp;
+                                <apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__H8_Usage_of_Device__c == 'Reuse'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>
+                                Reuse  <br/><br/>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="height:55px;vertical-align:top;">
+                                <b>9. If action reported to FDA  under 21 USC 360i(f), list correction/removal reporting number:</b><br/><br/>
+                                <apex:outputText value="{!if(LEN(mdr.CMPL123CME__H9_Correction_Removal_Report_No__c) < 30, mdr.CMPL123CME__H9_Correction_Removal_Report_No__c, LEFT(mdr.CMPL123CME__H9_Correction_Removal_Report_No__c, 30))}" />
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="height:40px">
+                    <b>
+                      10.  
+                      <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c != null,'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                      Additional Manufacturer Narative &nbsp;&nbsp;and / or &nbsp;&nbsp;
+                    </b>
+                    &nbsp;&nbsp;
+                    <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(mdr.CMPL123CME__H11_Corrected_Data__c != null,'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                    11. <b> Corrected Data</b><br/> 
+                    <div class="box" style="word-wrap: break-word; width:340px;height:355px;">
+                      <div style="display:{!if(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c != null || mdr.CMPL123CME__H11_Corrected_Data__c != null, 'block', 'none')}">
+                        <div style="word-wrap: break-word; width:340px;height:35px">
+                          <apex:outputText value="{!if(LEN(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c) > 365,LEFT(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c,365), mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c)}"/>
+                        </div>
+                        <br/><br/> 
+                        <div style="word-wrap: break-word; width:340px;height:35px">
+                          <apex:outputText value="{!if(LEN(mdr.CMPL123CME__H11_Corrected_Data__c) > 365, LEFT(mdr.CMPL123CME__H11_Corrected_Data__c, 365), mdr.CMPL123CME__H11_Corrected_Data__c)}" />
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <span>
+              <div style="float:left;width:60%;height:50px">
+                <span>
+                Department of Helth anf Human Services<br/>
+                Food and Drug Administration<br/>
+                Office of Chief Information Officer<br/>
+                Paperwork Reduction Act (PRA) Staff<br/>
+                PRAStaff@fda.hhs.gov<br/>
+                <i><b>Please DO NOT RETURN this form to this address.</b></i> 
+                </span>
+              </div>
+              <div style="float:left;width:40%;">
+                <span>
+                <b>OMB Statement:</b>"An agency may not conduct or sponsor, and a person is not required to respond to, a collection of information unless it displays a currently valid OMB control number"
+                </span>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <!------- Page 3 ------------->
+      <div id="mainpg3"  style="page-break-before:always; font-size:10px;display:{!if(LEN(mdr.B5_Describe_Event_or_Problem__c) < 2055 && LEN(mdr.B6_Relevant_Test_Laboratory_Data__c  ) < 990 && LEN(mdr.B7_Other_Relevant_History__c  ) < 365 && LEN(mdr.H10_Addtl_Mfg_Narrative__c) < 365 && LEN(mdr.H11_Corrected_Data__c) < 365, 'none', 'block')}">
+        <div id="mainHeader3" style="width:100%; float:left;">
+          <div id="lefthead"  style="float:left; width:34%;">
+            <apex:image url="{!URLFOR($Resource.CMPL123CME__MedWatch15_Header2, '')}"/>
+          </div>
+          <div  id="middlehead3" style="page-break-before:always; float:left; width:30%">
+            <p style="text-align: center;">
+              <b>(CONTINUATION PAGE)<br/>For use by user facilites,<br/>
+              importers, distributors and manufactures<br/>
+              for MANDATORY reporting</b><br/><br/>
+              <b>Page 3 of 3</b>
+            </p>
+          </div>
+        </div>
+        <br/><br/>
+        <div id="mainBody3" >
+          <div class="leftmain" id="leftmain3" style="float:left; width:100%;">
+            <div style="border-left:2px solid #000000;border-right:2px solid #000000;border-bottom:1px solid #000000;border-top: 2px solid #000000;">
+              <table  border="0" cellpadding="0" cellspacing="0" rules="rows" width="100%">
+                <tr>
+                  <td style="height:50px">
+                    <b>B.5. Describe Event or Problem (continued)</b><br/>
+                    <div class="box" style="width:100%;">
+                      <div style="word-wrap: break-word; width:700px;height:200px;">
+                        <apex:outputText value="{!if(LEN(mdr.CMPL123CME__B5_Describe_Event_or_Problem__c) > 2055, LEFT(MID(mdr.CMPL123CME__B5_Describe_Event_or_Problem__c, 2055, LEN(mdr.CMPL123CME__B5_Describe_Event_or_Problem__c)-2055),2735), '')}" />
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="leftmain" id="leftmain3" style="float:left; width:100%;">
+            <div style="border-left:2px solid #000000;border-right:2px solid #000000;border-bottom:1px solid #000000;border-top: 1px solid #000000;">
+              <table  border="0" cellpadding="0" cellspacing="0" rules="rows" width="100%">
+                <tr>
+                  <td style="height:50px">
+                    <b>B.6. Relevant Tests/Laboratory Data, Including Dates (continued)</b><br/>
+                    <div class="box" style="width:100%;">
+                      <div style="word-wrap: break-word; width:700px;height:100px;">
+                        <apex:outputText value="{!if(LEN(mdr.CMPL123CME__B6_Relevant_Test_Laboratory_Data__c) > 990, LEFT(MID(mdr.CMPL123CME__B6_Relevant_Test_Laboratory_Data__c, 990, LEN(mdr.CMPL123CME__B6_Relevant_Test_Laboratory_Data__c)-990),1365), '')}" />
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="leftmain" id="leftmain3" style="float:left; width:100%;">
+            <div style="border-left:2px solid #000000;border-right:2px solid #000000;border-bottom:1px solid #000000;border-top: 1px solid #000000;">
+              <table  border="0" cellpadding="0" cellspacing="0" rules="rows" width="100%">
+                <tr>
+                  <td style="height:50px">
+                    <b>B.7. Other Relevant History, Including Preexisting Medical Conditions (e.g., allergies, race, pregnancy, smoking and alcohol use, hepatic/renal dysfunction, etc.) (continued)</b><br/>
+                    <div class="box" style="width:100%;">
+                      <div style="word-wrap: break-word; width:700px;height:100px;">
+                        <apex:outputText value="{!if(LEN(mdr.CMPL123CME__B7_Other_Relevant_History__c) > 990, LEFT(MID(mdr.CMPL123CME__B7_Other_Relevant_History__c, 990, LEN(mdr.CMPL123CME__B7_Other_Relevant_History__c)-990), 1365), '')}" />
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="leftmain" id="leftmain3" style="float:left; width:100%;">
+            <div style="border-left:2px solid #000000;border-right:2px solid #000000;border-bottom:2px solid #000000;border-top: 1px solid #000000;">
+              <table  border="0" cellpadding="0" cellspacing="0" rules="rows" width="100%">
+                <tr>
+                  <td style="height:50px">
+                    <b>Other Remarks  (For continuation of H.10 and/or H.11)</b><br/>
+                    <div class="box" style="width:100%;">
+                      <div style="word-wrap:break-word; width:700px;height:120px;">
+                        <b>H.10 </b>&nbsp;&nbsp;
+                        <apex:outputText value="{!if(LEN(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c) > 365, LEFT(MID(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c, IF(mdr.CMPL123CME__H11_Corrected_Data__c == null,4000,365), LEN(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c)-IF(mdr.CMPL123CME__H11_Corrected_Data__c == null,3999,364)),1360), '')}" />
+                      </div>
+                      <div style="word-wrap:break-word; width:700px;height:100px;">
+                        <b>H.11 </b>&nbsp;&nbsp;
+                        <apex:outputText value="{!if(LEN(mdr.CMPL123CME__H11_Corrected_Data__c) > 365, LEFT(MID(mdr.CMPL123CME__H11_Corrected_Data__c, IF(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c == null,4000,365), LEN(mdr.CMPL123CME__H11_Corrected_Data__c)-IF(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c == null,3999,364)),1360), '')}" />
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
+</apex:page>

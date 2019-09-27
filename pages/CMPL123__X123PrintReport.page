@@ -1,0 +1,126 @@
+<apex:page controller="CMPL123.X123PrintReportController" renderAs="pdf" applyBodyTag="false" applyHtmlTag="false"  standardStylesheets="false" showHeader="false" >
+    <apex:stylesheet value="{!$Resource.CMPL123__PDFDocumentStyle}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/css/x123printreport.css')}"/>
+    <body>
+        <!-- Display error message if there is an error -->
+        <apex:pageMessages rendered="{! isError }"/>
+
+        <!-- Render populated template if there are no issues -->
+        <apex:outputPanel rendered="{! !isError }">
+
+            <!-- Header component start-->
+            <c:PDFHeaderFooter type="header">
+                <!-- Logo -->
+                <c:PDFHeaderFooter type="header" position="{! logoMap['Alignment'] }" rendered="{! docId != null}">
+                    <apex:image url="/servlet/servlet.ImageServer?id={! docId }&oid={! $Organization.Id }"
+                                width="{! if(logoMap['Width'] != '', logoMap['Width'], 166) }"
+                                height="{! if(logoMap['Height'] != '', logoMap['Height'], 82) }"/>
+                </c:PDFHeaderFooter>
+
+                <!-- Title and page numbers -->
+                <c:PDFHeaderFooter type="header" position="center">
+                    <b>
+                        <div class="sparta-font-size-20 sparta-font-ariel-font-family sparta-font-weight-lighter">{! templateMap['title'] }</div>
+                        <div class="sparta-font-size-15 sparta-font-ariel-font-family sparta-font-weight-lighter">{! templateMap['description'] }</div>
+                    </b>
+                    <div class="sparta-font-size-13 sparta-font-ariel-font-family">
+                        <c:PDFHeaderFooter type="header" showPageNumbers="true"/>
+                    </div>
+                </c:PDFHeaderFooter>
+            </c:PDFHeaderFooter>
+            <!-- Header component end-->
+
+            <!-- Footer component start-->
+            <apex:outputPanel rendered="{! templateMap['footer'] != '' }">
+                <c:PDFHeaderFooter type="footer" position="center">
+                    <div class="sparta-font-size-13 sparta-margin-top-30 sparta-font-ariel-font-family sparta-font-weight-lighter">
+                        {! templateMap['footer'] }
+                    </div>
+                </c:PDFHeaderFooter>
+                <br/>
+            </apex:outputPanel>
+            <div class="sparta-font-size-13 sparta-font-ariel-font-family">
+                <c:PDFHeaderFooter type="footer" position="Left">
+                    {! $Label.PRINTED_BY }: {! $User.FirstName }&nbsp;{! $User.LastName }
+                </c:PDFHeaderFooter>
+                <c:PDFHeaderFooter type="footer" position="Right">{! $Label.PRINTED_ON }:&nbsp;
+                    <apex:outputText value="{! printedOn }"/>
+                </c:PDFHeaderFooter>
+            </div>
+            <!-- Footer component end-->
+
+            <apex:repeat value="{! sectionNames }" var="section">
+
+                <!-- Section with header start -->
+                <apex:outputPanel layout="block" rendered="{! sectionIdTypeMap[section] == 'SECTION' }">
+                    <div class="{! if(showSectionHeaderMap[section] == 'true','sparta-display-block','sparta-display-none') + ' sparta-font-weight-bold sparta-font-ariel-font-family sparta-section-background' }">
+                        {! sectionNameIdMap[section] }
+                    </div>
+                    <table class="sparta-border-collapse-separate sparta-border-spacing-0-4 sparta-padding-top-10 sparta-table-layout-fixed sparta-word-wrap-break" width="100%" cellpadding="2px">
+                        <tbody>
+                            <apex:repeat value="{! printInnerMap[section] }" var="field">
+                                <tr>
+                                    <td width="25%" class="sparta-font-size-12 sparta-font-ariel-font-family" valign="top"
+                                        colspan="{! if(len(field.label) == 0,'2','1') }"
+                                        align="{! if(len(field.label) == 0,'left','right') }">
+                                        <apex:outputText value="{! if(len(field.label) == 0,field.value,field.label) }"  escape="false"/>
+                                    </td>
+                                    <td width="75%" class="sparta-font-size-11 sparta-text-align-justify sparta-font-ariel-font-family sparta-font-weight-lighter">
+                                        <apex:outputText value="{! if(len(field.label) == 0, '', if(field.dataType == 'MULTIPICKLIST', substitute(field.value,';','; '), field.value)) }"
+                                                         styleClass="sparta-white-space-pre-line sparta-padding-left-5"
+                                                         escape="{! field.dataType != 'RICHTEXTAREA' }" >
+                                        </apex:outputText>
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </apex:outputPanel>
+                <!-- Section with header end -->
+
+                <!-- Section without header start -->
+                <apex:outputPanel layout="block" rendered="{! sectionIdTypeMap[section] != 'SECTION' }">
+                    <div class="{! if(showSectionHeaderMap[section] == 'true', 'sparta-display-block', 'sparta-display-none') + ' sparta-font-weight-bold sparta-font-ariel-font-family' }">
+                        {! relatedListLabelApiMap[section] }
+                    </div>
+                    <table class="sparta-border-collapse-separate sparta-border-spacing-0-4" border="{! if(showBorder[section], 1, 0) }" cellpadding="4px" cellspacing="0" width="100%" >
+                        <thead>
+                            <tr>
+                                <apex:repeat value="{! relationShipNameToLabelToApiMap[section] }" var="fldApi">
+                                    <th class="sparta-section-background sparta-font-size-11 sparta-font-weight-bold sparta-font-ariel-font-family sparta-height-18 sparta-vertical-align-bottom sparta-justify-content-left">
+                                        {! fldApi.label }
+                                    </th>
+                                </apex:repeat>
+                            </tr>
+                        </thead>
+                        <tbody class="sparta-font-size-11 sparta-font-ariel-font-family sparta-font-weight-lighter">
+                            <apex:repeat value="{! queriedRecord[sectionNameIdMap[section]] }" var="relObj" >
+                                <tr class="{! if(and(
+                                                    contains(upper(sectionNameIdMap[section]), 'MDR_CODES__R'),
+                                                    sectionIdTypeMap[section] != 'NULL',
+                                                    relObj['CMPL123CME__Complaint_Code__r.CMPL123CME__Type__c'] != sectionIdTypeMap[section]),
+                                              'sparta-display-none',
+                                              'sparta-display-table-row') }">
+                                    <apex:repeat value="{! relationShipNameToLabelToApiMap[section] }" var="fldApi">
+                                        <td class="sparta-font-size-10">
+                                            <apex:outputText rendered="{! if(fldApi.dataType == 'DATE' || fldApi.dataType == 'DATETIME', true, false) }"
+                                                             value="{0,date,MMMM dd, yyyy}">
+                                                <apex:param value="{! relObj[fldApi.value] }" />
+                                            </apex:outputText>
+                                            <apex:outputText rendered="{! if(fldApi.dataType == 'DATE' || fldApi.dataType == 'DATETIME', false, true) }"
+                                                             value="{! if(len(fldApi.label) == 0,'', if(fldApi.dataType == 'MULTIPICKLIST', substitute(relObj[fldApi.value],';','; '), relObj[fldApi.value])) }"
+                                                             styleClass="sparta-white-space-pre-line" escape="{! fldApi.dataType != 'RICHTEXTAREA' }" />
+                                        </td>
+                                    </apex:repeat>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </apex:outputPanel>
+                <br/>
+                <!-- Section without header end -->
+            </apex:repeat>
+            <br/>
+        </apex:outputPanel>
+    </body>
+</apex:page>

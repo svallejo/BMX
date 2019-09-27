@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <label>Part Information</label>
+    <nameField>
+        <displayFormat>NO-{0000}</displayFormat>
+        <label>Part-Doc No</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Parts Information</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>CMPL123QMS__All</fullName>
+        <columns>RECORDTYPE</columns>
+        <columns>NAME</columns>
+        <columns>CMPL123QMS__Part_or_Document_No__c</columns>
+        <columns>CMPL123QMS__Description__c</columns>
+        <columns>CMPL123QMS__Current_Revision__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <recordTypes>
+        <fullName>CMPL123QMS__Document</fullName>
+        <active>true</active>
+        <label>Document</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CMPL123QMS__Part</fullName>
+        <active>true</active>
+        <label>Part</label>
+    </recordTypes>
+</CustomObject>

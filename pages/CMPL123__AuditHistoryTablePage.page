@@ -1,0 +1,12 @@
+<apex:page sidebar="false" showHeader="false" id="AuditHistoryTable">
+
+    <apex:includeLightning />
+    <div id="lightning"/>
+    <script>
+        $Lightning.use("CMPL123:AuditHistoryTableApp", function () {
+            $Lightning.createComponent("CMPL123:AuditHistoryTable", {}, "lightning", function (cmp) {
+            });
+        });
+    </script>
+
+</apex:page>

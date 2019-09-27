@@ -1,0 +1,4307 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- ANALYZE Name --></label>
+        <name>ANALYZE_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- ANALYZE --></label>
+        <name>ANALYZE_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Answer To Customer (ATC)
+Email is sent to the customer with the text in this ATC if theses 3 conditions are met:
+- Case Status is Closed
+-“ATC” is populated
+-“Send ATC to Customer” is checked --></help>
+        <label><!-- Answer To Customer (ATC) --></label>
+        <name>ATC_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>AccountId__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Action Code --></label>
+        <name>ActionCode_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Action Code Name --></label>
+        <name>Action_Code_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Angry --></label>
+        <name>Angry_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Asset Account NOT Case Account? --></label>
+        <name>AssetAccountNOTCaseAccount_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- If the Case concerns an Asset, reference here the Equipment. If the Equipment is not known, reference the System. --></help>
+        <label><!-- Asset ID --></label>
+        <name>AssetId__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Asset Record Type --></label>
+        <name>AssetRecordType_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Asset Name --></label>
+        <name>Asset_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Expiration Date --></label>
+        <name>BatchExpDate_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Number Status --></label>
+        <name>BatchNumberStatusIcon_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Number Status --></label>
+        <name>BatchNumberStatus_c__c</name>
+        <picklistValues>
+            <masterLabel>Checked - Not Valid</masterLabel>
+            <translation><!-- Checked - Not Valid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Checked - Valid</masterLabel>
+            <translation><!-- Checked - Valid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not checked</masterLabel>
+            <translation><!-- Not checked --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- If  “Batch Number Unknown” is checked, it is not mandatory to fill the &quot;Batch Number&quot; on a Case referencing a Reagent product --></help>
+        <label><!-- Batch Number Unknown --></label>
+        <name>BatchNumberUnknown_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Mandatory for reagent products. Except if “Batch Number unknown” is checked --></help>
+        <label><!-- Batch Number (Reagent) --></label>
+        <name>BatchNumber_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bill To --></label>
+        <name>BillTo_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Hours ID --></label>
+        <name>BusinessHoursId__c</name>
+    </fields>
+    <fields>
+        <label><!-- CVM &amp; OtherInfo --></label>
+        <name>CVM_OtherInfo_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- CVM --></label>
+        <name>CVM_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Has Service Tasks --></label>
+        <name>CaseHasServiceTasks_c__c</name>
+        <picklistValues>
+            <masterLabel>No Service Task</masterLabel>
+            <translation><!-- No Service Task --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Tasks Closed</masterLabel>
+            <translation><!-- Service Tasks Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Tasks Open</masterLabel>
+            <translation><!-- Service Tasks Open --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Dash: Case has no related Case Service Task
+Orange: Case has at least 1 Open Case Service Task
+Green: Case has all its Case Service Tasks Closed --></help>
+        <label><!-- STask --></label>
+        <name>CaseHasServiceTasks_icon_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Has WO --></label>
+        <name>CaseHasWO_c__c</name>
+        <picklistValues>
+            <masterLabel>No WO</masterLabel>
+            <translation><!-- No WO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WO Closed</masterLabel>
+            <translation><!-- WO Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WO Open</masterLabel>
+            <translation><!-- WO Open --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Dash: Case has no related WO
+Orange: Case has at least 1 Open WO
+Green: Case has all its WO Closed --></help>
+        <label><!-- WO --></label>
+        <name>CaseHasWO_icon_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Number --></label>
+        <name>CaseNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAP Case Number --></label>
+        <name>CaseNumber_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case First Closed Date --></label>
+        <name>Case_First_Closed_Date_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner Name --></label>
+        <name>Case_Owner_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Catalog Profile --></label>
+        <name>CatalogProfile_c__c</name>
+        <picklistValues>
+            <masterLabel>$$-OSS-SM - R/3 Notifications</masterLabel>
+            <translation><!-- $$-OSS-SM - R/3 Notifications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>000000001 - General Catalog Profile</masterLabel>
+            <translation><!-- 000000001 - General Catalog Profile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>999 - NO DETERMIDED</masterLabel>
+            <translation><!-- 999 - NO DETERMIDED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A89 - DCOUNT SYSTEMS APPLICATIONS</masterLabel>
+            <translation><!-- A89 - DCOUNT SYSTEMS APPLICATIONS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A90 - SCAN SYSTEMS APPLICATIONS</masterLabel>
+            <translation><!-- A90 - SCAN SYSTEMS APPLICATIONS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A91 - CONNECT-UP</masterLabel>
+            <translation><!-- A91 - CONNECT-UP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A92 - EPISEQ SOFTWARE</masterLabel>
+            <translation><!-- A92 - EPISEQ SOFTWARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A94 - EVISIGHT COMPACT APPLICATION</masterLabel>
+            <translation><!-- A94 - EVISIGHT COMPACT APPLICATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A96 - VIDAS 3 SOFTWARE</masterLabel>
+            <translation><!-- A96 - VIDAS 3 SOFTWARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AA8 - FILMARRAY SOFTWARE</masterLabel>
+            <translation><!-- AA8 - FILMARRAY SOFTWARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AA9 - EMAG SOFTWARE</masterLabel>
+            <translation><!-- AA9 - EMAG SOFTWARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B11 - IMMUNO MICRO PLAQUES</masterLabel>
+            <translation><!-- B11 - IMMUNO MICRO PLAQUES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B12 - NUCLISENS (Without transfer)</masterLabel>
+            <translation><!-- B12 - NUCLISENS (Without transfer) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B13 - DGV</masterLabel>
+            <translation><!-- B13 - DGV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B14 - BRAZIL CHEM HEMO MICROELISA</masterLabel>
+            <translation><!-- B14 - BRAZIL CHEM HEMO MICROELISA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B15 - BRAZIL IMMUNOSEROLOGY PRODUCTS</masterLabel>
+            <translation><!-- B15 - BRAZIL IMMUNOSEROLOGY PRODUCTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B16 - PPM BRAZIL PRODUCTS</masterLabel>
+            <translation><!-- B16 - PPM BRAZIL PRODUCTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B18 - BTA REAGENT CLINICAL USE</masterLabel>
+            <translation><!-- B18 - BTA REAGENT CLINICAL USE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B19 - BTA REAGENT INDUSTRIAL USE</masterLabel>
+            <translation><!-- B19 - BTA REAGENT INDUSTRIAL USE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B20 - MB BACT REAGENT</masterLabel>
+            <translation><!-- B20 - MB BACT REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B21 - OBSOLETE  ELISA INDUSTRY</masterLabel>
+            <translation><!-- B21 - OBSOLETE  ELISA INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B22 - VIKIA/BIONEXIA</masterLabel>
+            <translation><!-- B22 - VIKIA/BIONEXIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B23 - FOOD EXPERT</masterLabel>
+            <translation><!-- B23 - FOOD EXPERT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B24 - ARGENTINA MICRO PLATES</masterLabel>
+            <translation><!-- B24 - ARGENTINA MICRO PLATES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B25 - IMMUNO BMX MICROELISA</masterLabel>
+            <translation><!-- B25 - IMMUNO BMX MICROELISA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B26 - IMMUNO OTHERS MICROELISA</masterLabel>
+            <translation><!-- B26 - IMMUNO OTHERS MICROELISA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B27 - OBSOLETE IMMUNOASSAYS DURHAM</masterLabel>
+            <translation><!-- B27 - OBSOLETE IMMUNOASSAYS DURHAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B28 - OBSOLETE NUCLISENS ECL REAGENT</masterLabel>
+            <translation><!-- B28 - OBSOLETE NUCLISENS ECL REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B29 - NUCLISENS ISOLATION REAGENTS</masterLabel>
+            <translation><!-- B29 - NUCLISENS ISOLATION REAGENTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B3 - GEN PROBE</masterLabel>
+            <translation><!-- B3 - GEN PROBE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B30 - NUCLISENS EASYQ REAGENTS</masterLabel>
+            <translation><!-- B30 - NUCLISENS EASYQ REAGENTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B31 - APIWEB</masterLabel>
+            <translation><!-- B31 - APIWEB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B32 - TEMPO REAGENTS</masterLabel>
+            <translation><!-- B32 - TEMPO REAGENTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B33 - US LOCAL REAGENTS</masterLabel>
+            <translation><!-- B33 - US LOCAL REAGENTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B34 - BTA REAGENT ACCESSORIES</masterLabel>
+            <translation><!-- B34 - BTA REAGENT ACCESSORIES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B35 - BACTOMETER INDUSTRY</masterLabel>
+            <translation><!-- B35 - BACTOMETER INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B36 - VIDIA REAGENT</masterLabel>
+            <translation><!-- B36 - VIDIA REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B37 - NUCLISENS REAGENTS INDUSTRY</masterLabel>
+            <translation><!-- B37 - NUCLISENS REAGENTS INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B38 - DIVERSILAB</masterLabel>
+            <translation><!-- B38 - DIVERSILAB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B39 - MB BACT AST</masterLabel>
+            <translation><!-- B39 - MB BACT AST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B4 - GEN PROBE INDUSTRY</masterLabel>
+            <translation><!-- B4 - GEN PROBE INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B40 - BIOBALL</masterLabel>
+            <translation><!-- B40 - BIOBALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B41 - OBSOLETE T_SPOT.TB</masterLabel>
+            <translation><!-- B41 - OBSOLETE T_SPOT.TB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B42 - QUIDEL MICROBIO</masterLabel>
+            <translation><!-- B42 - QUIDEL MICROBIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B43 - QUIDEL IMMUNO</masterLabel>
+            <translation><!-- B43 - QUIDEL IMMUNO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B44 - ETESTS PRODUCTS</masterLabel>
+            <translation><!-- B44 - ETESTS PRODUCTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B45 - myQC</masterLabel>
+            <translation><!-- B45 - myQC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B46 - FILMARRAY POUCH</masterLabel>
+            <translation><!-- B46 - FILMARRAY POUCH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B5 - VIDAS PROBE</masterLabel>
+            <translation><!-- B5 - VIDAS PROBE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B50 - PPM INDUSTRY COMBOURG</masterLabel>
+            <translation><!-- B50 - PPM INDUSTRY COMBOURG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B51 - THxID</masterLabel>
+            <translation><!-- B51 - THxID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B63 - UF1000 REAGENT SYSMEX</masterLabel>
+            <translation><!-- B63 - UF1000 REAGENT SYSMEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B64 - REAGENT PTS GRAM ID (US ONLY)</masterLabel>
+            <translation><!-- B64 - REAGENT PTS GRAM ID (US ONLY) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B65 - RAL REAGENT  CONSUMABLE</masterLabel>
+            <translation><!-- B65 - RAL REAGENT  CONSUMABLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B66 - PREVI ISOLA REAGENT</masterLabel>
+            <translation><!-- B66 - PREVI ISOLA REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B67 - PREVI COLOR GRAM REAGENT</masterLabel>
+            <translation><!-- B67 - PREVI COLOR GRAM REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B69 - VERSATREK REAGENT</masterLabel>
+            <translation><!-- B69 - VERSATREK REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B7 - PPM LOMBARD PRODUCTS</masterLabel>
+            <translation><!-- B7 - PPM LOMBARD PRODUCTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B70 - OBSOLETE PML INDUSTRY CULTURE</masterLabel>
+            <translation><!-- B70 - OBSOLETE PML INDUSTRY CULTURE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B71 - LYFOCULTS INDUSTRY STRAINS</masterLabel>
+            <translation><!-- B71 - LYFOCULTS INDUSTRY STRAINS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B72 - OBSOLETE PML INDUSTRY LABORATO</masterLabel>
+            <translation><!-- B72 - OBSOLETE PML INDUSTRY LABORATO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B73 - PML CLINICAL CULTURE MEDIA</masterLabel>
+            <translation><!-- B73 - PML CLINICAL CULTURE MEDIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B74 - LYFOCULTS CLINICALl STRAINS</masterLabel>
+            <translation><!-- B74 - LYFOCULTS CLINICALl STRAINS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B75 - PML CLINICAL LABORATORY SUPPLI</masterLabel>
+            <translation><!-- B75 - PML CLINICAL LABORATORY SUPPLI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B76 - AI3P TRACEABILITY</masterLabel>
+            <translation><!-- B76 - AI3P TRACEABILITY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B77 - VITEK MS CLINICAL REAGENT</masterLabel>
+            <translation><!-- B77 - VITEK MS CLINICAL REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B78 - OBSOLETE VIKIA/BIONEXIA MICROB</masterLabel>
+            <translation><!-- B78 - OBSOLETE VIKIA/BIONEXIA MICROB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B79 - QNOSTICS</masterLabel>
+            <translation><!-- B79 - QNOSTICS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B8 - HYGIENE</masterLabel>
+            <translation><!-- B8 - HYGIENE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B80 - ARGENE MOLECULAR</masterLabel>
+            <translation><!-- B80 - ARGENE MOLECULAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B81 - ARGENE IMMUNO</masterLabel>
+            <translation><!-- B81 - ARGENE IMMUNO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B82 - PPM CLINICAL SHANGHAI</masterLabel>
+            <translation><!-- B82 - PPM CLINICAL SHANGHAI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B83 - PPM INDUSTRY SHANGHAI</masterLabel>
+            <translation><!-- B83 - PPM INDUSTRY SHANGHAI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B84 - VITEK MS INDUSTRY APPLICATION</masterLabel>
+            <translation><!-- B84 - VITEK MS INDUSTRY APPLICATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B85 - ADIAVET</masterLabel>
+            <translation><!-- B85 - ADIAVET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B86 - PPM CLINICAL COMBOURG</masterLabel>
+            <translation><!-- B86 - PPM CLINICAL COMBOURG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B87 - ChemScan Application</masterLabel>
+            <translation><!-- B87 - ChemScan Application --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B89 - E TEST Veterinary</masterLabel>
+            <translation><!-- B89 - E TEST Veterinary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B8I - AIR IDEAL INDUSTRY</masterLabel>
+            <translation><!-- B8I - AIR IDEAL INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B9 - UK PRODUCT ORIGIN SPAIN</masterLabel>
+            <translation><!-- B9 - UK PRODUCT ORIGIN SPAIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B90 - ADIAFOOD</masterLabel>
+            <translation><!-- B90 - ADIAFOOD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B91 - GENE-UP REAGENT</masterLabel>
+            <translation><!-- B91 - GENE-UP REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B92 - EPISEQ</masterLabel>
+            <translation><!-- B92 - EPISEQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B93 - AUSTRALIA SPECIFIC REAGENT</masterLabel>
+            <translation><!-- B93 - AUSTRALIA SPECIFIC REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B94 - OBSOLETE</masterLabel>
+            <translation><!-- B94 - OBSOLETE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B95 - CEERAMTOOLS REAGENTS</masterLabel>
+            <translation><!-- B95 - CEERAMTOOLS REAGENTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B98 - OBSOLETE QC ORGANISMS MANUFACT</masterLabel>
+            <translation><!-- B98 - OBSOLETE QC ORGANISMS MANUFACT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B99 - VIDAS ADDS CONVERSION</masterLabel>
+            <translation><!-- B99 - VIDAS ADDS CONVERSION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA - API</masterLabel>
+            <translation><!-- BA - API --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA1 - SCAN RDI Application</masterLabel>
+            <translation><!-- BA1 - SCAN RDI Application --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA2 - BactiFlow Application</masterLabel>
+            <translation><!-- BA2 - BactiFlow Application --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA3 - Bactiflow ALS Application</masterLabel>
+            <translation><!-- BA3 - Bactiflow ALS Application --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA4 - D COUNT II APPLICATION</masterLabel>
+            <translation><!-- BA4 - D COUNT II APPLICATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA5 - DILUMAT S-4-3MK2-3</masterLabel>
+            <translation><!-- BA5 - DILUMAT S-4-3MK2-3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA6 - BLENDER</masterLabel>
+            <translation><!-- BA6 - BLENDER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA7 - BLENDER EASYMIX-MIX1-MIX2</masterLabel>
+            <translation><!-- BA7 - BLENDER EASYMIX-MIX1-MIX2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA8 - AUTOMATED DISPENSER-PLATE</masterLabel>
+            <translation><!-- BA8 - AUTOMATED DISPENSER-PLATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA9 - LABELMASTER</masterLabel>
+            <translation><!-- BA9 - LABELMASTER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BAI - API INDUSTRIAL</masterLabel>
+            <translation><!-- BAI - API INDUSTRIAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BAU - PPM AUSTRALIA PRODUCTS</masterLabel>
+            <translation><!-- BAU - PPM AUSTRALIA PRODUCTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BB - PPM CLINICAL CRAPONNE</masterLabel>
+            <translation><!-- BB - PPM CLINICAL CRAPONNE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BB1 - MEDIA PREPARATOR M60-M528-M09</masterLabel>
+            <translation><!-- BB1 - MEDIA PREPARATOR M60-M528-M09 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BB2 - PERISTALTIC PUMP</masterLabel>
+            <translation><!-- BB2 - PERISTALTIC PUMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BB3 - SAMPL AIR</masterLabel>
+            <translation><!-- BB3 - SAMPL AIR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BB4 - AUTOMATED DISPENSER – TUBE</masterLabel>
+            <translation><!-- BB4 - AUTOMATED DISPENSER – TUBE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BB5 - DILUTOR BLUE LINE</masterLabel>
+            <translation><!-- BB5 - DILUTOR BLUE LINE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BB6 - MEDIA PREPARATOR M19-S SERIES</masterLabel>
+            <translation><!-- BB6 - MEDIA PREPARATOR M19-S SERIES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BB7 - AUTOMATED SPIRAL PLATER</masterLabel>
+            <translation><!-- BB7 - AUTOMATED SPIRAL PLATER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BB8 - COLONY COUNTER</masterLabel>
+            <translation><!-- BB8 - COLONY COUNTER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BB9 - MEDIA PREPARATOR BLUE LINE</masterLabel>
+            <translation><!-- BB9 - MEDIA PREPARATOR BLUE LINE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BBI - OBSOLETE BACTERIOLOGY INDUSTRY</masterLabel>
+            <translation><!-- BBI - OBSOLETE BACTERIOLOGY INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BC1 - D COUNT 25 APPLICATION</masterLabel>
+            <translation><!-- BC1 - D COUNT 25 APPLICATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BC2 - D COUNT 50 APPLICATION</masterLabel>
+            <translation><!-- BC2 - D COUNT 50 APPLICATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BC3 - MICROBIOLOGICS REAGENTS</masterLabel>
+            <translation><!-- BC3 - MICROBIOLOGICS REAGENTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BC4 - LBM COPAN REAGENTS</masterLabel>
+            <translation><!-- BC4 - LBM COPAN REAGENTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BC5 - ENDOTOXINS HYGLOS</masterLabel>
+            <translation><!-- BC5 - ENDOTOXINS HYGLOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BC6 - DCOUNT SYSTEMS REAGENTS</masterLabel>
+            <translation><!-- BC6 - DCOUNT SYSTEMS REAGENTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BC7 - SCAN SYSTEMS REAGENTS</masterLabel>
+            <translation><!-- BC7 - SCAN SYSTEMS REAGENTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BCH - SUISSE SPECIFIC REAGENT</masterLabel>
+            <translation><!-- BCH - SUISSE SPECIFIC REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BD - VIDAS CLINICAL</masterLabel>
+            <translation><!-- BD - VIDAS CLINICAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BD3 - VIDAS 3 REAGENT</masterLabel>
+            <translation><!-- BD3 - VIDAS 3 REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BDO - OBSOLETE VIDAS CLINICAL OUTSOU</masterLabel>
+            <translation><!-- BDO - OBSOLETE VIDAS CLINICAL OUTSOU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BE - BIOCHEMISTRY</masterLabel>
+            <translation><!-- BE - BIOCHEMISTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BEO - OBSOLETE BIOCHEMISTRY OUTSOURC</masterLabel>
+            <translation><!-- BEO - OBSOLETE BIOCHEMISTRY OUTSOURC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BF1 - REAGENT FOR UF50/UF100 SPECIFI</masterLabel>
+            <translation><!-- BF1 - REAGENT FOR UF50/UF100 SPECIFI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BFR - FRANCE SPECIFIC REAGENT</masterLabel>
+            <translation><!-- BFR - FRANCE SPECIFIC REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BGE - GERMANY SPECIFIC REAGENT</masterLabel>
+            <translation><!-- BGE - GERMANY SPECIFIC REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BH - OBSOLETE HEMOSTASIS</masterLabel>
+            <translation><!-- BH - OBSOLETE HEMOSTASIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BI - PPM INDUSTRY CRAPONNE</masterLabel>
+            <translation><!-- BI - PPM INDUSTRY CRAPONNE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BIC - OBSOLETE INDUS PROD USED BY CL</masterLabel>
+            <translation><!-- BIC - OBSOLETE INDUS PROD USED BY CL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BIL - IL REAGENT</masterLabel>
+            <translation><!-- BIL - IL REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BIN - INDIA SPECIFIC REAGENT</masterLabel>
+            <translation><!-- BIN - INDIA SPECIFIC REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BIT - ITALY SPECIFIC REAGENT</masterLabel>
+            <translation><!-- BIT - ITALY SPECIFIC REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BK - HLA</masterLabel>
+            <translation><!-- BK - HLA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BL - LATEX MICROBIO</masterLabel>
+            <translation><!-- BL - LATEX MICROBIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLI - LATEX INDUSTRY</masterLabel>
+            <translation><!-- BLI - LATEX INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BM - BACTOMETER CULTURE MEDIA</masterLabel>
+            <translation><!-- BM - BACTOMETER CULTURE MEDIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BMD - PPM CLINICAL MADRID</masterLabel>
+            <translation><!-- BMD - PPM CLINICAL MADRID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BME - OBSOLETE SPECIFIC BIOMEDICS PR</masterLabel>
+            <translation><!-- BME - OBSOLETE SPECIFIC BIOMEDICS PR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BMI - PPM INDUSTRY MADRID</masterLabel>
+            <translation><!-- BMI - PPM INDUSTRY MADRID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BPO - POLAND SPECIFIC REAGENT</masterLabel>
+            <translation><!-- BPO - POLAND SPECIFIC REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BQ - VIDAS INDUSTRY</masterLabel>
+            <translation><!-- BQ - VIDAS INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BR - RIA/EIA</masterLabel>
+            <translation><!-- BR - RIA/EIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BS - IMMUNOSEROLOGY</masterLabel>
+            <translation><!-- BS - IMMUNOSEROLOGY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BSI - IMMUNOSEROLOGY INDUSTRIE</masterLabel>
+            <translation><!-- BSI - IMMUNOSEROLOGY INDUSTRIE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BSO - OBSOLETE IMMUNO SEROLOGY OUTSO</masterLabel>
+            <translation><!-- BSO - OBSOLETE IMMUNO SEROLOGY OUTSO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BSP - SPAIN SPECIFIC REAGENT</masterLabel>
+            <translation><!-- BSP - SPAIN SPECIFIC REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BU9 - UK PRODUCT AES</masterLabel>
+            <translation><!-- BU9 - UK PRODUCT AES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BV - VITEK REAGENT</masterLabel>
+            <translation><!-- BV - VITEK REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BV2 - VITEK 2 REAGENT</masterLabel>
+            <translation><!-- BV2 - VITEK 2 REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BVC - VITEK 2 COMPACT REAGENT</masterLabel>
+            <translation><!-- BVC - VITEK 2 COMPACT REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BW - MANUAL HEMOCULTURE</masterLabel>
+            <translation><!-- BW - MANUAL HEMOCULTURE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BX - CELL CULTURES</masterLabel>
+            <translation><!-- BX - CELL CULTURES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BZ - OBSOLETE VITEK INDUSTRY</masterLabel>
+            <translation><!-- BZ - OBSOLETE VITEK INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BZC - VITEK 2 COMPACT INDUSTRY</masterLabel>
+            <translation><!-- BZC - VITEK 2 COMPACT INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C07 - ATB</masterLabel>
+            <translation><!-- C07 - ATB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C08 - VITEK 1</masterLabel>
+            <translation><!-- C08 - VITEK 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C09 - VIDAS</masterLabel>
+            <translation><!-- C09 - VIDAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C10 - BACTOMETER</masterLabel>
+            <translation><!-- C10 - BACTOMETER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C11 - MINI VIDAS</masterLabel>
+            <translation><!-- C11 - MINI VIDAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C17 - MINI API</masterLabel>
+            <translation><!-- C17 - MINI API --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C18 - GEN-PROBE</masterLabel>
+            <translation><!-- C18 - GEN-PROBE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C20 - VITEK 2</masterLabel>
+            <translation><!-- C20 - VITEK 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C21 - VISUAL</masterLabel>
+            <translation><!-- C21 - VISUAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C23 - SELECTRA</masterLabel>
+            <translation><!-- C23 - SELECTRA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C28 - BACT-ALERT</masterLabel>
+            <translation><!-- C28 - BACT-ALERT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C29 - BACT-ALERT 3D</masterLabel>
+            <translation><!-- C29 - BACT-ALERT 3D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C30 - OBSOLETE THROMBOLYSER</masterLabel>
+            <translation><!-- C30 - OBSOLETE THROMBOLYSER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C31 - MDA</masterLabel>
+            <translation><!-- C31 - MDA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C33 - READER-WASHER-INCUBATOR</masterLabel>
+            <translation><!-- C33 - READER-WASHER-INCUBATOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C34 - MPP 3000</masterLabel>
+            <translation><!-- C34 - MPP 3000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C35 - TEKTIME</masterLabel>
+            <translation><!-- C35 - TEKTIME --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C36 - NUCLISENS ECL READER</masterLabel>
+            <translation><!-- C36 - NUCLISENS ECL READER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C37 - DGV</masterLabel>
+            <translation><!-- C37 - DGV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C38 - NUCLISENS EXTRACTOR</masterLabel>
+            <translation><!-- C38 - NUCLISENS EXTRACTOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C39 - MTX</masterLabel>
+            <translation><!-- C39 - MTX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C40 - AIR IDEAL</masterLabel>
+            <translation><!-- C40 - AIR IDEAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C41 - CLINLINE</masterLabel>
+            <translation><!-- C41 - CLINLINE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C43 - FLEXTEK 2</masterLabel>
+            <translation><!-- C43 - FLEXTEK 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C45 - MAX</masterLabel>
+            <translation><!-- C45 - MAX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C46 - NUCLISENS EASY Q EQUIPMENT</masterLabel>
+            <translation><!-- C46 - NUCLISENS EASY Q EQUIPMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C47 - HEMOSTASIS SMALL</masterLabel>
+            <translation><!-- C47 - HEMOSTASIS SMALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C48 - HAMILTON DILUTOR</masterLabel>
+            <translation><!-- C48 - HAMILTON DILUTOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C49 - VIGIACT</masterLabel>
+            <translation><!-- C49 - VIGIACT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C50 - daVINCI</masterLabel>
+            <translation><!-- C50 - daVINCI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C51 - FOOD EXPERT</masterLabel>
+            <translation><!-- C51 - FOOD EXPERT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C52 - TEMPO</masterLabel>
+            <translation><!-- C52 - TEMPO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C53 - IMMUNOASSAYS SOFTWARE</masterLabel>
+            <translation><!-- C53 - IMMUNOASSAYS SOFTWARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C54 - NUCLISENS MOD EQUIPM.</masterLabel>
+            <translation><!-- C54 - NUCLISENS MOD EQUIPM. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C55 - EASYMAG</masterLabel>
+            <translation><!-- C55 - EASYMAG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C56 - APIWEB INSTRUMENT</masterLabel>
+            <translation><!-- C56 - APIWEB INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C57 - VITEK 2 COMPACT</masterLabel>
+            <translation><!-- C57 - VITEK 2 COMPACT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C58 - daVINCI QUATTRO</masterLabel>
+            <translation><!-- C58 - daVINCI QUATTRO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C59 - VIDIA INSTRUMENT &amp; SOFTWARE</masterLabel>
+            <translation><!-- C59 - VIDIA INSTRUMENT &amp; SOFTWARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C61 - OBSOLETE PINCH DILUTOR</masterLabel>
+            <translation><!-- C61 - OBSOLETE PINCH DILUTOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C62 - AGILENT INSTRUMENT (BBCI)</masterLabel>
+            <translation><!-- C62 - AGILENT INSTRUMENT (BBCI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C63 - UF1000i INSTRUMENT SYSMEX</masterLabel>
+            <translation><!-- C63 - UF1000i INSTRUMENT SYSMEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C64 - INSTRUMENT PTS GRAM ID (US ONL</masterLabel>
+            <translation><!-- C64 - INSTRUMENT PTS GRAM ID (US ONL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C65 - VIGIGUARD</masterLabel>
+            <translation><!-- C65 - VIGIGUARD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C66 - PREVI ISOLA INSTRUMENT</masterLabel>
+            <translation><!-- C66 - PREVI ISOLA INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C67 - PREVI COLOR GRAM INSTRUMENT</masterLabel>
+            <translation><!-- C67 - PREVI COLOR GRAM INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C68 - BIOTOOLS INSTRUMENT</masterLabel>
+            <translation><!-- C68 - BIOTOOLS INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C69 - VERSATREK</masterLabel>
+            <translation><!-- C69 - VERSATREK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C70 - UF500 INSTRUMENT SYSMEX</masterLabel>
+            <translation><!-- C70 - UF500 INSTRUMENT SYSMEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C71 - ATB NEW</masterLabel>
+            <translation><!-- C71 - ATB NEW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C72 - AIR IDEAL TRACEABILITY</masterLabel>
+            <translation><!-- C72 - AIR IDEAL TRACEABILITY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C73 - VITEK MS IVD OR PLUS</masterLabel>
+            <translation><!-- C73 - VITEK MS IVD OR PLUS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C74 - VITEK MASS SPEC RUO</masterLabel>
+            <translation><!-- C74 - VITEK MASS SPEC RUO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C75 - INTERSCIENCE BAGMIXERS</masterLabel>
+            <translation><!-- C75 - INTERSCIENCE BAGMIXERS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C76 - INTERSCIENCE DILUTORS</masterLabel>
+            <translation><!-- C76 - INTERSCIENCE DILUTORS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C77 - INTERSCIENCE EASY SPIRAL</masterLabel>
+            <translation><!-- C77 - INTERSCIENCE EASY SPIRAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C78 - INTERSCIENCE SCANS</masterLabel>
+            <translation><!-- C78 - INTERSCIENCE SCANS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C79 - LABGUARD</masterLabel>
+            <translation><!-- C79 - LABGUARD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C80 - DILUMAT S-4-3MK2-3</masterLabel>
+            <translation><!-- C80 - DILUMAT S-4-3MK2-3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C81 - BLENDER</masterLabel>
+            <translation><!-- C81 - BLENDER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C82 - BLENDER EASYMIX-MIX1-MIX2</masterLabel>
+            <translation><!-- C82 - BLENDER EASYMIX-MIX1-MIX2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C83 - AUTOMATED DISPENSER – PLATE</masterLabel>
+            <translation><!-- C83 - AUTOMATED DISPENSER – PLATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C84 - BACTIFLOW</masterLabel>
+            <translation><!-- C84 - BACTIFLOW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C85 - CHEMSCAN</masterLabel>
+            <translation><!-- C85 - CHEMSCAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C86 - D COUNT</masterLabel>
+            <translation><!-- C86 - D COUNT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C87 - LABELMASTER</masterLabel>
+            <translation><!-- C87 - LABELMASTER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C88 - MEDIA PREPARATOR M60-M528-M09</masterLabel>
+            <translation><!-- C88 - MEDIA PREPARATOR M60-M528-M09 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C89 - PERISTALTIC PUMP</masterLabel>
+            <translation><!-- C89 - PERISTALTIC PUMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C90 - SAMPL AIR</masterLabel>
+            <translation><!-- C90 - SAMPL AIR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C91 - AUTOMATED DISPENSER – TUBE</masterLabel>
+            <translation><!-- C91 - AUTOMATED DISPENSER – TUBE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C92 - GTQ CYCLER 24</masterLabel>
+            <translation><!-- C92 - GTQ CYCLER 24 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C93 - SMART INCUBATOR</masterLabel>
+            <translation><!-- C93 - SMART INCUBATOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C94 - BTA VIRTUO</masterLabel>
+            <translation><!-- C94 - BTA VIRTUO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C95 - RAL TB STAINER</masterLabel>
+            <translation><!-- C95 - RAL TB STAINER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C96 - VIDAS 3</masterLabel>
+            <translation><!-- C96 - VIDAS 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C97 - OBSOLETE</masterLabel>
+            <translation><!-- C97 - OBSOLETE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C98 - PREVI COLOR V2</masterLabel>
+            <translation><!-- C98 - PREVI COLOR V2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C99 - CHEMPREP</masterLabel>
+            <translation><!-- C99 - CHEMPREP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CA1 - SCAN RDI</masterLabel>
+            <translation><!-- CA1 - SCAN RDI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CA2 - ADIAFOOD-VET</masterLabel>
+            <translation><!-- CA2 - ADIAFOOD-VET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CA3 - EASYSTREAM</masterLabel>
+            <translation><!-- CA3 - EASYSTREAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CA4 - DILUTOR BLUE LINE</masterLabel>
+            <translation><!-- CA4 - DILUTOR BLUE LINE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CA5 - MEDIA PREPARATOR M19 – S SERIE</masterLabel>
+            <translation><!-- CA5 - MEDIA PREPARATOR M19 – S SERIE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CA6 - AUTOMATED SPIRAL PLATER</masterLabel>
+            <translation><!-- CA6 - AUTOMATED SPIRAL PLATER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CA7 - COLONY COUNTER</masterLabel>
+            <translation><!-- CA7 - COLONY COUNTER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CA8 - FILMARRAY INSTRUMENT</masterLabel>
+            <translation><!-- CA8 - FILMARRAY INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CA9 - MEDIA PREPARATOR BLUE LINE</masterLabel>
+            <translation><!-- CA9 - MEDIA PREPARATOR BLUE LINE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CB1 - AUTOCLAVE</masterLabel>
+            <translation><!-- CB1 - AUTOCLAVE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CB2 - FLOW CABINET</masterLabel>
+            <translation><!-- CB2 - FLOW CABINET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CB3 - ANAEROBIC – HYPOXY WORKSTATION</masterLabel>
+            <translation><!-- CB3 - ANAEROBIC – HYPOXY WORKSTATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CB4 - CENTRIFUGE</masterLabel>
+            <translation><!-- CB4 - CENTRIFUGE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CB5 - COLD STORAGE</masterLabel>
+            <translation><!-- CB5 - COLD STORAGE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CB6 - INCUBATOR</masterLabel>
+            <translation><!-- CB6 - INCUBATOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CB7 - WATER BATH</masterLabel>
+            <translation><!-- CB7 - WATER BATH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CB8 - FASTH</masterLabel>
+            <translation><!-- CB8 - FASTH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CB9 - MICROSCOPE</masterLabel>
+            <translation><!-- CB9 - MICROSCOPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBR - BRAZIL SPECIFIC INSTRUMENT</masterLabel>
+            <translation><!-- CBR - BRAZIL SPECIFIC INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CC1 - GENE-UP INSTRUMENT</masterLabel>
+            <translation><!-- CC1 - GENE-UP INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CC2 - EMAG</masterLabel>
+            <translation><!-- CC2 - EMAG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CC3 - D COUNT M-25-50</masterLabel>
+            <translation><!-- CC3 - D COUNT M-25-50 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CC4 - WASP COPAN INSTRUMENT</masterLabel>
+            <translation><!-- CC4 - WASP COPAN INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CC5 - WASP LAB COPAN INSTRUMENT</masterLabel>
+            <translation><!-- CC5 - WASP LAB COPAN INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CC6 - EVISIGHT COMPACT INSTRUMENT</masterLabel>
+            <translation><!-- CC6 - EVISIGHT COMPACT INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CC7 - AUSTRALIA SPECIFIC INSTRUMENT</masterLabel>
+            <translation><!-- CC7 - AUSTRALIA SPECIFIC INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CC8 - eGENE UP EQUIPMENT</masterLabel>
+            <translation><!-- CC8 - eGENE UP EQUIPMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CC9 - FILMARRAY TORCH INSTRUMENT</masterLabel>
+            <translation><!-- CC9 - FILMARRAY TORCH INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCH - SUISSE SPECIFIC INSTRUMENT</masterLabel>
+            <translation><!-- CCH - SUISSE SPECIFIC INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CD1 - AIR IDEAL 3P RENEWED</masterLabel>
+            <translation><!-- CD1 - AIR IDEAL 3P RENEWED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CF1 - UF100 INSTRUMENT SYSMEX</masterLabel>
+            <translation><!-- CF1 - UF100 INSTRUMENT SYSMEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CF5 - UF50 INSTRUMENT SYSMEX</masterLabel>
+            <translation><!-- CF5 - UF50 INSTRUMENT SYSMEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CFR - FRANCE SPECIFIC INSTRUMENT</masterLabel>
+            <translation><!-- CFR - FRANCE SPECIFIC INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CIN - INDIA SPECIFIC INSTRUMENT</masterLabel>
+            <translation><!-- CIN - INDIA SPECIFIC INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CIT - ITALY SPECIFIC INSTRUMENT</masterLabel>
+            <translation><!-- CIT - ITALY SPECIFIC INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CONTROL - EQUIPMENT CONTROL</masterLabel>
+            <translation><!-- CONTROL - EQUIPMENT CONTROL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPO - POLAND SPECIFIC INSTRUMENT</masterLabel>
+            <translation><!-- CPO - POLAND SPECIFIC INSTRUMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CUS - STELLARA ** SPECIFIC US USE **</masterLabel>
+            <translation><!-- CUS - STELLARA ** SPECIFIC US USE ** --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D01 - BACT/VIEW (BTA3D)</masterLabel>
+            <translation><!-- D01 - BACT/VIEW (BTA3D) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D02 - BACT/VIEW (BTA CLASSIC)</masterLabel>
+            <translation><!-- D02 - BACT/VIEW (BTA CLASSIC) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D03 - OBSERVA ID/AST</masterLabel>
+            <translation><!-- D03 - OBSERVA ID/AST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D04 - OBSERVA BACT/ALERT</masterLabel>
+            <translation><!-- D04 - OBSERVA BACT/ALERT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D05 - BTA TEXT</masterLabel>
+            <translation><!-- D05 - BTA TEXT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D06 - VILINK</masterLabel>
+            <translation><!-- D06 - VILINK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D07 - MYLA</masterLabel>
+            <translation><!-- D07 - MYLA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D08 - CONNEXION INDUSTRY</masterLabel>
+            <translation><!-- D08 - CONNEXION INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D09 - NucliSENtral</masterLabel>
+            <translation><!-- D09 - NucliSENtral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D10 - KERN SYSTEM</masterLabel>
+            <translation><!-- D10 - KERN SYSTEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DIV - MISCELLANEOUS</masterLabel>
+            <translation><!-- DIV - MISCELLANEOUS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOGISTIC - LOGISTIC &amp; SALES CATALOG PROFI</masterLabel>
+            <translation><!-- LOGISTIC - LOGISTIC &amp; SALES CATALOG PROFI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOGISTNEW - NEW LOG &amp; SALES CATALOG PROFI</masterLabel>
+            <translation><!-- LOGISTNEW - NEW LOG &amp; SALES CATALOG PROFI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OE1 - OEM PRODUCTS FOR KC1</masterLabel>
+            <translation><!-- OE1 - OEM PRODUCTS FOR KC1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OE2 - OEM PRODUCTS FOR KC2</masterLabel>
+            <translation><!-- OE2 - OEM PRODUCTS FOR KC2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OE3 - LATEX MICROBIO OUTSOURCE</masterLabel>
+            <translation><!-- OE3 - LATEX MICROBIO OUTSOURCE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OE4 - OEM PRODUCTS FOR KC4</masterLabel>
+            <translation><!-- OE4 - OEM PRODUCTS FOR KC4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OE5 - OBSOLETE OEM PRODUCTS FOR KC5</masterLabel>
+            <translation><!-- OE5 - OBSOLETE OEM PRODUCTS FOR KC5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OE7 - OEM PRODUCTS FOR KC7</masterLabel>
+            <translation><!-- OE7 - OEM PRODUCTS FOR KC7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEI - OEM PRODUCTS FOR INDUSTRY</masterLabel>
+            <translation><!-- OEI - OEM PRODUCTS FOR INDUSTRY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S01 - SERV - VALIDATION PACKAGE</masterLabel>
+            <translation><!-- S01 - SERV - VALIDATION PACKAGE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S02 - SERV - CUSTOMER DIST LEARNING</masterLabel>
+            <translation><!-- S02 - SERV - CUSTOMER DIST LEARNING --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S03 - SERV - FACE TO FACE TRAINING</masterLabel>
+            <translation><!-- S03 - SERV - FACE TO FACE TRAINING --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S04 - SERV LAB PERF OPTIMIZATION</masterLabel>
+            <translation><!-- S04 - SERV LAB PERF OPTIMIZATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S05 - TECHNICAL LIBRARY APPLICATION</masterLabel>
+            <translation><!-- S05 - TECHNICAL LIBRARY APPLICATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YCN01-000 - bMx Maint - Shangai</masterLabel>
+            <translation><!-- YCN01-000 - bMx Maint - Shangai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YES03-000 - bMx Maint - Tres Cantos</masterLabel>
+            <translation><!-- YES03-000 - bMx Maint - Tres Cantos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YFR01-000 - bMx Maint - Craponne</masterLabel>
+            <translation><!-- YFR01-000 - bMx Maint - Craponne --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YFR02-000 - bMx Maint - La Balme</masterLabel>
+            <translation><!-- YFR02-000 - bMx Maint - La Balme --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YFR03-000 - bMx Maint - Marcy</masterLabel>
+            <translation><!-- YFR03-000 - bMx Maint - Marcy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YFR04-000 - bMx Maint - Grenoble</masterLabel>
+            <translation><!-- YFR04-000 - bMx Maint - Grenoble --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YFR05-000 - bMx Maint - IDC</masterLabel>
+            <translation><!-- YFR05-000 - bMx Maint - IDC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YIT01-000 - bMx Maint - Florence</masterLabel>
+            <translation><!-- YIT01-000 - bMx Maint - Florence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YMAINT-00 - bMx Maint</masterLabel>
+            <translation><!-- YMAINT-00 - bMx Maint --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YUS01-000 - bMx Maint - Durham</masterLabel>
+            <translation><!-- YUS01-000 - bMx Maint - Durham --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YUS02-000 - bMx Maint - Lombard</masterLabel>
+            <translation><!-- YUS02-000 - bMx Maint - Lombard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YUS03-000 - bMx Maint - Saint Louis</masterLabel>
+            <translation><!-- YUS03-000 - bMx Maint - Saint Louis --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Categorie_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Category_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Closed Date --></label>
+        <name>ClosedDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date of closure of the Case in SAP. It is applicable only to legacy Technical Complaints that were open in SAP before the CRM went live. It is also applicable to Commercial Complaint because these ones are created and managed only in SAP for Wave 4. --></help>
+        <label><!-- SAP Closed Date --></label>
+        <name>ClosedDate_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- [ Sofyen comment: Wave1+2 legacy field. I think it can be deleted. Check with integrations team ] --></help>
+        <label><!-- Complaint Purpose --></label>
+        <name>ComplaintPurpose_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- TW field Auto-Checked by WF &quot;ConfAnswerGivenToCustByLevel1&quot;  Case is closed --></help>
+        <label><!-- ConfAnswerGivenToCustByLevel1 --></label>
+        <name>ConfAnswerGivenToCustByLevel1_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Received Connection ID --></label>
+        <name>ConnectionReceivedId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sent Connection ID --></label>
+        <name>ConnectionSentId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Email --></label>
+        <name>ContactEmail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Email --></label>
+        <name>ContactEmail_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Extension --></label>
+        <name>ContactExtension_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Fax --></label>
+        <name>ContactFax__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact ID --></label>
+        <name>ContactId__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact Mobile --></label>
+        <name>ContactMobile__c</name>
+    </fields>
+    <fields>
+        <help><!-- Technical field for Email templates where Contact Name is referenced, put format &quot;Dear Mr John Smith&quot; if Contact known otherwise leave it blank --></help>
+        <label><!-- Contact Name for Emails --></label>
+        <name>ContactNameForEmails_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Phone --></label>
+        <name>ContactPhone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Name --></label>
+        <name>Contact_Name_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- [ Sofyen comment: Wave1+2 legacy field. I think it can be deleted. Check with integrations team ] --></help>
+        <label><!-- Context --></label>
+        <name>Context_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tech field to count the number of Case&apos;s related AER with Adverse Event State&quot;=&quot;Closed Done or Closed Canceled&quot;
+Utilised in WF &quot;AER_CaseRE_No&quot; to update Case RE=No if AER Decision=Not Reportable --></help>
+        <label><!-- Count AER Closed Done --></label>
+        <name>CountAER_ClosedDone_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tech field to count the number of Case&apos;s related AER with &quot;Adverse Event Decision / Answer&quot;=Local Assessment
+Used in WF &quot;AER_CaseRE_No&quot; to update Case RE=No --></help>
+        <label><!-- Count AER Local Assessment --></label>
+        <name>CountAER_Local_Assessment_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tech field to count the number of AER related with a Case, that are NOT in Status=&quot;Closed Done&quot; (meaning these AER are Open). --></help>
+        <label><!-- Count AER in Not &quot;Closed Done&quot; --></label>
+        <name>CountAER_NotClosedDone_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tech field to count the number of Case&apos;s related AER with &quot;Adverse Event Decision / Answer&quot;=Not Reportable.
+Utilised in WF &quot;AER_CaseRE_No&quot; to update Case RE=No if all AER State=Closed Done --></help>
+        <label><!-- Count AER Not Reportable --></label>
+        <name>CountAER_NotReportable_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tech field to count the number of Case&apos;s related AER with &quot;Adverse Event Decision / Answer&quot;=Reportable
+Utilised in WF &quot;AER_CaseRE_Yes&quot; to update Case RE=Yes --></help>
+        <label><!-- Count AER Reportable --></label>
+        <name>CountAER_Reportable_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tech field to count the number of INVESTIGATIONS related with a Case, that are NOT in Status=&quot;Closed Done&quot; (meaning these Investigations are Open). --></help>
+        <label><!-- Count Invest in Not &quot;Closed&quot; --></label>
+        <name>CountInvest_NotClosedDone_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tech field to count the number of INVESTIGATIONS related with a Case. --></help>
+        <label><!-- Count Invest --></label>
+        <name>CountInvest_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Count the number of Time Sheet Entries related to the Case. Needed because any type of Case cannot be closed if there are ZERO related Time Sheet Entry have been created. --></help>
+        <label><!-- CountTimeSheetEntries --></label>
+        <name>CountTimeSheetEntries_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By ID --></label>
+        <name>CreatedById__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By Name --></label>
+        <name>Created_By_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Creation Date --></label>
+        <name>CreationDate_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAP Creator Name --></label>
+        <name>CreatorName_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Level to which the Case is currently assigned. --></help>
+        <label><!-- Current Level --></label>
+        <name>CurrentLevel_c__c</name>
+        <picklistValues>
+            <masterLabel>Level 1</masterLabel>
+            <translation><!-- Level 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 2</masterLabel>
+            <translation><!-- Level 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Current Status DateTime --></label>
+        <name>CurrentStatusDateTime_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Contact Date --></label>
+        <name>CustomerContactDate_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- [ Sofyen comment: Wave1+2 legacy field. I think it can be deleted. Check with integrations team ] --></help>
+        <label><!-- Customer Needs --></label>
+        <name>CustomerNeeds_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Use this field to udpate the Case Description --></help>
+        <label><!-- Description Update --></label>
+        <name>DescriptionUpdate_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Standard Description field is not used and hidden to all users. It is just used to capture Email2Case body. then WF &quot;Case.DescriptionUpdate&quot; copies it in the custom field Description__c. Purpose of Description__c: have a field &gt; 30K size for TW+SAP reason --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Long Description --></label>
+        <name>Description_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Does Action Code = NEED FSE TO REPAIR - C030 --></help>
+        <label><!-- Dispatched C030? --></label>
+        <name>Dispatched_C030_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Division --></label>
+        <name>Division_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Due Date --></label>
+        <name>DueDate_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- For Reporting Only. Calculates the days between the current status date and today for cases --></help>
+        <label><!-- Duration Current Status Case --></label>
+        <name>DurationCurrentStatusCase_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select the Country or Department, it will show &quot;Email2Case Sender&quot; of that Country only --></help>
+        <label><!-- Country/Department --></label>
+        <name>Email2CaseSenderFilter_c__c</name>
+        <picklistValues>
+            <masterLabel>Afghanistan</masterLabel>
+            <translation><!-- Afghanistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aland Islands</masterLabel>
+            <translation><!-- Aland Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Albania</masterLabel>
+            <translation><!-- Albania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Algeria</masterLabel>
+            <translation><!-- Algeria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amer.Virgin Is.</masterLabel>
+            <translation><!-- Amer.Virgin Is. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Andorra</masterLabel>
+            <translation><!-- Andorra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Angola</masterLabel>
+            <translation><!-- Angola --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anguilla</masterLabel>
+            <translation><!-- Anguilla --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Antarctica</masterLabel>
+            <translation><!-- Antarctica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Antigua and Barbuda</masterLabel>
+            <translation><!-- Antigua and Barbuda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Argentina</masterLabel>
+            <translation><!-- Argentina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Armenia</masterLabel>
+            <translation><!-- Armenia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aruba</masterLabel>
+            <translation><!-- Aruba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia</masterLabel>
+            <translation><!-- Australia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Austria</masterLabel>
+            <translation><!-- Austria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azerbaijan</masterLabel>
+            <translation><!-- Azerbaijan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bahamas</masterLabel>
+            <translation><!-- Bahamas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bahrain</masterLabel>
+            <translation><!-- Bahrain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bangladesh</masterLabel>
+            <translation><!-- Bangladesh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barbados</masterLabel>
+            <translation><!-- Barbados --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belarus</masterLabel>
+            <translation><!-- Belarus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belgium</masterLabel>
+            <translation><!-- Belgium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belize</masterLabel>
+            <translation><!-- Belize --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benin</masterLabel>
+            <translation><!-- Benin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bermuda</masterLabel>
+            <translation><!-- Bermuda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bhutan</masterLabel>
+            <translation><!-- Bhutan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bolivia, Plurinational State of</masterLabel>
+            <translation><!-- Bolivia, Plurinational State of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bonaire, Sint Eustatius and Saba</masterLabel>
+            <translation><!-- Bonaire, Sint Eustatius and Saba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bosnia and Herzegovina</masterLabel>
+            <translation><!-- Bosnia and Herzegovina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Botswana</masterLabel>
+            <translation><!-- Botswana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bouvet Island</masterLabel>
+            <translation><!-- Bouvet Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brazil</masterLabel>
+            <translation><!-- Brazil --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>British Indian Ocean Territory</masterLabel>
+            <translation><!-- British Indian Ocean Territory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brunei Darussalam</masterLabel>
+            <translation><!-- Brunei Darussalam --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulgaria</masterLabel>
+            <translation><!-- Bulgaria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Burkina Faso</masterLabel>
+            <translation><!-- Burkina Faso --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Burundi</masterLabel>
+            <translation><!-- Burundi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSI</masterLabel>
+            <translation><!-- CSI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cambodia</masterLabel>
+            <translation><!-- Cambodia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cameroon</masterLabel>
+            <translation><!-- Cameroon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canada</masterLabel>
+            <translation><!-- Canada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cape Verde</masterLabel>
+            <translation><!-- Cape Verde --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cayman Islands</masterLabel>
+            <translation><!-- Cayman Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central African Republic</masterLabel>
+            <translation><!-- Central African Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chad</masterLabel>
+            <translation><!-- Chad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chile</masterLabel>
+            <translation><!-- Chile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China</masterLabel>
+            <translation><!-- China --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese Taipei</masterLabel>
+            <translation><!-- Chinese Taipei --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Christmas Island</masterLabel>
+            <translation><!-- Christmas Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cocos (Keeling) Islands</masterLabel>
+            <translation><!-- Cocos (Keeling) Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Colombia</masterLabel>
+            <translation><!-- Colombia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comoros</masterLabel>
+            <translation><!-- Comoros --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Congo</masterLabel>
+            <translation><!-- Congo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Congo, the Democratic Republic of the</masterLabel>
+            <translation><!-- Congo, the Democratic Republic of the --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cook Islands</masterLabel>
+            <translation><!-- Cook Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Costa Rica</masterLabel>
+            <translation><!-- Costa Rica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cote d'Ivoire</masterLabel>
+            <translation><!-- Cote d&apos;Ivoire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Croatia</masterLabel>
+            <translation><!-- Croatia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cuba</masterLabel>
+            <translation><!-- Cuba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Curaçao</masterLabel>
+            <translation><!-- Curaçao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cyprus</masterLabel>
+            <translation><!-- Cyprus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Czech Republic</masterLabel>
+            <translation><!-- Czech Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denmark</masterLabel>
+            <translation><!-- Denmark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Djibouti</masterLabel>
+            <translation><!-- Djibouti --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dominica</masterLabel>
+            <translation><!-- Dominica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dominican Republic</masterLabel>
+            <translation><!-- Dominican Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dutch Antilles</masterLabel>
+            <translation><!-- Dutch Antilles --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ecuador</masterLabel>
+            <translation><!-- Ecuador --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Egypt</masterLabel>
+            <translation><!-- Egypt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Salvador</masterLabel>
+            <translation><!-- El Salvador --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Equatorial Guinea</masterLabel>
+            <translation><!-- Equatorial Guinea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eritrea</masterLabel>
+            <translation><!-- Eritrea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Estonia</masterLabel>
+            <translation><!-- Estonia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ethiopia</masterLabel>
+            <translation><!-- Ethiopia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>European Union</masterLabel>
+            <translation><!-- European Union --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Falkland Islands (Malvinas)</masterLabel>
+            <translation><!-- Falkland Islands (Malvinas) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Faroe Islands</masterLabel>
+            <translation><!-- Faroe Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fiji</masterLabel>
+            <translation><!-- Fiji --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finland</masterLabel>
+            <translation><!-- Finland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>France</masterLabel>
+            <translation><!-- France --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French Guiana</masterLabel>
+            <translation><!-- French Guiana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French Polynesia</masterLabel>
+            <translation><!-- French Polynesia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French Southern Territories</masterLabel>
+            <translation><!-- French Southern Territories --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GCS</masterLabel>
+            <translation><!-- GCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gabon</masterLabel>
+            <translation><!-- Gabon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gambia</masterLabel>
+            <translation><!-- Gambia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Georgia</masterLabel>
+            <translation><!-- Georgia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Germany</masterLabel>
+            <translation><!-- Germany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ghana</masterLabel>
+            <translation><!-- Ghana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gibraltar</masterLabel>
+            <translation><!-- Gibraltar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greece</masterLabel>
+            <translation><!-- Greece --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greenland</masterLabel>
+            <translation><!-- Greenland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grenada</masterLabel>
+            <translation><!-- Grenada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guadeloupe</masterLabel>
+            <translation><!-- Guadeloupe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guatemala</masterLabel>
+            <translation><!-- Guatemala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guernsey</masterLabel>
+            <translation><!-- Guernsey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guinea</masterLabel>
+            <translation><!-- Guinea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guinea-Bissau</masterLabel>
+            <translation><!-- Guinea-Bissau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guyana</masterLabel>
+            <translation><!-- Guyana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haiti</masterLabel>
+            <translation><!-- Haiti --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Heard Island and McDonald Islands</masterLabel>
+            <translation><!-- Heard Island and McDonald Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Holy See (Vatican City State)</masterLabel>
+            <translation><!-- Holy See (Vatican City State) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Honduras</masterLabel>
+            <translation><!-- Honduras --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hong Kong</masterLabel>
+            <translation><!-- Hong Kong --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hungary</masterLabel>
+            <translation><!-- Hungary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iceland</masterLabel>
+            <translation><!-- Iceland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indonesia</masterLabel>
+            <translation><!-- Indonesia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iran, Islamic Republic of</masterLabel>
+            <translation><!-- Iran, Islamic Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iraq</masterLabel>
+            <translation><!-- Iraq --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ireland</masterLabel>
+            <translation><!-- Ireland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Isle of Man</masterLabel>
+            <translation><!-- Isle of Man --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Israel</masterLabel>
+            <translation><!-- Israel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italy</masterLabel>
+            <translation><!-- Italy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jamaica</masterLabel>
+            <translation><!-- Jamaica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan</masterLabel>
+            <translation><!-- Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jersey</masterLabel>
+            <translation><!-- Jersey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jordan</masterLabel>
+            <translation><!-- Jordan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kazakhstan</masterLabel>
+            <translation><!-- Kazakhstan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kenya</masterLabel>
+            <translation><!-- Kenya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kiribati</masterLabel>
+            <translation><!-- Kiribati --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korea, Democratic People's Republic of</masterLabel>
+            <translation><!-- Korea, Democratic People&apos;s Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korea, Republic of</masterLabel>
+            <translation><!-- Korea, Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kuwait</masterLabel>
+            <translation><!-- Kuwait --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kyrgyzstan</masterLabel>
+            <translation><!-- Kyrgyzstan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lao People's Democratic Republic</masterLabel>
+            <translation><!-- Lao People&apos;s Democratic Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Latvia</masterLabel>
+            <translation><!-- Latvia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lebanon</masterLabel>
+            <translation><!-- Lebanon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lesotho</masterLabel>
+            <translation><!-- Lesotho --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Liberia</masterLabel>
+            <translation><!-- Liberia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Libyan Arab Jamahiriya</masterLabel>
+            <translation><!-- Libyan Arab Jamahiriya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Liechtenstein</masterLabel>
+            <translation><!-- Liechtenstein --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lithuania</masterLabel>
+            <translation><!-- Lithuania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luxembourg</masterLabel>
+            <translation><!-- Luxembourg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macao</masterLabel>
+            <translation><!-- Macao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macedonia, the former Yugoslav Republic of</masterLabel>
+            <translation><!-- Macedonia, the former Yugoslav Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Madagascar</masterLabel>
+            <translation><!-- Madagascar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malawi</masterLabel>
+            <translation><!-- Malawi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malaysia</masterLabel>
+            <translation><!-- Malaysia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maldives</masterLabel>
+            <translation><!-- Maldives --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mali</masterLabel>
+            <translation><!-- Mali --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malta</masterLabel>
+            <translation><!-- Malta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Martinique</masterLabel>
+            <translation><!-- Martinique --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mauritania</masterLabel>
+            <translation><!-- Mauritania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mauritius</masterLabel>
+            <translation><!-- Mauritius --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mayotte</masterLabel>
+            <translation><!-- Mayotte --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mexico</masterLabel>
+            <translation><!-- Mexico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moldova, Republic of</masterLabel>
+            <translation><!-- Moldova, Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monaco</masterLabel>
+            <translation><!-- Monaco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mongolia</masterLabel>
+            <translation><!-- Mongolia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Montenegro</masterLabel>
+            <translation><!-- Montenegro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Montserrat</masterLabel>
+            <translation><!-- Montserrat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morocco</masterLabel>
+            <translation><!-- Morocco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mozambique</masterLabel>
+            <translation><!-- Mozambique --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Myanmar</masterLabel>
+            <translation><!-- Myanmar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Namibia</masterLabel>
+            <translation><!-- Namibia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nauru</masterLabel>
+            <translation><!-- Nauru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nepal</masterLabel>
+            <translation><!-- Nepal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Netherlands</masterLabel>
+            <translation><!-- Netherlands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Caledonia</masterLabel>
+            <translation><!-- New Caledonia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Zealand</masterLabel>
+            <translation><!-- New Zealand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nicaragua</masterLabel>
+            <translation><!-- Nicaragua --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Niger</masterLabel>
+            <translation><!-- Niger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nigeria</masterLabel>
+            <translation><!-- Nigeria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Niue</masterLabel>
+            <translation><!-- Niue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norfolk Island</masterLabel>
+            <translation><!-- Norfolk Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norway</masterLabel>
+            <translation><!-- Norway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oman</masterLabel>
+            <translation><!-- Oman --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pakistan</masterLabel>
+            <translation><!-- Pakistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Palestinian Territory, Occupied</masterLabel>
+            <translation><!-- Palestinian Territory, Occupied --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Panama</masterLabel>
+            <translation><!-- Panama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Papua New Guinea</masterLabel>
+            <translation><!-- Papua New Guinea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paraguay</masterLabel>
+            <translation><!-- Paraguay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Peru</masterLabel>
+            <translation><!-- Peru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Philippines</masterLabel>
+            <translation><!-- Philippines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pitcairn</masterLabel>
+            <translation><!-- Pitcairn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poland</masterLabel>
+            <translation><!-- Poland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portugal</masterLabel>
+            <translation><!-- Portugal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qatar</masterLabel>
+            <translation><!-- Qatar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reunion</masterLabel>
+            <translation><!-- Reunion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Romania</masterLabel>
+            <translation><!-- Romania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian Federation</masterLabel>
+            <translation><!-- Russian Federation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rwanda</masterLabel>
+            <translation><!-- Rwanda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Barthélemy</masterLabel>
+            <translation><!-- Saint Barthélemy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Helena, Ascension and Tristan da Cunha</masterLabel>
+            <translation><!-- Saint Helena, Ascension and Tristan da Cunha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Kitts and Nevis</masterLabel>
+            <translation><!-- Saint Kitts and Nevis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Lucia</masterLabel>
+            <translation><!-- Saint Lucia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Martin (French part)</masterLabel>
+            <translation><!-- Saint Martin (French part) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Pierre and Miquelon</masterLabel>
+            <translation><!-- Saint Pierre and Miquelon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Vincent and the Grenadines</masterLabel>
+            <translation><!-- Saint Vincent and the Grenadines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samoa, America</masterLabel>
+            <translation><!-- Samoa, America --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Marino</masterLabel>
+            <translation><!-- San Marino --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sao Tome and Principe</masterLabel>
+            <translation><!-- Sao Tome and Principe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saudi Arabia</masterLabel>
+            <translation><!-- Saudi Arabia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Senegal</masterLabel>
+            <translation><!-- Senegal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serbia</masterLabel>
+            <translation><!-- Serbia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seychelles</masterLabel>
+            <translation><!-- Seychelles --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sierra Leone</masterLabel>
+            <translation><!-- Sierra Leone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Singapore</masterLabel>
+            <translation><!-- Singapore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sint Maarten (Dutch part)</masterLabel>
+            <translation><!-- Sint Maarten (Dutch part) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slovakia</masterLabel>
+            <translation><!-- Slovakia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slovenia</masterLabel>
+            <translation><!-- Slovenia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solomon Islands</masterLabel>
+            <translation><!-- Solomon Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Somalia</masterLabel>
+            <translation><!-- Somalia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Africa</masterLabel>
+            <translation><!-- South Africa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Georgia and the South Sandwich Islands</masterLabel>
+            <translation><!-- South Georgia and the South Sandwich Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Sudan</masterLabel>
+            <translation><!-- South Sudan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spain</masterLabel>
+            <translation><!-- Spain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sri Lanka</masterLabel>
+            <translation><!-- Sri Lanka --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sudan</masterLabel>
+            <translation><!-- Sudan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Suriname</masterLabel>
+            <translation><!-- Suriname --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Svalbard and Jan Mayen</masterLabel>
+            <translation><!-- Svalbard and Jan Mayen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swaziland</masterLabel>
+            <translation><!-- Swaziland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sweden</masterLabel>
+            <translation><!-- Sweden --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Switzerland</masterLabel>
+            <translation><!-- Switzerland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Syrian Arab Republic</masterLabel>
+            <translation><!-- Syrian Arab Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tajikistan</masterLabel>
+            <translation><!-- Tajikistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tanzania, United Republic of</masterLabel>
+            <translation><!-- Tanzania, United Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thailand</masterLabel>
+            <translation><!-- Thailand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Timor-Leste</masterLabel>
+            <translation><!-- Timor-Leste --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Togo</masterLabel>
+            <translation><!-- Togo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tokelau</masterLabel>
+            <translation><!-- Tokelau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tonga</masterLabel>
+            <translation><!-- Tonga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trinidad and Tobago</masterLabel>
+            <translation><!-- Trinidad and Tobago --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tunisia</masterLabel>
+            <translation><!-- Tunisia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkmenistan</masterLabel>
+            <translation><!-- Turkmenistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turks and Caicos Islands</masterLabel>
+            <translation><!-- Turks and Caicos Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tuvalu</masterLabel>
+            <translation><!-- Tuvalu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uganda</masterLabel>
+            <translation><!-- Uganda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ukraine</masterLabel>
+            <translation><!-- Ukraine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United Arab Emirates</masterLabel>
+            <translation><!-- United Arab Emirates --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United Kingdom</masterLabel>
+            <translation><!-- United Kingdom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United States</masterLabel>
+            <translation><!-- United States --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uruguay</masterLabel>
+            <translation><!-- Uruguay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uzbekistan</masterLabel>
+            <translation><!-- Uzbekistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vanuatu</masterLabel>
+            <translation><!-- Vanuatu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Venezuela, Bolivarian Republic of</masterLabel>
+            <translation><!-- Venezuela, Bolivarian Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Viet Nam</masterLabel>
+            <translation><!-- Viet Nam --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wallis and Futuna</masterLabel>
+            <translation><!-- Wallis and Futuna --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Western Sahara</masterLabel>
+            <translation><!-- Western Sahara --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yemen</masterLabel>
+            <translation><!-- Yemen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zambia</masterLabel>
+            <translation><!-- Zambia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zimbabwe</masterLabel>
+            <translation><!-- Zimbabwe --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Select the Email2Case that will send the ATC to the Contact
+If the customer answers to the ATC, it will be canned into the Case&apos;s Email. --></help>
+        <label><!-- Email2Case Sender --></label>
+        <name>Email2CaseSender_c__c</name>
+        <picklistValues>
+            <masterLabel>CRCclinique@biomerieux.com</masterLabel>
+            <translation><!-- CRCclinique@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CRCindustrie@biomerieux.com</masterLabel>
+            <translation><!-- CRCindustrie@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CanadaHotline@biomerieux.com</masterLabel>
+            <translation><!-- CanadaHotline@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Csi.stl@biomerieux.com</masterLabel>
+            <translation><!-- Csi.stl@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CustomerService-BTA@biomerieux.com</masterLabel>
+            <translation><!-- CustomerService-BTA@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CustomerService-Connectivity@biomerieux.com</masterLabel>
+            <translation><!-- CustomerService-Connectivity@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CustomerService-IDAST@biomerieux.com</masterLabel>
+            <translation><!-- CustomerService-IDAST@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CustomerService-ImmunoMolecular@biomerieux.com</masterLabel>
+            <translation><!-- CustomerService-ImmunoMolecular@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UStechnicalsupport@biomerieux.com</masterLabel>
+            <translation><!-- UStechnicalsupport@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+e2cclinicalbmxdesign@gmail.com</masterLabel>
+            <translation><!-- whenutest2+e2cclinicalbmxdesign@gmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+e2cclinicalbmxrout@gmail.com</masterLabel>
+            <translation><!-- whenutest2+e2cclinicalbmxrout@gmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+e2cindustrybmxrout@gmail.com</masterLabel>
+            <translation><!-- whenutest2+e2cindustrybmxrout@gmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+fre2cclinicalbmxrout@gmail.com</masterLabel>
+            <translation><!-- whenutest2+fre2cclinicalbmxrout@gmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+fre2cindustrybmxrout@gmail.com</masterLabel>
+            <translation><!-- whenutest2+fre2cindustrybmxrout@gmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+usvilinkrout@gmail.com</masterLabel>
+            <translation><!-- whenutest2+usvilinkrout@gmail.com --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The Email2Case origin (if applicable) --></help>
+        <label><!-- Web/Email2Case Origin --></label>
+        <name>Email2Case_Origin_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Search Entitlements of the Asset referenced in the Case, and only of this Asset.
+When Case is saved, also System entitlements can be searched in this field. --></help>
+        <label><!-- Entitlement ID --></label>
+        <name>EntitlementId__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Name --></label>
+        <name>Entitlement_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter 2 characters of the Code Group and click the search lookup --></help>
+        <label><!-- Error Code --></label>
+        <name>ErrorCode_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Error Code Name --></label>
+        <name>Error_Code_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- FSL Offline Asset Not Found --></label>
+        <name>FSLOfflineAssetNotFound_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedback --></label>
+        <name>Feedback_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- The first time the Case was escalated from level 1 to Level 2 --></help>
+        <label><!-- First L2 Escalation Date --></label>
+        <name>FirstL2EscalationDate_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- First L2 Ownership Taken --></label>
+        <name>FirstL2OwnershipTaken_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- As CSR, you fixed that Case through remote access without needing a field intervention --></help>
+        <label><!-- Fixed Remotely --></label>
+        <name>FixedOnPhone_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- The System (or Root Asset) of the Asset concerned by the Case
+Hover-Over to see the Functional Location number (SAP Asset Number) --></help>
+        <label><!-- System --></label>
+        <name>FunctionalLocation_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Functional Location Number --></label>
+        <name>Functional_Location_Number_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Have data containing protected patient data been copied from customer site to any bioMérieux system for this case? --></help>
+        <label><!-- Patient data copied to BMX LCS System ? --></label>
+        <name>GDPR_L1Q1_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- If yes, did you follow corporate procedure on protection of patient data (SOP 031664 - Corporate Procedure to Protect Patient Data)? --></help>
+        <label><!-- L1 - If yes, SOP 031664 followed ? --></label>
+        <name>GDPR_L1Q2_c__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Have data containing protected patient data linked to this case been copied from customer site to any bioMérieux system for Level 2 analysis? --></help>
+        <label><!-- Patient data copied to BMX L2 System ? --></label>
+        <name>GDPR_L2Q1_c__c</name>
+        <picklistValues>
+            <masterLabel>NO</masterLabel>
+            <translation><!-- NO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YES</masterLabel>
+            <translation><!-- YES --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- If yes, did you follow corporate procedure on protection of patient data (SOP 031664 - Corporate Procedure to Protect Patient Data) --></help>
+        <label><!-- L2, If yes, SOP 031664 followed ? --></label>
+        <name>GDPR_L2Q2_c__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YES</masterLabel>
+            <translation><!-- YES --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Global Field Action --></label>
+        <name>GlobalFieldAction_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Shows a Comment icon when this Case has a New Case Comment
+Shows a Dash icon when this Case does not have any new Case Comment --></help>
+        <label><!-- New Comment --></label>
+        <name>HasNewCaseCommentIcon_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- When a new email from custom is received in the Case, this checkbox is checked.
+When an email is sent from the Case, this checkbox is unchecked
+You can also manually uncheck it here or with the &quot;Unflag&quot; quick action in the feed view. --></help>
+        <label><!-- New Email from Customer --></label>
+        <name>HasNewEmailCheckbox_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Email from Customer --></label>
+        <name>HasNewEmailicon_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has User Owner --></label>
+        <name>HasUserOwner_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Have data containing Patient Health Info --></label>
+        <name>Have_data_containing_Patient_Health_Info__c</name>
+        <picklistValues>
+            <masterLabel>Have data containing Patient Health Information been copied from customer site to any bioMérieux system for this case?</masterLabel>
+            <translation><!-- Have data containing Patient Health Information been copied from customer site to any bioMérieux system for this case? --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Decision tree auto-updates &quot;INVEST&quot; field to Yes or No.
+If &quot;INVEST&quot;=No, then &quot;No Invest Justification&quot; is mandatory --></help>
+        <label><!-- INVEST --></label>
+        <name>INVEST_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- If Case Type is Non Qualified, please select an appropriate Case Type --></help>
+        <label><!-- Info --></label>
+        <name>Info1_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAP Interface Error Message --></label>
+        <name>InterfaceErrorMessage_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAP Interface Status --></label>
+        <name>InterfaceStatus_c__c</name>
+        <picklistValues>
+            <masterLabel>Error</masterLabel>
+            <translation><!-- Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sending</masterLabel>
+            <translation><!-- Sending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent</masterLabel>
+            <translation><!-- Sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>To be sent</masterLabel>
+            <translation><!-- To be sent --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Are any Complaint data missing? --></help>
+        <label><!-- InvQ1 Any Complaint data missing? --></label>
+        <name>InvQ1_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Is the Technical Complaint an RE? --></help>
+        <label><!-- InvQ2 Is the Technical Complaint an RE ? --></label>
+        <name>InvQ2_c__c</name>
+        <picklistValues>
+            <masterLabel>No or Not decided yet</masterLabel>
+            <translation><!-- No or Not decided yet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Does an open Investigation on this issue already exist ? --></help>
+        <label><!-- InvQ3 Open Invest exist on issue? --></label>
+        <name>InvQ3_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Was the IFU followed ? --></help>
+        <label><!-- InvQ4 Was the IFU followed? --></label>
+        <name>InvQ4_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- InvQ5 User/Customer impact/risk? --></label>
+        <name>InvQ5_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Is the Trend on the issue acceptable ? --></help>
+        <label><!-- InvQ6 Trend on the issue acceptable? --></label>
+        <name>InvQ6_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Hidden field Needed For Trackwise. The &quot;Employee Number&quot; of the User who updated the INVEST to YES or NO. --></help>
+        <label><!-- Invest Submitted By --></label>
+        <name>InvestSubmittedBy_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- When Case Status determined as &quot;Irrelevant&quot; a reason must be given --></help>
+        <label><!-- Irrelevant Case Reason --></label>
+        <name>IrrelevantCaseReason_c__c</name>
+        <picklistValues>
+            <masterLabel>Case created by mistake</masterLabel>
+            <translation><!-- Case created by mistake --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate case</masterLabel>
+            <translation><!-- Duplicate case --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Case Account = Asset Account? --></label>
+        <name>IsCaseAccountAssetAccount_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- For Reporting Use Only: Determines if the time the case was open (closed date - created date) is greater than 5 days. --></help>
+        <label><!-- Is Case Open &gt;5 Days --></label>
+        <name>IsCaseOpen5Days_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Case POR? --></label>
+        <name>IsCasePor_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Closed When Created --></label>
+        <name>IsClosedOnCreate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Closed --></label>
+        <name>IsClosed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Created By Current User? --></label>
+        <name>IsCreatedByCurrentUser_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Escalated --></label>
+        <name>IsEscalated__c</name>
+    </fields>
+    <fields>
+        <help><!-- If this Case is internal, check this box --></help>
+        <label><!-- Internal Case --></label>
+        <name>IsInternalCase_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is L2 Deescalation Managed by L1? --></label>
+        <name>IsL2DeescalationManagedByL1_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platinum --></label>
+        <name>IsPlatinum_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stopped --></label>
+        <name>IsStopped__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is User SAP Owner? --></label>
+        <name>IsUserSapOwner_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- For Reporting Use Only: Determines if the time the case was open (closed date - created date) is greater than 25 days. --></help>
+        <label><!-- Is Case Open &gt;25 Days --></label>
+        <name>Is_Case_Open_25_Days_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- For Reporting Use Only: Determines if the time the case was open (closed date - created date) is greater than 90 days. --></help>
+        <label><!-- Is Case Open &gt;90 Days --></label>
+        <name>Is_Case_Open_90_Days_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Installation Failure (Error code = INSTALLATION PROBLEM - C201 or INSTALLATION ISSUE - C201) --></help>
+        <label><!-- Is Install Failure? --></label>
+        <name>Is_Install_Failure_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is case open &gt;14 days --></label>
+        <name>Is_case_open_14_days_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is case open &gt;7 days --></label>
+        <name>Is_case_open_7_days_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Justification decision maker --></label>
+        <name>Justification_decision_make_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Hours --></help>
+        <label><!-- L1 Deescalation Response Time --></label>
+        <name>L1DeescalationResponseTime_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 1 Owner --></label>
+        <name>L1Owner_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- L1Owner (calculated) --></label>
+        <name>L1Owner_calc_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- L1 Owner Name --></label>
+        <name>L1_Owner_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 2 Owner --></label>
+        <name>L2Owner_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- L2 Owner Name --></label>
+        <name>L2_Owner_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- LRE Indicator --></label>
+        <name>LREIndicator_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language --></label>
+        <name>Language_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last ATC Sent Date --></label>
+        <name>LastATCSentDateTime_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- User Level of the last case comment. --></help>
+        <label><!-- Last Comment Level --></label>
+        <name>LastCommentLevel_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- The last time the Case was escalated from level 1 to Level 2 --></help>
+        <label><!-- Last L2 Escalation Date --></label>
+        <name>LastL2EscalationDate_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last Date/Time of L2 to L1 Case reassignment --></help>
+        <label><!-- Last L2 to L1 Deescalation Date --></label>
+        <name>LastL2toL1DeescalationDate_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By ID --></label>
+        <name>LastModifiedById__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Referenced Date --></label>
+        <name>LastReferencedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Viewed Date --></label>
+        <name>LastViewedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By Name --></label>
+        <name>Last_Modified_By_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 2 Closed --></label>
+        <name>Level2Closed_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field Displayed in the List view --></help>
+        <label><!-- Level 2 Follow Up --></label>
+        <name>Level2FollowUp_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 1 Owner Name --></label>
+        <name>Level_1_Owner_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Local Field Action --></label>
+        <name>LocalFieldAction_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Account&apos;s Market --></help>
+        <label><!-- Market --></label>
+        <name>Market_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Material Code --></label>
+        <name>MaterialCode_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Status --></label>
+        <name>MilestoneStatus__c</name>
+    </fields>
+    <fields>
+        <help><!-- Checked: There is a new Case Comment is created
+Once the comment read, the user has to manually uncheck it. --></help>
+        <label><!-- is New Comment --></label>
+        <name>NewComment_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- [ Sofyen comment: Wave1+2 legacy field. I think it can be deleted. Check with integrations team ] --></help>
+        <label><!-- Next Steps Details --></label>
+        <name>NextStepsDetails_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Decision tree auto-updates &quot;INVEST&quot; field to Yes or No. 
+If &quot;INVEST&quot;=No, then &quot;No Invest Justification&quot; is mandatory --></help>
+        <label><!-- No Invest Justification --></label>
+        <name>NoInvestJustif_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Not Satisfied --></label>
+        <name>NotSatisfied_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Reporting Field Only. Closed Date minus Open Date to calculate days open for case. --></help>
+        <label><!-- Open Duration Days Case --></label>
+        <name>OpenDurationDaysCase_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opened Date --></label>
+        <name>Opened_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Case.Origin standard field renamed &quot;Origin &amp; Email-to-Case&quot;. Stores email2Case address when the Case is created by E2C. 
+Useful for automation criteria.
+If a new E2C is implemented, add it here in the picklist.
+Field hidden.  &quot;Origin__c&quot; is not hidden. --></help>
+        <label><!-- Origin &amp; Email-to-Case --></label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>CRCclinique@biomerieux.com</masterLabel>
+            <translation><!-- CRCclinique@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CRCindustrie@biomerieux.com</masterLabel>
+            <translation><!-- CRCindustrie@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CanadaHotline@biomerieux.com</masterLabel>
+            <translation><!-- CanadaHotline@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Csi.stl@biomerieux.com</masterLabel>
+            <translation><!-- Csi.stl@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CustomerService-BTA@biomerieux.com</masterLabel>
+            <translation><!-- CustomerService-BTA@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CustomerService-Connectivity@biomerieux.com</masterLabel>
+            <translation><!-- CustomerService-Connectivity@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CustomerService-IDAST@biomerieux.com</masterLabel>
+            <translation><!-- CustomerService-IDAST@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CustomerService-ImmunoMolecular@biomerieux.com</masterLabel>
+            <translation><!-- CustomerService-ImmunoMolecular@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GCS_biomol_marcy@biomerieux.com</masterLabel>
+            <translation><!-- GCS_biomol_marcy@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GCS_immunomarcy@biomerieux.com</masterLabel>
+            <translation><!-- GCS_immunomarcy@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GCS_intergratedsolutions@biomerieux.com</masterLabel>
+            <translation><!-- GCS_intergratedsolutions@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GCS_microbiology@biomerieux.com</masterLabel>
+            <translation><!-- GCS_microbiology@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GCS_services@biomerieux.com</masterLabel>
+            <translation><!-- GCS_services@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non E2C or W2C</masterLabel>
+            <translation><!-- Non E2C or W2C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UStechnicalsupport@biomerieux.com</masterLabel>
+            <translation><!-- UStechnicalsupport@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>W2C FR Clinical</masterLabel>
+            <translation><!-- W2C FR Clinical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>W2C FR Industry</masterLabel>
+            <translation><!-- W2C FR Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>W2C US Clinical</masterLabel>
+            <translation><!-- W2C US Clinical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>W2C US Industry</masterLabel>
+            <translation><!-- W2C US Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>csi@biomerieux.com</masterLabel>
+            <translation><!-- csi@biomerieux.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+e2cclinicalbmxdesign@gmail.com</masterLabel>
+            <translation><!-- whenutest2+e2cclinicalbmxdesign@gmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+e2cclinicalbmxrout@gmail.com</masterLabel>
+            <translation><!-- whenutest2+e2cclinicalbmxrout@gmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+e2cindustrybmxrout@gmail.com</masterLabel>
+            <translation><!-- whenutest2+e2cindustrybmxrout@gmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+fre2cclinicalbmxrout@gmail.com</masterLabel>
+            <translation><!-- whenutest2+fre2cclinicalbmxrout@gmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+fre2cindustrybmxrout@gmail.com</masterLabel>
+            <translation><!-- whenutest2+fre2cindustrybmxrout@gmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>whenutest2+usvilinkrout@gmail.com</masterLabel>
+            <translation><!-- whenutest2+usvilinkrout@gmail.com --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Origin --></label>
+        <name>Origin_c__c</name>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fax</masterLabel>
+            <translation><!-- Fax --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal</masterLabel>
+            <translation><!-- Internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Site</masterLabel>
+            <translation><!-- On Site --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Post Mail</masterLabel>
+            <translation><!-- Post Mail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Publication</masterLabel>
+            <translation><!-- Publication --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TF GROUP COMPANY TRANSFER</masterLabel>
+            <translation><!-- TF GROUP COMPANY TRANSFER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ViLink</masterLabel>
+            <translation><!-- ViLink --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web</masterLabel>
+            <translation><!-- Web --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Owner ID --></label>
+        <name>OwnerId__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Owner US TSC? --></label>
+        <name>OwnerUSTSC_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- PONumber? --></label>
+        <name>PON_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Purchase Order Number --></label>
+        <name>PONumber_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- PRE 1. Was there a patient or operator death? --></help>
+        <label><!-- PRE1 Patient or operator death? --></label>
+        <name>PRE1_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- PRE 2.2 If yes, describe in detail --></help>
+        <label><!-- PRE2.2 If yes, describe in detail --></label>
+        <name>PRE2P2_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- PRE 2.1 Was the patient or operator harmed due to the malfunction of the device, due to inadequate labelling, or as a result of user error? --></help>
+        <label><!-- PRE2.1 Patient or operator harmed? --></label>
+        <name>PRE2_1_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- PRE 3.2 If yes, describe in detail --></help>
+        <label><!-- PRE3.2 If yes, describe in detail --></label>
+        <name>PRE3P2_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- PRE 3.1 Was there any indirect harm of the patient reported, such as delay in reporting results, misdiagnosis, delayed treatment, inappropriate treatment, absence of necessary treatment, due to wrong results or inadequate labelling / IFU? --></help>
+        <label><!-- PRE3.1 Indirect harm patient reported? --></label>
+        <name>PRE3_1_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- PRE 4. Was the patient harmed or treated incorrectly resulting in medical or surgical intervention? --></help>
+        <label><!-- PRE4 Patient harmed/treated incorrectly? --></label>
+        <name>PRE4_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- PRE 5. Was any wrong result, results comparison, or malfunction obtained that meet the criteria defined in PRE Guidance 014764? --></help>
+        <label><!-- PRE5 Wrong Results PRE Guidance 014764? --></label>
+        <name>PRE5_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- PRE 6. Did the customer report the event to the local Regulatory Authority? --></help>
+        <label><!-- PRE6 Reported to local Reg. Authority? --></label>
+        <name>PRE6_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Outcome of the 6 PRE Questions
+- Yes: means it is a PRE (at least 1 PRE answer is Yes) 
+- No: means it is not a PRE (if all answers are No, or if PRE questions have not been answered) --></help>
+        <label><!-- PRE --></label>
+        <name>PRE_YesNo_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Product Return Request Date (Trackwise field) --></help>
+        <label><!-- PRRD --></label>
+        <name>PRRD_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Case ID --></label>
+        <name>ParentId__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>Priority__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Product concerned by the Case --></help>
+        <label><!-- Product ID --></label>
+        <name>ProductId__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Code --></label>
+        <name>Product_Code_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- To be manually populated if Case concerns a Reagent or a BOM --></help>
+        <label><!-- Product (Reagent or BOM) --></label>
+        <name>Product_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- RESULT Name --></label>
+        <name>RESULT_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- RESULT --></label>
+        <name>RESULT_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- If &quot;Yes&quot;, Trackwise report this Case as an RE (Reportable Event)
+If &quot;No&quot;, Trackwise does NOT report this Case as an RE (Reportable Event)
+If empty, Trackwise has not assessed if this Case is a RE (Reportable Event) --></help>
+        <label><!-- RE --></label>
+        <name>RE_c__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reagent material code --></label>
+        <name>ReagentMaterialCode_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Reason --></label>
+        <name>Reason__c</name>
+        <picklistValues>
+            <masterLabel>Complex functionality</masterLabel>
+            <translation><!-- Complex functionality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Existing problem</masterLabel>
+            <translation><!-- Existing problem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fixed On Phone</masterLabel>
+            <translation><!-- Fixed On Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Instructions not clear</masterLabel>
+            <translation><!-- Instructions not clear --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New problem</masterLabel>
+            <translation><!-- New problem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User didn't attend training</masterLabel>
+            <translation><!-- User didn&apos;t attend training --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Record Type ID --></label>
+        <name>RecordTypeId__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Record Type --></label>
+        <name>RecordType__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box to resend the ATC email to the Customer.
+This checkbox will then be reset to unchecked when you save the Case. --></help>
+        <label><!-- Resend ATC Email --></label>
+        <name>ResendATCEmail_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAMPLE Name --></label>
+        <name>SAMPLE_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAMPLE --></label>
+        <name>SAMPLE_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SAP Asset Number --></label>
+        <name>SAPAssetNumber_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAP Customer Number --></label>
+        <name>SAPCustomerNumber_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAP Owner --></label>
+        <name>SAPOwner_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- SAP Service Order number of the Service Order used for time confirmations --></help>
+        <label><!-- SAP Service Order Number --></label>
+        <name>SAP_SoNumber_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SIG Code --></label>
+        <name>SIGcode_c__c</name>
+        <picklistValues>
+            <masterLabel>AS01 - bioNexia Shangaï</masterLabel>
+            <translation><!-- AS01 - bioNexia Shangaï --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU01 - COMPLAINT FIRENZE</masterLabel>
+            <translation><!-- EU01 - COMPLAINT FIRENZE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU02 - CQ MARCY</masterLabel>
+            <translation><!-- EU02 - CQ MARCY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU03 - COMPLAINT CRAPONNE</masterLabel>
+            <translation><!-- EU03 - COMPLAINT CRAPONNE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU04 - CQ LBM</masterLabel>
+            <translation><!-- EU04 - CQ LBM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU05 - SMQ LBM</masterLabel>
+            <translation><!-- EU05 - SMQ LBM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU06 - COMPLAINT MADRID</masterLabel>
+            <translation><!-- EU06 - COMPLAINT MADRID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU07 - GSS MICROBIO</masterLabel>
+            <translation><!-- EU07 - GSS MICROBIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU08 - GSS IMMUNO</masterLabel>
+            <translation><!-- EU08 - GSS IMMUNO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU09 - CSI MARCY</masterLabel>
+            <translation><!-- EU09 - CSI MARCY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU11 - COMPLAINT GRENOBLE</masterLabel>
+            <translation><!-- EU11 - COMPLAINT GRENOBLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU12 - COMPLAINT RIO</masterLabel>
+            <translation><!-- EU12 - COMPLAINT RIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU13 - COMPLAINT AB BIODISKS</masterLabel>
+            <translation><!-- EU13 - COMPLAINT AB BIODISKS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU14 - COMPLAINT SYSMEX</masterLabel>
+            <translation><!-- EU14 - COMPLAINT SYSMEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU15 - COMPLAINT BTF</masterLabel>
+            <translation><!-- EU15 - COMPLAINT BTF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU16 - Global System Support Molecular</masterLabel>
+            <translation><!-- EU16 - Global System Support Molecular --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU17 - VERNIOLLE</masterLabel>
+            <translation><!-- EU17 - VERNIOLLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU18 - COMBOURG REAGENT</masterLabel>
+            <translation><!-- EU18 - COMBOURG REAGENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU19 - SAINT BRIEUC</masterLabel>
+            <translation><!-- EU19 - SAINT BRIEUC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU20 - THIRD PARTY LBM</masterLabel>
+            <translation><!-- EU20 - THIRD PARTY LBM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU21 - BERNRIED - Germany</masterLabel>
+            <translation><!-- EU21 - BERNRIED - Germany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU22 - COMBOURG EQUIPMENT</masterLabel>
+            <translation><!-- EU22 - COMBOURG EQUIPMENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA01 - QA DURHAM</masterLabel>
+            <translation><!-- NA01 - QA DURHAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA02 - QA ST LOUIS</masterLabel>
+            <translation><!-- NA02 - QA ST LOUIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA03 - QA LOMBARD</masterLabel>
+            <translation><!-- NA03 - QA LOMBARD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA04 - GSS BACT/ALERT</masterLabel>
+            <translation><!-- NA04 - GSS BACT/ALERT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA05 - GSS VITEK</masterLabel>
+            <translation><!-- NA05 - GSS VITEK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA06 - CSI ST LOUIS</masterLabel>
+            <translation><!-- NA06 - CSI ST LOUIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA09 - SALT LAKE CITY</masterLabel>
+            <translation><!-- NA09 - SALT LAKE CITY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA10 - LAVAL</masterLabel>
+            <translation><!-- NA10 - LAVAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA11 - SALT LAKE CITY DEFENCE</masterLabel>
+            <translation><!-- NA11 - SALT LAKE CITY DEFENCE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Date/Time of last sending of the Service Order to SAP. --></help>
+        <label><!-- SAP SO - Last Sent Date --></label>
+        <name>SO_LastSent_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SW Age --></label>
+        <name>SW_Age_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Order Number --></label>
+        <name>SalesOrderNumber_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Order --></label>
+        <name>SalesOrder_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Satisfaction --></label>
+        <name>SatisfactionCode_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Satisfaction Name --></label>
+        <name>Satisfaction_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Satisfaction --></label>
+        <name>Satisfaction_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Click &quot;Close Case&quot; button to check this checkbox.
+If checked, when the Case is closed the ATC is emailed to the Customer --></help>
+        <label><!-- Send ATC Email --></label>
+        <name>SendATCemail_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- If the Case concerns an Asset of record type “bioMérieux Equipment”, 
+The Serial Number of the Asset is auto-populated --></help>
+        <label><!-- Serial Number (Asset) --></label>
+        <name>SerialNumberAsset_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- If the Service Complaint is about an FSE/FAS, reference that person here --></help>
+        <label><!-- Service Resource --></label>
+        <name>ServiceResource_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship-to Location --></label>
+        <name>ShipToLocation_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Ship-to-Party --></label>
+        <name>ShipToParty_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship-to Location SAP Number --></label>
+        <name>ShiptoLocationSapNumber_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Process End Time --></label>
+        <name>SlaExitDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Process Start Time --></label>
+        <name>SlaStartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Software Version --></label>
+        <name>SoftwareCode_c__c</name>
+        <relationshipLabel><!-- Case --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Software Version of the Asset referenced in the Case --></help>
+        <label><!-- Current Sofware version --></label>
+        <name>SofwareVersion_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source ID --></label>
+        <name>SourceId__c</name>
+    </fields>
+    <fields>
+        <label><!-- StatusDurationMin Assigned --></label>
+        <name>StatusDurationMin_Assigned_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- StatusDurationMin ClosedIrrelevant --></label>
+        <name>StatusDurationMin_ClosedIrrelevant_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- StatusDurationMin Closed --></label>
+        <name>StatusDurationMin_Closed_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- StatusDurationMin InProgressL1 --></label>
+        <name>StatusDurationMin_InProgressL1_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- StatusDurationMin InProgressL2 --></label>
+        <name>StatusDurationMin_InProgressL2_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- StatusDurationMin Investigation --></label>
+        <name>StatusDurationMin_Investigation_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- StatusDurationMin New --></label>
+        <name>StatusDurationMin_New_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- StatusDurationMin WaitingForReply --></label>
+        <name>StatusDurationMin_WaitingForReply_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Assigned</masterLabel>
+            <translation><!-- Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed Irrelevant</masterLabel>
+            <translation><!-- Closed Irrelevant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress L1</masterLabel>
+            <translation><!-- In Progress L1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress L2</masterLabel>
+            <translation><!-- In Progress L2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investigation</masterLabel>
+            <translation><!-- Investigation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waiting Customer Reply</masterLabel>
+            <translation><!-- Waiting Customer Reply --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Stopped Since --></label>
+        <name>StopStartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Origin --></label>
+        <name>SubOrigin_c__c</name>
+        <picklistValues>
+            <masterLabel>Intervention</masterLabel>
+            <translation><!-- Intervention --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Call</masterLabel>
+            <translation><!-- On Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voice Mail</masterLabel>
+            <translation><!-- Voice Mail --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Short Description --></label>
+        <name>Subject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company --></label>
+        <name>SuppliedCompany__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Address --></label>
+        <name>SuppliedEmail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>SuppliedName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone --></label>
+        <name>SuppliedPhone__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
+    </fields>
+    <fields>
+        <help><!-- - Trackwise field. When FSE/FAS finalizes the WO, the &quot;System Status&quot; has to be udpated with &quot;Functioning&quot;, or &quot;Down&quot;
+- But we do not know how this field is updated: manually by CSR (preferably) or automatically when FSE/FAS completes the WO (but a Case --></help>
+        <label><!-- System Status --></label>
+        <name>SystemStatus_c__c</name>
+        <picklistValues>
+            <masterLabel>001 - Functioning</masterLabel>
+            <translation><!-- 001 - Functioning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>002 - Down</masterLabel>
+            <translation><!-- 002 - Down --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- TECHMDErrorCode --></label>
+        <name>TECHMDErrorCode_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- TECHMDSAPCodeGroup --></label>
+        <name>TECHMDSAPCodeGroup_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAP Asset Number (Offline) --></label>
+        <name>TECHSAPAssetNumber_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Serial Number (Offline) --></label>
+        <name>TECHSerialNumber_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- TECH Asset Location ID --></label>
+        <name>TECH_AssetLocationId_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- TECH Asset Product ID --></label>
+        <name>TECH_AssetProductID_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- TECH Root Asset ID --></label>
+        <name>TECH_RootAsset_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- TW Complaint Completion Date --></label>
+        <name>TWComplaintCompletionDate_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- TW Complaint Number --></label>
+        <name>TWComplaintNumber_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- TW Complaint State --></label>
+        <name>TWComplaintState_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- [ Sofyen comment: Wave1+2 legacy field. I think it can be deleted. Check with integrations team ] --></help>
+        <label><!-- Taken Actions Details --></label>
+        <name>TakenActionsDetails_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- [ Sofyen comment: Wave1+2 legacy field. I think it can be deleted. Check with integrations team ] --></help>
+        <label><!-- Technical Additional Information --></label>
+        <name>TechAdditionaLInfo_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tech Customer Email --></label>
+        <name>TechCustomerEmail_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- See field description --></help>
+        <label><!-- Tech_NotUpdatedByServiceBatch --></label>
+        <name>Tech_NotUpdatedByServiceBatch_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tech_Parent SAP Asset Number --></label>
+        <name>Tech_ParentSAPAssetNumber_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tech to expose message on Chatter Post sent to L1+L2 Owner when Case RE=Yes or No (done with Process Builder CaseRE=YesNo_ChatterPost_L1+L2Owner) --></help>
+        <label><!-- Tech_REYesNoSendPost --></label>
+        <name>Tech_REYesNoSendPost_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Commercial Complaint</masterLabel>
+            <translation><!-- Commercial Complaint --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Action</masterLabel>
+            <translation><!-- Field Action --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non Qualified</masterLabel>
+            <translation><!-- Non Qualified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Question</masterLabel>
+            <translation><!-- Question --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Complaint</masterLabel>
+            <translation><!-- Service Complaint --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Suggestion</masterLabel>
+            <translation><!-- Suggestion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Complaint</masterLabel>
+            <translation><!-- Technical Complaint --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- If the Case concerns an Asset, UDI is auto-populated with the UDI of this Asset.
+Otherwise UDI is left blank and you can fill it if applicable --></help>
+        <label><!-- UDI-DI Code --></label>
+        <name>UDI_Code_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Status --></label>
+        <name>UserStatus_c__c</name>
+        <picklistValues>
+            <masterLabel>LRE</masterLabel>
+            <translation><!-- LRE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NC</masterLabel>
+            <translation><!-- NC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NHDI</masterLabel>
+            <translation><!-- NHDI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NTC</masterLabel>
+            <translation><!-- NTC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P</masterLabel>
+            <translation><!-- P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRE0</masterLabel>
+            <translation><!-- PRE0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRE1</masterLabel>
+            <translation><!-- PRE1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRE2</masterLabel>
+            <translation><!-- PRE2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q</masterLabel>
+            <translation><!-- Q --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RE</masterLabel>
+            <translation><!-- RE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S</masterLabel>
+            <translation><!-- S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STAT</masterLabel>
+            <translation><!-- STAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TC</masterLabel>
+            <translation><!-- TC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRW</masterLabel>
+            <translation><!-- TRW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TTW</masterLabel>
+            <translation><!-- TTW --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Vilink System Error --></label>
+        <name>VilinkSystemError_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vilink URL --></label>
+        <name>VilinkURL_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visitor Address Name --></label>
+        <name>Visitor_Address_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visitor City --></label>
+        <name>Visitor_City_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visitor Country --></label>
+        <name>Visitor_Country_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visitor Postal Code --></label>
+        <name>Visitor_Postal_Code_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visitor State --></label>
+        <name>Visitor_State_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visitor Street --></label>
+        <name>Visitor_Street_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- If checked, the Case has been escalated in its lifecycle --></help>
+        <label><!-- Was Escalated --></label>
+        <name>WasEscalated_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Web Email --></label>
+        <name>Web_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Work Order? --></label>
+        <name>WorkOrder_c__c</name>
+        <picklistValues>
+            <masterLabel>N</masterLabel>
+            <translation><!-- N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Y</masterLabel>
+            <translation><!-- Y --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- AOR (Acknowledgment Of Receipt) is optional:
+- When CHECKED: The AOR Email Template is sent to the customer (Contact) 
+- If Case created by Email2Case, AOR is automatically CHECKED --></help>
+        <label><!-- AOR --></label>
+        <name>isAOR_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- AORtech --></label>
+        <name>isAORtech_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created On Site? --></label>
+        <name>isCreatedOnSite_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- isCurrentOwner --></label>
+        <name>isCurrentOwner_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Checked: flag used to mark that L1 Escalated the Case to L2. 
+You can uncheck it to unflag the new L1 Escalation and continue working on the Case at Level 2. --></help>
+        <label><!-- is L1 escalation --></label>
+        <name>isL1Escalation_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Up Arrow: Case has been escalated from L1 to L2
+Down Arrow: Case has been deescalated by L2 to L1 --></help>
+        <label><!-- Escalation/Deescalation --></label>
+        <name>isL2deescalationIcon_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Checked: flag used to mark that L2 deescalated to the Case to L1.
+You can uncheck it to unflag the L2 deescalation and continue working on the Case at Level 1. --></help>
+        <label><!-- is L2 deescalation --></label>
+        <name>isL2deescalation_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- isLevel1Owner --></label>
+        <name>isLevel1Owner_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- isLevel2Owner --></label>
+        <name>isLevel2Owner_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box if the case should not be auto close when related work order is cosed.; --></help>
+        <label><!-- Do not auto-close --></label>
+        <name>isNotAutoClose_c__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Case</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Case</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Case Layout (Review bMx)</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Asset/Product Info --></label>
+            <section>Asset/Product Info</section>
+        </sections>
+        <sections>
+            <label><!-- Case Detail --></label>
+            <section>Case Detail</section>
+        </sections>
+        <sections>
+            <label><!-- Coding Information --></label>
+            <section>Coding Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Info --></label>
+            <section>Customer Info</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Interactions --></label>
+            <section>Customer Interactions</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- Entitlement Info --></label>
+            <section>Entitlement Info</section>
+        </sections>
+        <sections>
+            <label><!-- INVEST info --></label>
+            <section>INVEST info</section>
+        </sections>
+        <sections>
+            <label><!-- PRE Info --></label>
+            <section>PRE Info</section>
+        </sections>
+        <sections>
+            <label><!-- Protection Patient Data Check --></label>
+            <section>Protection Patient Data Check</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Case Layout(New)</layout>
+        <sections>
+            <label><!-- Additional Data --></label>
+            <section>Additional Data</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Asset/Product Info --></label>
+            <section>Asset/Product Info</section>
+        </sections>
+        <sections>
+            <label><!-- Case Detail --></label>
+            <section>Case Detail</section>
+        </sections>
+        <sections>
+            <label><!-- Coding Information --></label>
+            <section>Coding Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Info --></label>
+            <section>Customer Info</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Interactions --></label>
+            <section>Customer Interactions</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- Entitlement Info --></label>
+            <section>Entitlement Info</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label><!-- INVEST info --></label>
+            <section>INVEST info</section>
+        </sections>
+        <sections>
+            <label><!-- PRE Info --></label>
+            <section>PRE Info</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Trackwise Fields --></label>
+            <section>Trackwise Fields</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

@@ -1,0 +1,434 @@
+<apex:page StandardController="CMPL123CME__Investigation__c" extensions="CMPL123CME.CMPL_123_INV_PItems_Ext" showheader="false" sidebar="false" id="pg">
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+    <style>
+        .popupBackground {background-color:black;opacity: 0.20;filter: alpha(opacity = 20);position: absolute;width: 100%;height: 100%;top: 0;left: 0;z-index: 9998;}    
+        .custPopup {width:520px;height:auto;left:25%;top:20px;background-color:white;border-width: 2px;border-style:solid;z-index: 9999;align:center;padding:10px;position: absolute;}        
+        .btn{color: #333;border: 1px solid #b5b5b5;border-bottom-color: #7f7f7f;background: #e8e8e9 url('/img/alohaSkin/btn_sprite.png') repeat-x right top;font-weight: bold;font-size: .9em;border-radius: 3px;}
+        .invItemsFontSize {
+            font-size: 12px;
+        }       
+    </style>
+    <apex:includeScript value="/soap/ajax/26.0/connection.js"/> 
+    <apex:includeScript value="/support/console/26.0/integration.js"/>
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123,'/Bootstrap/css/bootstrap-theme.min.css')}" /> 
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123,'/Bootstrap/css/bootstrap.min.css')}" /> 
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/Bootstrap/bootstrap.min.js')}"/>
+    <!-- JS supports for Lightning Experience navigations -->
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+    
+    <script type="text/javascript">
+        var __sfdcSessionId = '{!GETSESSIONID()}';        
+    </script>
+    <script>
+        var relatedId;
+        var recordId = "{!JSENCODE(Investigation__c.id)}";
+        var pageId = "{!JSENCODE(pageId)}";
+        
+        //Fix for on page load auto focus for datepicker
+        function setFocusOnLoad() {}
+
+        function switchMenu(obj,obj1,obj2) {
+            var el = document.getElementById(obj);                                       
+            if( el.style.display != 'none' ){
+                el.style.display = 'none';
+            }else{
+                el.style.display = '';
+            }
+            
+            var e2 = document.getElementById(obj1);                                       
+            if ( e2.style.display != 'none' ){
+                e2.style.display = 'none';
+            }else{
+                e2.style.display = '';
+            }
+            
+            var e3 = document.getElementById(obj2);                                       
+            if ( e2.style.display != 'none' ) {
+                e3.style.display = 'none';
+            }else{
+                e3.style.display = '';
+            }
+        }
+        relatedId = "{!JSENCODE($CurrentPage.parameters.id)}";
+        function checkInvest(elementObj){
+            //Below line is changed for Compliance-267 to stop inserting investigation questions on cancel action
+            if(disableButton(elementObj)){
+                var invArr = [];
+                $("input[type='checkbox']:checked").each(function(){
+                    if($(this).attr("class") != 'headerChkBox' && $(this).attr("class") != undefined)                                 
+                        invArr.push($(this).attr("class").split('-')[1]);
+                });            
+                if (invArr.length > 0) {
+                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.CMPL_123_INV_PItems_Ext.setInvestgations}', 
+                        invArr, relatedId, function(result, event) {
+
+                        if (event.status) {
+
+                            //Fix supports for Classic, Console app and Lightning Experience
+                            lexUtil.navigateByUserTheme(recordId, pageId);
+                        }
+
+                    },{escape:true});
+                }else{
+                    $('#oneQt').css("display", "block");
+                }
+            //Below line is added for Compliance-267 to stop inserting investigation questions on cancel action    
+            }
+        }
+        
+        function doCancel(){            
+            document.getElementById("pg:fm:investPopup").style.display='none';    
+        }
+        
+        function checkAll(cb,cbid){            
+            var inputElem = document.getElementsByTagName("input");                              
+            for(var i=0; i<inputElem.length; i++){            
+                 if(inputElem[i].id.indexOf(cbid) != -1){                                       
+                    inputElem[i].checked = cb.checked;
+                }
+            }
+        }
+        
+        function unCheckHeader(){
+            $('.headerChkBox').removeAttr("checked");                        
+        }
+        
+        function unChkHeader(val){            
+            if (val.checked == false){                
+                $(".headerChkBox").removeAttr("checked");  
+            }else{                
+                var flag = 0;                 
+                $("input[type='checkbox']").each(function(){
+                    if($(this).attr("class") != 'headerChkBox'){                                              
+                         if(this.checked == false){                             
+                             flag = 1;   
+                         }
+                     }
+                 });                 
+                 if(flag == 0)
+                     $(".headerChkBox").prop("checked", true);
+            }    
+        }
+        
+        function loadPage(elementObj){
+            var errorMsg = $(".messageText").text();
+            if ( errorMsg == '' || errorMsg == null) {
+                //Fix supports for Classic, Console app and Lightning Experience
+                lexUtil.navigateByUserTheme(recordId, pageId);
+            } else {
+                elementObj.disabled = false;
+                elementObj.value = '{!$Label.cmpl123cme__cmplt_save}';
+                elementObj.classList.remove("btnDisabled");
+            }
+        }
+        
+        function disableButton(elementObj){
+            if(confirm('{!$Label.CMPL123CME__CMPLT_ARE_YOU_SURE}')){
+                elementObj.disabled = true;
+                elementObj.value = '{!$Label.CMPL123CME__CMPLT_SAVING}';
+                elementObj.classList.add("btnDisabled");
+                return true;
+            }else
+                return false;
+        }
+        
+        
+        function getAnsVal(val,itemId,level){
+            $('[class^='+itemId+']').css('visibility','visible');
+            getRelatedInvItems(val,itemId,level);
+        }
+    
+       
+        function hideRowHeader(ele){
+            var assesVal = ele.className.split(',')[0];
+            var invId = ele.className.split(',')[1];
+            var assesValNew = assesVal.replace("'","").toLowerCase();
+            var elememtValNew = ele.value.replace("'","").toLowerCase();
+            var assecSplit = assesValNew.split(",");
+            
+            if(assesValNew.indexOf('all') > -1 && elememtValNew != ''){
+                var classval = "."+"comments"+invId;
+                var elem = $(classval);
+                elem.attr('style', 'width:200px;border-color:red;');
+            }else{
+                for (i = 0; i < assecSplit.length; i++) { 
+                    if(assecSplit[i] == elememtValNew){
+                        var classval = "."+"comments"+invId;
+                        var elem = $(classval);
+                        elem.attr('style', 'width:200px;border-color:red;');
+                        break;
+                    }else{
+                        var className = "comments"+invId;
+                        var isRequired = 'false';
+                        var classval = "."+"comments"+invId;
+                        var elem = $(classval);
+                        elem.attr('style', 'width:200px;');
+                    }
+                }
+            }
+            doCancel();
+        }
+        
+    
+        function getRelatedInvItems(elememtVal,itemId,level){
+            //setQIMap(elememtVal,itemId,level);
+        }
+        
+        
+        
+        <!-- Use to upload the attachment ---->
+        
+        var maxStringSize = 6000000;    //Maximum String size is 6,000,000 characters
+        var maxFileSize = 4350000;      //After Base64 Encoding, this is the max file size
+        var chunkSize = 950000;         //Maximum Javascript Remoting message size is 1,000,000 characters
+        var attachment;
+        var attachmentName;
+        var fileSize;
+        var positionIndex;
+        var doneUploading;
+        var noOfFile;
+        var index = 0;
+        
+        //Method to prepare a file to be attached to the Account bound to the page by the standardController
+       
+        
+        
+        
+        function uploadFile(val,parentId,invItemId){
+            noOfFile = val.files.length;
+             for(i = 0; i < val.files.length ; i++){
+                (function(file) {
+                    var fileReader = new FileReader();
+                    fileReader.onloadend = function(e) {
+                        attachmentName = file.name;
+                        //attachment = window.btoa(this.result);  //Base 64 encode the file before sending it
+                        //uploadAttachment(parentId,attachmentName);
+                        var binary = "";
+                        var bytes = new Uint8Array(e.target.result);
+                        var length = bytes.byteLength;
+                        for (var i = 0; i < length; i++) 
+                        {
+                            binary += String.fromCharCode(bytes[i]);
+                        }
+                        attachment = (new sforce.Base64Binary(binary)).toString();
+                        craeteAttachment(parentId,attachmentName,invItemId);
+                    }
+                    fileReader.onerror = function(e) {
+                        console.log("There was an error reading the file.  Please try again.");
+                    }
+                    fileReader.onabort = function(e) {
+                        console.log("There was an error reading the file.  Please try again.");
+                    }
+                    fileReader.readAsArrayBuffer(file);
+                    //fileReader.readAsBinaryString(file);  //Read the body of the file
+                })(val.files[i]);
+                
+            }
+            
+            
+           
+        }
+        
+       
+        function craeteAttachment(parentId,attachmentName,invItemId){
+           $("#fileLoaderImg-"+parentId).css('visibility','visible');
+           sforce.connection.sessionId = "{!$Api.Session_ID}";
+           var attach = new sforce.SObject("Attachment");
+           attach.Name = attachmentName;
+           attach.body = attachment;
+           attach.parentId = parentId;
+           var result = sforce.connection.create([attach],{onSuccess :function(result){
+                var fileIdNamesMap = {};
+                if (result[0].getBoolean("success")) {
+                    index++;
+                    fileIdNamesMap[result[0].id] = attachmentName;
+                    var dv='';
+                    for(var key in fileIdNamesMap){
+                        dv += '<div style="margin-top:6px;font-style:italic;"><a href="/servlet/servlet.FileDownload?file='+key+'" id="att-'+key+'" target="_blank">'+attachmentName+'</a><img onclick=deleteAttachment("'+key+'",this) src="/img/search_dismiss.gif" style="cursor:pointer;margin-left:20px;display:;"></div>'
+                    
+                    }
+                    fileIdNamesMap = {};
+                    $("#reqObj-"+invItemId).append(dv);
+                    if(noOfFile  == index){
+                        $("#fileLoaderImg-"+parentId).css('visibility','hidden');
+                        index = 0;
+                    }
+                }
+           
+           }, onFailure : function(error){
+               noOfFile--;
+               console.log("An error has occurred " + error);
+           }});
+         
+        }
+       
+        function deleteAttachment(attachmentId,obj){
+            var parentnode = obj.parentNode;
+            if(confirm('{!$Label.CMPL123CME__CMPLT_ARE_YOU_SURE}')){
+                sforce.connection.sessionId = "{!$Api.Session_ID}";
+                var delResult = sforce.connection.deleteIds([attachmentId]);
+                if (delResult[0].getBoolean("success")) {
+                    $(parentnode).remove();
+                }
+                else{
+                    console.log("Attachment to delete account " + delResult[0]);
+                }
+            }
+        }
+
+        //This is a utility method used for only outputlink for this page.
+        function navigateLink(url) {
+            if(lexUtil.inLEX()){
+                lexUtil.lexNavigateToURL(url);
+            }else{
+                window.open(url);
+            }
+        }
+        
+    </script>
+    
+    <apex:form id="fm" styleClass="invItemsFontSize">
+        <apex:pageBlock title="{!$Label.cmpl123cme__cmplt_hello} {!$User.FirstName}! {!$Label.cmpl123cme__cmplt_investigation_steps_are_below}" mode="edit">
+            <apex:outputPanel id="messagePanel"><apex:pageMessages id="showMsg"/></apex:outputPanel>
+            <apex:outputPanel rendered="{!if(invItemsMap != null,false,true)}">
+               <apex:outputText style="color:red;margin-left:10px;" value="{!$Label.cmpl123cme__cmplt_no_investigations_found}"></apex:outputText>
+           </apex:outputPanel> 
+            <apex:pageBlockButtons >
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!saveChanges}" rendered="{!if(invItemsMap != null,true,false)}"   onclick="if(!disableButton(this)) return false;" reRender="messagePanel,showMsg" oncomplete="loadPage(this);"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_add_investigations}" action="{!getInvestigations}" reRender="fm" rendered="{!$Setup.CMPL123__CMPL_App_Config__c.CMPL123CME__Show_Add_Investigation_Button__c}"/>  
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!invItemsMap}" var="key" rendered="{!if(invItemsMap != null,true,false)}">
+                <apex:column >
+                   <apex:outputpanel id="plusimage" style="display:none;">
+                       <apex:image url="/img/alohaSkin/setup/setup_plus_lev1.gif" onclick="switchMenu('{!$Component.inlinetablesec}','{!$Component.minusimage}','{!$Component.plusimage}')" title="{!$Label.cmpl123cme__cmplt_expand} - {!key} {!$Label.cmpl123cme__cmplt_questions}"/> 
+                   </apex:outputpanel>
+                   <apex:outputpanel id="minusimage" >
+                       <apex:image url="/img/alohaSkin/setup/setup_minus_lev1.gif" onclick="switchMenu('{!$Component.inlinetablesec}','{!$Component.plusimage}','{!$Component.minusimage}')" title="{!$Label.cmpl123cme__cmplt_collapse} - {!key} {!$Label.cmpl123cme__cmplt_questions}"/>
+                   </apex:outputpanel> 
+                   {!key}
+                   <apex:outputpanel id="inlinetablesec" >
+                        <apex:pageBlockTable value="{!invItemsMap[key]}" var="tsk" >
+                            <apex:column value="{!tsk.Row_No__c}" width="10%"  />
+                            <apex:column headerValue="{!$Label.cmpl123cme__cmplt_step_description}" width="20%">
+                                <div style="display:{!if(tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c == null && tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c == '' , '','none')}">{!tsk.Investigation_Step_Description__c} &nbsp;<img style="display:{!if(tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Instructions__c != null && tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Instructions__c != '' , '','none')}" src="/img/msg_icons/info16.png" data-toggle="modal" data-target="#{!tsk.CMPL123CME__Investigation_Template_Item__c}"/></div>
+                                <div style="display:{!if(tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c != null && tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c != '', '','none')}"><apex:outputLink onclick="navigateLink('{!tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c}');return false;" target="_blank">{!tsk.Investigation_Step_Description__c}</apex:outputLink>&nbsp;<img style="display:{!if(tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Instructions__c != null && tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Instructions__c != '' , '','none')}" src="/img/msg_icons/info16.png" data-toggle="modal" data-target="#{!tsk.CMPL123CME__Investigation_Template_Item__c}" /></div>
+                            
+                                <div class="modal fade" id="{!tsk.CMPL123CME__Investigation_Template_Item__c}" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-body">
+                                     <p>
+                                         <apex:outputPanel layout="block">{!tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Instructions__c}</apex:outputPanel>
+                                     </p>
+                                </div></div></div></div>
+                            </apex:column>
+                            <apex:column headerValue="{!$Label.cmpl123cme__cmplt_value}" width="25%">                               
+                                 <apex:inputField value="{!tsk.Value__c}" rendered="{!if(tsk.Field_Type__c== 'Text',true,false)}"/>
+                                 <apex:inputField value="{!tsk.CMPL123CME__Checkbox_Value__c}" rendered="{!if(tsk.Field_Type__c == 'Checkbox',true,false)}"/>
+                                 <apex:inputField value="{!tsk.CMPL123CME__Date_Value__c}" rendered="{!if(tsk.Field_Type__c == 'Date',true,false)}"/>
+                                 <apex:inputField value="{!tsk.CMPL123CME__Datetime_Value__c}" rendered="{!if(tsk.Field_Type__c == 'Datetime',true,false)}"/>
+                                 <apex:inputField value="{!tsk.CMPL123CME__Number_Value__c}" rendered="{!if(tsk.Field_Type__c == 'Number',true,false)}"/>
+                                 <apex:selectList size="1" multiselect="false" value="{!tsk.Value__c}" rendered="{!if(selectOptionIdMap !=null && tsk.Field_Type__c == 'Picklist',true,false)}">
+                                     <apex:selectOptions value="{!selectOptionIdMap[tsk.Investigation_Template_Item__c]}"/>
+                                 </apex:selectList>
+                                 
+                                 <apex:outputPanel rendered="{!if(tsk.Field_Type__c == 'File',true,false)}">
+                                     <apex:outputPanel layout="block" rendered="{!if(tsk.Id!= null,true,false)}">
+                                         <div id="reqObj-{!tsk.Investigation_Template_Item__c}" style="width: 45%;word-wrap: break-word;float: left;">
+                                             <apex:repeat value="{!attachmentsMap[tsk.Id]}" var="attachmentData">
+                                                <div style="margin-top:6px;font-style:italic;"><a href="/servlet/servlet.FileDownload?file={!attachmentData.Id}" target="_blank" id="att-{!attachmentData.Id}">{!attachmentData.Name}</a><img src="/img/search_dismiss.gif" onclick="deleteAttachment('{!attachmentData.Id}',this)" style="cursor:pointer;margin-left:20px;display:{!if(attachmentData.Id != null,'','none')};"/></div>
+                                             </apex:repeat>
+                                         </div>
+                                     </apex:outputPanel>
+                                        
+                                     <div style="width:45%;float:left;margin-top:5%;" align="center">  
+                                         <apex:outputPanel rendered="{!if(tsk.Id != null,false,true)}">
+                                             <input type="file" disabled="disable" style="width: 120px;" multiple="multiple"/>
+                                         </apex:outputPanel>
+                                         <apex:outputPanel rendered="{!if(tsk.Id!= null,true,false)}">
+                                             <!-- <input type="file" onchange="uploadFile(this,'{!tsk.Id}','{!attachmentMap[tsk.Id].Id}')" style="width: 120px;" multiple="multiple"/> -->
+                                             <input type="file" onchange="uploadFile(this,'{!tsk.Id}','{!tsk.Investigation_Template_Item__c}')" style="width: 120px;" multiple="multiple"/> 
+                                         </apex:outputPanel>
+                                     </div>
+                                     <div style="width: 10%;float: left;margin-top:5%;"> 
+                                         <image id="fileLoaderImg-{!tsk.Id}" src="/img/loading.gif" width="22" height="20"  style="visibility:hidden;" />
+                                     </div> 
+                                 </apex:outputPanel>
+                            </apex:column> 
+                            <apex:column headerValue="{!$Label.cmpl123cme__cmplt_completed}" width="10%" >
+                                  <apex:inputField value="{!tsk.Completed__c}"  onchange="getAnsVal(this.value,'{!tsk.Investigation_Template_Item__c}','{!tsk.Decision_Level__c}')" />
+                                  <apex:image id="theImage" value="/img/loading.gif" width="22" height="20" style="visibility: hidden;" styleClass="{!tsk.Investigation_Template_Item__c}"/>
+                            </apex:column>
+                            <apex:column headerValue="{!$Label.cmpl123cme__cmplt_comment}" width="20%">
+                               <!-- <div id="reqdiv{!tsk.Id}" style="color: red;"> -->
+                                <div id="reqdiv{!tsk.Id}" style="">
+                                   <apex:inputField value="{!tsk.Comments__c}" style="width:200px;" id="reqcomments" styleClass="comments{!tsk.Investigation_Template_Item__c}"/>
+                                   <script>
+                                     var answerVal = "{!tsk.Completed__c}".replace("'","").toLowerCase();
+                                     if( "{!tsk.Investigation_Comment_Required_Options__c}".toLowerCase().indexOf("all") > -1 && answerVal != ''){
+                                        var classval = "."+"comments"+'{!tsk.Investigation_Template_Item__c}';
+                                        var ele = $(classval);
+                                        ele.attr('style', 'width:200px;border-color:red;');
+                                     }else{
+                                        var assecSplit = "{!tsk.Investigation_Comment_Required_Options__c}".toLowerCase().replace("'","").split(',');
+                                        for(i = 0; i < assecSplit.length; i++){
+                                             if(assecSplit[i] == answerVal && assecSplit[i].trim() != ""){
+                                                var classval = "."+"comments"+'{!tsk.Investigation_Template_Item__c}';
+                                                var ele = $(classval);
+                                                ele.attr('style', 'width:200px;border-color:red;');
+                                                break;
+                                             }else{
+                                                var classval = "."+"comments"+'{!tsk.Investigation_Template_Item__c}';
+                                                var ele = $(classval);
+                                                ele.attr('style', 'width:200px;');
+                                             }
+                                        }
+                                     }
+                                 </script> 
+                               </div>
+                            </apex:column>
+                            <apex:column headerValue="{!$Label.cmpl123cme__cmplt_score}" width="10%">
+                                <apex:outputField value="{!tsk.Score__c}"/>
+                            </apex:column>    
+                        </apex:pageblocktable>
+                   </apex:outputpanel>    
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:outputPanel id="investPopup" rendered="{!displayPopup}"> 
+           <apex:outputPanel styleClass="popupBackground" layout="block" id="popup"/>
+           <apex:outputPanel styleClass="custPopup" layout="block" id="pop">
+               <apex:pageBlock title="{!$Label.cmpl123cme__cmplt_add_investigations}">                  
+                   {!$Label.CMPL123CME__CMPLT_INVESTIGATION_NUMBER}:&nbsp;&nbsp;
+                    <apex:selectList value="{!invTempName}" size="1" onchange="invLst();">
+                        <apex:actionFunction name="invLst" action="{!getInvs}" reRender="inv,fm" oncomplete="unCheckHeader();"/>
+                        <apex:selectOptions value="{!InvAdminNames}"/>                       
+                    </apex:selectList><br/><br/>
+                    <div id="oneQt" style="display:none;color:red;" > {!$Label.CMPL123CME__CMPLT_SELECT_ATLEAST_ONE_QUESTION} </div>
+                    <apex:outputPanel rendered="{!dispalyClose}" >
+                       <input type="button" value="{!$Label.CMPL123CME__CMPLT_CLOSE}" onclick="doCancel();" style="margin-left:200px;" class="btn"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!displayBlock}" id="inv">                  
+                        <apex:pageBlock rendered="{!IF(invTempItemLst != null && invTempItemLst.size > 0,true,false)}">
+                           <apex:pageBlockTable value="{!invTempItemLst}" var="inv" >
+                               <apex:column >
+                                   <apex:facet name="header">
+                                       <apex:inputCheckbox onclick="checkAll(this,'chk');" styleClass="headerChkBox"/>
+                                   </apex:facet>
+                                   <apex:inputCheckbox id="chk" styleClass="chk-{!inv.Id}" onclick="unChkHeader(this);"/>
+                               </apex:column>
+                               <apex:column value="{!inv.CMPL123CME__Investigation_Item_Description__c}"/>
+                           </apex:pageBlockTable>
+                           <apex:pageBlockButtons location="bottom">                          
+                               <input type="button" value="{!$Label.cmpl123cme__cmplt_save}" onclick="checkInvest(this);" class="btn" /> 
+                               <input type="button" value="{!$Label.CMPL123CME__CMPLT_CANCEL}" onclick="doCancel();" class="btn" /> 
+                           </apex:pageBlockButtons>                
+                        </apex:pageBlock>
+                    </apex:outputPanel>                 
+                </apex:pageBlock>   
+           </apex:outputPanel>
+       </apex:outputPanel>
+       <apex:actionFunction action="{!setAdditionalInvestigationItems}" name="getRelatedInvItems" reRender="fm" oncomplete="hideRowHeader(this)"> 
+           <apex:param name="firstParam" assignTo="{!selectedAnswer}" value="" />
+           <apex:param name="secondParam" assignTo="{!selectedParentITItemId}" value="" />
+           <apex:param name="thirdParam" assignTo="{!selectedOrderAsStr}" value="" />
+       </apex:actionFunction>   
+    </apex:form>
+</apex:page>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CMPL123CME__Investigation__c.Investigation_Evaluation_Number__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Investigation__c.CMPL123_WF_Status__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$CMPL123CME__Complaint__c.CMPL123CME__Assigned_To__c</field>
+    </columns>
+    <columns>
+        <field>FK_$CMPL123CME__Complaint__c.BMX_Investigation__c</field>
+    </columns>
+    <columns>
+        <field>FK_$CMPL123CME__Complaint__c.BMX_Child_Investigation_Linked__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <description>Report of  open investigations with complaints flagged as reportable.</description>
+    <filter>
+        <criteriaItems>
+            <column>FK_$CMPL123CME__Complaint__c.BMX_Is_Reportable__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CMPL123CME__Investigation__c.CMPL123_WF_Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Closed</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Open INV with Reportable Complaints</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CMPL123CME__Investigation__c@CMPL123CME__Investigation__c.CMPL123CME__Complaint__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

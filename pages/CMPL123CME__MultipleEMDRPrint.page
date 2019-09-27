@@ -1,0 +1,941 @@
+<apex:page controller="CMPL123CME.MultipleEMDRPrintController" renderAs="pdf" cache="false" applyHtmlTag="false" applyBodyTag="false"  showHeader="false" sidebar="false" docType="html-5.0">
+    <apex:stylesheet value="{!$Resource.CMPL123CME__PDFDocumentStyle}" />
+    
+    <body>
+        <apex:form >
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:outputPanel rendered="{!!reportMapExist}">
+            
+            <apex:variable var="cnt" value="{!0}" />
+            <apex:repeat value="{!EMDRIdDataMap}" var="emdrId">
+            
+            <!---------------------- pdf code starts here --------------------->
+                
+        
+        
+        
+        <div style="font-family: 'Arial Unicode MS';margin-left:0px;width:100%;height:auto;{!if(cnt < 1, '','page-break-before:always;')}">
+            <apex:variable var="cnt" value="{!cnt+1}"/>
+           
+           
+           
+           <c:PDFHeaderFooter type="header" position="center">
+            <br/><div style="font-size: 24px;font-family:'sans-serif';text-align: center;">
+                Medical Device Report Data
+            </div>
+            <table style="width:100%;" align="center">
+                <tr>
+                    <td width="50%"><span style="font-size: 13px;font-weight: bold;font-family: 'sans-serif';">Printed from: </span> <span style="font-size: 13px;font-family: 'sans-serif';">{!EMDRIdDataMap[emdrId]['emdrName']}</span></td>
+                    <td width="50%"><span style="font-size: 13px;font-weight: bold;font-family: 'sans-serif';">Accepted by CDRH ?: </span><span style="font-size: 13px;font-family: 'sans-serif';">{!EMDRIdDataMap[emdrId]['submissionStatus']}</span></td>
+                </tr>
+                <tr>
+                    <td width="50%"><span style="font-size: 13px;font-weight: bold;font-family: 'sans-serif';">eMDR Type: </span><span style="font-size: 13px;font-family: 'sans-serif';">{!EMDRIdDataMap[emdrId]['emdrType']}</span></td>
+                    <td width="50%"><span style="font-size: 13px;font-weight: bold;font-family: 'sans-serif';">Format: </span><span style="font-size: 13px;font-family: 'sans-serif';">HL7 ICSR</span></td>
+                </tr>
+                <tr>
+                    <td width="50%"><span style="font-size: 13px;font-weight: bold;font-family: 'sans-serif';">Report Type: </span><span style="font-size: 13px;font-family: 'sans-serif';">{!EMDRIdDataMap[emdrId]['emdrType']}-only</span></td>
+                    <td width="50%"><span style="font-size: 13px;font-weight: bold;font-family: 'sans-serif';">Reference No: </span><span style="font-size: 13px;font-family: 'sans-serif';">{!EMDRIdDataMap[emdrId]['G9']}</span></td>
+                </tr>
+            </table>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><c:PDFHeaderFooter type="header" showPageNumbers="true"></c:PDFHeaderFooter></div>
+        </c:PDFHeaderFooter> 
+        <div class="contentBody" style="{!if(emdrIds.size > 1,'height:auto','height:0')}">  
+           
+            <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">A. PATIENT INFORMATION</div><br/>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>A1. Patient Identifier:</b> 
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['A1']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>A2. Date of Birth:</b>  
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['A2']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Age at Time of Event:</b> 
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['A2.1']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>A3. Sex:</b> 
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['A3']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>A4. Weight:</b> 
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['A4']}"/>
+            </div>
+            <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>A5. Ethnicity:</b> 
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['A5.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> Race:</b> 
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['A5.2']}"/>
+                </div>
+            </apex:outputPanel><br/> 
+            
+            <!--------------------------------------  B Section Information ------------------------------------------->
+            
+            <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;"><b>B. ADVERSE EVENT OR PRODUCT PROBLEM</b></div><br/>
+            
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>B1. Adverse Event/Product Problem:</b>&nbsp;
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;">
+                <apex:outputText value="{!IF(OR(CONTAINS(EMDRIdDataMap[emdrId]['B1'],'Adverse Event'),CONTAINS(EMDRIdDataMap[emdrId]['B1'],'Both')),'[X]','[]')}"/>&nbsp;Adverse Event
+                <span style="margin-left:18px;">and/or &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:outputText value="{!IF(OR(CONTAINS(EMDRIdDataMap[emdrId]['B1'],'Product Problem'),CONTAINS(EMDRIdDataMap[emdrId]['B1'],'Both')),'[X]','[]')}"/>&nbsp;Product Problem</span>
+            </div>
+            
+            
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>B2. Outcomes Attributed to Adverse Event:</b>&nbsp;
+                <apex:outputText value="{!IF(OR(CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Death'),CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Life-threatening'),CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Hospitalization-initial or prolonged'),CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Disability or Permanent Damage'),CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Congential Anomaly/Birth Defect'),CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Required Intervention'),CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Other Serious')),'',EMDRIdDataMap[emdrId]['B2'])}"/>
+            </div> 
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;">
+                <b><apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Death'),'[X]','[]')}"/>&nbsp;Death:</b>&nbsp;
+                <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Death'),EMDRIdDataMap[emdrId]['B2.1'],'')}"/>
+            </div>            
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;">
+                <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Life-threatening'),'[X]','[]')}"/>&nbsp;Life-threatening
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;"> 
+                <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Hospitalization-initial or prolonged'),'[X]','[]')}"/>&nbsp;Hospitalization-initial or prolonged
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;">
+                <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Disability or Permanent Damage'),'[X]','[]')}"/>&nbsp;Disability or Permanent Damage
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 18px;font-weight:bold;">
+                <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Congenital Anomaly/Birth Defect'),'[X]','[]')}"/>&nbsp;Congential Anomaly/Birth Defect
+            </div>                                                                 
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;"> 
+                <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Required Intervention'),'[X]','[]')}"/>&nbsp;Required Intervention to Prevent Perm. Impairment/Damage (Devices)
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;">
+                <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['B2'],'Other Serious'),'[X]','[]')}"/>&nbsp;Other Serious(Important Medical Events)
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>B3. Date of Event:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['B3']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>B4. Date of This Report:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['B4']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>B5. Describe Event or Problem:</b>&nbsp;</div>
+            <div class="fieldContainer">
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['B5']}" style="white-space: pre-wrap;"/>
+            </div>
+            <div class="fieldLabelMargin" style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                <b>B6. Relevant Tests/Laboratory Data, Including Dates:</b>&nbsp;
+            </div>
+            <div class="fieldContainer">
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['B6']}" style="white-space: pre-wrap;"/>
+            </div>
+            <div class="fieldLabelMargin" style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                <b>B7. Other Relevant History, Including Preexisting Medical Conditions:</b>&nbsp;
+            </div>
+            <div class="fieldContainer">
+                <b> (e.g., allergies, race, pregnancy, smoking and alcohol use, hepatic/renal dysfunction, etc.) </b> <br/> 
+                <apex:outputText styleClass="wrapWhiteSpace" value="{!EMDRIdDataMap[emdrId]['B7']}" />
+
+            </div><br/>
+
+
+
+            <!----------------------------------------------- C Section Information ------------------------------------------------------>
+            
+             <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;"><apex:outputText value="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', 'C. SUSPECT PRODUCTS','C. SUSPECT PRODUCTS - NOT APPLICABLE')}"></apex:outputText> </div>
+            <br/>
+            
+            <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C1. #1 Name and Strength:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C1.1.1']}"/>
+                </div>
+                <div class="fieldLabelMargin" style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>NDC # or Unique ID:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C1.1.2']}"/>
+                </div>
+                
+                <div class="fieldLabelMargin" style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Manufacturer/Compounder:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C1.1.3']}"/>
+                </div>
+                <div class="fieldLabelMargin" style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Lot #:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C1.1.4']}"/>
+                </div>
+                <div class="fieldLabelMargin" style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Name and Strength:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C1.2.1']}"/>
+                </div>            
+                <div class="fieldLabelMargin" style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>NDC # or Unique ID:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C1.2.2']}"/>
+                </div>
+                <div class="fieldLabelMargin" style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Manufacturer/Compounder:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C1.2.3']}"/>
+                </div>
+                <div class="fieldLabelMargin" style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Lot #:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C1.2.4']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C2. Concom Med Prod and Therapy Dates</b>&nbsp;
+                    Refer to D11
+                </div>
+                <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                    <apex:repeat value="{!EMDRIdChildObjMap[emdrId]['C2']}" var="sObj" >
+                        <tr>
+                            <apex:repeat value="{!childObjFields}" var="fieldName">
+                                <td><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!sObj[fieldName]}</div></td>
+                            </apex:repeat>
+                        </tr>
+                    </apex:repeat>
+                </table>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C3. #1 Dose:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.1.1.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Dose Units:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.1.1.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Frequency:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.1.2.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Frequency Units:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.1.2.2']}"/>
+                </div>        
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Route Used:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.1.3.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Dose:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.2.1.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Dose Units:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.2.1.2']}"/> 
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Frequency:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.2.2.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Frequency Units:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.2.2.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Route Used:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.2.3.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C4. #1 Therapy Dates - Start Date:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C4.1.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Therapy Dates - End Date:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C4.1.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Therapy Dates - Start Date:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C4.2.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Therapy Dates - End Date:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C4.2.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C5. #1 Diagnosis for Use:</b>&nbsp;</div>
+                <div class="fieldContainer fieldLabelMargin">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C5.1']}"/>
+                </div>
+                <div class="fieldLabelMargin" style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b> #2 Diagnosis for Use:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C5.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C6. #1 Is the Product Compounded?:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C6.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Is the Product Compounded?:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C6.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C7. #1 Is the Product Over-the-Counter?:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C7.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Is the Product Over-the-Counter?:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C7.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C8. #1 Exp. Date:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C8.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Exp. Date:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C8.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C9. #1 Evt Abated After Use Stopped?:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C9.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Evt Abated After Use Stopped?:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C9.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C10. #1 Event Reappeared After Reintro:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C10.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Event Reappeared After Reintro:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C10.2']}"/>
+                </div><br/>
+            </apex:outputPanel>
+            
+            <!----------------------------------------------- D Section Information ------------------------------------------------------>
+            
+            <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">D. SUSPECT MEDICAL DEVICE</div><br/>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D1. Brand Name:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D1']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D2. Common Device Name:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D2']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>D2b - Procode:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D2.1']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D3. Manufacturer Name and Address:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D3']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Name:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D3.1']}"/>
+            </div>            
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Address 1:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D3.2']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Address 2:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D3.3']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>City:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D3.4']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>State:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D3.5']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Postal Code:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D3.6']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Country:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D3.7']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Email:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D3.8']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Fax:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D3.9']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">D4.</div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Catalog #:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D4.1']}"/>
+            </div>            
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Lot#:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D4.2']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Serial #:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D4.3']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Model #:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D4.4']}"/> 
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Expiration Date:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D4.5']}"/>
+            </div>
+            
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Unique Identifier (UDI) #:</b>&nbsp;
+                <apex:outputText value="{!if(LEN(EMDRIdDataMap[emdrId]['D4.7']) <= 100 , EMDRIdDataMap[emdrId]['D4.7'], LEFT(EMDRIdDataMap[emdrId]['D4.7'],100))}"/>
+                <div>
+                   <apex:outputText value="{!RIGHT(EMDRIdDataMap[emdrId]['D4.7'], LEN(EMDRIdDataMap[emdrId]['D4.7'])-100)}" rendered="{!if(LEN(EMDRIdDataMap[emdrId]['D4.7']) > 100, true, false)}"/>
+               </div>
+            </div>
+            
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D5. Operator of Device:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D5']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Other Text:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D5.1']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D6. Implant Date:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D6']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D7. Explant Date:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D7']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D8. Is this a Single-use Device that was Reprocessed and Reused on a Patient? </b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D8']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D9. Reprocessor Name and Address (if Yes to #8) </b>&nbsp;
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Name:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D9.1']}"/>
+            </div>            
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Address 1:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D9.2']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Address 2:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D9.3']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>City:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D9.4']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>State:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D9.5']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Postal Code:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D9.6']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Country:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D9.7']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Email:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D9.8']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Fax:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D9.9']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D10. Device Available for Evaluation:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D10']}"/>
+            </div>
+	        <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 24px;"><b> Date returned to Mfg:</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D10.1']}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D11. Concomitant Medical Products and Therapy Dates (Exclude treatment of event):</b>&nbsp;
+                <apex:outputText value="{!EMDRIdDataMap[emdrId]['D11_Null']}"/>
+            </div>
+            <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                <apex:repeat value="{!EMDRIdChildObjMap[emdrId]['D11']}" var="sObj" >
+                    <tr>
+                        <apex:repeat value="{!childObjFields}" var="fieldName">
+                            <td><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!sObj[fieldName]}</div></td>
+                        </apex:repeat>
+                    </tr>
+                </apex:repeat>
+            </table> <br/>
+
+            <!----------------------------------------------- E Section Information ------------------------------------------------------>
+
+            <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">E. INITIAL REPORTER</div><br/>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>E1. Name and Address</b>&nbsp;
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>First Name:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.1']}"/>
+                </div>            
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Middle Name:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Last Name:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.3']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Title:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.4']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Facility:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.5']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Address 1:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.6']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Address 2:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.7']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>City:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.8']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>State:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.9']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Postal Code:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.10']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Country:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.11']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Email:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.12']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Fax:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.13']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Phone:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.14']}"/>
+                </div>
+                <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>E2. Healthcare Professional:</b>&nbsp;
+                        <apex:outputText value="{!EMDRIdDataMap[emdrId]['E2']}"/>
+                    </div>
+                </apex:outputPanel>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>E3. Occupation:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E3']}"/>
+                </div>
+                 <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2015', true, false)}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Add'l Text:</b>&nbsp;
+                        <apex:outputText value="{!EMDRIdDataMap[emdrId]['E3.1']}"/>
+                    </div>
+                </apex:outputPanel>  
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>E4. Initial Reporter Also Sent Report to FDA?</b> &nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['E4']}"/>
+                </div> <br/>
+
+                <!----------------------------------------------- F Section Information ------------------------------------------------------>
+
+                <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;"><b>F. FOR USE BY FACILITY/IMPORTER (Devices Only)</b></div><br/>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F1. User Facility / Importer</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F2. UF/Importer Report Number</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F3. User Facility or Importer Name/Address</b>&nbsp;
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Name</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F3.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Address 1</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F3.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Address 2</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F3.3']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>City</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F3.4']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>State</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F3.5']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Postal Code</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F3.6']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Country</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F3.7']}"/>
+                </div>
+                <!--Added F3 Contact Email field for 2018 EMDR-->
+                <apex:outputPanel rendered="{!(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018')}">
+                    <div class="fieldContainer fieldContainerMargin fieldContainerFontFamily"><span>Email</span>:   
+                        <apex:outputText styleClass="leftPadding" value="{!EMDRIdDataMap[emdrId]['F3.8']}"/>
+                    </div>
+                </apex:outputPanel>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;;"><b>F4. Contact Person</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F4']}"/> 
+                </div>                               
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>First Name</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F4.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Middle Name</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F4.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Last Name</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F4.3']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Title</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F4.4']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F5. Phone Number</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F5']}"/>
+                </div>                               
+                <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2015', true, false)}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Email</b>:&nbsp;
+                        <apex:outputText value="{!EMDRIdDataMap[emdrId]['F5.1']}"/>
+                    </div>
+                </apex:outputPanel>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F6. Date User Facility or Importer Became Aware of Event</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F6']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F7. Type of Report</b>:&nbsp;
+                    <apex:outputText value="{!IF(OR(CONTAINS(EMDRIdDataMap[emdrId]['F7'],'Initial'),CONTAINS(EMDRIdDataMap[emdrId]['F7'],'Follow Up')),'',EMDRIdDataMap[emdrId]['F7'])}"/>
+                </div>                               
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['F7'],'Initial'),'[X]','[]')}"/>&nbsp;Initial
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['F7'],'Follow Up'),'[X]','[]')}"/>&nbsp;Follow Up #<apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['F7'],'Follow Up'),EMDRIdDataMap[emdrId]['F7.3'],'')}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F8. Date of This Report</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F8']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F9. Approximate Age of Device:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F9']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F10. Event Problem Codes (Refer to coding manual)</b></div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;"><b>Patient Codes:</b>&nbsp;
+                </div>
+                <apex:repeat value="{!EMDRIdCodesMap[emdrId]['F10.1']}" var="code" >
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;"><b>Device Codes:</b>&nbsp;
+                </div>
+                <apex:repeat value="{!EMDRIdCodesMap[emdrId]['F10.2']}" var="code" >
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                <!--<div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;"><b>Component Codes:</b>&nbsp;
+                </div>
+                <apex:repeat value="{!EMDRIdCodesMap[emdrId]['F10.3']}" var="code" >
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>  -->                                             
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F11. Report Sent to FDA?</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F11']}"/>
+                </div> 
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Date Report Sent to FDA:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F11.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F12. Location Where Event Occurred</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F12']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 23px;"><b>Add'l Text</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F12.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F13. Report Sent to Manufacturer</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F13']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Date Report Sent to Mfg:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F13.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F14. Manufacturer Name / Address</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F14']}"/>
+                </div>                               
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 23px;"><b>Name</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F14.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 23px;"><b>Address 1</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F14.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 23px;"><b>Address 2</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F14.3']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 23px;"><b>City</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F14.4']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 23px;"><b>State</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F14.5']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 23px;"><b>Postal Code</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F14.6']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 23px;"><b>Country</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F14.7']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 23px;"><b>Email</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F14.8']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 23px;"><b>Fax</b>:&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['F14.9']}"/>
+                </div><br/>
+
+                <!----------------------------------------------- G Section Information ------------------------------------------------------>
+
+                <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">G. ALL MANUFACTURERS</div><br/>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G1. Contact Office - Name/Address</b>&nbsp;
+                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1']}"/>    
+                </div>                    
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Title:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Facility Name:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.22']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>First Name:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Middle Name:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.3']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Last Name:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.4']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Address1:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.5']}"/>
+                </div>                
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Address2:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.6']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>City:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.7']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>State:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.8']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Postal Code:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.9']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Country:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.10']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Email:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.11']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Fax:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.12']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>Manufacturing Site (for Devices)</b></div>                              
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Site Name:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.13']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Site Address1:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.14']}"/>
+                </div>                
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Site Address2:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.15']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Site City:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.16']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Site State:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.17']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Site Postal Code:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.18']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Site Country:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.19']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Site Email:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.20']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Site Fax:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.21']}"/>
+                </div>
+                <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Compounding Outsourcing Facility 503B?:</b>&nbsp;
+                        <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.23']}"/>
+                    </div>
+                </apex:outputPanel>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G2. Phone Number:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G3. Report Source (check all that apply)</b>&nbsp;
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'Foreign'),'[X]','[]')}"/>&nbsp;Foreign
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'Study'),'[X]','[]')}"/>&nbsp;Study
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'Literature'),'[X]','[]')}"/>&nbsp;Literature
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'Consumer'),'[X]','[]')}"/>&nbsp;Consumer
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'Health Professional'),'[X]','[]')}"/>&nbsp;Health Professional
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'User Facility'),'[X]','[]')}"/>&nbsp;User Facility
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'Company Representative'),'[X]','[]')}"/>&nbsp;Company Representative
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'Distributor'),'[X]','[]')}"/>&nbsp;Distributor
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'Other'),'[X]','[]')}"/>&nbsp;Other
+                </div>
+                <!-- Displaying G3 Report source null values in HL7 and EMDR print-->
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'NA'),'[X]','[]')}"/>&nbsp;NA
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'NI'),'[X]','[]')}"/>&nbsp;NI
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'ASKU'),'[X]','[]')}"/>&nbsp;ASKU
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Add'l Text:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G3.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G4. Date Received by Manufacturer:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G4']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">G5.</div>
+                <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>NDA#:</b>&nbsp;
+                        <apex:outputText value="{!EMDRIdDataMap[emdrId]['G5.8']}"/>
+                    </div>
+                </apex:outputPanel>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>
+                <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2015', true, false)}">
+                (A)NDA#:
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+                ANDA#:
+                </apex:outputPanel>
+
+                </b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G5.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>IND#:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G5.2']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>BLA#:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G5.3']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>PMA/ 510(k)#:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G5.4']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Combination Product:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G5.5']}"/>
+                </div>                
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Pre-1938:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G5.6']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>OTC Product:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G5.7']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G6. If IND, Give Protocol #:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G6']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G7. Type of Report</b>&nbsp;
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(AND(CONTAINS(EMDRIdDataMap[emdrId]['G7'] ,'5-day'),BEGINS(EMDRIdDataMap[emdrId]['G7'], '5-day')),'[X]','[]')}"/>&nbsp;5-day
+                </div>
+                <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                        <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G7'],'7-day'),'[X]','[]')}"/>&nbsp;7-day
+                    </div>
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                        <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G7'],'10-day'),'[X]','[]')}"/>&nbsp;10-day
+                    </div>
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                        <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G7'],'15-day'),'[X]','[]')}"/>&nbsp;15-day
+                    </div>
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                        <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G7'],'30-day'),'[X]','[]')}"/>&nbsp;30-day
+                    </div>
+                </apex:outputPanel>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G7'],'Periodic'),'[X]','[]')}"/>&nbsp;Periodic
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G7'],'Initial'),'[X]','[]')}"/>&nbsp;Initial
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G7'],'Follow Up'),'[X]','[]')}"/>&nbsp;Follow Up #<apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G7'],'Follow Up'),EMDRIdDataMap[emdrId]['G7.1'],'')}"/>
+                    
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G8. Adverse Event Term(s):</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G8']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G9. Manufacturer Report Number:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G9']}"/>
+                </div><br/>
+
+                <!----------------------------------------------- H Section Information ------------------------------------------------------>
+
+                <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">H. DEVICE MANUFACTURERS ONLY</div><br/>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H1. Type of Reportable Event:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['H1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H2. If Follow-up, What Type:</b>&nbsp; 
+                    <apex:outputText value="{!IF(OR(CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Correction'),CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Additional Information'),CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Response to FDA Request'),CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Device Evaluation')),'',EMDRIdDataMap[emdrId]['H2_Null'])}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Correction'),'[X]','[]')}"/>&nbsp;Correction
+                </div> 
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Additional Information'),'[X]','[]')}"/>&nbsp;Additional Information
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Response to FDA Request'),'[X]','[]')}"/>&nbsp;Response to FDA Request
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Device Evaluation'),'[X]','[]')}"/>&nbsp;Device Evaluation
+                </div>
+                
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H3. Device Evaluated by Manufacturer:</b>&nbsp;
+                    <apex:outputText value="{!CASE(EMDRIdDataMap[emdrId]['H3'],'Yes','Y','No','N','Y','Y','N','N','')}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;">&nbsp;If Yes: &nbsp;<apex:outputText value="{!CASE(EMDRIdDataMap[emdrId]['H3.0.1'],'Yes','[x]','No','[]','Y','[x]','N','[]','[]')}"/><apex:outputText value=" Evaluation Summary Attached "/>&nbsp;</div> 
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;">&nbsp;<b>If No:</b>&nbsp;
+                    <apex:outputText value="{!if(OR(EMDRIdDataMap[emdrId]['H3'] == 'N',EMDRIdDataMap[emdrId]['H3'] == 'No'),EMDRIdDataMap[emdrId]['H3_No'],'')}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Add'l Text:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['H3.1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Device Returned to Manufacturer:</b>&nbsp;
+                    <apex:outputText value="{!CASE(EMDRIdDataMap[emdrId]['H3.2'],'Yes','Y','No','N','Y','Y','N','N','')}"/>
+                </div>                                                
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H4. Device Manufacture Date:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['H4']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H5. Labeled for Single Use:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['H5']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H6. Evaluation Codes  (Refer to coding manual)</b></div>
+                
+                
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">Device Codes:&nbsp;
+                </div>
+                <apex:repeat value="{!EMDRIdCodesMap[emdrId]['H6.4']}" var="code" >
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">Patient Codes:&nbsp;
+                </div>
+                <apex:repeat value="{!EMDRIdCodesMap[emdrId]['H6.5']}" var="code" >
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">Method Codes:&nbsp;
+                </div>
+                <apex:repeat value="{!EMDRIdCodesMap[emdrId]['H6.1']}" var="code" >
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">Results Codes:&nbsp;
+                </div>
+                <apex:repeat value="{!EMDRIdCodesMap[emdrId]['H6.2']}" var="code" >
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">Conclusion Codes:&nbsp;
+                </div>
+                <apex:repeat value="{!EMDRIdCodesMap[emdrId]['H6.3']}" var="code" >
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H7. If Remedial Action Initiated:</b>&nbsp;
+                    <apex:outputText value="{!IF(OR(CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Recall'),CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Relabeling'),CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Patient Monitoring'),CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Repair'),CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Notification'),CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Modification/Adjustment'),CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Replace'),CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Inspection'),CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Other')),'',EMDRIdDataMap[emdrId]['H7'])}"/>
+                </div>
+                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Recall'),'[X]','[]')}"/>&nbsp;Recall
+                    <span style="margin-left:22px;"><apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Relabeling'),'[X]','[]')}"/>&nbsp;Relabeling</span>
+                    <span style="margin-left:22px;"><apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Patient Monitoring'),'[X]','[]')}"/>&nbsp;Patient Monitoring</span>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Repair'),'[X]','[]')}"/>&nbsp;Repair
+                    <span style="margin-left:20px;"><apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Notification'),'[X]','[]')}"/>&nbsp;Notification</span>
+                    <span style="margin-left:18px;"><apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Modification/Adjustment'),'[X]','[]')}"/>&nbsp;Modification/Adjustment</span>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;">
+                    <b><apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Replace'),'[X]','[]')}"/>&nbsp;Replace</b>
+                    <span style="margin-left:13px;"><b><apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Inspection'),'[X]','[]')}"/>&nbsp;Inspection</b></span>
+                    <span style="margin-left:22px;"><b><apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Other'),'[X]','[]')}"/>&nbsp;Other:</b></span>
+                    &nbsp;
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['H7'],'Other'),EMDRIdDataMap[emdrId]['H7.1'],'')}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H8. Usage of Device:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['H8']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H9. If action reported to FDA under 21 USC 360i(f), list correction/removal reporting number:</b>&nbsp;
+                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['H9']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H10. Additional Manufacturer Narrative:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText id="taid" styleClass="taid" value="{!EMDRIdDataMap[emdrId]['H10']}" style="white-space: pre-wrap;"/>
+                </div>  
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H11. Corrective Data:</b>&nbsp;</div>
+                <div class="fieldContainer">
+                    <apex:outputText styleClass="taid" value="{!EMDRIdDataMap[emdrId]['H11']}" style="white-space: pre-wrap;"/>
+                </div>
+                <br/>
+                
+                <div>
+                    <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;"> ATTACHMENTS </div>
+                    <apex:outputPanel rendered="{!attachmentSizeMap[emdrId] > 0}">
+                        <table cellspacing="0" cellpadding="3" border="1" width="100%" style="border-top:0px">
+                            <tr>
+                                <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>Title</b></div></td>
+                                <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>Last Modified</b></div></td>
+                                <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>Created By</b></div></td>
+                            </tr>
+                            <apex:repeat value="{!attachments[emdrId]}" var="att" rendered="{!if(attachments[emdrId] != null,true,false)}">
+                                <tr>
+                                    <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">{!att['Name']}</div></td>
+                                    <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><apex:outputField value="{!att['LastModifiedDate']}"/></div></td>
+                                    <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">{!att['CreatedBy.Name']}</div></td>
+                                </tr>
+                            </apex:repeat>
+                        </table> 
+                    </apex:outputPanel>
+                </div>
+            </div>
+        </div>
+            
+            
+            <!---------------------- pdf code ends here --------------------->
+            
+                        
+            </apex:repeat>
+            </apex:outputPanel>
+        </apex:form>
+    </body>
+</apex:page>

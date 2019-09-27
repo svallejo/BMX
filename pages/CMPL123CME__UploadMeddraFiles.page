@@ -1,0 +1,63 @@
+<apex:page controller="CMPL123CME.CMPL123UploadMeddraFiles" tabStyle="CMPL123CME__Complaint_Code__c"  showHeader="false">
+    <style>
+        .header{
+            padding: 4px 8px;
+            background-color: #FFC;
+            font-size: 109%;
+        }
+    </style>
+    <apex:form id="fm">      
+        <apex:pageBlock title="Process MedDRA Codes File">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Submit to Process" style="padding:6px;" action="{!processMeddraFile}" oncomplete="medDRAfilestatus('{!JSENCODE(versionNumber)}','{!JSENCODE(stResourceName)}');"  reRender="fm"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Upload File" columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputPanel >
+                        Click<apex:outputLink target="_blank" value="/081/e" style="color:blue;font-weight:bold;padding:5px;"  title="Upload New MedDRA code file as Static Resource">here</apex:outputLink>to Upload New MedDRA code file as Static Resource. Once created, provide the same Static Resource name in the below section to start process. 
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Process File" columns="1"> 
+            <apex:pagemessages />                                   
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Resource Name</apex:outputLabel>
+                    <apex:inputText value="{!stResourceName}" id="resourceName"/>
+                </apex:pageBlockSectionItem>                                   
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Version Number</apex:outputLabel>
+                    <apex:inputText value="{!versionNumber}" id="version"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputPanel rendered="{!IF(resourceCount != null && resourceCount > 0,true,false)}">
+                        <div style="font-size:13px;display:none;" id="jobStatus"><span style="color:green">File has been submitted successfully. You will get a confirmation email after completing the job. To see the job status click</span><apex:outputLink target="_blank" value="/apexpages/setup/listAsyncApexJobs.apexp" style="color:blue;font-weight:bold;padding:5px;"  title="Apex Job Status">here</apex:outputLink></div>           
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            </apex:pageBlock>
+            
+       <!-- <apex:actionFunction name="submitToProcess" action="{!processMeddraFile}" reRender="fm" oncomplete="medDRAfilestatus();">
+            <apex:param value="MedDRAsc" name="staticResourceName" assignTo="{!stResourceName}"/>
+            <apex:param value="16.1" name="versionNumber" assignTo="{!versionNumber}"/>
+        </apex:actionFunction> -->
+        
+    </apex:form> 
+    
+    <script>
+        /* function confirmSubmit(){
+            if(confirm('Are you sure?')){
+                submitToProcess();
+                
+            }else
+                return false;
+        } */
+       
+       function medDRAfilestatus(verNo,resource){
+           if( verNo != '' && resource != ''){
+               document.getElementById("jobStatus").style.display = "block";               
+           }     
+        } 
+    </script>
+</apex:page>

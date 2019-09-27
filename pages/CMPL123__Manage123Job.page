@@ -1,0 +1,1404 @@
+<apex:page sidebar="false" standardController="CMPL123__X123Job__c" extensions="CMPL123.Manage123JobController">
+
+
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/CMP123_New/js/jquery-ui.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/CMP123_New/css/typeahead.css')}"/>
+
+    <style>
+        .fetchDataCss {
+            font-size: 130%;
+            color: #999999;
+            font-weight: bold;
+        }
+
+        .back {
+            background: transparent url({!URLFOR($Resource.CMPL123__Compliance123,"CMP123_New/image/fabric_plaid2.jpg")}) repeat 0 0;
+        }
+
+        .wrapper {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 24px rgba(0, 0, 0, .2);
+            -moz-box-shadow: 0 0 24px rgba(0, 0, 0, .2);
+            -webkit-box-shadow: 0 0 24px rgba(0, 0, 0, .2);
+            height: auto;
+            margin: 0 auto;
+            padding: 0;
+            width: 80%;
+        }
+
+        .form-input {
+            background: white;
+            border: 1px solid #CCC;;
+            border-radius: 8px;
+            box-shadow: 0 0 5px #CCC;
+            padding: 8px 27px 8px 10px;
+            width: 250px;
+        }
+
+        .Input-btn:hover {
+            background: #3CB521;
+            color: white;
+        }
+
+        .Input-btn-cancel:hover {
+            background: #c9302c;
+            color: white;
+        }
+
+        .popover {
+            z-index: 1010;
+            background-color: #ffffff;
+        }
+
+        .tableCss {
+            width: 100%;
+            background-color: transparent;
+            color: #666666;
+        }
+
+        .tableCss td {
+            padding: 5px;
+            vertical-align: top;
+            background-color: white;
+        }
+
+        .tableLabel {
+            color: #395c82;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .header {
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.2;
+            color: #999999;
+            font-weight: bold;
+            font-size: 150%;
+        }
+
+        .input-selectList {
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid #CCC;
+            color: #666;
+            border-radius: 6px;
+            height: 38px;
+            width: 290px;
+        }
+
+        .requiredInput {
+            position: relative;
+            height: 100%;
+        }
+
+        .requiredBlock {
+            background-color: rgb(204, 0, 0);
+            position: absolute;
+            left: -2px;
+            width: 3px;
+            top: 1px;
+            bottom: 1px;
+        }
+
+        .tableCss td {
+            vertical-align: middle;
+        }
+
+        .main-tds {
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        .innerTableCss th {
+            padding: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .innerTableCss td {
+            padding: 10px;
+            vertical-align: center;
+            background-color: #f9f9f9;
+        }
+
+        textarea {
+            border-radius: 5px;
+            border: 1px solid #CCC;
+            box-shadow: 0 0 5px #CCC;
+            height: 50px;
+        }
+
+        .ui-autocomplete {
+            border-radius: 8px;
+            padding: 0.5%;
+        }
+
+        .ui-menu .ui-menu-item {
+            padding: 2.8%;
+        }
+
+        .ui-menu-item:hover {
+            color: white;
+            border-radius: 4px;
+            border: 0px;
+            background: #446e9b;
+        }
+
+        .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .control-buttons {
+            padding:8px !important;
+            cursor:pointer;
+        }
+        .error-div{
+            padding:1%;
+        }
+        .table-div{
+            padding-left:18%;
+        }
+        .parent-object{
+            font-size:14px;
+            color:#395c82;
+            font-weight:bolder;
+        }
+        .header-div{
+            padding:1.5%;
+            border-bottom:1px solid #dddddd;
+        }
+        .button-div{
+            text-align:center;
+            padding:2%;
+        }
+        .data-element{
+            width:230px;
+        }
+        .job-div{
+            float:right;
+            margin-right:2%;
+        }
+
+        .job-div a , .link{
+            color:#395c82;
+        }
+
+        .table-cell {
+            width: 36%;
+        }
+
+        .cell-alignment {
+            text-align: center;
+        }
+
+
+    </style>
+
+    <script>
+        const JobType = Object.freeze({
+            WORKFLOW_STEP : '0',
+            PARENT_FIELD : '1',
+            CHILD_FIELD : '2',
+            CHILD_RECORD : '3'
+        });
+
+        const FieldType = Object.freeze({
+            IS_DYNAMIC : 'CMPL123__Is_Dynamic__c',
+            FIELD_NAME : 'CMPL123__Field_Name__c',
+            DATA_TYPE : 'CMPL123__Data_Type__c',
+            VALUE : 'CMPL123__Value__c',
+            JOB_TYPE : 'CMPL123__Job_Type__c',
+            WORKFLOW_STEP : 'CMPL123__Workflow_Step__c'
+        });
+
+        const objType = Object.freeze({
+                        "Workflow Step by KeyValue":       JobType.WORKFLOW_STEP,
+                        "Set Parent Field by KeyValue":    JobType.PARENT_FIELD,
+                        "Set Child Field by KeyValue":     JobType.CHILD_FIELD,
+                        "Create Child Record by KeyValue": JobType.CHILD_RECORD
+        });
+
+        var select='';
+        var fieldMap, targetObjectApi, recordId, recordDetail, workflowTr;
+
+        $(function () {
+            document.getElementById('header').innerHTML = getHeaderLabel();
+            var recordId = '{! JSENCODE($CurrentPage.parameters.id) }';
+            //Must be encoded as string when passed from backend in order to prevent arbitrary code execution.
+            targetObjectApi = '{! JSENCODE(typeApiMapJson) }';
+            try{
+                //If targetObjectApi contains malicious code JSON.parse will fail and throw exception.
+                targetObjectApi = JSON.parse(targetObjectApi);
+            } catch (e){
+                showErrorMessage('{! JSENCODE($Label.REST_ERROR_UNKNOWN) }');
+            }
+
+            $(".fieldRelation").hide();
+            if (!recordId) {
+                populateJobTypeList();
+            } else {
+                populateExistingValues();
+            }
+        });
+
+        function getHeaderLabel(){
+            recordId = '{! JSENCODE($CurrentPage.parameters.id) }';
+            if(recordId == undefined || recordId.length == 0){
+                return '{! JSENCODE($Label.CREATE_NEW_JOB) }';
+            } else{
+                return '{! JSENCODE($Label.EDIT) } {! JSENCODE(jobName) }';
+            }
+        }
+
+        function workflowStepByKeyValue(){
+            var workFlowRule, tr,td,label;
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Manage123JobController.jobTypeDetail}',
+                JobType.WORKFLOW_STEP,
+                recordDetail.CMPL123__Related_Task__r.Id, function (result, event) {
+
+                if (event.status) {
+                    workFlowRule = createStepsOrRuleSelectList(recordDetail.CMPL123__Workflow_Step__r.CMPL123__WF_Rule__r.Name, result);
+                    tr = document.createElement('tr');
+                    td = document.createElement('td');
+                    td.style.textAlign = 'right';
+                    label = document.createElement('label');
+                    label.innerHTML = "{!$Label.WORKFLOW_RULE}";
+                    label.className = 'tableLabel';
+                    td.appendChild(label);
+                    tr.appendChild(td);
+                    td = document.createElement('td');
+                    td.appendChild(workFlowRule);
+                    tr.appendChild(td);
+
+                    $(".tableCss tr").eq(3).after(tr);
+                    $("#parentChildFields").change();
+                }
+            });
+        }
+
+        function insertRecordDetailTable(tableTr, table, filterValue) {
+
+            var fieldLabelOrApi = getLebelfromDataType({!typeApiMapJsonChildOrObject});
+
+            for (var tr = 0; tr < recordDetail.CMPL123__JobFieldMaps__r.records.length; tr++) {
+
+                var value = '';
+                if(recordDetail.CMPL123__JobFieldMaps__r.records[tr].CMPL123__Value__c) {
+                    value = recordDetail.CMPL123__JobFieldMaps__r.records[tr].CMPL123__Value__c;
+                }
+
+                var dataType = '';
+                if(recordDetail.CMPL123__JobFieldMaps__r.records[tr].CMPL123__Data_Type__c) {
+                    dataType = recordDetail.CMPL123__JobFieldMaps__r.records[tr].CMPL123__Data_Type__c;
+                }
+
+                var isReference = !!recordDetail.CMPL123__JobFieldMaps__r.records[tr].CMPL123__Is_Dynamic__c;
+
+                tableTr += "<tr id='" + recordDetail.CMPL123__JobFieldMaps__r.records[tr].Id + "'>" +
+                                "<td data-field-name='" + FieldType.FIELD_NAME + "' class='" + FieldType.FIELD_NAME + "'>" +
+                                    "<input type='text' value='" +
+                                    fieldLabelOrApi[recordDetail.CMPL123__JobFieldMaps__r.records[tr].CMPL123__Field_Name__c] +
+                                    "' name='" +
+                                    recordDetail.CMPL123__JobFieldMaps__r.records[tr].CMPL123__Field_Name__c +
+                                    "' class='form-input typeAheadFields' placeholder='{!$Label.TYPE_FIELD}'  />" +
+                                "</td>" +
+                                "<td data-field-name='" + FieldType.DATA_TYPE + "' class='CMPL123__Data_Type__c cell-alignment'>" +
+                                    "<span style='color:green;'>" +
+                                        dataType +
+                                    "</span>" +
+                                "</td>";
+
+                if (isReference) {
+                    tableTr += "<td data-field-name='" + FieldType.IS_DYNAMIC + "' class='CMPL123__Is_Dynamic__c cell-alignment'>" +
+                                    "<input type='checkbox' checked onclick='createSelectList($(this));'/>" +
+                                "</td>";
+                }
+                else {
+                    tableTr += "<td data-field-name='" + FieldType.IS_DYNAMIC + "' class='CMPL123__Is_Dynamic__c cell-alignment'>" +
+                                    "<input type='checkbox' onclick='createSelectList($(this));'/>" +
+                                "</td>";
+                }
+                tableTr += "<td data-field-name='" + FieldType.VALUE + "' class='CMPL123__Value__c'>" +
+                                    "<input type='text' onfocus='createSelectListForEdit($(this))' class='form-input mappingFieldValue data-element' value='" + value + "' />" +
+                                "</td>" +
+                                "<td style='text-align:left;'>" +
+                                    "<a href='javascript:void(0)' onclick='removeRow($(this));' >" +
+                                        "<img src='/img/func_icons/remove12_on.gif'>" +
+                                    "</a>" +
+                                "</td>" +
+                            "</tr>";
+
+            }
+
+            tableTr += "</table></div><div class='job-div'><a href='javascript: addRow();'>{!$Label.ADD_MORE}</a></div>";
+            if (objType[recordDetail.CMPL123__Job_Type__c] == JobType.CHILD_FIELD) {
+                tableTr += '<div class="back" style="margin-left:2%;padding:1%;">' +
+                                '<span style="font-weight:bold;">{!$Label.FILTER_CONDITION}</span>' +
+                                '<div>' +
+                                    '<br/>' +
+                                    '<span>' +
+                                        '<input type="text" class="form-input" placeholder="{!$Label.TYPE_FILTER_CONDITION}" id="filterCondition" value="' +
+                                        filterValue +
+                                        '" style="width:350px;" />' +
+                                    '</span>' +
+                                    '&nbsp;&nbsp;' +
+                                    '<span style="color:#395C82;">{!$Label.PLEASE_SPECIFY_WHERE_CONDITION_ORDER_BY_LIMIT}</span>' +
+                                '</div>' +
+                            '</div>';
+            }
+            return tableTr;
+        }
+
+        function parentOrChildFieldByKeyValue(filterValue){
+
+            var fieldLabelOrApi = getLebelfromDataType({!typeApiMapJsonChildOrObject});
+            var workflowStep;
+            $(".fieldRelation").show();
+
+            if (recordDetail.CMPL123__Related_Task__r) {
+                workflowStep = '<td class="parentChildFields">' +
+                                    '<label class="fetchDataCss" name="'
+                                    + recordDetail.CMPL123__JobFieldMaps__r.records[0].CMPL123__Object_Name__c + '" style="font-weight:bold;">'
+                                    + recordDetail.CMPL123__JobFieldMaps__r.records[0].CMPL123__Relationship_Name__c +
+                                    '</label>' +
+                                '</td>';
+            }
+            else {
+                workflowStep = '<td class="parentChildFields">' +
+                                    '<label>' +
+                                    '</label>' +
+                                '</td>';
+            }
+
+            var childOrParentLabel = (objType[recordDetail.CMPL123__Job_Type__c] == JobType.PARENT_FIELD) ? 'Parent Object' : 'Child Object';
+            workflowTr = "<tr ><td style='text-align:right;'><label class='tableLabel'>" + childOrParentLabel + "</label></td>" + workflowStep + "</tr>";
+            var tableTr = '';
+            var table = '<div style="padding:2%;">' +
+                            '<table width="100%" class="innerTableCss fieldTable">' +
+                                '<tr>' +
+                                    '<th>{!$Label.FIELD}</th>' +
+                                    '<th class="cell-alignment">{!$Label.DATATYPE}</th>' +
+                                    '<th class="cell-alignment">{!$Label.IS_REFERENCE}</th>' +
+                                    '<th>{!$Label.MAPPING_FIELD_VALUE}</th>' +
+                                    '<th class="cell-alignment" style="display:none;">{!$Label.ACTION}</th>' +
+                                    '<th></th>' +
+                                '</tr>';
+
+            if (recordDetail.CMPL123__JobFieldMaps__r != undefined) {
+                tableTr = insertRecordDetailTable(tableTr, table, filterValue);
+            }
+            $(".fieldRelation").append(table + tableTr);
+            var labelApi = new Object();
+            for (var key in fieldLabelOrApi) {
+                labelApi[fieldLabelOrApi[key]] = key;
+            }
+            createTypeAhead(labelApi, $(".typeAheadFields"));
+        }
+
+        function createChildRecordByKeyValue(){
+            $(".fieldRelation").show();
+            var requireField = [];
+            var reuireFieldObject = JSON.parse('{!JSENCODE(requireFieldString)}');
+            for (var key = 0; key < reuireFieldObject.length; key++) {
+                requireField.push(reuireFieldObject[key]);
+            }
+            dataTypeOrFieldApiLabel = getLebelfromDataType(JSON.parse('{!JSENCODE(typeApiMapJsonChildOrObject)}'));
+            var labeandApiMap = new Object();
+            for (var key in dataTypeOrFieldApiLabel) {
+                labeandApiMap[dataTypeOrFieldApiLabel[key]] = key;
+            }
+
+            var chilObj = '';
+            if(recordDetail.CMPL123__JobFieldMaps__r.records[0].CMPL123__Relationship_Name__c) {
+                chilObj = recordDetail.CMPL123__JobFieldMaps__r.records[0].CMPL123__Relationship_Name__c;
+            }
+            workflowTr = "<tr>" +
+                            "<td style='text-align:right;'>" +
+                                "<label class='tableLabel'>{!$Label.CHILD_OBJECT}</label>" +
+                            "</td>" +
+                            "<td class='parentChildFields'>" +
+                                "<span class='fetchDataCss' name='" +
+                                recordDetail.CMPL123__JobFieldMaps__r.records[0].CMPL123__Object_Name__c +
+                                "' id='parentChildFields'>" +
+                                chilObj +
+                                "</span>" +
+                            "</td>" +
+                        "</tr>";
+
+            var table = '<div style="padding:2%;"><table width="100%" class="innerTableCss fieldTable">' +
+                '<tr>' +
+                    '<th>{!$Label.FIELD}</th>' +
+                    '<th class="cell-alignment">{!$Label.DATATYPE}</th>' +
+                    '<th class="cell-alignment">{!$Label.IS_REFERENCE}</th>' +
+                    '<th>{!$Label.MAPPING_FIELD_VALUE}</th>' +
+                    '<th></th>' +
+                '</tr>';
+
+            for (var i = 0; i < recordDetail.CMPL123__JobFieldMaps__r.records.length; i++) {
+                var currentRecord = recordDetail.CMPL123__JobFieldMaps__r.records[i];
+                var fields = (currentRecord.CMPL123__Field_Name__c != undefined) ? currentRecord.CMPL123__Field_Name__c : '';
+                var mappingValue = (currentRecord.CMPL123__Value__c != undefined) ? currentRecord.CMPL123__Value__c : '';
+                var checkBox = document.createElement('input');
+                checkBox.type = 'checkbox';
+                if(currentRecord.CMPL123__Is_Dynamic__c){
+                    checkBox.setAttribute('checked', 'checked');
+                }
+                checkBox.setAttribute('onclick','createSelectList($(this));');
+                checkBox = new XMLSerializer().serializeToString(checkBox);
+
+                table += "<tr id='" + recordDetail.CMPL123__JobFieldMaps__r.records[i].Id + "'>" +
+                            "<td data-field-name='" + FieldType.FIELD_NAME+ "' class='CMPL123__Field_Name__c table-cell'>" +
+                                "<input type='text' style='color:#395C82;' class='form-input' value='" + dataTypeOrFieldApiLabel[fields] + "' name='" + fields + "'>" +
+                            "</td>" +
+                            "<td data-field-name='" + FieldType.DATA_TYPE + "' class='CMPL123__Data_Type__c cell-alignment'>" +
+                                "<span style='color:#800b10;'>" + recordDetail.CMPL123__JobFieldMaps__r.records[i].CMPL123__Data_Type__c + "</span>" +
+                            "</td>" +
+                            "<td data-field-name='" + FieldType.IS_DYNAMIC + "' class='CMPL123__Is_Dynamic__c cell-alignment'>"
+                                + checkBox +
+                            "</td>" +
+                            "<td data-field-name='" + FieldType.VALUE + "' class='CMPL123__Value__c'>" +
+                                "<input type ='text' onfocus='createSelectListForEdit($(this))' class='form-input data-element' value='" + mappingValue + "' />" +
+                            "</td>";
+                if (requireField.indexOf(fields) > -1){
+                    table += "<td></td>";
+                }
+                else {
+                    table += "<td style='text-align:left;'><a href='javascript:void(0)' onclick='removeRow($(this));'><img src='/img/func_icons/remove12_on.gif'></a></td>";
+                }
+                table += "</tr>";
+            }
+            table += "</table></div><div class='job-div'><a href='javascript: addRowJobTypeFour();'>{!$Label.ADD_MORE}</a></div>";
+            $(".fieldRelation").append(table);
+        }
+
+        function populateExistingValues(){
+            var filterValue = '';
+
+            recordDetail = {!recordDetail};
+            $("#Name").val(recordDetail.Name);
+            $("#CMPL123__Is_Active__c").prop('checked', recordDetail.CMPL123__Is_Active__c);
+
+            if (recordDetail.CMPL123__Description__c) {
+                $("#CMPL123__Description__c").val(recordDetail.CMPL123__Description__c);
+            } else {
+                $("#CMPL123__Description__c").val('');
+            }
+
+            if (recordDetail.CMPL123__Child_Filter_Condition__c) {
+                filterValue = recordDetail.CMPL123__Child_Filter_Condition__c;
+            }
+
+            if (recordDetail.CMPL123__Job_Type__c != undefined)
+                $("#workflowStep").append("<span  class='fetchDataCss' style='font-weight:bold;' id='" + FieldType.JOB_TYPE + "'>" + recordDetail.CMPL123__Job_Type__c + "</span>");
+            else {
+                $("#workflowStep").append("<span id='" + FieldType.JOB_TYPE + "'>" + '' + "</span>");
+            }
+            switch(objType[recordDetail.CMPL123__Job_Type__c]){
+                case JobType.WORKFLOW_STEP :
+                    workflowStepByKeyValue();
+                    break;
+                case JobType.PARENT_FIELD :
+                case JobType.CHILD_FIELD  :
+                    parentOrChildFieldByKeyValue(filterValue);
+                    break;
+                case JobType.CHILD_RECORD :
+                    createChildRecordByKeyValue();
+                    break;
+            }
+            $(".tableCss tr").eq(3).after(workflowTr);
+        }
+
+        function populateJobTypeList() {
+
+            var workflowStep = {!jobTypes};
+            var select = $("<select id='" + FieldType.JOB_TYPE + "' class='input-selectList' onchange='getJobDetail($(this));'><option value=''>--{!$Label.SELECT}--</option>");
+            for (var objt in objType) {
+                for (var a = 0; a < workflowStep.length; a++) {
+                    if (objt == workflowStep[a]) {
+                        var option = "<option value='" + objType[objt] + "'>" + objt + "</option>";
+                        select.append(option);
+                        break;
+                    }
+                }
+            }
+            $("#workflowStep").append(select);
+
+        }
+
+        function createStepsOrRuleSelectList(selectedOption,result){
+
+            var select = document.createElement('select');
+            select.id        = 'parentChildFields';
+            select.className = 'input-selectList';
+            select.setAttribute('onchange', 'getListOfWorkflowRule($(this));');
+
+            var option = document.createElement('option');
+            option.value     = '';
+            option.innerHTML = '--{!$Label.SELECT}--';
+
+            select.appendChild(option);
+
+            for(var selectableValue in result){
+                option           = document.createElement('option');
+                option.value     = result[selectableValue];
+                option.innerHTML = selectableValue;
+                if(selectableValue == selectedOption){
+                    option.selected = "selected";
+                }
+                select.appendChild(option);
+            }
+
+            return select;
+        }
+
+        function getJobDetail(obj){
+            let objectJobType = obj.val();
+            if(objectJobType.length >0){
+                obj.parent().parent().contents().filter("span").next().remove();
+                obj.parent().parent().append("<span class='load'>&nbsp;<span><img src='{!URLFOR($Resource.CMPL123__Compliance123,"/CMP123_New/image/ajax-loader.gif")}'></span>");
+            }
+            $(".fieldRelation").hide();
+            if(objectJobType == JobType.WORKFLOW_STEP){
+                getParentOrChildFieldByKeyValue(JobType.WORKFLOW_STEP,"Workflow Rule");
+            }else if(objectJobType == JobType.PARENT_FIELD){
+                getParentOrChildFieldByKeyValue(JobType.PARENT_FIELD,"Parent Object");
+            }else if(objectJobType== JobType.CHILD_FIELD){
+                getParentOrChildFieldByKeyValue(JobType.CHILD_FIELD,"Child Object");
+            }else if(objectJobType ==  JobType.CHILD_RECORD){
+                getChildRecordByKeyValue(JobType.CHILD_RECORD,"Child Object");
+            }else{
+                var $siblings = $(".workflowJob").nextUntil(".inputBtn");
+                $siblings.remove();
+            }
+        }
+
+        function getChildRecordByKeyValue(jobType,label){
+            $(".dom").remove();
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Manage123JobController.jobTypeDetail}',jobType,'{!parentId}',function(result,event){
+                if(event.status){
+                    var select = "<select class='input-selectList' id='parentChildFields' onchange='createkeyValueChildren($(this));'><option value=''>--{!$Label.SELECT}--</option>";
+                    for(var a in result){
+                        select += "<option value='"+result[a]+"'>"+a+"</option>";
+                    }
+                    select +='</select>';
+                    var td = "<tr class='dom ChildObject'><td style='text-align:right;vertical-align:middle;'><label class='tableLabel'>"+label+"</label></td><td>"+select+"</td></tr>";
+                    tableLength = $(".tableCss tr").length -1;
+                    $(".tableCss tr").eq(tableLength).after(td);
+                    $(".load").remove();
+                }else
+                    showErrorMessage(event.message);
+            },{escape:true});
+
+        }
+
+        function getParentOrChildFieldByKeyValue(type,relation){
+            $(".dom").remove();
+            $(".relatedObject").remove();
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Manage123JobController.jobTypeDetail}',type,'{!JSENCODE(parentId)}',function(result,event){
+                if(event.status){
+                    createDom(result,relation);
+                }else{
+                    showErrorMessage(event.message);
+                }
+            },{escape:true});
+        }
+
+        function createkeyValueChildren(obj){
+            var requireMap = new Object();
+            if(obj.val().length >0){
+                obj.parent().contents().filter("span").next().remove();
+                obj.parent().append("<span class='load'>&nbsp;<span class='load'><img src='{!URLFOR($Resource.CMPL123__Compliance123,"/CMP123_New/image/ajax-loader.gif")}'></span></span>");
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Manage123JobController.getChildRecordByKeyValue}',obj.val(),function(result,event){
+                    if(event.status){
+                        if(result != null){
+                            for(var a in result){
+                                if(a != 'REQUIRED'){
+                                    requireMap[a] = result[a];
+                                }
+                            }
+                            createDomChildRecodByKeyValue(result.REQUIRED,requireMap);
+                        }else
+                            showErrorMessage('{!$Label.NO_RECORD_FOUND}');
+
+                    }else{
+                        showErrorMessage(event.message);
+                        $(".load").remove();
+                    }
+
+
+                });
+            }else{
+                $(".fieldRelation").empty();
+
+            }
+        }
+
+        function createDomChildRecodByKeyValue(result,requireMap){
+            $(".fieldRelation").show();
+            $(".fieldRelation").empty();
+            dataTypeOrFieldApiLabel = getLebelfromDataType(requireMap);
+            var table ='<div style="padding:2%;">' +
+                            '<table width="100%" class="innerTableCss fieldTable">' +
+                                '<tr>' +
+                                    '<th>{!$Label.FIELD}</th>' +
+                                    '<th class="cell-alignment">{!$Label.DATATYPE}</th>' +
+                                    '<th class="cell-alignment">{!$Label.IS_REFERENCE}</th>' +
+                                    '<th>{!$Label.MAPPING_FIELD_VALUE}</th>'+
+                                    '<th></th>' +
+                                '</tr>';
+            for(var selectableOption in result){
+
+                var select2 = document.createElement("input");
+                select2.type        = "text";
+                select2.readOnly    = "true";
+                select2.className   = "form-input link";
+                select2.name        = result[selectableOption];
+                select2.setAttribute('value',selectableOption );
+
+                var tableRow = document.createElement("tr");
+
+                var tableCell1 = document.createElement("td");
+                tableCell1.className = "table-cell";
+                tableCell1.setAttribute('data-field-name',FieldType.FIELD_NAME);
+
+
+                var tableCell2 = document.createElement("td");
+                tableCell2.className = "cell-alignment";
+                tableCell2.setAttribute('data-field-name', FieldType.DATA_TYPE);
+        
+                var span = document.createElement("span");
+                span.style.color = "green";
+                span.innerHTML = labelType[result[selectableOption]];
+
+
+                var tableCell3 = document.createElement("td");
+                tableCell3.className = "cell-alignment";
+                tableCell3.setAttribute('data-field-name', FieldType.IS_DYNAMIC);
+
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.setAttribute("onclick", "createSelectList($(this));");
+
+
+                var tableCell4 = document.createElement("td");
+                tableCell4.setAttribute('data-field-name',FieldType.VALUE);
+                tableCell4.className = "CMPL123__Value__c";
+
+                var textbox = document.createElement("input");
+                textbox.type = "text";
+                textbox.className = "form-input data-element";
+
+
+                var tableCell5 = document.createElement("td");
+                tableCell5.innerHTML = '';
+
+                tableRow.appendChild(tableCell1);
+                    tableCell1.appendChild(select2);
+                tableRow.appendChild(tableCell2);
+                    tableCell2.appendChild(span);
+                tableRow.appendChild(tableCell3);
+                    tableCell3.appendChild(checkbox);
+                tableRow.appendChild(tableCell4);
+                    tableCell4.appendChild(textbox);
+                tableRow.appendChild(tableCell5);
+
+                table += new XMLSerializer().serializeToString(tableRow);
+
+            }
+            select ="<select class='input-selectList' onchange='getDataType($(this));'  style='width:100%;color:#395C82;'><option value=''>--{!$Label.SELECT}--</option>";
+            for(var a in sortObject(dataTypeOrFieldApiLabel,'function',true)){
+                select +="<option value='"+dataTypeOrFieldApiLabel[a]+"'>"+a+"</option>";
+            }
+            select +="</select>";
+            table +="</table></div><div class='job-div'><a href='javascript:addRowJobTypeFour();' >{!$Label.ADD_MORE}</a></div>";
+            $(".fieldRelation").append(table);
+            $(".load").remove();
+        }
+
+        function addRowJobTypeFour(){
+            var tr ='';
+            tr +='<tr style="width:100%;" class="dom Fields">' +
+                    '<td data-field-name="' + FieldType.FIELD_NAME + '" class="CMPL123__Field_Name__c data-element">' +
+                        '<input type="text" class="form-input typeAheadFields" placeholder="{!$Label.TYPE_FIELD}" />' +
+                    '</td>' +
+                    '<td data-field-name="' + FieldType.DATA_TYPE + '" class="CMPL123__Data_Type__c cell-alignment">' +
+                    '</td>' +
+                    '<td style="text-align: center;" data-field-name="' + FieldType.IS_DYNAMIC + '" class="CMPL123__Is_Dynamic__c">' +
+                        '<input type="checkbox" disabled="true" onclick="createSelectList($(this));"/>' +
+                    '</td>' +
+                    '<td data-field-name="' + FieldType.VALUE + '" class="CMPL123__Value__c">' +
+                        '<input type="text" class="form-input data-element" />' +
+                    '</td>' +
+                    '<td style="text-align:left;">' +
+                        '<a href="javascript:void(0)" onclick="removeRow($(this));">' +
+                            '<img  src="{!URLFOR('/img/func_icons/remove12_on.gif')}" />' +
+                        '</a>' +
+                    '</td>' +
+                '</tr>';
+            $(".innerTableCss").append(tr);
+            var obj = new Object();
+            for(var key in dataTypeOrFieldApiLabel){
+                obj[dataTypeOrFieldApiLabel[key]] = key;
+            }
+            createTypeAhead(obj,$(".typeAheadFields"));
+
+        }
+
+        function showErrorMessage(msg){
+            $("[id=itErrorMessage]").css("visibility","visible");
+            $("[id=itErrorMessage]").empty();
+            $("[id=itErrorMessage]").css("background-color","#f2dede");
+            $("[id=itErrorMessage]").append("<img src='/img/msg_icons/error16.png' />&nbsp;&nbsp;<span style='color:#b94a48;vertical-align:2px;'>"+msg+"</span>").addClass("popover");
+            hideErrorMessage($("[id=itErrorMessage]"),5000);
+        }
+
+        function hideErrorMessage(obj,time){
+            setTimeout(function(){
+                obj.css("visibility","hidden");
+            },time);
+        }
+
+        function sortMap(result){
+            var objResult = new Object();
+            var map =[];
+            for(var a in result){
+                map.push(a);
+            }
+            map.sort();
+            for(var a =0;a<map.length;a++){
+                objResult[map[a]] = result[map[a]];
+            }
+
+            return objResult;
+        }
+
+        function createDom(result,relation){
+            if(Object.keys(result).length >0){
+                result = sortMap(result);
+                var selectedOption='';
+                var dynamicClass = relation.replace(' ','');
+                $("."+dynamicClass).remove();
+                select ='';
+                var tr='';
+                if(relation != 'Fields'){
+                    for(var a in result){
+                        select += "<option value='"+result[a]+"'>"+a+"</option>";
+                    }
+                    select +='</select>';
+                    tr = "<tr class='dom "+dynamicClass+"'><td style='text-align:right;'><label class='tableLabel'>"+relation+"</label></td>";
+                }
+
+                if(relation == 'Fields'){
+                    tr +='<div style="padding:2%;">' +
+                            '<table width="100%" class="innerTableCss fieldTable">' +
+                                '<tr>' +
+                                    '<th>{!$Label.FIELD}</th>' +
+                                    '<th class="cell-alignment">{!$Label.DATATYPE}</th>'+
+                                    '<th class="cell-alignment">{!$Label.IS_REFERENCE}</th>'+
+                                    '<th>{!$Label.MAPPING_FIELD_VALUE}</th>' +
+                                    '<th class="cell-alignment" style="display:none;">{!$Label.ACTION}</th>'+
+                                '</tr>' +
+                                '<tr style="width:100%;" class="dom Fields">' +
+                                    '<td data-field-name="' + FieldType.FIELD_NAME + '" class="CMPL123__Field_Name__c table-cell">' +
+                                        '<input type="text" class="form-input typeAheadFields" placeholder="{!$Label.TYPE_FIELD}" api=""/>'+
+                                    '</td>' +
+                                    '<td data-field-name="' + FieldType.DATA_TYPE + '" class="CMPL123__Data_Type__c cell-alignment">' +
+                                    '</td>' +
+                                    '<td data-field-name="' + FieldType.IS_DYNAMIC + '" class="CMPL123__Is_Dynamic__c cell-alignment">' +
+                                        '<input type="checkbox" disabled="true" onclick="createSelectList($(this));"/>' +
+                                    '</td>' +
+                                    '<td data-field-name="' + FieldType.VALUE + '" class="CMPL123__Value__c">' +
+                                        '<input type="text" class="form-input data-element"/>' +
+                                    '</td>' +
+                                    '<td class="cell-alignment" style="display:none;">' +
+                                        '<a href="javascript:void(0)" onclick="removeRow($(this));" >' +
+                                            '<img  src="{!URLFOR('/img/func_icons/remove12_on.gif')}" />' +
+                                        '</a>' +
+                                    '</td>' +
+                                '</tr>' +
+                            '</table>' +
+                            '<div style="float:right;margin-right:1%;">' +
+                                '<a href="javascript: addRow();" style="color:#395c82;">{!$Label.ADD_MORE}</a>' +
+                            '</div>' +
+                        '</div>';
+                    if($("#CMPL123__Job_Type__c").val() == JobType.CHILD_FIELD){
+                        tr += '<div class="back" style="margin-left:2%;padding:1%;">' +
+                                    '<span style="font-weight:bold;">{!$Label.FILTER_CONDITION}</span>' +
+                                    '<div>' +
+                                        '<br/>' +
+                                        '<span>' +
+                                            '<input type="text" placeholder="{!$Label.TYPE_FILTER_CONDITION}" class="form-input" id="filterCondition" style="width:350px;"/>' +
+                                        '</span>' +
+                                        '&nbsp;&nbsp;' +
+                                        '<span style="color:#395C82;">' +
+                                        '{!$Label.PLEASE_SPECIFY_WHERE_CONDITION_ORDER_BY_LIMIT}' +
+                                        '</span>' +
+                                    '</div>' +
+                                '</div>';
+                    }
+                }else if(relation == 'Workflow Step'){
+                    tr +='<td>' +
+                            '<select class="input-selectList" id="' + FieldType.WORKFLOW_STEP + '" >' +
+                                '<option value="">--{!$Label.SELECT}--</option>';
+                }else{
+                    tr +='<td>' +
+                            '<select class="input-selectList" id="parentChildFields" onchange="getListOfWorkflowRule($(this));" >' +
+                                '<option value="">--{!$Label.SELECT}--</option>';
+                }
+                if(relation != 'Fields'){
+                    tr +=select+"</td></tr>";
+                }
+                if(relation == 'Workflow Step'){
+                    $(".tableCss tr").eq(4).after(tr);
+                    if(recordId.length >0){
+                        selectedOption = (dynamicClass  == 'WorkflowStep')? recordDetail.CMPL123__Workflow_Step__c:'';
+                    }
+                    if(selectedOption.length >0){
+                        $("#CMPL123__Workflow_Step__c option").each(function(){
+                            if($(this).attr('value').trim() == selectedOption.trim()){
+                                $(this).prop('selected',true)
+                            }
+
+                        });
+                    }
+
+                }else if(relation == 'Fields'){
+                    $(".fieldRelation").prepend(tr);
+                    $(".fieldRelation").show();
+
+                    var labelApi = new Object();
+                    for(var key in result){
+                        labelApi[result[key]] = key;
+                    }
+                    createTypeAhead(labelApi,$(".typeAheadFields"));
+                }else{
+                    $(".tableCss tr").eq(3).after(tr);
+                }
+
+            }else{
+                if($("#CMPL123__Job_Type__c").val() == JobType.WORKFLOW_STEP){
+                    if($(".tableCss tr").length == 4)
+                        showErrorMessage('{!$Label.NO_WORKFLOW_RULE_FOUND}');
+                    else  if($(".tableCss tr").length == 5)
+                        showErrorMessage('{!$Label.NO_WORKFLOW_STEP_FOUND}');
+
+                }else if($("#CMPL123__Job_Type__c").val() == JobType.PARENT_FIELD)
+                    showErrorMessage('{!$Label.NO_PARENT_OBJECT_FOUND}');
+                else if($("#CMPL123__Job_Type__c").val() == JobType.CHILD_FIELD)
+                    showErrorMessage('{!$Label.NO_CHILD_OBJECT_FOUND}');
+            }
+            $(".load").remove();
+
+        }
+
+        function addFilterCondition(obj){
+            obj.parent().find("div").remove();
+            obj.parent().append("<div style='margin-top:1%;'>" +
+                                    "<span class='tableLabel'>{!$Label.ENTER_CONDITION}</span>" +
+                                    "&nbsp;" +
+                                    "<input class='form-input' id='filterCondition' type='text' style='width:200px;' />" +
+                                "</div>");
+        }
+
+        function getListOfWorkflowRule(obj){
+            if(obj.val().length >0){
+                obj.parent().contents().filter("span").next().remove();
+                obj.parent().append("<span class='load'>&nbsp;<span class='load'><img src='{!URLFOR($Resource.CMPL123__Compliance123,"/CMP123_New/image/ajax-loader.gif")}'></span></span>");
+            }
+            $(".fieldRelation").empty();
+            var selectedObjectType = ($("#CMPL123__Job_Type__c").val().length >0)? $("#CMPL123__Job_Type__c").val():objType[$("#CMPL123__Job_Type__c").html()];
+            $(".WorkflowSteps").remove();
+            if(obj.val().length >0){
+                var label;
+                switch (selectedObjectType){
+                    case JobType.WORKFLOW_STEP :
+                        label = 'Workflow Step';
+                        break;
+                    case JobType.PARENT_FIELD :
+                    case JobType.CHILD_FIELD :
+                        label = 'Fields';
+                        break;
+                    default:
+                        label = 'Invalid Document State';
+                }
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Manage123JobController.getListOfWorkflowRule}',obj.val(),selectedObjectType,function(result,event){
+                    if(event.status){
+                        if(selectedObjectType == JobType.WORKFLOW_STEP){
+                            createDom(result[0],label);
+                        }else{
+                            var result = getLebelfromDataType(result);
+                            createDom(result,label);
+                        }
+
+                    }else
+                        showErrorMessage(event.message);
+                },{escape:true});
+            }else{
+                $(".fieldRelation").children().remove();
+                obj.parent().parent().next().remove();
+            }
+        }
+
+        function createTypeAhead(result,obj){
+            fieldMap = result;
+            var fieldsLabel= [];
+            for(var a in result){
+                fieldsLabel.push(a);
+            }
+            obj.autocomplete({
+                source:fieldsLabel,
+                select:function(event,ui){
+                    $(this).attr("name",result[ui.item.label]);
+                    getDataType(result[ui.item.label],$(this));
+                },
+                position: { my : "right bottom", at: "right top" },
+                minLength: 0
+            }).focus(function(){
+                $(this).autocomplete("search");
+            });
+        }
+
+        function getLebelfromDataType(result){
+            labelType = '';
+            var objLabel = new Object();
+            for(var key in result){
+                var newobj='';
+                var obj = result[key];
+                for(var prop in obj){
+                    objLabel[obj[prop]] = prop;
+                    if(obj.hasOwnProperty(prop))
+                        newobj = '"'+obj[prop]+'":"'+key+'"';
+                    labelType += labelType == '' ? newobj : ','+newobj;
+                }
+            }
+            labelType = JSON.parse('{'+labelType+'}');
+            return objLabel;
+
+        }
+
+        function getDataType(fieldAipi,obj){
+            if(fieldAipi.length >0){
+                obj.parent().next().html("<span style='color:green;'>"+labelType[fieldAipi]+"</span>");
+                obj.parent().next().next().find("input").prop("disabled",false);
+                if(obj.parent().next().next().find("input").prop("checked") == true){
+                    obj.parent().next().next().find("input").click();
+                }
+            }else{
+                obj.parent().next().html("");
+                if(obj.parent().next().next().find("input").prop("checked") == true){
+                    obj.parent().next().next().find("input").click();
+                }
+                obj.parent().next().next().find("input").prop("disabled",true);
+            }
+        }
+
+        function createSelectList(obj){
+            var fieldLabel =[];
+            if(obj.prop('checked')){
+                $(this).attr('checked','true');
+                var input = "<input type='text' class='form-input mappingFieldValue data-element' placeholder='{!$Label.TYPE_FIELD}' />";
+                var dataType = obj.parent().prev().has("span").text();
+                for(var a in targetObjectApi){
+                    if(a == dataType){
+                        for(var label in sortObject(targetObjectApi[a],'value',true)){
+                            fieldLabel.push(targetObjectApi[a][label]);
+                        }
+                    }
+                }
+                obj.parent().next().html(input);
+                obj.parent().next().find("input").autocomplete({
+                    source: fieldLabel,
+                    minLength: 0,
+                    position: { my : "right bottom", at: "right top" },
+                    select:function(event,ui){
+                        $(this).attr("name",ui.item.label)
+                    }
+                }).focus(function(){
+                    $(this).autocomplete("search");
+                });
+            }else{
+                obj.parent().next().html("<input type='text' class='form-input mappingFieldValue data-element' />");
+            }
+        }
+
+        function createSelectListForEdit(obj){
+            var fieldLabel =[];
+            var reqObj = obj.parent().prev().children();
+            var dataType = reqObj .parent().prev().has("span").text();
+            for(var a in targetObjectApi){
+                if(a == dataType){
+                    for(var label in sortObject(targetObjectApi[a],'value',true)){
+                        fieldLabel.push(targetObjectApi[a][label]);
+                    }
+                }
+            }
+            obj.autocomplete({
+                source: fieldLabel,
+                minLength: 0,
+                position: { my : "right bottom", at: "right top" },
+                select:function(event,ui){
+                    $(this).attr("name",ui.item.label)
+                }
+            }).focus(function(){
+                $(this).autocomplete("search");
+            });
+        }
+
+        function addRow(){
+            var tr ='';
+            tr +='<tr style="width:100%;" class="dom Fields">' +
+                    '<td data-field-name="' + FieldType.FIELD_NAME + '" class="CMPL123__Field_Name__c data-element">' +
+                        '<input type="text" class="form-input typeAheadFields" placeholder="{!$Label.TYPE_FIELD}" />' +
+                    '</td>' +
+                    '<td data-field-name="' + FieldType.DATA_TYPE + '" class="CMPL123__Data_Type__c cell-alignment">' +
+                    '</td>' +
+                    '<td style="text-align: center;" data-field-name="' + FieldType.IS_DYNAMIC + '" class="CMPL123__Is_Dynamic__c">' +
+                        '<input type="checkbox" disabled="true" onclick="createSelectList($(this));"/>' +
+                    '</td>' +
+                    '<td data-field-name="' + FieldType.VALUE + '" class="CMPL123__Value__c">' +
+                        '<input type="text"  onfocus="createSelectList($(this).parent().prev().children());" class="form-input data-element" />' +
+                    '</td>' +
+                    '<td style="text-align:left;">' +
+                        '<a href="javascript:void(0)" onclick="removeRow($(this));">' +
+                            '<img  src="{!URLFOR('/img/func_icons/remove12_on.gif')}" />' +
+                        '</a>' +
+                    '</td>' +
+                '</tr>';
+            $(".innerTableCss").append(tr);
+            createTypeAhead(fieldMap,$(".typeAheadFields"));
+        }
+
+        function removeRow(obj){
+            if(obj.parent().parent().siblings().length >1){
+                obj.parent().parent().remove();
+            }
+        }
+
+        function redirectToMainPage(targetPageId ){
+            if(lexUtil.inLEX()){
+                lexUtil.lexNavigateToSObject(targetPageId);
+            }else{
+                parent.document.location.href= "/"+targetPageId;
+            }
+        }
+
+        function SaveIntelligentJob(obj, parentIdentifier){
+            var jobName = $("#Name").val();
+            var jobType='';
+            if(jobName.length == 0){
+                showErrorMessage('{!$Label.PLEASE_ENTER_NAME}');
+            }else if($("#CMPL123__Job_Type__c").val().length == 0 && $("#CMPL123__Job_Type__c").prop('tagName') == 'SELECT'){
+                showErrorMessage('{!$Label.PLEASE_SELECT_JOB_TYPE}')
+            }else{
+                var IntelligentJobObject,parentOrChildObjectArray;
+
+                if($("#CMPL123__Job_Type__c").val() == JobType.WORKFLOW_STEP){
+                    IntelligentJobObject = createJsonforKeyValue();
+                    jobType = $("#CMPL123__Job_Type__c").val();
+                    parentOrChildObjectArray = null;
+                }else if(objType[$("#CMPL123__Job_Type__c").html()] == JobType.WORKFLOW_STEP){
+                    IntelligentJobObject = createJsonforKeyValue();
+                    jobType = objType[$("#CMPL123__Job_Type__c").html()];
+                    parentOrChildObjectArray = null;
+                }else if($("#CMPL123__Job_Type__c").val() == JobType.PARENT_FIELD || $("#CMPL123__Job_Type__c").val() == JobType.CHILD_FIELD){
+                    if($("#parentChildFields").val().length >0){
+                        jobType  = $("#CMPL123__Job_Type__c").val();
+                        IntelligentJobObject = createJsonforKeyValue();
+                        parentOrChildObjectArray = createJsonForParentOrChild(jobType);
+                    }else{
+                        var errorMessage = ($("#CMPL123__Job_Type__c").val() == JobType.PARENT_FIELD) ? '{!$Label.PLEASE_SELECT_PARENT_OBJECT}':'{!$Label.PLEASE_SELECT_CHILD_OBJECT}';
+                        showErrorMessage(errorMessage)
+                    }
+                }else if(objType[$("#CMPL123__Job_Type__c").html()] == JobType.PARENT_FIELD || objType[$("#CMPL123__Job_Type__c").html()] == JobType.CHILD_FIELD){
+                    jobType  = objType[$("#CMPL123__Job_Type__c").html()];
+                    IntelligentJobObject = createJsonforKeyValue();
+                    parentOrChildObjectArray = createJsonForParentOrChild(jobType);
+                }else{
+                    jobType  =($("#CMPL123__Job_Type__c").val().length ==0)?objType[$("#CMPL123__Job_Type__c").html().trim()]:$("#CMPL123__Job_Type__c").val();
+                    IntelligentJobObject = createJsonforKeyValue();
+                    parentOrChildObjectArray = createJsonChildRecordByKeyValue();
+
+
+                }
+                if(jobType == JobType.WORKFLOW_STEP){
+                    if($("#CMPL123__Workflow_Step__c").val() != undefined){
+                        if($("#CMPL123__Workflow_Step__c").val().length >0)
+                            saveTask(IntelligentJobObject,parentOrChildObjectArray,jobType, parentIdentifier);
+                        else
+                            showErrorMessage('{!$Label.PLEASE_SELECT_WORKFLOW_STEP}');
+                    }else{
+                        if($(".tableCss tr").length == 5)
+                            showErrorMessage('{!$Label.PLEASE_SELECT_WORKFLOW_RULE}');
+                        else if($(".tableCss tr").length == 4){
+                            showErrorMessage('{!$Label.NO_WORKFLOW_RULE_FOUND}');
+                        }
+                    }
+                }else if(jobType == JobType.PARENT_FIELD || jobType == JobType.CHILD_FIELD){
+                    if(parentOrChildObjectArray.length > 0){
+                        saveTask(IntelligentJobObject,parentOrChildObjectArray,jobType, parentIdentifier);
+                    }else{
+                        showErrorMessage('{!$Label.PLEASE_SELECT_ATLEAST_ONE}');
+                    }
+                }else if(jobType == JobType.CHILD_RECORD){
+                    if(parentOrChildObjectArray.length == 0)
+                        showErrorMessage('{!$Label.PLEASE_SELECT_ATLEAST_ONE_FIELD}');
+                    else {
+                        saveTask(IntelligentJobObject,parentOrChildObjectArray,jobType, parentIdentifier);
+                    }
+                }
+
+            }
+
+        }
+
+        function saveTask(IntelligentJobObject,parentOrChildObjectArray,jobType, parentIdentifier){
+
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Manage123JobController.saveIntelligentJob}',
+                JSON.stringify(IntelligentJobObject),
+                JSON.stringify(parentOrChildObjectArray),jobType,function(result,event){
+
+                if(event.status){
+                    if(recordId.length == 0){
+                        if(lexUtil.inLEX()){
+                            lexUtil.lexNavigateToSObject(result);
+                        }else{
+                            parent.document.location.href= "/"+result;
+                        }
+                    }
+                    else{
+                        if(lexUtil.inLEX()){
+                            lexUtil.lexNavigateToSObject(parentIdentifier);
+                        }else{
+                            parent.document.location.href= "/"+parentIdentifier;
+                        }
+                    }
+                }else{
+                    showErrorMessage(event.message);
+                }
+            },{escape:true});
+        }
+
+        function createJsonforKeyValue(){
+            var IntelligentJobObject = new Object();
+            var isNewJob = (recordId.length ==0);
+            if(isNewJob){
+                $(".tableCss").find("input,select").each(function(){
+                    if($(this).attr('id').trim() != 'parentChildFields'){
+                        if($(this).attr('id').trim() == FieldType.JOB_TYPE){
+                            IntelligentJobObject[FieldType.JOB_TYPE] = $(this).find(":selected").text().trim();
+                        }else if($(this).attr('id').trim() == 'CMPL123__Is_Active__c'){
+                            IntelligentJobObject['CMPL123__Is_Active__c'] = $(this).prop('checked');
+                        }else{
+                            IntelligentJobObject[$(this).attr('id')] = $(this).val();
+                        }
+                    }
+                });
+
+                IntelligentJobObject['CMPL123__Description__c'] = $("#CMPL123__Description__c").val();
+                IntelligentJobObject['CMPL123__Related_Task__c'] = '{!JSENCODE(parentId)}';
+                if($("#CMPL123__Job_Type__c").val() == JobType.CHILD_FIELD){
+                    IntelligentJobObject['CMPL123__Child_Filter_Condition__c'] = $("#filterCondition").val();
+                }
+
+            }else{
+
+                IntelligentJobObject['Name'] = $("#Name").val();
+                IntelligentJobObject['CMPL123__Workflow_Step__c'] = $("#CMPL123__Workflow_Step__c").val();
+                IntelligentJobObject['CMPL123__Description__c'] = $("#CMPL123__Description__c").val();
+                IntelligentJobObject['CMPL123__Is_Active__c'] =  $("#CMPL123__Is_Active__c").prop("checked");
+                IntelligentJobObject['Id'] = recordId;
+                if(objType[$("#CMPL123__Job_Type__c").html()] == JobType.CHILD_FIELD){
+                    IntelligentJobObject['CMPL123__Child_Filter_Condition__c'] = $("#filterCondition").val();
+                }
+            }
+            return IntelligentJobObject;
+        }
+
+        function createJsonForParentOrChild(jobType){
+            var objclass = (jobType == JobType.PARENT_FIELD) ? 'ParentObject' : 'ChildObject';
+            var parentOrchildObject; var parentOrChildObjectArray  = [];
+            $(".fieldTable tr").has("td").each(function(){
+                parentOrchildObject = new Object();
+                $(this).find("td").each(function(){
+                    let fieldName = $(this).attr('data-field-name');
+                    if(fieldName!= FieldType.DATA_TYPE && fieldName != FieldType.IS_DYNAMIC){
+                        if(fieldName!= undefined){
+                            if(fieldName== FieldType.FIELD_NAME){
+                                if($(this).children().val().length >0)
+                                    parentOrchildObject[fieldName] = $(this).children().attr('name');
+                                else
+                                    parentOrchildObject[fieldName] = '';
+                            }else{
+                                parentOrchildObject[fieldName] = $(this).children().val();
+                            }
+                        }
+
+                    }else if(fieldName == FieldType.DATA_TYPE){
+                        parentOrchildObject[fieldName] = $(this).children().html();
+
+                    }else if(fieldName == FieldType.IS_DYNAMIC){
+                        parentOrchildObject[fieldName] = $(this).children().prop("checked");
+                    }
+                });
+
+                if(recordId.length == 0){
+                    parentOrchildObject['CMPL123__Object_Name__c'] = $("."+objclass).children().find(":selected").val();
+                    parentOrchildObject['CMPL123__Relationship_Name__c'] = $("."+objclass).children().find(":selected").text().trim();
+                }else{
+                    parentOrchildObject['CMPL123__Object_Name__c'] = $(".parentChildFields").children().attr('name');
+                    parentOrchildObject['CMPL123__Relationship_Name__c'] =  $(".parentChildFields").children().html();
+                }
+
+                if(parentOrchildObject.CMPL123__Field_Name__c != undefined)
+                    if(parentOrchildObject.CMPL123__Field_Name__c.length >0)
+                        parentOrChildObjectArray.push(parentOrchildObject);
+            });
+            return parentOrChildObjectArray;
+
+        }
+
+        function createJsonChildRecordByKeyValue(){
+            var parentOrchildObject; var parentOrChildObjectArray  = [];
+            $(".fieldTable tr").has("td").each(function(){
+                parentOrchildObject = new Object();
+
+                $(this).find("td").each(function(){
+                    let fieldType = $(this).attr('data-field-name');
+                    if(fieldType != FieldType.DATA_TYPE && fieldType != FieldType.IS_DYNAMIC){
+                        if(fieldType != undefined){
+                            if (fieldType == FieldType.FIELD_NAME) {
+                                parentOrchildObject[fieldType] = $(this).children().attr('name');
+                            }
+                            else {
+                                parentOrchildObject[fieldType] = $(this).children().val();
+                            }
+                        }
+
+                    }
+                    else if (fieldType == FieldType.DATA_TYPE) {
+                        parentOrchildObject[fieldType] = $(this).children().html();
+                    }
+                    else if (fieldType == FieldType.IS_DYNAMIC) {
+                        parentOrchildObject[fieldType] = $(this).children().prop("checked");
+                    }
+                });
+
+                if (recordId.length == 0) {
+                    parentOrchildObject['CMPL123__Object_Name__c'] = $(".ChildObject").children().find(":selected").val();
+                    parentOrchildObject['CMPL123__Relationship_Name__c'] = $(".ChildObject").children().find(":selected").text().trim();
+                }
+                else {
+                    parentOrchildObject['CMPL123__Object_Name__c'] = $(".parentChildFields").children().attr('name');
+                    parentOrchildObject['CMPL123__Relationship_Name__c'] =  $(".parentChildFields").children().html();
+                }
+
+                if (parentOrchildObject.CMPL123__Field_Name__c != undefined) {
+                    if (parentOrchildObject.CMPL123__Field_Name__c.length > 0) {
+                        parentOrChildObjectArray.push(parentOrchildObject);
+                    }
+                }
+            });
+            return parentOrChildObjectArray;
+
+        }
+
+        function sortObject(obj, type, caseSensitive) {
+            var temp_array = [];
+            for (var key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    if (!caseSensitive) {
+                        key = (key['toLowerCase'] ? key.toLowerCase() : key);
+                    }
+                    temp_array.push(key);
+                }
+            }
+            if (typeof type === 'function') {
+                temp_array.sort(type);
+            } else if (type === 'value') {
+                temp_array.sort(function(a,b) {
+                    var x = obj[a];
+                    var y = obj[b];
+                    if (!caseSensitive) {
+                        x = (x['toLowerCase'] ? x.toLowerCase() : x);
+                        y = (y['toLowerCase'] ? y.toLowerCase() : y);
+                    }
+                    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+                });
+            } else {
+                temp_array.sort();
+            }
+            var temp_obj = {};
+            for (var i=0; i<temp_array.length; i++) {
+                temp_obj[temp_array[i]] = obj[temp_array[i]];
+            }
+            return temp_obj;
+        };
+
+    </script>
+
+
+    <div class="back" style="padding:1%;">
+        <div class="wrapper">
+            <div class='header-div'>
+                <h4 id="header" class="header">
+                </h4>
+                &nbsp;&nbsp;
+                <span class="parent-object">
+                ({!ParentName} - {!parentObjectApiName})
+                </span>
+            </div>
+            <div class="error-div" id='itErrorMessage'></div>
+            <div class="table-div">
+                <table class='tableCss'>
+                    <tr>
+                        <td class="main-tds">
+                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__name}</apex:outputLabel>
+                        </td>
+                        <td>
+                            <div class="requiredInput">
+                                <div class="requiredBlock"></div>&nbsp;<input type="text"
+                                                                              onkeydown="$('[id=itErrorMessage]').css('visibility','hidden');"
+                                                                              class="form-input" style="width:246px;"
+                                                                              id='Name'
+                                                                              placeholder="{!$Label.TYPE_NAME}"/></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main-tds">
+                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__is_active}</apex:outputLabel>
+                        </td>
+                        <td><input type='checkbox' id='CMPL123__Is_Active__c' checked='checked'/></td>
+                    </tr>
+                    <tr>
+                        <td class="main-tds">
+                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__description}</apex:outputLabel>
+                        </td>
+                        <td><textarea cols='53' placeholder="{!$Label.TYPE_DESCRIPTION}"
+                                      id='CMPL123__Description__c'/></td>
+                    </tr>
+                    <tr class="workflowJob">
+                        <td class="main-tds">
+                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__job_type}</apex:outputLabel>
+                        </td>
+                        <td><span id='workflowStep'></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="fieldRelation">
+
+            </div>
+            <div class="button-div">
+                <input class="Input-btn btn control-buttons" type="button" value="{!$Label.Save}"
+                       onclick="SaveIntelligentJob(this, '{!JSENCODE(parentId)}');"/>
+                <input class="Input-btn-cancel btn control-buttons" type="button" value="{!$Label.Cancel}"
+                       onclick="redirectToMainPage('{!JSENCODE(parentId)}');"/>
+
+            </div>
+        </div>
+    </div>
+</apex:page>

@@ -1,0 +1,158 @@
+<!-- *******************************************************************************
+* Copyright (c) 2018 Sparta Systems, Inc.
+******************************************************************************** -->
+
+<apex:page id="ValidChildStatus"
+           lightningStyleSheets="true" standardStylesheets="false"
+           showHeader="false" sidebar="false"
+           standardController="CMPL123__Valid_Child_Status__c"
+           extensions="CMPL123.ValidChildStatusController">
+
+    <!-- Include Lightning Design System-->
+    <apex:slds />
+    <!-- Includ custom stylesheet -->
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/css/ValidChildStatus.css')}"/>
+
+    <c:ModalComponent showHeader="true" showFooter="false"
+            modalTitle="{! IF(isEdit, JSENCODE($Label.Edit) + ' ' + Valid_Child_Status__c.Name,
+                                         JSENCODE($Label.New) + ' ' + $ObjectType.Valid_Child_Status__c.Label) }">
+
+        <apex:outputPanel rendered="{! hasError }">
+            <div class="slds-notify_container slds-is-relative slds-p-vertical_small">
+                <div class="slds-notify slds-notify_toast slds-theme_error slds-m-horizontal_large sparta-min-width-auto" role="status">
+                    <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex">
+                        <div class="slds-icon slds-icon_medium slds-m-vertical_xx-small">
+                            <!-- IE does not support <svg> tags but svg files are supported -->
+                            <img src="/apexpages/slds/latest/assets/icons/utility/ban.svg" />
+                        </div>
+                    </span>
+                    <div class="slds-notify__content slds-m-horizontal_small">
+                        <apex:repeat value="{! errorMessages }" var="errorMessage">
+                            <h3>{! errorMessage }</h3>
+                        </apex:repeat>
+                    </div>
+                </div>
+            </div>
+        </apex:outputPanel>
+
+        <apex:outputPanel rendered="{! !hasError }">
+            <div class="slds-p-horizontal_x-large slds-p-vertical_large">
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label slds-p-left_small" for="form-element-01">
+                        {! $ObjectType.Valid_Child_Status__c.fields.Name.Label }
+                    </label>
+                    <div class="slds-form-element__control slds-p-around_small">
+                        <apex:outputField id="form-element-id-01" styleClass="slds-input"
+                                          value="{! Valid_Child_Status__c.Name }"/>
+                    </div>
+                </div>
+
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="form-element-02">
+                        <abbr class="slds-required" title="required">*</abbr>
+                        {! $ObjectType.Valid_Child_Status__c.fields.Parent_Workflow_Step__c.Label }
+                    </label>
+                    <div class="slds-form-element__control slds-p-around_small">
+                        <apex:outputField id="form-element-id-02" styleClass="slds-input"
+                                          value="{! Valid_Child_Status__c.Parent_Workflow_Step__r.Name }"/>
+                    </div>
+                </div>
+
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="form-element-03">
+                        <abbr class="slds-required" title="required">*</abbr>
+                        {! $ObjectType.Valid_Child_Status__c.fields.Child_Relationship__c.Label }
+                    </label>
+
+                    <div class="slds-form-element__control slds-p-around_small">
+                        <apex:outputText styleClass="slds-text-color_inverse-weak"
+                                rendered="{! availableChildRelationships.size == 0 }"
+                                value="{! $Label.NO_AVAILABLE_CHILD_WITH_WORKFLOW }"/>
+
+                        <apex:outputPanel rendered="{! availableChildRelationships.size > 0 }">
+                            <div class="slds-select_container">
+
+                                <apex:selectList id="form-element-id-03" styleClass="slds-select"
+                                                 multiSelect="false" size="1"
+                                                 value="{! selectedChildRelationship }">
+                                    <apex:selectOption itemLabel="-- {! $Label.SELECT } --" itemValue="" />
+                                    <apex:selectOptions value="{! availableChildRelationships }" />
+                                    <apex:actionSupport event="onchange" reRender="child-status-dropdown, submit-button" action="{! clearSelectedWorkflowStatus }"/>
+                                </apex:selectList>
+
+                            </div>
+                        </apex:outputPanel>
+                    </div>
+                </div>
+
+                <apex:outputPanel rendered="{! availableChildRelationships.size > 0 }">
+                    <apex:outputPanel id="child-status-dropdown">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="form-element-04">
+                                <abbr class="slds-required" title="required">*</abbr>
+                                {! $ObjectType.Valid_Child_Status__c.fields.Required_Child_Workflow_Status__c.Label }
+                            </label>
+                            <div class="slds-form-element__control slds-p-around_small">
+                                <apex:outputText styleClass="slds-text-color_inverse-weak"
+                                        rendered="{! AND(availableChildWorkflowStatuses.size == 0, !ISNULL(selectedChildRelationship)) }"
+                                        value="{! $Label.NO_AVAILABLE_CHILD_STATUSES }"/>
+
+                                <apex:outputPanel rendered="{! OR(availableChildWorkflowStatuses.size > 0, ISNULL(selectedChildRelationship)) }">
+                                    <div class="slds-select_container">
+                                        <apex:selectList id="form-element-id-04" styleClass="slds-select" multiSelect="false" size="1"
+                                                         disabled="{! availableChildWorkflowStatuses.size == 0 }"
+                                                         value="{! selectedChildWorkflowStatus }">
+                                            <apex:selectOption itemLabel="-- {! $Label.SELECT } --" itemValue="" />
+                                            <apex:selectOptions value="{! availableChildWorkflowStatuses }" />
+                                            <apex:actionSupport event="onchange" reRender="submit-button"/>
+                                        </apex:selectList>
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label slds-p-left_small" for="form-element-05">
+                            {! $ObjectType.Valid_Child_Status__c.fields.Description__c.Label }
+                        </label>
+                        <div class="slds-form-element__control slds-p-around_small">
+                            <apex:inputField id="form-element-id-05" styleClass="slds-input"
+                                             value="{! Valid_Child_Status__c.Description__c }" />
+                        </div>
+                    </div>
+                </apex:outputPanel>
+            </div>
+        </apex:outputPanel>
+
+        <!--Makes standard controller's save method callable from JS-->
+        <apex:actionFunction name="standardSave" action="{! save }"/>
+        <script>
+            function customSubmit() {
+                // This ID is generated when Visualforce renders and will change if elements are added before it
+                document.querySelector('[id$="submit-button"]').disabled = true;
+                standardSave();
+            }
+        </script>
+
+        <!-- Custom footer: showFooter attribute must be false -->
+        <apex:outputPanel >
+            <footer class="slds-modal__footer">
+                <apex:outputPanel rendered="{! OR(ISNULL(availableChildRelationships), availableChildRelationships.size == 0) }">
+                    <apex:commandButton styleClass="slds-button slds-button_brand"
+                                        action="{! cancel }" value="{! $Label.OK }"/>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{! AND(!ISNULL(availableChildRelationships), availableChildRelationships.size > 0) }">
+                    <apex:commandButton styleClass="slds-button slds-button_neutral"
+                                        action="{! cancel }" value="{! $Label.CANCEL }"/>
+                    <apex:commandButton styleClass="slds-button slds-button_brand"
+                                        onclick="customSubmit()" value="{! $Label.SAVE }"
+                                        disabled="{! ISNULL(selectedChildWorkflowStatus) }" 
+                                        id="submit-button"/>
+                </apex:outputPanel>
+
+
+            </footer>
+        </apex:outputPanel>
+    </c:ModalComponent>
+</apex:page>

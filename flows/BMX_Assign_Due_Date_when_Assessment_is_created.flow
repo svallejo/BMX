@@ -1,0 +1,1143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignments>
+        <name>myVariable_waitStartTimeAssignment</name>
+        <label>myVariable_waitStartTimeAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision3</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_pmetdec</targetReference>
+            </connector>
+            <label>Meddev Countries ?</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision3</name>
+        <label>myDecision3</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision6</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_4</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_4</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_4_pmetdec</targetReference>
+            </connector>
+            <label>Other Countries ?</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision6</name>
+        <label>myDecision6</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_7</name>
+            <conditionLogic>3 AND 6 AND ((1 AND 4) OR (2 AND 5))</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.CMPL123CME__Complaint__r.BMX_PRE1_Patient_or_operator_death__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.CMPL123CME__Complaint__r.BMX_PRE2_1_Patient_or_operator_harmed__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideReferenceTo</name>
+                    <value>
+                        <stringValue>CMPL123CME__Complaint__c</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.CMPL123CME__Complaint__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.CMPL123CME__Complaint__r.BMX_PRE1_Patient_or_operator_death__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.CMPL123CME__Complaint__r.BMX_PRE2_1_Patient_or_operator_harmed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Global_Assessment</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_7_A1</targetReference>
+            </connector>
+            <label>Check Complaint field value</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_1_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_1_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_1_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_4_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>400</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_4_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_4_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_4_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_4_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_4_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <description>Due date is automatically assigned to an global assessment when record is created(US-AER-066 #2)</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Customer_Contact_Date__c + 10</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_2_myRule_1_A1_6679831905</name>
+        <dataType>Date</dataType>
+        <expression>{!myVariable_current.CMPL123CME__Complaint__r.BMX_Customer_Contact_Date__c} + 10</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Customer_Contact_Date__c + 20</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_5_myRule_4_A1_9485794284</name>
+        <dataType>Date</dataType>
+        <expression>{!myVariable_current.CMPL123CME__Complaint__r.BMX_Customer_Contact_Date__c} + 20</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Customer_Contact_Date__c + 1</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_8_myRule_7_A1_6446886978</name>
+        <dataType>Date</dataType>
+        <expression>{!myVariable_current.CMPL123CME__Complaint__r.BMX_Customer_Contact_Date__c} + 1</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>
+AND (
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c &lt;&gt; null,
+
+OR([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE1_Patient_or_operator_death__c =  null,
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE1_Patient_or_operator_death__c &lt;&gt;  &apos;Yes&apos;),
+OR([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE2_1_Patient_or_operator_harmed__c = null,
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE2_1_Patient_or_operator_harmed__c &lt;&gt; &apos;Yes&apos;),
+
+[CMPL123CME__Questionnaire__c].RecordType.DeveloperName = &apos;Global_Assessment&apos;,
+
+OR(
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;AUSTRIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;BELGIUM&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;BULGARIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;SWITZERLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;CYPRUS&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;CZECHREPUBLIC&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;GERMANY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;DENMARK&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;SPAIN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;ESTONIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;FINLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;FRANCE&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;UNITED KINGDOM&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;GREECE&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;CROATIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;HUNGARY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;IRELAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;ICELAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;ITALY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;LIECHTENSTEIN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;LITHUANIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;LUXEMBOURG&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;LATVIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;MALTA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;NETHERLANDS&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;NORWAY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;POLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;PORTUGAL&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;ROMANIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;SLOVAKIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;SLOVENIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;SWEDEN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;TURKEY&apos;
+)
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>
+AND (
+{!myVariable_current.CMPL123CME__Complaint__c} &lt;&gt; null,
+
+OR({!myVariable_current.CMPL123CME__Complaint__r.BMX_PRE1_Patient_or_operator_death__c} =  null,
+{!myVariable_current.CMPL123CME__Complaint__r.BMX_PRE1_Patient_or_operator_death__c} &lt;&gt;  &apos;Yes&apos;),
+OR({!myVariable_current.CMPL123CME__Complaint__r.BMX_PRE2_1_Patient_or_operator_harmed__c} = null,
+{!myVariable_current.CMPL123CME__Complaint__r.BMX_PRE2_1_Patient_or_operator_harmed__c} &lt;&gt; &apos;Yes&apos;),
+
+{!myVariable_current.RecordType.DeveloperName} = &apos;Global_Assessment&apos;,
+
+OR(
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;AUSTRIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;BELGIUM&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;BULGARIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;SWITZERLAND&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;CYPRUS&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;CZECHREPUBLIC&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;GERMANY&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;DENMARK&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;SPAIN&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;ESTONIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;FINLAND&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;FRANCE&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;UNITED KINGDOM&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;GREECE&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;CROATIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;HUNGARY&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;IRELAND&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;ICELAND&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;ITALY&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;LIECHTENSTEIN&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;LITHUANIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;LUXEMBOURG&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;LATVIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;MALTA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;NETHERLANDS&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;NORWAY&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;POLAND&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;PORTUGAL&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;ROMANIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;SLOVAKIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;SLOVENIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;SWEDEN&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;TURKEY&apos;
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>
+AND (
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c &lt;&gt; null,
+
+OR([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE1_Patient_or_operator_death__c =  null,
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE1_Patient_or_operator_death__c &lt;&gt;  &apos;Yes&apos;),
+OR([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE2_1_Patient_or_operator_harmed__c = null,
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE2_1_Patient_or_operator_harmed__c &lt;&gt; &apos;Yes&apos;),
+
+[CMPL123CME__Questionnaire__c].RecordType.DeveloperName = &apos;Global_Assessment&apos;,
+
+OR(
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;AUSTRIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;BELGIUM&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;BULGARIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;SWITZERLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;CYPRUS&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;CZECHREPUBLIC&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;GERMANY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;DENMARK&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;SPAIN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;ESTONIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;FINLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;FRANCE&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;UNITED KINGDOM&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;GREECE&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;CROATIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;HUNGARY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;IRELAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;ICELAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;ITALY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;LIECHTENSTEIN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;LITHUANIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;LUXEMBOURG&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;LATVIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;MALTA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;NETHERLANDS&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;NORWAY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;POLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;PORTUGAL&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;ROMANIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;SLOVAKIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;SLOVENIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;SWEDEN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c ) =&apos;TURKEY&apos;
+)
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>
+AND (
+{!myVariable_old.CMPL123CME__Complaint__c} &lt;&gt; null,
+
+OR({!myVariable_old.CMPL123CME__Complaint__r.BMX_PRE1_Patient_or_operator_death__c} =  null,
+{!myVariable_old.CMPL123CME__Complaint__r.BMX_PRE1_Patient_or_operator_death__c} &lt;&gt;  &apos;Yes&apos;),
+OR({!myVariable_old.CMPL123CME__Complaint__r.BMX_PRE2_1_Patient_or_operator_harmed__c} = null,
+{!myVariable_old.CMPL123CME__Complaint__r.BMX_PRE2_1_Patient_or_operator_harmed__c} &lt;&gt; &apos;Yes&apos;),
+
+{!myVariable_old.RecordType.DeveloperName} = &apos;Global_Assessment&apos;,
+
+OR(
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;AUSTRIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;BELGIUM&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;BULGARIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;SWITZERLAND&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;CYPRUS&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;CZECHREPUBLIC&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;GERMANY&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;DENMARK&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;SPAIN&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;ESTONIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;FINLAND&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;FRANCE&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;UNITED KINGDOM&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;GREECE&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;CROATIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;HUNGARY&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;IRELAND&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;ICELAND&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;ITALY&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;LIECHTENSTEIN&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;LITHUANIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;LUXEMBOURG&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;LATVIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;MALTA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;NETHERLANDS&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;NORWAY&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;POLAND&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;PORTUGAL&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;ROMANIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;SLOVAKIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;SLOVENIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;SWEDEN&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} ) =&apos;TURKEY&apos;
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND 
+(
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c &lt;&gt; null,
+
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c &lt;&gt; null,
+
+OR([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE1_Patient_or_operator_death__c =  null,
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE1_Patient_or_operator_death__c &lt;&gt;  &apos;Yes&apos;),
+
+OR([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE2_1_Patient_or_operator_harmed__c = null,
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE2_1_Patient_or_operator_harmed__c &lt;&gt; &apos;Yes&apos;),
+
+[CMPL123CME__Questionnaire__c].RecordType.DeveloperName = &apos;Global_Assessment&apos;,
+
+NOT(
+OR(
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;AUSTRIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;BELGIUM&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;BULGARIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;SWITZERLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;CYPRUS&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;CZECHREPUBLIC&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;GERMANY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;DENMARK&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;SPAIN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;ESTONIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;FINLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;FRANCE&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;UNITED KINGDOM&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;GREECE&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;CROATIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;HUNGARY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;IRELAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;ICELAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;ITALY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;LIECHTENSTEIN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;LITHUANIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;LUXEMBOURG&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;LATVIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;MALTA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;NETHERLANDS&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;NORWAY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;POLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;PORTUGAL&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;ROMANIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;SLOVAKIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;SLOVENIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;SWEDEN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;TURKEY&apos;
+)
+)
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_4</name>
+        <dataType>Boolean</dataType>
+        <expression>AND 
+(
+{!myVariable_current.CMPL123CME__Complaint__c} &lt;&gt; null,
+
+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} &lt;&gt; null,
+
+OR({!myVariable_current.CMPL123CME__Complaint__r.BMX_PRE1_Patient_or_operator_death__c} =  null,
+{!myVariable_current.CMPL123CME__Complaint__r.BMX_PRE1_Patient_or_operator_death__c} &lt;&gt;  &apos;Yes&apos;),
+
+OR({!myVariable_current.CMPL123CME__Complaint__r.BMX_PRE2_1_Patient_or_operator_harmed__c} = null,
+{!myVariable_current.CMPL123CME__Complaint__r.BMX_PRE2_1_Patient_or_operator_harmed__c} &lt;&gt; &apos;Yes&apos;),
+
+{!myVariable_current.RecordType.DeveloperName} = &apos;Global_Assessment&apos;,
+
+NOT(
+OR(
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;AUSTRIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;BELGIUM&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;BULGARIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;SWITZERLAND&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;CYPRUS&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;CZECHREPUBLIC&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;GERMANY&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;DENMARK&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;SPAIN&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;ESTONIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;FINLAND&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;FRANCE&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;UNITED KINGDOM&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;GREECE&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;CROATIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;HUNGARY&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;IRELAND&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;ICELAND&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;ITALY&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;LIECHTENSTEIN&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;LITHUANIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;LUXEMBOURG&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;LATVIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;MALTA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;NETHERLANDS&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;NORWAY&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;POLAND&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;PORTUGAL&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;ROMANIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;SLOVAKIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;SLOVENIA&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;SWEDEN&apos;,
+UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;TURKEY&apos;
+)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND 
+(
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c &lt;&gt; null,
+
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c &lt;&gt; null,
+
+OR([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE1_Patient_or_operator_death__c =  null,
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE1_Patient_or_operator_death__c &lt;&gt;  &apos;Yes&apos;),
+
+OR([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE2_1_Patient_or_operator_harmed__c = null,
+[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_PRE2_1_Patient_or_operator_harmed__c &lt;&gt; &apos;Yes&apos;),
+
+[CMPL123CME__Questionnaire__c].RecordType.DeveloperName = &apos;Global_Assessment&apos;,
+
+NOT(
+OR(
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;AUSTRIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;BELGIUM&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;BULGARIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;SWITZERLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;CYPRUS&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;CZECHREPUBLIC&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;GERMANY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;DENMARK&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;SPAIN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;ESTONIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;FINLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;FRANCE&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;UNITED KINGDOM&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;GREECE&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;CROATIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;HUNGARY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;IRELAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;ICELAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;ITALY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;LIECHTENSTEIN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;LITHUANIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;LUXEMBOURG&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;LATVIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;MALTA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;NETHERLANDS&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;NORWAY&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;POLAND&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;PORTUGAL&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;ROMANIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;SLOVAKIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;SLOVENIA&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;SWEDEN&apos;,
+UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c) =&apos;TURKEY&apos;
+)
+)
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_4_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND 
+(
+{!myVariable_old.CMPL123CME__Complaint__c} &lt;&gt; null,
+
+{!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c} &lt;&gt; null,
+
+OR({!myVariable_old.CMPL123CME__Complaint__r.BMX_PRE1_Patient_or_operator_death__c} =  null,
+{!myVariable_old.CMPL123CME__Complaint__r.BMX_PRE1_Patient_or_operator_death__c} &lt;&gt;  &apos;Yes&apos;),
+
+OR({!myVariable_old.CMPL123CME__Complaint__r.BMX_PRE2_1_Patient_or_operator_harmed__c} = null,
+{!myVariable_old.CMPL123CME__Complaint__r.BMX_PRE2_1_Patient_or_operator_harmed__c} &lt;&gt; &apos;Yes&apos;),
+
+{!myVariable_old.RecordType.DeveloperName} = &apos;Global_Assessment&apos;,
+
+NOT(
+OR(
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;AUSTRIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;BELGIUM&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;BULGARIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;SWITZERLAND&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;CYPRUS&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;CZECHREPUBLIC&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;GERMANY&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;DENMARK&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;SPAIN&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;ESTONIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;FINLAND&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;FRANCE&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;UNITED KINGDOM&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;GREECE&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;CROATIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;HUNGARY&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;IRELAND&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;ICELAND&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;ITALY&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;LIECHTENSTEIN&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;LITHUANIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;LUXEMBOURG&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;LATVIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;MALTA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;NETHERLANDS&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;NORWAY&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;POLAND&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;PORTUGAL&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;ROMANIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;SLOVAKIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;SLOVENIA&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;SWEDEN&apos;,
+UPPER({!myVariable_old.CMPL123CME__Complaint__r.Visitor_Country__c}) =&apos;TURKEY&apos;
+)
+)
+)</expression>
+    </formulas>
+    <interviewLabel>BMX_Assign_Due_Date_when_Assessment_is_created-54_InterviewLabel</interviewLabel>
+    <label>Assign Due Date from complaint when Global Assessment is created</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>CMPL123CME__Questionnaire__c</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>RecursiveCountVariable</name>
+        <value>
+            <elementReference>RecursiveCountVariable</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onCreateOnly</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[CMPL123CME__Questionnaire__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Update Due date</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Due Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Due_Date__c</field>
+            <value>
+                <elementReference>formula_2_myRule_1_A1_6679831905</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CMPL123CME__Questionnaire__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[CMPL123CME__Questionnaire__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_4_A1</name>
+        <label>Update Due Date</label>
+        <locationX>400</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Due Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Due_Date__c</field>
+            <value>
+                <elementReference>formula_5_myRule_4_A1_9485794284</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CMPL123CME__Questionnaire__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[CMPL123CME__Questionnaire__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_7_A1</name>
+        <label>Update Due Date</label>
+        <locationX>700</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Due Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Due_Date__c</field>
+            <value>
+                <elementReference>formula_8_myRule_7_A1_6446886978</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CMPL123CME__Questionnaire__c</object>
+    </recordUpdates>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>CMPL123CME__Questionnaire__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>CMPL123CME__Questionnaire__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_waitStartTimeVariable</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>RecursiveCountVariable</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+</Flow>

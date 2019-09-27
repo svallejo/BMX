@@ -1,0 +1,97 @@
+<apex:page showHeader="false" id="pg" controller="CMPL123.X123SAMLValidatorController" standardStylesheets="false">
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/Angular/css/Bootstrap.css')}"/>
+   <!-- <apex:stylesheet value="{!URLFOR($Resource.Compliance123, '/123Compliance/lib/Bootstrap/css/bootstrap.css')}"/> -->
+    <style>
+          .strip{height:30px;border-color: #8AC007;background-color: #8AC007;border-bottom:2px solid white;margin-top:1%;}
+          .well{border-radius:0;border-radius:0;box-shadow:0;}
+          .strip div{padding:0.3%;padding-left:1%;color:white;}
+          .btn{border-radius:0;padding: 5px;9px;}        
+          .btn-base{color: #fff !important;background-color: #3498db;border: 1px solid;border-color: #258cd1;border-radius:6px;}
+          .btn-base:hover {background-color:#1a82b8;border: 1px solid white;}
+     </style>     
+     
+     <script>
+         window.onload = function loadFunction(){
+             document.getElementById('pg:fm:autoClickIt').click();
+         } 
+         
+          function closePopup(isError){   
+              if(!isError)
+                 window.top.close();
+         }    
+     </script>     
+     
+    <!-- page load call -->     
+    <apex:form id="fm">
+        <apex:commandButton action="{!updateRequest}" style="display:none" id="autoClickIt" rerender="{!if(samlValidationMap != null,'errdiv','maindiv')}"/>
+    </apex:form>
+    
+    <!-- page load call finish -->    
+    <apex:outputPanel layout="block" id="maindiv" rendered="{!if(samlValidationMap == null,true,false)}">    
+         <apex:form style="padding-bottom:10px;" rendered="{!loadPage}">
+             <div class="container">
+                  <div class="row" >
+                      <div class="strip"><div>{!$Label.RECORD_WORKFLOW} - {!recordName}</div></div>
+                      <div style="margin:auto;width:90%;">
+                          <div style="padding-top:20px;">
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <span   style="color:rgb(95,95,95);font-weight:600">{!$Label.CURRENT_STATUS}:</span>
+                                      <span style="font-weight:700;font-size:17px;color:#3498db">{!actionStatus}</span> 
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="alert alert-success" style="display:{!if(isError,'none','block')};padding:7px;text-align:center;">{!$Label.AUTHENTICATION_SUCCESSFUL}</div>
+                                      <div class="alert alert-danger" style="display:{!if(isError,'block','none')};padding:7px;text-align:center;"><strong>{!$Label.ERROR}!</strong>&nbsp;{!message}</div> 
+                                  </div>
+                              </div>
+                              <div class="row"> 
+                                 <div class="col-md-12">
+                                      <div class="well" style="padding:10px;"><b>{!$Label.E_SIGNATURE} {!$Label.FOR}:&nbsp; {!esignMsg}</b></div>   
+                                  </div>
+                              </div>                          
+                          </div>                   
+                          <div class="container" style="margin:auto;width:80%;">
+                             <div class="form-group">
+                                 <span style="display:{!if(isCommentReq,'inline','none')};font-weight:bold;color:red;font-size:15px;">*</span>&nbsp;<label>{!$Label.COMMENT}</label>
+                                 <apex:inputTextarea value="{!comment}" rendered="{!if(commentType == 'Dropdown',false,true)}"  styleClass="form-control" rows="3" />
+                                 <apex:selectList value="{!comment}" rendered="{!if(commentType == 'Dropdown',true,false)}"  size="1" styleClass="form-control">
+                                     <apex:selectOptions value="{!comments}"></apex:selectOptions>
+                                 </apex:selectList>                       
+                             </div> 
+                            <!-- <center><apex:commandButton value="Complete E-Signature" action="{!completeEsign}" styleClass="btn btn-base"  oncomplete="closePopup({!isError})" rerender="{!if(isError,'errdiv','maindiv')}"/></center> -->
+                            <center>
+                                <apex:actionStatus id="saveStatus">
+                                    <apex:facet name="stop">
+                                        <apex:commandButton value="{!$Label.cmpl123__complete} {!$Label.cmpl123__e_signature}" style="width:150px" action="{!completeEsign}" status="saveStatus" styleClass="btn btn-base"  oncomplete="closePopup({!isError})" rerender="{!if(isError,'errdiv','maindiv')}"/>
+                                    </apex:facet>
+                                    <apex:facet name="start">
+                                        <apex:commandButton value="{!$Label.cmpl123__processing}..." disabled="true" style="width:150px"  status="saveStatus" styleClass="btn btn-base" />
+                                    </apex:facet>
+                                </apex:actionStatus>
+                            </center>
+                          </div>
+                       </div>
+                  </div>
+              </div>  
+          </apex:form>
+      </apex:outputPanel>
+      <apex:outputPanel layout="block" id="errdiv" rendered="{!if(samlValidationMap != null,true,false)}" style="padding-top:10px;">
+           <div class="container">
+              <div class="row">
+                  <div>
+                     <div class="col-md-8">
+                         <div class="alert alert-danger" style="padding:7px;text-align:center;">
+                             <strong>{!$Label.cmpl123__error}!</strong><br/>
+                             <apex:repeat value="{!samlValidationMap}" var="key">
+                                 {!samlValidationMap[key]}<br/>
+                             </apex:repeat> 
+                         </div> 
+                         <apex:form >
+                             <center><apex:commandButton value="{!$Label.cmpl123__close}" styleClass="btn btn-base"  onclick="window.top.close();" /></center>
+                         </apex:form>
+                     </div>
+                  </div>
+              </div>
+          </div>    
+      </apex:outputPanel>   
+</apex:page>

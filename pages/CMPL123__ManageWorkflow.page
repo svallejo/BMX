@@ -1,0 +1,81 @@
+<apex:page standardController="CMPL123__WF_Rule__c" extensions="CMPL123.WorkflowController"   docType="html-5.0" id="pg" tabStyle="CMPL123__WF_Rule__c">
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+    <!--<apex:includeScript value="{!URLFOR($Resource.Compliance123, '/123Compliance/lib/jquery/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/> -->
+    <style>
+        pre {padding: 9.5px; font-size: 12px;background-color: whiteSmoke; border: 1px solid #CCC; border: 1px solid rgba(0, 0, 0, 0.15);-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}
+    </style>
+    
+    <apex:form id="fm">             
+        <apex:pageblock title="{!$Label.cmpl123__workflow_rule}"   mode="edit">
+            <apex:pageBlockSection columns="1"> 
+                <apex:pageBlockSectionItem >
+                    <apex:pageMessages /> 
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                     <apex:outputLabel value="{!$Label.cmpl123__select_object}" />
+                     <apex:outputPanel >
+                         <apex:outputText value="{!targetObject}" rendered="{!if(wfrule != null && wfrule.Id != null,true,false)}" />
+                         <apex:selectList styleClass="objlist" id="selectlist" value="{!targetObject}" size="1" style="width:180px;" rendered="{!if(wfrule != null && wfrule.Id != null,false,true )}" > 
+                            <apex:selectOption itemLabel="-{!$Label.cmpl123__select}-" itemValue="" />
+                            <apex:selectOptions value="{!objectList}" />
+                            <apex:actionSupport event="onchange" action="{!showMultiAction}"/>
+                         </apex:selectList>
+                     </apex:outputPanel>                     
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.cmpl123__key_value}" />                           
+                    <apex:inputField value="{!wfrule.CMPL123__Record_Type__c}" style="width:180px;"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+             <!--Information section -->  
+            <apex:pageBlockSection columns="2" rendered="{!if(wfRule != null && targetObject  != '',true,false)}" title="{!$Label.cmpl123__information}" > 
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.cmpl123__name}" />
+                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                        <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                            <apex:inputText value="{!wfrule.Name}" />    
+                        <apex:outputPanel id="fnameCMErrorMsg" styleClass="errorMsg" layout="block" ></apex:outputPanel>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>                               
+                <apex:pageBlockSectionItem id="pbsichk">
+                     <apex:outputLabel value="{!$Label.cmpl123__enable_multiaction}" style="font-weight:bold;font-size:11px;"/>                
+                     <apex:inputCheckbox value="{!wfrule.CMPL123__Has_Multiple_Actions__c}" onclick="check(checked)"   id="inputchk" disabled="{!if(hasfields,true,false)}" />   
+                </apex:pageBlockSectionItem>                           
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.cmpl123__is_active}" />
+                    <apex:inputCheckbox value="{!wfrule.CMPL123__Is_Active__c}"/>
+                </apex:pageBlockSectionItem> 
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.cmpl123__create_vf_page}" />
+                    <apex:inputCheckbox value="{!isPageCreated }" disabled="{!isPageCreated }" onclick="pageCreate(this);"/>
+                </apex:pageBlockSectionItem> 
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.cmpl123__description}:" />
+                    <apex:inputtextarea value="{!wfrule.CMPL123__Description__c}" rows="3" cols="50"/>
+                </apex:pageBlockSectionItem> 
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>   
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom" rendered="{!if(wfRule != null && targetObject  != '',true,false)}">
+                <apex:commandButton value="{!$Label.cmpl123__save}" action="{!saveWorkflow}" />
+                <apex:commandButton rendered="{!if(wfrule.Id !=null, false, true)}" value="{!$Label.cmpl123__save_new}" action="{!saveAndNew}"/>
+                <apex:commandButton value="{!$Label.cmpl123__cancel}" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+        </apex:pageblock>    
+    </apex:form>    
+
+    <script>
+        function check(ischecked){
+            if(ischecked)
+                if(!confirm('{!$Label.cmpl123__by_activating_custom_workflow_action_and_status}'))
+                    $("[id$='inputchk']").attr('checked',false);
+                          
+        }
+        function pageCreate(obj){
+            if(obj.checked){
+                if(!confirm('{!$Label.cmpl123__are_you_sure}'))
+                 obj.checked=false;
+            }     
+         }
+    </script>          
+</apex:page>

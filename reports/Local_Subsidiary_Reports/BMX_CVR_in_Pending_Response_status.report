@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__CVR__c.CMPL123CME__Type_of_Report__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__CVR__c.CMPL123_WF_Status__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__CVR__c.BMX_Days_in_Pending_Response__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__CVR__c.BMX_Reportable_Countrry__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <description>US-AER-050</description>
+    <filter>
+        <criteriaItems>
+            <column>CMPL123CME__CVR__c.BMX_Days_in_Pending_Response__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>90</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CMPL123CME__CVR__c.CMPL123_WF_Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending Response</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CMPL123CME__CVR__c.CMPL123CME__Type_of_Report__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Final</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>CVR in Pending Response status</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CMPL123CME__CVR__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

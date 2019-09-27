@@ -1,0 +1,560 @@
+<apex:page standardController="CMPL123CME__HHE__c" sidebar="false" showHeader="false" applyBodyTag="false" renderAs="PDF" applyHtmlTag="false" standardStylesheets="false">
+    <head>
+        <style>
+            @page { 
+                size: letter portrait;
+                
+                @top-left {
+                    content: element(header_left);
+                }
+                
+                @top-center {
+                    content: element(header_center);
+                }
+                
+                @top-right {
+                    content: element(header_right);
+                }
+                
+                @bottom-left {
+                    content: element(footer_left);
+                }
+                
+                @bottom-center {
+                    content: element(footer_center);
+                }
+                
+                @bottom-right {
+                    content: element(footer_right);
+                }
+            }
+            
+            .pageHeader{
+                font-size: 14px;border: solid 2px black;
+                black;background-color: rgb(199, 199, 199);
+                font-weight: bold; border-bottom : 1px;
+            }
+         
+            table.bottomBorder { border-collapse:collapse; }
+            table.bottomBorder td { border-bottom:1px solid black;padding:5px; }
+            body { font-family: 'Arial Unicode MS'; }
+        </style>
+    </head>
+    <body >
+    
+        Please submit comments, concerns or suggestions to ocwebrequest@fda.hhs.gov<br/><br/>
+            <div class="pageHeader"> Please save as a different filename before filling out this form.</div>
+            <div class="pageHeader"> HHE Version 3-1 01/12/2007</div>
+            <center><div class="pageHeader" style="font-size:18px;border-bottom:solid 2px black;"> Health Hazard Evaluation [ <apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__HHE__c.CMPL123CME__Health_Hazard_Evaluation__c,'/checkbox2_yes.png','/checkbox2_no.png'))}"/>] <br/> or Health Risk Assessment [<apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__HHE__c.CMPL123CME__Health_Risk_Assessment__c,'/checkbox2_yes.png','/checkbox2_no.png'))}"/>] <br/>Center for Devices and Radiological Health</div></center>
+            <div style="border-left: solid 2px black;">
+                <table  width="100%">
+                    <tr>
+                        <td width= "33.33%" style=" border-right : solid 2px black;" valign="top">Date:
+                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;font-weight: 100;">
+                            <apex:outputText value="{0,date, MM-dd-yyyy}" >
+                                <apex:param value="{!CMPL123CME__HHE__c.CMPL123CME__Date__c}" />
+                            </apex:outputText> 
+                             </div>
+                        </td>
+                        <td width= "33.33%" style=" border-right : solid 2px black;" valign="top">RES #:
+                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__RES__c} </div>
+                        </td>
+                        <td width= "33.33%" valign="top">Safety Officer:
+                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Safety_Officer__c} </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <center><div class="pageHeader" style="font-size: 18px;  "> I. Product Data</div></center>
+            <table cellspacing="0" cellpading="3" border="1" width="100%">
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;" width="40%">Panel Code:<br/>
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Panel_Code__c} </div>
+                    </td>
+                    <td style="font-size: 14px; font-weight: 600;" width="60%" rowspan="2">Device Name:<br/> 
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Device_Name__c}</div>   
+                    </td>
+                </tr>
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;" width="40%" >Product Code:
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Product_Code__c}</div>
+                    </td>
+                </tr>
+                
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;" width="40%" >Model:
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;"> {!CMPL123CME__HHE__c.CMPL123CME__Model__c}</div>
+                    </td>
+                    <td style="font-size: 14px; font-weight: 600;" width="60%" >Lot/Serial Numbers:
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Lot_Serial_Numbers__c}</div>
+                    </td>
+                </tr>
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;" colspan="2">Marketing Status (Include 510(K) Or PMA Number, Specify If Class I Exempt From 510(K) :
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Marketing_Status__c}</div>
+                    </td>
+                </tr>
+                
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;" colspan="2">Total Number Of Devices In Distribution:
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Total_Number_Of_Devices_In_Distribution__c} </div>
+                    </td>
+                </tr>
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;" width="40%" >U.S.:
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Total_Number_Of_Devices_In_Distrb_In_US__c} </div>
+                    </td>
+                    <td style="font-size: 14px; font-weight: 600;" width="60%" >Foreign:
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Total_Devices_In_Distribution_In_Foreign__c}</div>
+                    </td>
+                </tr>
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;" colspan="2">Number Of Devices Subject To Recall or Review:
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Total_No_Of_Devices_To_Recall_or_Review__c}</div>
+                    </td>
+                </tr>
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;" width="40%" >U.S.:
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__No_Of_Devices_To_Recall_or_Review_In_US__c} </div>
+                    </td>
+                    <td style="font-size: 14px; font-weight: 600;" width="60%" >Foreign:
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Devices_To_Recall_Review_In_Foreign__c}</div>
+                    </td>
+                </tr>
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;" colspan="2">Manufacturer / Recalling Firm, Address:
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Manufacturer_Recalling_Firm_Address__c}</div>
+                    </td>
+                </tr>
+               
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;" colspan="2">Product Description (Include Intended Use From Labeling):
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Product_Description__c}</div>
+                    </td>
+                </tr>
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;background-color: rgb(199, 199, 199);" colspan="2">ORACLE#
+                        
+                    </td>
+                </tr>
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;background-color: rgb(199, 199, 199);" width="40%" >Class:
+                        
+                    </td>
+                    <td style="font-size: 14px; font-weight: 600;background-color: rgb(199, 199, 199);" width="60%" >Recall#(s)
+                        
+                    </td>
+                </tr>
+            </table>
+            
+            
+            <!-- Page 2 -->
+            
+            
+            <center><div class="pageHeader" style="page-break-before:always;"> Health Hazard Evaluation or Health Risk Assessment <br/> Center for Devices and Radiological Health</div></center>
+            <div style="border-left: solid 2px black;">
+                <table  width="100%">
+                    <tr>
+                        <td width= "50%" style=" border-right : solid 2px black;" valign="top">Date:
+                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">
+                                <apex:outputText value="{0,date, MM-dd-yyyy}" >
+                                    <apex:param value="{!CMPL123CME__HHE__c.CMPL123CME__Date__c}" />
+                                </apex:outputText>
+                            </div>   
+                        </td>
+                        <td width= "50%" style=" border-right : solid 2px black;" valign="top">RES #:
+                            <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__RES__c} </div>   
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <center><div class="pageHeader" style="font-size: 18px;  "> II Problem Definition and Analysis</div></center>
+              <table cellspacing="0" cellpading="3" border="1" width="100%">
+                <tr style="height: 50px;vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;">Reason for Recall or Risk Assessment: <br/><br/>
+                        <table style=" padding-left: 10px;width:100%">
+                        <tr style="vertical-align:text-top;">
+                            <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Bullet_Image}"/> &nbsp; Description of the Defect, Malfunction or Error in Use of the Device:
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Description_of_the_Defect_Malfunction_o__c} </div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: text-top;">
+                            <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Bullet_Image}"/> &nbsp;&nbsp; Root Cause of the Problem (If Known):
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Root_Cause_of_the_Problem_If_Known__c} </div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: text-top;">
+                            <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Bullet_Image}"/> &nbsp;&nbsp; Factors That May Contribute to Product Risk (i.e. Device Design, Manufacturing Problems or &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; User Error):
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Factors_May_Contribute_to_Product_Risk__c} </div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: text-top;">
+                            <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Bullet_Image}"/> &nbsp;&nbsp; Design Factors That Might Mitigate Risk?
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Design_Factors_That_Might_Mitigate_Risk__c} </div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: text-top;">
+                            <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Bullet_Image}"/> &nbsp;&nbsp; If Device Failure Occurs Is It Easily Recognized by User?
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Failure_Easily_Recognized_by_User__c} </div>
+                            </td>
+                        </tr>
+                        </table>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+            
+            
+            <table cellspacing="0" cellpading="3" border="1" width="100%" style="border-top:0px">
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;">Manufacturer’s CAPA Investigation (If Available): <br/><br/>
+                        <table style="width:100%">
+                        <tr style="vertical-align: text-top;">
+                            <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Square_Bullet_Image}"/> &nbsp;&nbsp; Summary:
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Summary_Latest_Field__c} </div>    
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: text-top;">
+                            <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Square_Bullet_Image}"/> &nbsp;&nbsp; Date of Analysis:
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 20px;font-weight: 100;">
+                                    <apex:outputText value="{0,date, MM-dd-yyyy}" >
+                                        <apex:param value="{!CMPL123CME__HHE__c.CMPL123CME__Date_of_Analysis__c}" />
+                                    </apex:outputText> 
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: text-top;">
+                            <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Square_Bullet_Image}"/> &nbsp;&nbsp; Firm’s Estimate of Number of Devices that will Develop the Defect and/or Fail:
+                            </td>
+                            <table style=" padding-left: 40px;width:100%">
+                                <tr style="height: 50px;vertical-align: text-top;">
+                                    <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Bullet_Image}"/> &nbsp;&nbsp; How Many Devices from the Affected Lots Are Expected to Have or Develop the Defect?
+                                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Devices_from_affected_Expected_Defect__c} </div>
+                                    </td>
+                                </tr>
+                                <tr style="vertical-align: text-top;">
+                                    <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Bullet_Image}"/> &nbsp;&nbsp; How Many Devices with the Defect are Likely to Exhibit the Failure Over the Lifetime of the &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Device?
+                                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Devices_that_indicate_lifetime_failure__c} </div>
+                                    </td>
+                                </tr>
+                                <tr style="vertical-align: text-top;">
+                                    <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Bullet_Image}"/> &nbsp;&nbsp; Of Those Devices that Fail, How Many are Likely to Cause Injury if Used?
+                                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Devices_likely_to_cause_injury__c} </div>
+                                    </td>
+                                </tr>
+                                <tr style="vertical-align: text-top;">
+                                    <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Bullet_Image}"/> &nbsp;&nbsp; Any Comments on How these Estimates were Reached:
+                                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Comments_on_how_these_estimates_reached__c} </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            
+            <!--Page 2 ends here -->
+            
+            <!-- Page 3 starts here -->
+                
+            <table cellspacing="0" cellpading="3" border="1" width="100%">
+                <tr style="vertical-align:text-top; font-weight:bold;font-size: 14px;" >
+                    <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Square_Bullet_Image}"/> &nbsp;&nbsp; Firm’s Conclusion About Health Risk.  (Attach a Copy of Firm’s HHEs or HHAs):
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;"> {!CMPL123CME__HHE__c.CMPL123CME__FirmsConclusion_About_Health_Risk__c}</div> 
+                    </td>
+                </tr>
+                <tr><td>
+                    <table width="100%" >
+                        <tr style="vertical-align:text-top; font-weight:bold;font-size: 14px;" >
+                            <td><apex:image url="{!$Resource.CMPL123CME__HHE_Form_Square_Bullet_Image}"/> &nbsp;&nbsp; Any FDA Comments:
+                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height: 100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Any_FDA_Comments__c} </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td></tr>
+            </table>
+            
+            
+            
+            
+            <table cellspacing="0" cellpading="3" border="1" width="100%" style="border-top:0px">
+                <tr style="height:50px;vertical-align:text-top;font-weight:bold;font-size: 14px;" >
+                    <td>Adverse Events, Complaints and Problems or Incidents that may be Related to the Device Defect: 
+                        
+                    
+                        <table width="85%" border="1" cellpading="3" cellspacing="0">
+                            <tr width="100%">
+                                <td width="30%">Number of Complaints</td>
+                                <td width="10%" colspan="2"><div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:70px;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Number_of_Complaints__c} </div><br/></td>
+                                <td width="20%">Malfunction Reports</td>
+                                <td width="20%"><div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:70px;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Malfunction_Reports__c} </div><br/></td>
+                            </tr>
+                            <tr>
+                                <td width="30%">Injuries Reported</td>
+                                <td width="10%">U.S.</td>
+                                <td width="20%"><div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:30px;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Injuries_Reported_in_US__c} </div></td>
+                                <td width="20%">International</td>
+                                <td width="20%"><div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:30px;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Injuries_Reported_in_International__c} </div></td>
+                            </tr>
+                            <tr>
+                                <td width="30%">Deaths Reported</td>
+                                <td width="10%">U.S.</td>
+                                <td width="20%"><div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:30px;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Deaths_Reported_US__c} </div></td>
+                                <td width="20%">International</td>
+                                <td width="20%"><div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:30px;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Deaths_Reported_International__c} </div></td>
+                            </tr>
+                        </table><br/>
+                        <table width="100%">
+                            <tr>
+                                <td>Sources: <br/><br/>
+                                    <table width= "100%">
+                                        <tr valign="top">
+                                            <td>Manufacturer<div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;font-weight: 100;"> {!CMPL123CME__HHE__c.CMPL123CME__Sources_Manufacturer__c}</div></td>
+                                            <td> </td>  
+                                            <td>Inspection
+                                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Inspection__c} </div>
+                                            </td>
+                                            <td></td>
+                                            <td>MDR’s
+                                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__MDRS__c} </div>
+                                            </td>
+                                            <td></td>
+                                        </tr> <br/>
+                                        <tr style="vertical-align:text-top; " >
+                                            <td colspan="6">Explanation:
+                                                <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Explanation_Latest_Field__c} </div>
+                                            </td>
+                                        </tr>   
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table cellspacing="0" cellpading="3" border="1" width="100%" style="border-top:0px">
+                <tr style="height:100px;vertical-align:text-top; font-weight:bold;font-size:14px;" >
+                    <td>Describe the Complaints and Injuries Reported to Date:
+                        <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;line-height:10pt;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Complaints_and_Injuries_Reported_to_Date__c} </div>
+                    </td>
+                </tr>
+            </table>
+       <!--Page 3 ends here -->
+       
+        <!-- Page 4 Starts here -->
+           <center><div class="pageHeader" style="page-break-before:always;"> Health Hazard Evaluation or Health Risk Assessment <br/> Center for Devices and Radiological Health</div></center>
+            <div style="border-left: solid 2px black;">
+                <table  width="100%">
+                    <tr>
+                        <td width= "50%" style=" border-right : solid 2px black;" valign="top">Date:&nbsp;
+                            <apex:outputText value="{0,date, MM-dd-yyyy}" >
+                                <apex:param value="{!CMPL123CME__HHE__c.CMPL123CME__Date__c}" />
+                            </apex:outputText> 
+                        </td>
+                        <td width= "50%" style=" border-right : solid 2px black;" valign="top">RES #: &nbsp; {!CMPL123CME__HHE__c.CMPL123CME__RES__c} </td>
+                    </tr>
+                </table>
+            </div>
+            <center><div class="pageHeader" style="font-size: 18px;  "> III. Health Risks <br/>TO BE COMPLETED BY MEDICAL OFFICER OR COMMITTEE</div></center>
+            <div style="text-decoration:underline;border: solid 2px black;">THE FOLLOWING ASSESSMENT IS BASED ON CURRENTLY AVAILABLE INFORMATION. <br/>CONCLUSIONS MAY CHANGE IF ADDITIONAL INFORMATION BECOMES AVAILABLE IN THE <br/>FUTURE.</div>
+            <table cellspacing="0" cellpading="3" border="1" width="100%">
+                <tr style="vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;">Immediate and Long Range Health Consequences: <br/><br/>
+                    
+                        <table width="100%">
+                            <tr style="vertical-align:text-top; " >
+                                <td>A.  Describe the Immediate and Long Range Health Consequences (Injuries or Illnesses) That May Result &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from Use of or Exposure to the Defective Device. (Include Known Off Label Uses)
+                                    <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__HealthConseq_due_to_defective__c}</div>
+                                </td>
+                            </tr>
+                            <tr style="vertical-align:text-top; " >
+                                <td>B. Describe Any Clinical Factors That May Mitigate the Risk:
+                                    <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__ClinicalFactors_That_May_Mitigate_Risk__c} </div>
+                                </td>
+                            </tr>
+                            <tr style="vertical-align:text-top; " >
+                                <td>C. What Segment of the Population is Most at Risk? (e.g. Infants, Elderly, Pregnant Women, Critically Ill Patients, Immunocompromised, etc.)
+                                    <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Segmentof_Population_is_Most_at_Risk__c} </div>
+                                </td>
+                            </tr>
+                            <tr style="vertical-align:text-top; " >
+                                <td>D. Does the Health Consequence Have Significant Public Health Impact Beyond Users (e.g. Spread of Serious Infection to Others)?
+                                    <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__AnySignificant_Public_Health_Impact__c} </div>
+                                </td>
+                            </tr>
+                            
+                        </table>    
+                    </td>
+                </tr>
+            </table>
+            
+            
+            
+            <table cellspacing="0" cellpading="3" border="1" width="100%" >
+                <tr style="height:60px;vertical-align: text-top;">
+                    <td style="font-size: 14px; font-weight: 600;">Assess the hazards associated with use of the defective product <br/>
+                        <table width="100%" rules="all">
+                            <tr style="height: 20px;vertical-align: text-top;">
+                                <td colspan="3">Check All that Might Occur:</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center">Population at Greatest Risk</td>
+                                <td style="text-align:center">Overall Population Using Device</td>
+                            </tr>
+                            <tr>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk__c,'Life-threatening(death has/could occur)'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device__c,'Life-threatening(death has/could occur)'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td>Life-threatening (death has or could occur)</td>
+                            </tr>
+                            <tr>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk__c,'Permanent impairment of body function'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device__c,'Permanent impairment of body function'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td>Results in permanent impairment of body function or permanent damage to a body structure.</td>
+                            </tr>
+                            <tr>                                                                            
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk__c,'Necessitates med./surgical intervention'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device__c,'Necessitates med./surgical intervention'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td>Necessitates medical or surgical intervention.</td>
+                            </tr>
+                            <tr>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk__c,'Temporary or reversible'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device__c,'Temporary or reversible'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td>Temporary or reversible (without medical intervention).</td>
+                            </tr>
+                            <tr>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk__c,'Limited'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device__c,'Limited'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td>Limited (transient, minor impairment or complaints).</td>
+                            </tr>
+                            <tr>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk__c,'No adverse health consequences'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device__c,'No adverse health consequences'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td>No adverse health consequences.</td>
+                            </tr>
+                            <tr>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk__c,'Hazard cannot be assessed currently'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td align="center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device__c,'Hazard cannot be assessed currently'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td>Hazard cannot be assessed with the data currently available.</td>
+                            </tr>
+                            <tr style="vertical-align: text-top;">
+                                <td colspan="3">Explanation:
+                                    <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Assess_Hazard_Explanations__c} </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+           <!--Page 4 ends here -->
+           
+           
+           
+           <!--Page 5 starts here -->
+           <table cellspacing="0" cellpading="3" border="1" width="100%" >
+                <tr style="height:50px;vertical-align:text-top;font-weight:bold;font-size:14px;" >
+                    <td colspan="5">Assess the Probability that Use of, or Exposure to, Product under Recall will Cause Adverse Health
+                        <table>
+                            <tr style="height:50px;vertical-align:text-top; " >
+                                <td >Consequences</td>
+                                <td colspan="2" style="text-align:center;text-decoration:underline;">Serious Adverse Health Consequences</td>
+                                <td colspan="2" style="text-align:center;text-decoration:underline">Medically Reversible or Transient Adverse Health Consequences</td>
+                                
+                            </tr>
+                            <tr style="height:50px;vertical-align:text-top; " >
+                                <td ></td>
+                                <td colspan="2" style="text-align:center">(Death, Life Threatening, Results in Permanent Impairment)</td>
+                                <td colspan="2" style="text-align:center"></td>
+                            </tr>
+                            <tr style="height:50px;vertical-align:text-top; " >
+                                <td ></td>
+                                <td style="text-align:center">Overall Population Using Device</td>
+                                <td style="text-align:center">Population at Greatest Risk</td>
+                                <td style="text-align:center">Overall Population Using Device</td>
+                                <td style="text-align:center">Population at Greatest Risk</td>
+                            </tr>
+                            <tr style="height:50px;vertical-align:text-top; " >
+                                <td style="text-align:left">Every Time</td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device_Serious__c,'Every Time'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk_Serious__c,'Every Time'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device_Reversib__c,'Every Time'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk_Reversible__c,'Every Time'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                            </tr>
+                            <tr style="height:50px;vertical-align:text-top; " >
+                                <td style="text-align:left">Reasonable Probability that Use will Cause</td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device_Serious__c,'Reasonable Prob. that Use will Cause'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk_Serious__c,'Reasonable Prob. that Use will Cause'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device_Reversib__c,'Reasonable Prob. that Use will Cause'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk_Reversible__c,'Reasonable Prob. that Use will Cause'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                            </tr>
+                            <tr style="height:50px;vertical-align:text-top; " >
+                                <td style="text-align:left">Remote Probability that Use will Cause</td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device_Serious__c,'Remote Probability that Use will Cause'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk_Serious__c,'Remote Probability that Use will Cause'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device_Reversib__c,'Remote Probability that Use will Cause'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk_Reversible__c,'Remote Probability that Use will Cause'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                            </tr>
+                            <tr style="height:50px;vertical-align:text-top; " >
+                                <td style="text-align:left">Not Likely that Use will Cause Any Adverse Events</td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device_Serious__c,'Not Likely that Use will Cause Any AE'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk_Serious__c,'Not Likely that Use will Cause Any AE'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Overall_Population_Using_Device_Reversib__c,'Not Likely that Use will Cause Any AE'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                <td style="text-align:center"><apex:image height="15px" width="15px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__HHE__c.CMPL123CME__Population_at_Greatest_Risk_Reversible__c,'Not Likely that Use will Cause Any AE'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                            </tr>
+                            <tr style="vertical-align:text-top; " >
+                                <td colspan="5">Explanation / Comments:
+                                    <div style="background-color: rgb(222,229,255);font: normal 11px 'Arial Unicode MS', Times, serif;border-color: transparent;height:100%;font-weight: 100;">{!CMPL123CME__HHE__c.CMPL123CME__Explanation_Comments__c} </div>
+                                </td>
+                            </tr>
+                        </table>        
+                    </td>
+                </tr>
+            </table> 
+            <table cellspacing="0" cellpading="3" border="1" width="100%" style="border-top:0px" >
+                <tr>
+                    <td style="text-align:left">
+                        <table width="100%" class="bottomBorder">
+                            <tr style="font-size:14px;">
+                                <td style="display : {!if(CMPL123CME__HHE__c.CMPL123CME__Approval_1_Role__c == null, 'none', 'run-in')}"><br/><b>Role</b></td>
+                                <td ><br/><b>Electronic Signature Date</b></td>
+                                <td ><br/><b>Name</b></td>
+                            </tr>
+                            <tr style="font-size:12px;line-height:10pt;">
+                                <td style="display : {!if(CMPL123CME__HHE__c.CMPL123CME__Approval_1_Role__c == null, 'none', 'run-in')}">{!CMPL123CME__HHE__c.CMPL123CME__Approval_1_Role__c}</td>
+                                <td ><c:FormatDateTime date_time_value="{!CMPL123CME__HHE__c.CMPL123CME__Approval_1_Performed_On__c}" date_time_format="MM/dd/yyyy  hh:mm a" /></td>
+                                <td>{!CMPL123CME__HHE__c.CMPL123CME__Approval_1_Performed_By__c}</td>
+                            </tr>
+                            <tr style="font-size:12px;line-height:10pt;">
+                                <td style="display : {!if(CMPL123CME__HHE__c.CMPL123CME__Approval_1_Role__c == null, 'none', 'run-in')}">{!CMPL123CME__HHE__c.CMPL123CME__Approval_2_Role__c}</td>
+                                <td ><c:FormatDateTime date_time_value="{!CMPL123CME__HHE__c.CMPL123CME__Approval_2_Performed_On__c}" date_time_format="MM/dd/yyyy  hh:mm a" /></td>
+                                <td >{!CMPL123CME__HHE__c.CMPL123CME__Approval_2_Performed_By__c} </td>
+                            </tr>
+                            <tr style="font-size:12px;line-height:10pt;">
+                                <td style="display : {!if(CMPL123CME__HHE__c.CMPL123CME__Approval_1_Role__c == null, 'none', 'run-in')}">{!CMPL123CME__HHE__c.CMPL123CME__Approval_3_Role__c}</td>
+                                <td ><c:FormatDateTime date_time_value="{!CMPL123CME__HHE__c.CMPL123CME__Approval_3_Performed_On__c}" date_time_format="MM/dd/yyyy  hh:mm a" /></td>
+                                <td >{!CMPL123CME__HHE__c.CMPL123CME__Approval_3_Performed_By__c}</td>
+                            </tr>
+                            <tr style="font-size:12px;line-height:10pt;">
+                                <td style="display : {!if(CMPL123CME__HHE__c.CMPL123CME__Approval_1_Role__c == null , 'none', 'run-in')}">{!CMPL123CME__HHE__c.CMPL123CME__Approval_4_Role__c}</td>
+                                <td ><c:FormatDateTime date_time_value="{!CMPL123CME__HHE__c.CMPL123CME__Approval_4_Performed_On__c}" date_time_format="MM/dd/yyyy  hh:mm a" /></td>
+                                <td >{!CMPL123CME__HHE__c.CMPL123CME__Approval_4_Performed_By__c}</td>
+                            </tr>
+                            <tr style="font-size:12px;line-height:10pt;">
+                                <td style="display : {!if(CMPL123CME__HHE__c.CMPL123CME__Approval_1_Role__c == null , 'none', 'run-in')}">{!CMPL123CME__HHE__c.CMPL123CME__Approval_5_Role__c}</td>
+                                <td ><c:FormatDateTime date_time_value="{!CMPL123CME__HHE__c.CMPL123CME__Approval_5_Performed_On__c}" date_time_format="MM/dd/yyyy  hh:mm a" /></td>
+                                <td >{!CMPL123CME__HHE__c.CMPL123CME__Approval_5_Performed_By__c}</td>
+                            </tr>
+                            <tr style="font-size:12px;line-height:10pt;">
+                                <td style="display : {!if(CMPL123CME__HHE__c.CMPL123CME__Approval_1_Role__c == null , 'none', 'run-in')}; border-bottom:0px;">{!CMPL123CME__HHE__c.CMPL123CME__Approval_6_Role__c}</td>
+                                <td style="border-bottom:0px"><c:FormatDateTime date_time_value="{!CMPL123CME__HHE__c.CMPL123CME__Approval_6_Performed_On__c}" date_time_format="MM/dd/yyyy  hh:mm a" /></td>
+                                <td style="border-bottom:0px">{!CMPL123CME__HHE__c.CMPL123CME__Approval_6_Performed_By__c}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+            </table>
+            <!-- Page 5 Ends here -->
+    </body>  
+</apex:page>

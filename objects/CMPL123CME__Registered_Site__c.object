@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <label>Registered Site</label>
+    <nameField>
+        <displayFormat>RS-{0000}</displayFormat>
+        <label>RS No</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Registered Sites</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>CMPL123CME__Sequence_No__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Site_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Assigned_No__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Current_Year__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATEDBY_USER</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>CMPL123CME__Assigned_No__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CMPL123CME__Site_Name__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>CMPL123CME__All</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Site_Name__c</columns>
+        <columns>CMPL123CME__Assigned_No__c</columns>
+        <columns>CMPL123CME__Sequence_No__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+</CustomObject>

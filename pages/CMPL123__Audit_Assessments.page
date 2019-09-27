@@ -1,0 +1,14 @@
+<apex:page standardController="CMPL123__Audit_Assessment__c" standardStylesheets="true"  >
+	<apex:form >
+		<apex:pageBlock mode="edit">
+			<apex:pageBlockButtons location="Bottom" >
+				<apex:commandButton action="{!save}" value="{!$Label.cmpl123__create_audit_assessment}"/>
+				<apex:commandButton action="{!cancel}" value="{!$Label.cmpl123__cancel}"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection title="Audit Assessment" columns="1">
+				<apex:inputField value="{!CMPL123__Audit_Assessment__c.Name}"  required="true"/> 
+				<apex:inputField value="{!CMPL123__Audit_Assessment__c.CMPL123__Audit_Assessment_Template__c}" label="{!$Label.cmpl123__choose_audit_assessment_template}" required="true"/>
+			</apex:pageBlockSection> 
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

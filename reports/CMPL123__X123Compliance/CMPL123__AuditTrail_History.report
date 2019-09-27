@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CMPL123__Audit_Trail_Entry__c.CMPL123__Field_Name__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123__Audit_Trail_Entry__c.CMPL123__Action__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123__Audit_Trail_Entry__c.CMPL123__OldValue__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123__Audit_Trail_Entry__c.CMPL123__NewValue__c</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE_NAME</field>
+    </columns>
+    <columns>
+        <field>CMPL123__Audit_Trail_Entry__c.CMPL123__Last_Modified_Date_Time__c</field>
+    </columns>
+    <description>Audit Trail History of a record</description>
+    <filter>
+        <criteriaItems>
+            <column>CMPL123__Audit_Trail_Entry__c.CMPL123__ParentId__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>startsWith</operator>
+            <value>0010N000049yRFqQAM</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>AuditTrail History</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CMPL123__Audit_Trail_Entry__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>CMPL123__Audit_Trail_Entry__c.CMPL123__Last_Modified_Date_Time__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

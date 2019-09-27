@@ -1,0 +1,23 @@
+<apex:page controller="CMPL123CME.MDRSupplementController" >
+    <script>
+    
+        window.onload = function loadFunction(){
+            var id = getParameterByName('id');
+            if(id != '' && id != null && (id.length == 15 || id.length == 18))
+                executeOnLoad();
+        }   
+        
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        } 
+        
+    </script>
+    
+    <apex:form id="fm">
+        <apex:actionFunction name="executeOnLoad" action="{!createSupplementRecord}"/>
+    </apex:form>
+    
+</apex:page>

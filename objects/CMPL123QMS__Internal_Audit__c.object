@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <label>Internal Audit</label>
+    <nameField>
+        <displayFormat>IA-{00000}</displayFormat>
+        <label>Internal Audit Number</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Internal Audits</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>CMPL123QMS__All</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123QMS__Audit_Scope__c</columns>
+        <columns>CMPL123QMS__Lead_Auditor__c</columns>
+        <columns>CMPL123QMS__QS_Process_or_Element__c</columns>
+        <columns>CMPL123QMS__Planned_Audit_Date__c</columns>
+        <columns>CMPL123QMS__Actual_Audit_Date__c</columns>
+        <columns>CMPL123QMS__Manager_of_Area_to_be_Audited__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <recordTypes>
+        <fullName>External</fullName>
+        <active>true</active>
+        <label>External</label>
+        <picklistValues>
+            <picklist>Audit_Result__c</picklist>
+            <values>
+                <fullName>Excellent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Major Findings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minor Findings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Moderate Findings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unsatisfactory</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Audit_Sub_Type__c</picklist>
+            <values>
+                <fullName>CRO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clinical Operation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Facility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical Writing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monitoring</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Packaging</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-clinical Study Protocol</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-clinical Study Report</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Project Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Statistics</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Study Conduct</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Study Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Warehouse</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Audit_Type__c</picklist>
+            <values>
+                <fullName>GCP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GLP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Internal</fullName>
+        <active>true</active>
+        <label>Internal</label>
+        <picklistValues>
+            <picklist>Audit_Result__c</picklist>
+            <values>
+                <fullName>Excellent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Major Findings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minor Findings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Moderate Findings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unsatisfactory</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Audit_Sub_Type__c</picklist>
+            <values>
+                <fullName>CRO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clinical Operation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Facility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical Writing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monitoring</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Packaging</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-clinical Study Protocol</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-clinical Study Report</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Project Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Statistics</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Study Conduct</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Study Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Warehouse</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Audit_Type__c</picklist>
+            <values>
+                <fullName>GCP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GLP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+</CustomObject>

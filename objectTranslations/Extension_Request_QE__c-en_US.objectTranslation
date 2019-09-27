@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Rule Field Update Key Value --></label>
+        <name>CMPL123Rule_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed By --></label>
+        <name>CMPL123_WF_Action_Performed_By__c</name>
+        <relationshipLabel><!-- Extension Requests QE --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed On --></label>
+        <name>CMPL123_WF_Action_Performed_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action --></label>
+        <name>CMPL123_WF_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Status --></label>
+        <name>CMPL123_WF_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Due Date --></label>
+        <name>Current_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Proposed Due Date --></label>
+        <name>Proposed_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quality Event --></label>
+        <name>Quality_Event__c</name>
+        <relationshipLabel><!-- Extension Requests QE --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Reason for Extension --></label>
+        <name>Reason_for_Extension__c</name>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Extension Request QE</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Extension Requests QE</value>
+    </caseValues>
+    <startsWith>Vowel</startsWith>
+    <layouts>
+        <layout>Extension Request QE Layout</layout>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Proposed Due Date cannot be in the past. --></errorMessage>
+        <name>Proposed_Date_cannot_be_in_future</name>
+    </validationRules>
+    <workflowTasks>
+        <name>Extension_Request_for_Quality_Events</name>
+        <subject><!-- Extension Request for Quality Events --></subject>
+    </workflowTasks>
+</CustomObjectTranslation>

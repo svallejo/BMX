@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- CAPA_ParentWorkFlowAction --></label>
+        <name>CAPA_ParentWorkFlowAction__c</name>
+    </fields>
+    <fields>
+        <label><!-- CAPA --></label>
+        <name>CAPA__c</name>
+        <relationshipLabel><!-- CAPA Investigations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rule Field Update Key Value --></label>
+        <name>CMPL123Rule_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed By --></label>
+        <name>CMPL123_WF_Action_Performed_By__c</name>
+        <relationshipLabel><!-- CAPA Investigations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed On --></label>
+        <name>CMPL123_WF_Action_Performed_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action --></label>
+        <name>CMPL123_WF_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Status --></label>
+        <name>CMPL123_WF_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investigation Summary --></label>
+        <name>Investigation_Summary__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>CAPA Investigation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CAPA Investigations</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>CAPA Investigation Layout</layout>
+        <sections>
+            <label><!-- Work Flow --></label>
+            <section>Work Flow</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- You cannot add new Investigation under this record --></errorMessage>
+        <name>CAPA_Complete_Review</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Record Locked --></errorMessage>
+        <name>Prevent_Edit_CAPA</name>
+    </validationRules>
+</CustomObjectTranslation>

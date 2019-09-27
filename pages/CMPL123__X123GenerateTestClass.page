@@ -1,0 +1,26 @@
+<apex:page controller="CMPL123.CreateTestClassController" sidebar="false" docType="html-5.0">
+    <apex:form id="frm">
+        <apex:pageMessages id="pgmsg"/>
+        <apex:outputPanel layout="block" styleClass="error_message" rendered="{!if(errorMsg != null,true,false)}" >
+            <apex:pageMessage summary="{!errorMsg}" severity="INFO" strength="3"/>
+        </apex:outputPanel><br/>
+                <div style="width:100%;background-color:AntiqueWhite;font-size:14px;text-align:left;padding-top:10px;">
+                    &nbsp;&nbsp;{!$Label.TEST_CLASS_FOR_THE_TRIGGER_PLEASE_ENTER_API_NAME_OF_THE_OBJECT}<br/><br/>
+                    &nbsp;&nbsp;{!$Label.ENTER_OBJECT_API_NAME}:<apex:inputText size="80" value="{!objApiVal}" html-placeholder="{!$Label.cmpl123__select_object_name}" list="{!columns}" html-autocomplete="on"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <apex:commandButton value="{!$Label.cmpl123__generate_test_class_code}" action="{!generateTestClass}"/><br/><br/>
+                </div><br/><br/><br/><br/>
+                
+                
+                <div style="{!if(showTestClassSection = false, 'display:none','display:block')};">
+                    <div style="float:left;width:30%;" class="showTestClass" >
+                        <apex:inputTextarea value="{!testClassVal}" style="height:150px;width:350px"/>
+                        
+                    </div>
+                    <div style="float:right;background-color:LightCyan  ;text-align:left;width:70%; height:80px;font-size:14px;text-align:left;padding-top:30px;" class="createTestClass">
+                        <span style="font-bold;">{!$Label.IF_YOU_HAVE_ANY_VALIDATION_RULE_TRIGGER_OR_REQ_FIELD_OF_REF_TYPE}</span><br/><br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <apex:commandButton value="{!$Label.cmpl123__create_test_class}" action="{!testClassCreation}" reRender="frm"/>
+                    </div>
+                </div>
+    </apex:form>
+</apex:page>

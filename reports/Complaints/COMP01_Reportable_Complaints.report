@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c.CMPL123CME__CMPL123_WF_Status__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c.BMX_INVEST__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c.BMX_Investigation__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c.BMX_Child_Investigation_Linked__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <filter>
+        <criteriaItems>
+            <column>CMPL123CME__Complaint__c.BMX_Is_Reportable__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>COMP01 - Reportable Complaints</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CMPL123CME__Complaint__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

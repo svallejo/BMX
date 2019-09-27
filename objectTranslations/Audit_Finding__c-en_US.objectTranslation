@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Audit --></label>
+        <name>Audit__c</name>
+        <relationshipLabel><!-- Audit Findings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rule Field Update Key Value --></label>
+        <name>CMPL123Rule_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed By --></label>
+        <name>CMPL123_WF_Action_Performed_By__c</name>
+        <relationshipLabel><!-- Audit Findings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed On --></label>
+        <name>CMPL123_WF_Action_Performed_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action --></label>
+        <name>CMPL123_WF_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Status --></label>
+        <name>CMPL123_WF_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Opened --></label>
+        <name>Date_Opened__c</name>
+    </fields>
+    <fields>
+        <label><!-- Due Date --></label>
+        <name>Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Finding Type --></label>
+        <name>Finding_Type__c</name>
+        <picklistValues>
+            <masterLabel>Clinical</masterLabel>
+            <translation><!-- Clinical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deviation</masterLabel>
+            <translation><!-- Deviation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EHS/Facilities</masterLabel>
+            <translation><!-- EHS/Facilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non conformance</masterLabel>
+            <translation><!-- Non conformance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OOS</masterLabel>
+            <translation><!-- OOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OOT</masterLabel>
+            <translation><!-- OOT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Process</masterLabel>
+            <translation><!-- Process --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Problem Statement --></label>
+        <name>Problem_Statement__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response --></label>
+        <name>Response__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Audit Finding</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Audit Findings</value>
+    </caseValues>
+    <startsWith>Vowel</startsWith>
+    <layouts>
+        <layout>Audit Finding Layout</layout>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- Work flow --></label>
+            <section>Work flow</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Record Locked --></errorMessage>
+        <name>Prevent_Edit_Audit_findings_cancel_audit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Audit findings cannot be added or edited after audit has been approved. --></errorMessage>
+        <name>Prevent_edit_create_audit_is_approved</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please fill the Response field before performing the Submit response action. --></errorMessage>
+        <name>Response_should_not_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot Add a New Audit Findings for the Closed Audit --></errorMessage>
+        <name>do_not_add_new_findings_on_closed_audit</name>
+    </validationRules>
+</CustomObjectTranslation>

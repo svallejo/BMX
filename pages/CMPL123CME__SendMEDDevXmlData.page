@@ -1,0 +1,88 @@
+<apex:page standardController="CMPL123CME__MEDDEV__c" showHeader="false" sidebar="false" extensions="CMPL123CME.EmailXmlDataController">
+
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+    
+    <style>
+        .errors {
+            border: 2px solid red;
+            padding: 10px 40px; 
+            background: #ffc; 
+            width: 80%;
+            border-radius: 5px;
+            text-align: left;
+        }
+        
+        .warnings {
+            border: 2px solid skyblue;
+            padding: 10px 40px; 
+            background: #ffc;
+            width: 80%;
+            border-radius: 5px;
+            text-align: left;
+        }
+    </style>
+    
+    <script>
+        
+        window.onload = function loadFunction(){
+            var id = getParameterByName('id');
+            if(id != '' && id != null && (id.length == 15 || id.length == 18))
+                executeOnLoad();
+        }   
+        
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        } 
+        
+        function backToRecord(){
+            var id = getParameterByName('id');
+            if(lexUtil.inLEX()) {
+                lexUtil.lexNavigateToSObject(id);
+            }
+            else {
+                window.location = '/' + id;
+            }
+        }
+        
+    </script>
+    
+    <apex:form id="fm">
+        
+        <apex:pageBlock title="{!$Label.cmpl123cme__cmplt_meddev_xml_validation}" id="pageBlock">
+        <apex:pageBlockButtons >
+            <apex:commandButton value="{!$Label.cmpl123cme__cmplt_attach_pdf}" action="{!insertPDFAttachment}" reRender="pgMsgs" onmousemove="this.style.background='#8AB529';this.style.color='white'" onmouseout="this.style.background='white';this.style.color='black'" style="background: white;color: black;padding:6px;"/>
+            <apex:commandButton action="{!insertXMLAttachment}" value="{!$Label.cmpl123cme__cmplt_attach_xml}" reRender="pgMsgs" rendered="{!if(errors != null && warnings != null && errors.size == 0,true,false)}"  onmousemove="this.style.background='#8AB529';this.style.color='white'" onmouseout="this.style.background='white';this.style.color='black'" style="background: white;color: black;padding:6px;"/>    
+            <apex:commandButton value="{!$Label.cmpl123cme__cmplt_back_to_meddev}" onclick="backToRecord();return false;" onmousemove="this.style.background='#8AB529';this.style.color='white'" onmouseout="this.style.background='white';this.style.color='black'" style="background: white;color: black;padding:6px;"/>
+        </apex:pageBlockButtons>
+        <apex:outputPanel id="panel">
+            <apex:pageMessage id="pgMsg" summary="{!$Label.cmpl123cme__cmplt_validating_xml_is_in_progress}..." severity="INFO" strength="3" rendered="{!if((errors != null && errors.size > 0) || (warnings != null && warnings.size > 0) || (warnings.size == 0 && errors.size == 0),false,true)}"/>
+            <center><div style="width : 92%;text-align: left;"><apex:pagemessages id="pgMsgs"/></div></center>
+            <!-- <apex:pageMessage summary="XML validated successfully, to attach this XML please click 'Attach XML' button." severity="INFO" strength="3" rendered="{!if(errors != null && errors.size == 0 && warnings != null && warnings.size == 0,true,false)}"/>-->
+            <center>
+            <apex:outputPanel rendered="{!if(errors != null && errors.size > 0,true,false)}" >
+            <div class="errors">
+                <img style="vertical-align: middle;" src="/img/msg_icons/error32.png" height="24" width="24" />&nbsp;&nbsp;<span style="font-size : 14px;"><b>{!$Label.CMPL123CME__CMPLT_ERRORS}:</b></span>
+                <apex:repeat value="{!errors}" var="error">
+                    <br/><br/>{!error}
+                </apex:repeat>
+            </div><br/>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!if(warnings != null && warnings.size > 0,true,false)}"> 
+            <div class="warnings">
+                <img style="vertical-align: middle;" src="/img/msg_icons/warning32.png" height="24" width="24" />&nbsp;&nbsp;<span style="font-size : 14px;"><b>{!$Label.CMPL123CME__CMPLT_WARNINGS}</b></span>
+                <apex:repeat value="{!warnings}" var="warning">
+                   <br/><br/> {!warning}
+                </apex:repeat>
+            </div>
+            </apex:outputPanel>
+            </center>
+        </apex:outputPanel>
+        <apex:actionFunction name="executeOnLoad" action="{!sendEmail}"  ReRender="pageBlock"/>
+        
+        
+    </apex:pageBlock>     
+    </apex:form>
+</apex:page>

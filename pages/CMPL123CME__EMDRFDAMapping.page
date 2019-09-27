@@ -1,0 +1,772 @@
+<apex:page renderAs="{!renderType}" controller="CMPL123CME.EMDRFDAMappingController" cache="false" applyHtmlTag="false" applyBodyTag="false"  showHeader="false" sidebar="false" docType="html-5.0">
+<apex:stylesheet value="{!$Resource.CMPL123CME__PDFDocumentStyle}" />
+    <head>
+               
+    </head>
+    <body>
+    <apex:form id="fm">
+        <div style="text-align: center; display : {!if(renderType != 'pdf','block','none')}">
+            <h1> EMDR FDA Mapping </h1><br/><br/>
+            <apex:commandButton action="{!doSave}" value="Save"/>
+            <apex:commandButton rendered="{!if(isMDR == 'MDR',true,false)}" action="{!doLoad}" value="Load" reRender="fm"/>
+            <hr/>
+            <br/><br/>
+        </div>
+        
+        <c:PDFHeaderFooter type="header" position="center" >
+                <b>
+                    <div style="font-size:18px;">
+                        <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['HDR1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                    </div>
+                    <div style="font-size: 14px;">Medical Device Report Data</div>
+                    <div style="font-size: 14px;">Submitted to CDRH as a Mandatory Report</div>
+                    <div style="font-size: 14px;">in Electronic HL7 ICSR Format</div>
+                    <div style="font-size: 14px;">
+                        <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['HDR2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                    </div>
+                </b> 
+        </c:PDFHeaderFooter>
+        <div style="{!if(renderType != 'pdf','margin-left:20px;width:90%;height:auto;border:1px solid black;','width:100%;')}">
+            <div style="font-size:12px;font-family:sans-serif;font-weight:bold;">A. PATIENT INFORMATION</div><br/>
+            <div style="font-size:10px;font-family:sans-serif;"><b>A1. Patient Identifier:</b> 
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['A1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>A2. Date of Birth:</b>  
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['A2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Age at Time of Event:</b> 
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['A2.1']}"   html-placeholder="Select Column"  html-autocomplete="on" />
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Patient Age Units:</b> 
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['A2.2']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>A3. Sex:</b> 
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['A3']}" html-placeholder="Select Column"  html-autocomplete="on" />
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>A4. Weight:</b> 
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['A4']}" html-placeholder="Select Column"  html-autocomplete="on" />
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Patient Weight Units:</b> 
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['A4.1']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+            </div>
+            <apex:outputPanel rendered="{!if(emdrFormVersion == '2018', true, false)}">
+                <div style="font-size:10px;font-family:sans-serif;"><b>A5. Ethnicity:</b> 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['A5.1']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> Race:</b> 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['A5.2']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+                </div>
+            </apex:outputPanel>
+            <br/>
+            
+            <!--------------------------------------  B Section Information ------------------------------------------->
+            
+            <div style="font-size:12px;font-family:sans-serif;"><b>B. ADVERSE EVENT OR PRODUCT PROBLEM</b></div><br/>
+            
+            <div style="font-size:10px;font-family:sans-serif;"><b>B1. Adverse Event/Product Problem:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['B1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+           
+            <div style="font-size:10px;font-family:sans-serif;"><b>B2. Outcomes Attributed to Adverse Event:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['B2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div> 
+            <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Date of Death:</b> 
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['B2.1']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>B3. Date of Event:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['B3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>B4. Date of This Report:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['B4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>B5. Describe Event or Problem:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['B5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>B6. Relevant Tests/Laboratory Data, Including Dates:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['B6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>B7. Other Relevant History, Including Preexisting Medical Conditions:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['B7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;font-weight:bold;">
+                (e.g., allergies, race, pregnancy, smoking and alcohol use, hepatic/renal dysfunction, etc.)    
+            </div><br/>
+            
+            <!----------------------------------------------- C Section Information ------------------------------------------------------>
+            
+            <div style="font-size:12px;font-family:sans-serif;font-weight:bold;"><apex:outputText value="{!if(emdrFormVersion == '2018', 'C. SUSPECT PRODUCTS','C. SUSPECT PRODUCTS - NOT APPLICABLE')}"></apex:outputText></div><br/>
+
+            <apex:outputPanel rendered="{!if(emdrFormVersion == '2018', true, false)}">
+                <div style="font-size:10px;font-family:sans-serif;"><b>C1. #1 Name and Strength:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C1.1.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NDC # or Unique ID:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C1.1.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Manufacturer/Compounder:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C1.1.3']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Lot #:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C1.1.4']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#2 Name and Strength:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C1.2.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NDC # or Unique ID:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C1.2.2']}" html-placeholder="Select Column"  html-autocomplete="on" />    
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Manufacturer/Compounder:</b>&nbsp;  
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C1.2.3']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Lot #:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C1.2.4']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;font-weight:bold;"><b>C2. Concom Med Prod and Therapy Dates:</b>&nbsp;
+                   <apex:outputPanel rendered="{!if(renderType != 'pdf',true,false)}"> {!$Label.cmpl123cme__cmplt_c2_label} </apex:outputPanel>
+                </div><br/>
+                
+                <div style="font-size:10px;font-family:sans-serif;"><b>C3. #1 Dose:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C3.1.1.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Dose Units:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C3.1.1.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Frequency:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C3.1.2.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Frequency Units:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C3.1.2.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Route Used:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C3.1.3.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#2 Dose:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C3.2.1.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Dose Units:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C3.2.1.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Frequency:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C3.2.2.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Frequency Units:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C3.2.2.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Route Used:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C3.2.3.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;"><b>C4. #1 Therapy Dates - Start Date</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C4.1.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Therapy Dates - Stop Date:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C4.1.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#2 Therapy Dates - Start Date:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C4.2.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Therapy Dates - Stop Date:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C4.2.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+
+                <div style="font-size:10px;font-family:sans-serif;"><b>C5. #1 Diagnosis for Use:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C5.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#2 Diagnosis for Use:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C5.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;"><b>C6. #1 Is the Product Compounded?:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C6.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#2 Is the Product Compounded?:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C6.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+               
+                <div style="font-size:10px;font-family:sans-serif;"><b>C7. #1 Is the Product Over-the-Counter?:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C7.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#2 Is the Product Over-the-Counter?:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C7.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;"><b>C8. #1 Exp. Date:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C8.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#2 Exp. Date:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C8.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;"><b>C9. #1 Evt Abated After Use Stopped?:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C9.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#2 Evt Abated After Use Stopped?:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C9.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;"><b>C10. #1 Event Reappeared After Reintro:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C10.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#2 Event Reappeared After Reintro:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C10.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                </div><br/>
+            </apex:outputPanel>
+
+
+            
+            <!----------------------------------------------- D Section Information ------------------------------------------------------>
+            
+            <div style="font-size:12px;font-family:sans-serif;font-weight:bold;">D. SUSPECT MEDICAL DEVICE</div><br/>
+            <div style="font-size:10px;font-family:sans-serif;"><b>D1. Brand Name:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>D2. Common Device Name:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>D2b Procode:</b> 
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D2.1']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>D3. Manufacturer Name and Address:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Name:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D3.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>            
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Address 1:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D3.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Address 2:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D3.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>City:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D3.4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>State:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D3.5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Postal Code:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D3.6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Country:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D3.7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Email:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D3.8']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Fax:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D3.9']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;font-weight:bold;">D4.</div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Catalog #:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D4.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>            
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Lot#:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D4.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Serial #:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D4.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Model #:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D4.4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Expiration Date:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D4.5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+
+            <apex:outputPanel rendered="{!if(emdrFormVersion == '2015', true, false)}">
+                <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Other #:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D4.6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+            </apex:outputPanel>
+             <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Unique Identifier (UDI) #:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D4.7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>D5. Operator of Device:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Other Text:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D5.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>D6. Implant Date:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>D7. Explant Date:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>D8. Is this a Single-use Device that was Reprocessed and Reused on a Patient? </b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D8']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>D9. Reprocessor Name and Address (if Yes to #8) </b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D9']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Name:</b>&nbsp;
+                 <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D9.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>            
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Address 1:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D9.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Address 2:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D9.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>City:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D9.4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>State:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D9.5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Postal Code:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D9.6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Country:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D9.7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Email:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D9.8']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;margin-left:22px;"><b>Fax:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D9.9']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>D10. Device Available for Evaluation:</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D10']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Date Returned to Mfg:</b> 
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D10.1']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+            </div>
+            <div style="font-size:10px;font-family:sans-serif;"><b>D11. Concomitant Medical Products and Therapy Dates (Exclude treatment of event):</b>&nbsp;
+                <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D11']}" html-placeholder="Select Column"  html-autocomplete="on"/><apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!ResultMap['D11_Null']}"/>
+            </div>
+            <br/>
+            <div style="font-size:12px;font-family:sans-serif;font-weight:bold;">E. INITIAL REPORTER</div><br/>
+                <div style="font-size:10px;font-family:sans-serif;"><b>E1. Name and Address</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>First Name:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>            
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Middle Name:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Last Name:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Title:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Facility:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Address 1:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Address 2:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>City:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.8']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>State:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.9']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Postal Code:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.10']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Country:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.11']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Email:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.12']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Fax:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.13']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Phone:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E1.14']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>E3. Occupation:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <apex:outputPanel rendered="{!if(emdrFormVersion == '2015', true, false)}">
+                    <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Add'l Text:</b>&nbsp;
+                        <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E3.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                    </div>
+                </apex:outputPanel>    
+                <div style="font-size:10px;font-family:sans-serif;"><b>E4. Initial Reporter Also Sent Report to FDA?</b> &nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['E4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div> <br/>
+                <div style="font-size:12px;font-family:sans-serif;"><b>F. FOR USE BY FACILITY/IMPORTER (Devices Only)</b></div><br/>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F1. User Facility / Importer</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F2. UF/Importer Report Number</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F3. User Facility or Importer Name/Address</b>&nbsp;
+                    <!-- <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                    <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!ResultMap['F3']}"/> -->
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Name</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F3.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Address 1</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F3.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Address 2</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F3.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>City</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F3.4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>State</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F3.5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Postal Code</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F3.6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Country</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F3.7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <!--Added F3 Contact Email field for mapping in 2018 EMDR-->
+                <apex:outputPanel rendered="{!(emdrFormVersion == '2018')}">
+                    <div class="fieldContainer fieldContainerMargin"><span>Email</span>: 
+                        <span class="leftPadding">
+                            <apex:inputText size="80" rendered="{!(renderType != 'pdf')}" value="{!emdrReportMap['F3.8']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                        </span>
+                    </div>
+                </apex:outputPanel>
+                <div style="font-size:10px;font-family:sans-serif;;"><b>F4. Contact Person</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>                               
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>First Name</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F4.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Middle Name</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F4.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Last Name</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F4.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Title</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F4.4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F5. Phone Number</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <apex:outputPanel rendered="{!if(emdrFormVersion == '2015', true, false)}">
+                    <div style="font-size:10px;font-family:sans-serif;margin-left: 19px;"><b>Email</b>:&nbsp;
+                        <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F5.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                    </div>
+                </apex:outputPanel>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F6. Date User Facility or Importer Became Aware of Event</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F7. Type of Report</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>                               
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;font-weight:bold;">
+                    &nbsp;Follow Up #
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F7.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F8. Date of This Report</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F8']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F9. Approximate Age of Device:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F9']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Approximate Age of Device Units: </b> 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F9.1']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F10. Event Problem Codes (Refer to coding manual)</b></div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:23px;"><b>Patient Codes:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F10.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <apex:repeat value="{!mdrCodesMap['F10.1']}" var="code" rendered="{!if(renderType != 'pdf',false,true)}">
+                    <div style="font-size:10px;font-family:sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:23px;"><b>Device Codes:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F10.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <apex:repeat value="{!mdrCodesMap['F10.2']}" var="code" rendered="{!if(renderType != 'pdf',false,true)}">
+                    <div style="font-size:10px;font-family:sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:23px;"><b>Component Codes:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F10.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <apex:repeat value="{!mdrCodesMap['F10.3']}" var="code" rendered="{!if(renderType != 'pdf',false,true)}">
+                    <div style="font-size:10px;font-family:sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>                                               
+                <div style="font-size:10px;font-family:sans-serif;"><b>F11. Report Sent to FDA?</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F11']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div> 
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Date Report Sent to FDA: </b> 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F11.1']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F12. Location Where Event Occurred</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F12']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 23px;"><b>Add'l Text</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F12.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F13. Report Sent to Manufacturer</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F13']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Date Report Sent to Mfg: </b> 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F13.1']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>F14. Manufacturer Name / Address</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F14']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>                               
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 23px;"><b>Name</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F14.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 23px;"><b>Address 1</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F14.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 23px;"><b>Address 2</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F14.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 23px;"><b>City</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F14.4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 23px;"><b>State</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F14.5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 23px;"><b>Postal Code</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F14.6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 23px;"><b>Country</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F14.7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 23px;"><b>Email</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F14.8']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left: 23px;"><b>Fax</b>:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F14.9']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div><br/>
+                <div style="font-size:12px;font-family:sans-serif;font-weight:bold;">G. ALL MANUFACTURERS</div><br/>
+                <div style="font-size:10px;font-family:sans-serif;"><b>G1. Contact Office - Name/Address</b>&nbsp;
+                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>                    
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Title:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>First Name:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Middle Name:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Last Name:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Address1:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>                
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Address2:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>City:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>State:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.8']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Postal Code:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.9']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Country:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.10']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Email:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.11']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Fax:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.12']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>Manufacturing Site (for Devices)</b></div>                              
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Site Name:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.13']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Site Address1:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.14']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>                
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Site Address2:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.15']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Site City:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.16']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Site State:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.17']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Site Postal Code:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.18']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Site Country:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.19']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Site Email:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.20']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                 </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Site Fax:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.21']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>G2. Phone Number:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>G3. Report Source (check all that apply)</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G3']}" html-placeholder="Select Column"  html-autocomplete="on"/>                    
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Add'l Text:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G3.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>G4. Date Received by Manufacturer:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;font-weight:bold;">G5.</div>
+                <apex:outputPanel rendered="{!if(emdrFormVersion == '2018', true, false)}">
+                    <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>NDA#:</b>&nbsp;
+                        <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G5.8']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                     </div>
+                 </apex:outputPanel>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>
+                <apex:outputPanel rendered="{!if(emdrFormVersion == '2015', true, false)}">
+                (A)NDA#:
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!if(emdrFormVersion == '2018', true, false)}">
+                ANDA#:
+                </apex:outputPanel>
+                </b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G5.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                 </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>IND#:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G5.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>BLA#:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G5.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>PMA/ 510(k)#:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G5.4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Combination Product:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G5.5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>                
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Pre-1938:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G5.6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>OTC Product:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G5.7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>G6. If IND, Give Protocol #:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>G7. Type of Report</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G7']}" html-placeholder="Select Column"  html-autocomplete="on"/>                    
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;font-weight:bold;">
+                    &nbsp;Follow Up #
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G7.1']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+                </div>
+                <!--<div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Follow Up#:</b> &nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G7.1']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+                </div>-->
+                <div style="font-size:10px;font-family:sans-serif;"><b>G8. Adverse Event Term(s):</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G8']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>G9. Manufacturer Report Number:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G9']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div><br/>
+                <div style="font-size:12px;font-family:sans-serif;font-weight:bold;">H. DEVICE MANUFACTURERS ONLY</div><br/>
+                <div style="font-size:10px;font-family:sans-serif;"><b>H1. Type of Reportable Event:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>H2. If Follow-up, What Type:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H2']}" html-placeholder="Select Column"  html-autocomplete="on"/>                    
+                </div>
+                
+                <div style="font-size:10px;font-family:sans-serif;"><b>H3. Device Evaluated by Manufacturer:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H3']}" html-placeholder="Select Column"  html-autocomplete="on"/>                    
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:18px;font-weight:bold;">&nbsp;If Yes: &nbsp;<apex:outputText rendered="{!if(renderType != 'pdf',false,true)}"  value="{!CASE(ResultMap['H3.0.1'],'Yes','[x]','No','[]','Y','[x]','N','[]','[]')}"/><apex:outputText value=" Evaluation Summary Attached "/>&nbsp;<apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H3.0.1']}" html-placeholder="Select Column "  html-autocomplete="on"/></div> 
+                <div style="font-size:10px;font-family:sans-serif;margin-left:18px;font-weight:bold;">&nbsp;If No:</div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Add'l Text:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H3.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;margin-left:19px;"><b>Device Returned to Manufacturer:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H3.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>   
+                <div style="font-size:10px;font-family:sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Reason for Device Not Evaluated by Mfg:</b>&nbsp; 
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H3.4']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+                </div>                                             
+                <div style="font-size:10px;font-family:sans-serif;"><b>H4. Device Manufacture Date:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>H5. Labeled for Single Use:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H5']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>H6. Evaluation Codes  (Refer to coding manual)</b></div>
+                <div style="font-size:10px;font-family:sans-serif;font-weight:bold;margin-left:23px;">Method Codes:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H6.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <apex:repeat value="{!mdrCodesMap['H6.1']}" var="code" rendered="{!if(renderType != 'pdf',false,true)}">
+                    <div style="font-size:10px;font-family:sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                <div style="font-size:10px;font-family:sans-serif;font-weight:bold;margin-left:23px;">Results Codes&nbsp;:
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H6.2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <apex:repeat value="{!mdrCodesMap['H6.2']}" var="code" rendered="{!if(renderType != 'pdf',false,true)}">
+                    <div style="font-size:10px;font-family:sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                <div style="font-size:10px;font-family:sans-serif;font-weight:bold;margin-left:23px;">Conclusion Codes&nbsp;:
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H6.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <apex:repeat value="{!mdrCodesMap['H6.3']}" var="code" rendered="{!if(renderType != 'pdf',false,true)}">
+                    <div style="font-size:10px;font-family:sans-serif;margin-left:23px;">{!code}</div>
+                </apex:repeat>
+                <div style="font-size:10px;font-family:sans-serif;font-weight:bold;">H7. If Remedial Action Initiated:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H7']}" html-placeholder="Select Column"  html-autocomplete="on"/>                    
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;font-weight:bold;margin-left:23px;">Other Remedial Action:&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H7.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>                    
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>H8. Usage of Device:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H8']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>H9. If action reported to FDA under 21 USC 360i(f), list correction/removal reporting number:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H9']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>H10. Additional Manufacturer Narrative and Corrective Data:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H10']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+                </div>
+                <div style="font-size:10px;font-family:sans-serif;"><b>H11. Corrected Data:</b>&nbsp;
+                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H11']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
+                </div><br/>
+        </div>
+        <datalist id="emdrfieldlist">
+            <apex:repeat rendered="{!if(renderType != 'pdf',true,false)}" value="{!columns}" var="dt"> 
+                <option value="{!dt}">{!dt}</option>
+            </apex:repeat>
+        </datalist>
+        <script>
+         window.onload = function(e){
+            for(var ele in document.getElementsByTagName('input')){
+                document.getElementsByTagName('input')[ele].setAttribute('list','emdrfieldlist');
+            }
+         }
+        </script>
+        
+    </apex:form>
+    </body>        
+</apex:page>

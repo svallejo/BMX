@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CMPL123CME__Complaint__c$BMX_CaseNumber__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c$CMPL123CME__Short_Description__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c$Closed_Date__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c.CMPL123CME__Investigations__r$Name</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c.CMPL123CME__Investigations__r$CreatedDate</field>
+    </columns>
+    <currency>EUR</currency>
+    <format>Tabular</format>
+    <name>US-REP-12</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Complaints_with_Investigations__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CMPL123CME__Complaint__c$Closed_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

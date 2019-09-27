@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c.CMPL123CME__Date_Opened__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c.Closed_Date__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c.BMX_Error_Code_External__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c.BMX_Product_External__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <format>Tabular</format>
+    <name>Report 2 TC VAL 28A</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CMPL123CME__Complaint__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CMPL123CME__Complaint__c.BMX_Customer_Contact_Date__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>ClosedDate_c__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Order: Date/Time Closed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>ComplaintId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Complaint</label>
+        <referenceTo>CMPL123CME__Complaint__c</referenceTo>
+        <relationshipLabel>Work Orders</relationshipLabel>
+        <relationshipName>Work_Orders</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ExternalId__c</fullName>
+        <externalId>true</externalId>
+        <label>ExternalId</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>StartDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Order: Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>WO_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Administrative</fullName>
+                    <default>false</default>
+                    <label>Administrative</label>
+                </value>
+                <value>
+                    <fullName>Audit / Consulting / Project</fullName>
+                    <default>false</default>
+                    <label>Audit / Consulting / Project</label>
+                </value>
+                <value>
+                    <fullName>Calibration / Metrology</fullName>
+                    <default>false</default>
+                    <label>Calibration / Metrology</label>
+                </value>
+                <value>
+                    <fullName>Connectivity</fullName>
+                    <default>false</default>
+                    <label>Connectivity</label>
+                </value>
+                <value>
+                    <fullName>Control/Reconditioning</fullName>
+                    <default>false</default>
+                    <label>Control/Reconditioning</label>
+                </value>
+                <value>
+                    <fullName>Corrective Maintenance</fullName>
+                    <default>false</default>
+                    <label>Corrective Maintenance</label>
+                </value>
+                <value>
+                    <fullName>Customer Follow-Up</fullName>
+                    <default>false</default>
+                    <label>Customer Follow-Up</label>
+                </value>
+                <value>
+                    <fullName>Customer Training</fullName>
+                    <default>false</default>
+                    <label>Customer Training</label>
+                </value>
+                <value>
+                    <fullName>Classroom Training</fullName>
+                    <default>false</default>
+                    <label>Classroom Training</label>
+                </value>
+                <value>
+                    <fullName>Field Action</fullName>
+                    <default>false</default>
+                    <label>Field Action</label>
+                </value>
+                <value>
+                    <fullName>Hypercare (COPAN)</fullName>
+                    <default>false</default>
+                    <label>Hypercare (COPAN)</label>
+                </value>
+                <value>
+                    <fullName>Installation</fullName>
+                    <default>false</default>
+                    <label>Installation</label>
+                </value>
+                <value>
+                    <fullName>Internal Projects</fullName>
+                    <default>false</default>
+                    <label>Internal Projects</label>
+                </value>
+                <value>
+                    <fullName>Internal Training</fullName>
+                    <default>false</default>
+                    <label>Internal Training</label>
+                </value>
+                <value>
+                    <fullName>Logistics</fullName>
+                    <default>false</default>
+                    <label>Logistics</label>
+                </value>
+                <value>
+                    <fullName>Management/ Organization</fullName>
+                    <default>false</default>
+                    <label>Management/ Organization</label>
+                </value>
+                <value>
+                    <fullName>Pre Installation inspection</fullName>
+                    <default>false</default>
+                    <label>Pre Installation inspection</label>
+                </value>
+                <value>
+                    <fullName>Preventive Maintenance</fullName>
+                    <default>false</default>
+                    <label>Preventive Maintenance</label>
+                </value>
+                <value>
+                    <fullName>Qualification</fullName>
+                    <default>false</default>
+                    <label>Qualification</label>
+                </value>
+                <value>
+                    <fullName>Remote support</fullName>
+                    <default>false</default>
+                    <label>Remote support</label>
+                </value>
+                <value>
+                    <fullName>Repair with Return</fullName>
+                    <default>false</default>
+                    <label>Repair with Return</label>
+                </value>
+                <value>
+                    <fullName>Return on service</fullName>
+                    <default>false</default>
+                    <label>Return on service</label>
+                </value>
+                <value>
+                    <fullName>Site Acceptance Test (COPAN)</fullName>
+                    <default>false</default>
+                    <label>Site Acceptance Test (COPAN)</label>
+                </value>
+                <value>
+                    <fullName>Site move / Removal</fullName>
+                    <default>false</default>
+                    <label>Site move / Removal</label>
+                </value>
+                <value>
+                    <fullName>Technical Pre-Sales Visit</fullName>
+                    <default>false</default>
+                    <label>Technical Pre-Sales Visit</label>
+                </value>
+                <value>
+                    <fullName>Time Off</fullName>
+                    <default>false</default>
+                    <label>Time Off</label>
+                </value>
+                <value>
+                    <fullName>Tool kit calibration</fullName>
+                    <default>false</default>
+                    <label>Tool kit calibration</label>
+                </value>
+                <value>
+                    <fullName>Upgrade / Update</fullName>
+                    <default>false</default>
+                    <label>Upgrade / Update</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>WO_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>true</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Cannot Complete</fullName>
+                    <default>false</default>
+                    <label>Cannot Complete</label>
+                </value>
+                <value>
+                    <fullName>Canceled</fullName>
+                    <default>false</default>
+                    <label>Canceled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>WO_Sub_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Demo</fullName>
+                    <default>false</default>
+                    <label>Demo</label>
+                </value>
+                <value>
+                    <fullName>Evaluation</fullName>
+                    <default>false</default>
+                    <label>Evaluation</label>
+                </value>
+                <value>
+                    <fullName>Routine Scheduled Call</fullName>
+                    <default>false</default>
+                    <label>Routine Scheduled Call</label>
+                </value>
+                <value>
+                    <fullName>Sales Call</fullName>
+                    <default>false</default>
+                    <label>Sales Call</label>
+                </value>
+                <value>
+                    <fullName>Key Technical Meeting</fullName>
+                    <default>false</default>
+                    <label>Key Technical Meeting</label>
+                </value>
+                <value>
+                    <fullName>Pre Training</fullName>
+                    <default>false</default>
+                    <label>Pre Training</label>
+                </value>
+                <value>
+                    <fullName>Training New</fullName>
+                    <default>false</default>
+                    <label>Training New</label>
+                </value>
+                <value>
+                    <fullName>Training Follow-Up</fullName>
+                    <default>false</default>
+                    <label>Training Follow-Up</label>
+                </value>
+                <value>
+                    <fullName>Training</fullName>
+                    <default>false</default>
+                    <label>Training</label>
+                </value>
+                <value>
+                    <fullName>Software updates</fullName>
+                    <default>false</default>
+                    <label>Software updates</label>
+                </value>
+                <value>
+                    <fullName>Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Troubleshooting</label>
+                </value>
+                <value>
+                    <fullName>BTA 3D w/OBSERVA</fullName>
+                    <default>false</default>
+                    <label>BTA 3D w/OBSERVA</label>
+                </value>
+                <value>
+                    <fullName>BTA 3D OBSERVA &amp; MB</fullName>
+                    <default>false</default>
+                    <label>BTA 3D OBSERVA &amp; MB</label>
+                </value>
+                <value>
+                    <fullName>BTA 3D w/SELECT</fullName>
+                    <default>false</default>
+                    <label>BTA 3D w/SELECT</label>
+                </value>
+                <value>
+                    <fullName>BTA 3D SELECT &amp; MB</fullName>
+                    <default>false</default>
+                    <label>BTA 3D SELECT &amp; MB</label>
+                </value>
+                <value>
+                    <fullName>BTA 3D MYLA &amp; MB</fullName>
+                    <default>false</default>
+                    <label>BTA 3D MYLA &amp; MB</label>
+                </value>
+                <value>
+                    <fullName>BTA 3D w/MYLA</fullName>
+                    <default>false</default>
+                    <label>BTA 3D w/MYLA</label>
+                </value>
+                <value>
+                    <fullName>VITEK 2 60/XL w/MYLA</fullName>
+                    <default>false</default>
+                    <label>VITEK 2 60/XL w/MYLA</label>
+                </value>
+                <value>
+                    <fullName>VITEK 2 60/XL w/OBSERVA</fullName>
+                    <default>false</default>
+                    <label>VITEK 2 60/XL w/OBSERVA</label>
+                </value>
+                <value>
+                    <fullName>VITEK 2 60/XL NO DM</fullName>
+                    <default>false</default>
+                    <label>VITEK 2 60/XL NO DM</label>
+                </value>
+                <value>
+                    <fullName>VITEK 2 C w/MYLA</fullName>
+                    <default>false</default>
+                    <label>VITEK 2 C w/MYLA</label>
+                </value>
+                <value>
+                    <fullName>VITEK 2 C w/OBSERVA</fullName>
+                    <default>false</default>
+                    <label>VITEK 2 C w/OBSERVA</label>
+                </value>
+                <value>
+                    <fullName>VITEK 2 C NO DM</fullName>
+                    <default>false</default>
+                    <label>VITEK 2 C NO DM</label>
+                </value>
+                <value>
+                    <fullName>VITEK 2 AES</fullName>
+                    <default>false</default>
+                    <label>VITEK 2 AES</label>
+                </value>
+                <value>
+                    <fullName>VIRTUO</fullName>
+                    <default>false</default>
+                    <label>VIRTUO</label>
+                </value>
+                <value>
+                    <fullName>D-COUNT 25/50</fullName>
+                    <default>false</default>
+                    <label>D-COUNT 25/50</label>
+                </value>
+                <value>
+                    <fullName>D-COUNT II</fullName>
+                    <default>false</default>
+                    <label>D-COUNT II</label>
+                </value>
+                <value>
+                    <fullName>BTA 3D BME</fullName>
+                    <default>false</default>
+                    <label>BTA 3D BME</label>
+                </value>
+                <value>
+                    <fullName>VITEK 2 C BME</fullName>
+                    <default>false</default>
+                    <label>VITEK 2 C BME</label>
+                </value>
+                <value>
+                    <fullName>VITEK 2 60/XL BME</fullName>
+                    <default>false</default>
+                    <label>VITEK 2 60/XL BME</label>
+                </value>
+                <value>
+                    <fullName>VIDAS/miniVIDAS BME</fullName>
+                    <default>false</default>
+                    <label>VIDAS/miniVIDAS BME</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>WO_Subject__c</fullName>
+        <externalId>false</externalId>
+        <label>Subject</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>WO_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>SAP Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>YM01</fullName>
+                    <default>false</default>
+                    <label>YM01 - On Demand</label>
+                </value>
+                <value>
+                    <fullName>YM02</fullName>
+                    <default>false</default>
+                    <label>YM02 - Initialized from Sales Order</label>
+                </value>
+                <value>
+                    <fullName>YM03</fullName>
+                    <default>false</default>
+                    <label>YM03 - Repair Center</label>
+                </value>
+                <value>
+                    <fullName>YM04</fullName>
+                    <default>false</default>
+                    <label>YM04 - Timesheet</label>
+                </value>
+                <value>
+                    <fullName>YM05</fullName>
+                    <default>false</default>
+                    <label>YM05 - Maintenance Plan</label>
+                </value>
+                <value>
+                    <fullName>YM06</fullName>
+                    <default>false</default>
+                    <label>YM06 - Allocated to Customer</label>
+                </value>
+                <value>
+                    <fullName>YM07</fullName>
+                    <default>false</default>
+                    <label>YM07 - Toolkit Calibration Order</label>
+                </value>
+                <value>
+                    <fullName>YM08</fullName>
+                    <default>false</default>
+                    <label>YM08 - Internal IB</label>
+                </value>
+                <value>
+                    <fullName>YREF</fullName>
+                    <default>false</default>
+                    <label>YREF - Refurbish</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <label>Work Order</label>
+    <nameField>
+        <label>Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Work Orders</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+</CustomObject>

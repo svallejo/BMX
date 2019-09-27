@@ -1,0 +1,277 @@
+<apex:page StandardController="CMPL123CME__Questionnaire__c" extensions="CMPL123CME.CMPL_123_QItems_Ext" showheader="false" sidebar="false" id="pg" >
+   <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+  
+    <style>
+        .popupBackground {background-color:black;opacity: 0.20;filter: alpha(opacity = 20);position: absolute;width: 100%;height: 100%;top: 0;left: 0;z-index: 9998;}
+        .custPopup {width: 480px;height:auto;left:25%;top:20px;background-color:white;border-width: 2px;border-style:solid;z-index: 9999;align:center;padding:10px;position: absolute;}
+        .btn{color: #333;border: 1px solid #b5b5b5;border-bottom-color: #7f7f7f;background: #e8e8e9 url('/img/alohaSkin/btn_sprite.png') repeat-x right top;font-weight: bold;font-size: .9em;border-radius: 3px;}        
+    </style> 
+    
+    <script type="text/javascript">
+        var __sfdcSessionId = '{!GETSESSIONID()}';
+    </script>
+    
+    <apex:includeScript value="/soap/ajax/26.0/connection.js"/> 
+    <apex:includeScript value="/support/console/26.0/integration.js"/>
+    <!-- JS to handle lightning navigation-->
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+  
+    <script>
+        //Variables to store record and page Ids
+        var recordId = "{!JSENCODE(CMPL123CME__Questionnaire__c.id)}";
+        var pageId = "{!JSENCODE(pageId)}";
+        var relatedId;
+
+        function switchMenu(obj,obj1,obj2){
+            var el = document.getElementById(obj);                                       
+            if ( el.style.display != 'none' ) {
+                el.style.display = 'none';
+            }else{
+                el.style.display = '';
+            }
+            var e2 = document.getElementById(obj1);                                       
+            if ( e2.style.display != 'none' ) {
+                e2.style.display = 'none';
+            }else{
+                e2.style.display = '';
+            }
+            var e3 = document.getElementById(obj2);                                       
+            if ( e2.style.display != 'none' ){
+                e3.style.display = 'none';
+            }else{
+                e3.style.display = '';
+            }
+        }
+        relatedId = "{!JSENCODE($CurrentPage.parameters.id)}"; 
+        
+        function checkQt(elementObj){
+            //Below line is changed for Compliance-267 to stop inserting investigation questions on cancel action
+            if(disableButton(elementObj)){
+               var qtsArr = [];
+               $("input[type='checkbox']:checked").each(function(){                
+                   if($(this).attr("class") != 'headerChkBox')                                
+                       qtsArr.push($(this).attr("class").split('-')[1]);
+               });   
+               if(qtsArr.length > 0){                    
+                   Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.CMPL_123_QItems_Ext.setQts}',qtsArr,relatedId,function(result, event){               
+                       if(event.status){
+                          //conditions to navigate based on user experience
+                          lexUtil.navigateByUserTheme(recordId, pageId);
+                       }           
+                   },{escape:true}); 
+               }else{
+                   $('#oneQt').css("display", "block");
+               }
+            //Below line is added for Compliance-267 to stop inserting questions on cancel action
+            }
+        }
+        
+        function doCancel(){            
+            document.getElementById("pg:fm:qtPopup").style.display='none';    
+        }
+        
+        function checkAll(cb,cbid){            
+            var inputElem = document.getElementsByTagName("input");                              
+            for(var i=0; i<inputElem.length; i++){            
+                 if(inputElem[i].id.indexOf(cbid) != -1){                                       
+                    inputElem[i].checked = cb.checked;
+                }
+            }
+        }
+                
+        function unCheckHeader(){           
+            $('.headerChkBox').removeAttr("checked");                        
+        }
+        
+        function unChkHeader(val){            
+            if (val.checked == false){                
+                $(".headerChkBox").removeAttr("checked");  
+            }else{                
+                var flag = 0;                 
+                $("input[type='checkbox']").each(function(){
+                    if($(this).attr("class") != 'headerChkBox'){                                              
+                         if(this.checked == false){                             
+                             flag = 1;   
+                         }
+                     }
+                 });                 
+                 if(flag == 0)
+                     $(".headerChkBox").prop("checked", true);
+            }    
+        }
+                        
+        function loadPage(elementObj){
+            if($(".errorMsg").length == 0 && (document.getElementById("{!$Component.pg.fm.pb.showErrMsg}") == null || (document.getElementById("{!$Component.pg.fm.pb.showErrMsg}") != null && document.getElementById("{!$Component.pg.fm.pb.showErrMsg}").children.length == 0))){
+                //conditions to navigate based on user experience
+                lexUtil.navigateByUserTheme(recordId, pageId);
+            }else{
+                elementObj.disabled = false;
+                elementObj.value = '{!$Label.cmpl123cme__cmplt_save}';
+                elementObj.classList.remove("btnDisabled");
+            }
+        }
+        
+        function getAnsVal(elememtVal,idval,itemId,order){
+            $('[class^='+itemId+']').css('visibility','visible');
+            getRelatedQItems(elememtVal.value,itemId,order);
+        }
+    
+        function hideRowHeader(ele){
+            var assesVal = ele.className.split(',')[0];
+            var qitId = ele.className.split(',')[1];
+            var assesValNew = assesVal.replace("'","").toLowerCase();
+            var elememtValNew = ele.value.replace("'","").toLowerCase();
+            var assecSplit = assesValNew.split(",");
+            
+            if(assesValNew.indexOf('all') > -1 && elememtValNew != ''){
+                var classval = "."+"comments"+qitId;
+                var elem = $(classval);
+                elem.attr('style', 'width:200px;border-color:red;');
+            }else{
+                for (i = 0; i < assecSplit.length; i++) { 
+                    if(assecSplit[i] == elememtValNew){
+                        var classval = "."+"comments"+qitId;
+                        var elem = $(classval);
+                        elem.attr('style', 'width:200px;border-color:red;');
+                        break;
+                    }else{
+                        var className = "comments"+qitId;
+                        var isRequired = 'false';
+                        var classval = "."+"comments"+qitId;
+                        var elem = $(classval);
+                        elem.attr('style', 'width:200px;');
+                    }
+                }
+            }
+        }
+    
+        function getRelatedQItems(elememtVal,itemId,order){
+            setQIMap(elememtVal,itemId,order);
+        }
+    
+        
+        function disableButton(elementObj){
+            if(confirm('{!$Label.cmpl123cme__cmplt_are_you_sure}')){
+                elementObj.disabled = true;
+                elementObj.value = '{!$Label.cmpl123cme__cmplt_saving}';
+                elementObj.classList.add("btnDisabled");
+                return true;
+            }else
+                return false;
+        }
+    </script>
+    
+    
+    <apex:form id="fm">
+       <apex:pageBlock title="{!$Label.cmpl123cme__cmplt_hello} {!$User.FirstName}! {!$Label.cmpl123cme__cmplt_assessment_items_below}" mode="edit"  id="pb">
+       <apex:outputPanel id="err"><apex:pageMessages id="showErrMsg" rendered="{!If(isReqMsg == true,true,false)}"/></apex:outputPanel>
+       <apex:outputPanel rendered="{!if(qItemsMap != null,false,true)}">
+           <apex:outputText style="color:red;margin-left:10px;" value="{!$Label.cmpl123cme__cmplt_no_questions_found}"></apex:outputText>
+       </apex:outputPanel>
+       <apex:pageBlockButtons >
+          <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" rendered="{!if(qItemsMap != null,true,false)}" action="{!saveChanges}" rerender="showErrMsg,err"   onclick="if(!disableButton(this)) return false;" oncomplete="loadPage(this);"/>
+          <apex:commandButton value="{!$Label.cmpl123cme__cmplt_add_questions}" action="{!getQuestions}" reRender="fm" rendered="{!$Setup.CMPL123__CMPL_App_Config__c.CMPL123CME__Show_Add_Question_Button__c}"/>
+        </apex:pageBlockButtons>      
+        <apex:pageBlockTable value="{!qItemsMap}" var="key" rendered="{!if(qItemsMap != null,true,false)}">
+           <apex:column >
+               <apex:outputpanel id="plusimage" style="display:none;">
+                   <apex:image url="/img/alohaSkin/setup/setup_plus_lev1.gif" onclick="switchMenu('{!$Component.inlinetablesec}','{!$Component.minusimage}','{!$Component.plusimage}')" title="{!$Label.cmpl123cme__cmplt_expand} - {!key} {!$Label.cmpl123cme__cmplt_questions}"/> 
+               </apex:outputpanel>
+               <apex:outputpanel id="minusimage" >
+                   <apex:image url="/img/alohaSkin/setup/setup_minus_lev1.gif" onclick="switchMenu('{!$Component.inlinetablesec}','{!$Component.plusimage}','{!$Component.minusimage}')" title="{!$Label.cmpl123cme__cmplt_collapse} - {!key} {!$Label.cmpl123cme__cmplt_questions}"/>
+               </apex:outputpanel> 
+               {!key}             
+               <apex:outputpanel id="inlinetablesec" >
+                   <apex:pageBlockTable value="{!qItemsMap[key]}" var="tsk" >
+                        <apex:column headerValue="{!$Label.cmpl123cme__cmplt_question_no}"  width="8%"  >
+                            <apex:outputField value="{!tsk.Question_No__c}"/>
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.cmpl123cme__cmplt_question}"  width="35%" > 
+                            <apex:outputField value="{!tsk.Question__c}"/>
+                        </apex:column>    
+                        <apex:column headerValue="{!$Label.cmpl123cme__cmplt_answer}" width="15%" >
+                            <apex:inputField value="{!tsk.Answer__c}" onchange="getAnsVal(this,'{!tsk.Id}','{!tsk.Questions_Template_Item__c}','{!tsk.Decision_Level__c}')" styleClass="{!tsk.Assessment_Comment_Required_Options__c},{!tsk.Id}" />
+                            <apex:image id="theImage" value="/img/loading.gif" width="22" height="20" style="visibility: hidden;" styleClass="{!tsk.Questions_Template_Item__c}"/>
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.cmpl123cme__cmplt_comment}" width="30%" >
+                            <div id="reqdiv{!tsk.Id}" style="color: red;">
+                                 <apex:inputField value="{!tsk.Comments__c}" style="width:200px;" id="reqcomments" styleClass="comments{!tsk.Questions_Template_Item__c}"/>
+                                 <script>
+                                     var answerVal = "{!tsk.Answer__c}".replace("'","").toLowerCase();
+                                     if("{!tsk.Assessment_Comment_Required_Options__c}".toLowerCase().indexOf("all") > -1 && answerVal != ''){
+                                        var classval = "."+"comments"+'{!tsk.Questions_Template_Item__c}';
+                                        var ele = $(classval);
+                                        ele.attr('style', 'width:200px;border-color:red;');
+                                     }else{
+                                        var assecSplit = "{!tsk.Assessment_Comment_Required_Options__c}".toLowerCase().replace("'","").split(',');
+                                        for(i = 0; i < assecSplit.length; i++){
+                                             if(assecSplit[i] == answerVal && assecSplit[i].trim() != ""){
+                                                var classval = "."+"comments"+'{!tsk.Questions_Template_Item__c}';
+                                                var ele = $(classval);
+                                                ele.attr('style', 'width:200px;border-color:red;');
+                                                break;
+                                             }else{
+                                                var classval = "."+"comments"+'{!tsk.Questions_Template_Item__c}';
+                                                var ele = $(classval);
+                                                ele.attr('style', 'width:200px;');
+                                             }
+                                        }
+                                     }
+                                 </script>
+                             </div>
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.cmpl123cme__cmplt_score}"  width="12%" > 
+                            <apex:outputField value="{!tsk.Score__c}"/>
+                        </apex:column>    
+                   </apex:pageBlockTable>
+               </apex:outputpanel> 
+           </apex:column>
+       </apex:pageBlockTable>
+   </apex:pageBlock>
+   <apex:outputPanel id="qtPopup" rendered="{!displayPopup}"> 
+       <apex:outputPanel styleClass="popupBackground" layout="block" id="popup"/>
+           <apex:outputPanel styleClass="custPopup" layout="block" id="pop">
+               <apex:pageBlock title="{!$Label.cmpl123cme__cmplt_add_questions}" >
+                   <div>
+                       {!$Label.CMPL123CME__CMPLT_QUESTIONNAIRE_NAME}:&nbsp;&nbsp;
+                       <apex:selectList value="{!qtTempName}" size="1" onchange="qtLst()" >
+                           <apex:actionFunction name="qtLst" action="{!getQts}" reRender="qtn,fm" oncomplete="unCheckHeader();"/>
+                           <apex:selectOptions value="{!TemplateNames}"/>                       
+                       </apex:selectList><br/><br/>
+                   </div>
+                   <div id="oneQt" style="display:none;color:red;" > {!$Label.CMPL123CME__CMPLT_SELECT_ATLEAST_ONE_QUESTION} </div>
+                   <apex:outputPanel rendered="{!dispalyClose}" >
+                       <input type="button" value="{!$Label.CMPL123CME__CMPLT_CLOSE}" onclick="doCancel();" style="margin-left:200px;" class="btn"/>
+                   </apex:outputPanel>                               
+                   <apex:outputPanel rendered="{!displayBlock}" id="qtn">
+                       <apex:pageBlock rendered="{!IF(qtsLst != null && qtsLst.size > 0,true,false)}">
+                           <apex:pageBlockTable value="{!qtsLst}" var="qt" >
+                               <apex:column >
+                                   <apex:facet name="header">
+                                       <apex:inputCheckbox onclick="checkAll(this,'chk');" styleClass="headerChkBox"/>
+                                   </apex:facet>
+                                   <apex:inputCheckbox id="chk" styleClass="chk-{!qt.Id}" onclick="unChkHeader(this);" />
+                               </apex:column>
+                               <apex:column value="{!qt.CMPL123CME__Question_Text__c}"/>
+                               <apex:column value="{!qt.CMPL123CME__Weight__c}"/>
+                           </apex:pageBlockTable>
+                           <apex:pageBlockButtons location="bottom" >                      
+                               <input type="button" value="{!$Label.cmpl123cme__cmplt_save}" onclick="checkQt(this);" class="btn"/> 
+                               <input type="button" value="{!$Label.CMPL123CME__CMPLT_CANCEL}" onclick="doCancel();" class="btn"/>
+                           </apex:pageBlockButtons>
+                       </apex:pageBlock>
+                       <apex:pageBlock rendered="{!IF(qtsLst != null && qtsLst.size == 0,true,false)}">
+                           <div style="text-align:center;">{!$Label.CMPL123CME__CMPLT_NO_QUESTIONS_FOUND_TO_ADD}</div><br/>                   
+                               <input type="button" value="{!$Label.CMPL123CME__CMPLT_CLOSE}" onclick="doCancel();" style="margin-left:200px;" class="btn"/>                   
+                       </apex:pageBlock>
+                   </apex:outputPanel>                   
+                </apex:pageBlock>                 
+           </apex:outputPanel>
+       </apex:outputPanel>    
+   <apex:actionFunction action="{!setAdditionalQuestions}" name="getRelatedQItems" reRender="pb" oncomplete="hideRowHeader(this)"> 
+           <apex:param name="firstParam" assignTo="{!selectedAnswer}" value="" />
+           <apex:param name="secondParam" assignTo="{!selectedParentQtiId}" value="" />
+           <apex:param name="fourthParam" assignTo="{!selectedOrderAsStr}" value="" />
+       </apex:actionFunction>    
+   </apex:form>
+</apex:page>

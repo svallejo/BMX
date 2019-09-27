@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Arrival Date --></label>
+        <name>CMPL123CME__Arrival_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Complaint --></label>
+        <name>CMPL123CME__Complaint__c</name>
+        <relationshipLabel><!-- Repairs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Repair Description --></label>
+        <name>CMPL123CME__Repair_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Repair Type --></label>
+        <name>CMPL123CME__Repair_Type__c</name>
+        <picklistValues>
+            <masterLabel>FIELD</masterLabel>
+            <translation><!-- FIELD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IN HOUSE</masterLabel>
+            <translation><!-- IN HOUSE --></translation>
+        </picklistValues>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- Record Locked --></errorMessage>
+        <name>Prevent_edit_repair_on_locked_complaint</name>
+    </validationRules>
+</CustomObjectTranslation>

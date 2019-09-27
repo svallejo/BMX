@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Capture audit trail history of all select objects/fields.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <label>Audit Trail Entry</label>
+    <nameField>
+        <displayFormat>ATE-{00000}</displayFormat>
+        <label>Audit Trail Entry Id</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Audit Trail Entries</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>CMPL123__Object_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123__Field_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123__Action__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123__OldValue__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123__NewValue__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>UPDATEDBY_USER</customTabListAdditionalFields>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>CMPL123__Action__c</searchFilterFields>
+        <searchFilterFields>CMPL123__Field_Name__c</searchFilterFields>
+        <searchFilterFields>CMPL123__New_Value__c</searchFilterFields>
+        <searchFilterFields>CMPL123__Object_Name__c</searchFilterFields>
+        <searchFilterFields>CMPL123__Old_Value__c</searchFilterFields>
+        <searchFilterFields>CMPL123__ParentId__c</searchFilterFields>
+        <searchResultsAdditionalFields>CMPL123__Object_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123__Field_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123__Action__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123__Old_Value__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123__New_Value__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123__ParentId__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>UPDATEDBY_USER</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>CMPL123__All</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123__Object_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+</CustomObject>
