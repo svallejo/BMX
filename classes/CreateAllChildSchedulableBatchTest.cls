@@ -31,6 +31,10 @@ public class CreateAllChildSchedulableBatchTest{
         Case cs = BMX_TestDataFactory.getCaseRecord();
         insert cs;
         Integer count = 1;
+        Complaint_Creation_Batch_Time__c setting = new Complaint_Creation_Batch_Time__c();
+        DateTime now = System.now();
+        setting.Batch_Completion_Time__c = now;
+        insert setting;
         String caseQuery = 'SELECT Id FROM Case LIMIT 1';
         
         //CreateComplaintForCaseBatch bc = new CreateComplaintForCaseBatch(caseQuery,count);
@@ -39,7 +43,7 @@ public class CreateAllChildSchedulableBatchTest{
         CreateAllChildSchedulableBatch ch = new CreateAllChildSchedulableBatch();
         ch.execute(null);
     }
-	
+    
 /**
 * @Method       : createCaseCommentForComplaintBatchTestMethod 
 * @Invoke       : 
@@ -55,7 +59,7 @@ public class CreateAllChildSchedulableBatchTest{
         CreateCaseCommentForComplaintBatch createCaseComment = new CreateCaseCommentForComplaintBatch(true);
         database.executebatch(createCaseComment); 
     }
-	
+    
 /**
 * @Method       : createWorkOrdrForComplaintBatchTestMethod 
 * @Invoke       : 
@@ -71,7 +75,7 @@ public class CreateAllChildSchedulableBatchTest{
         CreateWorkOrderForComplaintBatch createWorkOrdr = new CreateWorkOrderForComplaintBatch(true);
         database.executebatch(createWorkOrdr); 
     }
-	
+    
 /**
 * @Method       : createProdConsumedForWorkOrdrBatchTestMethod 
 * @Invoke       : 
@@ -87,7 +91,7 @@ public class CreateAllChildSchedulableBatchTest{
         CreateProductConsumedForWorkOrderBatch createProdConsumed = new CreateProductConsumedForWorkOrderBatch(true);
         database.executebatch(createProdConsumed); 
     }
-	
+    
 /**
 * @Method       : createServiceAppointForWorkOrdrBatchTestMethod 
 * @Invoke       : 
@@ -108,7 +112,7 @@ public class CreateAllChildSchedulableBatchTest{
         CreateServiceAppointmentForWorkOrdrBatch createServiceAppoint = new CreateServiceAppointmentForWorkOrdrBatch(true);
         database.executebatch(createServiceAppoint); 
     }
-	
+    
 /**
 * @Method       : reprocessErrorLogsBatchTestMethod 
 * @Invoke       : 
@@ -131,7 +135,7 @@ public class CreateAllChildSchedulableBatchTest{
         ReprocessErrorLogsBatch_Schedule ch = new ReprocessErrorLogsBatch_Schedule();
         ch.execute(null); 
     }
-	
+    
 /**
 * @Method       : processReopenCloseCmplntFrCaseBatchTestMethod 
 * @Invoke       : 

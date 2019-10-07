@@ -1369,7 +1369,7 @@ TEXT(DATEVALUE(BMX_Approved_Date__c) - Complaint__r.BMX_Customer_Contact_Date__c
     </recordTypes>
     <validationRules>
         <fullName>Prevent_Creation_or_Edit_of_Generic_Rep</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Cannot create/edit  a new Generic Report  from the Complaint record at any time when the Complaint record is Locked.</description>
         <errorConditionFormula>OR( 
 AND(ISNEW(),

@@ -22,8 +22,8 @@ global class CreateServiceAppointmentForWorkOrdrBatch implements Database.Batcha
     
     global CreateServiceAppointmentForWorkOrdrBatch(){}
     Boolean chained;
-	
-	//Intializing external Service Appointment Ids in the constructor
+    
+    //Intializing external Service Appointment Ids in the constructor
     global CreateServiceAppointmentForWorkOrdrBatch(Boolean chain){
         this.chained = chain;
     }
@@ -79,12 +79,12 @@ global class CreateServiceAppointmentForWorkOrdrBatch implements Database.Batcha
         System.debug('-------serviceApppointmentList------'+serviceApppointmentList);
         
         if(!serviceApppointmentList.isEmpty()) {
-		
-		    // Upserting the external Service Appointment list of records
+        
+            // Upserting the external Service Appointment list of records
             upsertResultList = Database.Upsert(serviceApppointmentList,Service_Appointment__c.ExternalId__c, false);
         }
         
-		// creating error log records if any record gets failed during the execution of the batch
+        // creating error log records if any record gets failed during the execution of the batch
         if(!upsertResultList.isEmpty()) {
             List<Error_Log__c> errLogList = new List<Error_Log__c>();
             for(Integer i=0; i <upsertResultList.size(); i++) {
@@ -107,15 +107,15 @@ global class CreateServiceAppointmentForWorkOrdrBatch implements Database.Batcha
         system.debug('Service Appointments inserted/updated');
         
         
-        Complaint_Creation_Batch_Time__c cs = Complaint_Creation_Batch_Time__c.getInstance();
+        /*Complaint_Creation_Batch_Time__c cs = Complaint_Creation_Batch_Time__c.getInstance();
         Integer gap = Integer.valueOf(cs.Time_Interval__c);
         
         dateTime timeInterval  = System.now().addMinutes(gap);
         String cronExp = '0 ' + timeInterval.minute() + ' ' + timeInterval.hour() + ' ' + timeInterval.day() + ' ' + timeInterval.month() + ' ? ' + timeInterval.year();
         if(!Test.isRunningTest()){  
-		
-			// Scheduling the CreateAllChildSchedulableBatch batch class to run after 30 minutes since the finish of this batch class
+        
+            // Scheduling the CreateAllChildSchedulableBatch batch class to run after 30 minutes since the finish of this batch class
             System.schedule('Case External Sync Job ' + timeInterval, cronExp, new CreateAllChildSchedulableBatch());
-        }
+        }*/
     } 
 }
