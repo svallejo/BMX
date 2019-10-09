@@ -2422,6 +2422,10 @@
         <apexClass>Utils_CreateComplaintForCaseBatch</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>CMPLCAPA_Effectiveness_CheckTriggerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>
         <enabled>true</enabled>
