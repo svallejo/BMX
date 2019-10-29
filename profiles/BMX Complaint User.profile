@@ -19668,6 +19668,11 @@
         <field>Work_Order__c.WO_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__Is_B5_Limit_Exceeded__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
