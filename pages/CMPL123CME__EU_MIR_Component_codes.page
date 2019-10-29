@@ -1,0 +1,25 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" standardController="CMPL123CME__EU_MIR__c" >
+    <apex:includeLightning /> 
+    
+    <div id="IMDRFComponentCodes" />
+    
+    <script>
+        var recordId = '{!EU_MIR__c.Id}';
+        var componentCodes = [];
+        
+        //JSON for IMDRF Component codes (Annex G)
+        var obj = {};
+        obj["title"] = "{!JSENCODE($Label.CMPL123CME__CMPLT_IMDRF_COMPONENT_CODES)}";
+        obj["codeType"] = "G_Component_Code";
+        obj["recordId"] = recordId;
+        componentCodes.push(obj);
+        
+        $Lightning.use("CMPL123CME:EUMIRViewCodesApp", function() {
+            
+            $Lightning.createComponent("CMPL123CME:EUMIRViewCodesContainer",
+            {   'codesDataList' : componentCodes },
+                "IMDRFComponentCodes");
+            });
+            
+    </script>   
+</apex:page>

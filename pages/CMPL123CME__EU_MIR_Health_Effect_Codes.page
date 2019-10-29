@@ -1,0 +1,32 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" standardController="CMPL123CME__EU_MIR__c" >
+    <apex:includeLightning /> 
+    
+    <div id="IMDRFHealthEffectCodes" />
+    
+    <script>
+        var recordId = '{!EU_MIR__c.Id}';
+        var healthEffectCodes = [];
+        
+        //JSON for IMDRF Clinical signs, symptoms, and conditions codes (Annex E)
+        var obj = {};
+        obj["title"] = "{!JSENCODE($Label.CMPL123CME__CMPLT_IMDRF_CLINICAL_SIGNS_SYMPTOMS_AND_CONDITIONS_CODES)}";
+        obj["codeType"] = "E_Clinical_Signs";
+        obj["recordId"] = recordId;
+        healthEffectCodes.push(obj);
+        
+        //JSON for IMDRF Health impact codes (Annex F)
+        obj = {};
+        obj["title"] = "{!JSENCODE($Label.CMPL123CME__CMPLT_IMDRF_HEALTH_IMPACT_CODES)}";
+        obj["codeType"] = "F_Health_Impact";
+        obj["recordId"] = recordId;
+        healthEffectCodes.push(obj);
+        
+        $Lightning.use("CMPL123CME:EUMIRViewCodesApp", function() {
+            
+            $Lightning.createComponent("CMPL123CME:EUMIRViewCodesContainer",
+            {   'codesDataList' : healthEffectCodes },
+                "IMDRFHealthEffectCodes");
+            });
+            
+    </script>   
+</apex:page>

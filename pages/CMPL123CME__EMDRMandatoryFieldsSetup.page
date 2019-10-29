@@ -10,8 +10,8 @@
     <apex:form id="theFrm">
         <apex:pageBlock id="pb" tabStyle="EMDR__c" title="{!$Label.cmpl123cme__cmplt_select_fields_to_make_mandatory}">
             <apex:outputPanel layout="block" html-align="center" style="padding-bottom:10px">
-                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!Save}"/>
-                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_cancel}" action="{!Cancel}" immediate="true" style="margin-left:5px"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!save}"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_cancel}" action="{!cancel}" immediate="true" style="margin-left:5px"/>
             </apex:outputPanel>
             <apex:repeat value="{!fieldsetsWrapList}" var="flsWrap">
                 <apex:pageBlockSection id="pbs" collapsible="true" title="{!flsWrap.fieldSetLabel}" columns="2">
@@ -24,8 +24,8 @@
                 </apex:pageBlockSection>
             </apex:repeat>
             <apex:outputPanel layout="block"  html-align="center" style="padding-bottom:10px">
-                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!Save}"/>
-                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_cancel}" action="{!Cancel}" immediate="true" style="margin-left:5px"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!save}"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_cancel}" action="{!cancel}" immediate="true" style="margin-left:5px"/>
             </apex:outputPanel>
         </apex:pageBlock>
     </apex:form>

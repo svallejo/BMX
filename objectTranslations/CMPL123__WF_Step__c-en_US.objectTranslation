@@ -72,4 +72,24 @@
         <label><!-- WF Step External Id --></label>
         <name>CMPL123__WF_Step_External_Id__c</name>
     </fields>
+    <fields>
+        <label><!-- Object Related List Relationship --></label>
+        <name>CMPL123__Object_Related_List_Relationship__c</name>
+    </fields>
+    <fields>
+        <help><!-- When checked, the system requires this parallel workflow step be performed only if the referenced user lookup field on the record undergoing workflow specifies a user. If that field is blank, the system skips this workflow step. --></help>
+        <label><!-- Optional Parallel Step --></label>
+        <name>CMPL123__Optional_Parallel_Step__c</name>
+    </fields>
+    <layouts>
+        <layout>Workflow Step Layout</layout>
+        <sections>
+            <label><!-- Mandatory Fields --></label>
+            <section>Mandatory Fields</section>
+        </sections>
+        <sections>
+            <label><!-- Record and List Locking --></label>
+            <section>Record and List Locking</section>
+        </sections>
+    </layouts>
 </CustomObjectTranslation>

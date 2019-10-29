@@ -2,7 +2,7 @@
     
     
     <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/DataTable/css/responsive.css')}"/> 
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/js/jquery-3.4.0.min.js')}"/>
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/DataTable/js/datatable.js')}"/>
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/DataTable/js/button.js')}"/>
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/DataTable/js/print.js')}"/>
@@ -11,7 +11,7 @@
     <!-- Static Resource Added for Pagination--Ravi -->
        
     <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/CMP123_New/css/dataTable.css')}"/>
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/CMP123_New/js/jquery-ui.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/CMP123_New/js/jquery-ui-1.12.1.min.js')}"/>
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/CMP123_New/js/dataTable.js')}"/>
     
 <apex:form id="formid">
@@ -19,75 +19,71 @@
     <apex:pageBlock title="{!$Label.cmpl123__x123_task_dashboard}">
          <apex:pageBlockSection columns="1" collapsible="false">
             <apex:pageBlockSection columns="2">
-             <apex:pageBlockSectionItem >
-                  <apex:outputLabel > {!$Label.cmpl123__select_object}: </apex:outputLabel>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel > {!$Label.cmpl123__select_object}: </apex:outputLabel>
                     <apex:selectList size="1" value="{!selectObjectType}"  >
-                      <apex:selectOptions value="{!SelectedObject}"/>
-                      <apex:actionSupport action="{!search}" event="onchange" reRender="formid"/>
+                        <apex:selectOptions value="{!SelectedObject}"/>
+                        <apex:actionSupport action="{!search}" event="onchange" reRender="formid"/>
                     </apex:selectList>
-           </apex:pageBlockSectionItem> 
+            </apex:pageBlockSectionItem>
            
             <apex:pageBlockSectionItem >
                 <apex:outputLabel > {!$Label.cmpl123__select_type}: </apex:outputLabel>
                     <apex:selectList size="1" value="{!selectValue}">
-                      <apex:selectOptions value="{!SelectedValue }" />
-                      <apex:actionSupport action="{!search}" event="onchange" reRender="formid" />
-          </apex:selectList>
-            </apex:pageBlockSectionItem>        
-           </apex:pageBlockSection>
+                        <apex:selectOptions value="{!SelectedValue }" />
+                        <apex:actionSupport action="{!search}" event="onchange" reRender="formid" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
        
-        <!-- This section shows the list of assigend records to the logged in user. Jquery data table is used to do client side pagination,
+            <!-- This section shows the list of assigend records to the logged in user. Jquery data table is used to do client side pagination,
                 sorting, quick search etc. This can we done by loading the package into the static resource and using the style class attribute
                 value in the pageblock table and that class is used inside the script written below. table.dataTable is the style class attribute
                 and there are multiple parameters that can be used to hide/show or enable/disable the values-->
                 
-              <apex:pageBlockSection collapsible="false" columns="1">         
-               <apex:pageBlockTable value="{!sObjectWrapperClassList}" var="p" styleClass="dataTable" id="table1">
-               <apex:column headerValue="{!$Label.cmpl123__record_name}" width="20%">
-                   <apex:commandLink value="{!p.sobj['name']}" target="_blank" action="/{!p.sobj['id']}"/>
-               </apex:column>
-                
-                <apex:column value="{!p.actions}" headerValue="{!$Label.cmpl123__actions_requested}" width="18%"/> 
-                 <apex:column headerValue="{!$Label.cmpl123__workflow_status}" width="10%">{!p.sobj[p.Status]}</apex:column>
-                <apex:column headerValue="{!$Label.cmpl123__previous_action_performed_by}" width="17%">
-                    <apex:commandLink action="/{!p.sobj[p.ActionPerformedBy]}" value="{!p.sobj[p.ActionPerformedByR+'.Name']}"/>
-                </apex:column>
-                <apex:column headerValue="{!$Label.cmpl123__previous_action_performed_on}" width="10%">
-                    <apex:outputText value="{0,date,MM/dd/YYYY hh:mm a}">
-                        <apex:param value="{!p.sobj[p.ActionPerformedOn]}" />
-                    </apex:outputText>
-                </apex:column>
-                <apex:column value="{!p.groups}" headerValue="{!$Label.cmpl123__public_group}" width="20%"/>
-                                                      
-            </apex:pageBlockTable>
+            <apex:pageBlockSection collapsible="false" columns="1">
+                <apex:pageBlockTable value="{!sObjectWrapperClassList}" var="p" styleClass="dataTable" id="table1">
+                    <apex:column headerValue="{!$Label.cmpl123__record_name}" width="20%">
+                        <apex:commandLink value="{!p.sobj['name']}" target="_blank" action="/{!p.sobj['id']}"/>
+                    </apex:column>
+
+                    <apex:column value="{!p.actions}" headerValue="{!$Label.cmpl123__actions_requested}" width="18%"/>
+                        <apex:column headerValue="{!$Label.cmpl123__workflow_status}" width="10%">{!p.sobj[p.Status]}</apex:column>
+                        <apex:column headerValue="{!$Label.cmpl123__previous_action_performed_by}" width="17%">
+                            <apex:commandLink action="/{!p.sobj[p.ActionPerformedBy]}" value="{!p.sobj[p.ActionPerformedByR+'.Name']}"/>
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.cmpl123__previous_action_performed_on}" width="10%">
+                            <apex:outputText value="{0,date,MM/dd/YYYY hh:mm a}">
+                                <apex:param value="{!p.sobj[p.ActionPerformedOn]}" />
+                            </apex:outputText>
+                        </apex:column>
+                    <apex:column value="{!p.groups}" headerValue="{!$Label.cmpl123__public_group}" width="20%"/>
+                </apex:pageBlockTable>
             
             
-            <script type="text/javascript" language="javascript">
-                var j$ = jQuery.noConflict();
-                j$('table.dataTable').dataTable({
-                    
-                    "language":{
-                        "sZeroRecords":    "{!$Label.NO_MATCHING_RECORDS_FOUND}",
-                        "sEmptyTable":     "{!$Label.NO_DATA_AVAILABLE_IN_TABLE}",
-                        "sInfo":           "{!$Label.SHOWING} _START_ {!$Label.TO} _END_ {!$Label.OF} _TOTAL_ {!$Label.ENTRIES}",
-                        "sInfoEmpty":       "{!$Label.SHOWING} _START_ {!$Label.TO} _END_ {!$Label.OF} _TOTAL_ {!$Label.ENTRIES}",
-                        "sSearch":          "{!$Label.SEARCH}",
-                        "sLengthMenu":     "{!$Label.SHOW} _MENU_ {!$Label.ENTRIES}",
-                        "paginate": {
-                            "first":       "{!$Label.FIRST}",
-                            
-                            "previous":    "{!$Label.PREVIOUS}",
-                            "next":        "{!$Label.NEXT}",
-                            "last":        "{!$Label.LAST}"
+                <script type="text/javascript" language="javascript">
+                    var j$ = jQuery.noConflict();
+                    j$('table.dataTable').dataTable({
+
+                        "language":{
+                            "sZeroRecords":    "{!JSENCODE($Label.NO_MATCHING_RECORDS_FOUND)}",
+                            "sEmptyTable":     "{!JSENCODE($Label.NO_DATA_AVAILABLE_IN_TABLE)}",
+                            "sInfo":           "{!JSENCODE($Label.SHOWING)} _START_ {!JSENCODE($Label.TO)} _END_ {!JSENCODE($Label.OF)} _TOTAL_ {!JSENCODE($Label.ENTRIES)}",
+                            "sInfoEmpty":      "{!JSENCODE($Label.SHOWING)} _START_ {!JSENCODE($Label.TO)} _END_ {!JSENCODE($Label.OF)} _TOTAL_ {!JSENCODE($Label.ENTRIES)}",
+                            "sSearch":         "{!JSENCODE($Label.SEARCH)}",
+                            "sLengthMenu":     "{!JSENCODE($Label.SHOW)} _MENU_ {!JSENCODE($Label.ENTRIES)}",
+                            "paginate": {
+                                "first":       "{!JSENCODE($Label.FIRST)}",
+                                "previous":    "{!JSENCODE($Label.PREVIOUS)}",
+                                "next":        "{!JSENCODE($Label.NEXT)}",
+                                "last":        "{!JSENCODE($Label.LAST)}"
+                            },
                         },
-                    },               
-                    "order": [[ 0, "asc" ]]
-                });
-                
-            </script>
-      </apex:pageBlockSection>
-   
-      </apex:pageBlockSection>
-      </apex:pageblock>
+                        "order": [[ 0, "asc" ]]
+                    });
+                </script>
+            </apex:pageBlockSection>
+        </apex:pageBlockSection>
+    </apex:pageblock>
 </apex:form>
 </apex:page>

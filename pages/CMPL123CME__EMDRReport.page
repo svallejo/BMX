@@ -3,6 +3,17 @@
     <head>
         <style>
             body { font-family: 'Arial Unicode MS'; }
+            .table-div-style {
+                font-size:10px;
+                font-family:'Arial Unicode MS',sans-serif;
+            }
+            .attachment-section {
+                font-size:12px;
+                font-family:'Arial Unicode MS',sans-serif;font-weight:bold;
+            }
+            .attachment-table {
+                border-top:0px;
+            }
         </style>          
     </head>
     <body>
@@ -874,25 +885,42 @@
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H11']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
                     <apex:outputText styleClass="taid" rendered="{!if(renderType != 'pdf',false,true)}" value="{!if(OR(ResultMap['H11'] == 'NA',ResultMap['H11'] == 'NI',ResultMap['H11'] == 'ASKU'),'',ResultMap['H11'])}" style="white-space: pre-wrap;"/>
                 </div><br/>
-                <div>
-                    <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;"> ATTACHMENTS </div>
+                 <div>
                     <apex:outputPanel rendered="{!if(attachments != null && attachments.size > 0,true,false)}">
-                        <table cellspacing="0" cellpadding="3" border="1" width="100%" style="border-top:0px">
+                        <div class="attachment-section"> ATTACHMENTS </div>
+                        <table cellspacing="0" cellpadding="3" border="1" width="100%" class="attachment-table">
                             <tr>
-                                <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>Title</b></div></td>
-                                <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>Last Modified</b></div></td>
-                                <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>Created By</b></div></td>
+                                <td ><div class="table-div-style"><b>Title</b></div></td>
+                                <td ><div class="table-div-style"><b>Last Modified</b></div></td>
+                                <td ><div class="table-div-style"><b>Created By</b></div></td>
                             </tr>
                             <apex:repeat value="{!attachments}" var="att" rendered="{!if(attachments != null && attachments.size > 0,true,false)}">
                                 <tr>
-                                    <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">{!att['Name']}</div></td>
-                                    <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><apex:outputField value="{!att['LastModifiedDate']}"/></div></td>
-                                    <td ><div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">{!att['CreatedBy.Name']}</div></td>
+                                    <td ><div class="table-div-style">{!att['Name']}</div></td>
+                                    <td ><div class="table-div-style"><apex:outputField value="{!att['LastModifiedDate']}"/></div></td>
+                                    <td ><div class="table-div-style">{!att['CreatedBy.Name']}</div></td>
                                 </tr>
                             </apex:repeat>
                         </table>
                     </apex:outputPanel>
                 </div>
+                <apex:outputPanel rendered="{!if(filesList != null && filesList.size > 0,true,false)}">
+                    <div class="attachment-section"> FILES </div>
+                    <table cellspacing="0" cellpadding="3" border="1" width="100%" class="attachment-table">
+                        <tr>
+                            <td ><div class="table-div-style"><h>Title</h></div></td>
+                            <td ><div class="table-div-style"><h>Last Modified</h></div></td>
+                            <td ><div class="table-div-style"><h>Created By</h></div></td>
+                        </tr>
+                        <apex:repeat value="{!filesList}" var="recordFiles">
+                            <tr>
+                                <td ><div class="table-div-style">{!recordFiles['Title']}</div></td>
+                                <td ><div class="table-div-style"><apex:outputField value="{!recordFiles['LastModifiedDate']}"/></div></td>
+                                <td ><div class="table-div-style">{!recordFiles['CreatedBy.Name']}</div></td>
+                            </tr>
+                        </apex:repeat>
+                    </table>
+                </apex:outputPanel>
         </div>
         <datalist id="emdrfieldlist">
             <apex:repeat rendered="{!if(renderType != 'pdf',true,false)}" value="{!columns}" var="dt"> 

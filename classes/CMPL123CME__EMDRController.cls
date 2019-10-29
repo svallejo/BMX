@@ -83,7 +83,11 @@ global class EMDRController {
     global static String getSectionDetail(String recDetails, String pageTheme) {
         return null;
     }
+    @Deprecated
     global static Object getTabs(String mdrId) {
+        return null;
+    }
+    global static Object getTabs(String mdrId, Id recordTypeId) {
         return null;
     }
     @RemoteAction
@@ -98,8 +102,12 @@ global class Code {
     global String action;
     global String ccid;
     global String code;
+    global Id emdrId;
     global String id;
-    global Code(String code, String Id, String ccid, String action) {
+    global Code(String code, String id, String ccid, String action) {
+
+    }
+    global Code(String code, String id, String ccid, String action, Id emdrId) {
 
     }
 }

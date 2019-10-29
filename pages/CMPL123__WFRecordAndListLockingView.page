@@ -1,0 +1,13 @@
+<apex:page showHeader="false" sidebar="false" standardController="CMPL123__WF_Step__c" >
+    <apex:includeLightning />
+    <div id="related-list-locking"/>
+    <script>
+        $Lightning.use("CMPL123:WFRecordAndListLockingApp", function () {
+            $Lightning.createComponent("CMPL123:WFRecordAndListLocking",
+                                       {
+                                           recordId :'{!JSENCODE($CurrentPage.parameters.id)}' 
+                                       },
+                                       "related-list-locking");
+        });
+    </script>
+</apex:page>

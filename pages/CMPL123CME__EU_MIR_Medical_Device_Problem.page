@@ -1,0 +1,25 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" standardController="CMPL123CME__EU_MIR__c" >
+    <apex:includeLightning /> 
+    
+    <div id="IMDRFMedicalDeviceProblemCodes" />
+    
+    <script>
+        var recordId = '{!EU_MIR__c.Id}';
+        var deviceProblemCodes = [];
+        
+        //JSON for IMDRF Medical device problem codes (Annex A)
+        var obj = {};
+        obj["title"] = "{!JSENCODE($Label.CMPL123CME__CMPLT_IMDRF_MEDICAL_DEVICE_PROBLEM_CODES)}";
+        obj["codeType"] = "A_Problem_Code";
+        obj["recordId"] = recordId;
+        deviceProblemCodes.push(obj);
+        
+        $Lightning.use("CMPL123CME:EUMIRViewCodesApp", function() {
+            
+            $Lightning.createComponent("CMPL123CME:EUMIRViewCodesContainer",
+            {   'codesDataList' : deviceProblemCodes },
+                "IMDRFMedicalDeviceProblemCodes");
+            });
+            
+    </script>   
+</apex:page>

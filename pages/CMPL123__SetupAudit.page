@@ -1,8 +1,9 @@
 <apex:page controller="CMPL123.SetupAuditController" docType="html-5.0">
 <head>
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-ui-1.8.20.custom.min.js')}"/>
-    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/css/gtheme/jquery-ui-1.8.20.custom.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/js/jquery-3.4.0.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/js/jquery-ui-1.12.1.min.js')}"/>
+    <apex:includeScript value="{!$Resource.CMPL123__SecureFilters}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/css/jquery-ui-1.12.1.css')}"/>
   
   <!--  
     <apex:includeScript value="{!URLFOR($Resource.Compliance123, '/123Compliance/lib/jquery/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
@@ -17,12 +18,12 @@
 <body>
     <apex:pageBlock title="{!$Label.cmpl123__audit_setup}">
     <div style="padding:10px;">
-        <div id="fieldDetailas" >{!$Label.SELECT_OBJECT_TO_SETUP_AUDIT} : </div>
+        <div id="fieldDetailas" >{!HTMLENCODE($Label.SELECT_OBJECT_TO_SETUP_AUDIT)} : </div>
         <div style="width:100%;padding:20px;display:none;" id="showtrigger">                
-            <b><font color="green" id="triggerMess">{!$Label.AUDIT_TRAIL_CREATED_AUTOMATICALLY}</font></b>           
+            <b><font color="green" id="triggerMess">{!HTMLENCODE($Label.AUDIT_TRAIL_CREATED_AUTOMATICALLY)}</font></b>           
         </div>          
         <div id="checkFieldSave" style="text-align:center;display:none;" >            
-            <button id="saveCheckedFields" class="btn-primary" type="button">{!$Label.SAVE}</button> <span style="color:green;" id="saveMessage"></span>       
+            <button id="saveCheckedFields" class="btn-primary" type="button">{!HTMLENCODE($Label.SAVE)}</button> <span style="color:green;" id="saveMessage"></span>       
             <div id="showErrorMessage" style="width:100%;display:none;text-decoration:none;" >
                 <div style="color:green;font-size:12px;height:20px;float:left;" id="message"></div>
                 <!--<div ><img height="8"  src="/img/dismiss.gif" width="8" onclick="closeMessagediv();" style="cursor: pointer;float:left;padding-top:3px;padding-left:20px;"/></div>-->            
@@ -31,7 +32,7 @@
         
         <div style="margin-top: 5px" >
             <div style="display:none" id="bdcumbid">        
-                <pre><b>{!$Label.SELECT_FIELDS_TO_TRACK} </b><div id="deselectDiv" style="display:none;float:right;"><a href="#" id="deselect" >{!$Label.DESELECT_ALL_FIELDS}</a></div></pre><br/>
+                <pre><b>{!HTMLENCODE($Label.SELECT_FIELDS_TO_TRACK)} </b><div id="deselectDiv" style="display:none;float:right;"><a href="#" id="deselect" >{!HTMLENCODE($Label.DESELECT_ALL_FIELDS)}</a></div></pre><br/>
                 <table cellpadding="0" cellspacing="0" border="0" width="90%"  id="columns">
                     <thead>
                         <tr>
@@ -42,7 +43,7 @@
                 </table>
             </div>
              <div style="display:none" id="bdchildid">        
-                <div id="expandCollapseDiv"><pre style="cursor:pointer;"><b><span id="expanderSign">+</span>&nbsp;{!$Label.CHILD_RELATIONSHIPS} </b><div id="deselectchildDiv" style="display:none;float:right;"><a href="#" id="deselect" >{!$Label.DESELECT_ALL_FIELDS}</a></div></pre></div><br/>
+                <div id="expandCollapseDiv"><pre style="cursor:pointer;"><b><span id="expanderSign">+</span>&nbsp;{!HTMLENCODE($Label.CHILD_RELATIONSHIPS)} </b><div id="deselectchildDiv" style="display:none;float:right;"><a href="#" id="deselect" >{!HTMLENCODE($Label.DESELECT_ALL_FIELDS)}</a></div></pre></div><br/>
                 <div id="childContent" style="display:none;">
                 <table cellpadding="0" cellspacing="0" border="0" width="90%"  id="childcolumns">
                     <thead>
@@ -55,7 +56,7 @@
                 </div>
             </div>
             <div style="display:none" id="bdparentid">        
-                <div id="expandCollapseDiv1"><pre style="cursor:pointer;"><b><span id="expanderSign1">+</span>&nbsp;{!$Label.PARENT_RELATIONSHIPS} </b><div id="deselectchildDiv" style="display:none;float:right;"><a href="#" id="deselect" >{!$Label.DESELECT_ALL_FIELDS}</a></div></pre></div><br/>
+                <div id="expandCollapseDiv1"><pre style="cursor:pointer;"><b><span id="expanderSign1">+</span>&nbsp;{!HTMLENCODE($Label.PARENT_RELATIONSHIPS)} </b><div id="deselectchildDiv" style="display:none;float:right;"><a href="#" id="deselect" >{!HTMLENCODE($Label.DESELECT_ALL_FIELDS)}</a></div></pre></div><br/>
                 <div id="parentContent" style="display:none;">
                 <table cellpadding="0" cellspacing="0" border="0" width="90%"  id="parentcolumns">
                     <thead>
@@ -69,13 +70,13 @@
             </div>
         </div>
         <div id="checkFieldSave1" style="text-align:center;display:none;" >
-            <button id="saveCheckedFields1" class="btn-primary" type="button">{!$Label.SAVE}</button> <span style="color:green;" id="saveMessage1"></span>       
+            <button id="saveCheckedFields1" class="btn-primary" type="button">{!HTMLENCODE($Label.SAVE)}</button> <span style="color:green;" id="saveMessage1"></span>       
             <div id="showErrorMessage1" style="width:100%;display:none;text-decoration:none;" >
             <div style="color:green;font-size:12px;height:20px;float:left;" id="message1"></div>
             </div>
         </div>  
     </div>
-     <script type="text/javascript">var __sfdcSessionId = '{!GETSESSIONID()}';</script>
+     <script type="text/javascript">var __sfdcSessionId = '{!JSENCODE(GETSESSIONID())}';</script>
      <script src="../../soap/ajax/26.0/connection.js"  type="text/javascript"></script>
      <script>
          var triggerVal;
@@ -274,14 +275,15 @@
                  }, {escape:true});
          }
          
-         function showChildColumnList(colList){ 
+         function showChildColumnList(colList){
             var collistsize=Object.keys(colList).length;     
             var count=0,countList=0;                
             var rows;                   
-            for(var val in sortObject(colList,'label',true)){       
+            for(var val in sortObject(colList,'label',true)){
+               let secureVal = secureFilters.jsAttr(colList[val]);
                rows=$('<tr height=30px>');
                rows.append( $('<td  style=font-weight:bold;width:80%;font-size:11px;  align=left>').html(
-                   "<span style='float:left' id='childrecs'><input  type='checkbox'  id= 'chlbox-"+colList[val]+"' name='chtype' class=checkCol value='"+colList[val]+"' onclick=validateTrigger(this.checked,this.value); /></span>"+"<span style='padding-left:20px' >"+val+"</span>" 
+                   "<span style='float:left' id='childrecs'><input  type='checkbox'  id= 'chlbox-"+secureVal+"' name='chtype' class=checkCol value='"+secureVal+"' onclick=validateTrigger(this.checked,this.value); /></span>"+"<span style='padding-left:20px' >"+val+"</span>"
                 ) ); 
               
                count++;     
@@ -305,10 +307,11 @@
             var collistsize=Object.keys(colList).length;     
             var count=0,countList=0;                
             var rows;                   
-            for(var val in sortObject(colList,'label',true)){                 
+            for(var val in sortObject(colList,'label',true)){
+                let secureVal = secureFilters.jsAttr(colList[val]);
                 rows=$('<tr height=30px>');
                 rows.append( $('<td  style=font-weight:bold;width:80%;font-size:11px;  align=left>').html(
-                   "<span style='float:left'><input  type='checkbox'  name='ptype' class=checkCol value='"+colList[val]+"' /></span>"+"<span style='padding-left:20px' >"+val+"</span>" 
+                   "<span style='float:left'><input  type='checkbox'  name='ptype' class=checkCol value='"+secureVal+"' /></span>"+"<span style='padding-left:20px' >"+val+"</span>"
                 ) ); 
                 rows.appendTo('#parentcolumns tbody');               
             }       
@@ -316,7 +319,7 @@
                
            
          $("#deselect").click(function () {
-             $(".checkCol").removeAttr("checked");
+             $(".checkCol").prop('checked', false);
          }); 
          
          $('[id^=saveCheckedField]').click(function (){

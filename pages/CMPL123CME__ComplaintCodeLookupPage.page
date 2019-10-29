@@ -1,4 +1,4 @@
-<apex:page controller="CMPL123CME.ComplaintCodeLookupController" showHeader="false">
+<apex:page controller="CMPL123CME.ComplaintCodeLookupController" showHeader="false" sidebar="false" >
     <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery/jquery.js' )}" />
     <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery/jquery-ui.js' )}" />
     <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/jquery.dynatree.js' )}" /> 
@@ -7,10 +7,11 @@
     <!-- JS supports for Lightning Experience navigations -->
     <apex:includeScript value="/support/console/26.0/integration.js"/>
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
-    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, 'jquery-ui-1.8.20/css/gtheme/jquery-ui-1.8.20.custom.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/css/jquery-ui-1.12.1.css')}" />
     <style>
         .ui-dialog{z-index:1;}.actionLink {color: #015BA7;text-decoration: none;font-weight: normal;}
-        .form-input{background:white;border: 1px solid  #CCC;border-radius:1px;box-shadow: 0 0 5px #CCC;padding: 8px 27px 8px 10px;width:350px;outline:none}  
+        .form-input{background:white;border: 1px solid  #CCC;border-radius:1px;box-shadow: 0 0 5px #CCC;padding: 8px 27px 8px 10px;width:350px;outline:none}
+        .ui-menu{width:95%}  
         .ui-menu .ui-menu-item{padding:1%;}
         .ui-menu-item:hover{color:white;border:0px;background:#446e9b;}  
         .ui-autocomplete{max-height: 200px;overflow-y: auto;overflow-x: hidden;}
@@ -92,7 +93,7 @@
                     },   
                 },
                 open:function(){
-                    $(".ui-dialog-titlebar").find("button").html('<span class=" ui-icon ui-icon-closethick" style="margin:0px;position:static;"></span>');
+                    $(".ui-dialog-titlebar").find("button").html('<span class=" ui-icon ui-icon-closethick"></span>');
                      
                 },
                 close:function(){

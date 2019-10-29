@@ -33,6 +33,10 @@ global class WorkflowPanelController {
         return null;
     }
     @RemoteAction
+    global static Integer getLoginAttemptNumber() {
+        return null;
+    }
+    @RemoteAction
     global static List<CMPL123__WF_Step__c> getWFSteps(String recordId) {
         return null;
     }

@@ -1,0 +1,1889 @@
+<apex:page standardController="CMPL123CME__EU_MIR__c" extensions="CMPL123CME.EUMIRPDFReportController" renderAs="pdf" applyBodyTag="false" applyHtmlTag="false" standardStylesheets="false" showHeader="false">
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__EUMIR,'/EUMIRPDFReport/styles/EUMIRPDFReport.css')}"/> 
+    <head>
+        <!-- header starts here -->
+        <div class="pdfHeading textBold aligntd">
+            {!$Label.CMPL123CME__CMPLT_MANUFACTURER_INCIDENT_REPORT_MIR_FOR} <br/>
+            {!$Label.CMPL123CME__CMPLT_SERIOUS_INCIDENTS_MDR_IVDR} <br/>
+            {!$Label.CMPL123CME__CMPLT_AND_INCIDENTS_MDD_IMDD_IVDD}
+        </div> <br/>
+        <div class="pdfSubheading textBold aligntd">{!$Label.CMPL123CME__CMPLT_REPORTING_TEMPLATE} {!$Label.CMPL123CME__CMPLT_VERSION_7_0}</div> 
+        <div class="pdfSubheading2 aligntd height20">{!$Label.CMPL123CME__CMPLT_EUROPEAN_UNION_MEDICAL_DEVICES_VIGILANCE_SYSTEM}</div> 
+        <div class="headerLine"></div><br/><br/>
+        <!-- header ends here -->
+    </head>
+    <body>
+        <!--- Variable for displaying Custom labels -->
+        <apex:variable var="OtherSpecify" value="{!$Label.cmpl123cme__cmplt_other_please_specify}" />
+        <apex:variable var="OtherVariant" value="{!$Label.cmpl123cme__cmplt_other_variant}" />
+        <apex:variable var="OtherPleaseDescribe" value="{!$Label.cmpl123cme__cmplt_other_please_describe}" />
+        <apex:variable var="OtherDescribe" value="{!$Label.cmpl123cme__cmplt_other_describe}" />
+        
+        <!-- 1 Administrative information : start here -->
+        <div class="sectionHeader">
+            <div class="solidBorder section1Background">
+                {!$Label.CMPL123CME__CMPLT_SECTION_1_ADMINISTRATIVE_INFORMATION}<br/>
+            </div>
+            <!-- 1.1  Corresponding competent authority : start here -->
+                <table class="pageBreak" cellspacing="0" border="1">
+                    <tr class ="row section1Background">
+                        <td class ="heading aligntd" width="6%">{!$Label.CMPL123CME__CMPLT_1_1} </td>
+                        <td class ="heading">{!$Label.CMPL123CME__CMPLT_CORRESPONDING_COMPETENT_AUTHORITY}<br/></td>
+                    </tr>
+                    <tr class ="row">
+                        <td class ="column aligntd section1Background"> {!$Label.CMPL123CME__CMPLT_A}</td>
+                        <td class ="column whiteBackground">{!$Label.CMPL123CME__CMPLT_NAME_OF_RECEIVING_NATIONAL_COMPETENT_AUTHORITY_NCA}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Recipient_Name_Of_NCA__c}</div>   
+                        </td>
+                    </tr>
+                    <tr class ="row ">
+                        <td class ="column aligntd section1Background"> {!$Label.CMPL123CME__CMPLT_B} </td>
+                        <td class ="column whiteBackground">{!$Label.CMPL123CME__CMPLT_EUDAMED_NUMBER_OF_NCA}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__EUDAMED_number_of_NCA__c}</div>   
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class ="column aligntd section1Background">{!$Label.CMPL123CME__CMPLT_C} </td>
+                        <td class ="column whiteBackground">{!$Label.CMPL123CME__CMPLT_REFERENCE_NUMBER_ASSIGNED_BY_NCA_FOR_THIS_INCIDENT}<br/>
+                           <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Reference_number_by_NCA__c}</div>
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class ="column aligntd section1Background"> {!$Label.CMPL123CME__CMPLT_D}</td>
+                        <td class ="column whiteBackground">{!$Label.CMPL123CME__CMPLT_REFERENCE_NUMBER_ASSIGNED_BY_EUDAMED_FOR_THIS_INCIDENT}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Reference_number_by_EUDAMED__c}</div>   
+                        </td>
+                    </tr>
+                    <!-- 1.2  Date, type, and classification of incident report : start here -->
+                    <tr class ="row section1Background">
+                        <td class ="heading aligntd">{!$Label.CMPL123CME__CMPLT_1_2}</td>
+                        <td class ="heading" colspan="4">{!$Label.CMPL123CME__CMPLT_DATE_TYPE_AND_CLASSIFICATION_OF_INCIDENT_REPORT}<br/>
+                        </td>
+                    </tr>
+                    
+                    <tr class ="row section1Background">
+                        <td class ="column aligntd">{!$Label.CMPL123CME__CMPLT_A}</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td class ="column whiteBackground">{!$Label.CMPL123CME__CMPLT_DATE_OF_SUBMISSION}<br/>
+                                        <div class="fieldValue fieldValueWidth" style="display:inline-block;">
+                                            <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                                <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Date_Of_Submission__c}" />
+                                            </apex:outputText>
+                                        </div>   
+                                        <div class="smallTextStyle" style="display:inline-block;">
+                                            {!$Label.CMPL123CME__CMPLT_E_G_2012_10_23}
+                                        </div>
+                                    </td> 
+                                    <td class ="column aligntd">{!$Label.CMPL123CME__CMPLT_B}</td>
+                                    <td class="column whiteBackground">{!$Label.CMPL123CME__CMPLT_DATE_OF_INCIDENT}
+                                        <div class="smallTextStyle" style="display:inline-block;vertical-align:3px;">
+                                            {!$Label.CMPL123CME__CMPLT_E_G_2012_10_23}
+                                        </div>
+                                        <br/>
+                                        <div class="fieldValue fieldValueWidth" style="display:inline-block;">
+                                            <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                                <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Date_Of_Incident_From__c}"/>
+                                            </apex:outputText>
+                                        </div>
+                                        <div class="inlineDiv">{!$Label.cmpl123cme__cmplt_to_pdf}</div>
+                                        <div class="fieldValue fieldValueWidth" style="display:inline-block;">
+                                            <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                                <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Date_Of_Incident_To__c}"/>
+                                            </apex:outputText>
+                                        </div>
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_C}</td>
+                                    <td class ="column whiteBackground">{!$Label.CMPL123CME__CMPLT_MANUFACTURER_AWARENESS_DATE} <br/>
+                                        <div class="fieldValue fieldValueWidth" style="display:inline-block;">
+                                            <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                                <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_Awareness_Date__c}"/>
+                                            </apex:outputText>
+                                        </div>   
+                                        <div class="smallTextStyle" style="display:inline-block;">
+                                            {!$Label.CMPL123CME__CMPLT_E_G_2012_10_23}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class="column aligntd section1Background"> {!$Label.CMPL123CME__CMPLT_D}</td>
+                        <td class="column whiteBackground" colspan="2">
+                            <div class="column">
+                                {!$Label.CMPL123CME__CMPLT_TYPE_OF_REPORT}
+                            </div>   
+                            <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__type_of_report__c')]}" var="pickList">
+                                <apex:image url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Type_Of_Report__c),'/radio_yes.png','/radio_no.png'))}"/>
+                                <span class="alignMiddle"> {!pickList.label} </span><br/>
+                            </apex:repeat>
+                        </td>
+                    </tr>
+                    <tr class ="row" rowspan="6">
+                        <td class ="column aligntd section1Background">{!$Label.CMPL123CME__CMPLT_E}</td>
+                        <td class="column whiteBackground">{!$Label.CMPL123CME__CMPLT_IN_CASE_OF_INITIAL_AND_FOLLOW_UP_REPORTS}<br/>
+                            <div class="fieldValue fieldValueWidth" style="display:inline-block;">
+                                <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                    <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Expected_Date_Of_Next_Report__c}"/>
+                                </apex:outputText>
+                            </div>
+                            <div class="smallTextStyle" style="display:inline-block;">
+                                {!$Label.CMPL123CME__CMPLT_E_G_2012_10_23}
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    <tr class ="row">
+                        <td class="column aligntd section1Background">{!$Label.CMPL123CME__CMPLT_F}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.CMPL123CME__CMPLT_CLASSIFICATION_OF_INCIDENT}<br/>
+                            <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__classification_of_incident__c')]}" var="pickList">
+                                <apex:image url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Classification_Of_Incident__c),'/radio_yes.png','/radio_no.png'))}"/>
+                                <span class="alignMiddle"> {!pickList.label} </span><br/>
+                            </apex:repeat>
+                        </td>
+                    </tr>
+                    <!-- 1.3  Submitter information : start here -->
+                    <tr class ="row section1Background">
+                        <td class ="heading aligntd">{!$Label.CMPL123CME__CMPLT_1_3}</td>
+                        <td class ="heading">{!$Label.CMPL123CME__CMPLT_SUBMITTER_INFORMATION}
+                        </td>
+                    </tr>
+                    <!-- 1.3.1  Submitter of the report : start here -->
+                    <tr class ="row section1Background">
+                        <td class="subHeading aligntd">{!$Label.CMPL123CME__CMPLT_1_3_1}</td>
+                        <td class="subHeading">{!$Label.CMPL123CME__CMPLT_SUBMITTER_OF_THE_REPORT}<br/>
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class ="column aligntd section1Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                        <td class="column whiteBackground" colspan="4">
+                            <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__submitter_of_report__c')]}" var="pickList">
+                                <apex:image styleClass="imgSection_1_3" url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Of_Report__c),'/radio_yes.png','/radio_no.png'))}"/>  
+                                <span class="spanLineHeight">
+                                    <apex:outputText value="{!if(pickList.value == 'Others', OtherSpecify, ' '+pickList.label+' ' )}"/>
+                                </span>
+                                <apex:outputText rendered="{!(pickList.value == 'Others')}">
+                                    <span class="fieldValueOther noTextOverflow topVerticalAlign" style="display:inline-block;width:37%;">{!CMPL123CME__EU_MIR__c.CMPL123CME__Specify_Other_Submitter__c}</span>
+                                </apex:outputText>
+                            </apex:repeat>
+                        </td>
+                    </tr> 
+                    <tr class ="row" >
+                        <td class="column aligntd section1Background"> {!$Label.CMPL123CME__CMPLT_B}</td>
+                        <td class="column whiteBackground">{!$Label.CMPL123CME__CMPLT_MANUFACTURER_S_REFERENCE_NUMBER_FOR_THIS_INCIDENT}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Reference_Number_By_Manufacturer__c}</div>   
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class ="column aligntd section1Background"> {!$Label.CMPL123CME__CMPLT_C}</td>
+                        <td class ="column whiteBackground"> {!$Label.CMPL123CME__CMPLT_IF_THIS_INCIDENT_INVOLVES_MULTIPLE_DEVICES_FROM_THE_SAME_MANUFACTURER}
+                            <br/>
+                            <div class="divPadding"> 
+                                <div class="inlineDiv leftAlign">{!$Label.CMPL123CME__CMPLT_NCA_S_LOCAL_REFERENCE_NUMBER}</div>
+                                <div class="fieldValue inlineDiv divStyleSection_1_3_1 noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__NCA_S_Local_Reference_Number__c}</div>
+                            </div><br/>
+                            <div class="divPadding"> 
+                                <div class="inlineDiv leftAlign">{!$Label.CMPL123CME__CMPLT_EUDAMED_S_REFERENCE_NUMBER}</div>
+                                <div class="fieldValue inlineDiv divStyleSection_1_3_1 noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__EUDAMED_S_Reference_Number__c}</div>
+                            </div><br/>
+                            <div class="divPadding"> 
+                                <div class="inlineDiv leftAlign">{!$Label.CMPL123CME__CMPLT_MANUFACTURER_S_REFERENCE_NUMBER}</div>
+                                <div class="fieldValue inlineDiv divStyleSection_1_3_1 noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_S_Reference_Number__c}</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class= "column aligntd section1Background"> {!$Label.CMPL123CME__CMPLT_D}</td>
+                        <td class ="column whiteBackground"> {!$Label.CMPL123CME__CMPLT_IF_THIS_INCIDENT_IS_COVERED_UNDER_AN_FSCA}<br/>
+                            <div class="divPadding"> 
+                                <div class="inlineDiv leftAlign">{!$Label.CMPL123CME__CMPLT_NCA_S_LOCAL_FSCA_REFERENCE_NUMBER}</div>
+                                <div class="fieldValue inlineDiv divStyleSection_1_3_1 noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__NCA_S_Local_FSCA_Reference_Number__c}</div>
+                            </div><br/>
+                            <div class="divPadding"> 
+                                <div class="inlineDiv leftAlign">{!$Label.CMPL123CME__CMPLT_EUDAMED_S_FSCA_REFERENCE_NUMBER}</div>
+                                <div class="fieldValue inlineDiv divStyleSection_1_3_1 noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__EUDAMED_S_FSCA_Reference_Number__c}</div>
+                            </div><br/>
+                            <div class="divPadding"> 
+                                <div class="inlineDiv leftAlign">{!$Label.CMPL123CME__CMPLT_MANUFACTURER_S_FSCA_REFERENCE_NUMBER}</div>
+                                <div class="fieldValue inlineDiv divStyleSection_1_3_1 noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_S_FSCA_Reference_Number__c}</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class ="column aligntd section1Background">{!$Label.CMPL123CME__CMPLT_E}</td>
+                        <td class ="column whiteBackground">{!$Label.CMPL123CME__CMPLT_PERIODIC_SUMMARY_REPORT_PSR_ID}<br/>
+                            <div class="fieldValue noTextOverflow width98Percent">{!CMPL123CME__EU_MIR__c.CMPL123CME__Periodic_Summary_Report_PSR_ID__c} </div>   
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class ="column aligntd section1Background">{!$Label.CMPL123CME__CMPLT_F}</td>
+                        <td class ="column whiteBackground">{!$Label.CMPL123CME__CMPLT_IF_THE_INCIDENT_OCCURRED_WITHIN_A_PMCF_PMPF_INVESTIGATION}
+                            <br/>
+                            <div class="fieldValue noTextOverflow width98Percent">{!CMPL123CME__EU_MIR__c.CMPL123CME__EUDAMED_ID_of_PMCF_PMPF_investigation__c} </div>   
+                        </td>
+                    </tr>
+                    <!-- 1.3.2  Manufacturer information : start here -->
+                    <tr class ="row section1Background">
+                        <td class="subHeading aligntd"> {!$Label.CMPL123CME__CMPLT_1_3_2}</td>
+                        <td class="subHeading">{!$Label.CMPL123CME__CMPLT_MANUFACTURER_INFORMATION}<br/>
+                        </td>
+                    </tr>
+                    <tr class ="row" >
+                        <td class="column aligntd section1Background" >{!$Label.CMPL123CME__CMPLT_A}</td>
+                        <td class="column whiteBackground">{!$Label.CMPL123CME__CMPLT_MANUFACTURER_ORGANISATION_NAME}<br/>
+                            <div class="fieldValue noTextOverflow width98Percent">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Organisation_name__c} </div>   
+                        </td>
+                    </tr>
+                    <tr class ="row" >
+                        <td class="column aligntd section1Background">{!$Label.CMPL123CME__CMPLT_B}</td>
+                        <td class="column whiteBackground" colspan ="4">{!$Label.CMPL123CME__CMPLT_SINGLE_REGISTRATION_NUMBER}<br/>
+                            <div class="fieldValue noTextOverflow width98Percent">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Single_Registration_Number_SRN__c} </div>   
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_C}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_CONTACT_S_FIRST_NAME}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Contact_first_name__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_D}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_CONTACT_S_LAST_NAME} <br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Contact_last_name__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_E}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_EMAIL}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_E_mail__c} </div>   
+                                    </td>
+                                    <td class ="column aligntd">{!$Label.CMPL123CME__CMPLT_F}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_PHONE}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Phone__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class ="column aligntd section1Background">{!$Label.CMPL123CME__CMPLT_G}</td>
+                        <td class="column whiteBackground" colspan ="4">{!$Label.CMPL123CME__CMPLT_COUNTRY}<br/>
+                            <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Country__c} </div>   
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_H}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_STREET}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Street__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_I}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_STREET_NUMBER}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Street_number__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_J}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_ADDRESS_COMPLEMENT}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Address_Complement__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_K}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_PO_BOX}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_P_O_Box__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_L}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_CITY_NAME}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_City_Name__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_M}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_POSTAL_CODE}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Postcode__c} </div>                                    
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- 1.3.3  Authorised representative information : start here -->
+                    <tr class ="row section1Background">
+                        <td class="subHeading aligntd"> {!$Label.CMPL123CME__CMPLT_1_3_3} </td>
+                        <td class="subHeading">{!$Label.CMPL123CME__CMPLT_AUTHORISED_REPRESENTATIVE_INFORMATION}<br/>
+                        </td>
+                    </tr>
+                    <tr class ="row" >
+                        <td class="column aligntd section1Background"> {!$Label.CMPL123CME__CMPLT_A} </td>
+                        <td class="column whiteBackground">{!$Label.CMPL123CME__CMPLT_AUTHORISED_REPRESENTATIVE_ORGANISATION_NAME}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Org_Name_of_Authorised_Representative__c} </div>   
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class="column aligntd section1Background"> {!$Label.CMPL123CME__CMPLT_B} </td>
+                        <td class="column whiteBackground" colspan ="4">{!$Label.CMPL123CME__CMPLT_SINGLE_REGISTRATION_NUMBER}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_Single_Registration_Number_SRN__c} </div>   
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_C}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_CONTACT_S_FIRST_NAME}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_Contact_first_name__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_D}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_CONTACT_S_LAST_NAME}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_Contact_last_name__c} </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_E}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_EMAIL}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_E_mail__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_F}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_PHONE}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_Phone__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class="column aligntd section1Background">{!$Label.CMPL123CME__CMPLT_G}</td>
+                        <td class="column whiteBackground" colspan ="4">{!$Label.CMPL123CME__CMPLT_COUNTRY}<br/>
+                            <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_Country__c} </div>   
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_H}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_STREET}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_Street__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_I}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_STREET_NUMBER}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_Street_number__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_J}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_ADDRESS_COMPLEMENT}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_Address_Complement__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_K}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_PO_BOX}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_P_O_Box__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_L}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_CITY_NAME}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_City_Name__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_M}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_POSTAL_CODE}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Author_Postcode__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- 1.3.4  Submitter’s details if not manufacturer or authorised representative : start here -->
+                    <tr class ="row section1Background">
+                        <td class="subHeading aligntd">{!$Label.CMPL123CME__CMPLT_1_3_4}</td>
+                        <td class="subHeading">{!$Label.CMPL123CME__CMPLT_SUBMITTER_S_DETAILS_IF_NOT_MANUFACTURER_OR_AUTHORISED_REPRESENTATIVE}<br/>
+                        </td>
+                    </tr>
+                    <tr class ="row" >
+                        <td class="column aligntd section1Background"> {!$Label.CMPL123CME__CMPLT_A}</td>
+                        <td class="column whiteBackground">{!$Label.CMPL123CME__CMPLT_REGISTERED_COMMERCIAL_NAME_OF_COMPANY}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Registered_commercial_name_of_company__c} </div>   
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_B}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_CONTACT_S_FIRST_NAME}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Contact_first_name__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_C}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_CONTACT_S_LAST_NAME} <br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Contact_last_name__c} </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_D}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_EMAIL}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_E_mail__c} </div>   
+                                    </td>
+                                    <td class="column aligntd" >{!$Label.CMPL123CME__CMPLT_E}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_PHONE}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Phone__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class="column aligntd section1Background">{!$Label.CMPL123CME__CMPLT_F}</td>
+                        <td class="column whiteBackground" colspan ="4">{!$Label.CMPL123CME__CMPLT_COUNTRY}<br/>
+                            <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Country__c} </div>   
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_G}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_STREET}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Street__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_H}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_STREET_NUMBER}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Street_number__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_I}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_ADDRESS_COMPLEMENT}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Address_Complement__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_J}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_PO_BOX}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_P_O_Box__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class ="row section1Background">
+                        <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_K}</td>
+                        <td>
+                            <table class="innerTable tableLayoutFixed">
+                                <tr class ="row">
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_CITY_NAME}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_City_Name__c} </div>   
+                                    </td>
+                                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_L}</td>
+                                    <td class="column whiteBackground innerTabletd">{!$Label.CMPL123CME__CMPLT_POSTAL_CODE}<br/>
+                                        <div class="fieldValue">{!CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Postcode__c} </div>   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        <br/>
+        <!-- 1 Administrative information : ends here -->
+        
+        <!-- 2 Medical device information : starts here -->
+        <div class="sectionHeader pageBreakAlways">
+            <div class="solidBorder section2Background">
+                {!$Label.CMPL123CME__CMPLT_SECTION_2_MEDICAL_DEVICE_INFORMATION}<br/>
+            </div>
+                <table class="pageBreak" cellspacing="0" border="1">
+                    <!-- 2.1 Unique Device Identification (UDI) : starts here -->
+                    <tr class ="row section2Background">
+                        <td> 
+                            <div class ="heading aligntd headingSection2_1">
+                                {!$Label.CMPL123CME__CMPLT_2_1}
+                            </div>
+                        </td>
+                        <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_UNIQUE_DEVICE_IDENTIFICATION_UDI}</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                        <td class="column whiteBackground noRightBorder">{!$Label.CMPL123CME__CMPLT_UDI_DEVICE_IDENTIFIER_PDF}</td>
+                        <td class="noLeftBorder">
+                           <div class="fieldValue noTextOverflow width150">
+                              {!CMPL123CME__EU_MIR__c.CMPL123CME__UDI_DI__c}  
+                            </div>
+                        </td>
+                        <td class="column aligntd section2Background" style="width:30px;">{!$Label.CMPL123CME__CMPLT_B}</td>
+                        <td class="column whiteBackground noRightBorder">{!$Label.CMPL123CME__CMPLT_UDI_PRODUCTION_IDENTIFIER_PDF}</td>
+                        <td class="noLeftBorder">
+                            <div class="fieldValue noTextOverflow width180">
+                                {!CMPL123CME__EU_MIR__c.CMPL123CME__UDI_PI__c}                            
+                            </div>
+                        </td>
+                    </tr> 
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_C}</td>
+                        <td class="column whiteBackground noRightBorder">{!$Label.CMPL123CME__CMPLT_BASIC_UDI_DI}</td>
+                        <td class="noLeftBorder">
+                            <div class="fieldValue noTextOverflow width150">
+                                {!CMPL123CME__EU_MIR__c.CMPL123CME__Basic_UDI_DI__c}                            
+                            </div>
+                        </td>
+                        <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_D}</td>
+                        <td class="column whiteBackground noRightBorder">{!$Label.CMPL123CME__CMPLT_UNIT_OF_USE_UDI_DI}</td>
+                        <td class="noLeftBorder">
+                            <div class="fieldValue noTextOverflow width180">
+                                {!CMPL123CME__EU_MIR__c.CMPL123CME__Unit_Of_Use_UDI_DI__c}
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 2.2 Categorisation of device : starts here -->
+                    <tr class ="row section2Background">
+                        <td class ="heading aligntd"> {!$Label.CMPL123CME__CMPLT_2_2}</td>
+                        <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_CATEGORISATION_OF_DEVICE}</td>
+                    </tr>
+                    <tr class ="row">
+                        <td class ="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                        <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_MEDICAL_DEVICE_TERMINOLOGY}<br/>
+                            <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__medical_device_terminology__c')]}" var="pickList">
+                                <apex:image styleClass="imgSection_2_2" url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Terminology__c),'/radio_yes.png','/radio_no.png'))}"/>
+                                <span class="spanLineHeight">
+                                    <apex:outputText value="{!if(pickList.value == 'Other', OtherSpecify, ' '+pickList.label+' ' )}"/>
+                                </span>                                
+                                <apex:outputText rendered="{!(pickList.value == 'Other')}">
+                                    <span class="inlineDiv fieldValueOther noTextOverflow width37Percent topVerticalAlign">{!CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Terminology_Other__c}</span>
+                                </apex:outputText>
+                            </apex:repeat>
+                        </td> 
+                    </tr> 
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_B}</td>
+                        <td class="column whiteBackground" colspan="6">
+                            <div class="column whiteBackground" style="display:inline-block;" colspan="4">{!$Label.CMPL123CME__CMPLT_MEDICAL_DEVICE_NOMENCLATURE_CODE} </div>
+                            <div class="fieldValue noTextOverflow width37Percent" style="display:inline-block;"><apex:outputField value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Nomenclature_Code__c}"/></div>
+                        </td>
+                    </tr>
+                    <!-- 2.3 Description of device and commercial information : starts here -->
+                    <tr class ="row section2Background">
+                        <td class ="heading aligntd"> {!$Label.CMPL123CME__CMPLT_2_3} </td>
+                        <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_DESCRIPTION_OF_DEVICE_AND_COMMERCIAL_INFORMATION}</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                        <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_MEDICAL_DEVICE_NAME_BRAND_TRADE_PROPRIETARY_OR_COMMON_NAME}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Name__c} </div>   
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_B}</td>
+                        <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_NOMENCLATURE_TEXT_DESCRIPTION_OF_THE_DEVICE_AND_ITS_INTENDED_USE}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Description_Of_Device_Nomenclature_Text__c}"/> </div>   
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.cmpl123cme__cmplt_c}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.cmpl123cme__cmplt_model_pdf}<br/>
+                            <div class="fieldValue width260 noTextOverflow"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Model__c}"/></div>
+                        </td> 
+                        <td class="column aligntd section2Background">{!$Label.cmpl123cme__cmplt_d}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.cmpl123cme__cmplt_catalogue_reference_number}<br/>
+                            <div class="fieldValue width260 noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Catalogue_Reference_Number__c}</div>
+                        </td> 
+                    </tr>
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.cmpl123cme__cmplt_e}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.cmpl123cme__cmplt_serial_number}<br/>
+                            <div class="fieldValue width260 noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Serial_Numbers__c}</div>
+                        </td> 
+                        <td class="column aligntd section2Background">{!$Label.cmpl123cme__cmplt_f}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.cmpl123cme__cmplt_lot_batch_number}<br/>
+                            <div class="fieldValue width260 noTextOverflow"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Lot_Batch_Numbers__c}"/></div>
+                        </td> 
+                    </tr>
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.cmpl123cme__cmplt_g}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.cmpl123cme__cmplt_software_version}<br/>
+                            <div class="fieldValue width260 noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Software_Version__c}</div>
+                        </td> 
+                        <td class="column aligntd section2Background">{!$Label.cmpl123cme__cmplt_h}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.cmpl123cme__cmplt_firmware_version}<br/>
+                            <div class="fieldValue width260 noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Firmware_Version__c}</div>
+                        </td> 
+                    </tr>
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.cmpl123cme__cmplt_i}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.cmpl123cme__cmplt_device_manufacturing_date}
+                            <div class="smallTextStyle alignMiddle" style="display:inline-block;">
+                                {!$Label.cmpl123cme__cmplt_e_g_2012_10_23}
+                            </div><br/>
+                            <div class="fieldValue fieldValueWidth noTextOverflow">
+                                <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                    <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Device_Manufacturing_Date__c}" />
+                                </apex:outputText>
+                            </div>
+                        </td> 
+                        <td class="column aligntd section2Background">{!$Label.cmpl123cme__cmplt_j}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.cmpl123cme__cmplt_device_expiry_date}
+                            <div class="smallTextStyle alignMiddle" style="display:inline-block;">
+                                {!$Label.cmpl123cme__cmplt_e_g_2012_10_23}
+                            </div><br/>
+                            <div class="fieldValue fieldValueWidth noTextOverflow">
+                                <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                    <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Device_Expiry_Date__c}" />
+                                </apex:outputText>
+                            </div>
+                        </td> 
+                    </tr>
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.cmpl123cme__cmplt_k}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.cmpl123cme__cmplt_date_when_device_was_implanted}
+                            <div class="smallTextStyle alignMiddle" style="display:inline-block;">
+                                {!$Label.cmpl123cme__cmplt_e_g_2012_10_23}
+                            </div><br/>
+                            <div class="fieldValue fieldValueWidth noTextOverflow" style="display:inline-block;">
+                                <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                    <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Date_When_Device_Was_Implanted_From__c}" />
+                                </apex:outputText>
+                            </div>
+                            <div class="inlineDiv superVerticalAlign">{!$Label.cmpl123cme__cmplt_to_pdf}</div>
+                            <div class="fieldValue fieldValueWidth noTextOverflow" style="display:inline-block;">
+                                <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                    <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Date_When_Device_Was_Implanted_To__c}" />
+                                </apex:outputText>
+                            </div>
+                        </td> 
+                        <td class="column aligntd section2Background">{!$Label.cmpl123cme__cmplt_l}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.cmpl123cme__cmplt_date_when_device_was_explanted}
+                            <div class="smallTextStyle alignMiddle" style="display:inline-block;">
+                                {!$Label.cmpl123cme__cmplt_e_g_2012_10_23}
+                            </div><br/>                            
+                            <div class="fieldValue fieldValueWidth noTextOverflow" style="display:inline-block;">
+                                <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                    <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Date_When_Device_Was_Explanted_From__c}" />
+                                </apex:outputText>
+                            </div>
+                            <div class="inlineDiv superVerticalAlign">{!$Label.cmpl123cme__cmplt_to_pdf}</div>
+                            <div class="fieldValue fieldValueWidth noTextOverflow" style="display:inline-block;">
+                                <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                    <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Date_When_Device_Was_Explanted_To__c}" />
+                                </apex:outputText>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row"> 
+                        <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_M}</td>
+                        <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_IF_PRECISE_IMPLANT_EXPLANT_DATES_ARE_UNKNOWN_PROVIDE_THE_DURATION_OF_IMPL}<br/>
+                            <div style="display:inline-block;vertical-align:super;">{!$Label.CMPL123CME__CMPLT_NUMBER_OF_YEARS}</div>
+                            <div class="fieldValue fieldValueWidth noTextOverflow" style="display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__Number_Of_Years__c)}</div>
+                            <div style="display:inline-block;vertical-align:super;">{!$Label.CMPL123CME__CMPLT_NUMBER_OF_MONTHS}</div>
+                            <div class="fieldValue fieldValueWidth noTextOverflow" style="display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__Number_Of_Months__c)}</div>
+                            <div style="display:inline-block;vertical-align:super;">{!$Label.CMPL123CME__CMPLT_NUMBER_OF_DAYS}</div>
+                            <div class="fieldValue fieldValueWidth noTextOverflow" style="display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__Number_Of_Days__c)}</div>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_N}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.CMPL123CME__CMPLT_IMPLANT_FACILITY}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Implant_Facility__c}</div>
+                        </td> 
+                        <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_O}</td>
+                        <td class="column whiteBackground" colspan="2">{!$Label.CMPL123CME__CMPLT_EXPLANT_FACILITY}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Explant_Facility__c}</div>
+                        </td> 
+                    </tr>
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_P}</td>
+                        <td class="column whiteBackground noRightBorder" colspan="2">
+                            <div class="column" style="width:260px">{!$Label.CMPL123CME__CMPLT_NOTIFIED_BODY_NB_ID_NUMBER_S_IF_APPLICABLE}</div>
+                            <div style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_1}</div>  
+                            <div class="fieldValue noTextOverflow" style="width:230px;display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number_1__c)}</div><br/><br/>
+                            <div style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_2}</div> 
+                            <div class="fieldValue noTextOverflow" style="width:230px;display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number_2__c)}</div>
+                        </td>
+                        <td class="column whiteBackground noLeftBorder" colspan="3">
+                            <div class="column" style="width:360px;">{!$Label.CMPL123CME__CMPLT_NOTIFIED_BODY_NB_CERTIFICATE_NUMBER_S_OF_DEVICE_IF_APPLICABLE}</div>
+                            <div class="fieldValue noTextOverflow" style="width:350px;">{!CMPL123CME__EU_MIR__c.CMPL123CME__NB_Certificate_Number_1__c}</div><br/>
+                            <div class="fieldValue noTextOverflow" style="width:350px;">{!CMPL123CME__EU_MIR__c.CMPL123CME__NB_Certificate_Number_2__c}</div>
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class="column aligntd section2Background"> {!$Label.CMPL123CME__CMPLT_Q} </td>
+                        <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_PLEASE_INDICATE_THE_DATE_OF} <u>{!$Label.CMPL123CME__CMPLT_ONE}</u> {!$Label.CMPL123CME__CMPLT_OF_THE_FOLLOWING}<br/>
+                            <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__please_indicate_the_date__c')]}" var="pickList">
+                                <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if(pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Please_Indicate_The_Date__c,'/radio_yes.png','/radio_no.png'))}"/> <span>{!pickList.label}</span> <br/>
+                            </apex:repeat>
+                            <div class="column" style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_YEAR_PDF}</div>
+                            <div class="fieldValueOther fieldValueWidth noTextOverflow" style="display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__Indicate_Year__c)}</div>
+                            <div class="column" style="display:inline-block;" >{!$Label.CMPL123CME__CMPLT_MONTH_PDF}</div>
+                            <div class="fieldValueOther fieldValueWidth noTextOverflow" style="display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__Indicate_Month__c)}</div>
+                        </td>
+                    </tr>
+                </table> 
+                
+                <!-- 2.4 Risk class of device when placed on market : starts here -->
+                
+                <table class ="pageBreak tableLayoutFixed" cellspacing="0" cellpading="5" border="1">
+                    <tr class ="row section2Background">
+                        <td class ="heading aligntd" width="6%">{!$Label.CMPL123CME__CMPLT_2_4}</td>
+                        <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_RISK_CLASS_OF_DEVICE_WHEN_PLACED_ON_MARKET}<br/></td>
+                    </tr>
+                    <tr class="row">
+                        <td class ="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                        <td class="column whiteBackground" colspan="6">
+                            <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__device_has_been_placed_on_market_before__c')]}" var="pickList">
+                                <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if(pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Device_Has_Been_Placed_On_Market_Before__c,'/radio_yes.png','/radio_no.png'))}"/>  <span style="width: 0px;padding-right: 20px;">{!pickList.label}</span>
+                            </apex:repeat>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td class ="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_B}</td>
+                        <td class="column aligntd whiteBackground" colspan="2"><u>{!$Label.CMPL123CME__CMPLT_MDD_AIMDD}</u><br/><br/>
+                            <div style="text-align:left;">
+                                <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__mdd_aimdd_class__c')]}" var="pickList">
+                                    <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if(pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__MDD_AIMDD_Class__c,'/radio_yes.png','/radio_no.png'))}"/> 
+                                    <span>{!pickList.label}</span> <br/>
+                                </apex:repeat>
+                            </div>
+                        </td>
+                        <td class="column aligntd whiteBackground" colspan="4"><u>{!$Label.cmpl123cme__cmplt_ivdd}</u><br/><br/>
+                            <div style="text-align:left;">
+                                <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__ivdd_class__c')]}" var="pickList">
+                                    <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if(pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__IVDD_Class__c,'/radio_yes.png','/radio_no.png'))}"/> 
+                                    <span>{!pickList.label}</span> <br/>
+                                </apex:repeat>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td class ="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_C}</td>
+                        <td class="column aligntd whiteBackground" style="width:20%;" ><u>{!$Label.CMPL123CME__CMPLT_MDR}</u><br/><br/>
+                            <div style="text-align:left;">
+                                <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__mdr_class__c')]}" var="pickList">
+                                    <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if(pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__MDR_Class__c,'/radio_yes.png','/radio_no.png'))}"/> 
+                                    <span>{!pickList.label}</span> <br/>
+                                </apex:repeat>
+                            </div>
+                        </td>
+                        <td class="column aligntd whiteBackground" style="width:27%;"><u>{!$Label.cmpl123cme__cmplt_type_multiple_choice}</u><br/><br/>
+                            <div style="text-align:left;">
+                                <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__mdr_class_type__c')]}" var="pickList">
+                                    <div width = "12%"><apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if(AND(OR(contains(CMPL123CME__EU_MIR__c.CMPL123CME__MDR_Class_Type__c,pickList.value), contains(CMPL123CME__EU_MIR__c.CMPL123CME__MDR_Class_Type__c, pickList.value), contains(CMPL123CME__EU_MIR__c.CMPL123CME__MDR_Class_Type__c, pickList.value), contains(CMPL123CME__EU_MIR__c.CMPL123CME__MDR_Class_Type__c, pickList.value)), contains(CMPL123CME__EU_MIR__c.CMPL123CME__MDR_Class_Type__c, pickList.value)),'/checkbox2_yes.png','/checkbox2_no.png'))}"/> 
+                                    <span>{!pickList.label}</span>
+                                    </div>
+                                </apex:repeat>
+                            </div>
+                        </td>
+                        <td class="column aligntd whiteBackground" style="width:23%;" colspan="3"><u>{!$Label.CMPL123CME__CMPLT_IVDR}</u><br/><br/>
+                            <div style="text-align:left;">
+                                <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__ivdr_class__c')]}" var="pickList">
+                                    <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CMPL123CME__EU_MIR__c.CMPL123CME__IVDR_Class__c == pickList.value,'/radio_yes.png','/radio_no.png'))}"/> 
+                                    <span>{!pickList.label}</span> <br/>
+                                </apex:repeat>
+                            </div>
+                        </td>
+                        <td class="column aligntd whiteBackground" style="width:22%;"><u>{!$Label.cmpl123cme__cmplt_type_multiple_choice}</u><br/><br/>
+                            <div style="text-align:left;">
+                                <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__ivdr_class_type__c')]}" var="pickList">
+                                    <div width = "12%"><apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if(AND(OR(contains(CMPL123CME__EU_MIR__c.CMPL123CME__IVDR_Class_Type__c, pickList.value), contains(CMPL123CME__EU_MIR__c.CMPL123CME__IVDR_Class_Type__c, pickList.value), contains(CMPL123CME__EU_MIR__c.CMPL123CME__IVDR_Class_Type__c, pickList.value), contains(CMPL123CME__EU_MIR__c.CMPL123CME__IVDR_Class_Type__c, pickList.value)), contains(CMPL123CME__EU_MIR__c.CMPL123CME__IVDR_Class_Type__c, pickList.value)),'/checkbox2_yes.png','/checkbox2_no.png'))}"/> 
+                                    <span>{!pickList.label}</span>
+                                    </div>
+                                </apex:repeat>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 2.4 Risk class of device when placed on market : ends here -->
+                    
+                    <!-- 2.5 Market distribution of device (region/country) : starts here -->
+                    <tr class ="row section2Background">
+                        <td class ="heading aligntd">{!$Label.CMPL123CME__CMPLT_2_5} </td>
+                        <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_MARKET_DISTRIBUTION_OF_DEVICE_REGION_COUNTRY}
+                            <br/>
+                            <div style="font-size: 16px;">{!$Label.CMPL123CME__CMPLT_ACCORDING_TO_THE_BEST_KNOWLEDGE_OF_THE_MANUFACTURER}</div>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                        <td class=" column whiteBackground" colspan="6">
+                            <div class="leftPadding">
+                                <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if(CONTAINS(CMPL123CME__EU_MIR__c.CMPL123CME__Region_Market_Distribution__c, 'All EEA, Switzerland and Turkey'),'/checkbox2_yes.png','/checkbox2_no.png'))}"/>
+                                    {!$Label.cmpl123cme__cmplt_all_eea_switzerland_and_turkey}
+                            </div>          
+                            <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__countries_list__c')]}" var="pickList">
+                                <div class=" inlineDiv leftPadding"><apex:image url="{!URLFOR($Resource.CMPL123CME__MDR, if(AND(CONTAINS(CMPL123CME__EU_MIR__c.CMPL123CME__Region_Market_Distribution__c,'Within the EEA, Switzerland and Turkey'), CONTAINS(CMPL123CME__EU_MIR__c.CMPL123CME__Countries_List__c, pickList.value)),'/checkbox2_yes.png','/checkbox2_no.png'))}"/>
+                                    <div class="inlineDiv pickListCountry">{!pickList.label}</div>
+                                </div>
+                            </apex:repeat>
+                            <br/>   
+                            <div class="column" style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_OTHERS}             
+                                <div class="fieldValue noTextOverflow" style="width:300px;vertical-align: text-bottom;display:inline-block;">{!CMPL123CME__EU_MIR__c.CMPL123CME__Other_Countries_If_Any__c}</div>                
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 2.5 Market distribution of device (region/country) : ends here -->
+                    
+                    <!-- 2.6 Use of accessories, associated devices or other devices : starts here -->
+                    <tr class ="row section2Background">
+                        <td class ="heading aligntd"> {!$Label.CMPL123CME__CMPLT_2_6} </td>
+                        <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_USE_OF_ACCESSORIES_ASSOCIATED_DEVICES_OR_OTHER_DEVICES}</td>
+                    </tr>
+                    <tr class ="row">
+                        <td class ="column aligntd section2Background"> {!$Label.CMPL123CME__CMPLT_A} </td>
+                        <td class ="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_RELEVANT_ACCESSORIES_USED_WITH_THE_DEVICE_BEING_REPORTED_ON_PLEASE_LIST_W}<br/> 
+                            <div class="fieldValue width98Percent noTextOverflow"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Relevant_Accessories_Used_With_Device__c}"/></div>   
+                        </td>
+                    </tr>
+                    <tr class ="row">
+                        <td class ="column aligntd section2Background"> {!$Label.CMPL123CME__CMPLT_B} </td>
+                        <td class ="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_RELEVANT_ASSOCIATED_DEVICES_USED_WITH_THE_DEVICE_BEING_REPORTED_ON_PLEAS}<br/> 
+                            <div class="fieldValue width98Percent noTextOverflow"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Relevant_Associated_Devices__c}"/> </div>   
+                        </td>
+                    </tr>
+                    <!-- 2.6 Use of accessories, associated devices or other devices : end here -->
+                </table>
+            </div>
+        
+        <!-- 3 Incident information derived from healthcare professional and/or lay user : starts here -->
+        <div class="sectionHeader pageBreakAlways">
+            <div class="solidBorder section3Background">
+                {!$Label.CMPL123CME__CMPLT_SECTION_3_INCIDENT_INFORMATION_DERIVED_FROM_HEALTHCARE_PROFESSIONAL_AND_O} 
+            </div>
+            <table class="pageBreak tableLayoutFixed" cellspacing="0" cellpading="5" border="1">
+                <!-- 3.1 Nature of incident : starts here -->
+                <tr class ="row section3Background">
+                    <td class ="heading aligntd" width="6%">{!$Label.CMPL123CME__CMPLT_3_1}</td>
+                    <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_NATURE_OF_INCIDENT}<br/></td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_PROVIDE_A_COMPREHENSIVE_DESCRIPTION_OF_THE_INCIDENT_INCLUDING_1_WHAT_W}
+                        <div class="fieldValue noTextOverflow" style="min-height:140px"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Incident_Description__c}"/></div>
+                    </td>
+                </tr>
+                <!-- 3.2 Medical device problem information : starts here -->
+                <tr class ="row section3Background">
+                    <td class ="heading aligntd">{!$Label.CMPL123CME__CMPLT_3_2}</td>
+                    <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_MEDICAL_DEVICE_PROBLEM_INFORMATION}</td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                    <td class="column whiteBackground fieldValueWidth" colspan="6">{!$Label.CMPL123CME__CMPLT_IMDRF_MEDICAL_DEVICE_PROBLEM_CODES_ANNEX_A}<br/>
+                        {!$Label.CMPL123CME__CMPLT_CODING_WITH_IMDRF_TERMS_IS_A_MANDATORY_REQUIREMENT}
+                        <table cellspacing="0" border="1" style="border: solid 1px black;">
+                            <tr class="row">
+                                <td></td>
+                                <td class="column aligntd highlightBackground width90">{!$Label.CMPL123CME__CMPLT_CHOICE_1}<br/>{!$Label.CMPL123CME__CMPLT_MOST_RELEVANT_PDF}</td>
+                                <td class="column aligntd width70">{!$Label.CMPL123CME__CMPLT_CHOICE_2}</td>
+                                <td class="column aligntd width70">{!$Label.CMPL123CME__CMPLT_CHOICE_3}</td>
+                                <td class="column aligntd width70">{!$Label.CMPL123CME__CMPLT_CHOICE_4}</td>
+                                <td class="column aligntd width70">{!$Label.CMPL123CME__CMPLT_CHOICE_5}</td>
+                                <td class="column aligntd width70">{!$Label.CMPL123CME__CMPLT_CHOICE_6}</td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column">{!$Label.CMPL123CME__IMDRF_MEDICAL_DEVICE_PROBLEM_CODES_CHOICES}</td>
+                                <td class="column aligntd highlightBackground">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[2].choice1}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[2].choice2}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[2].choice3}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[2].choice4}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[2].choice5}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[2].choice6}</div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="column whiteBackground" colspan="6">
+                            {!$Label.CMPL123CME__CMPLT_if_you_think_the_incident_is_unique_and_a_suitable_imdrf_term_is_missing}<br/> <br/>
+                            <div class="fieldValue width98Percent noTextOverflow"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__IMDRF_Code_Missing__c}"/></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__cmplt_b}</td>
+                    <td class="column" colspan="6">
+                        <div class="column whiteBackground">{!$Label.CMPL123CME__cmplt_number_of_patients_involved}<br/>
+                            <!-- TEXT() is used to truncate decimal values -->
+                            <div class="fieldValue width80 noTextOverflow">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__Number_Of_Patients_Involved__c)}</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__cmplt_c}</td>
+                    <td class="column whiteBackground" colspan="6"><span>{!$Label.CMPL123CME__cmplt_what_is_the_current_location_of_the_device}</span><br/>
+                        <div style="width: 650px;">
+                            <ul class="fixedwidth">
+                                <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__current_device_location__c')]}" var="pickList" rows="8">
+                                    <li>
+                                        <div>
+                                            <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Current_Device_Location__c),'/radio_yes.png','/radio_no.png'))}"/>  
+                                            <apex:outputText value="{!pickList.label}"/>
+                                        </div>
+                                    </li>
+                                </apex:repeat>
+                            </ul>
+                        </div>
+                        <div class="pickListCurrentDeviceStyle">
+                            <apex:image styleClass="leftMargin80 pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if((CMPL123CME__EU_MIR__c.CMPL123CME__Current_Device_Location__c == 'Other'),'/radio_yes.png','/radio_no.png'))}"/>
+                            <div class="inlineDiv">{!$Label.CMPL123CME__CMPLT_OTHER}</div>
+                            <div class="fieldValueOther noTextOverflow topVerticalAlign inlineDiv width150">{!CMPL123CME__EU_MIR__c.CMPL123CME__Current_Device_Location_Other__c}</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class ="row">
+                    <td class ="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_D}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_OPERATOR_OF_DEVICE_AT_THE_TIME_OF_THE_INCIDENT}<br/><br/>
+                        <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__device_operator_at_event__c')]}" var="pickList">
+                            <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Device_Operator_At_Event__c),'/radio_yes.png','/radio_no.png'))}"/>  
+                            <span class="spanLineHeight">
+                                <apex:outputText value="{!if(pickList.value == 'Other', OtherPleaseDescribe, ' '+pickList.label+' ' )}"/>
+                            </span>
+                            <apex:outputText rendered="{!(pickList.value == 'Other')}">
+                                <div class="fieldValueOther noTextOverflow topVerticalAlign inlineDiv width180">
+                                    <apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Device_Operator_At_Event_Other__c}"/>
+                                </div>                    
+                            </apex:outputText>
+                        </apex:repeat>                   
+                    </td> 
+                </tr> 
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.cmpl123cme__cmplt_e}</td>
+                    <td class="column whiteBackground" colspan="6"> {!$Label.cmpl123cme__cmplt_usage_of_device_as_intended}<br/><br/>
+                        <div width="521px">
+                            <ul class="fixedwidth32">
+                                <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__device_usage__c')]}" var="pickList" rows="5">
+                                    <li>
+                                        <div>
+                                            <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Device_Usage__c),'/radio_yes.png','/radio_no.png'))}"/>  
+                                            <span>
+                                                <apex:outputText value="{!pickList.label}"/>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </apex:repeat>
+                                <div class="pickListStyle">
+                                    <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if((CMPL123CME__EU_MIR__c.CMPL123CME__Device_Usage__c == 'Other'),'/radio_yes.png','/radio_no.png'))}"/>
+                                    {!$Label.CMPL123CME__CMPLT_OTHER}
+                                    <div class="fieldValueOther noTextOverflow inlineDiv topVerticalAlign innerTabletd">{!CMPL123CME__EU_MIR__c.CMPL123CME__Device_Usage_Other__c}
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_F}</td>
+                    <td class="column whiteBackground" width="20%" colspan="6">{!$Label.CMPL123CME__CMPLT_REMEDIAL_ACTIONS_TAKEN_BY_HEALTHCARE_FACILITY_PATIENT_OR_USER_SUBSEQUENT}<br/><br/>
+                        <div class="fieldValue noTextOverflow" style="min-height:50px;"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Patient_Remedial_Action__c}"/></div>   
+                    </td>
+                </tr>
+            </table>
+            <!-- 3.2 Medical device problem information : ends here -->
+            
+            <!-- 3.3 Patient information : starts here -->
+            <table class="pageBreak" cellspacing="0" border="1" >
+                <tr class ="row section3Background">
+                    <td class ="heading aligntd" width="6%">{!$Label.CMPL123CME__CMPLT_3_3}</td>
+                    <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_PATIENT_INFORMATION}</td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_IMDRF_HEALTH_EFFECT_TERMS_AND_CODES_ANNEX_E_F}<br/>
+                        {!$Label.CMPL123CME__CMPLT_CODING_WITH_IMDRF_TERMS_IS_A_MANDATORY_REQUIREMENT}
+                        <table cellspacing="0" border="1" style="border: solid 1px black;">
+                            <tr class="row">
+                                <td style="width:150px;"></td>
+                                <td class="column aligntd highlightBackground" style="width:97px;">{!$Label.CMPL123CME__CMPLT_CHOICE_1}<br/><i> {!$Label.CMPL123CME__CMPLT_MOST_RELEVANT_PDF}</i></td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_2}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_3}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_4}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_5}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_6}</td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column">{!$Label.CMPL123CME__CMPLT_IMDRF_CLINICAL_SIGNS_SYMPTOMS_AND_CONDITIONS_CODES_ANNEX_E}</td>
+                                <td class="column aligntd highlightBackground">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[0].choice1}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[0].choice2}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[0].choice3}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[0].choice4}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[0].choice5}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[0].choice6}</div>
+                                </td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column">{!$Label.CMPL123CME__CMPLT_IMDRF_HEALTH_IMPACT_CODES_ANNEX_F}</td>
+                                
+                                <td class="column aligntd highlightBackground">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[1].choice1}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[1].choice2}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[1].choice3}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[1].choice4}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[1].choice5}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue noTextOverflow">{!codedSummary.imdrfCodeWrapperList[1].choice6}</div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="column whiteBackground">
+                            {!$Label.CMPL123CME__CMPLT_IF_YOU_THINK_THE_INCIDENT_IS_UNIQUE_AND_A_SUITABLE_IMDRF_TERM_IS_MISSING}<br/>
+                            <div class="fieldValue height40 width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Explain_Incident_If_IMDRF_Code_Missing__c}</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row section3Background"> 
+                    <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_B}</td>
+                     <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_AGE_OF_PATIENT_AT_THE_TIME_OF_THE_INCIDENT}<br/>
+                        <div class="width40 middleVerticalAlign" style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_YEARS}</div>
+                        <!-- TEXT() is used to truncate decimal values -->
+                        <div class="fieldValue width80 noTextOverflow" style="display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__Years_At_Time_Of_Incident__c)}</div>
+                        <div class="width40 middleVerticalAlign leftMargin20" style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_MONTHS}</div>
+                        <div class="fieldValue width80 noTextOverflow" style="display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__Months_At_Time_of_Incident__c)}</div>
+                        <div class="width40 middleVerticalAlign leftMargin20" style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_DAYS}</div>
+                        <div class="fieldValue width80 noTextOverflow" style="display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__Days_At_Time_Of_Incident__c)}</div>
+                    </td>
+                </tr>
+                <tr class ="row" width="100%">
+                    <td class ="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_C}</td>
+                    <td class="column whiteBackground" width="100%" colspan="6">{!$Label.CMPL123CME__CMPLT_GENDER}
+                        <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__gender_of_patient__c')]}" var="pickList">
+                        <span width = "12%">
+                        <apex:image styleClass="leftMargin20 pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if(pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Gender_Of_Patient__c,'/radio_yes.png','/radio_no.png'))}"/> <span >{!pickList.label}</span>
+                        </span>
+                        </apex:repeat>
+                    </td>
+                </tr>
+                <tr class ="row" >
+                    <td class ="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_D}</td>
+                    <td class ="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_BODY_WEIGHT_KG}<br/>
+                        <div class="fieldValue noTextOverflow" style="width:280px">{!CMPL123CME__EU_MIR__c.CMPL123CME__Body_Weight_Of_Patient__c} </div>   
+                    </td>
+                </tr>
+                <tr class ="row" >
+                    <td class ="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_E}</td>
+                    <td class ="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_LIST_ANY_OF_THE_PATIENT_S_PRIOR_HEALTH_CONDITION_OR_MEDICATION_THAT_MAY_BE}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow height40"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Patients_Prior_Health_Condition__c}"/></div>   
+                    </td>
+                </tr>
+                <!-- 3.3 Patient information : ends here -->
+                
+                <!-- 3.4 Initial reporter (can be healthcare professional of facility, patient, lay user) : starts here -->
+                <tr class ="row section3Background">
+                    <td class ="heading aligntd">{!$Label.CMPL123CME__CMPLT_3_4}</td>
+                    <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_INITIAL_REPORTER_CAN_BE_HEALTHCARE_PROFESSIONAL_OF_FACILITY_PATIENT_LAY}</td>
+                </tr>
+                <tr class ="row">
+                    <td class ="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_ROLE_OF_INITIAL_REPORTER}<br/>
+                        <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__role_of_initial_reporter__c')]}" var="pickList">
+                            <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Role_Of_Initial_Reporter__c),'/radio_yes.png','/radio_no.png'))}"/>  
+                            <span>
+                                <apex:outputText value="{!if(pickList.value == 'Other', OtherSpecify, ' '+pickList.label+' ' )}"/>
+                            </span>
+                            <apex:outputText rendered="{!(pickList.value == 'Other')}">
+                             <div class="fieldValueOther inlineDiv noTextOverflow topVerticalAlign width200">{!CMPL123CME__EU_MIR__c.CMPL123CME__If_Initial_Reporter_Is_Other_Specify__c}</div>
+                            </apex:outputText>
+                        </apex:repeat>                    
+                    </td> 
+                </tr> 
+                <tr class ="row" >
+                    <td class ="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_B}</td>
+                    <td class ="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_NAME_OF_HEALTHCARE_FACILITY}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Name_Of_The_Healthcare_Facility__c} </div>   
+                    </td>
+                </tr>
+                <tr class ="row" >
+                    <td class ="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_C}</td>
+                    <td class ="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_HEALTHCARE_FACILITY_REPORT_NUMBER_IF_APPLICABLE}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Healthcare_Facility_Report_Number__c} </div>   
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_D}</td>
+                    <td class="column whiteBackground" colspan="3">{!$Label.CMPL123CME__CMPLT_CONTACT_S_FIRST_NAME}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Contact_First_Name__c}</div>
+                    </td> 
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_E}</td>
+                    <td class="column whiteBackground" colspan="2">{!$Label.CMPL123CME__CMPLT_CONTACT_S_LAST_NAME}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Contact_Last_Name__c}</div>
+                    </td> 
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_F}</td>
+                    <td class="column whiteBackground" colspan="3">{!$Label.CMPL123CME__CMPLT_EMAIL}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Email__c}</div>
+                    </td> 
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_G}</td>
+                    <td class="column whiteBackground" colspan="2">{!$Label.CMPL123CME__CMPLT_PHONE}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Phone__c}</div>
+                    </td> 
+                </tr>
+                <tr class ="row" >
+                    <td class ="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_H}</td>
+                    <td class ="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_COUNTRY}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Country__c} </div>   
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_I}</td>
+                    <td class="column whiteBackground" colspan="3">{!$Label.CMPL123CME__CMPLT_STREET}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Street__c}</div>
+                    </td> 
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_J}</td>
+                    <td class="column whiteBackground" colspan="2">{!$Label.CMPL123CME__CMPLT_STREET_NUMBER}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Street_Number__c}</div>
+                    </td> 
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_K}</td>
+                    <td class="column whiteBackground" colspan="3">{!$Label.CMPL123CME__CMPLT_ADDRESS_COMPLEMENT}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Address_Complement__c}</div>
+                    </td> 
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_L}</td>
+                    <td class="column whiteBackground" colspan="2">{!$Label.CMPL123CME__CMPLT_PO_BOX}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_P_O_Box__c}</div>
+                    </td> 
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_M}</td>
+                    <td class="column whiteBackground" colspan="3">{!$Label.CMPL123CME__CMPLT_CITY_NAME}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_City_Name__c}</div>
+                    </td> 
+                    <td class="column aligntd section3Background">{!$Label.CMPL123CME__CMPLT_N}</td>
+                    <td class="column whiteBackground" colspan="2">{!$Label.CMPL123CME__CMPLT_POSTAL_CODE}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow">{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Postcode__c}</div>
+                    </td> 
+                </tr>
+            </table>
+            <!-- 3.4 Initial reporter (can be healthcare professional of facility, patient, lay user) : ends here -->
+        </div>
+        <!-- Section 3: Incident information derived from healthcare professional and/or lay user : ends here -->
+        
+        <!-- Section 4: Manufacturer analysis : starts here -->
+        <div class="sectionHeader pageBreakAlways">
+            <div class="solidBorder section4Background">
+                {!$Label.CMPL123CME__CMPLT_SECTION_4_MANUFACTURER_ANALYSIS}             
+            </div>
+            <table class="pageBreak tableLayoutFixed" cellspacing="0" border="1">
+                <!-- 4.1 Manufacturer’s preliminary comments : starts here -->
+                <tr class ="row section4Background">
+                    <td class ="heading aligntd" width="6%">{!$Label.CMPL123CME__CMPLT_4_1}</td>
+                    <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_MANUFACTURER_S_PRELIMINARY_COMMENTS}<br/></td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                    <td class="column whiteBackground" colspan="6">
+                        {!$Label.CMPL123CME__CMPLT_FOR_PDF}
+                        <span class="textBold">{!$Label.CMPL123CME__CMPLT_INITIAL_PDF}</span>
+                        {!$Label.CMPL123CME__CMPLT_AND_PDF}
+                        <span class="textBold">{!$Label.CMPL123CME__CMPLT_FOLLOW_UP_PDF}</span>
+                        {!$Label.CMPL123CME__CMPLT_REPORTS_PDF}
+                        {!$Label.CMPL123CME__CMPLT_PRELIMINARY_RESULTS_AND_CONCLUSIONS_OF_MANUFACTURER_S_INVESTIGATION_PDF}
+                        <div class="fieldValue width98Percent noTextOverflow height70"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Preliminary_Results_And_Conclusions__c}"/></div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.cmpl123cme__cmplt_b}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.cmpl123cme__cmplt_initial_actions_corrective_and_or_preventive}
+                        <div class="fieldValue width98Percent noTextOverflow height70"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Actions_Taken_By_Manufacturer__c}"/></div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.cmpl123cme__cmplt_c}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.cmpl123cme__cmplt_what_further_investigations_do_you_intend}
+                        <div class="fieldValue width98Percent noTextOverflow height70"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__List_Down_Further_Investigations__c}"/></div>
+                    </td>
+                </tr>
+                
+                <!-- 4.2 Cause investigation and conclusion : starts here -->
+                <tr class ="row">
+                    <td class ="heading aligntd section4Background">{!$Label.CMPL123CME__CMPLT_4_2}</td>
+                    <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_CAUSE_INVESTIGATION_AND_CONCLUSION}<br/></td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                    <td class="column whiteBackground" colspan="6">
+                        <span class="textBold">{!$Label.CMPL123CME__CMPLT_FOR_FINAL_REPORTABLE_INCIDENT_PDF}</span>
+                        {!$Label.CMPL123CME__CMPLT_DESCRIPTION_OF_THE_MANUFACTURER_S_EVALUATION_CONCERNING_POSSIBLE_ROOT_CAUS}
+                        <div class="fieldValue width98Percent noTextOverflow" style="min-height:60px"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_s_Evaluation__c}"/></div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.cmpl123cme__cmplt_b}</td>
+                    <td class="column whiteBackground" colspan="6">
+                        <span class="textBold">{!$Label.cmpl123cme__cmplt_for_final_non_reportable_incident_pdf}</span>
+                        {!$Label.cmpl123cme__cmplt_fill_out_rationale_for_why_this_is_considered_not_reportable_pdf}
+                        <div class="fieldValue width98Percent noTextOverflow" style="min-height:60px"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Rationale_For_Non_Reportable_Incident__c}"/></div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.cmpl123cme__cmplt_c}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.cmpl123cme__cmplt_is_root_cause_confirmed}<br/>
+                        <div>
+                            <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__is_root_cause_confirmed__c')]}" var="pickList">
+                                <apex:image url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Is_Root_Cause_Confirmed__c),'/radio_yes.png','/radio_no.png'))}"/>
+                                <span class="pickListRootCause">{!pickList.label}</span>
+                            </apex:repeat>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.cmpl123cme__cmplt_d}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.cmpl123cme__cmplt_has_the_risk_assessment_been_reviewed}<br/>
+                        <div style="width:200px;display:inline-block;">
+                            <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__has_the_risks_assessment_been_reviewed__c')]}" var="pickList">
+                                <apex:image url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Has_The_Risks_Assessment_Been_Reviewed__c),'/radio_yes.png','/radio_no.png'))}"/>  
+                                <span class="pickListRootCause">
+                                    <apex:outputText value="{!pickList.value}"/>
+                                </span><br/>
+                            </apex:repeat>
+                        </div>
+                        <div style="display:inline-block;margin-left: -120px;">
+                            {!$Label.cmpl123cme__cmplt_if_no_rationale_for_no_review_required}
+                            <div class="fieldValueOther inlineDiv alignMiddle noTextOverflow" style="min-height:80px;width:345px;">
+                                <apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__If_No_Reason_For_No_Review_Required__c}" rendered="{!(CMPL123CME__EU_MIR__c.CMPL123CME__Has_The_Risks_Assessment_Been_Reviewed__c == 'No')}"/>
+                            </div>    
+                        </div>
+                        <div class="column">
+                            {!$Label.cmpl123cme__cmplt_if_the_risk_assessment_has_been_reviewed_is_it_still_adequate}<br/>
+                        </div>
+                        <div style="width:200px;">
+                            <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__if_yes_is_review_adequate__c')]}" var="pickList">
+                                <apex:image url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__If_Yes_Is_Review_Adequate__c),'/radio_yes.png','/radio_no.png'))}"/>  
+                                <span class="pickListRootCause">
+                                    <apex:outputText value="{!pickList.value}"/>
+                                </span><br/>
+                            </apex:repeat>
+                        </div><br/>
+                        <div style="display:inline-block;">
+                            <div class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_RESULTS_OF_THE_ASSESSMENT}<br/>
+                                <div class="fieldValue noTextOverflow" style="min-height:45px;width:630px;">{!CMPL123CME__EU_MIR__c.CMPL123CME__Results_Of_The_Assessment__c}</div>
+                            </div>
+                        </div> 
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.CMPL123CME__CMPLT_E}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_IMDRF_CAUSE_INVESTIGATION_TERMS_AND_CODES_ANNEX_B_C_D}<br/>
+                        <table cellspacing="0" border="1" style="border: solid 1px black;">
+                            <tr class="row">
+                                <td style="width:260px;">{!$Label.CMPL123CME__CMPLT_CODING_WITH_IMDRF_TERMS_IS_A_MANDATORY_REQUIREMENT}</td>
+                                <td class="column aligntd highlightBackground" style="width:150px;">{!$Label.CMPL123CME__CMPLT_CHOICE_1}<br/> {!$Label.CMPL123CME__CMPLT_MOST_RELEVANT_PDF}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_2}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_3}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_4}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_5}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_6}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_7}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_8}</td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column">{!$Label.CMPL123CME__CMPLT_IMDRF_CAUSE_INVESTIGATION_TYPE_OF_INVESTIGATION_ANNEX_B_PDF}</td>
+                                <td class="column aligntd highlightBackground">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[4].choice1}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[4].choice2} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[4].choice3} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[4].choice4} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[4].choice5} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[4].choice6} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[4].choice7} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/><br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[4].choice8} </div>
+                                </td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column">{!$Label.CMPL123CME__CMPLT_IMDRF_CAUSE_INVESTIGATION_INVESTIGATION_FINDINGS_ANNEX_C_PDF}</td>
+                                <td class="column aligntd highlightBackground">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[5].choice1} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[5].choice2} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[5].choice3} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue"> {!codedSummary.imdrfCodeWrapperList[5].choice4}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[5].choice5} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[5].choice6} </div>
+                                </td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column">{!$Label.CMPL123CME__CMPLT_IMDRF_CAUSE_INVESTIGATION_INVESTIGATION_CONCLUSION_ANNEX_D_PDF}</td>
+                                <td class="column aligntd highlightBackground">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[6].choice1}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[6].choice2}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[6].choice3}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[6].choice4}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[6].choice5}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[6].choice6}</div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="column whiteBackground">
+                            {!$Label.CMPL123CME__CMPLT_IF_YOU_THINK_THE_INCIDENT_IS_UNIQUE_AND_A_SUITABLE_IMDRF_TERM_IS_MISSING}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow height40"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Explain_If_Investigation_Code_Missing__c}"/></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.CMPL123CME__CMPLT_F}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_IMDRF_COMPONENT_CODES_ANNEX_G_PDF}<br/>
+                        {!$Label.CMPL123CME__CMPLT_CODING_WITH_IMDRF_TERMS_IS_A_MANDATORY_REQUIREMENT}
+                        <table cellspacing="0" border="1" style="border: solid 1px black;">
+                            <tr class="row">
+                                <td style="width:150px;"></td>
+                                <td class="column aligntd highlightBackground" style="width:120px;">{!$Label.CMPL123CME__CMPLT_CHOICE_1}<br/> {!$Label.CMPL123CME__CMPLT_MOST_RELEVANT_PDF}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_2}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_3}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_4}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_5}</td>
+                                <td class="column aligntd width90">{!$Label.CMPL123CME__CMPLT_CHOICE_6}</td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column">{!$Label.CMPL123CME__CMPLT_IMDRF_COMPONENT_CODES_ANNEX_G_CHOICES}</td>
+                                <td class="column aligntd highlightBackground">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[3].choice1}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[3].choice2} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue"> {!codedSummary.imdrfCodeWrapperList[3].choice3}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue"> {!codedSummary.imdrfCodeWrapperList[3].choice4}</div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[3].choice5} </div>
+                                </td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_CODE_PDF}<br/>
+                                    <div class="fieldValue">{!codedSummary.imdrfCodeWrapperList[3].choice6} </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="column whiteBackground">
+                            {!$Label.CMPL123CME__CMPLT_IF_YOU_THINK_THE_INCIDENT_IS_UNIQUE_AND_A_SUITABLE_IMDRF_TERM_IS_MISSING}<br/>
+                            <div class="fieldValue width98Percent noTextOverflow height40"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Explain_If_Component_Code_Missing__c}"/></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row" width="100%">
+                    <td class="column aligntd section4Background">{!$Label.cmpl123cme__cmplt_g}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.cmpl123cme__cmplt_description_of_remedial_action_corrective_action_preventive_action_field_s}
+                        <div class="fieldValue width98Percent noTextOverflow" style="min-height:60px"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Description_Of_Remedial_Action__c}"/></div>
+                        <div class="smallTextStyle leftAlign">{!$Label.cmpl123cme__cmplt_for_a_fsca_fill_in_the_fsca_form} </div>
+                    </td>
+                </tr>
+                <tr class="row" width="100%">
+                    <td class="column aligntd section4Background">{!$Label.cmpl123cme__cmplt_h}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.cmpl123cme__cmplt_time_schedule_for_the_implementation_of_the_identified_actions}
+                        <div class="fieldValue width98Percent noTextOverflow height70">{!CMPL123CME__EU_MIR__c.CMPL123CME__Time_Schedule_For_Implementing_Actions__c}</div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.cmpl123cme__cmplt_i}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.cmpl123cme__cmplt_final_comments_from_the_manufacturer_on_cause_investigation_and_conclusion}
+                        <div class="fieldValue width98Percent noTextOverflow height70"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Final_Comments_from_Mfr_Investigation__c}"/></div>
+                    </td>
+                </tr>
+            </table>
+            
+            <!-- 4.3 Similar incidents (for Final (Reportable incident)) : starts here -->
+            <table class="pageBreak" cellspacing="0" border="1">
+                <tr class ="row section4Background">
+                    <td class ="heading aligntd" width="6%">{!$Label.CMPL123CME__CMPLT_4_3}</td>
+                    <td class ="heading" colspan="6">{!$Label.CMPL123CME__CMPLT_SIMILAR_INCIDENTS_FOR_FINAL_REPORTABLE_INCIDENT}</td>
+                </tr>
+                <!-- 4.3.1 Use of IMDRF terms and codes for identifying similar incidents : starts here -->
+                <tr class ="row section4Background">
+                    <td class="subHeading aligntd">{!$Label.CMPL123CME__CMPLT_4_3_1}</td>
+                    <td class="subHeading">{!$Label.CMPL123CME__CMPLT_USE_OF_IMDRF_TERMS_AND_CODES_FOR_IDENTIFYING_SIMILAR_INCIDENTS}</td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                    <td class="column whiteBackground" colspan="6">
+                        <div class="column whiteBackground">
+                            {!$Label.CMPL123CME__CMPLT_IDENTIFICATION_OF_SIMILAR_INCIDENTS_USING_IMDRF_ADVERSE_EVENT_REPORTING_TE}<br/>
+                            {!$Label.CMPL123CME__CMPLT_TICK_MARK_WHICH_CODE_OR_COMBINATION_OF_CODES_WERE_USED_FOR_IDENTIFYING_SIM}
+                            <table class="tableLayoutFixed" cellspacing="0" border="1" align="center">
+                                <tr class="row highlightBackground">
+                                    <td class="column" width="90%"></td>
+                                    <td class="column">{!$Label.CMPL123CME__CMPLT_CHOICE_1}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="column" >{!$Label.CMPL123CME__CMPLT_IMDRF_CODE_RELATING_TO_MOST_RELEVANT_MEDICAL_DEVICE_PROBLEM_ANNEX_A}</td>
+                                    <td class="column aligntd alignMiddle"><apex:image url="{!URLFOR($Resource.CMPL123CME__MDR,if(CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Problem_Code_Annex_A__c = True,'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="column" >{!$Label.CMPL123CME__CMPLT_IMDRF_CODE_RELATING_TO_MOST_RELEVANT_INVESTIGATION_FINDING_ANNEX_C_CA}</td>
+                                    <td class="column aligntd alignMiddle"><apex:image url="{!URLFOR($Resource.CMPL123CME__MDR,if(CMPL123CME__EU_MIR__c.CMPL123CME__Investigation_Finding_Code_Annex_C__c = True,'/checkbox2_yes.png','/checkbox2_no.png'))}"/></td>
+                                </tr>
+                            </table><br/>
+                            <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR,if(CMPL123CME__EU_MIR__c.CMPL123CME__IMDRF_Codes_Not_Used__c = True,'/checkbox2_yes.png','/checkbox2_no.png'))}"/><span>{!$Label.cmpl123cme__cmplt_other_enter_description_of_what_similar_incidents_are_based_on_and_the_r}</span><br/>
+                            <div class="fieldValue height30 width98Percent noTextOverflow">                            
+                                <apex:outputText value=" {!CMPL123CME__EU_MIR__c.CMPL123CME__Rationale_For_IMDRF_Codes_Not_Used__c}" rendered="{!CMPL123CME__EU_MIR__c.CMPL123CME__IMDRF_Codes_Not_Used__c}"/>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- 4.3.1 Use of IMDRF terms and codes for identifying similar incidents : ends here -->
+                
+                <!-- 4.3.2 Use of in-house terms/codes for identifying similar incidents (only for transition period): starts here -->
+                <tr class ="row section4Background">
+                    <td class="subHeading aligntd">{!$Label.CMPL123CME__CMPLT_4_3_2}</td>
+                    <td class="subHeading">{!$Label.CMPL123CME__CMPLT_USE_OF_IN_HOUSE_TERMS_CODES_FOR_IDENTIFYING_SIMILAR_INCIDENTS_ONLY_FOR_TR}</td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                    <td class="column whiteBackground" colspan="6">
+                        <div class="column whiteBackground" >{!$Label.CMPL123CME__CMPLT_IF_SIMILAR_INCIDENT_WERE_NOT_IDENTIFIED_BY_IMDRF_CODES_BUT_BY_IN_HOUSE_COD}<br/>
+                            <table cellspacing="0" border="1" align="center" style="border: solid 1px black;page-break-inside: avoid;">
+                                <tr class="row highlightBackground">
+                                    <td class="column" style="width:420px"></td>
+                                    <td class="column aligntd" style="width:120px;">{!$Label.CMPL123CME__CMPLT_CHOICE_1}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="column" rowspan="2"  style="width:30%">{!$Label.CMPL123CME__CMPLT_CODE_TERM_FOR_MOST_RELEVANT_MEDICAL_DEVICE_PROBLEM_PDF}</td>
+                                    <td>
+                                        <div class="column alignMiddle" style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_CODE_PDF}</div>
+                                        <div class="fieldValueOther rightAlign alignMiddle noTextOverflow" style="display:inline-block;width:87%">
+                                            {!codedSummary.imdrfCodeWrapperList[7].choice1}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="row">
+                                    <td>
+                                        <div class="column alignMiddle" style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_TERM}</div>
+                                        <div class="fieldValueOther rightAlign alignMiddle noTextOverflow" style="display:inline-block;width:87%">
+                                            {!codedSummary.imdrfCodeWrapperList[7].term} 
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="column" rowspan="2">{!$Label.CMPL123CME__CMPLT_CODE_TERM_FOR_MOST_RELEVANT_ROOT_CAUSE_EVALUATION_PDF}</td>
+                                    <td>
+                                        <div class="column alignMiddle" style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_CODE_PDF}</div>
+                                        <div class="fieldValueOther rightAlign alignMiddle noTextOverflow" style="display:inline-block;width:87%">
+                                            {!codedSummary.imdrfCodeWrapperList[8].choice1}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="row">
+                                    <td >
+                                        <div class="column alignMiddle" style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_TERM}</div>
+                                        <div class="fieldValueOther rightAlign alignMiddle noTextOverflow" style="display:inline-block;width:87%">
+                                            {!codedSummary.imdrfCodeWrapperList[8].term}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table><br/>
+                            <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR,if(CMPL123CME__EU_MIR__c.CMPL123CME__If_Others_Elaborate_Similar_Incidents__c = True,'/checkbox2_yes.png','/checkbox2_no.png'))}"/><span class="span">{!$Label.cmpl123cme__cmplt_other_enter_description_of_what_similar_not_above_imdrf}</span><br/>
+                            <div class="fieldValue height30 width98Percent noTextOverflow">                            
+                                <apex:outputText value=" {!CMPL123CME__EU_MIR__c.CMPL123CME__Rationale_For_In_House_Code_Not_Used__c}" rendered="{!CMPL123CME__EU_MIR__c.CMPL123CME__If_Others_Elaborate_Similar_Incidents__c}"/>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- 4.3.2 Use of in-house terms/codes for identifying similar incidents (only for transition period): ends here -->
+                
+                <!-- 4.3.3 Number of similar incidents and devices on the market: starts here -->
+                <tr class ="row section4Background">
+                    <td class="subHeading aligntd">{!$Label.CMPL123CME__CMPLT_4_3_3}</td>
+                    <td class="subHeading">{!$Label.CMPL123CME__CMPLT_NUMBER_OF_SIMILAR_INCIDENTS_AND_DEVICES_ON_THE_MARKET}</td>
+                </tr>
+                <tr class ="row">
+                    <td class ="column aligntd section4Background">{!$Label.CMPL123CME__CMPLT_A}</td>
+                    <td class="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_INDICATE_ON_WHICH_BASIS_SIMILAR_INCIDENTS_WERE_IDENTIFIED_REGARDING_THE_DE}<br/>
+                        <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__basis_of_identifying_similar_events__c')]}" var="pickList">
+                            <apex:image styleClass="pickListVerticalAlign" url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__Basis_Of_Identifying_Similar_Events__c),'/radio_yes.png','/radio_no.png'))}"/>  
+                            <span class="rightMargin30">
+                                <apex:outputText value="{!if(pickList.value == 'Other', OtherVariant, ' '+pickList.label+' ' )}"/>
+                            </span>
+                            <apex:outputText rendered="{!(pickList.value == 'Other')}">
+                                <div>{!$Label.cmpl123cme__cmplt_details_of_the_selection_made_above}</div>
+                                <div class="fieldValue width98Percent noTextOverflow" style="left-padding:4px;display:inline-block;"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Details_Of_The_Selection_Made_Above__c}"/></div>
+                            </apex:outputText>
+                        </apex:repeat>
+                    </td>
+                </tr> 
+                <tr class ="row">
+                    <td class="column aligntd section4Background">{!$Label.CMPL123CME__CMPLT_B}</td>
+                    <td class="column whiteBackground" colspan="2">{!$Label.CMPL123CME__CMPLT_INDICATE_WHAT_CRITERIA_THE_NUMBER_OF_DEVICES_ON_THE_MARKET_ALSO_KNOWN_AS}<br/>{!$Label.CMPL123CME__CMPLT_TICK_THE_MOST_APPROPRIATE}<br/>
+                        <apex:repeat value="{!fieldAPIAndPicklistMap[LOWER('CMPL123CME__what_identifies_no_of_devices_on_market__c')]}" var="pickList">
+                            <apex:image url="{!URLFOR($Resource.CMPL123CME__MDR, if((pickList.value == CMPL123CME__EU_MIR__c.CMPL123CME__What_Identifies_No_Of_Devices_On_Market__c),'/radio_yes.png','/radio_no.png'))}"/>  
+                            <span>
+                                <apex:outputText value="{!if(pickList.value == 'Other', OtherDescribe, ' '+pickList.label+' ' )}"/><br/>
+                            </span>
+                            <apex:outputText rendered="{!(pickList.value == 'Other')}">
+                                <div class="fieldValueOther width98Percent noTextOverflow" style="padding: 2px;display:inline-block;"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__If_Other_Describe_Criteria__c}"/></div>
+                            </apex:outputText>
+                        </apex:repeat>                    
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column aligntd section4Background">{!$Label.CMPL123CME__CMPLT_C}</td>
+                    <td class="column whiteBackground">{!$Label.CMPL123CME__CMPLT_ENTER_THE_NUMBER_OF_SIMILAR_INCIDENTS_AND_DEVICES_ON_THE_MARKET_FOR_THE_IN}<br/>
+                        {!$Label.CMPL123CME__CMPLT_YOU_MUST_USE_YEARLY_TIME_PERIODS_UNLESS}<br/>
+                        {!$Label.CMPL123CME__CMPLT_A_A_DIFFERENT_TIME_PERIOD_HAS_BEEN_SPECIFIED_BY_THE_EUROPEAN_VIGILANCE_WO}<br/>
+                        {!$Label.CMPL123CME__CMPLT_B_THE_DEVICE_HAS_NOT_BEEN_ON_THE_EUROPEAN_MARKET_FOR_MORE_THAN_THREE_YEAR}
+                        <table cellspacing="0" cellpading="5" border="1" align="center" class="tableLayoutFixed" style="border: solid 1px black;">
+                            <tr class="row" >
+                                <td class="column"></td>
+                                <td class="column aligntd" colspan="2">{!$Label.CMPL123CME__CMPLT_TIME_PERIOD_N}<br/>{!$Label.CMPL123CME__CMPLT_YEAR_TO_DATE_INCIDENT_YEAR}<br/>{!$Label.CMPL123CME__CMPLT_E_G_2012_10_23}</td>
+                                <td class="column aligntd" colspan="2">{!$Label.CMPL123CME__CMPLT_TIME_PERIOD_N_1}<br/>{!$Label.CMPL123CME__CMPLT_CALENDAR_YEAR_ONE_YEAR_BEFORE_INCIDENT}<br/>{!$Label.CMPL123CME__CMPLT_E_G_2012_10_23}</td>
+                                <td class="column aligntd" colspan="2">{!$Label.CMPL123CME__CMPLT_TIME_PERIOD_N_2}<br/>{!$Label.CMPL123CME__CMPLT_CALENDAR_YEAR_TWO_YEARS_BEFORE_INCIDENT}<br/>{!$Label.CMPL123CME__CMPLT_E_G_2012_10_23}</td>
+                                <td class="column aligntd" colspan="2">{!$Label.CMPL123CME__CMPLT_TIME_PERIOD_N_3}<br/>{!$Label.CMPL123CME__CMPLT_CALENDAR_YEAR_THREE_YEARS_BEFORE_INCIDENT}<br/>{!$Label.CMPL123CME__CMPLT_E_G_2012_10_23}</td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column" width="15%" >{!$Label.CMPL123CME__CMPLT_START_DATE_PDF}</td>
+                                <td class="column aligntd" colspan="2">
+                                    <div class="fieldValue">
+                                        <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                            <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_Start_Date__c}" />
+                                        </apex:outputText>  
+                                    </div> 
+                                </td>
+                                <td class="column aligntd" colspan="2">
+                                    <div class="fieldValue">
+                                        <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                            <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_1_Start_Date__c}" />
+                                        </apex:outputText>  
+                                    </div> 
+                                </td>  
+                                <td class="column aligntd" colspan="2">
+                                <div class="fieldValue">
+                                    <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                        <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_2_Start_Date__c}" />
+                                    </apex:outputText>  
+                                </div> 
+                                </td>  
+                                <td class="column aligntd" colspan="2">
+                                <div class="fieldValue">
+                                    <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                        <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_3_Start_Date__c}" />
+                                    </apex:outputText>
+                                </div> 
+                                </td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column" width="15%">{!$Label.cmpl123cme__cmplt_end_date_pdf}</td>
+                                <td class="column aligntd" colspan="2">
+                                    <div class="fieldValue">
+                                        <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                            <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_End_Date__c}" />
+                                        </apex:outputText>  
+                                    </div> 
+                                </td>
+                                <td class="column aligntd" colspan="2">
+                                    <div class="fieldValue">
+                                        <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                            <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_1_End_Date__c}" />
+                                        </apex:outputText>  
+                                    </div> 
+                                </td>  <td class="column aligntd" colspan="2">
+                                <div class="fieldValue">
+                                    <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                        <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_2_End_Date__c}" />
+                                    </apex:outputText>  
+                                </div> 
+                                </td>  <td class="column aligntd" colspan="2">
+                                <div class="fieldValue">
+                                    <apex:outputText value="{0,date, yyyy-MM-dd}" >
+                                        <apex:param value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_3_End_Date__c}" />
+                                    </apex:outputText>
+                                </div> 
+                                </td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column"></td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_NUMBER_OF_SIMILAR_INCIDENTS}</td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_NUMBER_OF_DEVICES_ON_MARKET}</td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_NUMBER_OF_SIMILAR_INCIDENTS}</td>
+                                <td class="column aligntd" >{!$Label.CMPL123CME__CMPLT_NUMBER_OF_DEVICES_ON_MARKET}</td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_NUMBER_OF_SIMILAR_INCIDENTS}</td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_NUMBER_OF_DEVICES_ON_MARKET}</td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_NUMBER_OF_SIMILAR_INCIDENTS}</td>
+                                <td class="column aligntd">{!$Label.CMPL123CME__CMPLT_NUMBER_OF_DEVICES_ON_MARKET}</td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column">{!$Label.CMPL123CME__CMPLT_COUNTRY_OF_INCIDENT}</td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_Incident_Country_N__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_Incident_Country_N__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_Incident_Country_N_1__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_Incident_Country_N_1__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_Incident_Country_N_2__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_Incident_Country_N_2__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_Incident_Country_N_3__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_Incident_Country_N_3__c)}</div></td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column">{!$Label.CMPL123CME__CMPLT_EEA_CH_TR}</td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_EEA_CH_TR_N__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_EEA_CH_TR_N__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_EEA_CH_TR_N_1__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_EEA_CH_TR_N_1__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_EEA_CH_TR_N_2__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_EEA_CH_TR_N_2__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_EEA_CH_TR_N_3__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_EEA_CH_TR_N_3__c)}</div></td>
+                            </tr>
+                            <tr class="row">
+                                <td class="column">{!$Label.CMPL123CME__CMPLT_WORLD}</td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_Rest_Of_The_World_N__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_The_World_N__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_The_World_N_1__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_The_World_N_1__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_The_World_N_2__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_The_World_N_2__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_The_World_N_3__c)}</div></td>
+                                <td class="column aligntd"><div class="fieldValue">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_The_World_N_3__c)}</div></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr class ="row" >
+                    <td class ="column aligntd section4Background"> {!$Label.CMPL123CME__CMPLT_D}</td>
+                    <td class ="column whiteBackground" colspan="6">{!$Label.CMPL123CME__CMPLT_COMMENTS_ON_HOW_SIMILAR_INCIDENTS_AND_ASSOCIATED_NUMBER_OF_DEVICES_ON_THE}<br/>
+                        <div class="fieldValue width98Percent noTextOverflow"><apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__How_Were_Incidents_Devices_Determined__c}"/> </div>   
+                    </td>
+                </tr>
+                <!-- 4.3.3 Number of similar incidents and devices on the market: ends here -->
+            </table> <br/>
+            
+            <!-- 4.3 Similar incidents (for Final (Reportable incident)) : ends here -->
+            
+            <!-- 5 General Comments: starts here -->
+            <div>
+            <table class="pageBreak" cellspacing="0" border="1">
+                <tr class="row">
+                    <td class="sectionHeader section5Background" colspan="6" >{!$Label.CMPL123CME__CMPLT_SECTION_5_GENERAL_COMMENTS}</td>
+                </tr>
+                <tr class="row">
+                    <td></td>
+                    <td class="column rightMargin">
+                        <div class="fieldValue noTextOverflow" style="min-height:140px;width:650px"><apex:outputField value="{!CMPL123CME__EU_MIR__c.CMPL123CME__General_Comments__c}"/> </div> 
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </div>
+        <!--- Coded Summary starts from here -->
+        <div class="pageBreakAlways" style="width: 98%;">
+            <table cellspacing="0" cellpadding="0" style="border-collapse: collapse;width:100%;margin:15px;">
+                <tr>
+                    <th class="leftMargin highlightBackground columnStyle" style="height: 50px;"></th>
+                    <th class="rightMargin highlightBackground columnStyle" style="height: 50px;" colspan="2">
+                        <span style="font-size: 25px;">{!$Label.CMPL123CME__CMPLT_CODED_SUMMARY_OF_REPORT_PDF}</span> 
+                        <span class="alignMiddle" style="font-size: 15px;">{!$Label.CMPL123CME__CMPLT_WILL_BE_AUTO_POPULATED_FROM_PREVIOUS_SELECTIONS}</span>
+                    </th>
+                </tr>
+                <tr>
+                    <td class="highlightBackground columnStyle height40"></td>
+                    <td class="columnStyle" colspan="2">
+                        <div class="labelDiv">
+                            {!$Label.CMPL123CME__CMPLT_MEDICAL_DEVICE_NAME_PDF}
+                        </div><br/>
+                        <div class="fieldValueOther width98Percent noTextOverflow">
+                            <apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Name__c}"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlightBackground columnStyle height20"></td>
+                    <td class="columnStyle height40">
+                        <div class="inlineDiv labelDiv" style="padding-right:30px;">
+                            {!$Label.CMPL123CME__CMPLT_BASIC_UDI_DI}
+                        </div> 
+                        <div class="fieldValueOther noTextOverflow leftPadding inlineDiv" style="width:150px;">{!CMPL123CME__EU_MIR__c.CMPL123CME__Basic_UDI_DI__c}</div>
+                    </td>
+                    <td class="columnStyle height40">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlightBackground columnStyle height20"></td>
+                    <td class="columnStyle height40">
+                        <div class="inlineDiv labelDiv width90" style="padding-right:20px;">
+                            {!$Label.CMPL123CME__CMPLT_UDI_DEVICE_IDENTIFIER_PDF}
+                        </div> 
+                        <div class="fieldValueOther noTextOverflow inlineDiv width150">{!CMPL123CME__EU_MIR__c.CMPL123CME__UDI_DI__c}</div>
+                    </td>
+                    <td class="columnStyle height40">
+                        <div class="inlineDiv labelDiv width120">
+                            {!$Label.CMPL123CME__CMPLT_UDI_PRODUCTION_IDENTIFIER_PDF}
+                        </div> 
+                        <div class="fieldValueOther noTextOverflow inlineDiv width150">{!CMPL123CME__EU_MIR__c.CMPL123CME__UDI_PI__c}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlightBackground columnStyle height80"></td>
+                    <td class="columnStyle height80" colspan="2">
+                        <div class="labelDiv">
+                            {!$Label.CMPL123CME__CMPLT_IMDRF_ADVERSE_EVENT_REPORTING_TERMS_AND_CODES_PDF}
+                        </div>
+                        <div class="labelDiv">
+                            {!$Label.CMPL123CME__CMPLT_IMDRF_INTERNATIONAL_MEDICAL_DEVICE_REGULATORS_FORUM_CODING_WITH_IMDRF_TER}
+                        </div> <br/>
+                        <table class="innermostTable" cellspacing="0" cellpadding="0">
+                            
+                            <!-- Variables for code type value check -->
+                            <apex:variable value="In-house medical device problem" var="InHouseMedicalDeviceProblem"/>
+                            <apex:variable value="In-house root cause evaluation" var="InHouseRootCauseEvaluation"/>
+                            <apex:variable value="IMDRF Cause investigation: Type of investigation" var="IMDRFCauseInvestigationTypeOfInvestigation"/>
+                            
+                            <apex:repeat value="{!codedSummary.imdrfCodeWrapperList}" var="imdrfCode">
+                                <apex:outputText rendered="{! imdrfCode.codeType <> InHouseMedicalDeviceProblem && imdrfCode.codeType <> InHouseRootCauseEvaluation}">
+                                <tr>
+                                    <td class="innermostTabletd columnStyle height40">
+                                        <div class="innermostTableTextStyle"> 
+                                            {!imdrfCode.codeType}
+                                        </div>
+                                    </td>
+                                    <td class="columnStyle height40">
+                                        <div class="innermostTableTextStyle fieldValueOther noTextOverflow" style="width:45px;">{!imdrfCode.choice1}</div>
+                                    </td>
+                                    <td class="columnStyle height40">
+                                        <div class="innermostTableTextStyle fieldValueOther noTextOverflow" style="width:45px;">{!imdrfCode.choice2}</div>
+                                    </td>
+                                    <td class="columnStyle height40">
+                                        <div class="innermostTableTextStyle fieldValueOther noTextOverflow" style="width:45px;">{!imdrfCode.choice3}</div>
+                                    </td>
+                                    <td class="columnStyle height40">
+                                        <div class="innermostTableTextStyle fieldValueOther noTextOverflow" style="width:45px;">{!imdrfCode.choice4}</div>
+                                    </td>
+                                    <td class="columnStyle height40">
+                                        <div class="innermostTableTextStyle fieldValueOther noTextOverflow" style="width:45px;">{!imdrfCode.choice5}</div>
+                                    </td >
+                                    <td class="columnStyle height40">
+                                        <div class="innermostTableTextStyle fieldValueOther noTextOverflow" style="width:45px;">{!imdrfCode.choice6}</div>
+                                    </td>
+                                    <td class="{!if(imdrfCode.codeType != IMDRFCauseInvestigationTypeOfInvestigation, 'hidetd', '')} columnStyle height40">
+                                        <div class="innermostTableTextStyle fieldValueOther noTextOverflow" style="width:45px;">{!imdrfCode.choice7}</div> 
+                                    </td>
+                                    <td class="{!if(imdrfCode.codeType != IMDRFCauseInvestigationTypeOfInvestigation, 'hidetd', '')} columnStyle height40">
+                                        <div class="innermostTableTextStyle fieldValueOther noTextOverflow" style="width:45px;">{!imdrfCode.choice8} </div>
+                                    </td>
+                                </tr>
+                                </apex:outputText>
+                            </apex:repeat>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="column" colspan="6">
+                        <p>
+                            {!$Label.cmpl123cme__cmplt_submission_of_this_report_does_not_represent_a_conclusion_by_the_manufactu}<br/><br/>
+                            {!$Label.cmpl123cme__cmplt_i_affirm_that_the_information_given_above_is_correct_to_the_best_of_my_kno}
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <div class="outerDiv">
+                {!$Label.cmpl123cme__cmplt_date}
+                <div class="fieldValue outerDivField leftPadding">
+                    <apex:outputText value="{0,date,yyyy-MM-dd'T'HH:mm:ss}">
+                        <apex:param value="{!CMPL123CME__EU_MIR__c.LastModifiedDate}" />
+                    </apex:outputText>
+                </div>
+            </div>
+        </div>
+    </body>
+</apex:page>

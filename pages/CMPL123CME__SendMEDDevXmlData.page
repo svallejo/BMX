@@ -53,7 +53,12 @@
         
         <apex:pageBlock title="{!$Label.cmpl123cme__cmplt_meddev_xml_validation}" id="pageBlock">
         <apex:pageBlockButtons >
-            <apex:commandButton value="{!$Label.cmpl123cme__cmplt_attach_pdf}" action="{!insertPDFAttachment}" reRender="pgMsgs" onmousemove="this.style.background='#8AB529';this.style.color='white'" onmouseout="this.style.background='white';this.style.color='black'" style="background: white;color: black;padding:6px;"/>
+            <apex:commandButton value="{!$Label.cmpl123cme__cmplt_attach_pdf7}" action="{!insertPDFAttachment}" reRender="pgMsgs" onmousemove="this.style.background='#8AB529';this.style.color='white'" onmouseout="this.style.background='white';this.style.color='black'" style="background: white;color: black;padding:6px;">
+                 <apex:param value="true" name="inpVal" assignTo="{!isPdfRev7Selected}"/>
+            </apex:commandButton> 
+            <apex:commandButton value="{!$Label.cmpl123cme__cmplt_attach_pdf}" action="{!insertPDFAttachment}" reRender="pgMsgs" onmousemove="this.style.background='#8AB529';this.style.color='white'" onmouseout="this.style.background='white';this.style.color='black'" style="background: white;color: black;padding:6px;">
+                 <apex:param value="false" name="inpVal" assignTo="{!isPdfRev7Selected}"/>
+            </apex:commandButton>
             <apex:commandButton action="{!insertXMLAttachment}" value="{!$Label.cmpl123cme__cmplt_attach_xml}" reRender="pgMsgs" rendered="{!if(errors != null && warnings != null && errors.size == 0,true,false)}"  onmousemove="this.style.background='#8AB529';this.style.color='white'" onmouseout="this.style.background='white';this.style.color='black'" style="background: white;color: black;padding:6px;"/>    
             <apex:commandButton value="{!$Label.cmpl123cme__cmplt_back_to_meddev}" onclick="backToRecord();return false;" onmousemove="this.style.background='#8AB529';this.style.color='white'" onmouseout="this.style.background='white';this.style.color='black'" style="background: white;color: black;padding:6px;"/>
         </apex:pageBlockButtons>

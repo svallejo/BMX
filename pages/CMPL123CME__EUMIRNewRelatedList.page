@@ -1,0 +1,16 @@
+<apex:page showHeader="true" sidebar="false" standardStylesheets="false" standardController="CMPL123CME__EU_MIR__c" recordSetVar="euMIRs">
+    
+    <apex:slds />
+    <apex:includeLightning />
+    <div id="lightning"/>
+    <script>
+    $Lightning.use("CMPL123CME:EUMIRNewAndEditApp", function () {
+        $Lightning.createComponent("CMPL123CME:EUMIRNewAndEdit",
+                                   {
+                                       parentId: '{!$CurrentPage.parameters.id}'
+                                   },
+                                   "lightning");
+    });
+    </script>
+    
+</apex:page>

@@ -11,7 +11,7 @@
 	<apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/css/loader.css')}"/>
 	<apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/css/mdc_affected_fields_table.css')}"/>
 	
-	<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+	<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/js/jquery-3.4.0.min.js')}"/>
 	<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/DataTable/js/datatable.js')}"/>
 	<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/mdc_namespace.js')}"/>
 	<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/mdc_utils.js')}"/>
@@ -58,7 +58,7 @@
 
 
 	var CURRENT_USER_ID = "{!$User.Id}";
-	var CURRENT_USER_NAME= "{!$User.FirstName} " + "{!$User.LastName}";
+	var CURRENT_USER_NAME= "{!JSINHTMLENCODE($User.FirstName)} " + "{!JSINHTMLENCODE($User.LastName)}";
 	var CURRENT_USER_CURRENCY = "{!userDefaultCurrency}";
 	var CURRENT_USER_SALESFORCE_TIMEZONE_OFFSET = {!timeZoneOffset};
 	var ASSIGNMENT_TYPE_USER_FIELD = "User Field";
@@ -304,7 +304,7 @@
 									dataItem: userFieldName,
 									dataItemLabel: descriptor.getFieldLabelWithoutID(userFieldName),
 									type: "field",
-									typeLabel: "{!$Label.MDC_USER_FIELD}"
+									typeLabel: "{!JSENCODE($Label.MDC_USER_FIELD)}"
 								});  
 							}
 						}
@@ -421,7 +421,7 @@
 									dataItem: acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_PUBLIC_GROUP],
 									dataItemLabel: acknowledgementEntry[mdc.fields.ACKNOWLEDGEMENT_ENTRY_PUBLIC_GROUP],
 									type: "group",
-									typeLabel: "{!$Label.MDC_PUBLIC_GROUP}"
+									typeLabel: "{!JSENCODE($Label.MDC_PUBLIC_GROUP)}"
 								});
 		        			}
 		        		}
@@ -513,7 +513,7 @@
 							dataItem: CURRENT_USER_NAME,
 							dataItemLabel: CURRENT_USER_NAME,
 							type: "individual",
-							typeLabel: "{!$Label.MDC_DIRECT_ASSIGNMENT}"
+							typeLabel: "{!JSINHTMLENCODE($Label.MDC_DIRECT_ASSIGNMENT)}"
 						});
 					}
 				}
@@ -777,7 +777,7 @@
 					checkbox
 						.attr("checked", null)
 						.attr("disabled", "disabled")
-						.attr("title", "{!$Label.MDC_PLEASE_SELECT_ACKNOWLEDGEMENT_TYPE}");
+						.attr("title", "{!JSINHTMLENCODE($Label.MDC_PLEASE_SELECT_ACKNOWLEDGEMENT_TYPE)}");
 				}
 				else {
 					checkbox.attr("disabled", null)
@@ -837,7 +837,7 @@
 		acknowledgementTypeSelect
 			.appendTo(acknowledgementTypeCell)
 			.prepend($("<option></option>")
-				.html("--{!$Label.MDC_SELECT}--")
+				.html("--{!JSINHTMLENCODE($Label.MDC_SELECT)}--")
 				.data("acknowledgementDataIndex", -1)
 				.val("none")
 				.prop("selected", true));
@@ -919,15 +919,15 @@
 					.append($("<th></th>")
 						.addClass("affectedFieldsHistoryTableHead affectedFieldsHistoryTableHeading")
 						.css({whiteSpace: "nowrap"})
-						.text("{!$Label.MDC_FIELD_NAME}"))
+						.text("{!JSINHTMLENCODE($Label.MDC_FIELD_NAME)}"))
 					.append($("<th></th>")
 						.addClass("affectedFieldsHistoryTableHead affectedFieldsHistoryTableHeading")
 						.css({whiteSpace: "nowrap"})
-						.text("{!$Label.MDC_OLD_VALUE}"))
+						.text("{!JSINHTMLENCODE($Label.MDC_OLD_VALUE)}"))
 					.append($("<th></th>")
 						.addClass("affectedFieldsHistoryTableHead affectedFieldsHistoryTableHeading")
 						.css({whiteSpace: "nowrap"})
-						.text("{!$Label.MDC_NEW_VALUE}"))));
+						.text("{!JSINHTMLENCODE($Label.MDC_NEW_VALUE)}"))));
 
 
 		var affectedFields = this.__getAffectedFields(ticketData);
@@ -1070,7 +1070,7 @@
 			}
 			else {
 				relatedRecordCellContent = $("<span></span>")
-					.html("<i>{!$Label.MDC_RECORD_NOT_FOUND}</i>");
+					.html("<i>{!JSINHTMLENCODE($Label.MDC_RECORD_NOT_FOUND)}</i>");
 			}
 		
 			var tableRow = $("<tr></tr>")
@@ -1127,7 +1127,7 @@
 					
 			if (!enabled) {
 				input.attr("disabled", "disabled")
-					.attr("title", "{!$Label.MDC_PLEASE_SELECT_ACKNOWLEDGEMENT_TYPE}");
+					.attr("title", "{!JSINHTMLENCODE($Label.MDC_PLEASE_SELECT_ACKNOWLEDGEMENT_TYPE)}");
 			}
 			
 			tableBody.append(tableRow);
@@ -1167,16 +1167,16 @@
 			})
 			.append($("<option></option>")
 				.attr("value", "all")
-				.html("{!$Label.MDC_ALL}"))
+				.html("{!JSINHTMLENCODE($Label.MDC_ALL)}"))
 			.append($("<option></option>")
 				.attr("value", "individual")
-				.html("{!$Label.MDC_DIRECT_ASSIGNMENT}"))
+				.html("{!JSINHTMLENCODE($Label.MDC_DIRECT_ASSIGNMENT)}"))
 			.append($("<option></option>")
 				.attr("value", "group")
-				.html("{!$Label.MDC_PUBLIC_GROUP}"))
+				.html("{!JSINHTMLENCODE($Label.MDC_PUBLIC_GROUP)}"))
 			.append($("<option></option>")
 				.attr("value", "field")
-				.html("{!$Label.MDC_USER_FIELD}"))
+				.html("{!JSINHTMLENCODE($Label.MDC_USER_FIELD)}"))
 			.val(this.__ackTypeFilter);
 		 
 		this.__targetObjectFilterDropDown = $("<select></select>")
@@ -1191,7 +1191,7 @@
 			})
 			.append($("<option></option>")
 				.attr("value", "all")
-				.html("{!$Label.MDC_ALL}"));
+				.html("{!JSINHTMLENCODE($Label.MDC_ALL)}"));
 			
 		var targetObjectFilters = {};
 		for (var i = 0; i < this.__ticketTableData.length; i++) {
@@ -1221,7 +1221,7 @@
 						fontWeight: "bold",
 						paddingLeft: "3px"
 					})
-					.html("{!$Label.MDC_FILTERS}")
+					.html("{!JSINHTMLENCODE($Label.MDC_FILTERS)}")
 					.attr("colspan", "2")))
 			.append($("<tr></tr>")
 				.append($("<td></td>")
@@ -1233,7 +1233,7 @@
 							paddingBottom: "5px",
 							lineHeight: "112%" // without this Japanese in the UI is not aligned
 						})
-						.html("{!$Label.MDC_ACKNOWLEDGEMENT_TYPE}"))
+						.html("{!JSINHTMLENCODE($Label.MDC_ACKNOWLEDGEMENT_TYPE)}"))
 					.append(this.__acknowledgementTypeFilterDropDown)
 					)
 				.append($("<td></td>")
@@ -1246,7 +1246,7 @@
 							paddingBottom: "5px",
 							lineHeight: "112%" // without this Japanese in the UI is not aligned
 						})
-						.html("{!$Label.MDC_RELATED_TO}"))
+						.html("{!JSINHTMLENCODE($Label.MDC_RELATED_TO)}"))
 					.append(this.__targetObjectFilterDropDown)));
 			
 		$("#filterContainer")
@@ -1299,7 +1299,7 @@
 	
 	// Modify styles of the Ticket Dashboard table
 	mdc.UserTickets.prototype.__styleTable = function() {
-		$("tr not(.affectedFieldsDisplayRow), tr > td", this.__ticketDashboardTableBase).css({
+		$("tr:not(.affectedFieldsDisplayRow), tr > td", this.__ticketDashboardTableBase).css({
 			background: TABLE_BACKGROUND_COLOR
 		});
 		
@@ -1307,7 +1307,7 @@
 			background: TABLE_BACKGROUND_COLOR
 		});
 		
-		$("td not(.affectedFieldsDisplayRow > td)", this.__ticketDashboardTableBase).css({
+		$("td:not(.affectedFieldsDisplayRow > td)", this.__ticketDashboardTableBase).css({
 			border: "1px solid " + TABLE_BACKGROUND_COLOR,
 		});
 		
@@ -1335,11 +1335,11 @@
 		if (this.__getCountOfEnabledCheckBoxes() > 0) {
 			selectAllCheckBox
 				.removeAttr("title")
-				.removeProp("disabled");
+				.prop("disabled", false);
 		}
 		else {
 			selectAllCheckBox
-				.attr("title", "{!$Label.MDC_PLEASE_SELECT_AT_LEAST_ONE_ACKNOWLEDGEMENT_TYPE}")
+				.attr("title", "{!JSINHTMLENCODE($Label.MDC_PLEASE_SELECT_AT_LEAST_ONE_ACKNOWLEDGEMENT_TYPE)}")
 				.prop("disabled", true);
 		}
 		
@@ -1371,7 +1371,7 @@
 
 		var selectAllCheckBox = $("<input></input>")
 			.attr("id", "selectAllCheckBox")
-			.attr("disabled", "disabled")
+			.attr("enabled", "enabled")
 			.attr("type", "checkbox")
 			.change(function(){
 				
@@ -1385,7 +1385,7 @@
 					enabledCheckBoxes.prop("checked", true);
 				}
 				else {
-					enabledCheckBoxes.removeProp("checked");
+					enabledCheckBoxes.prop("checked", false);
 				}				
 			});
 		
@@ -1407,22 +1407,22 @@
 
 					.append($("<th></th>")
 						.css({maxWidth: "80px", textAlign: "center"})
-						.html("{!$Label.MDC_TICKET_NUMBER}"))
+						.html("{!JSINHTMLENCODE($Label.MDC_TICKET_NUMBER)}"))
 					.append($("<th></th>")
-						.html("{!$Label.MDC_ACKNOWLEDGEMENT_TYPE}"))
+						.html("{!JSINHTMLENCODE($Label.MDC_ACKNOWLEDGEMENT_TYPE)}"))
 					.append($("<th></th>")
-						.html("{!$Label.MDC_RELATED_TO}"))
+						.html("{!JSINHTMLENCODE($Label.MDC_RELATED_TO)}"))
 					.append($("<th></th>")
-						.html("{!$Label.MDC_RELATED_RECORD}"))
+						.html("{!JSINHTMLENCODE($Label.MDC_RELATED_RECORD)}"))
 					.append($("<th></th>")
-						.html("{!$Label.MDC_RECORD_DETAIL}"))
+						.html("{!JSINHTMLENCODE($Label.MDC_RECORD_DETAIL)}"))
 					.append($("<th></th>")
-						.html("{!$Label.MDC_MDC_TRIGGER}"))
+						.html("{!JSINHTMLENCODE($Label.MDC_MDC_TRIGGER)}"))
 					.append($("<th></th>")
-						.html("{!$Label.MDC_AFFECTED_FIELDS}"))
+						.html("{!JSINHTMLENCODE($Label.MDC_AFFECTED_FIELDS)}"))
 					.append($("<th></th>")
 						.css({maxWidth: "80px", textAlign: "center", whiteSpace: "normal"})
-						.html("{!$Label.MDC_VIEW_HISTORY}"))))
+						.html("{!JSINHTMLENCODE($Label.MDC_VIEW_HISTORY)}"))))
 			.append(tableBody);
 					
 					
@@ -1436,12 +1436,12 @@
 			    },
 				// change empty table text to standard Salesforce message
 				oLanguage: {
-					sEmptyTable: "{!$Label.MDC_NO_RECORDS_TO_DISPLAY}",
-					sZeroRecords: "{!$Label.MDC_NO_MATCHING_RECORDS_FOUND}",
-					sInfo: "{!$Label.MDC_SHOWING_START_TO_END}",
-					sInfoEmpty: "{!$Label.MDC_SHOWING_0_TO_0}",
-					sInfoFiltered : "({!$Label.MDC_FILTERED_FROM_TOTAL_ENTRIES})",
-					sSearch: "{!$Label.MDC_SEARCH}" + ":",
+					sEmptyTable: "{!JSINHTMLENCODE($Label.MDC_NO_RECORDS_TO_DISPLAY)}",
+					sZeroRecords: "{!JSINHTMLENCODE($Label.MDC_NO_MATCHING_RECORDS_FOUND)}",
+					sInfo: "{!JSINHTMLENCODE($Label.MDC_SHOWING_START_TO_END)}",
+					sInfoEmpty: "{!JSINHTMLENCODE($Label.MDC_SHOWING_0_TO_0)}",
+					sInfoFiltered : "({!JSINHTMLENCODE($Label.MDC_FILTERED_FROM_TOTAL_ENTRIES)})",
+					sSearch: "{!JSINHTMLENCODE($Label.MDC_SEARCH)}" + ":",
 					oPaginate: {
 						sNext: "&gt;",
 						sPrevious: "&lt;"
@@ -1532,14 +1532,14 @@
 		if ($(".ticketcheckbox:checkbox:checked").length === 0) {
 		
 			$("<div></div>")._123Popup({
-				title: "{!$Label.MDC_ACKNOWLEDGEMENTS}",
+				title: "{!JSINHTMLENCODE($Label.MDC_ACKNOWLEDGEMENTS)}",
 				buttons: "ok",
-				okButtonLabel: "{!$Label.MDC_OK}",
+				okButtonLabel: "{!JSINHTMLENCODE($Label.MDC_OK)}",
 				width: 300,
 				height: 150
 			})
 			.message({
-				messageText: "{!$Label.MDC_PLEASE_SELECT_TICKETS}"
+				messageText: "{!JSINHTMLENCODE($Label.MDC_PLEASE_SELECT_TICKETS)}"
 			});
 			
 			return false;
@@ -1561,13 +1561,13 @@
 		var __this = this;
 
 		$("<div></div>")._123Popup({
-			title: "{!$Label.MDC_ACKNOWLEDGE_WITH_COMMENTS}",
+			title: "{!JSINHTMLENCODE($Label.MDC_ACKNOWLEDGE_WITH_COMMENTS)}",
 			buttons: "okCancel",
-			okButtonLabel: "{!$Label.cmpl123__mdc_acknowledge}",
-			cancelButtonLabel: "{!$Label.MDC_CANCEL}",
+			okButtonLabel: "{!JSINHTMLENCODE($Label.CMPL123__mdc_acknowledge)}",
+			cancelButtonLabel: "{!JSINHTMLENCODE($Label.MDC_CANCEL)}",
 			onOk: function(commentText, popup) {
 				if (commentText.trim().length === 0) {
-					popup.setError("{!$Label.MDC_PLEASE_ENTER_A_COMMENT}");
+					popup.setError("{!JSINHTMLENCODE($Label.MDC_PLEASE_ENTER_A_COMMENT)}");
 					return false;
 				}
 				__this.onAcknowledgementButtonClicked(commentText)
@@ -1575,7 +1575,7 @@
 			} 
 		})
 		.textAreaInput({
-			intro: "{!$Label.MDC_PLEASE_ENTER_YOUR_COMMENT}",
+			intro: "{!JSINHTMLENCODE($Label.MDC_PLEASE_ENTER_YOUR_COMMENT)}",
 			maxLength: 500
 		});
 
@@ -1613,11 +1613,19 @@
 		var ticketAcknowledgementData = this.__formatTicketAcknowledgementData(commentText);
 
 		var acknowledgementCount = this.__getCheckedRows().length;
+		var acknowledgementMessage = "";
+		if(acknowledgementCount > 1){
+			acknowledgementMessage = "{!JSINHTMLENCODE($Label.MDC_ACKNOWLEDGING_TICKETS)}".replace("_N_", acknowledgementCount);
+		}
+		else{
+			acknowledgementMessage = "{!JSINHTMLENCODE($Label.MDC_ACKNOWLEDGING_TICKET)}";
+		}
+		acknowledgementMessage += "<br />{!JSINHTMLENCODE($Label.PLEASE_WAIT)}";
 
 		AcknowledgementPopup
-			.setTitle("{!$Label.MDC_ACKNOWLEDGE_TICKETS}")
+			.setTitle("{!JSINHTMLENCODE($Label.MDC_ACKNOWLEDGE_TICKETS)}")
 			.waiter({
-				waitText: (acknowledgementCount > 1) ? "{!$Label.MDC_ACKNOWLEDGING_TICKETS}".replace("_N_", acknowledgementCount) : "{!$Label.MDC_ACKNOWLEDGING_TICKET}"
+				waitText: acknowledgementMessage
 			});
 
 
@@ -1672,10 +1680,10 @@
 	
 		var resultDisplayMessage = "";
 		if (successCount === 1) {
-			resultDisplayMessage = "{!$Label.MDC_SINGLE_ACKNOWLEDGEMENT_SUCCESS_MESSAGE}";
+			resultDisplayMessage = "{!JSINHTMLENCODE($Label.MDC_SINGLE_ACKNOWLEDGEMENT_SUCCESS_MESSAGE)}";
 		}
 		else {
-			resultDisplayMessage = "{!$Label.MDC_MULTIPLE_ACKNOWLEDGEMENT_SUCCESS_MESSAGE}"
+			resultDisplayMessage = "{!JSINHTMLENCODE($Label.MDC_MULTIPLE_ACKNOWLEDGEMENT_SUCCESS_MESSAGE)}"
 				.replace("_N_", successCount)
 				.replace("_TOTAL_", acknowledgementResults.length);
 		}
@@ -1711,7 +1719,7 @@
 					.append(": "))
 				.append($("<span></span>")
 					.css({color: (error ? "red" : "green")})
-					.text(error ? (acknowledgementResult.error) : "{!$Label.MDC_ACKNOWLEDGED}")));
+					.text(error ? (acknowledgementResult.error) : "{!JSINHTMLENCODE($Label.MDC_ACKNOWLEDGED)}")));
 		}
 		
 		return resultDisplayList.html();
@@ -1727,9 +1735,9 @@
 		var acknowledgedCount = this.__purgeAcknowledgedTickets(acknowledgementResults);
 		
 		$("<div></div>")._123Popup({
-			title: "{!$Label.MDC_ACKNOWLEDGEMENTS}",
+			title: "{!JSINHTMLENCODE($Label.MDC_ACKNOWLEDGEMENTS)}",
 			buttons: "ok",
-			okButtonLabel: "{!$Label.MDC_OK}",
+			okButtonLabel: "{!JSINHTMLENCODE($Label.MDC_OK)}",
 			width: 300,
 			height: 240		
 		})
@@ -1742,11 +1750,11 @@
 	
 	mdc.UserTickets.prototype.__displayError = function(error) {
 		PopupWindow
-			.setTitle("{!$Label.cmpl123__mdc_ticket_dashboard}")
+			.setTitle("{!JSINHTMLENCODE($Label.CMPL123__mdc_ticket_dashboard)}")
 			.setButtons("ok")
-			.setOkButtonLabel("{!$Label.MDC_OK}")
+			.setOkButtonLabel("{!JSINHTMLENCODE($Label.MDC_OK)}")
 			.message({
-				messageText: "{!$Label.MDC_ERROR_LOADING_DASHBOARD}" + ": " + error
+				messageText: "{!JSINHTMLENCODE($Label.MDC_ERROR_LOADING_DASHBOARD)}" + ": " + error
 			});
 		console.info(error + ": " + error.stack);
 	
@@ -1763,7 +1771,7 @@
         sforce.connection.init("{!$Api.Session_ID}", "{!$Api.Partner_Server_URL_230}");
     }
     catch (error) {
-        alert("{!$Label.MDC_CONNECTION_TO_SALESFORCE_FAILED}" + ": " + error);
+        alert("{!JSINHTMLENCODE($Label.MDC_CONNECTION_TO_SALESFORCE_FAILED)}" + ": " + error);
     }
 
 	// show a waiter and start loading the Dashboard by calling load();
@@ -1772,9 +1780,9 @@
 		Visualforce.remoting.timeout = 120000; 
 	
 		PopupWindow
-			.setTitle("{!$Label.cmpl123__mdc_ticket_dashboard}")
+			.setTitle("{!JSINHTMLENCODE($Label.CMPL123__mdc_ticket_dashboard)}")
 			.waiter({
-				waitText: "{!$Label.MDC_LOADING_TICKET_DASHBOARD}"
+				waitText: "{!JSINHTMLENCODE($Label.MDC_LOADING_TICKET_DASHBOARD)}<br />{!JSINHTMLENCODE($Label.PLEASE_WAIT)}"
 			});
 		
 		setTimeout(function(){

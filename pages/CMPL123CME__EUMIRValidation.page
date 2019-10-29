@@ -1,0 +1,20 @@
+<apex:page showHeader="true" sidebar="false" standardStylesheets="false" StandardController="CMPL123CME__EU_MIR__c">
+    <apex:includeLightning />
+    
+    <div id="euMIRValidation" />
+
+    <script>
+        var recordId = '{!JSENCODE(CMPL123CME__EU_MIR__c.Id)}';
+        var uiThemeDisplayed = '{!JSENCODE($User.UIThemeDisplayed)}';
+
+        $Lightning.use("CMPL123CME:EUMIRValidationApp", function() {
+          $Lightning.createComponent("CMPL123CME:EUMIRValidation",
+              {
+                  "recordId" : recordId,
+                   "userExperienceTheme": uiThemeDisplayed
+              },
+              "euMIRValidation"
+          );
+        });
+    </script>
+</apex:page>

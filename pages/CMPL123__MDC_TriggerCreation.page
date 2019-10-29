@@ -24,11 +24,10 @@
     <!-- END Custom Style Def Block -->
 
     <!-- Enable Lightning if we are in LEX -->
-    <apex:form rendered="{!isLEX}">
-        <apex:includeLightning />
-    </apex:form>
-
     <apex:form id="fm" >
+        <apex:outputPanel rendered="{!isLEX}">
+            <apex:includeLightning />
+        </apex:outputPanel>
 
         <!-- START VF Action Function Def Block -->
         <apex:actionFunction name="deleteOneFieldMappingRow" action="{!deleteOneFieldMappingRow}" rerender="fieldMConditionsTable">
@@ -104,7 +103,7 @@
 
                         <apex:outputPanel styleClass="requiredInput" layout="block">
                             <apex:outputPanel styleClass="requiredBlock" layout="block" />
-                            <apex:inputText value="{!MDCRule.Name}"  html-placeholder="{!getPlaceholderEnterName}"  />
+                            <apex:inputField value="{!MDCRule.Name}"  html-placeholder="{!getPlaceholderEnterName}"  />
                         </apex:outputPanel>
                     </apex:pageBlockSectionItem>
                     <!-- END `Name` Text Input -->
@@ -137,7 +136,7 @@
 
                         <apex:outputPanel styleClass="requiredInput" layout="block" >
                             <apex:outputPanel styleClass="requiredBlock" layout="block" />
-                            <apex:inputTextarea value="{!MDCRule.CMPL123__Description__c}" rows="3" cols="50"  html-placeholder="{!getPlaceholderEnterDescription}"  />
+                            <apex:inputField value="{!MDCRule.CMPL123__Description__c}" style="width: 360px; height: 40px"  html-placeholder="{!getPlaceholderEnterDescription}"  />
                         </apex:outputPanel>
 
                     </apex:pageBlockSectionItem>
@@ -319,7 +318,7 @@
                         <!-- Textbox -->
                         <apex:outputPanel styleClass="requiredInput" layout="block"   >
                             <apex:outputPanel styleClass="requiredBlock" layout="block" />
-                            <apex:inputText value="{!MDCRule.CMPL123__Logic__c}" html-placeholder="{!getPlaceholderEnterConditionalLogic}" style="width: 360px; height: 20px" />
+                            <apex:inputField value="{!MDCRule.CMPL123__Logic__c}" html-placeholder="{!getPlaceholderEnterConditionalLogic}" style="width: 360px; height: 20px" />
                         </apex:outputPanel>
 
                     </apex:pageBlockSectionItem>

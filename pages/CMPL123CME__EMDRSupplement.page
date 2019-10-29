@@ -3,8 +3,19 @@
     
         window.onload = function loadFunction(){
             var id = getParameterByName('id');
-            if(id != '' && id != null && (id.length == 15 || id.length == 18))
-                executeOnLoad();
+            if(id != '' && id != null && (id.length == 15 || id.length == 18)){
+                var supplementalEmdrCount = '{!supplementalEmdrCount}';
+                if(supplementalEmdrCount > 0){
+                    if(confirm("{!JSENCODE($Label.cmpl123cme__cmplt_supplemental_emdr_record_creation_message)}")){
+                        executeOnLoad();    
+                    }
+                    else{
+                        redirectToMDR(id);    
+                    }
+                }else{
+                    executeOnLoad();
+                }
+            }
         }   
         
         function getParameterByName(name) {

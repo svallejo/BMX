@@ -1,0 +1,70 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" lightningStyleSheets="true" controller="CMPL123.UserDetailController">
+
+    <apex:slds />
+    <div class="slds-scope">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-table">
+                <header class="slds-modal__header">
+                    <h2 id="detail-header" class="slds-text-heading_small slds-hyphenate">
+                        <b>{!HTMLENCODE($Label.PERSON_DETAILS)}</b>
+                    </h2>
+                    <b>{!userRecord.Name}</b>
+                </header>
+                <div class="slds-p-around_medium" id="modal-content-id-1">
+                    <p> <b>{!HTMLENCODE($Label.PROFILE)}</b>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_1-of-2">
+                                <span>
+                                    <dl class="slds-list_horizontal slds-wrap">
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="record id"> {!HTMLENCODE($Label.RECORD_ID)}</dt>
+                                        <dd class="slds-item_detail slds-truncate" title="{!userRecord.Id}">{!userRecord.Id}</dd>
+                                    </dl> 
+                                    <apex:repeat var="field" value="{!userFields}" first="0" rows="4">
+                                        <dl class="slds-list_horizontal slds-wrap">
+                                            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="record id"> {!field.label}</dt>
+                                            <dd class="slds-item_detail slds-truncate" title="{!field.value}">{!field.value}</dd>
+                                        </dl>
+                                    </apex:repeat>
+                                </span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <span>
+                                    <apex:repeat var="field" value="{!userFields}" first="4" rows="5">
+                                        <dl class="slds-list_horizontal slds-wrap">
+                                            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="record id"> {!field.label}</dt>
+                                            <dd class="slds-item_detail slds-truncate" title="{!field.value}">{!field.value}</dd>
+                                        </dl>
+                                    </apex:repeat>
+                                </span>
+                            </div>
+                        </div>
+                    </p>
+                    <p class="slds-p-top_x-small">  <b>  {!HTMLENCODE($Label.cmpl123__contact_details)}</b>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_1-of-2">
+                                <span>
+                                    <apex:repeat var="field" value="{!userFields}" first="9" rows="5">
+                                        <dl class="slds-list_horizontal slds-wrap">
+                                            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="record id"> {!field.label}</dt>
+                                            <dd class="slds-item_detail slds-truncate" title="{!field.value}">{!field.value}</dd>
+                                        </dl>
+                                    </apex:repeat>
+                                </span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <span>
+                                    <apex:repeat var="field" value="{!userFields}" first="14" rows="5">
+                                        <dl class="slds-list_horizontal slds-wrap">
+                                            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="record id"> {!field.label}</dt>
+                                            <dd class="slds-item_detail slds-truncate" title="{!field.value}">{!field.value}</dd>
+                                        </dl>
+                                    </apex:repeat>
+                                </span>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</apex:page>

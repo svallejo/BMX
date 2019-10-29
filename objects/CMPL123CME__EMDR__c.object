@@ -1764,6 +1764,21 @@
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
+        <displayedFields>
+            <field>CMPL123CME__Is_VMSR__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CMPL123CME__Consolidate_As_VMSR__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CMPL123CME__VMSR__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
         <label>GENERAL INFORMATION</label>
     </fieldSets>
     <fieldSets>
@@ -16121,6 +16136,21 @@
         </displayedFields>
         <label>Suplemental EMDR</label>
     </fieldSets>
+    <fieldSets>
+        <fullName>CMPL123CME__RELATED_EMDR_RL_FS</fullName>
+        <description>In EMDR detail page</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CreatedDate</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Related EMDR</label>
+    </fieldSets>
     <listViews>
         <fullName>CMPL123CME__All</fullName>
         <columns>NAME</columns>
@@ -16137,6 +16167,21 @@
         <fullName>CMPL123CME__All1</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>CMPL123CME__VMSR</fullName>
+        <booleanFilter>1</booleanFilter>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__Is_VMSR__c</field>
+            <operation>equals</operation>
+            <value>VMSR</value>
+        </filters>
+        <label>VMSR</label>
+        <language>en_US</language>
     </listViews>
     <recordTypes>
         <fullName>CMPL123CME__Initial</fullName>
@@ -17613,6 +17658,17 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>CMPL123CME__Consolidate_As_VMSR__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>CMPL123CME__D10_Date_Returned_to_Mfg_Null__c</picklist>
             <values>
                 <fullName>ASKU</fullName>
@@ -19009,6 +19065,17 @@
             </values>
             <values>
                 <fullName>Reuse</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CMPL123CME__Is_VMSR__c</picklist>
+            <values>
+                <fullName>NONE</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>VMSR</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -20528,6 +20595,17 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>CMPL123CME__Consolidate_As_VMSR__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>CMPL123CME__D10_Date_Returned_to_Mfg_Null__c</picklist>
             <values>
                 <fullName>ASKU</fullName>
@@ -21924,6 +22002,17 @@
             </values>
             <values>
                 <fullName>Reuse</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CMPL123CME__Is_VMSR__c</picklist>
+            <values>
+                <fullName>NONE</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>VMSR</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -23443,6 +23532,17 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>CMPL123CME__Consolidate_As_VMSR__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>CMPL123CME__D10_Date_Returned_to_Mfg_Null__c</picklist>
             <values>
                 <fullName>ASKU</fullName>
@@ -24839,6 +24939,17 @@
             </values>
             <values>
                 <fullName>Reuse</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CMPL123CME__Is_VMSR__c</picklist>
+            <values>
+                <fullName>NONE</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>VMSR</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -26359,6 +26470,17 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>CMPL123CME__Consolidate_As_VMSR__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>CMPL123CME__D10_Date_Returned_to_Mfg_Null__c</picklist>
             <values>
                 <fullName>ASKU</fullName>
@@ -27755,6 +27877,17 @@
             </values>
             <values>
                 <fullName>Reuse</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CMPL123CME__Is_VMSR__c</picklist>
+            <values>
+                <fullName>NONE</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>VMSR</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

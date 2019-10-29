@@ -1,12 +1,20 @@
-<apex:page controller="CMPL123CME.OauthRedirectController" action="{!pageCallInit}" showHeader="false" showChat="false" sidebar="false">
+<apex:page controller="CMPL123CME.OauthRedirectController" showHeader="false" showChat="false" sidebar="false">
 
-<apex:form rendered="{!showMessage}">
-    <apex:pageBlock >
-    <apex:pageMessages ></apex:pageMessages>
-    <div align="center" draggable="false" >
-        <apex:commandButton onclick="parent.window.close();" value="Close" />
-    </div>
-     
+<script>
+    document.addEventListener('readystatechange', event => {
+          if (event.target.readyState === "complete") {
+              doInit();
+          }
+    });
+</script>
+
+<apex:form id="reload">
+	<apex:actionFunction name="doInit" action="{!pageCallInit}" rerender="reload"/>
+    <apex:pageBlock rendered="{!showMessage}">
+	    <apex:pageMessages ></apex:pageMessages>
+	    <div align="center" draggable="false" >
+	        <apex:commandButton onclick="parent.window.close();" value="Close" />
+	    </div>
     </apex:pageBlock>
 </apex:form>
 </apex:page>

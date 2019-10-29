@@ -1,0 +1,19 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false">
+    <apex:includeLightning />
+    
+    <script>
+    var recordJSON = {};
+    recordJSON.recordId = '{!JSENCODE($CurrentPage.parameters.recId)}';
+    
+    $Lightning.use("CMPL123CME:MIRReportSummaryApp", function() { 
+                                                              
+        $Lightning.createComponent(
+            "CMPL123CME:MIRReportSummaryComponent",
+            recordJSON,
+            "reportSummaryComponentDiv"
+        );
+    });
+    </script>
+    
+    <div id="reportSummaryComponentDiv"/>
+</apex:page>

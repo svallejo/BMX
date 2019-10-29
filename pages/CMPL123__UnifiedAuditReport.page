@@ -1,0 +1,18 @@
+<apex:page sidebar="false"  showHeader="false" readOnly="true" standardStylesheets="false">
+
+    <apex:includeLightning />
+    <div id="lightning"/>
+    <script>
+
+        $Lightning.use("CMPL123:UnifiedAuditReportApp", function () {
+
+            $Lightning.createComponent("CMPL123:UnifiedAuditReport", {'recordId': '{!JSENCODE($CurrentPage.parameters.id)}'}, "lightning", function (cmp) {
+
+
+            });
+        });
+    </script>
+
+
+
+</apex:page>

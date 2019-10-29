@@ -1,0 +1,22 @@
+<apex:page sidebar="false" showHeader="true" lightningStylesheets="true" standardStylesheets="false">    
+   
+   <apex:includeLightning />
+
+   <script>
+        var uITheme = '{!JSENCODE($User.UIThemeDisplayed)}';
+        $Lightning.use("CMPL123:LockRelatedListApp", 
+           function() {
+               $Lightning.createComponent("CMPL123:LockRelatedList", { 
+                   "parentId" : '{!JSENCODE($CurrentPage.parameters.parentId)}',
+                   "objectName" : '{!JSENCODE($CurrentPage.parameters.objectType)}',
+                   "relationShipName" : '{!JSENCODE($CurrentPage.parameters.relationShipName)}',
+                   "lookupField" : '{!JSENCODE($CurrentPage.parameters.lookupField)}',
+                   "pageURL"   :   '{!JSENCODE($CurrentPage.parameters.pageURL)}',
+                   "uITheme"	:	uITheme
+               },"LockRecord");
+           });
+    </script>
+
+    <div id="LockRecord" />
+
+</apex:page>

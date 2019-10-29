@@ -28,10 +28,6 @@
                 <behavior>Edit</behavior>
                 <field>CMPL123__Is_Start_Step__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>CMPL123__Validate_Against_Child_Record_Statuses__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -48,18 +44,46 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>CMPL123__Is_Record_Lock_Required__c</field>
+                <field>CMPL123__Optional_Parallel_Step__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>CMPL123__Is_Related_Lists_Locked__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>CMPL123__Are_Child_Files_Locked__c</field>
+                <field>CMPL123__Validate_Against_Child_Record_Statuses__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>false</editHeading>
+        <label>Mandatory Fields</label>
+        <layoutColumns>
+            <layoutItems>
+                <height>200</height>
+                <page>CMPL123__WFStepRequiredField</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>true</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
+        <style>OneColumn</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Record and List Locking</label>
+        <layoutColumns>
+            <layoutItems>
+                <height>350</height>
+                <page>CMPL123__WFRecordAndListLockingView</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
+        <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
         <customLabel>false</customLabel>

@@ -10,7 +10,7 @@ global class CMPL_123_INV_PItems_Ext {
 
     }
     @RemoteAction
-    global static String setInvestgations(List<String> InvestSelectedIdLst, String investigationId) {
+    global static String setInvestgations(List<String> selectedInvestigationTemplateIdList, String investigationIdAsString) {
         return null;
     }
     @RemoteAction

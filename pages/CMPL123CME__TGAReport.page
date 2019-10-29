@@ -73,7 +73,7 @@
             <tr style="line-height:8pt;">
                 <td>S Pblc Hlth Threat &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Report_Category__c,'S Pblc Hlth Threat'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
                 <td>Death/Serious Injury &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Report_Category__c,'Death/Serious Injury'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
-                <!-- <td>Other &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.Report_Category__c,'Initial'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>-->
+                <!-- <td>Other &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(TGA__c.Report_Category__c,'Initial'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>-->
                 <td>Other &nbsp;<apex:image height="15px" width="15px"  url="{!if(CONTAINS(CMPL123CME__TGA__c.CMPL123CME__Report_Category__c,'Other'),'/resource/CMPL123CME__TGA_Checkbox_Checked','/resource/CMPL123CME__TGA_Checkbox_Unchecked')}"/></td>
             </tr>
         </table>
@@ -413,8 +413,7 @@
             <table class="tableSection" >
                 <tr style="line-height:8pt;">
                     <td height="35px" style="vertical-align: text-top;">Countries where these similar adverse events occurred:<br/>
-                    {!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Countries_where_these_similar_AE_Occured__c)>120, LEFT(CMPL123CME__TGA__c.CMPL123CME__Countries_where_these_similar_AE_Occured__c,120),CMPL123CME__TGA__c.CMPL123CME__Mfr_Sponsor_aware_of_other_similar_event__c)}
-                    
+                    {!if(LEN(CMPL123CME__TGA__c.CMPL123CME__Countries_where_these_similar_AE_Occured__c)>120, LEFT(CMPL123CME__TGA__c.CMPL123CME__Countries_where_these_similar_AE_Occured__c,120),CMPL123CME__TGA__c.CMPL123CME__Countries_where_these_similar_AE_Occured__c)}
                     </td>
                 </tr>
             </table>

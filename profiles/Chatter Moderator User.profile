@@ -8914,6 +8914,150 @@
     <layoutAssignments>
         <layout>Work_Order__c-Work Order Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__EUMIR_Validation_Configuration__mdt-CMPL123CME__EUMIR Validation Configuration Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__EUMIR_XML_Configuration__mdt-CMPL123CME__EUMIR XML Configuration Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__EU_MIR_Code_Choices__c-CMPL123CME__EU MIR Code Choice Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__EU_MIR_Code_Setting__mdt-CMPL123CME__EU MIR Code Setting Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__EU_MIR_Code__c-CMPL123CME__EUMIR Code Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__EU_MIR__c-CMPL123CME__EU MIR Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__IST_Objects__mdt-CMPL123CME__IST Objects Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Abbreviation__c-CMPL123QMS__Abbreviation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Approved_Material__c-CMPL123QMS__Approved Material Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Audit_Finding_Related_Product__c-CMPL123QMS__Audit Finding Related Product Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Audit_Related_Product__c-CMPL123QMS__Audit Related Product Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Audit_Schedule__c-CMPL123QMS__Audit Schedule Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Certificate__c-CMPL123QMS__Certificate Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Certificate__c-CMPL123QMS__Certificate Layout</layout>
+        <recordType>CMPL123QMS__Certificate__c.CMPL123QMS__Vendor</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Change_Notification__c-CMPL123QMS__Change Notification Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Change_Request__c-CMPL123QMS__Change Request Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Customer_Site__c-CMPL123QMS__Customer Site Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__IST_Objects__mdt-CMPL123QMS__IST Objects Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Lab_Notebook__c-CMPL123QMS__Lab Notebook Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Material__c-CMPL123QMS__Material Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Related_Material__c-CMPL123QMS__Related Material Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Related_User__c-CMPL123QMS__Related User Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Release__c-CMPL123QMS__Release Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Requirement_Abbreviation__c-CMPL123QMS__Requirement Abbreviation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Requirement_Item__c-CMPL123QMS__Requirement Item Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Requirement__c-CMPL123QMS__Requirement Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Risk_Objects__mdt-CMPL123QMS__Risk Objects Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__SCARs__c-CMPL123QMS__SCAR Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Supplier_Site__c-CMPL123QMS__Supplier Site Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Vendor_Change_Request__c-CMPL123QMS__Change Request Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Vendor__c-CMPL123QMS__Vendor Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Vendor__c-CMPL123QMS__Vendor Layout</layout>
+        <recordType>CMPL123QMS__Vendor__c.CMPL123QMS__Broker</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Vendor__c-CMPL123QMS__Vendor Layout</layout>
+        <recordType>CMPL123QMS__Vendor__c.CMPL123QMS__Supplier</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__vendor_Certificate__c-CMPL123QMS__Certificate Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__AI_Suggestion_Data__c-CMPL123__AI Suggestion Data Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__AI_Test_Object__c-CMPL123__AI Test Object Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Linked_Document_Audit__c-CMPL123__Linked Document Audit Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Linked_Document_CAPA__c-CMPL123__Linked Document CAPA Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Linked_Document_Change_Control__c-CMPL123__Linked Document Change Control Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Linked_Document_Non_Conformance__c-CMPL123__Linked Document Non Conformance Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Linked_Document_Quality_Event__c-CMPL123__Linked_Document Quality Event Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Linked_Record__c-CMPL123__Linked Record Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__MDC_Public_Group_User_Acknowledgement__c-CMPL123__MDC Public Group User Acknowledgement Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Post_Upgrade_Config__mdt-CMPL123__Release Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Session_State__c-CMPL123__Session State Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Sparta_AI_Component_Config__mdt-CMPL123__Sparta AI Component Config Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__TWD_Record_Access_Rules_Settings__mdt-CMPL123__TWD Record Access Rules Setting Layout</layout>
+    </layoutAssignments>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>BMX_Generic_Report__c.BMX_Lock_Generic_Report</recordType>
@@ -9038,6 +9182,21 @@
         <default>false</default>
         <recordType>TWD_Location__c.Internal</recordType>
         <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Certificate__c.CMPL123QMS__Vendor</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>CMPL123QMS__Vendor__c.CMPL123QMS__Broker</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Vendor__c.CMPL123QMS__Supplier</recordType>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
         <tab>Account__x</tab>
@@ -9469,6 +9628,70 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-WorkOrder</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123CME__EU_MIR_Code__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123CME__EU_MIR__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Approved_Material__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Audit_Schedule__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Certificate__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Change_Notification__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Change_Request__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Customer_Site__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Material__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Related_Material__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Related_User__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__SCARs__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Supplier_Site__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Vendor_Change_Request__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Vendor__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123__AI_Suggestion_Data__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
 </Profile>

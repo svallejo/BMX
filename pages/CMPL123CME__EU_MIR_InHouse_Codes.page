@@ -1,0 +1,32 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" standardController="CMPL123CME__EU_MIR__c" >
+    <apex:includeLightning /> 
+    
+    <div id="InHouseCodes" />
+    
+    <script>
+        var recordId = '{!EU_MIR__c.Id}';
+        var inHouseCodes = [];
+        
+        //JSON for relevant medical device problem
+        var obj = {};
+        obj["title"] = "{!JSENCODE($Label.CMPL123CME__CMPLT_CODE_TERM_FOR_MOST_RELEVANT_MEDICAL_DEVICE_PROBLEM)}";
+        obj["codeType"] = "In_house_medical_device_problem";
+        obj["recordId"] = recordId;
+        inHouseCodes.push(obj);
+        
+        //JSON for In-House relevant root cause evaluation
+        var obj = {};
+        obj["title"] = "{!JSENCODE($Label.CMPL123CME__CMPLT_CODE_TERM_FOR_MOST_RELEVANT_ROOT_CAUSE_EVALUATION)}";
+        obj["codeType"] = "In_house_root_cause_evaluation";
+        obj["recordId"] = recordId;
+        inHouseCodes.push(obj);
+        
+        $Lightning.use("CMPL123CME:EUMIRViewCodesApp", function() {
+            
+            $Lightning.createComponent("CMPL123CME:EUMIRViewCodesContainer",
+            {   'codesDataList' : inHouseCodes },
+                "InHouseCodes");
+            });
+            
+    </script>   
+</apex:page>

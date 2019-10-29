@@ -1,5 +1,5 @@
 <apex:page controller="CMPL123.X123ConfigController">
-  <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123,'/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/> 
+  <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123,'/jquery-ui-1.12.1/js/jquery-3.4.0.min.js')}"/> 
 
  <!-- <apex:includeScript value="{!URLFOR($Resource.Compliance123, '/123Compliance/lib/jquery/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>  -->
    
@@ -17,8 +17,9 @@
     <script>
         var sessionid,endpoint,checkedConfigTyp;var objectExist;var deploykey=0;
         var errorOrSuccessMessage = new Object();
+        var configTypeMap;
         $(function(){
-             appConfigDetail ='{!JSENCODE(appConfig)}';
+            appConfigDetail = '[' + '{!JSENCODE(protectedAppConfig)}' + ']';
              objectExist = '{!JSENCODE(obj)}'.length;
              $("body").bind('click',function(){
                  $("[id$=errror]").parent().hide(); 
@@ -87,7 +88,6 @@
                $.ajax({
                     type:"POST",
                     data: appConfigDetail,
-                    dataType: "json",
                     url:"/services/proxy",
                     async:false,
                     error: function(error){
@@ -110,11 +110,11 @@
             var endPoint = obj['instance_url'];
             var userName = $("[id$=userName]").val();
             var table="<table><tr>";           
-            table +="<td style='color:#3E648D;font-weight:bold;text-align:right;'>{!$Label.cmpl123__user_name}</td>"+"<td style='text-align:left;'>"+userName+"</td>";
-            table +="<td style='color:#3E648D;font-weight:bold;text-align:right;'>{!$Label.ENDPOINT}</td>"+"<td style='text-align:left;'>"+endPoint+"</td></tr>";  
-            table +="<tr><td style='color:#3E648D;font-weight:bold;text-align:right;'>{!$Label.USERID}</td>"+"<td style='text-align:left;'>"+userId+"</td>";
-            table +="<td style='color:#3E648D;font-weight:bold;text-align:right;'>{!$Label.ORGID}</td>"+"<td style='text-align:left;'>"+orgId+"</td>";        
-            table +="</table><div style='padding-left:40%;'><input type='button' value='{!$Label.PROCEED}' style='padding:6px;' class='btn' onclick='activateDeploy();' /></div>";
+            table +="<td style='color:#3E648D;font-weight:bold;text-align:right;'>{!JSINHTMLENCODE($Label.CMPL123__user_name)}</td>"+"<td style='text-align:left;'>"+userName+"</td>";
+            table +="<td style='color:#3E648D;font-weight:bold;text-align:right;'>{!JSINHTMLENCODE($Label.ENDPOINT)}</td>"+"<td style='text-align:left;'>"+endPoint+"</td></tr>";  
+            table +="<tr><td style='color:#3E648D;font-weight:bold;text-align:right;'>{!JSINHTMLENCODE($Label.USERID)}</td>"+"<td style='text-align:left;'>"+userId+"</td>";
+            table +="<td style='color:#3E648D;font-weight:bold;text-align:right;'>{!JSINHTMLENCODE($Label.ORGID)}</td>"+"<td style='text-align:left;'>"+orgId+"</td>";        
+            table +="</table><div style='padding-left:40%;'><input type='button' value='{!JSINHTMLENCODE($Label.PROCEED)}' style='padding:6px;' class='btn' onclick='activateDeploy();' /></div>";
             $("[id$=configDetail]").append(table);
             $("[id$=loginDiv]").hide();
             $("[id$=checkConfig]").show();
@@ -122,17 +122,34 @@
         
         function activateDeploy(){
             var configType = ['Workflow Rule Config', 'Task Config','Audit Config','Report Config', 'Record Access Rule Config'];
+
+            //Map to fix translations
+            configTypeMap = {};
+            //Platform translations fix          
+            configTypeMap['Workflow Rule Config'] = '{!JSENCODE($Label.WORKFLOW_RULE_CONFIG)}';
+            configTypeMap['Task Config'] = '{!JSENCODE($Label.TASK_CONFIG)}';
+            configTypeMap['Audit Config'] = '{!JSENCODE($Label.AUDIT_CONFIG)}';
+            configTypeMap['Report Config'] = '{!JSENCODE($Label.REPORT_CONFIG)}';
+            configTypeMap['Record Access Rule Config'] = '{!JSENCODE($Label.RECORD_ACCESS_RULE_CONFIG)}';
+            //Complaint translations fix for Success messages
+            configTypeMap['EMDR Config'] = '{!JSENCODE($Label.EMDR_CONFIG)}';
+            configTypeMap['Report Mapping'] = '{!JSENCODE($Label.REPORT_MAPPING)}';
+            
              if(objectExist >0){
+                configType.push('Assessment Admin');
+                configType.push('Investigation Admin');
+                configType.push('EMDR Mappings And Layout Settings');
+
                 //Added JSENCODE to fix error due to single and double quotes present in Label values.
-                configType.push('{!JSENCODE($Label.ASSESSMENT_ADMIN)}');
-                configType.push('{!JSENCODE($Label.INVESTIGATION_ADMIN)}');
-                configType.push('{!JSENCODE($Label.EMDR_MAPPINGS_AND_LAYOUT_SETTINGS)}');
+                configTypeMap['Assessment Admin'] = '{!JSENCODE($Label.ASSESSMENT_ADMIN)}';
+                configTypeMap['Investigation Admin'] = '{!JSENCODE($Label.INVESTIGATION_ADMIN)}';
+                configTypeMap['EMDR Mappings And Layout Settings'] = '{!JSENCODE($Label.EMDR_MAPPINGS_AND_LAYOUT_SETTINGS)}';
             }
             var table = '<table style="width:40%;">';
             for(var key=0;key<configType.length;key++){
-                table += '<tr><td style="text-align:center;padding:0;"><input type="checkbox" value="'+configType[key]+'" class="checkedConfig" /></td><td style="color:#3E648D;font-weight:bold;padding:0;">'+configType[key]+'</td></tr>';
+                table += '<tr><td style="text-align:center;padding:0;"><input type="checkbox" value="'+configType[key]+'" class="checkedConfig" /></td><td style="color:#3E648D;font-weight:bold;padding:0;">'+configTypeMap[configType[key]]+'</td></tr>';
             }
-            table +='<tr><td></td><td><input type="button" value="{!$Label.DEPLOY}" style="padding:6px;" class="btn" onclick="deploy();" /></td></tr></table>';
+            table +='<tr><td></td><td><input type="button" value="{!JSINHTMLENCODE($Label.DEPLOY)}" style="padding:6px;" class="btn" onclick="deploy();" /></td></tr></table>';
             $(".deployStart").append(table);
             $("[id$=checkConfig]").hide();
             $("[id$=initialDeploy]").show();
@@ -148,7 +165,7 @@
                 $('input[class="checkedConfig"]:checked').each(function(){
                     selectedConfig.push($(this).val());
                 });
-                if(selectedConfig.indexOf('{!$Label.WORKFLOW_RULE_CONFIG}') == -1){
+                if(selectedConfig.indexOf('{!JSENCODE($Label.WORKFLOW_RULE_CONFIG)}') == -1){
                     if(selectedConfig.indexOf('Task Config') > -1){
                         var success = window.confirm("{!JSENCODE($Label.WORKFLOW_RULE_CONFIG_CONNECTED_WITH_TASK_CONFIG)}");
                     if(success)
@@ -241,7 +258,6 @@
             var host = "{!JSENCODE($Setup.CMPL123__CMPL_App_Config__c.CMPL123__SF_Base_Url__c)}";
             $.ajax({
                 type:"GET",
-                dataType: "json",
                 url:"/services/proxy",
                 async:false,
                 error: function(error){
@@ -281,7 +297,6 @@
              $.ajax({
                 type:"POST",
                 data: requireJson,
-                dataType: "json",
                 url:"/services/proxy",
                 async:false,
                 error: function(error){
@@ -310,11 +325,10 @@
         }
         
         function callRestService(configType,requireJson,selectedConfigKey){
-            console.log('-----requireJson---'+requireJson);
+            // console.log('-----requireJson---'+requireJson);
             $.ajax({
                 type:"POST",
                 data: requireJson,
-                dataType: "json",
                 url:"/services/proxy",
                 async:false,
                 error: function(error){
@@ -332,7 +346,7 @@
                     }   
                 },
                 success: function(result){
-                    console.log('----result-----'+result);
+                    // console.log('----result-----'+result);
                     var requireKey = configType +'~'+'success';
                     //Added JSENCODE to fix error due to single and double quotes present in Label values.
                     errorOrSuccessMessage[requireKey ] = '{!JSENCODE($Label.DEPLOYED_SUCCESSFULLY)}';
@@ -351,14 +365,16 @@
         
         function createMessage(obj){
             $("[id$=errorMessage]").empty();
-            var table="<table style='width:80%;margin-left:10%;'><tr><td style='width:30%;font-weight:bold;'>{!$Label.CONGIF_TYPE}</td><td style='font-weight:bold;'>{!$Label.STATUS}</td></tr>";
+            var table="<table style='width:80%;margin-left:10%;'><tr><td style='width:30%;font-weight:bold;'>{!JSINHTMLENCODE($Label.CONGIF_TYPE)}</td><td style='font-weight:bold;'>{!$Label.STATUS}</td></tr>";
             for(var key in obj){
-                if(key.split('~')[1] == 'success')
-                    table +="<tr><td style='width:30%;color:#3E648D;font-weight:bold;'>"+key.split('~')[0]+"</td>"+"<td style='color:green;'>"+obj[key]+"</td></tr>";
-                else
-                   table +="<tr><td style='width:30%;width:30%;color:#3E648D;font-weight:bold;'>"+key.split('~')[0]+"</td>"+"<td style='color:red;'>"+obj[key]+"</td></tr>";      
+                if(key.split('~')[1] == 'success') {
+                    table +="<tr><td style='width:30%;color:#3E648D;font-weight:bold;'>"+configTypeMap[key.split('~')[0]]+"</td>"+"<td style='color:green;'>"+obj[key]+"</td></tr>";
+                }
+                else {
+                   table +="<tr><td style='width:30%;width:30%;color:#3E648D;font-weight:bold;'>"+configTypeMap[key.split('~')[0]]+"</td>"+"<td style='color:red;'>"+obj[key]+"</td></tr>";      
+                }
             }
-            table +="<tr><td><input type='button' value='{!$Label.DONE}' class='btn' style='padding:6px;' onclick='window.location.reload();'  /></td><td></td></tr></table>";
+            table +="<tr><td><input type='button' value='{!JSINHTMLENCODE($Label.DONE)}' class='btn' style='padding:6px;' onclick='window.location.reload();'  /></td><td></td></tr></table>";
             $("[id$=errorMessage]").append(table);
             $("[id$=errorMessage]").show();  
             $("[id$=deployStatus]").show(); 
@@ -401,7 +417,7 @@
     <apex:pageBlock title="{!$Label.cmpl123__deployment_configuration_component}" id="initialDeploy">
         <div class="back">
             <div class="deployingStatus" style="margin-left:39%;">
-                <span class="color:#3C763D;font-weight:bold;">{!$Label.cmpl123__deploying}...</span>
+                <span class="color:#3C763D;font-weight:bold;">{!HTMLENCODE($Label.cmpl123__deploying)}...</span>
             </div>  
             <div class="deployStart" style="padding-left:40%;margin-top:1%;">
             </div>

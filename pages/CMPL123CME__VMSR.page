@@ -1,0 +1,12 @@
+<apex:page showHeader="true" sidebar="false" standardStylesheets="false">
+    <apex:includeLightning />
+    <div id="vmsr" />
+    <script>
+        $Lightning.use("CMPL123CME:VMSRApp", function() {
+            $Lightning.createComponent("CMPL123CME:VMSR",
+                                       {},
+                                       "vmsr"
+                                      );
+        });
+    </script>
+</apex:page>

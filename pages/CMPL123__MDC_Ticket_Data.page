@@ -1,4 +1,12 @@
 <apex:page standardcontroller="CMPL123__MDC_Ticket__c" extensions="CMPL123.MDC_TicketController" >
+    <apex:pageBlock title="{!$Label.cmpl123__ticket_information}"  >
+        <apex:pageBlockSection >
+            <apex:outputField value="{!CMPL123__MDC_Ticket__c.Name}"/>
+            <apex:outputField value="{!CMPL123__MDC_Ticket__c.CMPL123__MDC_Trigger__c}"/>
+            <apex:outputField value="{!CMPL123__MDC_Ticket__c.CMPL123__Description__c}"/>
+            <apex:outputField value="{!CMPL123__MDC_Ticket__c.CMPL123__Record_Type__c}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
     <apex:pageBlock title="{!$Label.cmpl123__mdc_related_record}"  >
         <apex:pageBlockSection >
         
@@ -9,7 +17,7 @@
     
     <apex:form id="ackBanner">
 
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/js/jquery-3.4.0.min.js')}"/>
 
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/mdc_namespace.js')}"/>
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/mdc_utils.js')}"/>
@@ -22,28 +30,23 @@
             <apex:column headerValue="{!$Label.cmpl123__mdc_field_name}"> {!entry.fn} </apex:column>
             <apex:column headerValue="{!$Label.cmpl123__mdc_action}"> {!entry.action} </apex:column>
             <apex:column headerValue="{!$Label.cmpl123__mdc_old_value}" >
-                    <apex:outputText value="{!entry.ov}" escape="false" />
+                    <apex:outputText value="{!entry.ov}"/>
             </apex:column>
             <apex:column headerValue="{!$Label.cmpl123__mdc_new_value}">
-                <apex:outputText value="{!entry.nv}" escape="false" />
+                <apex:outputText value="{!entry.nv}" />
             </apex:column>
             <apex:column headerValue="{!$Label.cmpl123__mdc_user}"> {!entry.user} </apex:column>
             <apex:column headerValue="{!$Label.cmpl123__mdc_date}"> {!entry.timestamp} </apex:column>
             <apex:column headerValue="{!$Label.cmpl123__mdc_field_condition}">  {!entry.condition} </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_field_name}"> {!entry.fn} </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_action}"> {!entry.action} </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_old_value}" >
-                    <apex:outputText value="{!entry.ov}" escape="false" />
-            </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_new_value}">
-                <apex:outputText value="{!entry.nv}" escape="false" />
-            </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_user}"> {!entry.user} </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_date}"> {!entry.timestamp} </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_field_condition}">  {!entry.condition} </apex:column>
+            
         </apex:pageBlockTable>
     </apex:pageBlock> 
-
+        <!--
+            SECURITY FALSE POSITIVE
+            Ignoring fls for acknowlegdementResult
+            Justification: The acknowlegdementResult is not a field on any object, but a formatted string of database results.
+            All objects used to retrieve this value are CRUD/FLS checked in MDC_TicketController lines 485-496.
+        -->
         <div id="acknowledgementResultInputContainer">
             <apex:inputHidden value="{!acknowledgementResult}" id="acknowledgementResultInput"/>
         </div>
@@ -115,9 +118,12 @@
             <apex:outputPanel id="popInnerOutputPnl" layout="block" rendered="true">
                 <apex:pageBlock >
                     <apex:pageBlockTable value="{!groupAckUsers}" var="user">
-                        <apex:column headerValue="{!$Label.cmpl123__mdc_user_name}" style="white-space:nowrap;padding-right: 20px"> {!user.User.Name} </apex:column>
-                        <apex:column headerValue="{!$Label.cmpl123__mdc_when_acknowledged}" style="padding-right: 20px"> {!user.whenAck} </apex:column>
-                        <apex:column headerValue="{!$Label.cmpl123__mdc_comments}" style="width:100%; white-space: pre-line"> {!user.comment} </apex:column>
+                        <apex:column headerValue="{!$Label.cmpl123__mdc_user_name}" style="white-space:nowrap;padding-right: 20px"> {!user.Acknowledged_User__r.Name} </apex:column>
+                        <apex:column headerValue="{!$Label.cmpl123__mdc_when_acknowledged}" style="padding-right: 20px"> 
+                            <!-- Below value= blankspace is required! -->
+                            <apex:outputText value=" {!user.CMPL123__Acknowledgment_Date__c}" />
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.cmpl123__mdc_comments}" style="width:100%; white-space: pre-line"> {!user.CMPL123__Comments__c} </apex:column>
                     </apex:pageBlockTable>
                 </apex:pageBlock>
             </apex:outputPanel>
@@ -157,9 +163,9 @@ function onViewAcknowledgementDataComplete() {
     
         $("<div></div>")._123Popup({
             width: 480,
-            title: "{!$Label.cmpl123__mdc_received_public_group_ack}",
+            title: "{!JSINHTMLENCODE($Label.cmpl123__mdc_received_public_group_ack)}",
             buttons: "ok",
-            okButtonLabel: "{!$Label.cmpl123__mdc_ok}",
+            okButtonLabel: "{!JSINHTMLENCODE($Label.cmpl123__mdc_ok)}",
             onOk: function() {
                 processingViewAcknowledgementData = false;
                 return true;
@@ -200,14 +206,14 @@ function onAcknowledgeWithComments(userId, userField, ackType, entryId) {
     $(".ackButton").blur();
 
     $("<div></div>")._123Popup({
-        title: "{!$Label.cmpl123__mdc_acknowledge_with_comments}",
+        title: "{!JSINHTMLENCODE($Label.cmpl123__mdc_acknowledge_with_comments)}",
         buttons: "okCancel",
-        okButtonLabel: "{!$Label.cmpl123__mdc_acknowledge}",
-        cancelButtonLabel: "{!$Label.cmpl123__mdc_cancel}",
+        okButtonLabel: "{!JSINHTMLENCODE($Label.cmpl123__mdc_acknowledge)}",
+        cancelButtonLabel: "{!JSINHTMLENCODE($Label.cmpl123__mdc_cancel)}",
         onOk: function(commentText, popup) {
         
             if (commentText.trim().length === 0) {
-                popup.setError("{!$Label.cmpl123__mdc_please_enter_a_comment}");
+                popup.setError("{!JSINHTMLENCODE($Label.cmpl123__mdc_please_enter_a_comment)}");
                 return false;
             }
             
@@ -216,7 +222,7 @@ function onAcknowledgeWithComments(userId, userField, ackType, entryId) {
         }
     })
    .textAreaInput({
-        intro: "{!$Label.cmpl123__mdc_please_enter_your_comment}",
+        intro: "{!JSINHTMLENCODE($Label.cmpl123__mdc_please_enter_your_comment)}",
         maxLength: 500
     }); 
 }
@@ -237,7 +243,7 @@ function formatAcknowledgementResultDisplay(acknowledgementResults) {
             .attr("src", "{!URLFOR($Resource.CMPL123__Compliance123, '/Image/" + (errorOrAlreadyAcknowledged ? "close_red_60.png" : "check_green_60.png") + "')}"))
         .append($("<span></span>")
             .css({color: errorOrAlreadyAcknowledged ? "red" : "black"})
-            .text(errorOrAlreadyAcknowledged ? acknowledgementResult.error : "{!$Label.cmpl123__mdc_single_acknowledgement_success_message}"));
+            .text(errorOrAlreadyAcknowledged ? acknowledgementResult.error : "{!JSINHTMLENCODE($Label.cmpl123__mdc_single_acknowledgement_success_message)}"));
             
     return resultDisplay.html();
 };
@@ -253,9 +259,9 @@ function showAcknowledgementConfirmation() {
         var acknowledgementResults = $.parseJSON($("input", "#acknowledgementResultInputContainer").val());
 
         $("<div></div>")._123Popup({
-            title: "{!$Label.cmpl123__mdc_acknowledgements}",
+            title: "{!JSINHTMLENCODE($Label.cmpl123__mdc_acknowledgements)}",
             buttons: "ok",
-            okButtonLabel: "{!$Label.cmpl123__mdc_ok}",
+            okButtonLabel: "{!JSINHTMLENCODE($Label.cmpl123__mdc_ok)}",
             width: 300,
             height: 150,
             onOk: function() {

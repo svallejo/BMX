@@ -10,29 +10,13 @@
 
     <!-- Include Lightning Design System-->
     <apex:slds />
-    <!-- Includ custom stylesheet -->
-    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/css/ValidChildStatus.css')}"/>
 
     <c:ModalComponent showHeader="true" showFooter="false"
             modalTitle="{! IF(isEdit, JSENCODE($Label.Edit) + ' ' + Valid_Child_Status__c.Name,
                                          JSENCODE($Label.New) + ' ' + $ObjectType.Valid_Child_Status__c.Label) }">
 
         <apex:outputPanel rendered="{! hasError }">
-            <div class="slds-notify_container slds-is-relative slds-p-vertical_small">
-                <div class="slds-notify slds-notify_toast slds-theme_error slds-m-horizontal_large sparta-min-width-auto" role="status">
-                    <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex">
-                        <div class="slds-icon slds-icon_medium slds-m-vertical_xx-small">
-                            <!-- IE does not support <svg> tags but svg files are supported -->
-                            <img src="/apexpages/slds/latest/assets/icons/utility/ban.svg" />
-                        </div>
-                    </span>
-                    <div class="slds-notify__content slds-m-horizontal_small">
-                        <apex:repeat value="{! errorMessages }" var="errorMessage">
-                            <h3>{! errorMessage }</h3>
-                        </apex:repeat>
-                    </div>
-                </div>
-            </div>
+            <c:Toast messages="{! errorMessages }" isError="{! hasError }"/>
         </apex:outputPanel>
 
         <apex:outputPanel rendered="{! !hasError }">

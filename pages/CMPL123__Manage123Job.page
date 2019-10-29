@@ -1,9 +1,10 @@
 <apex:page sidebar="false" standardController="CMPL123__X123Job__c" extensions="CMPL123.Manage123JobController">
 
 
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/CMP123_New/js/jquery-ui.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/js/jquery-3.4.0.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/CMP123_New/js/jquery-ui-1.12.1.min.js ')}"/>
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
+    <apex:includeScript value="{!$Resource.CMPL123__SecureFilters}"/>
     <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/CMP123_New/css/typeahead.css')}"/>
 
     <style>
@@ -267,7 +268,7 @@
                     td = document.createElement('td');
                     td.style.textAlign = 'right';
                     label = document.createElement('label');
-                    label.innerHTML = "{!$Label.WORKFLOW_RULE}";
+                    label.innerHTML = "{!JSINHTMLENCODE($Label.WORKFLOW_RULE)}";
                     label.className = 'tableLabel';
                     td.appendChild(label);
                     tr.appendChild(td);
@@ -305,7 +306,7 @@
                                     fieldLabelOrApi[recordDetail.CMPL123__JobFieldMaps__r.records[tr].CMPL123__Field_Name__c] +
                                     "' name='" +
                                     recordDetail.CMPL123__JobFieldMaps__r.records[tr].CMPL123__Field_Name__c +
-                                    "' class='form-input typeAheadFields' placeholder='{!$Label.TYPE_FIELD}'  />" +
+                                    "' class='form-input typeAheadFields' placeholder='{!JSINHTMLENCODE($Label.TYPE_FIELD)}'  />" +
                                 "</td>" +
                                 "<td data-field-name='" + FieldType.DATA_TYPE + "' class='CMPL123__Data_Type__c cell-alignment'>" +
                                     "<span style='color:green;'>" +
@@ -335,19 +336,19 @@
 
             }
 
-            tableTr += "</table></div><div class='job-div'><a href='javascript: addRow();'>{!$Label.ADD_MORE}</a></div>";
+            tableTr += "</table></div><div class='job-div'><a href='javascript: addRow();'>{!JSINHTMLENCODE($Label.ADD_MORE)}</a></div>";
             if (objType[recordDetail.CMPL123__Job_Type__c] == JobType.CHILD_FIELD) {
                 tableTr += '<div class="back" style="margin-left:2%;padding:1%;">' +
-                                '<span style="font-weight:bold;">{!$Label.FILTER_CONDITION}</span>' +
+                                '<span style="font-weight:bold;">{!JSINHTMLENCODE($Label.FILTER_CONDITION)}</span>' +
                                 '<div>' +
                                     '<br/>' +
                                     '<span>' +
-                                        '<input type="text" class="form-input" placeholder="{!$Label.TYPE_FILTER_CONDITION}" id="filterCondition" value="' +
+                                        '<input type="text" class="form-input" placeholder="{!JSINHTMLENCODE($Label.TYPE_FILTER_CONDITION)}" id="filterCondition" value="' +
                                         filterValue +
                                         '" style="width:350px;" />' +
                                     '</span>' +
                                     '&nbsp;&nbsp;' +
-                                    '<span style="color:#395C82;">{!$Label.PLEASE_SPECIFY_WHERE_CONDITION_ORDER_BY_LIMIT}</span>' +
+                                    '<span style="color:#395C82;">{!JSINHTMLENCODE($Label.PLEASE_SPECIFY_WHERE_CONDITION_ORDER_BY_LIMIT)}</span>' +
                                 '</div>' +
                             '</div>';
             }
@@ -381,11 +382,11 @@
             var table = '<div style="padding:2%;">' +
                             '<table width="100%" class="innerTableCss fieldTable">' +
                                 '<tr>' +
-                                    '<th>{!$Label.FIELD}</th>' +
-                                    '<th class="cell-alignment">{!$Label.DATATYPE}</th>' +
-                                    '<th class="cell-alignment">{!$Label.IS_REFERENCE}</th>' +
-                                    '<th>{!$Label.MAPPING_FIELD_VALUE}</th>' +
-                                    '<th class="cell-alignment" style="display:none;">{!$Label.ACTION}</th>' +
+                                    '<th>{!JSINHTMLENCODE($Label.FIELD)}</th>' +
+                                    '<th class="cell-alignment">{!JSINHTMLENCODE($Label.DATATYPE)}</th>' +
+                                    '<th class="cell-alignment">{!JSINHTMLENCODE($Label.IS_REFERENCE)}</th>' +
+                                    '<th>{!JSINHTMLENCODE($Label.MAPPING_FIELD_VALUE)}</th>' +
+                                    '<th class="cell-alignment" style="display:none;">{!JSINHTMLENCODE($Label.ACTION)}</th>' +
                                     '<th></th>' +
                                 '</tr>';
 
@@ -419,7 +420,7 @@
             }
             workflowTr = "<tr>" +
                             "<td style='text-align:right;'>" +
-                                "<label class='tableLabel'>{!$Label.CHILD_OBJECT}</label>" +
+                                "<label class='tableLabel'>{!JSINHTMLENCODE($Label.CHILD_OBJECT)}</label>" +
                             "</td>" +
                             "<td class='parentChildFields'>" +
                                 "<span class='fetchDataCss' name='" +
@@ -432,10 +433,10 @@
 
             var table = '<div style="padding:2%;"><table width="100%" class="innerTableCss fieldTable">' +
                 '<tr>' +
-                    '<th>{!$Label.FIELD}</th>' +
-                    '<th class="cell-alignment">{!$Label.DATATYPE}</th>' +
-                    '<th class="cell-alignment">{!$Label.IS_REFERENCE}</th>' +
-                    '<th>{!$Label.MAPPING_FIELD_VALUE}</th>' +
+                    '<th>{!JSINHTMLENCODE($Label.FIELD)}</th>' +
+                    '<th class="cell-alignment">{!JSINHTMLENCODE($Label.DATATYPE)}</th>' +
+                    '<th class="cell-alignment">{!JSINHTMLENCODE($Label.IS_REFERENCE)}</th>' +
+                    '<th>{!JSINHTMLENCODE($Label.MAPPING_FIELD_VALUE)}</th>' +
                     '<th></th>' +
                 '</tr>';
 
@@ -472,14 +473,21 @@
                 }
                 table += "</tr>";
             }
-            table += "</table></div><div class='job-div'><a href='javascript: addRowJobTypeFour();'>{!$Label.ADD_MORE}</a></div>";
+            table += "</table></div><div class='job-div'><a href='javascript: addRowJobTypeFour();'>{!JSINHTMLENCODE($Label.ADD_MORE)}</a></div>";
             $(".fieldRelation").append(table);
         }
 
         function populateExistingValues(){
             var filterValue = '';
-
-            recordDetail = {!recordDetail};
+            //Must be encoded as string when passed from backend in order to prevent arbitrary code execution.
+            recordDetail = '{!JSENCODE(recordDetail)}';
+            try{
+                //If recordDetail contains malicious code JSON.parse will fail and throw exception.
+                recordDetail = JSON.parse(recordDetail);
+            } catch (e){
+                showErrorMessage('{! JSENCODE($Label.REST_ERROR_UNKNOWN) }');
+                return;
+            }
             $("#Name").val(recordDetail.Name);
             $("#CMPL123__Is_Active__c").prop('checked', recordDetail.CMPL123__Is_Active__c);
 
@@ -516,7 +524,7 @@
         function populateJobTypeList() {
 
             var workflowStep = {!jobTypes};
-            var select = $("<select id='" + FieldType.JOB_TYPE + "' class='input-selectList' onchange='getJobDetail($(this));'><option value=''>--{!$Label.SELECT}--</option>");
+            var select = $("<select id='" + FieldType.JOB_TYPE + "' class='input-selectList' onchange='getJobDetail($(this));'><option value=''>--{!JSINHTMLENCODE($Label.SELECT)}--</option>");
             for (var objt in objType) {
                 for (var a = 0; a < workflowStep.length; a++) {
                     if (objt == workflowStep[a]) {
@@ -539,7 +547,7 @@
 
             var option = document.createElement('option');
             option.value     = '';
-            option.innerHTML = '--{!$Label.SELECT}--';
+            option.innerHTML = '--{!JSINHTMLENCODE($Label.SELECT)}--';
 
             select.appendChild(option);
 
@@ -579,9 +587,9 @@
 
         function getChildRecordByKeyValue(jobType,label){
             $(".dom").remove();
-            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Manage123JobController.jobTypeDetail}',jobType,'{!parentId}',function(result,event){
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Manage123JobController.jobTypeDetail}',jobType,'{!JSENCODE(parentId)}',function(result,event){
                 if(event.status){
-                    var select = "<select class='input-selectList' id='parentChildFields' onchange='createkeyValueChildren($(this));'><option value=''>--{!$Label.SELECT}--</option>";
+                    var select = "<select class='input-selectList' id='parentChildFields' onchange='createkeyValueChildren($(this));'><option value=''>--{!JSINHTMLENCODE($Label.SELECT)}--</option>";
                     for(var a in result){
                         select += "<option value='"+result[a]+"'>"+a+"</option>";
                     }
@@ -623,7 +631,7 @@
                             }
                             createDomChildRecodByKeyValue(result.REQUIRED,requireMap);
                         }else
-                            showErrorMessage('{!$Label.NO_RECORD_FOUND}');
+                            showErrorMessage('{!JSINHTMLENCODE($Label.NO_RECORD_FOUND)}');
 
                     }else{
                         showErrorMessage(event.message);
@@ -645,10 +653,10 @@
             var table ='<div style="padding:2%;">' +
                             '<table width="100%" class="innerTableCss fieldTable">' +
                                 '<tr>' +
-                                    '<th>{!$Label.FIELD}</th>' +
-                                    '<th class="cell-alignment">{!$Label.DATATYPE}</th>' +
-                                    '<th class="cell-alignment">{!$Label.IS_REFERENCE}</th>' +
-                                    '<th>{!$Label.MAPPING_FIELD_VALUE}</th>'+
+                                    '<th>{!JSINHTMLENCODE($Label.FIELD)}</th>' +
+                                    '<th class="cell-alignment">{!JSINHTMLENCODE($Label.DATATYPE)}</th>' +
+                                    '<th class="cell-alignment">{!JSINHTMLENCODE($Label.IS_REFERENCE)}</th>' +
+                                    '<th>{!JSINHTMLENCODE($Label.MAPPING_FIELD_VALUE)}</th>'+
                                     '<th></th>' +
                                 '</tr>';
             for(var selectableOption in result){
@@ -657,7 +665,7 @@
                 select2.type        = "text";
                 select2.readOnly    = "true";
                 select2.className   = "form-input link";
-                select2.name        = result[selectableOption];
+                select2.name        = secureFilters.jsAttr(result[selectableOption]);
                 select2.setAttribute('value',selectableOption );
 
                 var tableRow = document.createElement("tr");
@@ -710,12 +718,12 @@
                 table += new XMLSerializer().serializeToString(tableRow);
 
             }
-            select ="<select class='input-selectList' onchange='getDataType($(this));'  style='width:100%;color:#395C82;'><option value=''>--{!$Label.SELECT}--</option>";
+            select ="<select class='input-selectList' onchange='getDataType($(this));'  style='width:100%;color:#395C82;'><option value=''>--{!JSINHTMLENCODE($Label.SELECT)}--</option>";
             for(var a in sortObject(dataTypeOrFieldApiLabel,'function',true)){
                 select +="<option value='"+dataTypeOrFieldApiLabel[a]+"'>"+a+"</option>";
             }
             select +="</select>";
-            table +="</table></div><div class='job-div'><a href='javascript:addRowJobTypeFour();' >{!$Label.ADD_MORE}</a></div>";
+            table +="</table></div><div class='job-div'><a href='javascript:addRowJobTypeFour();' >{!JSINHTMLENCODE($Label.ADD_MORE)}</a></div>";
             $(".fieldRelation").append(table);
             $(".load").remove();
         }
@@ -724,7 +732,7 @@
             var tr ='';
             tr +='<tr style="width:100%;" class="dom Fields">' +
                     '<td data-field-name="' + FieldType.FIELD_NAME + '" class="CMPL123__Field_Name__c data-element">' +
-                        '<input type="text" class="form-input typeAheadFields" placeholder="{!$Label.TYPE_FIELD}" />' +
+                        '<input type="text" class="form-input typeAheadFields" placeholder="{!JSINHTMLENCODE($Label.TYPE_FIELD)}" />' +
                     '</td>' +
                     '<td data-field-name="' + FieldType.DATA_TYPE + '" class="CMPL123__Data_Type__c cell-alignment">' +
                     '</td>' +
@@ -797,15 +805,15 @@
                     tr +='<div style="padding:2%;">' +
                             '<table width="100%" class="innerTableCss fieldTable">' +
                                 '<tr>' +
-                                    '<th>{!$Label.FIELD}</th>' +
-                                    '<th class="cell-alignment">{!$Label.DATATYPE}</th>'+
-                                    '<th class="cell-alignment">{!$Label.IS_REFERENCE}</th>'+
-                                    '<th>{!$Label.MAPPING_FIELD_VALUE}</th>' +
-                                    '<th class="cell-alignment" style="display:none;">{!$Label.ACTION}</th>'+
+                                    '<th>{!JSINHTMLENCODE($Label.FIELD)}</th>' +
+                                    '<th class="cell-alignment">{!JSINHTMLENCODE($Label.DATATYPE)}</th>'+
+                                    '<th class="cell-alignment">{!JSINHTMLENCODE($Label.IS_REFERENCE)}</th>'+
+                                    '<th>{!JSINHTMLENCODE($Label.MAPPING_FIELD_VALUE)}</th>' +
+                                    '<th class="cell-alignment" style="display:none;">{!JSINHTMLENCODE($Label.ACTION)}</th>'+
                                 '</tr>' +
                                 '<tr style="width:100%;" class="dom Fields">' +
                                     '<td data-field-name="' + FieldType.FIELD_NAME + '" class="CMPL123__Field_Name__c table-cell">' +
-                                        '<input type="text" class="form-input typeAheadFields" placeholder="{!$Label.TYPE_FIELD}" api=""/>'+
+                                        '<input type="text" class="form-input typeAheadFields" placeholder="{!JSINHTMLENCODE($Label.TYPE_FIELD)}" api=""/>'+
                                     '</td>' +
                                     '<td data-field-name="' + FieldType.DATA_TYPE + '" class="CMPL123__Data_Type__c cell-alignment">' +
                                     '</td>' +
@@ -823,20 +831,20 @@
                                 '</tr>' +
                             '</table>' +
                             '<div style="float:right;margin-right:1%;">' +
-                                '<a href="javascript: addRow();" style="color:#395c82;">{!$Label.ADD_MORE}</a>' +
+                                '<a href="javascript: addRow();" style="color:#395c82;">{!JSINHTMLENCODE($Label.ADD_MORE)}</a>' +
                             '</div>' +
                         '</div>';
                     if($("#CMPL123__Job_Type__c").val() == JobType.CHILD_FIELD){
                         tr += '<div class="back" style="margin-left:2%;padding:1%;">' +
-                                    '<span style="font-weight:bold;">{!$Label.FILTER_CONDITION}</span>' +
+                                    '<span style="font-weight:bold;">{!JSINHTMLENCODE($Label.FILTER_CONDITION)}</span>' +
                                     '<div>' +
                                         '<br/>' +
                                         '<span>' +
-                                            '<input type="text" placeholder="{!$Label.TYPE_FILTER_CONDITION}" class="form-input" id="filterCondition" style="width:350px;"/>' +
+                                            '<input type="text" placeholder="{!JSINHTMLENCODE($Label.TYPE_FILTER_CONDITION)}" class="form-input" id="filterCondition" style="width:350px;"/>' +
                                         '</span>' +
                                         '&nbsp;&nbsp;' +
                                         '<span style="color:#395C82;">' +
-                                        '{!$Label.PLEASE_SPECIFY_WHERE_CONDITION_ORDER_BY_LIMIT}' +
+                                        '{!JSINHTMLENCODE($Label.PLEASE_SPECIFY_WHERE_CONDITION_ORDER_BY_LIMIT)}' +
                                         '</span>' +
                                     '</div>' +
                                 '</div>';
@@ -844,11 +852,11 @@
                 }else if(relation == 'Workflow Step'){
                     tr +='<td>' +
                             '<select class="input-selectList" id="' + FieldType.WORKFLOW_STEP + '" >' +
-                                '<option value="">--{!$Label.SELECT}--</option>';
+                                '<option value="">--{!JSINHTMLENCODE($Label.SELECT)}--</option>';
                 }else{
                     tr +='<td>' +
                             '<select class="input-selectList" id="parentChildFields" onchange="getListOfWorkflowRule($(this));" >' +
-                                '<option value="">--{!$Label.SELECT}--</option>';
+                                '<option value="">--{!JSINHTMLENCODE($Label.SELECT)}--</option>';
                 }
                 if(relation != 'Fields'){
                     tr +=select+"</td></tr>";
@@ -883,14 +891,14 @@
             }else{
                 if($("#CMPL123__Job_Type__c").val() == JobType.WORKFLOW_STEP){
                     if($(".tableCss tr").length == 4)
-                        showErrorMessage('{!$Label.NO_WORKFLOW_RULE_FOUND}');
+                        showErrorMessage('{!JSINHTMLENCODE($Label.NO_WORKFLOW_RULE_FOUND)}');
                     else  if($(".tableCss tr").length == 5)
-                        showErrorMessage('{!$Label.NO_WORKFLOW_STEP_FOUND}');
+                        showErrorMessage('{!JSINHTMLENCODE($Label.NO_WORKFLOW_STEP_FOUND)}');
 
                 }else if($("#CMPL123__Job_Type__c").val() == JobType.PARENT_FIELD)
-                    showErrorMessage('{!$Label.NO_PARENT_OBJECT_FOUND}');
+                    showErrorMessage('{!JSINHTMLENCODE($Label.NO_PARENT_OBJECT_FOUND)}');
                 else if($("#CMPL123__Job_Type__c").val() == JobType.CHILD_FIELD)
-                    showErrorMessage('{!$Label.NO_CHILD_OBJECT_FOUND}');
+                    showErrorMessage('{!JSINHTMLENCODE($Label.NO_CHILD_OBJECT_FOUND)}');
             }
             $(".load").remove();
 
@@ -899,7 +907,7 @@
         function addFilterCondition(obj){
             obj.parent().find("div").remove();
             obj.parent().append("<div style='margin-top:1%;'>" +
-                                    "<span class='tableLabel'>{!$Label.ENTER_CONDITION}</span>" +
+                                    "<span class='tableLabel'>{!JSINHTMLENCODE($Label.ENTER_CONDITION)}</span>" +
                                     "&nbsp;" +
                                     "<input class='form-input' id='filterCondition' type='text' style='width:200px;' />" +
                                 "</div>");
@@ -1001,7 +1009,7 @@
             var fieldLabel =[];
             if(obj.prop('checked')){
                 $(this).attr('checked','true');
-                var input = "<input type='text' class='form-input mappingFieldValue data-element' placeholder='{!$Label.TYPE_FIELD}' />";
+                var input = "<input type='text' class='form-input mappingFieldValue data-element' placeholder='{!JSINHTMLENCODE($Label.TYPE_FIELD)}' />";
                 var dataType = obj.parent().prev().has("span").text();
                 for(var a in targetObjectApi){
                     if(a == dataType){
@@ -1053,7 +1061,7 @@
             var tr ='';
             tr +='<tr style="width:100%;" class="dom Fields">' +
                     '<td data-field-name="' + FieldType.FIELD_NAME + '" class="CMPL123__Field_Name__c data-element">' +
-                        '<input type="text" class="form-input typeAheadFields" placeholder="{!$Label.TYPE_FIELD}" />' +
+                        '<input type="text" class="form-input typeAheadFields" placeholder="{!JSINHTMLENCODE($Label.TYPE_FIELD)}" />' +
                     '</td>' +
                     '<td data-field-name="' + FieldType.DATA_TYPE + '" class="CMPL123__Data_Type__c cell-alignment">' +
                     '</td>' +
@@ -1091,9 +1099,9 @@
             var jobName = $("#Name").val();
             var jobType='';
             if(jobName.length == 0){
-                showErrorMessage('{!$Label.PLEASE_ENTER_NAME}');
+                showErrorMessage('{!JSENCODE($Label.PLEASE_ENTER_NAME)}');
             }else if($("#CMPL123__Job_Type__c").val().length == 0 && $("#CMPL123__Job_Type__c").prop('tagName') == 'SELECT'){
-                showErrorMessage('{!$Label.PLEASE_SELECT_JOB_TYPE}')
+                showErrorMessage('{!JSENCODE($Label.PLEASE_SELECT_JOB_TYPE)}')
             }else{
                 var IntelligentJobObject,parentOrChildObjectArray;
 
@@ -1111,7 +1119,7 @@
                         IntelligentJobObject = createJsonforKeyValue();
                         parentOrChildObjectArray = createJsonForParentOrChild(jobType);
                     }else{
-                        var errorMessage = ($("#CMPL123__Job_Type__c").val() == JobType.PARENT_FIELD) ? '{!$Label.PLEASE_SELECT_PARENT_OBJECT}':'{!$Label.PLEASE_SELECT_CHILD_OBJECT}';
+                        var errorMessage = ($("#CMPL123__Job_Type__c").val() == JobType.PARENT_FIELD) ? '{!JSENCODE($Label.PLEASE_SELECT_PARENT_OBJECT)}':'{!JSENCODE($Label.PLEASE_SELECT_CHILD_OBJECT)}';
                         showErrorMessage(errorMessage)
                     }
                 }else if(objType[$("#CMPL123__Job_Type__c").html()] == JobType.PARENT_FIELD || objType[$("#CMPL123__Job_Type__c").html()] == JobType.CHILD_FIELD){
@@ -1130,23 +1138,23 @@
                         if($("#CMPL123__Workflow_Step__c").val().length >0)
                             saveTask(IntelligentJobObject,parentOrChildObjectArray,jobType, parentIdentifier);
                         else
-                            showErrorMessage('{!$Label.PLEASE_SELECT_WORKFLOW_STEP}');
+                            showErrorMessage('{!JSENCODE($Label.PLEASE_SELECT_WORKFLOW_STEP)}');
                     }else{
                         if($(".tableCss tr").length == 5)
-                            showErrorMessage('{!$Label.PLEASE_SELECT_WORKFLOW_RULE}');
+                            showErrorMessage('{!JSENCODE($Label.PLEASE_SELECT_WORKFLOW_RULE)}');
                         else if($(".tableCss tr").length == 4){
-                            showErrorMessage('{!$Label.NO_WORKFLOW_RULE_FOUND}');
+                            showErrorMessage('{!JSENCODE($Label.NO_WORKFLOW_RULE_FOUND)}');
                         }
                     }
                 }else if(jobType == JobType.PARENT_FIELD || jobType == JobType.CHILD_FIELD){
                     if(parentOrChildObjectArray.length > 0){
                         saveTask(IntelligentJobObject,parentOrChildObjectArray,jobType, parentIdentifier);
                     }else{
-                        showErrorMessage('{!$Label.PLEASE_SELECT_ATLEAST_ONE}');
+                        showErrorMessage('{!JSENCODE($Label.PLEASE_SELECT_ATLEAST_ONE)}');
                     }
                 }else if(jobType == JobType.CHILD_RECORD){
                     if(parentOrChildObjectArray.length == 0)
-                        showErrorMessage('{!$Label.PLEASE_SELECT_ATLEAST_ONE_FIELD}');
+                        showErrorMessage('{!JSENCODE($Label.PLEASE_SELECT_ATLEAST_ONE_FIELD)}');
                     else {
                         saveTask(IntelligentJobObject,parentOrChildObjectArray,jobType, parentIdentifier);
                     }
@@ -1349,7 +1357,7 @@
                 </h4>
                 &nbsp;&nbsp;
                 <span class="parent-object">
-                ({!ParentName} - {!parentObjectApiName})
+                ({!HTMLENCODE(ParentName)} - {!HTMLENCODE(parentObjectApiName)})
                 </span>
             </div>
             <div class="error-div" id='itErrorMessage'></div>
@@ -1357,7 +1365,7 @@
                 <table class='tableCss'>
                     <tr>
                         <td class="main-tds">
-                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__name}</apex:outputLabel>
+                            <apex:outputLabel styleClass="tableLabel">{!HTMLENCODE($Label.cmpl123__name)}</apex:outputLabel>
                         </td>
                         <td>
                             <div class="requiredInput">
@@ -1365,25 +1373,25 @@
                                                                               onkeydown="$('[id=itErrorMessage]').css('visibility','hidden');"
                                                                               class="form-input" style="width:246px;"
                                                                               id='Name'
-                                                                              placeholder="{!$Label.TYPE_NAME}"/></div>
+                                                                              placeholder="{!HTMLENCODE($Label.TYPE_NAME)}"/></div>
                         </td>
                     </tr>
                     <tr>
                         <td class="main-tds">
-                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__is_active}</apex:outputLabel>
+                            <apex:outputLabel styleClass="tableLabel">{!HTMLENCODE($Label.cmpl123__is_active)}</apex:outputLabel>
                         </td>
                         <td><input type='checkbox' id='CMPL123__Is_Active__c' checked='checked'/></td>
                     </tr>
                     <tr>
                         <td class="main-tds">
-                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__description}</apex:outputLabel>
+                            <apex:outputLabel styleClass="tableLabel">{!HTMLENCODE($Label.cmpl123__description)}</apex:outputLabel>
                         </td>
-                        <td><textarea cols='53' placeholder="{!$Label.TYPE_DESCRIPTION}"
+                        <td><textarea cols='53' placeholder="{!HTMLENCODE($Label.TYPE_DESCRIPTION)}"
                                       id='CMPL123__Description__c'/></td>
                     </tr>
                     <tr class="workflowJob">
                         <td class="main-tds">
-                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__job_type}</apex:outputLabel>
+                            <apex:outputLabel styleClass="tableLabel">{!HTMLENCODE($Label.cmpl123__job_type)}</apex:outputLabel>
                         </td>
                         <td><span id='workflowStep'></span></td>
                     </tr>
@@ -1393,9 +1401,9 @@
 
             </div>
             <div class="button-div">
-                <input class="Input-btn btn control-buttons" type="button" value="{!$Label.Save}"
+                <input class="Input-btn btn control-buttons" type="button" value="{!HTMLENCODE($Label.Save)}"
                        onclick="SaveIntelligentJob(this, '{!JSENCODE(parentId)}');"/>
-                <input class="Input-btn-cancel btn control-buttons" type="button" value="{!$Label.Cancel}"
+                <input class="Input-btn-cancel btn control-buttons" type="button" value="{!HTMLENCODE($Label.Cancel)}"
                        onclick="redirectToMainPage('{!JSENCODE(parentId)}');"/>
 
             </div>

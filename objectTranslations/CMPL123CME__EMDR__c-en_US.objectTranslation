@@ -4176,6 +4176,40 @@
         <label><!-- Title --></label>
         <name>Title__c</name>
     </fields>
+    <fields>
+        <label><!-- Consolidate as VMSR --></label>
+        <name>CMPL123CME__Consolidate_As_VMSR__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is B5 Limit Exceeded --></label>
+        <name>CMPL123CME__Is_B5_Limit_Exceeded__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field identifies if a record is VMSR or not. --></help>
+        <label><!-- Is VMSR --></label>
+        <name>CMPL123CME__Is_VMSR__c</name>
+        <picklistValues>
+            <masterLabel>NONE</masterLabel>
+            <translation><!-- NONE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VMSR</masterLabel>
+            <translation><!-- VMSR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Related VMSR --></label>
+        <name>CMPL123CME__VMSR__c</name>
+        <relationshipLabel><!-- EMDR (VMSR) --></relationshipLabel>
+    </fields>
     <fieldSets>
         <label><!-- GENERAL INFORMATION --></label>
         <name>CMPL123CME__A_1_GENERAL_INFORMATION</name>
@@ -4219,6 +4253,10 @@
     <fieldSets>
         <label><!-- Suplemental EMDR --></label>
         <name>CMPL123CME__SUPLEMENTAL_EMDR_RL_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Related EMDR --></label>
+        <name>CMPL123CME__RELATED_EMDR_RL_FS</name>
     </fieldSets>
     <layouts>
         <layout>EMDR Layout</layout>
@@ -4344,6 +4382,10 @@
     <validationRules>
         <errorMessage><!-- Register site must have a value --></errorMessage>
         <name>Validate_Register_Site</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This record is locked as it is consolidated as VMSR. --></errorMessage>
+        <name>CMPL123CME__Lock_EMDR_Record</name>
     </validationRules>
     <webLinks>
         <label><!-- Multiple_EMDR_Print --></label>

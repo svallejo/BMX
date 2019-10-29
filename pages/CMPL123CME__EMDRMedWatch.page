@@ -1,5 +1,5 @@
 <apex:page standardController="CMPL123CME__EMDR__c" extensions="CMPL123CME.EMDRMedWatchController" standardStylesheets="false" showHeader="false" sidebar="false" renderAs="PDF" id="pg" applyHtmlTag="false" applyBodyTag="false"> 
-
+<apex:stylesheet value="{!$Resource.CMPL123CME__MedWatchCSS}" />
 <html>
     <head>
       <style type="text/css">                
@@ -9,6 +9,9 @@
 
           .leftPadding {
             padding-left: 1px;
+          }
+          .g1-div-height{
+            height: 10px;
           }
       </style>
     </head>
@@ -1305,7 +1308,7 @@
                       <td style="width:100%;border-bottom:1px solid #000000;" >
                           <table border="0" rules="cols" width="100%" cellspacing="0" cellpadding="0">
                               <tr>
-                                  <td style="width:60%;height:90px;vertical-align:top;border-right:1px solid #000000;"><b>3. Device Evaluated by Manufaturer ? </b><br/> <!-- Typo correction -->
+                                  <td style="width:60%;height:90px;vertical-align:top;border-right:1px solid #000000;"><b>3. Device Evaluated by Manufacturer ? </b><br/>
                                       &nbsp;&nbsp;&nbsp;<apex:image width="10px" height="10px" url="{!IF(CONTAINS(mdr.CMPL123CME__H3_Device_Returned__c, 'Yes'),'/resource/CMPL123CME__MDR/checkbox_no.png', '/resource/CMPL123CME__MDR/checkbox_yes.png')}"/>&nbsp;Not Returned to Manufacturer <br/><br/>
                                       &nbsp;&nbsp;&nbsp;<apex:image width="10px" height="10px" url="{!IF(CONTAINS(mdr.CMPL123CME__H3_DEVICE_EVAL_BY_MFG__c,'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>&nbsp;Yes  &nbsp;&nbsp;&nbsp;&nbsp;
                                       <apex:image width="10px" height="10px" url="{!IF(CONTAINS(mdr.CMPL123CME__H3_Evaluation_Summary_Attached__c,  'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>&nbsp;Evaluation Summary Attached <br/><br/>
@@ -1315,7 +1318,7 @@
                                   </td>
                                   <td style="width:40%;height:90px;vertical-align:top;">
                                       <table width="100%" border="0" rules="rows" cellspacing="0" cellpadding="0">
-                                          <tr><td style="height:45px;vertical-align:top;border-bottom:1px solid #000000;"><b>4. Device Manufacturer Date</b><br/>(dd-mmm/yyyy) <br/><apex:outputText value="{0,date,dd-MMM/yyyy}" ><apex:param value="{!mdr.CMPL123CME__H4_Device_mfg_date__c}" /></apex:outputText></td></tr>
+                                          <tr><td style="height:45px;vertical-align:top;border-bottom:1px solid #000000;"><b>4. Device Manufacturer Date</b><br/>(dd-mmm-yyyy) <br/><apex:outputText value="{0,date,dd-MMM-yyyy}" ><apex:param value="{!mdr.CMPL123CME__H4_Device_mfg_date__c}" /></apex:outputText></td></tr>
                                           <tr><td style="height:45px;vertical-align:top;"><b>5. Labeled for Single Use</b><br/><br/>
                                               &nbsp;&nbsp;&nbsp;<apex:image width="10px" height="10px" url="{!IF((mdr.CMPL123CME__H5_Labeled_for_Single_Use__c == 'Yes'),'/resource/CMPL123CME__MDR/checkbox_yes.png', '/resource/CMPL123CME__MDR/checkbox_no.png')}"/>&nbsp;Yes &nbsp;&nbsp;&nbsp;<apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(mdr.CMPL123CME__H5_Labeled_for_Single_Use__c == 'No','/checkbox_yes.png','/checkbox_no.png'))}"/>&nbsp;No  <br/>
                                           </td></tr>
@@ -1416,7 +1419,7 @@
                       <td style="height:90px;vertical-align:top;">
                           <b>10.  <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c != null,'/checkbox_yes.png','/checkbox_no.png'))}"/> Additional Manufacturer Narative</b> &nbsp;&nbsp;<i>and / or</i> &nbsp;&nbsp; &nbsp;&nbsp;
                                   <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(mdr.CMPL123CME__H11_Corrected_Data__c != null,'/checkbox_yes.png','/checkbox_no.png'))}"/> 11. <b> Corrected Data</b><br/> 
-                          <div style="width:100%; height:80px;display:{!if((mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c != null) &&  (mdr.CMPL123CME__H11_Corrected_Data__c != null), 'block', 'none')}">
+                          <div style="width:100%; height:80px;display:{!if((mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c != null) ||  (mdr.CMPL123CME__H11_Corrected_Data__c != null), 'block', 'none')}">
                               <div style="word-wrap: break-word; width:340px;height:35px"><apex:outputText value="{!if(LEN(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c) > 365,LEFT(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c,365), mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c)}"/></div><br/> 
                               <div style="word-wrap: break-word; width:340px;height:35px"><apex:outputText value="{!if(LEN(mdr.CMPL123CME__H11_Corrected_Data__c) > 365, LEFT(mdr.CMPL123CME__H11_Corrected_Data__c, 365), mdr.CMPL123CME__H11_Corrected_Data__c)}" /></div> 
                           </div>
@@ -1548,6 +1551,99 @@
             </div>
         </div>
     </div>
+      <!------------- Page 4 H.3 - Additional Text Area------------->
+    <apex:outputPanel rendered="{!OR(LEN(mdr.H3_DEVICE_EVAL_ADDL_TEXT__c) > 0,
+                      LEN(mdr.G1_Mfg_Name__c) > 0,
+                      LEN(mdr.G1_Mfg_Address__c) > 0,
+                      LEN(mdr.G1_Mfg_Address_2__c) > 0,
+                      LEN(mdr.G1_Mfg_City__c) > 0,
+                      LEN(mdr.G1_Mfg_Site_Region_State__c) > 0,
+                      LEN(mdr.G1_Mfg_Postal_Code__c) > 0,
+                      LEN(mdr.G1_Mfg_Site_Country__c) > 0,
+                      LEN(mdr.G1_Mfg_Email__c) > 0,
+                      LEN(mdr.G1_Mfg_Fax_Number__c) > 0,
+                      AND(
+                          mdr.G1_Mfg_Site_Country__c != NULL,
+                          OR(
+                              LEN(mdr.G1_Mfg_Zip_Code__c) > 0,
+                              LEN(mdr.G1_Mfg_Zip_Code_Extension__c) > 0
+                            )
+                      ))}">
+            <div class="displayPage4">
+                <div class="page4Width">
+                    <div  id="middlehead4" class="pageBreakAlways">
+                        <p class="textAlignCenter"><b>{!$Label.CMPLT_PAGE_PROVIDED_BY_TRACKWISE_DIGITAL}</b></p>
+                    </div>
+                </div>
+                <div class="page4Width">
+                    <div class="tableBorder">
+                        <table  class="table table-bordered">
+                            <tr>
+                                <td>
+                                    <apex:outputPanel rendered="{!OR(LEN(mdr.G1_Mfg_Name__c) > 0,
+                                          LEN(mdr.G1_Mfg_Address__c) > 0,
+                                          LEN(mdr.G1_Mfg_Address_2__c) > 0,
+                                          LEN(mdr.G1_Mfg_City__c) > 0,
+                                          mdr.G1_Mfg_Site_Region_State__c != NULL,
+                                          LEN(mdr.G1_Mfg_Postal_Code__c) > 0,
+                                          LEN(mdr.G1_Mfg_Site_Country__c) > 0,
+                                          LEN(mdr.G1_Mfg_Email__c) > 0,
+                                          LEN(mdr.G1_Mfg_Fax_Number__c) > 0,
+                                          AND(
+                                              mdr.G1_Mfg_Site_Country__c != NULL,
+                                              OR(
+                                                  LEN(mdr.G1_Mfg_Zip_Code__c) > 0,
+                                                  LEN(mdr.G1_Mfg_Zip_Code_Extension__c) > 0
+                                                )
+                                          ))}">
+                                        <b>G.1 - Manufacturing Site for devices</b>
+                                        <div>Name</div> 
+                                        <div class="g1-div-height"><apex:outputText value="{!mdr.CMPL123CME__G1_Mfg_Name__c}" /></div>
+                                        <div>Address</div>
+                                        <div class="g1-div-height">
+                                            <apex:outputPanel rendered="{!LEN(mdr.CMPL123CME__G1_Mfg_Address__c) > 0}"> 
+                                                <apex:outputText value="{!mdr.CMPL123CME__G1_Mfg_Address__c}" /> &nbsp;
+                                            </apex:outputPanel>
+                                            <apex:outputPanel rendered="{!LEN(mdr.CMPL123CME__G1_Mfg_Address_2__c) > 0}"> 
+                                                <apex:outputText value="{!mdr.CMPL123CME__G1_Mfg_Address_2__c}" /> 
+                                            </apex:outputPanel>
+                                        </div>
+                                        <div class="g1-div-height">
+                                            <apex:outputPanel rendered="{!LEN(mdr.CMPL123CME__G1_Mfg_City__c) > 0}"> 
+                                                <apex:outputText value="{!mdr.CMPL123CME__G1_Mfg_City__c}" />  &nbsp;
+                                            </apex:outputPanel>
+                                            <apex:outputPanel rendered="{!LEN(mdr.G1_Mfg_Site_Region_State__c) > 0 }">
+                                                <apex:outputField value="{!mdr.CMPL123CME__G1_Mfg_Site_Region_State__c}"/>
+                                            </apex:outputPanel>
+                                        </div>
+                                        <div class="g1-div-height">
+                                            <apex:outputText value="{!IF( OR(UPPER(mdr.G1_Mfg_Site_Country__r.Name) = 'USA', 
+                                                    UPPER(mdr.G1_Mfg_Site_Country__r.Name) = 'US') , 
+                                                    IF( ISBLANK(mdr.G1_Mfg_Zip_Code_Extension__c) , 
+                                                        mdr.G1_Mfg_Zip_Code__c , mdr.G1_Mfg_Zip_Code__c + '-'+mdr.G1_Mfg_Zip_Code_Extension__c),
+                                                        mdr.G1_Mfg_Postal_Code__c)}"/> &nbsp;
+                                            <apex:outputField value="{!mdr.CMPL123CME__G1_Mfg_Site_Country__c}"/>
+                                        </div>
+                                        
+                                        <div>Email Address</div>
+                                        <div class="g1-div-height"><apex:outputField value="{!mdr.CMPL123CME__G1_Mfg_Email__c}" /></div>    
+                                        <div>Fax</div>
+                                        <div class="g1-div-height"><apex:outputField value="{!mdr.CMPL123CME__G1_Mfg_Fax_Number__c}" /></div>    
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="h3WordWrap"><b>H.3 - Additional Text</b><span class="leftPadding"></span><apex:outputText value="{!if(LEN(mdr.CMPL123CME__H3_DEVICE_EVAL_ADDL_TEXT__c) > 0, LEFT(mdr.CMPL123CME__H3_DEVICE_EVAL_ADDL_TEXT__c, 1360 ), '')}" /></div>  
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </apex:outputPanel>
    </body>
 </html>
 </apex:page>

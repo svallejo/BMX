@@ -8,7 +8,7 @@
     </script>
     <form action="{!redirectUrl}" method="POST"> 
             <input type="hidden" name="samlParams" value="{!samlResponse}"/>              
-            <input type="submit" style="display:none" value="{!$Label.SUBMIT}" id="submitButtonId"/>  
+            <input type="submit" style="display:none" value="{!HTMLENCODE($Label.SUBMIT)}" id="submitButtonId"/>  
     </form> 
     <apex:pageMessages />
 </apex:page>

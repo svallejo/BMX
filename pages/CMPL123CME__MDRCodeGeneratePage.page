@@ -3,7 +3,7 @@
     <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery/jquery-ui.js' )}" />
     <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/jquery.dynatree.js' )}" /> 
     <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/skin/ui.dynatree.css')}" /> 
-    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, 'jquery-ui-1.8.20/css/gtheme/jquery-ui-1.8.20.custom.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/css/jquery-ui-1.12.1.css')}" />
 
     <!-- Resources support for lightning experience -->
     <apex:includeScript value="/support/console/26.0/integration.js"/>
@@ -59,7 +59,7 @@
                 },
                 open:function(){
                     selectedComplCodeId='';
-                    $(".ui-dialog-titlebar").find("button").html('<span class=" ui-icon ui-icon-closethick" style="margin:0px;position:static;"></span>');
+                    $(".ui-dialog-titlebar").find("button").html('<span class=" ui-icon ui-icon-closethick"></span>');
                 },
                 close:function(){
                      $(".find").hide();

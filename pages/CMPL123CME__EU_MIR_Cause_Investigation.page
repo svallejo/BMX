@@ -1,0 +1,39 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" standardController="CMPL123CME__EU_MIR__c">
+    <apex:includeLightning /> 
+    
+    <div id="IMDRFCauseInvestigation" />
+    <script>
+        
+        var recordId = '{!EU_MIR__c.Id}';
+        var causeInvestigationCodes = [];
+        
+        //JSON for IMDRF Cause investigation: Type of investigation (Annex B)
+        var obj = {};
+        obj["title"] = "{!JSENCODE($Label.CMPL123CME__CMPLT_IMDRF_CAUSE_INVESTIGATION_TYPE_OF_INVESTIGATION)}";
+        obj["codeType"] = "B_Investigation";
+        obj["recordId"] = recordId;
+        causeInvestigationCodes.push(obj);
+        
+        //JSON for IMDRF Cause investigation: Investigation findings (Annex C)
+        obj = {};
+        obj["title"] = "{!JSENCODE($Label.CMPL123CME__CMPLT_IMDRF_CAUSE_INVESTIGATION_INVESTIGATION_FINDINGS)}";
+        obj["codeType"] = "C_Investigation_Findings";
+        obj["recordId"] = recordId;
+        causeInvestigationCodes.push(obj);
+        
+        //JSON for IMDRF Cause investigation: Investigation conclusion (Annex D)
+        obj = {};
+        obj["title"] = "{!JSENCODE($Label.CMPL123CME__CMPLT_IMDRF_CAUSE_INVESTIGATION_INVESTIGATION_CONCLUSION)}";
+        obj["codeType"] = "D_Investigation_Conclusion";
+        obj["recordId"] = recordId;
+        causeInvestigationCodes.push(obj);
+        
+        $Lightning.use("CMPL123CME:EUMIRViewCodesApp", function() {
+            
+            $Lightning.createComponent("CMPL123CME:EUMIRViewCodesContainer",
+            {   'codesDataList' : causeInvestigationCodes },
+                "IMDRFCauseInvestigation");
+            });
+    
+    </script>    
+</apex:page>

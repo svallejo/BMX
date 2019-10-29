@@ -1,0 +1,18 @@
+<apex:page showHeader="true" sidebar="false" standardStylesheets="false" lightningStyleSheets="true" controller="CMPL123QMS.FMAEnableObjectsController">
+    <style type="text/css">
+        .lr_margin{
+            margin:0 0 0 3%;
+            padding:0;
+        }
+    </style>
+    <apex:slds />
+    <apex:pageMessages />
+    <div class="lr_margin">
+        <h1 class="slds-text-heading_large"> {! HTMLENCODE($Label.cmpl123qms__eqms_setup)}</h1>
+        <h2 class="slds-text-heading_medium"> {! HTMLENCODE($Label.cmpl123qms__use_the_button_below_to_activate_module)}</h2>
+        <apex:form >
+            <apex:commandButton action="{!activateISTObjects}" value="{! HTMLENCODE($Label.cmpl123qms__fma_enable_ist_objects)}" styleClass="slds-button slds-button_outline-brand slds-m-top_small"/>
+            <apex:commandButton action="{!activateRiskObjects}" value="{! HTMLENCODE($Label.cmpl123qms__fma_enable_risk_module)}" styleClass="slds-button slds-button_outline-brand slds-m-top_small slds-m-left-small"/>
+        </apex:form>    
+    </div>
+</apex:page>

@@ -1,2 +1,7 @@
-<!-- Deprecated Page, keep controller for backward compatibility -->
-<apex:page controller="CMPL123CME.EMDREditController" />
+<apex:page controller="CMPL123CME.EMDREditController" showHeader="false" sidebar="false">
+    <apex:form >
+        <apex:repeat var="fieldAPIName" value="{!eMDRFields}">
+            <label for="{!fieldAPIName}">{!fieldAPIName}</label><apex:inputField value="{!emdr[fieldAPIName]}" />
+        </apex:repeat>
+    </apex:form>
+</apex:page>

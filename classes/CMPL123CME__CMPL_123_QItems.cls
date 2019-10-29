@@ -10,7 +10,7 @@ global class CMPL_123_QItems {
 
     }
     @RemoteAction
-    global static String setQts(List<String> qtSelectedIdLst, String QuestionnaireId) {
+    global static String setQts(List<String> selectedQuestions, String currentAssessmentId) {
         return null;
     }
 }

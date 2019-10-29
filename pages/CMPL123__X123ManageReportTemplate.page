@@ -86,7 +86,7 @@
                  * @return none
                  */
                 $scope.removeTemplate = function(recordId, index){
-                    if($window.confirm('{!$Label.ARE_YOU_SURE}')){
+                    if($window.confirm('{!JSINHTMLENCODE($Label.ARE_YOU_SURE)}')){
                         Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.deleteTemplate}', recordId,
                             function(result,event){
                                 if(event.status){
@@ -110,7 +110,7 @@
 
                     var record = $scope.templateList[index];
 
-                    var recordId = record.Id;
+                    var recordId = record.recordId;
 
                     var curActiveState = $scope.isTemplateActive(index);
                     var targetActiveState = (!(curActiveState)).toString(); // we want to new state to be opposite to what it currently is
@@ -156,8 +156,8 @@
                     // verify the index was valid, and returned an object
                     if(targetObject){
                         // check if the template object has an isActive property
-                        if(targetObject.CMPL123__IsActive__c){
-                            return targetObject.CMPL123__IsActive__c === true;
+                        if(targetObject.isActive){
+                            return targetObject.isActive === true;
                         }else{
                             // far a template not of template type, return false
                             return false;
@@ -218,9 +218,9 @@
                  */
                 $scope.getTemplateActivationLabel = function(index){
                     if ($scope.isTemplateActive(index)) {
-                        return "{!$Label.DEACTIVATE}";
+                        return "{!JSINHTMLENCODE($Label.DEACTIVATE)}";
                     } else {
-                        return "{!$Label.ACTIVATE}";
+                        return "{!JSINHTMLENCODE($Label.ACTIVATE)}";
                     }
                 }
 
@@ -338,26 +338,26 @@
                                     &nbsp;
 
                                     <!-- `Edit` Button -->
-                                    <a href="{{getTemplateBuilderURL(selected.label, selected.Name, templateObject.Id)}}" target="_self" ng-show="isTemplateActive($index)">{!$Label.EDIT}</a>
+                                    <a href="{{getTemplateBuilderURL(selected.label, selected.Name, templateObject.recordId)}}" target="_self" ng-show="isTemplateActive($index)">{!$Label.EDIT}</a>
                                     &nbsp;
 
                                     <!-- `Delete` Button -->
-                                    <a href="#" ng-click="removeTemplate(templateObject.Id, $index);"> {!$Label.DELETE}</a>
+                                    <a href="#" ng-click="removeTemplate(templateObject.recordId, $index);"> {!$Label.DELETE}</a>
 
                                 </td>
                                 <!-- END `Action` Table Column -->
 
                                 <!-- `Object Name` Table Column -->
-                                <td>{{templateObject.CMPL123__Object_Name__c}}</td>
+                                <td>{{templateObject.objectLabel}}</td>
 
                                 <!-- `Template Name` Table Column -->
-                                <td>{{templateObject.Name}}</td>
+                                <td>{{templateObject.templateName}}</td>
 
                                 <!-- `Title` Table Column -->
-                                <td>{{templateObject.CMPL123__Title__c}}</td>
+                                <td>{{templateObject.templateTitle}}</td>
 
                                 <!-- `Created By` Table Column -->
-                                <td>{{templateObject.CreatedBy.Name}}</td>
+                                <td>{{templateObject.createdByName}}</td>
 
                             </tr>
                         </tbody>

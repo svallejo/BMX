@@ -1,0 +1,15 @@
+<apex:page sidebar="false" showHeader="true">
+    <apex:includeLightning />
+    <script>
+        $Lightning.use("CMPL123:DataSyncApp", function() { 
+                                                                  
+            $Lightning.createComponent(
+                "CMPL123:DataSync",
+                {},
+                "data-sync"
+            );
+        });
+    </script>
+    
+    <div id="data-sync"/>
+</apex:page>

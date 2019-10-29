@@ -1,0 +1,89 @@
+<apex:page controller="CMPL123.TWDPlatformSetupController">
+
+  <style>
+    .backGroundBlur{
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;
+    }
+    .mainDiv{
+        position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%
+    }
+    .innerDiv{
+        display: inline-block; padding: 2px; background-color: #fff; width: 125px;
+    }
+    .imageDiv{
+        float: left; margin: 8px;
+    }
+    .labelSpan{
+        display: inline-block; padding: 10px 0px;
+    }
+  </style>
+  <apex:form id="formId">
+    <apex:pageBlock title="{!$Label.cmpl123__x123_config_settings}" tabStyle="Account">
+
+        <apex:pageBlockSection title="{!$Label.cmpl123__source_org_settings}" columns="1">
+            <apex:pageBlockSectionItem helpText="{!$ObjectType.CMPL123__App_Config__c.fields.CMPL123__Consumer_Key__c.inlineHelpText}" rendered="{! !readOnlyMode}">
+                <apex:outputLabel value="{!$Label.cmpl123__consumer_key}"/>
+                <apex:inputText value="{!sourceKey}" />
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem helpText="{!$ObjectType.CMPL123__App_Config__c.fields.CMPL123__Consumer_Key__c.inlineHelpText}" rendered="{! readOnlyMode}">
+                <apex:outputLabel value="{!$Label.cmpl123__consumer_key}"/>
+                <apex:outputText value="{!sourceKey}" />
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem helpText="{!$ObjectType.CMPL123__App_Config__c.fields.CMPL123__Consumer_Secret__c.inlineHelpText}" rendered="{! !readOnlyMode}">
+                <apex:outputLabel value="{!$Label.cmpl123__consumer_secret}"/>
+                <apex:inputText value="{!sourceSecret}" />
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem helpText="{!$ObjectType.CMPL123__App_Config__c.fields.CMPL123__Consumer_Secret__c.inlineHelpText}" rendered="{! readOnlyMode}">
+                <apex:outputLabel value="{!$Label.cmpl123__consumer_secret}"/>
+                <apex:outputText value="{!sourceSecret}" />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection title="{!$Label.cmpl123__target_org_settings}" columns="1">
+            <apex:pageBlockSectionItem helpText="{!$ObjectType.CMPL123__App_Config__c.fields.CMPL123__Target_Consumer_Key__c.inlineHelpText}" rendered="{! !readOnlyMode}">
+                <apex:outputLabel value="{!$Label.cmpl123__target_consumer_key}"/>
+                <apex:inputText value="{!targetKey}" />
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem helpText="{!$ObjectType.CMPL123__App_Config__c.fields.CMPL123__Target_Consumer_Key__c.inlineHelpText}" rendered="{! readOnlyMode}">
+                <apex:outputLabel value="{!$Label.cmpl123__target_consumer_key}"/>
+                <apex:outputText value="{!targetKey}" />
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem helpText="{!$ObjectType.CMPL123__App_Config__c.fields.CMPL123__Target_Consumer_Secret__c.inlineHelpText}" rendered="{! !readOnlyMode}">
+                <apex:outputLabel value="{!$Label.cmpl123__target_consumer_secret}"/>
+                <apex:inputText value="{!targetSecret}" />
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem helpText="{!$ObjectType.CMPL123__App_Config__c.fields.CMPL123__Target_Consumer_Secret__c.inlineHelpText}" rendered="{! readOnlyMode}">
+                <apex:outputLabel value="{!$Label.cmpl123__target_consumer_secret}"/>
+                <apex:outputText value="{!targetSecret}" />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockButtons >
+            <apex:commandButton value="{!$Label.cmpl123__edit}" action="{!editConsumerDetails}" rendered="{!readOnlyMode}" status="actStatusId" reRender="formId"/>
+            <apex:commandButton value="{!$Label.cmpl123__save}" action="{!saveConsumerDetails}" rendered="{! !readOnlyMode}" status="actStatusId" reRender="formId"/>
+            <apex:commandButton value="{!$Label.cmpl123__cancel}"  action="{!cancel}" rendered="{! !readOnlyMode}" status="actStatusId" reRender="formId"/>
+            <apex:commandButton value="{!$Label.cmpl123__copy_from_custom_settings}" action="{!syncConfigSettings}" status="actStatusId" reRender="formId" rendered="{!enableSyncButton}"/>
+            <apex:actionStatus id="actStatusId">
+                <apex:facet name="start">
+                <div class="backGroundBlur">
+                    &nbsp;
+                </div>
+                <div class="mainDiv" >
+                    <div class="innerDiv">
+                        <img src="/img/loading.gif" class="imageDiv" />
+                        <span class="labelSpan">{!HTMLENCODE($Label.CMPL123__please_wait)}</span>
+                    </div>
+                </div>
+                </apex:facet>
+            </apex:actionStatus>
+        </apex:pageBlockButtons>
+
+    </apex:pageBlock>  
+  </apex:form>
+</apex:page>
