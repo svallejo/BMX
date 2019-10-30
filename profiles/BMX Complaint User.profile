@@ -19738,6 +19738,11 @@
         <field>CMPL123__X123Task__c.CMPL123Rule_Key_Value__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__WF_History__c.CMPL123__Created_By_User_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>

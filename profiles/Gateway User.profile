@@ -4278,22 +4278,22 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint_Code__c.BMX_Is_Meddev__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Inactive__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Medra_Code_Detail__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4303,12 +4303,12 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint_Code__c.CMPL123CME__ParentCCode__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4318,27 +4318,27 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Parent_CCode__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Secondary_Code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Sub_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Version__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8978,37 +8978,37 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__MDR_Code__c.CMPL123CME__Category__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__MDR_Code__c.CMPL123CME__Complaint_Code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__MDR_Code__c.CMPL123CME__EMDR_MDR_CODE_DESCRIPTION__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__MDR_Code__c.CMPL123CME__EMDR_MDR_CODE_SECONDARY__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__MDR_Code__c.CMPL123CME__EMDR_MDR_CODE_TYPE__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__MDR_Code__c.CMPL123CME__EMDR__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__MDR_Code__c.CMPL123CME__MDR_Report__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -19397,6 +19397,16 @@
         <field>Work_Order__c.WO_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__Is_B5_Limit_Exceeded__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MDR_Code__c.CMPL123CME__VMSR__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
@@ -20185,7 +20195,7 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>CMPL123CME__Complaint_Code__c</object>
-        <viewAllRecords>false</viewAllRecords>
+        <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
         <allowCreate>false</allowCreate>
@@ -20208,11 +20218,11 @@
     <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
+        <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>CMPL123CME__Registered_Site__c</object>
-        <viewAllRecords>false</viewAllRecords>
+        <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
@@ -20438,6 +20448,24 @@
         <modifyAllRecords>false</modifyAllRecords>
         <object>StreamingChannel</object>
         <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>CMPL123CME__MDR_Code__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>CMPL123CME__Report_Mapping__c</object>
+        <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <recordTypeVisibilities>
         <default>false</default>
