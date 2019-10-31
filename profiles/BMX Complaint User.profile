@@ -2573,6 +2573,10 @@
         <apexPage>CMPL123__WFRecordAndListLockingView</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123CME__EMDRESignatureHistory</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.AccountSource</field>
@@ -21206,11 +21210,11 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123CME__Report_Mapping__c</tab>
-        <visibility>DefaultOff</visibility>
+        <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123CME__Submission_History__c</tab>
-        <visibility>DefaultOn</visibility>
+        <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123CME__TGA__c</tab>
