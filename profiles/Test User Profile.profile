@@ -19539,6 +19539,11 @@
         <field>Work_Order__c.WO_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Change_Control__c.Origination__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
@@ -20314,6 +20319,12 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__TWD_Record_Access_Rules_Settings__mdt-CMPL123__TWD Record Access Rules Setting Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Impact_Assessment__c-Impact Assessment Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Related_Record__c-Related Record Layout</layout>
     </layoutAssignments>
     <objectPermissions>
         <allowCreate>false</allowCreate>

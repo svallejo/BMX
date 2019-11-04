@@ -381,6 +381,1138 @@
         <name>Supervisor_Manager__c</name>
         <relationshipLabel><!-- Change Control (Supervisor/Manager) --></relationshipLabel>
     </fields>
+    <fields>
+        <label><!-- Batch/Lot Number or Item # --></label>
+        <name>Batch_Lot_Number_or_Item__c</name>
+    </fields>
+    <fields>
+        <label><!-- Building --></label>
+        <name>Building__c</name>
+    </fields>
+    <fields>
+        <label><!-- CE Approved --></label>
+        <name>CE_Approved__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Control --></label>
+        <name>Change_Control__c</name>
+        <relationshipLabel><!-- Change Control --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Change Impact on Validation Description? --></label>
+        <name>Change_Impact_on_Validation_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Level --></label>
+        <name>Change_Level__c</name>
+        <picklistValues>
+            <masterLabel>Administrative</masterLabel>
+            <translation><!-- Administrative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Major</masterLabel>
+            <translation><!-- Major --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Minor</masterLabel>
+            <translation><!-- Minor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moderate</masterLabel>
+            <translation><!-- Moderate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Project Transfer</masterLabel>
+            <translation><!-- Project Transfer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Change Owner --></label>
+        <name>Change_Owner__c</name>
+        <relationshipLabel><!-- Change Control (Change Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Change Type - Other --></label>
+        <name>Change_Type_Other__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Type(s) --></label>
+        <name>Change_Type_s__c</name>
+        <picklistValues>
+            <masterLabel>Control Tool</masterLabel>
+            <translation><!-- Control Tool --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Decommissioning</masterLabel>
+            <translation><!-- Decommissioning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Change</masterLabel>
+            <translation><!-- Design Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Documentation</masterLabel>
+            <translation><!-- Documentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emergency Change</masterLabel>
+            <translation><!-- Emergency Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environmental Monitoring</masterLabel>
+            <translation><!-- Environmental Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Equipment (Should cover new or existing)</masterLabel>
+            <translation><!-- Equipment (Should cover new or existing) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expiration</masterLabel>
+            <translation><!-- Expiration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Facilities/ Utilities</masterLabel>
+            <translation><!-- Facilities/ Utilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Facilities/ Utilities (Should cover utility, production area modification or new construction, relocation)</masterLabel>
+            <translation><!-- Facilities/ Utilities (Should cover utility, production area modification or new construction, relocation) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Firmware</masterLabel>
+            <translation><!-- Firmware --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hardware/Peripherals</masterLabel>
+            <translation><!-- Hardware/Peripherals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Instrument</masterLabel>
+            <translation><!-- Instrument --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Labeling</masterLabel>
+            <translation><!-- Labeling --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-product Software</masterLabel>
+            <translation><!-- Non-product Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Organization</masterLabel>
+            <translation><!-- Organization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other – Mandatory field to specify</masterLabel>
+            <translation><!-- Other – Mandatory field to specify --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other – mandatory field to fill in description</masterLabel>
+            <translation><!-- Other – mandatory field to fill in description --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Packaging</masterLabel>
+            <translation><!-- Packaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Process</masterLabel>
+            <translation><!-- Process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product discontinuation</masterLabel>
+            <translation><!-- Product discontinuation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product – Finished</masterLabel>
+            <translation><!-- Product – Finished --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product – Semi-Finished</masterLabel>
+            <translation><!-- Product – Semi-Finished --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QC Specification</masterLabel>
+            <translation><!-- QC Specification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QMS Document</masterLabel>
+            <translation><!-- QMS Document --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quality System</masterLabel>
+            <translation><!-- Quality System --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Raw Material/ Component, or Vendor</masterLabel>
+            <translation><!-- Raw Material/ Component, or Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reagent</masterLabel>
+            <translation><!-- Reagent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software</masterLabel>
+            <translation><!-- Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spare part modification</masterLabel>
+            <translation><!-- Spare part modification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage/Shipping</masterLabel>
+            <translation><!-- Storage/Shipping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supplier/Vendor</masterLabel>
+            <translation><!-- Supplier/Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology Transfer</masterLabel>
+            <translation><!-- Technology Transfer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Temporary Shutdown/Change</masterLabel>
+            <translation><!-- Temporary Shutdown/Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test Method(s)</masterLabel>
+            <translation><!-- Test Method(s) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Third Party Products</masterLabel>
+            <translation><!-- Third Party Products --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Change impacts Quality System? --></label>
+        <name>Change_impacts_Quality_System__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Change impacts the validation? --></label>
+        <name>Change_impacts_the_validation__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Commercial Software Version --></label>
+        <name>Commercial_Software_Version__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commercialization Coverage --></label>
+        <name>Commercialization_Coverage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competent Authority Impacted? --></label>
+        <name>Competent_Authority_Impacted__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Department - Other --></label>
+        <name>Department_Other__c</name>
+    </fields>
+    <fields>
+        <label><!-- Department --></label>
+        <name>Department__c</name>
+    </fields>
+    <fields>
+        <label><!-- Department(s) --></label>
+        <name>Department_s__c</name>
+        <picklistValues>
+            <masterLabel>Calibration</masterLabel>
+            <translation><!-- Calibration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clinical Affairs</masterLabel>
+            <translation><!-- Clinical Affairs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Service</masterLabel>
+            <translation><!-- Customer Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineering</masterLabel>
+            <translation><!-- Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Facilities</masterLabel>
+            <translation><!-- Facilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Service</masterLabel>
+            <translation><!-- Field Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Management</masterLabel>
+            <translation><!-- General Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Supply Chain QA</masterLabel>
+            <translation><!-- Global Supply Chain QA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health Safety Environment (HSE)</masterLabel>
+            <translation><!-- Health Safety Environment (HSE) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Human Resources</masterLabel>
+            <translation><!-- Human Resources --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrialization</masterLabel>
+            <translation><!-- Industrialization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Instrument R&amp;D</masterLabel>
+            <translation><!-- Instrument R&amp;D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Instrument Refurbishment Center</masterLabel>
+            <translation><!-- Instrument Refurbishment Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LIMS</masterLabel>
+            <translation><!-- LIMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logistics</masterLabel>
+            <translation><!-- Logistics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFG (Instrument)</masterLabel>
+            <translation><!-- MFG (Instrument) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFG (Reagents)</masterLabel>
+            <translation><!-- MFG (Reagents) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maintenance and Reliability</masterLabel>
+            <translation><!-- Maintenance and Reliability --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other with mandatory field to specify</masterLabel>
+            <translation><!-- Other with mandatory field to specify --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PL&amp;D</masterLabel>
+            <translation><!-- PL&amp;D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Packaging</masterLabel>
+            <translation><!-- Packaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Validation</masterLabel>
+            <translation><!-- Product Validation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Purchasing</masterLabel>
+            <translation><!-- Purchasing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QA R&amp;D</masterLabel>
+            <translation><!-- QA R&amp;D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QE Validation</masterLabel>
+            <translation><!-- QE Validation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quality Assurance/ QMS</masterLabel>
+            <translation><!-- Quality Assurance/ QMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quality Control,</masterLabel>
+            <translation><!-- Quality Control, --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reagent R&amp;D</masterLabel>
+            <translation><!-- Reagent R&amp;D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regulatory Affairs</masterLabel>
+            <translation><!-- Regulatory Affairs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regulatory Quality Compliance</masterLabel>
+            <translation><!-- Regulatory Quality Compliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Administration</masterLabel>
+            <translation><!-- Sales Administration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Share Center</masterLabel>
+            <translation><!-- Service Share Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supplier QA</masterLabel>
+            <translation><!-- Supplier QA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply Chain</masterLabel>
+            <translation><!-- Supply Chain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Development</masterLabel>
+            <translation><!-- System Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System R&amp;D</masterLabel>
+            <translation><!-- System R&amp;D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Support</masterLabel>
+            <translation><!-- Technical Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Third Party Products QA</masterLabel>
+            <translation><!-- Third Party Products QA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Describe Type of Training --></label>
+        <name>Describe_Type_of_Training__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description of Change --></label>
+        <name>Description_of_Change__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Impacted --></label>
+        <name>Document_Impacted__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Document List --></label>
+        <name>Document_List__c</name>
+    </fields>
+    <fields>
+        <label><!-- Equipment Description --></label>
+        <name>Equipment_Description_Custom__c</name>
+    </fields>
+    <fields>
+        <label><!-- Equipment ID --></label>
+        <name>Equipment_ID_Custom__c</name>
+    </fields>
+    <fields>
+        <label><!-- Equipment Impacted --></label>
+        <name>Equipment_Impacted__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Existing Quality Event Records URL --></label>
+        <name>Existing_Quality_Event_Records_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expiry Date --></label>
+        <name>Expiry_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Facilities Impacted --></label>
+        <name>Facilities_Impacted__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Floor --></label>
+        <name>Floor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Global Trade Identification Number --></label>
+        <name>Global_Trade_Identification_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Impacted Manufacturing Site(s) --></label>
+        <name>Impacted_Manufacturing_Site_s__c</name>
+        <picklistValues>
+            <masterLabel>Astute</masterLabel>
+            <translation><!-- Astute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BSB (Shanghai)</masterLabel>
+            <translation><!-- BSB (Shanghai) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Combourg</masterLabel>
+            <translation><!-- Combourg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Craponne</masterLabel>
+            <translation><!-- Craponne --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Durham – Rodolphe St.</masterLabel>
+            <translation><!-- Durham – Rodolphe St. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Firenze</masterLabel>
+            <translation><!-- Firenze --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grenoble</masterLabel>
+            <translation><!-- Grenoble --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hyderabad</masterLabel>
+            <translation><!-- Hyderabad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IDC Saint Vulbas</masterLabel>
+            <translation><!-- IDC Saint Vulbas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invisible Sentinel</masterLabel>
+            <translation><!-- Invisible Sentinel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kerlann</masterLabel>
+            <translation><!-- Kerlann --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LaBalme</masterLabel>
+            <translation><!-- LaBalme --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lombard</masterLabel>
+            <translation><!-- Lombard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marcy</masterLabel>
+            <translation><!-- Marcy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rio de Janeiro</masterLabel>
+            <translation><!-- Rio de Janeiro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salt Lake City</masterLabel>
+            <translation><!-- Salt Lake City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>St. Louis</masterLabel>
+            <translation><!-- St. Louis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sydney BTF</masterLabel>
+            <translation><!-- Sydney BTF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Third Party Products</masterLabel>
+            <translation><!-- Third Party Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tres Cantos</masterLabel>
+            <translation><!-- Tres Cantos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Verniolle</masterLabel>
+            <translation><!-- Verniolle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bioFire</masterLabel>
+            <translation><!-- bioFire --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Instrument ID/ SN --></label>
+        <name>Instrument_ID_SN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is AFNOR Impacted --></label>
+        <name>Is_AFNOR_Impacted__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is a Qualification Required? --></label>
+        <name>Is_a_Qualification_Required__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is a Qualification Required? --></label>
+        <name>Is_a_Qualification_Required_change_impac__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is a UDI/SPOT Assessment required? --></label>
+        <name>Is_a_UDI_SPOT_Assessment_required__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is this a change to an instrument? --></label>
+        <name>Is_this_a_change_to_an_instrument__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is training required? --></label>
+        <name>Is_training_required__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Justification --></label>
+        <name>Justification__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legal Manufacturer --></label>
+        <name>Legal_Manufacturer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Linked Process/Equipment/Reagent --></label>
+        <name>Linked_Process_Equipment_and_or_Reagen__c</name>
+    </fields>
+    <fields>
+        <label><!-- Livelink URL --></label>
+        <name>Livelink_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location --></label>
+        <name>Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Make or Buy --></label>
+        <name>Make_or_Buy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manufactured Date --></label>
+        <name>Manufactured_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Non Product Software Impacted --></label>
+        <name>Non_Product_Software_Impacted__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Origination Location --></label>
+        <name>Origination_Location__c</name>
+        <picklistValues>
+            <masterLabel>Algeria</masterLabel>
+            <translation><!-- Algeria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Argentina</masterLabel>
+            <translation><!-- Argentina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Astute</masterLabel>
+            <translation><!-- Astute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia &amp; New Zealand</masterLabel>
+            <translation><!-- Australia &amp; New Zealand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Austria</masterLabel>
+            <translation><!-- Austria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BSB (Shanghai)</masterLabel>
+            <translation><!-- BSB (Shanghai) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benelux</masterLabel>
+            <translation><!-- Benelux --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brazil</masterLabel>
+            <translation><!-- Brazil --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canada</masterLabel>
+            <translation><!-- Canada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chile</masterLabel>
+            <translation><!-- Chile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China</masterLabel>
+            <translation><!-- China --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Colombia</masterLabel>
+            <translation><!-- Colombia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Combourg</masterLabel>
+            <translation><!-- Combourg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Craponne</masterLabel>
+            <translation><!-- Craponne --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Czech Republic</masterLabel>
+            <translation><!-- Czech Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denmark</masterLabel>
+            <translation><!-- Denmark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Durham – Rodolphe St.</masterLabel>
+            <translation><!-- Durham – Rodolphe St. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finland</masterLabel>
+            <translation><!-- Finland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Firenze</masterLabel>
+            <translation><!-- Firenze --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>France</masterLabel>
+            <translation><!-- France --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Germany</masterLabel>
+            <translation><!-- Germany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greece</masterLabel>
+            <translation><!-- Greece --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grenoble</masterLabel>
+            <translation><!-- Grenoble --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hong Kong</masterLabel>
+            <translation><!-- Hong Kong --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hungary</masterLabel>
+            <translation><!-- Hungary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hyderabad</masterLabel>
+            <translation><!-- Hyderabad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IDC Saint Vulbas</masterLabel>
+            <translation><!-- IDC Saint Vulbas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invisible Sentinel</masterLabel>
+            <translation><!-- Invisible Sentinel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italy</masterLabel>
+            <translation><!-- Italy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan</masterLabel>
+            <translation><!-- Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kerlann</masterLabel>
+            <translation><!-- Kerlann --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LaBalme</masterLabel>
+            <translation><!-- LaBalme --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lombard</masterLabel>
+            <translation><!-- Lombard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marcy</masterLabel>
+            <translation><!-- Marcy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mexico</masterLabel>
+            <translation><!-- Mexico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA ComOps</masterLabel>
+            <translation><!-- NA ComOps --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nordics</masterLabel>
+            <translation><!-- Nordics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poland</masterLabel>
+            <translation><!-- Poland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portugal</masterLabel>
+            <translation><!-- Portugal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rio de Janeiro</masterLabel>
+            <translation><!-- Rio de Janeiro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russia</masterLabel>
+            <translation><!-- Russia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salt Lake City</masterLabel>
+            <translation><!-- Salt Lake City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serbia</masterLabel>
+            <translation><!-- Serbia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Singapore</masterLabel>
+            <translation><!-- Singapore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Africa</masterLabel>
+            <translation><!-- South Africa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Korea</masterLabel>
+            <translation><!-- South Korea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spain</masterLabel>
+            <translation><!-- Spain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>St. Louis</masterLabel>
+            <translation><!-- St. Louis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Switzerland</masterLabel>
+            <translation><!-- Switzerland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sydney</masterLabel>
+            <translation><!-- Sydney --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sydney BTF</masterLabel>
+            <translation><!-- Sydney BTF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thailand</masterLabel>
+            <translation><!-- Thailand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Third Party Products</masterLabel>
+            <translation><!-- Third Party Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tres Cantos</masterLabel>
+            <translation><!-- Tres Cantos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United Kingdom</masterLabel>
+            <translation><!-- United Kingdom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Verniolle</masterLabel>
+            <translation><!-- Verniolle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bioFire</masterLabel>
+            <translation><!-- bioFire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bioMerieux, Inc</masterLabel>
+            <translation><!-- bioMerieux, Inc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bioMerieux, SA</masterLabel>
+            <translation><!-- bioMerieux, SA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Origination --></label>
+        <name>Origination__c</name>
+        <picklistValues>
+            <masterLabel>Corporate</masterLabel>
+            <translation><!-- Corporate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing Site</masterLabel>
+            <translation><!-- Manufacturing Site --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subsidiary</masterLabel>
+            <translation><!-- Subsidiary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Originator --></label>
+        <name>Originator__c</name>
+        <relationshipLabel><!-- Change Control (Originator) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Impacted --></label>
+        <name>Product_Impacted__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Item Description --></label>
+        <name>Product_Item_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Item Number --></label>
+        <name>Product_Item_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Range --></label>
+        <name>Product_Range__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Product_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Is the impacted Product a WHO prequalified Medical Device?  --></help>
+        <label><!-- Product a WHO prequalified Device? --></label>
+        <name>Product_a_WHO_prequalified_Device__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quality Management System Impacted --></label>
+        <name>Quality_Management_System_Impacted__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reference Numbers --></label>
+        <name>Reference_Numbers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related to existing Q.E records --></label>
+        <name>Related_to_existing_Q_E_records__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requestor --></label>
+        <name>Requestor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Required Qualification Description --></label>
+        <name>Required_Qualitification_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Risk Analysis Reference Number --></label>
+        <name>Risk_Analysis_Reference_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Risk Assessment Needed --></label>
+        <name>Risk_Assessment_Needed__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Risk Assessment --></label>
+        <name>Risk_Assessment__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Room --></label>
+        <name>Room__c</name>
+    </fields>
+    <fields>
+        <label><!-- Significance of the Change --></label>
+        <name>Significance_of_the_Change__c</name>
+        <picklistValues>
+            <masterLabel>Non-Significant</masterLabel>
+            <translation><!-- Non-Significant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Significant</masterLabel>
+            <translation><!-- Significant --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Site Responsible --></label>
+        <name>Site_Responsible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Software Name --></label>
+        <name>Software_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supplier Impacted --></label>
+        <name>Supplier_Impacted__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- System Impacted --></label>
+        <name>System_Impacted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trade Type --></label>
+        <name>Trade_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Required As a Result of Change --></label>
+        <name>Training_Required_As_a_Result_of_Change__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type of Training Required --></label>
+        <name>Type_of_Training_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Version --></label>
+        <name>Version__c</name>
+    </fields>
     <layouts>
         <layout>Change Control Layout</layout>
         <sections>
@@ -400,6 +1532,65 @@
             <section>Workflow</section>
         </sections>
     </layouts>
+    <layouts>
+        <layout>Change Control Custom</layout>
+        <sections>
+            <label><!-- Document Change Details --></label>
+            <section>Document Change Details</section>
+        </sections>
+        <sections>
+            <label><!-- Equipment Change Details --></label>
+            <section>Equipment Change Details</section>
+        </sections>
+        <sections>
+            <label><!-- Facilities Change --></label>
+            <section>Facilities Change</section>
+        </sections>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- Impact Assessment --></label>
+            <section>Impact Assessment</section>
+        </sections>
+        <sections>
+            <label><!-- Is a Qualification Required? --></label>
+            <section>Is a Qualification Required?</section>
+        </sections>
+        <sections>
+            <label><!-- Non Product Software --></label>
+            <section>Non Product Software</section>
+        </sections>
+        <sections>
+            <label><!-- Product Related Details --></label>
+            <section>Product Related Details</section>
+        </sections>
+        <sections>
+            <label><!-- Quality Management System --></label>
+            <section>Quality Management System</section>
+        </sections>
+        <sections>
+            <label><!-- Risk Assessment --></label>
+            <section>Risk Assessment</section>
+        </sections>
+        <sections>
+            <label><!-- Supplier Change --></label>
+            <section>Supplier Change</section>
+        </sections>
+        <sections>
+            <label><!-- Training Required? --></label>
+            <section>Training Required?</section>
+        </sections>
+        <sections>
+            <label><!-- Training will be required as a result of change --></label>
+            <section>Training will be required as a result of change</section>
+        </sections>
+        <sections>
+            <label><!-- Workflow --></label>
+            <section>Workflow</section>
+        </sections>
+    </layouts>
     <quickActions>
         <label><!-- Detach File --></label>
         <name>Detach_File</name>
@@ -407,5 +1598,45 @@
     <validationRules>
         <errorMessage><!-- Record Locked --></errorMessage>
         <name>Prevent_Edit_Change_control_on_closed_QE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Change Impact on Validation Description is required if Change Impacts the Validation is Yes --></errorMessage>
+        <name>Change_Impact_on_Validation_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If &quot;Other&quot; is selected for Change Type(s),Change Type-Other is required --></errorMessage>
+        <name>Change_Type_Other_Mandatory_Field_To_fi</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If &quot;Other&quot; is selected for Change Type(s),Change Type-Other is required --></errorMessage>
+        <name>Change_Type_Other_Mandatory_Field_To_sp</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If &quot;Other with Mandatory field to specify&quot; is selected for Department, Department-Other is required --></errorMessage>
+        <name>Department_Other</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Origination Location [Picklist] is required if either Manufacturing Site or Subsidiary is selected under Origination --></errorMessage>
+        <name>Origination_is_Manufacturing</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Origination Location [Picklist] is required if either Manufacturing Site or Subsidiary is selected under Origination --></errorMessage>
+        <name>Origination_is_Subsidiary</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When &quot;Yes&quot; is selected for Product Impacted, then either Product Item Number or Product Range must be populated. --></errorMessage>
+        <name>Product_Impacted_Required_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Required Qualification Description is required if Is a Qualification is Required is Yes --></errorMessage>
+        <name>Required_Qualification_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Type of Training Required is required if Training will be Required is Yes --></errorMessage>
+        <name>Required_Training_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Risk Analysis Reference Number required to be populated when &quot;Yes&quot; is selected for Risk Assessment --></errorMessage>
+        <name>Risk_Analysis_Reference_Required</name>
     </validationRules>
 </CustomObjectTranslation>

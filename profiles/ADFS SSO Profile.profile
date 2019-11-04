@@ -9101,6 +9101,12 @@
     <layoutAssignments>
         <layout>CMPL123__TWD_Record_Access_Rules_Settings__mdt-CMPL123__TWD Record Access Rules Setting Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Impact_Assessment__c-Impact Assessment Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Related_Record__c-Related Record Layout</layout>
+    </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>

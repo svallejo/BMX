@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>agf__ADM_Work__c.agf__Epic__c</field>
+    </columns>
+    <columns>
+        <field>agf__ADM_Work__c.agf__Subject__c</field>
+    </columns>
+    <columns>
+        <field>agf__ADM_Work__c.agf__Details__c</field>
+    </columns>
+    <columns>
+        <field>agf__ADM_Acceptance_Criterion__c.agf__Description__c</field>
+    </columns>
+    <columns>
+        <field>agf__ADM_Work__c.Solution_Category__c</field>
+    </columns>
+    <columns>
+        <field>agf__ADM_Work__c.Configuration_Area__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <description>Active change control user stories with acceptance criteria</description>
+    <filter>
+        <criteriaItems>
+            <column>agf__ADM_Work__c.agf__Scrum_Team_Name__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CC Team</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>agf__ADM_Work__c.agf__Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Void,Closed - Defunct</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Active Change Control User Stories</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$agf__ADM_Work__c$agf__ADM_Acceptance_Criterion__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>agf__ADM_Work__c.agf__Assigned_On__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
