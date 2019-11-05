@@ -3,22 +3,6 @@
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Workflow</label>
-        <layoutColumns>
-            <layoutItems>
-                <height>200</height>
-                <page>CMPL123QMSChange_ControlWorkflowPanel</page>
-                <showLabel>false</showLabel>
-                <showScrollbars>false</showScrollbars>
-                <width>100%</width>
-            </layoutItems>
-        </layoutColumns>
-        <style>OneColumn</style>
-    </layoutSections>
-    <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
         <editHeading>true</editHeading>
@@ -47,6 +31,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>CRB_Approver_5__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_Impact_Assessments_with_type_quali__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Closed_Impact_Assessments__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -575,6 +567,29 @@
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
+        <fields>NAME</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>SME_Area__c</fields>
+        <fields>Assignee__c</fields>
+        <relatedList>Impact_Assessment__c.Change_Control__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Assignee__c</fields>
+        <fields>Required__c</fields>
+        <fields>Require_Approval__c</fields>
+        <fields>Target_Due_Date__c</fields>
+        <relatedList>Action_Item__c.Change_Control__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <fields>NAME</fields>
+        <fields>Current_Due_Date__c</fields>
+        <fields>Proposed_Due_Date__c</fields>
+        <fields>CMPL123_WF_Status__c</fields>
+        <relatedList>Extension_Request_Change_Control__c.Change_Control__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <relatedList>RelatedFileList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -589,21 +604,6 @@
         <fields>NAME</fields>
         <fields>Change_Control__c</fields>
         <relatedList>Related_Record__c.Related_Change_Control__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>SME_Area__c</fields>
-        <fields>Assignee__c</fields>
-        <relatedList>Impact_Assessment__c.Change_Control__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Assignee__c</fields>
-        <fields>Required__c</fields>
-        <fields>Require_Approval__c</fields>
-        <fields>Target_Due_Date__c</fields>
-        <relatedList>Action_Item__c.Change_Control__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

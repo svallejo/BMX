@@ -18308,4 +18308,8 @@
         <tab>CMPL123__AI_Suggestion_Data__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
+    <tabVisibilities>
+        <tab>Impact_Assessment__c</tab>
+        <visibility>DefaultOff</visibility>
+    </tabVisibilities>
 </Profile>

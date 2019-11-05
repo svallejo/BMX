@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>CRB_Quality_Approver_Email_Alert</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A2</name>
+        <label>Send Email to the CRB Team</label>
+        <locationX>100</locationX>
+        <locationY>300</locationY>
+        <actionName>CMPL123QMS__Change_Control__c.CRB_Quality_Approver_Email_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
     <decisions>
         <name>isChangedDecision11_myRule_10_CMPL123_WF_Action_c</name>
         <label>isChangedDecision11_myRule_10_CMPL123_WF_Action_c</label>
@@ -706,7 +726,7 @@
         </rules>
     </decisions>
     <description>These are the processes for the Custom Change Control after creation</description>
-    <interviewLabel>Change_Control_Custom_Processes-1_InterviewLabel</interviewLabel>
+    <interviewLabel>Change_Control_Custom_Processes-5_InterviewLabel</interviewLabel>
     <label>Change Control Custom Processes</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -993,6 +1013,9 @@
         <label>Bring over Approvers to the Rejection Fields</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_1_A2</targetReference>
+        </connector>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>

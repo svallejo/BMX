@@ -1573,6 +1573,14 @@
         <name>CRB_Reject_6__c</name>
         <relationshipLabel><!-- Change Control (CRB Reject 6) --></relationshipLabel>
     </fields>
+    <fields>
+        <label><!-- Closed Impact Assessments --></label>
+        <name>Closed_Impact_Assessments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Impact Assessments with type quali --></label>
+        <name>Total_Impact_Assessments_with_type_quali__c</name>
+    </fields>
     <layouts>
         <layout>Change Control Layout</layout>
         <sections>
@@ -1646,10 +1654,6 @@
             <label><!-- Training will be required as a result of change --></label>
             <section>Training will be required as a result of change</section>
         </sections>
-        <sections>
-            <label><!-- Workflow --></label>
-            <section>Workflow</section>
-        </sections>
     </layouts>
     <quickActions>
         <label><!-- Detach File --></label>
@@ -1698,5 +1702,9 @@
     <validationRules>
         <errorMessage><!-- Risk Analysis Reference Number required to be populated when &quot;Yes&quot; is selected for Risk Assessment --></errorMessage>
         <name>Risk_Analysis_Reference_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- All questions in Impact Assessment need to be answered prior to performing &quot;Submit for Review&quot; if the Change Level is anything but Administrative --></errorMessage>
+        <name>Change_Imp_Quest_Required_for_non_admin</name>
     </validationRules>
 </CustomObjectTranslation>

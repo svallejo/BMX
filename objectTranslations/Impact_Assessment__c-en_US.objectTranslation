@@ -2,7 +2,7 @@
     <fields>
         <label><!-- Assignee --></label>
         <name>Assignee__c</name>
-        <relationshipLabel><!-- Impact Assessments --></relationshipLabel>
+        <relationshipLabel><!-- Impact Assessments (Assignee) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Change Control --></label>
@@ -109,6 +109,35 @@
             <translation><!-- Validation --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- Rule Field Update Key Value --></label>
+        <name>CMPL123Rule_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed By --></label>
+        <name>CMPL123_WF_Action_Performed_By__c</name>
+        <relationshipLabel><!-- Impact Assessments (Workflow Action Performed By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed On --></label>
+        <name>CMPL123_WF_Action_Performed_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action --></label>
+        <name>CMPL123_WF_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Status --></label>
+        <name>CMPL123_WF_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Implementation Action --></label>
+        <name>Implementation_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- impact Assessment --></label>
+        <name>impact_Assessment__c</name>
+    </fields>
     <caseValues>
         <plural>false</plural>
         <value>Impact Assessment</value>
@@ -123,6 +152,14 @@
         <sections>
             <label><!-- Custom Links --></label>
             <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Impact Assessment --></label>
+            <section>Impact Assessment</section>
+        </sections>
+        <sections>
+            <label><!-- Workflow --></label>
+            <section>Workflow</section>
         </sections>
     </layouts>
     <validationRules>
