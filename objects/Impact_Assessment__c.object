@@ -323,4 +323,14 @@
     <searchLayouts />
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
+    <validationRules>
+        <fullName>Other_SME_Area</fullName>
+        <active>true</active>
+        <description>If Other is selected in SME Area, then Other - SME Area must be populated.</description>
+        <errorConditionFormula>AND(
+ISPICKVAL(SME_Area__c, "Other with mandatory free text field to document area for assessment"),
+ISBLANK( Other_SME_Area__c )
+)</errorConditionFormula>
+        <errorMessage>If Other is selected in SME Area, then Other - SME Area must be populated.</errorMessage>
+    </validationRules>
 </CustomObject>
