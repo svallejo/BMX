@@ -19953,6 +19953,9 @@
     <layoutAssignments>
         <layout>Related_Record__c-Related Record Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Action_Item__c-Action Item Layout</layout>
+    </layoutAssignments>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>BMX_Generic_Report__c.BMX_Lock_Generic_Report</recordType>

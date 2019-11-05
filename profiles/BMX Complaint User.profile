@@ -20549,6 +20549,9 @@
     <layoutAssignments>
         <layout>Related_Record__c-Related Record Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Action_Item__c-Action Item Layout</layout>
+    </layoutAssignments>
     <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>

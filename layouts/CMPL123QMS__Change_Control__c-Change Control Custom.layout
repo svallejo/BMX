@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>Clone</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
@@ -28,6 +27,26 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Name</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CRB_Approver_1__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CRB_Approver_2__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CRB_Approver_3__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CRB_Approver_4__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CRB_Approver_5__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -559,10 +578,6 @@
         <relatedList>RelatedFileList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>CMPL123QMS__Change_Control__c.Change_Control__c</relatedList>
-    </relatedLists>
-    <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <fields>NAME</fields>
         <fields>Related_Change_Control__c</fields>
@@ -571,13 +586,24 @@
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
-        <fields>Change_Control__c</fields>
         <fields>NAME</fields>
+        <fields>Change_Control__c</fields>
         <relatedList>Related_Record__c.Related_Change_Control__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>SME_Area__c</fields>
+        <fields>Assignee__c</fields>
         <relatedList>Impact_Assessment__c.Change_Control__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Assignee__c</fields>
+        <fields>Required__c</fields>
+        <fields>Require_Approval__c</fields>
+        <fields>Target_Due_Date__c</fields>
+        <relatedList>Action_Item__c.Change_Control__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
