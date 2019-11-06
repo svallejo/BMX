@@ -160,15 +160,16 @@
     </fields>
     <fields>
         <fullName>Change_Control__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Change Control</label>
         <referenceTo>CMPL123QMS__Change_Control__c</referenceTo>
         <relationshipLabel>Action Items</relationshipLabel>
         <relationshipName>Action_Items</relationshipName>
-        <required>false</required>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
         <fullName>Require_Approval__c</fullName>
@@ -211,7 +212,7 @@
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <label>Action Item</label>
@@ -222,6 +223,18 @@
     </nameField>
     <pluralLabel>Action Items</pluralLabel>
     <searchLayouts />
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <validationRules>
+        <fullName>limit_action_items_to_10000</fullName>
+        <active>true</active>
+        <description>You can not have more than 10,000 Action Item records related to one Change Control</description>
+        <errorConditionFormula>ISNEW() &amp;&amp;  Change_Control__r.Action_Item_Records__c = 10000</errorConditionFormula>
+        <errorMessage>You can not have more than 10,000 Action Item records related to one Change Control</errorMessage>
+    </validationRules>
 </CustomObject>

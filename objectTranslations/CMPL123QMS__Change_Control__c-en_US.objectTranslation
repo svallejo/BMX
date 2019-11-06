@@ -1574,12 +1574,37 @@
         <relationshipLabel><!-- Change Control (CRB Reject 6) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Closed Impact Assessments --></label>
+        <label><!-- Closed Impact NonQA Assessments --></label>
         <name>Closed_Impact_Assessments__c</name>
     </fields>
     <fields>
-        <label><!-- Total Impact Assessments with type quali --></label>
+        <label><!-- Total Impact Assessment  not type quali --></label>
         <name>Total_Impact_Assessments_with_type_quali__c</name>
+    </fields>
+    <fields>
+        <label><!-- Action Item Records --></label>
+        <name>Action_Item_Records__c</name>
+    </fields>
+    <fields>
+        <label><!-- Task Field Update Key Value --></label>
+        <name>CMPL123Task_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quality Approver --></label>
+        <name>Quality_Approver__c</name>
+        <relationshipLabel><!-- Change Control (Quality Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Total CRB Approvers --></label>
+        <name>Total_CRB_Approvers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Impact Assessments Completed --></label>
+        <name>Total_Impact_Assessments_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total impact Assessments --></label>
+        <name>Total_impact_Assessments__c</name>
     </fields>
     <layouts>
         <layout>Change Control Layout</layout>
@@ -1710,5 +1735,13 @@
     <validationRules>
         <errorMessage><!-- All questions in Impact Assessment need to be answered prior to performing &quot;Submit for Review&quot; if the Change Level is anything but Administrative --></errorMessage>
         <name>Change_Imp_Quest_Required_for_non_admin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- All impact assessments created must be completed prior to performing &quot;Submit for Review --></errorMessage>
+        <name>All_Impact_Ass_Closed_before_Review</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- At least one impact assessment must be created and completed for Change Levels that are Moderate, Major, or Project Transfer prior to performing &quot;Submit for Review&quot;. --></errorMessage>
+        <name>Impact_Assessment_completed_before_Revie</name>
     </validationRules>
 </CustomObjectTranslation>

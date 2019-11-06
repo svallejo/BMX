@@ -20214,6 +20214,36 @@
         <field>Impact_Assessment__c.impact_Assessment__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123QMS__Change_Control__c.Action_Item_Records__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Change_Control__c.CMPL123Task_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Change_Control__c.Quality_Approver__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123QMS__Change_Control__c.Total_CRB_Approvers__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123QMS__Change_Control__c.Total_Impact_Assessments_Completed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123QMS__Change_Control__c.Total_impact_Assessments__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
@@ -21890,5 +21920,9 @@
     <tabVisibilities>
         <tab>Impact_Assessment__c</tab>
         <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Action_Item__c</tab>
+        <visibility>Hidden</visibility>
     </tabVisibilities>
 </Profile>

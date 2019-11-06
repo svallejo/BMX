@@ -9707,4 +9707,8 @@
         <tab>Impact_Assessment__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
+    <tabVisibilities>
+        <tab>Action_Item__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
 </Profile>

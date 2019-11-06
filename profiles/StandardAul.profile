@@ -19175,6 +19175,11 @@
         <field>CMPL123QMS__Change_Control__c.Origination__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Change_Control__c.CMPL123Task_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
@@ -20615,5 +20620,9 @@
     <tabVisibilities>
         <tab>Impact_Assessment__c</tab>
         <visibility>DefaultOff</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Action_Item__c</tab>
+        <visibility>Hidden</visibility>
     </tabVisibilities>
 </Profile>

@@ -408,4 +408,15 @@ ISBLANK( Other_SME_Area__c )
 )</errorConditionFormula>
         <errorMessage>If Other is selected in SME Area, then Other - SME Area must be populated.</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>QA_assessment_if_created_must_be_last</fullName>
+        <active>true</active>
+        <description>Quality Assurance assessment (if created) must be completed last</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+CMPL123_WF_Action__c =="Assessment Completed" &amp;&amp; 
+(ISPICKVAL(SME_Area__c, "Quality Assurance") &amp;&amp;
+
+( Change_Control__r.Closed_Impact_Assessments__c   &lt;&gt;   Change_Control__r.Total_Impact_Assessments_with_type_quali__c ))</errorConditionFormula>
+        <errorMessage>Quality Assurance assessment (if created) must be completed last</errorMessage>
+    </validationRules>
 </CustomObject>

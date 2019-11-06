@@ -9,16 +9,14 @@
         <label>Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Total_Impact_Assessments_with_type_quali__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Closed_Impact_Assessments__c</field>
+                <height>200</height>
+                <page>CMPL123QMSChange_ControlWorkflowPanel</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
-        <style>TwoColumnsTopToBottom</style>
+        <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -66,6 +64,10 @@
                 <behavior>Edit</behavior>
                 <field>Justification__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_CRB_Approvers__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -91,6 +93,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Requestor__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Quality_Approver__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -574,11 +580,6 @@
             <sortOrder>9</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>CMPL123QMS__Change_Control__c.Detach_File</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>13</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>ChangeRecordType</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>10</sortOrder>
@@ -593,12 +594,18 @@
             <actionType>StandardButton</actionType>
             <sortOrder>12</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>CMPL123QMS__Change_Control__c.Detach_File</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>13</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <relatedLists>
         <fields>NAME</fields>
         <fields>CREATED_DATE</fields>
         <fields>SME_Area__c</fields>
         <fields>Assignee__c</fields>
+        <fields>CMPL123_WF_Status__c</fields>
         <relatedList>Impact_Assessment__c.Change_Control__c</relatedList>
     </relatedLists>
     <relatedLists>
