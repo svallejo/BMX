@@ -27154,12 +27154,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Related_Record__c.Change_Control__c</field>
+        <field>related_record__c.Change_Control__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Related_Record__c.Related_Change_Control__c</field>
+        <field>related_record__c.Related_Change_Control__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -27335,6 +27335,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123QMS__Change_Control__c.Total_impact_Assessments__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Change_Control__c.CRB_Comments__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
@@ -28113,7 +28118,7 @@
         <layout>Impact_Assessment__c-Impact Assessment Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Related_Record__c-Related Record Layout</layout>
+        <layout>related_record__c-Related Record Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Action_Item__c-Action Item Layout</layout>

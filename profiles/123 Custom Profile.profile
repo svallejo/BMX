@@ -19978,7 +19978,7 @@
         <layout>Impact_Assessment__c-Impact Assessment Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Related_Record__c-Related Record Layout</layout>
+        <layout>related_record__c-Related Record Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Action_Item__c-Action Item Layout</layout>

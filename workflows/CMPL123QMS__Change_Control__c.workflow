@@ -26,6 +26,47 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/CRB_Quality_Approver_Email_Notification</template>
     </alerts>
+    <alerts>
+        <fullName>Change_Request_Canceled</fullName>
+        <description>Change Request Canceled</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Originator__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Change_Request_Canceled</template>
+    </alerts>
+    <alerts>
+        <fullName>Quality_Approver_Email</fullName>
+        <description>Quality Approver Email</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Quality_Approver__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Quality_Approver_CC_Custom</template>
+    </alerts>
+    <alerts>
+        <fullName>Workflow_Rejected_Change_Control</fullName>
+        <description>Workflow Rejected Change Control</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Change_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Originator__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Quality_Approver__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Change_Request_Rejected</template>
+    </alerts>
     <fieldUpdates>
         <fullName>Set_Change_Control_Review_Flag</fullName>
         <field>Change_Control_Review_Completed__c</field>

@@ -15,6 +15,10 @@
                 <showScrollbars>false</showScrollbars>
                 <width>100%</width>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CMPL123Task_Key_Value__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
@@ -33,7 +37,7 @@
                 <field>Title__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Change_Owner__c</field>
             </layoutItems>
             <layoutItems>
@@ -144,6 +148,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>CRB_Approver_4__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CRB_Comments__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -631,14 +639,14 @@
         <excludeButtons>MassChangeOwner</excludeButtons>
         <fields>NAME</fields>
         <fields>Related_Change_Control__c</fields>
-        <relatedList>Related_Record__c.Change_Control__c</relatedList>
+        <relatedList>related_record__c.Change_Control__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Change_Control__c</fields>
-        <relatedList>Related_Record__c.Related_Change_Control__c</relatedList>
+        <relatedList>related_record__c.Related_Change_Control__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

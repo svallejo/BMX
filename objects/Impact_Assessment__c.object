@@ -295,8 +295,14 @@
                     <label>Validation</label>
                 </value>
                 <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
                     <fullName>Other with mandatory free text field to document area for assessment</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Other with mandatory free text field to document area for assessment</label>
                 </value>
             </valueSetDefinition>
@@ -403,7 +409,7 @@
         <active>true</active>
         <description>If Other is selected in SME Area, then Other - SME Area must be populated.</description>
         <errorConditionFormula>AND(
-ISPICKVAL(SME_Area__c, "Other with mandatory free text field to document area for assessment"),
+ISPICKVAL(SME_Area__c, "Other"),
 ISBLANK( Other_SME_Area__c )
 )</errorConditionFormula>
         <errorMessage>If Other is selected in SME Area, then Other - SME Area must be populated.</errorMessage>
@@ -418,5 +424,12 @@ CMPL123_WF_Action__c =="Assessment Completed" &amp;&amp;
 
 ( Change_Control__r.Closed_Impact_Assessments__c   &lt;&gt;   Change_Control__r.Total_Impact_Assessments_with_type_quali__c ))</errorConditionFormula>
         <errorMessage>Quality Assurance assessment (if created) must be completed last</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Assignee_restrictions</fullName>
+        <active>true</active>
+        <description>Only the Change Owner of the Change Control can modify the Assignee field</description>
+        <errorConditionFormula>Change_Control__r.Change_Owner__c  &lt;&gt;  $User.Id &amp;&amp; ISCHANGED( Assignee__c )</errorConditionFormula>
+        <errorMessage>Only the Change Owner of the Change Control can modify the Assignee field</errorMessage>
     </validationRules>
 </CustomObject>

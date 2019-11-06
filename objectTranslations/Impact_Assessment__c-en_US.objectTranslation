@@ -49,8 +49,8 @@
             <translation><!-- Manufacturing --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other with mandatory free text field to document area for assessment</masterLabel>
-            <translation><!-- Other with mandatory free text field to document area for assessment --></translation>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PL&amp;D</masterLabel>
@@ -169,5 +169,9 @@
     <validationRules>
         <errorMessage><!-- Quality Assurance assessment (if created) must be completed last --></errorMessage>
         <name>QA_assessment_if_created_must_be_last</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only the Change Owner of the Change Control can modify the Assignee field --></errorMessage>
+        <name>Assignee_restrictions</name>
     </validationRules>
 </CustomObjectTranslation>
