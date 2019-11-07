@@ -20249,6 +20249,11 @@
         <field>CMPL123QMS__Change_Control__c.CRB_Comments__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Impact_Assessment__c.CMPL123Rule_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
@@ -20524,7 +20529,7 @@
         <layout>CMPL123QMS__Change_Control_Item__c-CMPL123QMS__Change Control Item Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>CMPL123QMS__Change_Control__c-CMPL123QMS__Change Control Layout</layout>
+        <layout>CMPL123QMS__Change_Control__c-Change Control Custom</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Change_Notification__c-CMPL123QMS__Change Notification Layout</layout>

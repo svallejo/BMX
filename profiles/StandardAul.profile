@@ -19180,6 +19180,16 @@
         <field>CMPL123QMS__Change_Control__c.CMPL123Task_Key_Value__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Impact_Assessment__c.CMPL123Rule_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Impact_Assessment__c.CMPL123_WF_Action__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>

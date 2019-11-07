@@ -27268,7 +27268,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Impact_Assessment__c.CMPL123Rule_Key_Value__c</field>
         <readable>true</readable>
     </fieldPermissions>
