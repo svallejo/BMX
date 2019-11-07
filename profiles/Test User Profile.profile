@@ -20344,6 +20344,18 @@
     <layoutAssignments>
         <layout>Action_Item__c-Action Item Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Change_Control__c-Change Control Custom</layout>
+        <recordType>CMPL123QMS__Change_Control__c.CC_Custom</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Change_Control__c-Change Control Custom Read Only</layout>
+        <recordType>CMPL123QMS__Change_Control__c.CC_Custom_Read_Only</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Change_Control__c-Change Control Custom Read Only</layout>
+        <recordType>CMPL123QMS__Change_Control__c.CC_Read_Only</recordType>
+    </layoutAssignments>
     <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
@@ -20796,6 +20808,16 @@
         <default>false</default>
         <recordType>CMPL123QMS__Vendor__c.CMPL123QMS__Supplier</recordType>
         <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Change_Control__c.CC_Custom</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Change_Control__c.CC_Custom_Read_Only</recordType>
+        <visible>false</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
         <tab>Account__x</tab>

@@ -1574,9 +1574,9 @@
         <name>CMPL123Task_Key_Value__c</name>
     </fields>
     <fields>
-        <label><!-- Quality Approver --></label>
+        <label><!-- CRB Quality Approver --></label>
         <name>Quality_Approver__c</name>
-        <relationshipLabel><!-- Change Control (Quality Approver) --></relationshipLabel>
+        <relationshipLabel><!-- Change Control (CRB Quality Approver) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Total CRB Approvers --></label>
@@ -1676,10 +1676,86 @@
             <section>Training will be required as a result of change</section>
         </sections>
     </layouts>
+    <layouts>
+        <layout>Change Control Custom Read Only</layout>
+        <sections>
+            <label><!-- Change Review Board Approvers --></label>
+            <section>Change Review Board Approvers</section>
+        </sections>
+        <sections>
+            <label><!-- Developer --></label>
+            <section>Developer</section>
+        </sections>
+        <sections>
+            <label><!-- Document Change Details --></label>
+            <section>Document Change Details</section>
+        </sections>
+        <sections>
+            <label><!-- Equipment Change Details --></label>
+            <section>Equipment Change Details</section>
+        </sections>
+        <sections>
+            <label><!-- Facilities Change --></label>
+            <section>Facilities Change</section>
+        </sections>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- Impact Assessment --></label>
+            <section>Impact Assessment</section>
+        </sections>
+        <sections>
+            <label><!-- Is a Qualification Required? --></label>
+            <section>Is a Qualification Required?</section>
+        </sections>
+        <sections>
+            <label><!-- Non Product Software --></label>
+            <section>Non Product Software</section>
+        </sections>
+        <sections>
+            <label><!-- Product Related Details --></label>
+            <section>Product Related Details</section>
+        </sections>
+        <sections>
+            <label><!-- Quality Management System --></label>
+            <section>Quality Management System</section>
+        </sections>
+        <sections>
+            <label><!-- Risk Assessment --></label>
+            <section>Risk Assessment</section>
+        </sections>
+        <sections>
+            <label><!-- Supplier Change --></label>
+            <section>Supplier Change</section>
+        </sections>
+        <sections>
+            <label><!-- Training Required? --></label>
+            <section>Training Required?</section>
+        </sections>
+        <sections>
+            <label><!-- Training will be required as a result of change --></label>
+            <section>Training will be required as a result of change</section>
+        </sections>
+    </layouts>
     <quickActions>
         <label><!-- Detach File --></label>
         <name>Detach_File</name>
     </quickActions>
+    <recordTypes>
+        <description><!-- Custom Change Control for BMX --></description>
+        <label><!-- CC Custom --></label>
+        <name>CC_Custom</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- CC Custom Read Only --></label>
+        <name>CC_Custom_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- CC Read Only --></label>
+        <name>CC_Read_Only</name>
+    </recordTypes>
     <validationRules>
         <errorMessage><!-- Record Locked --></errorMessage>
         <name>Prevent_Edit_Change_control_on_closed_QE</name>

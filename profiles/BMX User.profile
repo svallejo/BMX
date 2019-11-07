@@ -2549,6 +2549,18 @@
         <apexPage>TopicAssignmentWorkflowPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
+    <pageAccesses>
+        <apexPage>Change_Control_cESignHistoryPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Impact_AssessmentWorkflowPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Impact_Assessment_cESignHistoryPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.AccountSource</field>
@@ -20254,6 +20266,11 @@
         <field>Impact_Assessment__c.CMPL123Rule_Key_Value__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Action_Item__c.Action_Item__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
@@ -21039,6 +21056,18 @@
     <layoutAssignments>
         <layout>Action_Item__c-Action Item Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Change_Control__c-Change Control Custom</layout>
+        <recordType>CMPL123QMS__Change_Control__c.CC_Custom</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Change_Control__c-Change Control Custom Read Only</layout>
+        <recordType>CMPL123QMS__Change_Control__c.CC_Custom_Read_Only</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Change_Control__c-Change Control Custom Read Only</layout>
+        <recordType>CMPL123QMS__Change_Control__c.CC_Read_Only</recordType>
+    </layoutAssignments>
     <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
@@ -21453,6 +21482,16 @@
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>TWD_Location__c.Internal</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>CMPL123QMS__Change_Control__c.CC_Custom</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Change_Control__c.CC_Custom_Read_Only</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>

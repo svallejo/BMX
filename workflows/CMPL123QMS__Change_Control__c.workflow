@@ -76,6 +76,26 @@
         <operation>Literal</operation>
         <protected>false</protected>
     </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Record_type_to_editabl</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>CC_Custom</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change Record type to editabl</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_record_to_Read_Only</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>CC_Custom_Read_Only</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change record to Read Only</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
     <rules>
         <fullName>Set Change Control%09Review Flag</fullName>
         <actions>
@@ -92,6 +112,34 @@
             <field>CMPL123QMS__Change_Control__c.CMPL123_WF_Action__c</field>
             <operation>equals</operation>
             <value>Complete Review - Change Control</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Change Record to Editable</fullName>
+        <actions>
+            <name>Change_Record_type_to_editabl</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CMPL123QMS__Change_Control__c.CMPL123_WF_Status__c</field>
+            <operation>equals</operation>
+            <value>Open</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Change To Read Only</fullName>
+        <actions>
+            <name>Change_record_to_Read_Only</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CMPL123QMS__Change_Control__c.CMPL123_WF_Status__c</field>
+            <operation>equals</operation>
+            <value>Pending CRB Team Review</value>
         </criteriaItems>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
