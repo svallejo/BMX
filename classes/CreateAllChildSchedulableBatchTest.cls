@@ -56,7 +56,8 @@ public class CreateAllChildSchedulableBatchTest{
         
         Case cs = BMX_TestDataFactory.getCaseRecord();
         insert cs;
-        CreateCaseCommentForComplaintBatch createCaseComment = new CreateCaseCommentForComplaintBatch(true);
+        DateTime now = System.now();
+        CreateCaseCommentForComplaintBatch createCaseComment = new CreateCaseCommentForComplaintBatch(true, now);
         database.executebatch(createCaseComment); 
     }
     
@@ -72,7 +73,8 @@ public class CreateAllChildSchedulableBatchTest{
         
         Case cs = BMX_TestDataFactory.getCaseRecord();
         insert cs;
-        CreateWorkOrderForComplaintBatch createWorkOrdr = new CreateWorkOrderForComplaintBatch(true);
+        DateTime now = System.now();
+        CreateWorkOrderForComplaintBatch createWorkOrdr = new CreateWorkOrderForComplaintBatch(true, now);
         database.executebatch(createWorkOrdr); 
     }
     
@@ -88,7 +90,8 @@ public class CreateAllChildSchedulableBatchTest{
         
         Case cs = BMX_TestDataFactory.getCaseRecord();
         insert cs;
-        CreateProductConsumedForWorkOrderBatch createProdConsumed = new CreateProductConsumedForWorkOrderBatch(true);
+        DateTime now = System.now();
+        CreateProductConsumedForWorkOrderBatch createProdConsumed = new CreateProductConsumedForWorkOrderBatch(true, now);
         database.executebatch(createProdConsumed); 
     }
     
@@ -108,8 +111,8 @@ public class CreateAllChildSchedulableBatchTest{
         Complaint_Creation_Batch_Time__c cst = new Complaint_Creation_Batch_Time__c();
         cst.Time_Interval__c = 30;
         insert cst;
-        
-        CreateServiceAppointmentForWorkOrdrBatch createServiceAppoint = new CreateServiceAppointmentForWorkOrdrBatch(true);
+        DateTime now = System.now();
+        CreateServiceAppointmentForWorkOrdrBatch createServiceAppoint = new CreateServiceAppointmentForWorkOrdrBatch(true, now);
         database.executebatch(createServiceAppoint); 
     }
     
@@ -131,7 +134,6 @@ public class CreateAllChildSchedulableBatchTest{
         Complaint_Creation_Batch_Time__c cst = new Complaint_Creation_Batch_Time__c();
         cst.Email_Recipient__c = 'abc@gmail.com,pqr@gmail.com';
         insert cst;
-        
         ReprocessErrorLogsBatch_Schedule ch = new ReprocessErrorLogsBatch_Schedule();
         ch.execute(null); 
     }
@@ -151,8 +153,8 @@ public class CreateAllChildSchedulableBatchTest{
         
         List<CMPL123CME__Complaint__c> cmplntList = new List<CMPL123CME__Complaint__c>();
         cmplntList.add(cmplnt);
-        
-        ProcessReopenCloseComplaintForCaseBatch bc = new ProcessReopenCloseComplaintForCaseBatch(cmplntList,cmplntList,cmplntList);
+        DateTime now = System.now();
+        ProcessReopenCloseComplaintForCaseBatch bc = new ProcessReopenCloseComplaintForCaseBatch(cmplntList,cmplntList,cmplntList, now);
         database.executebatch(bc);  
     } 
 }

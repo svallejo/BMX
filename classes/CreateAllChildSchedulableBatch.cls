@@ -82,7 +82,7 @@ global class CreateAllChildSchedulableBatch implements Schedulable,Database.Allo
           BMX_PRE5_WrongResultsPRE_Guidance_014764__c,    BMX_Is_Reportable__c,   BMX_Last_ATC_Sent_Date__c,Visitor_Postal_Code__c FROM Complaints__r)
           FROM Case__x WHERE LastModifiedDate__c >=: latestTimeStamp  ORDER BY LastModifiedDate__c DESC';
         **/
-        CreateComplaintForCaseBatch bc = new CreateComplaintForCaseBatch(query, count);
+        CreateComplaintForCaseBatch bc = new CreateComplaintForCaseBatch(query, count, latestTimeStamp);
         Database.executeBatch(bc, 50);
     }  
 }

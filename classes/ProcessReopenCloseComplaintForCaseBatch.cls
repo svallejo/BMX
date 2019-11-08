@@ -16,7 +16,7 @@
 
 public class ProcessReopenCloseComplaintForCaseBatch implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts {
 
-	// Declaring the lists and maps to keep all the complaints which needs update while reopening/Closing of the Complaints
+    // Declaring the lists and maps to keep all the complaints which needs update while reopening/Closing of the Complaints
     List<CMPL123CME__Complaint__c> cmpReopenList = new List<CMPL123CME__Complaint__c>();
     List<CMPL123CME__Complaint__c> cmpReopenUpdList = new List<CMPL123CME__Complaint__c>();
     List<CMPL123CME__Complaint__c> cmplntAutoCloseList = new List<CMPL123CME__Complaint__c>();
@@ -25,9 +25,10 @@ public class ProcessReopenCloseComplaintForCaseBatch implements Database.Batchab
     Map<Id, CMPL123CME__Complaint__c> cmpReopenUpdMap = new Map<Id, CMPL123CME__Complaint__c>();
     List<CMPL123CME__Complaint__c> totCmpList = new List<CMPL123CME__Complaint__c>();
     Set<Id> totCmpIdSet = new Set<Id>();
+    Datetime lastExecuted;
 
-	// Initializing the lists and maps with the complaints 
-    public ProcessReopenCloseComplaintForCaseBatch(List<CMPL123CME__Complaint__c> cmpReopenList, List<CMPL123CME__Complaint__c> cmpReopenUpdList , List<CMPL123CME__Complaint__c> cmplntAutoCloseList) {
+    // Initializing the lists and maps with the complaints 
+    public ProcessReopenCloseComplaintForCaseBatch(List<CMPL123CME__Complaint__c> cmpReopenList, List<CMPL123CME__Complaint__c> cmpReopenUpdList , List<CMPL123CME__Complaint__c> cmplntAutoCloseList, Datetime lastExecuted) {
         
         system.debug('==cmpReopenList=='+cmpReopenList);
         system.debug('==cmpReopenUpdList=='+cmpReopenUpdList);
@@ -36,6 +37,7 @@ public class ProcessReopenCloseComplaintForCaseBatch implements Database.Batchab
         this.cmpReopenList = cmpReopenList;
         this.cmpReopenUpdList = cmpReopenUpdList;
         this.cmplntAutoCloseList = cmplntAutoCloseList;
+        this.lastExecuted = lastExecuted;
         cmpReopenMap.putAll(cmpReopenList);
         cmpReopenUpdMap.putAll(cmpReopenUpdList);
         cmplntAutoCloseMap.putAll(cmplntAutoCloseList);
@@ -50,7 +52,7 @@ public class ProcessReopenCloseComplaintForCaseBatch implements Database.Batchab
         }
     }
 
-	// Quering the Complaints
+    // Quering the Complaints
     public Database.QueryLocator start(Database.BatchableContext bc) { 
         return Database.getQueryLocator('SELECT Id FROM CMPL123CME__Complaint__c WHERE Id IN: totCmpIdSet');
     }
@@ -64,7 +66,7 @@ public class ProcessReopenCloseComplaintForCaseBatch implements Database.Batchab
         if(compList.size() == 1 && compList[0].Id <> null) {
             Id cmpId = compList[0].Id;
 
-			//Reopening the complaints
+            //Reopening the complaints
             if(cmpReopenMap.get(cmpId) <> null) {
                 CMPL123CME__Complaint__c cmp = new CMPL123CME__Complaint__c();
                 cmp = cmpReopenMap.get(cmpId);
@@ -73,7 +75,7 @@ public class ProcessReopenCloseComplaintForCaseBatch implements Database.Batchab
                 cmpUpdList.add(cmp);
             }
             
-			// Making the updates after reopening the complaints
+            // Making the updates after reopening the complaints
             if(cmpReopenUpdMap.get(cmpId) <> null) {
                 CMPL123CME__Complaint__c cmp = new CMPL123CME__Complaint__c();
                 cmp = cmpReopenUpdMap.get(cmpId);
@@ -86,7 +88,7 @@ public class ProcessReopenCloseComplaintForCaseBatch implements Database.Batchab
                 cmpUpdList.add(cmp);
             }
             
-			// Autoclosing the complaints
+            // Autoclosing the complaints
             if(cmplntAutoCloseMap.get(cmpId) <> null) {
                 CMPL123CME__Complaint__c cmp = new CMPL123CME__Complaint__c();
                 cmp = cmplntAutoCloseMap.get(cmpId);
@@ -107,30 +109,11 @@ public class ProcessReopenCloseComplaintForCaseBatch implements Database.Batchab
         Boolean chained = false;
         //if([SELECT COUNT() FROM CaseComment__x WHERE LastModifiedDate__c >: System.now().addHours(-24) AND ParentId__c != null] > 0){
         if(!Test.isRunningTest()){
-		
-			// Executing CreateCaseCommentForComplaintBatch batch class
-            CreateCaseCommentForComplaintBatch createCaseComment = new CreateCaseCommentForComplaintBatch(!chained);
+        
+            // Executing CreateCaseCommentForComplaintBatch batch class
+            CreateCaseCommentForComplaintBatch createCaseComment = new CreateCaseCommentForComplaintBatch(!chained, lastExecuted);
             database.executebatch(createCaseComment);
         }
         
-           //chained = true;
-        //}
-        
-        // // querying the external Work order records which are created/updated in last 24 hours
-        /*if([SELECT COUNT() FROM WorkOrder__x WHERE LastModifiedDate__c >: System.now().addHours(-24) AND CaseId__c != null] > 0){
-
-           CreateWorkOrderForComplaintBatch createWorkOrder = new CreateWorkOrderForComplaintBatch(!chained);
-           database.executebatch(createWorkOrder);
-           chained = true;
-
-        }
-        if(!chained) {
-           Complaint_Creation_Batch_Time__c cs = Complaint_Creation_Batch_Time__c.getInstance();
-           Integer gap = Integer.valueOf(cs.Time_Interval__c);
-        
-           dateTime timeInterval  = System.now().addMinutes(gap);
-           String cronExp = '0 ' + timeInterval.minute() + ' ' + timeInterval.hour() + ' ' + timeInterval.day() + ' ' + timeInterval.month() + ' ?';
-           System.schedule('Case External Sync Job ' + timeInterval, cronExp, new CreateAllChildSchedulableBatch());
-        }*/
     }  
 }

@@ -18,23 +18,26 @@
 
 
 global class CreateProductConsumedForWorkOrderBatch implements Database.Batchable<sObject>, Database.Stateful,Database.AllowsCallouts{
+    private final String VALID_CASE_TYPE = 'TechnicalComplaint';
     
     //Intializing external Product Consumed Ids in the constructor
     global CreateProductConsumedForWorkOrderBatch(){}
     Boolean chained;
-    global CreateProductConsumedForWorkOrderBatch(Boolean chain){
+    Datetime lastExecuted;
+    global CreateProductConsumedForWorkOrderBatch(Boolean chain, Datetime lastExecuted){
         this.chained = chain;
+        this.lastExecuted = lastExecuted;
     }
     
     // querying the external Product Consumed recordss
     global Database.QueryLocator start(Database.BatchableContext bc) {
-        DateTime dt = System.now().addHours(-24);
-        Integer count = [SELECT count() FROM ProductConsumed__x WHERE LastModifiedDate__c >=: dt];
-        
         if(!Test.isRunningTest()){
-            return Database.getQueryLocator('SELECT Id,WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c,PricebookEntryId__r.LocalProductName_c__c FROM ProductConsumed__x ORDER BY LastModifiedDate__c DESC LIMIT '+count);  
+            String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
+            return Database.getQueryLocator('SELECT Id,WorkOrderId__r.CaseId__r.Type__c, WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c, WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c,' +
+                       'PricebookEntryId__r.LocalProductName_c__c FROM ProductConsumed__x WHERE LastModifiedDate__c >= ' + formattedTime);  
         }else{
-            return Database.getQueryLocator('SELECT Id FROM Case LIMIT 1');
+            return Database.getQueryLocator('SELECT Id,WorkOrderId__r.CaseId__r.Type__c, WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c, WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c,' +
+                       'PricebookEntryId__r.LocalProductName_c__c FROM ProductConsumed__x LIMIT 1');
         }
     }
     
@@ -54,21 +57,22 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
         
         List<Product_Consumed__c> productConsumedList = new List<Product_Consumed__c>();
         List<Database.upsertResult> upsertResultList = new List<Database.upsertResult>();
-        
+
         for(ProductConsumed__x  productconsumX: records){
             
             //mapping external Product Consumed fields to the Product Consumed custom object fields to create Product Consumed records
-            if(Test.isRunningTest() || productconsumX.WorkOrderId__r.ExternalId != null){
-                //Integer productConsumCount = (!Test.isRunningTest()) ? [SELECT Count() FROM Product_Consumed__c WHERE ExternalId__c =: productconsumX.WorkOrderId__r.ExternalId LIMIT 1] : 1;
-                //If( productConsumCount > 0){
-                    Product_Consumed__c productConsumed = new Product_Consumed__c();
-                    productConsumed.workOrderId__r = new Work_Order__c(ExternalId__c = productconsumX.WorkOrderId__r.ExternalId);
-                    productConsumed.ExternalId__c = productconsumX.ExternalId;
-                    productConsumed.Product_Consumed_WO__c = productconsumX.WorkOrderId__r.WorkOrderNumber__c;
-                    productConsumed.Product_Consumed_Price_Book_Entry__c = productconsumX.PricebookEntryId__r.LocalProductName_c__c;
-                    productConsumed.Product_Quantity_Consumed__c = productconsumX.QuantityConsumed__c;
-                    productConsumedList.add(productConsumed);
-                //}
+            if(Test.isRunningTest() || 
+            (productconsumX.WorkOrderId__r.ExternalId != null && 
+             productconsumX.WorkOrderId__r.CaseId__r.Type__c != null && 
+             productconsumX.WorkOrderId__r.CaseId__r.Type__c == VALID_CASE_TYPE &&
+             String.isEmpty(productconsumX.WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c))){
+                Product_Consumed__c productConsumed = new Product_Consumed__c();
+                productConsumed.workOrderId__r = new Work_Order__c(ExternalId__c = productconsumX.WorkOrderId__r.ExternalId);
+                productConsumed.ExternalId__c = productconsumX.ExternalId;
+                productConsumed.Product_Consumed_WO__c = productconsumX.WorkOrderId__r.WorkOrderNumber__c;
+                productConsumed.Product_Consumed_Price_Book_Entry__c = productconsumX.PricebookEntryId__r.LocalProductName_c__c;
+                productConsumed.Product_Quantity_Consumed__c = productconsumX.QuantityConsumed__c;
+                productConsumedList.add(productConsumed);
             }
         }
         
@@ -76,12 +80,12 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
         System.debug('-------productConsumedList------'+productConsumedList);
         
         if(!productConsumedList.isEmpty()) {
-		
-			// Upserting the external Product Consumed list of records 
+        
+            // Upserting the external Product Consumed list of records 
             upsertResultList = Database.Upsert(productConsumedList,Product_Consumed__c.ExternalId__c, false);
         }
         
-		// creating error log records if any record gets failed during the execution of the batch
+        // creating error log records if any record gets failed during the execution of the batch
         if(!upsertResultList.isEmpty()) {
             List<Error_Log__c> errLogList = new List<Error_Log__c>();
             for(Integer i=0; i <upsertResultList.size(); i++) {
@@ -103,18 +107,9 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
         // execute any post-processing operations
         system.debug('Product Conmsumed inserted/updated');
         if(!Test.isRunningTest()){
-		
-		    // executing the CreateServiceAppointmentForWorkOrdrBatch batch class
-            CreateServiceAppointmentForWorkOrdrBatch createServiceAppointment = new CreateServiceAppointmentForWorkOrdrBatch(true);
-            database.executebatch(createServiceAppointment);
+            // executing the CreateServiceAppointmentForWorkOrdrBatch batch class
+            CreateServiceAppointmentForWorkOrdrBatch createServiceAppointment = new CreateServiceAppointmentForWorkOrdrBatch(true, lastExecuted);
+            Database.executebatch(createServiceAppointment);
         }
-        /*if(chained) {
-            Complaint_Creation_Batch_Time__c cs = Complaint_Creation_Batch_Time__c.getInstance();
-            Integer gap = Integer.valueOf(cs.Time_Interval__c);
-            
-            dateTime timeInterval  = System.now().addMinutes(gap);
-            String cronExp = '0 ' + timeInterval.minute() + ' ' + timeInterval.hour() + ' ' + timeInterval.day() + ' ' + timeInterval.month() + ' ?';
-            System.schedule('Case External Sync Job ' + timeInterval, cronExp, new CreateAllChildSchedulableBatch());
-        }*/
     }  
 }

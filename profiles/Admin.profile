@@ -24788,7 +24788,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>WorkOrder__x.CaseId__c</field>
         <readable>true</readable>
     </fieldPermissions>

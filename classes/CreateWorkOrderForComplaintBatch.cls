@@ -16,23 +16,26 @@
 
 
 global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObject>, Database.Stateful,Database.AllowsCallouts{
+    private final String VALID_CASE_TYPE = 'TechnicalComplaint';
     
     global CreateWorkOrderForComplaintBatch(){} 
     global Boolean chained;
-    
-    global CreateWorkOrderForComplaintBatch(Boolean chain) {
+    Datetime lastExecuted;
+    global CreateWorkOrderForComplaintBatch(Boolean chain, DateTime lastExecuted) {
         this.chained = chain;
+        this.lastExecuted = lastExecuted;
     }
     
     // querying the external Work Order records
     global Database.QueryLocator start(Database.BatchableContext bc) {
-        DateTime dt = System.now().addHours(-24);
-        Integer count = [SELECT count() FROM WorkOrder__x WHERE LastModifiedDate__c >=: dt AND CaseId__c != null];
         
         if(!Test.isRunningTest()){
-            return Database.getQueryLocator('SELECT Id,CaseId__r.ExternalId,StartDate__c,ClosedDate_c__c,ExternalId,Status__c,Categories_c__c,SAP_ServiceOrderType_c__c,SubCategory_c__c,Subject__c  FROM WorkOrder__x ORDER BY LastModifiedDate__c DESC LIMIT '+count );
+            String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
+            return Database.getQueryLocator('SELECT Id,CaseId__r.Type__c,CaseId__r.TWComplaintNumber_c__c,  CaseId__r.ExternalId,StartDate__c,ClosedDate_c__c,ExternalId,Status__c,Categories_c__c,SAP_ServiceOrderType_c__c,' +
+                                            'SubCategory_c__c,Subject__c  FROM WorkOrder__x WHERE LastModifiedDate__c >= ' + formattedTime);  
         }else{
-            return Database.getQueryLocator('SELECT Id FROM Case LIMIT 1');
+            return Database.getQueryLocator('SELECT Id,CaseId__r.Type__c,CaseId__r.TWComplaintNumber_c__c, CaseId__r.ExternalId,StartDate__c,ClosedDate_c__c,ExternalId,Status__c,Categories_c__c,SAP_ServiceOrderType_c__c,' +
+                                            'SubCategory_c__c,Subject__c  FROM WorkOrder__x LIMIT 1');
         }
     }
     
@@ -55,7 +58,11 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
         
         for(WorkOrder__x  workOrdX: records){
             //mapping external Work Order fields to the Work Order custom object fields to create Work Order records
-            if(Test.isRunningTest() || workOrdX.CaseId__r.ExternalId != null){
+            if(Test.isRunningTest() || 
+            (workOrdX.CaseId__r.ExternalId != null && 
+            workOrdX.CaseId__r.Type__c != null && 
+            workOrdX.CaseId__r.Type__c == VALID_CASE_TYPE &&
+            String.isEmpty(workOrdX.CaseId__r.TWComplaintNumber_c__c))){
                 //Integer cmplntCount = (!Test.isRunningTest()) ? [SELECT Count() FROM CMPL123CME__Complaint__c WHERE BMX_Case_External_Id__c =: workOrdX.CaseId__r.ExternalId LIMIT 1] : 1;
                 //If( cmplntCount > 0){
                     Work_Order__c workOrdr = new Work_Order__c();
@@ -76,12 +83,12 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
         System.debug('-------workOrderList------'+workOrderList);
         
         if(!workOrderList.isEmpty()) {
-		
-			// Upserting the external Work Order list of records
+        
+            // Upserting the external Work Order list of records
             upsertResultList = Database.Upsert(workOrderList,Work_Order__c.ExternalId__c, false);
         }
         
-		// creating error log records if any record gets failed during the execution of the batch
+        // creating error log records if any record gets failed during the execution of the batch
         if(!upsertResultList.isEmpty()) {
             List<Error_Log__c> errLogList = new List<Error_Log__c>();
             for(Integer i=0; i <upsertResultList.size(); i++) {
@@ -106,30 +113,10 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
         
         // querying the external Product Consumed records which are created/updated in last 24 hours
         Boolean chainedAlready = !chained;
-        //if([SELECT COUNT() FROM ProductConsumed__x WHERE LastModifiedDate__c >: System.now().addHours(-24) AND WorkOrderId__c != null] > 0){
         if(!Test.isRunningTest()){
-            CreateProductConsumedForWorkOrderBatch createProductConsumed = new CreateProductConsumedForWorkOrderBatch(chained && !chainedAlready);
+            CreateProductConsumedForWorkOrderBatch createProductConsumed = new CreateProductConsumedForWorkOrderBatch(chained && !chainedAlready, lastExecuted);
             chainedAlready = true;
             database.executebatch(createProductConsumed);
         }
-        
-        //}   
-        
-        // querying the external Service Appointment records which are created/updated in last 24 hours
-        /*if([SELECT COUNT() FROM ServiceAppointment__x WHERE LastModifiedDate__c >: System.now().addHours(-24) AND WorkOrder_c__c != null] > 0){
-            CreateServiceAppointmentForWorkOrdrBatch createServiceAppointment = new CreateServiceAppointmentForWorkOrdrBatch(chained && !chainedAlready);
-            chainedAlready = true;
-            database.executebatch(createServiceAppointment);
-        }
-        
-        if(chained && !chainedAlready) {
-            Complaint_Creation_Batch_Time__c cs = Complaint_Creation_Batch_Time__c.getInstance();
-            Integer gap = Integer.valueOf(cs.Time_Interval__c);
-            
-            dateTime timeInterval  = System.now().addMinutes(gap);
-            String cronExp = '0 ' + timeInterval.minute() + ' ' + timeInterval.hour() + ' ' + timeInterval.day() + ' ' + timeInterval.month() + ' ?';
-            System.schedule('Case External Sync Job ' + timeInterval, cronExp, new CreateAllChildSchedulableBatch());
-        } */   
-        
     } 
 }
