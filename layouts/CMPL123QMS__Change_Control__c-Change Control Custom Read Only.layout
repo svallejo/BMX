@@ -622,11 +622,13 @@
     </platformActionList>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>SME_Area__c</fields>
         <fields>Assignee__c</fields>
+        <fields>SME_Area__c</fields>
         <fields>CMPL123_WF_Status__c</fields>
+        <fields>CREATED_DATE</fields>
         <relatedList>Impact_Assessment__c.Change_Control__c</relatedList>
+        <sortField>CMPL123_WF_Status__c</sortField>
+        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -651,6 +653,8 @@
         <excludeButtons>MassChangeOwner</excludeButtons>
         <fields>NAME</fields>
         <fields>Related_Change_Control__c</fields>
+        <fields>Related_Change_Control_Title__c</fields>
+        <fields>Related_Change_Control_Workflow_Status__c</fields>
         <relatedList>related_record__c.Change_Control__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -658,6 +662,8 @@
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Change_Control__c</fields>
+        <fields>Change_Control_Title__c</fields>
+        <fields>Change_Control_Workflow_Status__c</fields>
         <relatedList>related_record__c.Related_Change_Control__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>

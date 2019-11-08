@@ -375,6 +375,16 @@
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
+    <fields>
+        <fullName>CreatedDate__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Created Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -423,13 +433,15 @@ CMPL123_WF_Action__c =="Assessment Completed" &amp;&amp;
 (ISPICKVAL(SME_Area__c, "Quality Assurance") &amp;&amp;
 
 ( Change_Control__r.Closed_Impact_Assessments__c   &lt;&gt;   Change_Control__r.Total_Impact_Assessments_with_type_quali__c ))</errorConditionFormula>
-        <errorMessage>Quality Assurance assessment (if created) must be completed last</errorMessage>
+        <errorMessage>Quality Assurance assessment must be completed last</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Assignee_restrictions</fullName>
         <active>true</active>
         <description>Only the Change Owner of the Change Control can modify the Assignee field</description>
-        <errorConditionFormula>Change_Control__r.Change_Owner__c  &lt;&gt;  $User.Id &amp;&amp; ISCHANGED( Assignee__c )</errorConditionFormula>
-        <errorMessage>Only the Change Owner of the Change Control can modify the Assignee field</errorMessage>
+        <errorConditionFormula>(PRIORVALUE(Assignee__c) != null &amp;&amp; Change_Control__r.Change_Owner__c  &lt;&gt;  $User.Id &amp;&amp; ISCHANGED( Assignee__c ))
+&amp;&amp;
+( PRIORVALUE(Assignee__c) != null &amp;&amp; PRIORVALUE(Assignee__c) &lt;&gt; $User.Id &amp;&amp; ISCHANGED( Assignee__c ))</errorConditionFormula>
+        <errorMessage>Only the Change Owner of the Change Control or Impact Assessment Assignee can modify the Assignee field</errorMessage>
     </validationRules>
 </CustomObject>

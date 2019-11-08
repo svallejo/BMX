@@ -6,7 +6,7 @@
     <fields>
         <label><!-- Assignee --></label>
         <name>Assignee__c</name>
-        <relationshipLabel><!-- Action Items --></relationshipLabel>
+        <relationshipLabel><!-- Action Items (Assignee) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Change Control --></label>
@@ -33,6 +33,27 @@
         <label><!-- Action Item --></label>
         <name>Action_Item__c</name>
     </fields>
+    <fields>
+        <label><!-- Rule Field Update Key Value --></label>
+        <name>CMPL123Rule_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed By --></label>
+        <name>CMPL123_WF_Action_Performed_By__c</name>
+        <relationshipLabel><!-- Action Items (Workflow Action Performed By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action Performed On --></label>
+        <name>CMPL123_WF_Action_Performed_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Action --></label>
+        <name>CMPL123_WF_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Status --></label>
+        <name>CMPL123_WF_Status__c</name>
+    </fields>
     <caseValues>
         <plural>false</plural>
         <value>Action Item</value>
@@ -47,6 +68,14 @@
         <sections>
             <label><!-- Custom Links --></label>
             <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Workflow --></label>
+            <section>Workflow</section>
+        </sections>
+        <sections>
+            <label><!-- esig history --></label>
+            <section>esig history</section>
         </sections>
     </layouts>
     <validationRules>

@@ -138,6 +138,10 @@
         <label><!-- Impact Assessment --></label>
         <name>impact_Assessment__c</name>
     </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
     <caseValues>
         <plural>false</plural>
         <value>Impact Assessment</value>
@@ -167,11 +171,11 @@
         <name>Other_SME_Area</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Quality Assurance assessment (if created) must be completed last --></errorMessage>
+        <errorMessage><!-- Quality Assurance assessment must be completed last --></errorMessage>
         <name>QA_assessment_if_created_must_be_last</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Only the Change Owner of the Change Control can modify the Assignee field --></errorMessage>
+        <errorMessage><!-- Only the Change Owner of the Change Control or Impact Assessment Assignee can modify the Assignee field --></errorMessage>
         <name>Assignee_restrictions</name>
     </validationRules>
 </CustomObjectTranslation>
