@@ -27405,6 +27405,16 @@
         <field>related_record__c.Related_Change_Control_Workflow_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Predefined_Implementation_Plan__c.Active__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Predefined_Implementation_Plan__c.Version__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
@@ -28198,6 +28208,12 @@
         <layout>CMPL123QMS__Change_Control__c-Change Control Custom Read Only</layout>
         <recordType>CMPL123QMS__Change_Control__c.CC_Read_Only</recordType>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Predefined_Action_Item__c-Predefined Action Item Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Predefined_Implementation_Plan__c-Predefined Implementation Plan Layout</layout>
+    </layoutAssignments>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>BMX_Generic_Report__c.BMX_Lock_Generic_Report</recordType>
@@ -28871,6 +28887,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Action_Item__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Predefined_Implementation_Plan__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
 </Profile>

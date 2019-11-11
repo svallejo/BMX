@@ -82,4 +82,8 @@
         <errorMessage><!-- You can not have more than 10,000 Action Item records related to one Change Control --></errorMessage>
         <name>limit_action_items_to_10000</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Parent Change Control must be in Open status to cancel the Action Item --></errorMessage>
+        <name>CCmustbeOpenstatustocancelaction</name>
+    </validationRules>
 </CustomObjectTranslation>

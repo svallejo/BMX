@@ -11184,6 +11184,12 @@
         <layout>CMPL123QMS__Change_Control__c-CMPL123QMS__Change Control Layout</layout>
         <recordType>CMPL123QMS__Change_Control__c.CC_Read_Only</recordType>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Predefined_Action_Item__c-Predefined Action Item Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Predefined_Implementation_Plan__c-Predefined Implementation Plan Layout</layout>
+    </layoutAssignments>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>BMX_Generic_Report__c.BMX_Lock_Generic_Report</recordType>
@@ -11836,6 +11842,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Action_Item__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Predefined_Implementation_Plan__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
 </Profile>

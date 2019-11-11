@@ -21131,6 +21131,12 @@
         <layout>CMPL123QMS__Change_Control__c-Change Control Custom Read Only</layout>
         <recordType>CMPL123QMS__Change_Control__c.CC_Read_Only</recordType>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Predefined_Action_Item__c-Predefined Action Item Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Predefined_Implementation_Plan__c-Predefined Implementation Plan Layout</layout>
+    </layoutAssignments>
     <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
@@ -22036,5 +22042,9 @@
     <tabVisibilities>
         <tab>Action_Item__c</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Predefined_Implementation_Plan__c</tab>
+        <visibility>DefaultOff</visibility>
     </tabVisibilities>
 </Profile>

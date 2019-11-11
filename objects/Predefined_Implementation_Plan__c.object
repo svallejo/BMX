@@ -140,125 +140,22 @@
         <type>Default</type>
     </actionOverrides>
     <fields>
-        <fullName>After_Release__c</fullName>
+        <fullName>Active__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
-        <label>After Release</label>
+        <label>Active</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Assignee__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <fullName>Version__c</fullName>
         <externalId>false</externalId>
-        <label>Assignee</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Action_Items</relationshipName>
+        <label>Version</label>
+        <precision>18</precision>
         <required>false</required>
+        <scale>0</scale>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Change_Control__c</fullName>
-        <externalId>false</externalId>
-        <label>Change Control</label>
-        <referenceTo>CMPL123QMS__Change_Control__c</referenceTo>
-        <relationshipLabel>Action Items</relationshipLabel>
-        <relationshipName>Action_Items</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>Require_Approval__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>Require Approval</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Required__c</fullName>
-        <defaultValue>true</defaultValue>
-        <externalId>false</externalId>
-        <label>Required</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Target_Due_Date__c</fullName>
-        <externalId>false</externalId>
-        <label>Target Due Date</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>URL_for_PECN_use__c</fullName>
-        <externalId>false</externalId>
-        <label>URL (for PECN use)</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Url</type>
-    </fields>
-    <fields>
-        <fullName>Action_Item__c</fullName>
-        <externalId>false</externalId>
-        <label>Action Item</label>
-        <length>10000</length>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>CMPL123Rule_Key_Value__c</fullName>
-        <externalId>false</externalId>
-        <label>Rule Field Update Key Value</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>CMPL123_WF_Action_Performed_By__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <externalId>false</externalId>
-        <label>Workflow Action Performed By</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Action_ItemcCMPL123_Users</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>CMPL123_WF_Action_Performed_On__c</fullName>
-        <externalId>false</externalId>
-        <label>Workflow Action Performed On</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>CMPL123_WF_Action__c</fullName>
-        <externalId>false</externalId>
-        <label>Workflow Action</label>
-        <length>100</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>CMPL123_WF_Status__c</fullName>
-        <externalId>false</externalId>
-        <label>Workflow Status</label>
-        <length>100</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -273,36 +170,18 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <label>Action Item</label>
+    <label>Predefined Implementation Plan</label>
     <nameField>
-        <displayFormat>AI-{0000}</displayFormat>
-        <label>Action Item Name</label>
-        <type>AutoNumber</type>
+        <label>Predefined Implementation Plan Name</label>
+        <type>Text</type>
     </nameField>
-    <pluralLabel>Action Items</pluralLabel>
+    <pluralLabel>Predefined Implementation Plans</pluralLabel>
     <searchLayouts />
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
     <listViews>
         <fullName>All</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
-    <validationRules>
-        <fullName>limit_action_items_to_10000</fullName>
-        <active>true</active>
-        <description>You can not have more than 10,000 Action Item records related to one Change Control</description>
-        <errorConditionFormula>ISNEW() &amp;&amp;  Change_Control__r.Action_Item_Records__c = 10000</errorConditionFormula>
-        <errorMessage>You can not have more than 10,000 Action Item records related to one Change Control</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>CCmustbeOpenstatustocancelaction</fullName>
-        <active>true</active>
-        <description>Parent Change Control must be in Open status to cancel the Action Item</description>
-        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp;
-CMPL123_WF_Action__c =="Cancel" &amp;&amp;
-
- Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open"</errorConditionFormula>
-        <errorMessage>Parent Change Control must be in Open status to cancel the Action Item</errorMessage>
-    </validationRules>
 </CustomObject>
