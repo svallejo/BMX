@@ -1,10 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignments>
+        <name>Add_to_Implementation_Plan</name>
+        <label>Add to Implementation Plan</label>
+        <locationX>1273</locationX>
+        <locationY>161</locationY>
+        <assignmentItems>
+            <assignToReference>ImplementationPlan</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>ActionItem</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_List_of_Predefined_Action_Items</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Action_Item_Values</name>
+        <label>Assign Action Item Values</label>
+        <locationX>1166</locationX>
+        <locationY>50</locationY>
+        <assignmentItems>
+            <assignToReference>ActionItem.Step_Number__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PredefinedActionItem.Step_Number__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ActionItem.Action_Item__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PredefinedActionItem.Description__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ActionItem.Change_Control__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OriginatingChangeControl.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ActionItem.Predefined_Implementation_Plan__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PredefinedImplementationName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ActionItem.Required__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_to_Implementation_Plan</targetReference>
+        </connector>
+    </assignments>
     <decisions>
-        <name>Create_Action_Items</name>
-        <label>Create Action Items?</label>
-        <locationX>808</locationX>
-        <locationY>49</locationY>
+        <name>Action_Items_Found</name>
+        <label>Action Items Found?</label>
+        <locationX>807</locationX>
+        <locationY>158</locationY>
+        <defaultConnector>
+            <targetReference>NoActionItemsFound</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>No Action Items Found</defaultConnectorLabel>
         <rules>
             <name>Yes_Action_Items_Found</name>
@@ -16,6 +79,9 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>Loop_Through_List_of_Predefined_Action_Items</targetReference>
+            </connector>
             <label>Yes, Action Items Found</label>
         </rules>
     </decisions>
@@ -23,7 +89,7 @@
         <name>Implementation_Plan_Locked</name>
         <label>Implementation Plan Locked?</label>
         <locationX>254</locationX>
-        <locationY>48</locationY>
+        <locationY>157</locationY>
         <defaultConnector>
             <targetReference>SelectPredefinedImplementationPlan</targetReference>
         </defaultConnector>
@@ -66,6 +132,21 @@
     </dynamicChoiceSets>
     <interviewLabel>Select Implementation Plan Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Select Implementation Plan Flow</label>
+    <loops>
+        <name>Loop_Through_List_of_Predefined_Action_Items</name>
+        <label>Loop Through List of Predefined Action Items</label>
+        <locationX>1054</locationX>
+        <locationY>161</locationY>
+        <assignNextValueToReference>PredefinedActionItem</assignNextValueToReference>
+        <collectionReference>ListofPredefinedActionItems</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Action_Item_Values</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Create_Action_Items</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -79,11 +160,21 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Action_Items</name>
+        <label>Create Action Items</label>
+        <locationX>1055</locationX>
+        <locationY>399</locationY>
+        <connector>
+            <targetReference>Action_Items_Created</targetReference>
+        </connector>
+        <inputReference>ImplementationPlan</inputReference>
+    </recordCreates>
     <recordLookups>
         <name>Get_Change_Control_Record</name>
         <label>Get Change Control Record</label>
         <locationX>138</locationX>
-        <locationY>47</locationY>
+        <locationY>156</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Implementation_Plan_Locked</targetReference>
@@ -99,15 +190,16 @@
         <outputReference>OriginatingChangeControl</outputReference>
         <queriedFields>Id</queriedFields>
         <queriedFields>CMPL123_WF_Status__c</queriedFields>
+        <queriedFields>Name</queriedFields>
     </recordLookups>
     <recordLookups>
         <name>Retrieve_List_of_Predefined_Action_Items</name>
         <label>Retrieve List of Predefined Action Items</label>
         <locationX>630</locationX>
-        <locationY>47</locationY>
+        <locationY>156</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Create_Action_Items</targetReference>
+            <targetReference>Action_Items_Found</targetReference>
         </connector>
         <filters>
             <field>Predefined_Implementation_Plan__c</field>
@@ -125,10 +217,26 @@
         <sortOrder>Asc</sortOrder>
     </recordLookups>
     <screens>
+        <name>Action_Items_Created</name>
+        <label>Action Items Created</label>
+        <locationX>1268</locationX>
+        <locationY>399</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>ActionItemsCreatedConfirmation</name>
+            <fieldText>&lt;p&gt;Action Items from {!PredefinedImplementationName} have been created for {!OriginatingChangeControl.Name}.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <name>ImplementationPlan_Locked</name>
         <label>ImplementationPlan Locked</label>
         <locationX>259</locationX>
-        <locationY>281</locationY>
+        <locationY>390</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -141,10 +249,26 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>NoActionItemsFound</name>
+        <label>NoActionItemsFound</label>
+        <locationX>814</locationX>
+        <locationY>397</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>NoActionItemsFoundDisplayText</name>
+            <fieldText>&lt;p&gt;No action items were found for selected predefined implementation plan.  Check with system administrator.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <name>SelectPredefinedImplementationPlan</name>
         <label>SelectPredefinedImplementationPlan</label>
-        <locationX>474</locationX>
-        <locationY>47</locationY>
+        <locationX>472</locationX>
+        <locationY>156</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -168,13 +292,29 @@
         <showHeader>true</showHeader>
     </screens>
     <startElementReference>Get_Change_Control_Record</startElementReference>
-    <status>Draft</status>
+    <status>Active</status>
+    <variables>
+        <name>ActionItem</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Action_Item__c</objectType>
+    </variables>
     <variables>
         <name>ChangeControlID</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ImplementationPlan</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Action_Item__c</objectType>
     </variables>
     <variables>
         <name>ListofPredefinedActionItems</name>
@@ -191,6 +331,14 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>CMPL123QMS__Change_Control__c</objectType>
+    </variables>
+    <variables>
+        <name>PredefinedActionItem</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Predefined_Action_Item__c</objectType>
     </variables>
     <variables>
         <name>PredefinedImplementationName</name>

@@ -163,7 +163,7 @@
         <externalId>false</externalId>
         <label>Change Control</label>
         <referenceTo>CMPL123QMS__Change_Control__c</referenceTo>
-        <relationshipLabel>Action Items</relationshipLabel>
+        <relationshipLabel>Implementation Plan</relationshipLabel>
         <relationshipName>Action_Items</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
@@ -263,15 +263,13 @@
     </fields>
     <fields>
         <fullName>Predefined_Implementation_Plan__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Predefined Implementation Plan</label>
-        <referenceTo>Predefined_Implementation_Plan__c</referenceTo>
-        <relationshipLabel>Action Items</relationshipLabel>
-        <relationshipName>Action_Items</relationshipName>
+        <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Step_Number__c</fullName>
