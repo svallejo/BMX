@@ -4,6 +4,14 @@
         <name>Predefined_Implementation_Plan__c</name>
         <relationshipLabel><!-- Predefined Action Items --></relationshipLabel>
     </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Step Number --></label>
+        <name>Step_Number__c</name>
+    </fields>
     <caseValues>
         <plural>false</plural>
         <value>Predefined Action Item</value>
@@ -13,4 +21,19 @@
         <value>Predefined Action Items</value>
     </caseValues>
     <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Predefined Action Item Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- You cannot have more than 10,000 predefined action items in a predefined implementation plan. --></errorMessage>
+        <name>Limit_Action_Items_to_10000</name>
+    </validationRules>
 </CustomObjectTranslation>

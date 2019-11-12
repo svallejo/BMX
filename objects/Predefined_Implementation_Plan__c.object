@@ -158,6 +158,16 @@
         <type>Number</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Total_Action_Items__c</fullName>
+        <description>Total action items in predefined plan</description>
+        <externalId>false</externalId>
+        <label>Total Action Items</label>
+        <summaryForeignKey>Predefined_Action_Item__c.Predefined_Implementation_Plan__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -176,7 +186,10 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Predefined Implementation Plans</pluralLabel>
-    <searchLayouts />
+    <searchLayouts>
+        <searchResultsAdditionalFields>Version__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Active__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
     <listViews>

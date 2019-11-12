@@ -152,6 +152,26 @@
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Step_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Step Number</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -174,4 +194,10 @@
     <searchLayouts />
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
+    <validationRules>
+        <fullName>Limit_Action_Items_to_10000</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() &amp;&amp;  Predefined_Implementation_Plan__r.Total_Action_Items__c = 10000</errorConditionFormula>
+        <errorMessage>You cannot have more than 10,000 predefined action items in a predefined implementation plan.</errorMessage>
+    </validationRules>
 </CustomObject>
