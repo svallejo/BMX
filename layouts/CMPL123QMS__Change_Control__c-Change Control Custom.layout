@@ -547,11 +547,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>PrintableView</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>1</sortOrder>
@@ -560,6 +555,11 @@
             <actionName>CMPL123QMS__Change_Control__c.Detach_File</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
@@ -576,9 +576,10 @@
         <fields>NAME</fields>
         <fields>Assignee__c</fields>
         <fields>Action_Item__c</fields>
-        <fields>Required__c</fields>
         <fields>CMPL123_WF_Status__c</fields>
-        <fields>Step_Number__c</fields>
+        <fields>Required__c</fields>
+        <fields>After_Release__c</fields>
+        <fields>Predefined_Implementation_Plan__c</fields>
         <relatedList>Action_Item__c.Change_Control__c</relatedList>
         <sortField>NAME</sortField>
         <sortOrder>Asc</sortOrder>

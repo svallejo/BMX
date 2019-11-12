@@ -19822,6 +19822,11 @@
         <field>Action_Item__c.Predefined_Implementation_Plan__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Predefined_Action_Item__c.Step_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>

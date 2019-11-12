@@ -444,4 +444,18 @@ CMPL123_WF_Action__c =="Assessment Completed" &amp;&amp;
 ( PRIORVALUE(Assignee__c) != null &amp;&amp; PRIORVALUE(Assignee__c) &lt;&gt; $User.Id &amp;&amp; ISCHANGED( Assignee__c ))</errorConditionFormula>
         <errorMessage>Only the Change Owner of the Change Control or Impact Assessment Assignee can modify the Assignee field</errorMessage>
     </validationRules>
+    <webLinks>
+        <fullName>Change_Controlc</fullName>
+        <availability>online</availability>
+        <description>This button was created by TrackWise Digital to check the status of the Related List - Change Control-Impact Assessment(Change Control).</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Impact Assessment</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/CMPL123__LockRecord?objectType=Impact_Assessment__c&amp;parentId={!CMPL123QMS__Change_Control__c.Id}&amp;relationShipName=Impact_Assessments__r&amp;lookupField=Change_Control__c</url>
+    </webLinks>
 </CustomObject>
