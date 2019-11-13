@@ -444,6 +444,20 @@ CMPL123_WF_Action__c =="Assessment Completed" &amp;&amp;
 ( PRIORVALUE(Assignee__c) != null &amp;&amp; PRIORVALUE(Assignee__c) &lt;&gt; $User.Id &amp;&amp; ISCHANGED( Assignee__c ))</errorConditionFormula>
         <errorMessage>Only the Change Owner of the Change Control or Impact Assessment Assignee can modify the Assignee field</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>CC_is_in_Pending_CRB_lock_child_records</fullName>
+        <active>true</active>
+        <description>All Child Records are locked when the Change Control is in the status of Pending CRB Team Review</description>
+        <errorConditionFormula>Change_Control__r.CMPL123_WF_Status__c  = 'Pending CRB Team Review'</errorConditionFormula>
+        <errorMessage>All Child Records are locked when the Change Control is in the status of Pending CRB Team Review</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Lock_when_CC_is_in_Pending_Quality_Revie</fullName>
+        <active>true</active>
+        <description>All Child Records are locked when the Change Control is in the status of Pending Quality Review</description>
+        <errorConditionFormula>Change_Control__r.CMPL123_WF_Status__c == "Pending Quality Review"</errorConditionFormula>
+        <errorMessage>All Child Records are locked when the Change Control is in the status of Pending Quality Review</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>Change_Controlc</fullName>
         <availability>online</availability>
