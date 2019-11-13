@@ -3,7 +3,7 @@
     <assignments>
         <name>Add_to_Implementation_Plan</name>
         <label>Add to Implementation Plan</label>
-        <locationX>1273</locationX>
+        <locationX>1272</locationX>
         <locationY>161</locationY>
         <assignmentItems>
             <assignToReference>ImplementationPlan</assignToReference>
@@ -21,13 +21,6 @@
         <label>Assign Action Item Values</label>
         <locationX>1166</locationX>
         <locationY>50</locationY>
-        <assignmentItems>
-            <assignToReference>ActionItem.Step_Number__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>PredefinedActionItem.Step_Number__c</elementReference>
-            </value>
-        </assignmentItems>
         <assignmentItems>
             <assignToReference>ActionItem.Action_Item__c</assignToReference>
             <operator>Assign</operator>
@@ -110,6 +103,7 @@
             <label>Is Locked</label>
         </rules>
     </decisions>
+    <description>Removed Step Number from both ordering, storing, &amp; assignment.  Just ordering by predefined action item number.</description>
     <dynamicChoiceSets>
         <name>ListofPredefinedImplementationPlans</name>
         <dataType>String</dataType>
@@ -212,8 +206,7 @@
         <outputReference>ListofPredefinedActionItems</outputReference>
         <queriedFields>Id</queriedFields>
         <queriedFields>Description__c</queriedFields>
-        <queriedFields>Step_Number__c</queriedFields>
-        <sortField>Step_Number__c</sortField>
+        <sortField>Name</sortField>
         <sortOrder>Asc</sortOrder>
     </recordLookups>
     <screens>

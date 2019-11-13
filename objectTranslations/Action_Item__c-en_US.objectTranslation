@@ -62,6 +62,83 @@
         <label><!-- Step Number --></label>
         <name>Step_Number__c</name>
     </fields>
+    <fields>
+        <label><!-- Approver 1 Reject --></label>
+        <name>Approver_1_Reject__c</name>
+        <relationshipLabel><!-- Action Items (Approver 1 Reject) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 1 --></label>
+        <name>Approver_1__c</name>
+        <relationshipLabel><!-- Action Items (Approver 1) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 2 Reject --></label>
+        <name>Approver_2_Reject__c</name>
+        <relationshipLabel><!-- Action Items (Approver 2 Reject) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 2 --></label>
+        <name>Approver_2__c</name>
+        <relationshipLabel><!-- Action Items (Approver 2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 3 Reject --></label>
+        <name>Approver_3_Reject__c</name>
+        <relationshipLabel><!-- Action Items (Approver 3 Reject) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 3 --></label>
+        <name>Approver_3__c</name>
+        <relationshipLabel><!-- Action Items (Approver 3) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 4 Reject --></label>
+        <name>Approver_4_Reject__c</name>
+        <relationshipLabel><!-- Action Items (Approver 4 Reject) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 4 --></label>
+        <name>Approver_4__c</name>
+        <relationshipLabel><!-- Action Items (Approver 4) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 5 Reject --></label>
+        <name>Approver_5_Reject__c</name>
+        <relationshipLabel><!-- Action Items (Approver 5 Reject) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 5 --></label>
+        <name>Approver_5__c</name>
+        <relationshipLabel><!-- Action Items (Approver 5) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 6 Reject --></label>
+        <name>Approver_6_Reject__c</name>
+        <relationshipLabel><!-- Action Items (Approver 6 Reject) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 6 --></label>
+        <name>Approver_6__c</name>
+        <relationshipLabel><!-- Action Items (Approver 6) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Task Field Update Key Value --></label>
+        <name>CMPL123Task_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quality Approver --></label>
+        <name>Quality_Approver__c</name>
+        <relationshipLabel><!-- Action Items (Quality Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Summary of Action Taken --></label>
+        <name>Summary_of_Action_Taken__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Optional Approvers --></label>
+        <name>Total_Optional_Approver__c</name>
+    </fields>
     <caseValues>
         <plural>false</plural>
         <value>Action Item</value>
@@ -74,8 +151,16 @@
     <layouts>
         <layout>Action Item Layout</layout>
         <sections>
+            <label><!-- Approvers --></label>
+            <section>Approvers</section>
+        </sections>
+        <sections>
             <label><!-- Custom Links --></label>
             <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Developer --></label>
+            <section>Developer</section>
         </sections>
         <sections>
             <label><!-- Workflow --></label>
@@ -97,6 +182,10 @@
     <validationRules>
         <errorMessage><!-- Parent Change Control must be in Open status to cancel the Action Item --></errorMessage>
         <name>CCmustbeOpenstatustocancelaction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If Required Approval is Checked Assignee must populate a Quality Approver in order to move to the next status --></errorMessage>
+        <name>Quality_Approver_is_required_if_it_requi</name>
     </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>
