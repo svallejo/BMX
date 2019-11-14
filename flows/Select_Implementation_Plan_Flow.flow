@@ -81,8 +81,8 @@
     <decisions>
         <name>Implementation_Plan_Locked</name>
         <label>Implementation Plan Locked?</label>
-        <locationX>254</locationX>
-        <locationY>157</locationY>
+        <locationX>251</locationX>
+        <locationY>158</locationY>
         <defaultConnector>
             <targetReference>SelectPredefinedImplementationPlan</targetReference>
         </defaultConnector>
@@ -103,7 +103,8 @@
             <label>Is Locked</label>
         </rules>
     </decisions>
-    <description>Removed Step Number from both ordering, storing, &amp; assignment.  Just ordering by predefined action item number.</description>
+    <description>Removed Step Number from both ordering, storing, &amp; assignment.  Just ordering by predefined action item number.
+Added faults into the flow.</description>
     <dynamicChoiceSets>
         <name>ListofPredefinedImplementationPlans</name>
         <dataType>String</dataType>
@@ -157,11 +158,14 @@
     <recordCreates>
         <name>Create_Action_Items</name>
         <label>Create Action Items</label>
-        <locationX>1055</locationX>
-        <locationY>399</locationY>
+        <locationX>1052</locationX>
+        <locationY>447</locationY>
         <connector>
             <targetReference>Action_Items_Created</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Error_Screen</targetReference>
+        </faultConnector>
         <inputReference>ImplementationPlan</inputReference>
     </recordCreates>
     <recordLookups>
@@ -173,6 +177,9 @@
         <connector>
             <targetReference>Implementation_Plan_Locked</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Error_Screen</targetReference>
+        </faultConnector>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -195,6 +202,9 @@
         <connector>
             <targetReference>Action_Items_Found</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Error_Screen</targetReference>
+        </faultConnector>
         <filters>
             <field>Predefined_Implementation_Plan__c</field>
             <operator>EqualTo</operator>
@@ -212,8 +222,8 @@
     <screens>
         <name>Action_Items_Created</name>
         <label>Action Items Created</label>
-        <locationX>1268</locationX>
-        <locationY>399</locationY>
+        <locationX>1270</locationX>
+        <locationY>449</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -226,10 +236,26 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>Error_Screen</name>
+        <label>Error Screen</label>
+        <locationX>580</locationX>
+        <locationY>631</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>ErrorMessage</name>
+            <fieldText>&lt;p&gt;You have encountered an error in this process.  Please reach out to your system admin and provide the below error message.&lt;/p&gt;&lt;p&gt;--&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(231, 7, 7);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <name>ImplementationPlan_Locked</name>
         <label>ImplementationPlan Locked</label>
         <locationX>259</locationX>
-        <locationY>390</locationY>
+        <locationY>434</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -244,8 +270,8 @@
     <screens>
         <name>NoActionItemsFound</name>
         <label>NoActionItemsFound</label>
-        <locationX>814</locationX>
-        <locationY>397</locationY>
+        <locationX>816</locationX>
+        <locationY>345</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
         <allowPause>false</allowPause>
