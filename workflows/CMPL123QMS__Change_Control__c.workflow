@@ -101,6 +101,48 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/Internal_Customer_Impacted</template>
     </alerts>
+    <alerts>
+        <fullName>Release_Approver_Optional_Approver_Notification</fullName>
+        <description>Release Approver Optional Approver Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <field>CRB_Approver_1__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>CRB_Approver_2__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>CRB_Approver_3__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>CRB_Approver_4__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>CRB_Approver_5__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>CRB_Approver_6__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Release_Approver_Email_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Release_Approver_QA_Approver_Notfication</fullName>
+        <description>Release Approver QA Approver Notfication</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Release_QA_Approver__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Release_Approver_Email_Notification</template>
+    </alerts>
     <fieldUpdates>
         <fullName>Set_Change_Control_Review_Flag</fullName>
         <field>Change_Control_Review_Completed__c</field>

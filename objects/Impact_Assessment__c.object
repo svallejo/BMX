@@ -438,11 +438,13 @@ CMPL123_WF_Action__c =="Assessment Completed" &amp;&amp;
     <validationRules>
         <fullName>Assignee_restrictions</fullName>
         <active>true</active>
-        <description>Only the Change Owner of the Change Control can modify the Assignee field</description>
+        <description>Only the Change Owner of the Change Control or Change Coordinator can modify the Assignee field</description>
         <errorConditionFormula>(PRIORVALUE(Assignee__c) != null &amp;&amp; Change_Control__r.Change_Owner__c  &lt;&gt;  $User.Id &amp;&amp; ISCHANGED( Assignee__c ))
 &amp;&amp;
-( PRIORVALUE(Assignee__c) != null &amp;&amp; PRIORVALUE(Assignee__c) &lt;&gt; $User.Id &amp;&amp; ISCHANGED( Assignee__c ))</errorConditionFormula>
-        <errorMessage>Only the Change Owner of the Change Control or Impact Assessment Assignee can modify the Assignee field</errorMessage>
+( PRIORVALUE(Assignee__c) != null &amp;&amp; PRIORVALUE(Assignee__c) &lt;&gt; $User.Id &amp;&amp; ISCHANGED( Assignee__c ))
+&amp;&amp;
+( PRIORVALUE(Assignee__c) != null &amp;&amp;   (!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp; ISCHANGED( Assignee__c )))</errorConditionFormula>
+        <errorMessage>Only the Assignee, Change Owner of the Change Control, or Change Coordinator can modify the Assignee field</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>CC_is_in_Pending_CRB_lock_child_records</fullName>

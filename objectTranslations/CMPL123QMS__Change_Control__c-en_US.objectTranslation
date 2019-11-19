@@ -1688,6 +1688,14 @@
         <name>Release_QA_Approver__c</name>
         <relationshipLabel><!-- Change Control (Release (QA) Approver) --></relationshipLabel>
     </fields>
+    <fields>
+        <label><!-- Implementation Date --></label>
+        <name>Implementation_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Post Release Approvers --></label>
+        <name>Total_Post_Release_Approvers__c</name>
+    </fields>
     <layouts>
         <layout>Change Control Layout</layout>
         <sections>
@@ -1829,6 +1837,10 @@
             <section>Quality Management System</section>
         </sections>
         <sections>
+            <label><!-- Release Approval --></label>
+            <section>Release Approval</section>
+        </sections>
+        <sections>
             <label><!-- Risk Assessment --></label>
             <section>Risk Assessment</section>
         </sections>
@@ -1941,5 +1953,9 @@
     <validationRules>
         <errorMessage><!-- Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open --></errorMessage>
         <name>Only_Change_Owner_or_Change_Coordinator</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Implementation Date must be the current date or a future date --></errorMessage>
+        <name>Implementati_Date_cannot_be_before_today</name>
     </validationRules>
 </CustomObjectTranslation>
