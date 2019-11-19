@@ -67,6 +67,40 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/Change_Request_Rejected</template>
     </alerts>
+    <alerts>
+        <fullName>External_Customer_Impacted</fullName>
+        <description>External Customer Impacted</description>
+        <protected>false</protected>
+        <recipients>
+            <field>External_Responsible_Person__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Quality_Approver__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/External_Customer_Impacted</template>
+    </alerts>
+    <alerts>
+        <fullName>Internal_Customer_Impacted</fullName>
+        <description>Internal Customer Impacted</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Internal_Mfg_Site_Responsible_Person__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Internal_Sub_Responsible_Person__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Quality_Approver__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Internal_Customer_Impacted</template>
+    </alerts>
     <fieldUpdates>
         <fullName>Set_Change_Control_Review_Flag</fullName>
         <field>Change_Control_Review_Completed__c</field>

@@ -195,6 +195,10 @@
         <errorMessage><!-- All Child Records are locked when the Change Control is in the status of Pending Quality Review --></errorMessage>
         <name>LockAI_when_CC_is_Pending_Quality_Revie</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open --></errorMessage>
+        <name>Only_Change_Owner_or_Change_Coordinator</name>
+    </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>
         <name>Change_Controlc</name>

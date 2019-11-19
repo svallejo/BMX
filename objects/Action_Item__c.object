@@ -532,6 +532,13 @@ Require_Approval__c == True &amp;&amp;
         <errorConditionFormula>Change_Control__r.CMPL123_WF_Status__c = 'Pending Quality Review'</errorConditionFormula>
         <errorMessage>All Child Records are locked when the Change Control is in the status of Pending Quality Review</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>Only_Change_Owner_or_Change_Coordinator</fullName>
+        <active>true</active>
+        <description>Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open</description>
+        <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp;  $User.Id !=  Change_Control__r.Change_Owner__c  ) &amp;&amp;  Change_Control__r.Only_Change_Owner_or_Change_Coordinator__c</errorConditionFormula>
+        <errorMessage>Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>Change_Controlc</fullName>
         <availability>online</availability>

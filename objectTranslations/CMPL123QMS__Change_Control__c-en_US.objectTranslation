@@ -1594,6 +1594,100 @@
         <label><!-- CRB Comments --></label>
         <name>CRB_Comments__c</name>
     </fields>
+    <fields>
+        <label><!-- After Release Action Items Not Closed --></label>
+        <name>After_Release_Action_Items_Not_Closed__c</name>
+    </fields>
+    <fields>
+        <label><!-- External - Responsible Person --></label>
+        <name>External_Responsible_Person__c</name>
+        <relationshipLabel><!-- Change Control (External - Responsible Person) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- External --></label>
+        <name>External__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Internal - Manufacturing Site --></label>
+        <name>Internal_Manufacturing_Site__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Internal - Mfg Site - Responsible Person --></label>
+        <name>Internal_Mfg_Site_Responsible_Person__c</name>
+        <relationshipLabel><!-- Change Control (Internal - Mfg Site - Responsible Person) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Internal - Sub - Responsible Person --></label>
+        <name>Internal_Sub_Responsible_Person__c</name>
+        <relationshipLabel><!-- Change Control (Internal - Sub - Responsible Person) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Internal - Subsidiary --></label>
+        <name>Internal_Subsidiary__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Only Change Owner or Change Coordinator --></label>
+        <name>Only_Change_Owner_or_Change_Coordinator__c</name>
+    </fields>
+    <fields>
+        <label><!-- Release Approver 1 --></label>
+        <name>Release_Approver_1__c</name>
+        <relationshipLabel><!-- Change Control (Release Approver 1) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Release Approver 2 --></label>
+        <name>Release_Approver_2__c</name>
+        <relationshipLabel><!-- Change Control (Release Approver 2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Release Approver 3 --></label>
+        <name>Release_Approver_3__c</name>
+        <relationshipLabel><!-- Change Control (Release Approver 3) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Release Approver 4 --></label>
+        <name>Release_Approver_4__c</name>
+        <relationshipLabel><!-- Change Control (Release Approver 4) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Release Approver 5 --></label>
+        <name>Release_Approver_5__c</name>
+        <relationshipLabel><!-- Change Control (Release Approver 5) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Release Approver 6 --></label>
+        <name>Release_Approver_6__c</name>
+        <relationshipLabel><!-- Change Control (Release Approver 6) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Release (QA) Approver --></label>
+        <name>Release_QA_Approver__c</name>
+        <relationshipLabel><!-- Change Control (Release (QA) Approver) --></relationshipLabel>
+    </fields>
     <layouts>
         <layout>Change Control Layout</layout>
         <sections>
@@ -1618,6 +1712,10 @@
         <sections>
             <label><!-- Change Review Board Approvers --></label>
             <section>Change Review Board Approvers</section>
+        </sections>
+        <sections>
+            <label><!-- Customers Impacted --></label>
+            <section>Customers Impacted</section>
         </sections>
         <sections>
             <label><!-- Developer --></label>
@@ -1660,6 +1758,10 @@
             <section>Quality Management System</section>
         </sections>
         <sections>
+            <label><!-- Release Approval --></label>
+            <section>Release Approval</section>
+        </sections>
+        <sections>
             <label><!-- Risk Assessment --></label>
             <section>Risk Assessment</section>
         </sections>
@@ -1681,6 +1783,10 @@
         <sections>
             <label><!-- Change Review Board Approvers --></label>
             <section>Change Review Board Approvers</section>
+        </sections>
+        <sections>
+            <label><!-- Customers Impacted --></label>
+            <section>Customers Impacted</section>
         </sections>
         <sections>
             <label><!-- Developer --></label>
@@ -1815,5 +1921,25 @@
     <validationRules>
         <errorMessage><!-- CRB Comments can only be changed at CRB Team Review or Quality Review --></errorMessage>
         <name>CRBCommentsonly_changed_at_crb_or_qa_rev</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &quot;Submit for Release Approval&quot; can only be performed when all action items that do not have After Release checked are in a closed status --></errorMessage>
+        <name>All_PreRelease_Action_Items_are_Closed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If an External Customer is Impacted and External Responsible Person must be filled out --></errorMessage>
+        <name>External_Responsible_Person</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If an Internal Subsidiary Customer is Impacted an Internal - Sub - Responsible Person must be filled out --></errorMessage>
+        <name>Internal_Sub_Responsible_Person</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If an Internal Manufacturing Site is Impacted an Internal - Mfg Site - Responsible Person must be filled out --></errorMessage>
+        <name>Internal_mfgsite_Responsible_Person</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open --></errorMessage>
+        <name>Only_Change_Owner_or_Change_Coordinator</name>
     </validationRules>
 </CustomObjectTranslation>
