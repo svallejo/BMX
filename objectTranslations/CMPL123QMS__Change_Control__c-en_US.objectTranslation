@@ -20,7 +20,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Assigned To --></label>
+        <label><!-- Final Approver 1 --></label>
         <name>Assigned_To__c</name>
         <relationshipLabel><!-- Change Control (Assigned To) --></relationshipLabel>
     </fields>
@@ -62,23 +62,23 @@
         <name>CMPL123QMS__Justification__c</name>
     </fields>
     <fields>
-        <label><!-- Main Contact --></label>
+        <label>Final Approver 4</label>
         <name>CMPL123QMS__Main_Contact__c</name>
-        <relationshipLabel><!-- Change Control (Main Contact) --></relationshipLabel>
+        <relationshipLabel><!-- Change Control (Final Approver 4) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Management Approved By --></label>
+        <label>Final Approver 5</label>
         <name>CMPL123QMS__Management_Approved_By__c</name>
-        <relationshipLabel><!-- Change Control (Management Approved By) --></relationshipLabel>
+        <relationshipLabel><!-- Change Control (Final Approver 5) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Management Approved On --></label>
         <name>CMPL123QMS__Management_Approved_On__c</name>
     </fields>
     <fields>
-        <label><!-- Manager --></label>
+        <label>Final Approver 6</label>
         <name>CMPL123QMS__Manager__c</name>
-        <relationshipLabel><!-- Change Control (Manager) --></relationshipLabel>
+        <relationshipLabel><!-- Change Control (Final Approver 6) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Original Due Date --></label>
@@ -114,9 +114,9 @@
         <name>CMPL123QMS__QA_Approved_On__c</name>
     </fields>
     <fields>
-        <label><!-- QA Contact --></label>
+        <label>Final (QA) Approver</label>
         <name>CMPL123QMS__QA_Contact__c</name>
-        <relationshipLabel><!-- Change Control (QA Contact) --></relationshipLabel>
+        <relationshipLabel><!-- Change Control (Final (QA) Approver) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Reason for Timeliness --></label>
@@ -343,7 +343,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Quality Contact --></label>
+        <label><!-- Final Approver 2 --></label>
         <name>Quality_Contact__c</name>
         <relationshipLabel><!-- Change Control (Quality Contact) --></relationshipLabel>
     </fields>
@@ -377,7 +377,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Supervisor/Manager --></label>
+        <label><!-- Final Approver 3 --></label>
         <name>Supervisor_Manager__c</name>
         <relationshipLabel><!-- Change Control (Supervisor/Manager) --></relationshipLabel>
     </fields>
@@ -1696,6 +1696,42 @@
         <label><!-- Total Post Release Approvers --></label>
         <name>Total_Post_Release_Approvers__c</name>
     </fields>
+    <fields>
+        <label><!-- Implementation Date --></label>
+        <name>Implementation_Date_Final__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is a Rollback Plan Required? --></label>
+        <name>Is_a_Rollback_Plan_Required__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Rollback Plan Summary --></label>
+        <name>Rollback_Plan_Summary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Actions Open --></label>
+        <name>Total_Actions_Open__c</name>
+    </fields>
+    <fields>
+        <label><!-- Was the change Successful? --></label>
+        <name>Was_the_change_Successful__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
     <layouts>
         <layout>Change Control Layout</layout>
         <sections>
@@ -1740,6 +1776,10 @@
         <sections>
             <label><!-- Facilities Change --></label>
             <section>Facilities Change</section>
+        </sections>
+        <sections>
+            <label><!-- Final Approval --></label>
+            <section>Final Approval</section>
         </sections>
         <sections>
             <label><!-- General Information --></label>
@@ -1811,6 +1851,10 @@
         <sections>
             <label><!-- Facilities Change --></label>
             <section>Facilities Change</section>
+        </sections>
+        <sections>
+            <label><!-- Final Approval --></label>
+            <section>Final Approval</section>
         </sections>
         <sections>
             <label><!-- General Information --></label>
@@ -1939,7 +1983,7 @@
         <name>All_PreRelease_Action_Items_are_Closed</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- If an External Customer is Impacted and External Responsible Person must be filled out --></errorMessage>
+        <errorMessage><!-- If an External Customer is Impacted a External Responsible Person must be filled out --></errorMessage>
         <name>External_Responsible_Person</name>
     </validationRules>
     <validationRules>
@@ -1957,5 +2001,17 @@
     <validationRules>
         <errorMessage><!-- Implementation Date must be the current date or a future date --></errorMessage>
         <name>Implementati_Date_cannot_be_before_today</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- All action items must be in a closed status before user can perform &quot;Implementation Complete&quot; to progress record to Final Approval and Closure. --></errorMessage>
+        <name>All_Action_Items_Must_be_Closed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Is a Rollback Required must be populated if No is provided for the &quot;Was the Change Successful?&quot; --></errorMessage>
+        <name>Is_a_rollback_plan_required_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Rollback Plan Summary must be populated if No is provided for the &quot;Was the Change Successful?&quot; --></errorMessage>
+        <name>Rollback_Plan_Summary_Required</name>
     </validationRules>
 </CustomObjectTranslation>
