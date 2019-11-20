@@ -6,7 +6,7 @@
     <fields>
         <label><!-- Workflow Action Performed By --></label>
         <name>CMPL123_WF_Action_Performed_By__c</name>
-        <relationshipLabel><!-- Extension Requests Change Control --></relationshipLabel>
+        <relationshipLabel><!-- Extension Requests Change Control (Workflow Action Performed By) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Workflow Action Performed On --></label>
@@ -41,6 +41,16 @@
         <label><!-- Title --></label>
         <name>Title__c</name>
     </fields>
+    <fields>
+        <label><!-- Approver --></label>
+        <name>Approver__c</name>
+        <relationshipLabel><!-- Extension Requests Change Control (Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Extension Requester --></label>
+        <name>Extension_Requester__c</name>
+        <relationshipLabel><!-- Extension Requests Change Control (Extension Requester) --></relationshipLabel>
+    </fields>
     <caseValues>
         <plural>false</plural>
         <value>Extension Request Change Control</value>
@@ -64,6 +74,14 @@
     <validationRules>
         <errorMessage><!-- Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open --></errorMessage>
         <name>Only_Change_Owner_or_Change_Coordinator</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Change Coordinator can update the extension requester field to assign to a different user. --></errorMessage>
+        <name>Extension_Requester_restrictions</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Change Owner of the change control or a Change Coordinator can create a new extension request for that record. --></errorMessage>
+        <name>limit_who_can_open_extension_request</name>
     </validationRules>
     <workflowTasks>
         <name>Extension_Request_for_CC</name>

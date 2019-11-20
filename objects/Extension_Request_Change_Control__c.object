@@ -247,6 +247,30 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Extension_Requests_Change_Control1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Extension_Requester__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Extension Requester</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Extension_Requests_Change_Control</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -284,5 +308,19 @@
         <description>Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open</description>
         <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp;  $User.Id !=  Change_Control__r.Change_Owner__c  ) &amp;&amp;  Change_Control__r.Only_Change_Owner_or_Change_Coordinator__c</errorConditionFormula>
         <errorMessage>Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Extension_Requester_restrictions</fullName>
+        <active>true</active>
+        <description>Only Change Coordinator can update the extension requester field to assign to a different user.</description>
+        <errorConditionFormula>NOT(ISNEW()) &amp;&amp; ( PRIORVALUE( Extension_Requester__c ) != null &amp;&amp;   (!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp; ISCHANGED( Extension_Requester__c  )))</errorConditionFormula>
+        <errorMessage>Only Change Coordinator can update the extension requester field to assign to a different user.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>limit_who_can_open_extension_request</fullName>
+        <active>true</active>
+        <description>Only Change Owner of the change control or a Change Coordinator can create a new extension request for that record.</description>
+        <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp;  $User.Id !=  Change_Control__r.Change_Owner__c  )</errorConditionFormula>
+        <errorMessage>Only Change Owner of the change control or a Change Coordinator can create a new extension request for that record.</errorMessage>
     </validationRules>
 </CustomObject>

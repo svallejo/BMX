@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?><Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Extension_Request_Approval</fullName>
+        <description>Extension Request Approval</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Extension_Requester__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Extension_Request_Approver</template>
+    </alerts>
+    <alerts>
+        <fullName>Extension_Request_Approved</fullName>
+        <description>Extension Request Approved</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Extension_Requester__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Approved_Extension_Request</template>
+    </alerts>
     <fieldUpdates>
         <fullName>Extension_Request_Current_Due_Date_CC</fullName>
         <field>Current_Due_Date__c</field>

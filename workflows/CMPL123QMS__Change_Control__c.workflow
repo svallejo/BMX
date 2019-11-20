@@ -143,6 +143,48 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/Release_Approver_Email_Notification</template>
     </alerts>
+    <alerts>
+        <fullName>Final_QA_Approver_email_notification</fullName>
+        <description>Final QA Approver email notification</description>
+        <protected>false</protected>
+        <recipients>
+            <field>CMPL123QMS__QA_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Final_Approver_Email_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Final_optional_Approver_email_notification</fullName>
+        <description>Final optional Approver email notification</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Assigned_To__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>CMPL123QMS__Main_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>CMPL123QMS__Management_Approved_By__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>CMPL123QMS__Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Quality_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Supervisor_Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Final_Approver_Email_Notification</template>
+    </alerts>
     <fieldUpdates>
         <fullName>Set_Change_Control_Review_Flag</fullName>
         <field>Change_Control_Review_Completed__c</field>
