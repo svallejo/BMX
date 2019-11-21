@@ -106,27 +106,27 @@
         <description>Release Approver Optional Approver Notification</description>
         <protected>false</protected>
         <recipients>
-            <field>CRB_Approver_1__c</field>
+            <field>Release_Approver_1__c</field>
             <type>userLookup</type>
         </recipients>
         <recipients>
-            <field>CRB_Approver_2__c</field>
+            <field>Release_Approver_2__c</field>
             <type>userLookup</type>
         </recipients>
         <recipients>
-            <field>CRB_Approver_3__c</field>
+            <field>Release_Approver_3__c</field>
             <type>userLookup</type>
         </recipients>
         <recipients>
-            <field>CRB_Approver_4__c</field>
+            <field>Release_Approver_4__c</field>
             <type>userLookup</type>
         </recipients>
         <recipients>
-            <field>CRB_Approver_5__c</field>
+            <field>Release_Approver_5__c</field>
             <type>userLookup</type>
         </recipients>
         <recipients>
-            <field>CRB_Approver_6__c</field>
+            <field>Release_Approver_6__c</field>
             <type>userLookup</type>
         </recipients>
         <senderType>CurrentUser</senderType>
