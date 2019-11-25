@@ -20639,6 +20639,11 @@
         <field>CMPL123QMS__Change_Control__c.Total_Before_Release_Closed__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Entitlement__x.AccountId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
