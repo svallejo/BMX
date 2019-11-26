@@ -552,7 +552,7 @@
                     </tr>
                     <tr class="row">
                         <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_A}</td>
-                        <td class="column whiteBackground noRightBorder">{!$Label.CMPL123CME__CMPLT_UDI_DEVICE_IDENTIFIER_PDF}</td>
+                        <td class="udi-2-1-font whiteBackground noRightBorder">{!$Label.CMPL123CME__CMPLT_UDI_DEVICE_IDENTIFIER_PDF}</td>
                         <td class="noLeftBorder">
                            <div class="fieldValue noTextOverflow width150">
                               {!CMPL123CME__EU_MIR__c.CMPL123CME__UDI_DI__c}  
@@ -568,7 +568,7 @@
                     </tr> 
                     <tr class="row">
                         <td class="column aligntd section2Background">{!$Label.CMPL123CME__CMPLT_C}</td>
-                        <td class="column whiteBackground noRightBorder">{!$Label.CMPL123CME__CMPLT_BASIC_UDI_DI}</td>
+                        <td class="udi-2-1-font whiteBackground noRightBorder">{!$Label.CMPL123CME__CMPLT_BASIC_UDI_DI}</td>
                         <td class="noLeftBorder">
                             <div class="fieldValue noTextOverflow width150">
                                 {!CMPL123CME__EU_MIR__c.CMPL123CME__Basic_UDI_DI__c}                            
@@ -596,7 +596,7 @@
                                     <apex:outputText value="{!if(pickList.value == 'Other', OtherSpecify, ' '+pickList.label+' ' )}"/>
                                 </span>                                
                                 <apex:outputText rendered="{!(pickList.value == 'Other')}">
-                                    <span class="inlineDiv fieldValueOther noTextOverflow width37Percent topVerticalAlign">{!CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Terminology_Other__c}</span>
+                                    <span class="inlineDiv fieldValueOther noTextOverflow width180 topVerticalAlign">{!CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Terminology_Other__c}</span>
                                 </apex:outputText>
                             </apex:repeat>
                         </td> 
@@ -741,9 +741,15 @@
                         <td class="column whiteBackground noRightBorder" colspan="2">
                             <div class="column" style="width:260px">{!$Label.CMPL123CME__CMPLT_NOTIFIED_BODY_NB_ID_NUMBER_S_IF_APPLICABLE}</div>
                             <div style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_1}</div>  
-                            <div class="fieldValue noTextOverflow" style="width:230px;display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number_1__c)}</div><br/><br/>
+                            <div class="fieldValue noTextOverflow" style="width:230px;display:inline-block;">
+                            {! if(contains(newNBIdFieldString,'nb_id_1__c') &&  !ISBLANK(CMPL123CME__EU_MIR__c['nb_id_1__c']),
+                                CMPL123CME__EU_MIR__c['nb_id_1__c'], TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number_1__c))}
+                            </div><br/><br/>
                             <div style="display:inline-block;">{!$Label.CMPL123CME__CMPLT_2}</div> 
-                            <div class="fieldValue noTextOverflow" style="width:230px;display:inline-block;">{!TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number_2__c)}</div>
+                            <div class="fieldValue noTextOverflow" style="width:230px;display:inline-block;">
+                            {! if(contains(newNBIdFieldString,'nb_id_2__c') &&  !ISBLANK(CMPL123CME__EU_MIR__c['nb_id_2__c']),
+                                CMPL123CME__EU_MIR__c['nb_id_2__c'], TEXT(CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number_2__c))}
+                            </div>
                         </td>
                         <td class="column whiteBackground noLeftBorder" colspan="3">
                             <div class="column" style="width:360px;">{!$Label.CMPL123CME__CMPLT_NOTIFIED_BODY_NB_CERTIFICATE_NUMBER_S_OF_DEVICE_IF_APPLICABLE}</div>
@@ -1233,7 +1239,7 @@
         <!-- Section 4: Manufacturer analysis : starts here -->
         <div class="sectionHeader pageBreakAlways">
             <div class="solidBorder section4Background">
-                {!$Label.CMPL123CME__CMPLT_SECTION_4_MANUFACTURER_ANALYSIS}             
+                {!$Label.CMPL123CME__CMPLT_SECTION_4_MANUFACTURER_ANALYSIS}        
             </div>
             <table class="pageBreak tableLayoutFixed" cellspacing="0" border="1">
                 <!-- 4.1 Manufacturer’s preliminary comments : starts here -->
@@ -1770,8 +1776,8 @@
         <div class="pageBreakAlways" style="width: 98%;">
             <table cellspacing="0" cellpadding="0" style="border-collapse: collapse;width:100%;margin:15px;">
                 <tr>
-                    <th class="leftMargin highlightBackground columnStyle" style="height: 50px;"></th>
-                    <th class="rightMargin highlightBackground columnStyle" style="height: 50px;" colspan="2">
+                    <th class="leftMargin highlightBackground columnStyle" style="height: 35px;"></th>
+                    <th class="rightMargin highlightBackground columnStyle" style="height: 35px;" colspan="2">
                         <span style="font-size: 25px;">{!$Label.CMPL123CME__CMPLT_CODED_SUMMARY_OF_REPORT_PDF}</span> 
                         <span class="alignMiddle" style="font-size: 15px;">{!$Label.CMPL123CME__CMPLT_WILL_BE_AUTO_POPULATED_FROM_PREVIOUS_SELECTIONS}</span>
                     </th>
@@ -1781,7 +1787,7 @@
                     <td class="columnStyle" colspan="2">
                         <div class="labelDiv">
                             {!$Label.CMPL123CME__CMPLT_MEDICAL_DEVICE_NAME_PDF}
-                        </div><br/>
+                        </div>
                         <div class="fieldValueOther width98Percent noTextOverflow">
                             <apex:outputText value="{!CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Name__c}"/>
                         </div>
@@ -1821,7 +1827,7 @@
                         </div>
                         <div class="labelDiv">
                             {!$Label.CMPL123CME__CMPLT_IMDRF_INTERNATIONAL_MEDICAL_DEVICE_REGULATORS_FORUM_CODING_WITH_IMDRF_TER}
-                        </div> <br/>
+                        </div>
                         <table class="innermostTable" cellspacing="0" cellpadding="0">
                             
                             <!-- Variables for code type value check -->
@@ -1878,11 +1884,14 @@
             </table>
             <div class="outerDiv">
                 {!$Label.cmpl123cme__cmplt_date}
-                <div class="fieldValue outerDivField leftPadding">
+                <div class="fieldValue outerDivField leftPadding" style="min-height:20px;width:300px">
                     <apex:outputText value="{0,date,yyyy-MM-dd'T'HH:mm:ss}">
                         <apex:param value="{!CMPL123CME__EU_MIR__c.LastModifiedDate}" />
                     </apex:outputText>
                 </div>
+            </div>
+            <div class="outerDiv" style="height:60px">
+                Signature/Digital Signature
             </div>
         </div>
     </body>
