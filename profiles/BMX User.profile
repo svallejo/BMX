@@ -20595,7 +20595,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Extension_Request_Change_Control__c.Extension_Requester__c</field>
         <readable>true</readable>
     </fieldPermissions>
