@@ -5010,6 +5010,10 @@
         <apexPage>Action_Item_cESignHistoryPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
+    <pageAccesses>
+        <apexPage>related_recordWorkflowPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.AccountSource</field>
