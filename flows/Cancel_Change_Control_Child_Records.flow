@@ -83,6 +83,7 @@
             <label>Yes Open Action Items Found</label>
         </rules>
     </decisions>
+    <description>Testing with a different input for troubleshooting. AC</description>
     <interviewLabel>Cancel Child Change Control Records {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Cancel Change Control Child Records</label>
     <loops>
@@ -138,7 +139,7 @@
             <field>Change_Control__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>ChangeControl.Id</elementReference>
+                <elementReference>ChangeControlID</elementReference>
             </value>
         </filters>
         <object>Action_Item__c</object>
@@ -155,7 +156,7 @@
         <inputReference>Listofupdatedactionitems</inputReference>
     </recordUpdates>
     <startElementReference>Get_Action_Items</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>ActionItemTemp</name>
         <dataType>SObject</dataType>
@@ -165,12 +166,11 @@
         <objectType>Action_Item__c</objectType>
     </variables>
     <variables>
-        <name>ChangeControl</name>
-        <dataType>SObject</dataType>
+        <name>ChangeControlID</name>
+        <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <objectType>CMPL123QMS__Change_Control__c</objectType>
     </variables>
     <variables>
         <description>List of Open Action Items to Cancel</description>
