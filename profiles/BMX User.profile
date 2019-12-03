@@ -20645,7 +20645,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Action_Item__c.Short_Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
