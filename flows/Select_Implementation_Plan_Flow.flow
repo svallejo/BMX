@@ -49,6 +49,13 @@
                 <booleanValue>false</booleanValue>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ActionItem.Short_Description__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Short_Description</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Add_to_Implementation_Plan</targetReference>
         </connector>
@@ -222,8 +229,8 @@ Added faults into the flow.</description>
     <screens>
         <name>Action_Items_Created</name>
         <label>Action Items Created</label>
-        <locationX>1270</locationX>
-        <locationY>449</locationY>
+        <locationX>1264</locationX>
+        <locationY>447</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -303,8 +310,16 @@ Added faults into the flow.</description>
             <name>PredefinedImplementationPlanPicklist</name>
             <choiceReferences>ListofPredefinedImplementationPlans</choiceReferences>
             <dataType>String</dataType>
-            <fieldText>PredefinedImplementationPlanPicklist</fieldText>
+            <fieldText>Predefined Implementation Plans</fieldText>
             <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Short_Description</name>
+            <dataType>String</dataType>
+            <fieldText>Short Description</fieldText>
+            <fieldType>InputField</fieldType>
+            <helpText>&lt;p&gt;Enter a name for the implementation plan.&lt;/p&gt;</helpText>
             <isRequired>true</isRequired>
         </fields>
         <showFooter>true</showFooter>
