@@ -115,7 +115,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
         Map<Id, CMPL123CME__Complaint__c> cmpResultMap = new Map<Id, CMPL123CME__Complaint__c>();
         Map<Id, Case__x> caseExUpdMap = new Map<Id, Case__x>();
         
-        for(Case__x csx : [SELECT Id, CaseNumber_c__c, Justification_decision_make_c__c,TWComplaintNumber_c__c, ExternalId, BatchExpDate_c__c,SerialNumberAsset_c__c,Reason__c,ATC_c__c,
+        for(Case__x csx : [SELECT Id, CaseNumber_c__c, Entitlement_Name__c, Justification_decision_make_c__c,TWComplaintNumber_c__c, ExternalId, BatchExpDate_c__c,SerialNumberAsset_c__c,Reason__c,ATC_c__c,
                             BatchNumber_c__c,UDI_Code_c__c,CaseNumber__c,FirstL2EscalationDate_c__c,DueDate_c__c,CVM_c__c,ClosedDate__c,CustomerContactDate_c__c,Product_c__c,
                             SofwareVersion_c__c,CurrentLevel_c__c,ContactEmail__c,isCreatedOnSite_c__c,ContactPhone__c,CatalogProfile_c__c,CaseHasWO_c__c,BatchNumberUnknown_c__c,
                             CreatedDate__c,BatchNumberStatus_c__c,WasEscalated_c__c,Type__c,SubOrigin_c__c,SIGcode_c__c,Subject__c,ShiptoLocationSapNumber_c__c,Status__c,
@@ -308,7 +308,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                                             BMX_RESULT__c,BMX_Product_Name__c,BMX_Product_External__c,BMX_Case_Owner_Name__c,BMX_Case_Owner__c,BMX_No_Invest_Justification__c,
                                             BMX_No_Invest_Justification_External__c,BMX_Case_Last_Modified_By__c,BMX_Case_Last_Modified_By_External__c,BMX_Level_2_Owner_External__c,
                                             BMX_Level_2_Owner__c,BMX_Level_1_Owner_External__c,BMX_Level_1_Owner__c,BMX_System__c,BMX_Asset_External__c,BMX_Error_Code__c,
-                                            BMX_Error_Code_External__c,BMX_Entitlement_External__c,BMX_Entitlement_Name__c,BMX_Case_Created_By__c,BMX_Created_By__c,
+                                            BMX_Error_Code_External__c,BMX_Entitlement_Name__c,BMX_Case_Created_By__c,BMX_Created_By__c,
                                             BMX_Contact_Name__c,BMX_Contact_External__c,BMX_Asset__c,BMX_Assets_External__c,BMX_ANALYZE_External__c,BMX_Analyze__c,
                                             BMX_Action_Code_External__c,BMX_Action_Code__c,BMX_Global_reporting_hierarchy_Level_3__c,BMX_Account_Record_Type__c,
                                             BMX_Global_reporting_hierarchy_Level_2__c,BMX_Global_reporting_hierarchy_Level_4__c,BMX_Account_Category__c,BMX_Division__c,
@@ -514,8 +514,8 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                 cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, userExMap.get(cs.CreatedById__c), caseOtherObjMappingList, userExObjAPIName, isInsert, 'LastModifiedById__c');
             }
             
-            if(cs.EntitlementId__c <> null && userExMap.get(cs.EntitlementId__c) <> null && techComplaint) {
-                cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, userExMap.get(cs.EntitlementId__c), caseOtherObjMappingList, entitlementExObjAPIName, isInsert, 'EntitlementId__c');
+            if(cs.EntitlementId__c <> null && entitlementExMap.get(cs.EntitlementId__c) <> null && techComplaint) {
+                cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, entitlementExMap.get(cs.EntitlementId__c), caseOtherObjMappingList, entitlementExObjAPIName, isInsert, 'EntitlementId__c');
             }
             
             if(cs.AccountId__c <> null && accountExMap.get(cs.AccountId__c) <> null) {

@@ -236,4 +236,32 @@
         <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp;  $User.Id !=  Change_Control__r.Change_Owner__c  ) &amp;&amp;  Change_Control__r.Only_Change_Owner_or_Change_Coordinator__c</errorConditionFormula>
         <errorMessage>Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open</errorMessage>
     </validationRules>
+    <webLinks>
+        <fullName>Change_Controlc</fullName>
+        <availability>online</availability>
+        <description>This button was created by TrackWise Digital to check the status of the Related List - Change Control-Related Record(Change Control).</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Related Record (Change Control)</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/CMPL123__LockRecord?objectType=related_record__c&amp;parentId={!CMPL123QMS__Change_Control__c.Id}&amp;relationShipName=Related_Records__r&amp;lookupField=Change_Control__c</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Related_Change_Controlc</fullName>
+        <availability>online</availability>
+        <description>This button was created by TrackWise Digital to check the status of the Related List - Change Control-Related Record(Related Change Control).</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Related Record (Related Change Control)</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/CMPL123__LockRecord?objectType=related_record__c&amp;parentId={!CMPL123QMS__Change_Control__c.Id}&amp;relationShipName=Related_Records1__r&amp;lookupField=Related_Change_Control__c</url>
+    </webLinks>
 </CustomObject>
