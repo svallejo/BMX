@@ -23,18 +23,20 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
     //Intializing external Product Consumed Ids in the constructor
     global CreateProductConsumedForWorkOrderBatch(){}
     Boolean chained;
-    Datetime lastExecuted;
-    global CreateProductConsumedForWorkOrderBatch(Boolean chain, Datetime lastExecuted){
+    List<Id> caseIdList;
+    DateTime lastExecuted;
+
+    global CreateProductConsumedForWorkOrderBatch(Boolean chain, List<Id> caseIdList, DateTime lastExecuted){
         this.chained = chain;
+        this.caseIdList = caseIdList;
         this.lastExecuted = lastExecuted;
     }
     
     // querying the external Product Consumed recordss
     global Database.QueryLocator start(Database.BatchableContext bc) {
         if(!Test.isRunningTest()){
-            String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
-            return Database.getQueryLocator('SELECT Id,WorkOrderId__r.CaseId__r.Type__c, WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c, WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c,' +
-                       'PricebookEntryId__r.LocalProductName_c__c FROM ProductConsumed__x WHERE LastModifiedDate__c >= ' + formattedTime);  
+            return Database.getQueryLocator([SELECT Id,WorkOrderId__r.CaseId__r.Type__c, WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c, WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c,
+                       PricebookEntryId__r.LocalProductName_c__c FROM ProductConsumed__x WHERE WorkOrderId__r.CaseId__c in: caseIdList or LastModifiedDate__c >=:lastExecuted]);  
         }else{
             return Database.getQueryLocator('SELECT Id,WorkOrderId__r.CaseId__r.Type__c, WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c, WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c,' +
                        'PricebookEntryId__r.LocalProductName_c__c FROM ProductConsumed__x LIMIT 1');
@@ -80,12 +82,12 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
         System.debug('-------productConsumedList------'+productConsumedList);
         
         if(!productConsumedList.isEmpty()) {
-        
-            // Upserting the external Product Consumed list of records 
+		
+			// Upserting the external Product Consumed list of records 
             upsertResultList = Database.Upsert(productConsumedList,Product_Consumed__c.ExternalId__c, false);
         }
         
-        // creating error log records if any record gets failed during the execution of the batch
+		// creating error log records if any record gets failed during the execution of the batch
         if(!upsertResultList.isEmpty()) {
             List<Error_Log__c> errLogList = new List<Error_Log__c>();
             for(Integer i=0; i <upsertResultList.size(); i++) {
@@ -107,8 +109,8 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
         // execute any post-processing operations
         system.debug('Product Conmsumed inserted/updated');
         if(!Test.isRunningTest()){
-            // executing the CreateServiceAppointmentForWorkOrdrBatch batch class
-            CreateServiceAppointmentForWorkOrdrBatch createServiceAppointment = new CreateServiceAppointmentForWorkOrdrBatch(true, lastExecuted);
+		    // executing the CreateServiceAppointmentForWorkOrdrBatch batch class
+            CreateServiceAppointmentForWorkOrdrBatch createServiceAppointment = new CreateServiceAppointmentForWorkOrdrBatch(true, caseIdList, lastExecuted);
             Database.executebatch(createServiceAppointment);
         }
     }  

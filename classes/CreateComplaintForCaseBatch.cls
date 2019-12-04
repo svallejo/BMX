@@ -33,6 +33,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
     Datetime latestTimeStamp;
     Boolean timeStampUpdated = false;
     public Integer limitCount;
+    List<Id> caseIdList;
     Datetime lastExecuted;
     
     List<CMPL123CME__Complaint__c> totComplaintReopenList = new List<CMPL123CME__Complaint__c>();
@@ -47,6 +48,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
         this.queryString = queryString;
         this.limitCount = limitCount;
         this.lastExecuted = lastExecuted;
+        this.caseIdList = new List<Id>();
         this.latestTimeStamp = Complaint_Creation_Batch_Time__c.getInstance().Batch_Completion_Time__c;
     }
     
@@ -142,7 +144,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
         }
         
         for(Case__x cs : caseExList) {
-            
+            caseIdList.add(cs.id);
             // populating the sets with the parent Ids of the Case Object
             caseIdSet.add(cs.ExternalId);
             caseExIdSet.add(cs.ParentId__c);
@@ -661,7 +663,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
         if(!test.isRunningTest() && (!totComplaintReopenList.isEmpty() || !totComplaintReopenUpdList.isEmpty() || !totComplaintAutoCloseList.isEmpty())) {
             
             // executing processReopenCloseComplaintForCaseBatch batch class if the external case is closed/opened in CRM
-            processReopenCloseComplaintForCaseBatch pc = new processReopenCloseComplaintForCaseBatch(totComplaintReopenList, totComplaintReopenUpdList ,totComplaintAutoCloseList, lastExecuted);
+            processReopenCloseComplaintForCaseBatch pc = new processReopenCloseComplaintForCaseBatch(totComplaintReopenList, totComplaintReopenUpdList ,totComplaintAutoCloseList, caseIdList, lastExecuted);
             Database.executeBatch(pc, 1);
         } else {
             // querying the external Case Comment records which are created/updated in last 24 hours
@@ -669,7 +671,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
             if(!test.isRunningTest()) {
                 
                 // executing CreateCaseCommentForComplaintBatch batch class
-                CreateCaseCommentForComplaintBatch createCaseComment = new CreateCaseCommentForComplaintBatch(true, lastExecuted);
+                CreateCaseCommentForComplaintBatch createCaseComment = new CreateCaseCommentForComplaintBatch(true, caseIdList, lastExecuted);
                 database.executebatch(createCaseComment);
             }
         }

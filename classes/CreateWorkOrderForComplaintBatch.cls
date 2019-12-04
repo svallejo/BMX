@@ -20,9 +20,12 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
     
     global CreateWorkOrderForComplaintBatch(){} 
     global Boolean chained;
-    Datetime lastExecuted;
-    global CreateWorkOrderForComplaintBatch(Boolean chain, DateTime lastExecuted) {
+    List<Id> caseIdList;
+    DateTime lastExecuted;
+
+    global CreateWorkOrderForComplaintBatch(Boolean chain, List<Id> caseIdList, DateTime lastExecuted) {
         this.chained = chain;
+        this.caseIdList = caseIdList;
         this.lastExecuted = lastExecuted;
     }
     
@@ -30,9 +33,8 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
     global Database.QueryLocator start(Database.BatchableContext bc) {
         
         if(!Test.isRunningTest()){
-            String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
-            return Database.getQueryLocator('SELECT Id,CaseId__r.Type__c,CaseId__r.TWComplaintNumber_c__c,  CaseId__r.ExternalId,StartDate__c,ClosedDate_c__c,ExternalId,Status__c,Categories_c__c,SAP_ServiceOrderType_c__c,' +
-                                            'SubCategory_c__c,Subject__c  FROM WorkOrder__x WHERE LastModifiedDate__c >= ' + formattedTime);  
+            return Database.getQueryLocator([SELECT Id,CaseId__r.Type__c,CaseId__r.TWComplaintNumber_c__c,  CaseId__r.ExternalId,StartDate__c,ClosedDate_c__c,ExternalId,Status__c,Categories_c__c,SAP_ServiceOrderType_c__c,
+                                            SubCategory_c__c,Subject__c  FROM WorkOrder__x WHERE CaseId__c in: caseIdList or LastModifiedDate__c >=:lastExecuted ]);  
         }else{
             return Database.getQueryLocator('SELECT Id,CaseId__r.Type__c,CaseId__r.TWComplaintNumber_c__c, CaseId__r.ExternalId,StartDate__c,ClosedDate_c__c,ExternalId,Status__c,Categories_c__c,SAP_ServiceOrderType_c__c,' +
                                             'SubCategory_c__c,Subject__c  FROM WorkOrder__x LIMIT 1');
@@ -83,12 +85,12 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
         System.debug('-------workOrderList------'+workOrderList);
         
         if(!workOrderList.isEmpty()) {
-        
-            // Upserting the external Work Order list of records
+		
+			// Upserting the external Work Order list of records
             upsertResultList = Database.Upsert(workOrderList,Work_Order__c.ExternalId__c, false);
         }
         
-        // creating error log records if any record gets failed during the execution of the batch
+		// creating error log records if any record gets failed during the execution of the batch
         if(!upsertResultList.isEmpty()) {
             List<Error_Log__c> errLogList = new List<Error_Log__c>();
             for(Integer i=0; i <upsertResultList.size(); i++) {
@@ -114,7 +116,7 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
         // querying the external Product Consumed records which are created/updated in last 24 hours
         Boolean chainedAlready = !chained;
         if(!Test.isRunningTest()){
-            CreateProductConsumedForWorkOrderBatch createProductConsumed = new CreateProductConsumedForWorkOrderBatch(chained && !chainedAlready, lastExecuted);
+            CreateProductConsumedForWorkOrderBatch createProductConsumed = new CreateProductConsumedForWorkOrderBatch(chained && !chainedAlready, caseIdList, lastExecuted);
             chainedAlready = true;
             database.executebatch(createProductConsumed);
         }
