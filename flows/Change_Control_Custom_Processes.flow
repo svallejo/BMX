@@ -3670,7 +3670,7 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_70</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>(1 OR 4) AND 2 AND 3</conditionLogic>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
@@ -3762,6 +3762,37 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.CMPL123_WF_Action__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>After Release Items Complete</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -4638,7 +4669,7 @@
                 <stringValue>Today()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_100_myRule_98_A1_1998673938</name>
+        <name>formula_100_myRule_98_A1_0766016018</name>
         <dataType>Date</dataType>
         <expression>Today()</expression>
     </formulas>
@@ -4649,11 +4680,11 @@
                 <stringValue>Today()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_96_myRule_94_A1_3076902483</name>
+        <name>formula_96_myRule_94_A1_9642494413</name>
         <dataType>Date</dataType>
         <expression>Today()</expression>
     </formulas>
-    <interviewLabel>Change_Control_Custom_Processes-48_InterviewLabel</interviewLabel>
+    <interviewLabel>Change_Control_Custom_Processes-51_InterviewLabel</interviewLabel>
     <label>Change Control Custom Processes</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -7240,7 +7271,7 @@
             </processMetadataValues>
             <field>Closed_Date__c</field>
             <value>
-                <elementReference>formula_96_myRule_94_A1_3076902483</elementReference>
+                <elementReference>formula_96_myRule_94_A1_9642494413</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>
@@ -7320,7 +7351,7 @@
             </processMetadataValues>
             <field>Closed_Date__c</field>
             <value>
-                <elementReference>formula_100_myRule_98_A1_1998673938</elementReference>
+                <elementReference>formula_100_myRule_98_A1_0766016018</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>

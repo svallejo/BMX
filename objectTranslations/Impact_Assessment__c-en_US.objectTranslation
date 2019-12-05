@@ -202,6 +202,14 @@
         <errorMessage><!-- Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open --></errorMessage>
         <name>Only_Change_Owner_or_Change_Coordinator</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Impact Assessments can only be created when Change Control is in the Open status --></errorMessage>
+        <name>Impact_Assessments_only_in_cc_open</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot add an addtional Impact Assessment after the Quality Assurance Assessment was completed --></errorMessage>
+        <name>No_more_impact_assessments_after_quality</name>
+    </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>
         <name>Change_Controlc</name>
