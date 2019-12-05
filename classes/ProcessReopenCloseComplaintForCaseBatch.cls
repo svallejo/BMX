@@ -25,12 +25,10 @@ public class ProcessReopenCloseComplaintForCaseBatch implements Database.Batchab
     Map<Id, CMPL123CME__Complaint__c> cmpReopenUpdMap = new Map<Id, CMPL123CME__Complaint__c>();
     List<CMPL123CME__Complaint__c> totCmpList = new List<CMPL123CME__Complaint__c>();
     Set<Id> totCmpIdSet = new Set<Id>();
-    List<Id> caseIdList;
     Datetime lastExecuted;
 
 	// Initializing the lists and maps with the complaints 
-    public ProcessReopenCloseComplaintForCaseBatch(List<CMPL123CME__Complaint__c> cmpReopenList, List<CMPL123CME__Complaint__c> cmpReopenUpdList , List<CMPL123CME__Complaint__c> cmplntAutoCloseList, List<Id> caseIdList,
-    Datetime lastExecuted) {
+    public ProcessReopenCloseComplaintForCaseBatch(List<CMPL123CME__Complaint__c> cmpReopenList, List<CMPL123CME__Complaint__c> cmpReopenUpdList , List<CMPL123CME__Complaint__c> cmplntAutoCloseList, Datetime lastExecuted) {
         
         system.debug('==cmpReopenList=='+cmpReopenList);
         system.debug('==cmpReopenUpdList=='+cmpReopenUpdList);
@@ -39,7 +37,6 @@ public class ProcessReopenCloseComplaintForCaseBatch implements Database.Batchab
         this.cmpReopenList = cmpReopenList;
         this.cmpReopenUpdList = cmpReopenUpdList;
         this.cmplntAutoCloseList = cmplntAutoCloseList;
-        this.caseIdList = caseIdList;
         this.lastExecuted = lastExecuted;
         cmpReopenMap.putAll(cmpReopenList);
         cmpReopenUpdMap.putAll(cmpReopenUpdList);
@@ -114,8 +111,8 @@ public class ProcessReopenCloseComplaintForCaseBatch implements Database.Batchab
         if(!Test.isRunningTest()){
 		
 			// Executing CreateCaseCommentForComplaintBatch batch class
-            CreateCaseCommentForComplaintBatch createCaseComment = new CreateCaseCommentForComplaintBatch(!chained, caseIdList, lastExecuted);
-            database.executebatch(createCaseComment);
+            CreateCaseCommentForComplaintBatch createCaseComment = new CreateCaseCommentForComplaintBatch(!chained, lastExecuted);
+            database.executebatch(createCaseComment, 50);
         }
         
     }  

@@ -23,20 +23,20 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
     //Intializing external Product Consumed Ids in the constructor
     global CreateProductConsumedForWorkOrderBatch(){}
     Boolean chained;
-    List<Id> caseIdList;
     DateTime lastExecuted;
 
-    global CreateProductConsumedForWorkOrderBatch(Boolean chain, List<Id> caseIdList, DateTime lastExecuted){
+    global CreateProductConsumedForWorkOrderBatch(Boolean chain, DateTime lastExecuted){
         this.chained = chain;
-        this.caseIdList = caseIdList;
         this.lastExecuted = lastExecuted;
     }
     
     // querying the external Product Consumed recordss
     global Database.QueryLocator start(Database.BatchableContext bc) {
         if(!Test.isRunningTest()){
-            return Database.getQueryLocator([SELECT Id,WorkOrderId__r.CaseId__r.Type__c, WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c, WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c,
-                       PricebookEntryId__r.LocalProductName_c__c FROM ProductConsumed__x WHERE WorkOrderId__r.CaseId__c in: caseIdList or LastModifiedDate__c >=:lastExecuted]);  
+            String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
+            return Database.getQueryLocator('SELECT Id,LastModifiedDate__c, WorkOrderId__r.CaseId__r.Type__c, WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c, WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c, ' +
+                       'PricebookEntryId__r.LocalProductName_c__c FROM ProductConsumed__x WHERE WorkOrderId__r.CaseId__r.LastModifiedDate__c >=' + formattedTime +
+                                            ' or LastModifiedDate__c >=' + formattedTime);
         }else{
             return Database.getQueryLocator('SELECT Id,WorkOrderId__r.CaseId__r.Type__c, WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c, WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c,' +
                        'PricebookEntryId__r.LocalProductName_c__c FROM ProductConsumed__x LIMIT 1');
@@ -110,8 +110,8 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
         system.debug('Product Conmsumed inserted/updated');
         if(!Test.isRunningTest()){
 		    // executing the CreateServiceAppointmentForWorkOrdrBatch batch class
-            CreateServiceAppointmentForWorkOrdrBatch createServiceAppointment = new CreateServiceAppointmentForWorkOrdrBatch(true, caseIdList, lastExecuted);
-            Database.executebatch(createServiceAppointment);
+            CreateServiceAppointmentForWorkOrdrBatch createServiceAppointment = new CreateServiceAppointmentForWorkOrdrBatch(true, lastExecuted);
+            Database.executebatch(createServiceAppointment, 50);
         }
     }  
 }

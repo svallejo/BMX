@@ -20,12 +20,10 @@ global virtual class CreateCaseCommentForComplaintBatch implements Database.Batc
     //Intializing external Case Comment Ids in the constructor
     global CreateCaseCommentForComplaintBatch(){}
     Boolean chained;
-    List<Id> caseIdList;
     DateTime lastExecuted;
 
-    global CreateCaseCommentForComplaintBatch(Boolean chain, List<Id>caseIdList, DateTime lastExecuted){
+    global CreateCaseCommentForComplaintBatch(Boolean chain, DateTime lastExecuted){
         this.chained = chain;
-        this.caseIdList = caseIdList;
         this.lastExecuted = lastExecuted;
     }
     
@@ -33,8 +31,10 @@ global virtual class CreateCaseCommentForComplaintBatch implements Database.Batc
     global virtual Database.QueryLocator start(Database.BatchableContext bc) {
         // collect the batches of records or objects to be passed to execute
         if(!Test.isRunningTest()){
-            return Database.getQueryLocator([SELECT Id,CommentBody__c,ParentId__r.ExternalId,ParentId__r.TWComplaintNumber_c__c,  ParentId__r.Type__c, CreatedById__r.Name__c,ExternalId,CreatedDate__c
-                                            FROM CaseComment__x WHERE ParentId__c in:caseIdList or LastModifiedDate__c >=: lastExecuted]);
+            String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
+            return Database.getQueryLocator('SELECT Id,LastModifiedDate__c, CommentBody__c,ParentId__r.ExternalId,ParentId__r.TWComplaintNumber_c__c,  ParentId__r.Type__c, CreatedById__r.Name__c,ExternalId,CreatedDate__c ' + 
+                                            'FROM CaseComment__x WHERE ParentId__r.LastModifiedDate__c >=' + formattedTime +
+                                            ' or LastModifiedDate__c >=' + formattedTime);
         }else{
             return Database.getQueryLocator('SELECT Id,CommentBody__c,ParentId__r.ExternalId,ParentId__r.TWComplaintNumber_c__c, ParentId__r.Type__c, CreatedById__r.Name__c,ExternalId,CreatedDate__c '+
                                             'FROM CaseComment__x LIMIT 1');
@@ -105,8 +105,8 @@ global virtual class CreateCaseCommentForComplaintBatch implements Database.Batc
     global void finish(Database.BatchableContext bc){
         if(!Test.isRunningTest()){
 		    // Executing the CreateWorkOrderForComplaintBatch batch class
-            CreateWorkOrderForComplaintBatch createWorkOrder = new CreateWorkOrderForComplaintBatch(true, caseIdList, lastExecuted);
-            database.executebatch(createWorkOrder);
+            CreateWorkOrderForComplaintBatch createWorkOrder = new CreateWorkOrderForComplaintBatch(true, lastExecuted);
+            database.executebatch(createWorkOrder, 50);
         }
     } 
 }

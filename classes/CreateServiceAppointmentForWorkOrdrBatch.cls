@@ -24,12 +24,10 @@ global class CreateServiceAppointmentForWorkOrdrBatch implements Database.Batcha
     global CreateServiceAppointmentForWorkOrdrBatch(){}
     Boolean chained;
     DateTime lastExecuted;
-    List<Id> caseIdList;
     
     //Intializing external Service Appointment Ids in the constructor
-    global CreateServiceAppointmentForWorkOrdrBatch(Boolean chain, List<Id> caseIdList, Datetime lastExecuted){
+    global CreateServiceAppointmentForWorkOrdrBatch(Boolean chain, Datetime lastExecuted){
         this.chained = chain;
-        this.caseIdList = caseIdList;
         this.lastExecuted = lastExecuted;
     }
     
@@ -37,8 +35,10 @@ global class CreateServiceAppointmentForWorkOrdrBatch implements Database.Batcha
     global Database.QueryLocator start(Database.BatchableContext bc) {
         // collect the batches of records or objects to be passed to execute
         if(!Test.isRunningTest()){
-            return Database.getQueryLocator([SELECT Id,WorkOrder_c__r.CaseId__r.Type__c, WorkOrder_c__r.CaseId__r.TWComplaintNumber_c__c, WorkOrder_c__r.ExternalId,ExternalId,Description__c,Status__c,
-                                            ParentRecordId__r.WorkOrderNumber__c FROM ServiceAppointment__x WHERE WorkOrder_c__r.CaseId__c in: caseIdList or LastModifiedDate__c >=: lastExecuted]);  
+            String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
+            return Database.getQueryLocator('SELECT Id,LastModifiedDate__c, WorkOrder_c__r.CaseId__r.Type__c, WorkOrder_c__r.CaseId__r.TWComplaintNumber_c__c, WorkOrder_c__r.ExternalId,ExternalId,Description__c,Status__c, ' +
+                                            'ParentRecordId__r.WorkOrderNumber__c FROM ServiceAppointment__x WHERE WorkOrder_c__r.CaseId__r.LastModifiedDate__c >= ' + formattedTime +
+                                            ' or LastModifiedDate__c >=' + formattedTime);  
         }else{
             return Database.getQueryLocator('SELECT Id,WorkOrder_c__r.CaseId__r.Type__c, WorkOrder_c__r.CaseId__r.TWComplaintNumber_c__c, WorkOrder_c__r.ExternalId,ExternalId,Description__c,Status__c,' +
                                             'ParentRecordId__r.WorkOrderNumber__c FROM ServiceAppointment__x LIMIT 1');
