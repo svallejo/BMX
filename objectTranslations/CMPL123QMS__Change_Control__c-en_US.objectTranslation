@@ -463,8 +463,8 @@
             <translation><!-- Environmental Monitoring --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Equipment (Should cover new or existing)</masterLabel>
-            <translation><!-- Equipment (Should cover new or existing) --></translation>
+            <masterLabel>Equipment</masterLabel>
+            <translation><!-- Equipment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Expiration</masterLabel>
@@ -473,10 +473,6 @@
         <picklistValues>
             <masterLabel>Facilities/ Utilities</masterLabel>
             <translation><!-- Facilities/ Utilities --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Facilities/ Utilities (Should cover utility, production area modification or new construction, relocation)</masterLabel>
-            <translation><!-- Facilities/ Utilities (Should cover utility, production area modification or new construction, relocation) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Firmware</masterLabel>
@@ -1768,6 +1764,18 @@
         <label><!-- Total Quality Assessments done --></label>
         <name>Total_Quality_Assessments_done__c</name>
     </fields>
+    <fields>
+        <label><!-- Origin --></label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>Animal</masterLabel>
+            <translation><!-- Animal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Human</masterLabel>
+            <translation><!-- Human --></translation>
+        </picklistValues>
+    </fields>
     <layouts>
         <layout>Change Control Layout</layout>
         <sections>
@@ -2029,6 +2037,14 @@
     <validationRules>
         <errorMessage><!-- Reassign an approver into the CRB Approver 1 field. --></errorMessage>
         <name>CRB_Approver_1_Must_Be_Populated</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Reassign a final approver into the Final Approver 1 field. --></errorMessage>
+        <name>Final_Approver_1_Must_Be_Populated</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Release Approver 1 field must be populated if release approvals are required. --></errorMessage>
+        <name>Release_Approver_1_Must_Be_Populated</name>
     </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>

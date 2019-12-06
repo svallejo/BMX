@@ -26,7 +26,7 @@ public without Sharing class ProcessBatchChildWorkflow {
         System.debug('workflow mapping: ' + workflowMappingList);
         if ( !workflowMappingList.isEmpty()) {
             Id recordId = (Id)obj.get('Id');
-            BatchChildWorkflowHandler wfHandler = new BatchChildWorkflowHandler(workflowMappingList, childBatchSize, recordId);
+            BatchChildWorkflowHandler wfHandler = new BatchChildWorkflowHandler(workflowMappingList, childBatchSize, recordId, 0);
             Database.executeBatch(wfHandler, childBatchSize);
         }
     }

@@ -1,15 +1,16 @@
-global class BatchChildWorkflowHandler implements Database.Batchable<sObject>, Database.Stateful {
+global class BatchChildWorkflowHandler implements Database.Batchable<sObject> {
 
-    Integer currentChildIndex = 0;
+    Integer currentChildIndex;
     Integer childBatchSize = 10;
     Id parentRecordId;
     List<Batch_Child_Workflow_Mapping__mdt> workflowMappingList;
     Batch_Child_Workflow_Mapping__mdt currentWorkflowMapping;
 
-    global BatchChildWorkflowHandler(List<Batch_Child_Workflow_Mapping__mdt> workflowMappingList, Integer childBatchSize, Id parentRecordId) {
+    global BatchChildWorkflowHandler(List<Batch_Child_Workflow_Mapping__mdt> workflowMappingList, Integer childBatchSize, Id parentRecordId, Integer currentChildIndex) {
         this.workflowMappingList = workflowMappingList;
         this.childBatchSize = childBatchSize;
         this.parentRecordId = parentRecordId;
+        this.currentChildIndex = currentChildIndex;
         System.debug(workflowMappingList);
         this.currentWorkflowMapping = workflowMappingList.get(currentChildIndex);
     }
@@ -37,9 +38,9 @@ global class BatchChildWorkflowHandler implements Database.Batchable<sObject>, D
     }
 
     global void finish(Database.BatchableContext BC) {
-        if ( currentChildIndex != workflowMappingList.size() - 1){
-            BatchChildWorkflowHandler wfHandler = new BatchChildWorkflowHandler(workflowMappingList, childBatchSize, parentRecordId);
-            Database.executeBatch(wfHandler, childBatchSize++);
+        if ( currentChildIndex++ != workflowMappingList.size() - 1){
+            BatchChildWorkflowHandler wfHandler = new BatchChildWorkflowHandler(workflowMappingList, childBatchSize, parentRecordId, currentChildIndex);
+            Database.executeBatch(wfHandler, childBatchSize);
         }
    }
 }

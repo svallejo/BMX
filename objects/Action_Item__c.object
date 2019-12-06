@@ -559,6 +559,13 @@ Change_Control__r.CMPL123_WF_Status__c   &lt;&gt;  'Open'
 )</errorConditionFormula>
         <errorMessage>Action Items can only be created when Change Control is in the Open status</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>Approver_1_Must_Be_Populated</fullName>
+        <active>true</active>
+        <description>Approver 1 field must be populated if optional approvals are required.</description>
+        <errorConditionFormula>ISBLANK( Approver_1__c) &amp;&amp; NOT(AND(ISBLANK( Approver_2__c ),ISBLANK( Approver_3__c ),ISBLANK( Approver_4__c ),ISBLANK( Approver_5__c ), ISBLANK( Approver_6__c )))</errorConditionFormula>
+        <errorMessage>Reassign an approver into the Approver 1 field.</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>Change_Controlc</fullName>
         <availability>online</availability>
