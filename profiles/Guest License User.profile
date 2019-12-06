@@ -11200,6 +11200,12 @@
     <layoutAssignments>
         <layout>Predefined_Implementation_Plan__c-Predefined Implementation Plan Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Batch_Child_Workflow_Mapping__mdt-Batch Child Workflow Mapping Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Workflow_Batch_Size__mdt-Workflow Batch Size Layout</layout>
+    </layoutAssignments>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>BMX_Generic_Report__c.BMX_Lock_Generic_Report</recordType>

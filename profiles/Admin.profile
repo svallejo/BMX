@@ -4366,6 +4366,14 @@
         <apexClass>CMPL123__X123SAMLValidatorControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>BatchChildWorkflowHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ProcessBatchChildWorkflow</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>
         <enabled>true</enabled>
@@ -28697,6 +28705,12 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Predefined_Implementation_Plan__c-Predefined Implementation Plan Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Batch_Child_Workflow_Mapping__mdt-Batch Child Workflow Mapping Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Workflow_Batch_Size__mdt-Workflow Batch Size Layout</layout>
     </layoutAssignments>
     <recordTypeVisibilities>
         <default>false</default>

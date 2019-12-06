@@ -21437,6 +21437,12 @@
     <layoutAssignments>
         <layout>related_record__c-Related Record Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Batch_Child_Workflow_Mapping__mdt-Batch Child Workflow Mapping Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Workflow_Batch_Size__mdt-Workflow Batch Size Layout</layout>
+    </layoutAssignments>
     <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
