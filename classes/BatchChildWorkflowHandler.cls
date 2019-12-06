@@ -6,21 +6,23 @@ global class BatchChildWorkflowHandler implements Database.Batchable<sObject>, D
     List<Batch_Child_Workflow_Mapping__mdt> workflowMappingList;
     Batch_Child_Workflow_Mapping__mdt currentWorkflowMapping;
 
-    global BatchChildWorkflowHandler(List<Batch_Child_Workflow_Mapping__mdt> workflowMappingList, Integer childBatchSize) {
+    global BatchChildWorkflowHandler(List<Batch_Child_Workflow_Mapping__mdt> workflowMappingList, Integer childBatchSize, Id parentRecordId) {
         this.workflowMappingList = workflowMappingList;
         this.childBatchSize = childBatchSize;
+        this.parentRecordId = parentRecordId;
         System.debug(workflowMappingList);
         this.currentWorkflowMapping = workflowMappingList.get(currentChildIndex);
     }
 
     private String createQuery(Batch_Child_Workflow_Mapping__mdt workflowMapping){
         return 'SELECT ID, CMPL123Task_Key_Value__c, ' + workflowMapping.Parent_Field_API_Name__c + ' FROM ' + workflowMapping.Child_Object_API_Name__c + 
-        ' WHERE ' + workflowMapping.Parent_Field_API_Name__c + ' = \'' + parentRecordId + ' \'';
+        ' WHERE ' + workflowMapping.Parent_Field_API_Name__c + ' = \'' + parentRecordId + '\'';
     }
 
     global Database.QueryLocator start(Database.BatchableContext BC) {
         if ( !workflowMappingList.isEmpty()) {
             String query = createQuery(currentWorkflowMapping);
+            System.debug('query ' + query);
             return Database.getQueryLocator(query);
         }
         return null;
@@ -36,7 +38,7 @@ global class BatchChildWorkflowHandler implements Database.Batchable<sObject>, D
 
     global void finish(Database.BatchableContext BC) {
         if ( currentChildIndex != workflowMappingList.size() - 1){
-            BatchChildWorkflowHandler wfHandler = new BatchChildWorkflowHandler(workflowMappingList, childBatchSize);
+            BatchChildWorkflowHandler wfHandler = new BatchChildWorkflowHandler(workflowMappingList, childBatchSize, parentRecordId);
             Database.executeBatch(wfHandler, childBatchSize++);
         }
    }

@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Parent_Workflow_Status__c</field>
-        <value xsi:type="xsd:string">Canceled - Change Control</value>
+        <value xsi:type="xsd:string">Closed - Canceled</value>
     </values>
     <values>
         <field>X123_Task_Key_Value__c</field>

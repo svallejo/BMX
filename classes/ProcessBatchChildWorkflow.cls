@@ -4,6 +4,7 @@ public without Sharing class ProcessBatchChildWorkflow {
     }
 
     public static void processBatchChildWorkflows(String parentApiName, Map<Id,SObject> objectMap){
+        System.debug('process batch ');
         Set<Id> keySet = objectMap.keySet();
         Id objectId;
         SObject obj;
@@ -19,9 +20,13 @@ public without Sharing class ProcessBatchChildWorkflow {
         List<Batch_Child_Workflow_Mapping__mdt> workflowMappingList = [SELECT X123_Task_Key_Value__c, Parent_Field_API_Name__c, Child_Workflow_Status__c,
                                 Parent_Object_API_Name__c, Parent_Workflow_Status__c, Child_Object_API_Name__c from Batch_Child_Workflow_Mapping__mdt
                                 where Parent_Object_API_Name__c =: parentApiName and Parent_Workflow_Status__c =: parentWorkflowStatus];
+        System.debug('parentApiName : ' + parentApiName);
+        System.debug('parentWorkflowStatus : ' + parentWorkflowStatus);
         
+        System.debug('workflow mapping: ' + workflowMappingList);
         if ( !workflowMappingList.isEmpty()) {
-            BatchChildWorkflowHandler wfHandler = new BatchChildWorkflowHandler(workflowMappingList, childBatchSize);
+            Id recordId = (Id)obj.get('Id');
+            BatchChildWorkflowHandler wfHandler = new BatchChildWorkflowHandler(workflowMappingList, childBatchSize, recordId);
             Database.executeBatch(wfHandler, childBatchSize);
         }
     }
