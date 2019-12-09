@@ -4,15 +4,15 @@
     <protected>false</protected>
     <values>
         <field>CRM_Field_API_Name__c</field>
-        <value xsi:type="xsd:string">Name__c</value>
+        <value xsi:type="xsd:string">Initial_Software_Version_c__c</value>
     </values>
     <values>
         <field>Object_API_Name__c</field>
-        <value xsi:type="xsd:string">CodeGroup_c__x</value>
+        <value xsi:type="xsd:string">Case__x</value>
     </values>
     <values>
         <field>Relationship_Name__c</field>
-        <value xsi:type="xsd:string">SoftwareCode_c__c</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>TWD_Field_API_Name__c</field>

@@ -19862,6 +19862,11 @@
         <field>CMPL123QMS__Change_Control__c.Origin__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case__x.Initial_Software_Version_c__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>

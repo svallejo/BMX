@@ -334,7 +334,7 @@
         <fullName>limit_who_can_open_extension_request</fullName>
         <active>true</active>
         <description>Only Change Owner of the change control or a Change Coordinator can create a new extension request for that record.</description>
-        <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp;  $User.Id !=  Change_Control__r.Change_Owner__c  )</errorConditionFormula>
+        <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp;  $User.Id !=  Change_Control__r.Change_Owner__c  ) &amp;&amp; ISNEW()</errorConditionFormula>
         <errorMessage>Only Change Owner of the change control or a Change Coordinator can create a new extension request for that record.</errorMessage>
     </validationRules>
     <webLinks>
