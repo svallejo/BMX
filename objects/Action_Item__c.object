@@ -509,7 +509,7 @@ IF(ISBLANK(Approver_6__c ),0,1))</formula>
     </validationRules>
     <validationRules>
         <fullName>CCmustbeOpenstatustocancelaction</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Parent Change Control must be in Open status to cancel the Action Item</description>
         <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp;
 CMPL123_WF_Action__c =="Cancel" &amp;&amp;
@@ -565,6 +565,46 @@ Change_Control__r.CMPL123_WF_Status__c   &lt;&gt;  'Open'
         <description>Approver 1 field must be populated if optional approvals are required.</description>
         <errorConditionFormula>ISBLANK( Approver_1__c) &amp;&amp; NOT(AND(ISBLANK( Approver_2__c ),ISBLANK( Approver_3__c ),ISBLANK( Approver_4__c ),ISBLANK( Approver_5__c ), ISBLANK( Approver_6__c )))</errorConditionFormula>
         <errorMessage>Reassign an approver into the Approver 1 field.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Af_Releaseonlyeditable_in_Open_or_arip</fullName>
+        <active>true</active>
+        <description>After Release Items can only be edited in either Open status or After Items in Progress.</description>
+        <errorConditionFormula>After_Release__c = True &amp;&amp;  ((Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open") &amp;&amp; (Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "After Release in Progress"))</errorConditionFormula>
+        <errorMessage>After Release Items can only be edited in either Open status or After Items in Progress.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Lock_Fields_before_CC_is_Approved</fullName>
+        <active>true</active>
+        <description>Summary of Action Taken is locked until CC is Approved</description>
+        <errorConditionFormula>(ISCHANGED( Summary_of_Action_Taken__c ) || (ISNEW() &amp;&amp; !ISBLANK(Summary_of_Action_Taken__c))) 
+&amp;&amp;
+((Change_Control__r.CMPL123_WF_Status__c = "Open") || 
+(Change_Control__r.CMPL123_WF_Status__c = "Pending CRB Team Review") || 
+(Change_Control__r.CMPL123_WF_Status__c = "Pending Quality Review"))</errorConditionFormula>
+        <errorMessage>Summary of Action Taken is locked until CC is Approved</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Lock_Fields_before_CC_is_Approved_URL</fullName>
+        <active>true</active>
+        <description>URL (for PECN use) is locked until CC is Approved</description>
+        <errorConditionFormula>(ISCHANGED(  URL_for_PECN_use__c  ) || (ISNEW() &amp;&amp; !ISBLANK(URL_for_PECN_use__c ))) 
+&amp;&amp;
+((Change_Control__r.CMPL123_WF_Status__c = "Open") || 
+(Change_Control__r.CMPL123_WF_Status__c = "Pending CRB Team Review") || 
+(Change_Control__r.CMPL123_WF_Status__c = "Pending Quality Review"))</errorConditionFormula>
+        <errorMessage>URL (for PECN use) is locked until CC is Approved</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>only_CC_Owner_or_Coordinator_Cancel</fullName>
+        <active>true</active>
+        <description>Only Change Coordinator's or the Assigned Change Owner of the parent CC can cancel. Change Owner can only cancel when parent CC is Open</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; CMPL123_WF_Action__c =="Cancel" &amp;&amp;
+($User.Id !=  Change_Control__r.Change_Owner__c ||
+($User.Id ==  Change_Control__r.Change_Owner__c &amp;&amp; 
+Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open")) &amp;&amp;
+NOT(INCLUDES($User.TWD_Role__c, 'Change Coordinator'))</errorConditionFormula>
+        <errorMessage>Only Change Coordinator's or the Assigned Change Owner of the parent CC can cancel. Change Owner can only cancel when parent CC is Open</errorMessage>
     </validationRules>
     <webLinks>
         <fullName>Change_Controlc</fullName>

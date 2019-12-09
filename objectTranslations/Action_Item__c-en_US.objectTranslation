@@ -211,6 +211,22 @@
         <errorMessage><!-- Reassign an approver into the Approver 1 field. --></errorMessage>
         <name>Approver_1_Must_Be_Populated</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- After Release Items can only be edited in either Open status or After Items in Progress. --></errorMessage>
+        <name>Af_Releaseonlyeditable_in_Open_or_arip</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Summary of Action Taken is locked until CC is Approved --></errorMessage>
+        <name>Lock_Fields_before_CC_is_Approved</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- URL (for PECN use) is locked until CC is Approved --></errorMessage>
+        <name>Lock_Fields_before_CC_is_Approved_URL</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Change Coordinator&apos;s or the Assigned Change Owner of the parent CC can cancel. Change Owner can only cancel when parent CC is Open --></errorMessage>
+        <name>only_CC_Owner_or_Coordinator_Cancel</name>
+    </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>
         <name>Change_Controlc</name>

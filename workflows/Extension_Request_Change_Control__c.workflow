@@ -47,7 +47,7 @@
             <name>Extension_Request_for_CC</name>
             <type>Task</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <formula>true</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
