@@ -5022,6 +5022,10 @@
         <apexPage>related_recordWorkflowPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123CMEEU_MIRWorkflowPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.AccountSource</field>
