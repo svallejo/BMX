@@ -231,6 +231,18 @@
         <errorMessage><!-- Only Change Coordinator&apos;s or the Assigned Change Owner of the parent CC can cancel. Change Owner can only cancel when parent CC is Open --></errorMessage>
         <name>only_CC_Owner_or_Coordinator_Cancel</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only the Assignee, Change Owner of the Change Control, or Change Coordinator can modify the Assignee field --></errorMessage>
+        <name>Assignee_Restrictions</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Assignee can update URL (for PECN Use) and Summary of Action Taken --></errorMessage>
+        <name>Assignee_only_fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Action Item, Change Control, Short Description, and Target Due Date are locked --></errorMessage>
+        <name>Lock_fields_After_Open</name>
+    </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>
         <name>Change_Controlc</name>

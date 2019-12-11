@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Change_Owner__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Title__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Change_Level__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Change_Type_s__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Quality_Approver__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Release_QA_Approver__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.CMPL123_WF_Action__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.CMPL123_WF_Status__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <description>List of change control records with Workflow Action = Approve Release (QA)</description>
+    <filter>
+        <criteriaItems>
+            <column>CMPL123QMS__Change_Control__c.CMPL123_WF_Action__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Approve Release (QA)</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>After Release Quality Approved CR&apos;s</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CMPL123QMS__Change_Control__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CMPL123QMS__Change_Control__c.Due_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

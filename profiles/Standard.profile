@@ -19325,6 +19325,11 @@
         <field>CMPL123QMS__Change_Control__c.Origin__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123QMS__Change_Control__c.Total_Unassigned_Open_Action__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>

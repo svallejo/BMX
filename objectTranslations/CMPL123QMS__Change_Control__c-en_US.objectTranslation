@@ -1776,6 +1776,22 @@
             <translation><!-- Human --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- % Action Items Complete --></label>
+        <name>Action_Items_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Actions Complete --></label>
+        <name>Total_Actions_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Unassigned Open Action --></label>
+        <name>Total_Unassigned_Open_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- % impact assessments complete --></label>
+        <name>impact_assessments_complete__c</name>
+    </fields>
     <layouts>
         <layout>Change Control Layout</layout>
         <sections>
@@ -2045,6 +2061,10 @@
     <validationRules>
         <errorMessage><!-- Release Approver 1 field must be populated if release approvals are required. --></errorMessage>
         <name>Release_Approver_1_Must_Be_Populated</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot submit the change for review with assignees missing for action items --></errorMessage>
+        <name>assignees_missing_in_action_items</name>
     </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>

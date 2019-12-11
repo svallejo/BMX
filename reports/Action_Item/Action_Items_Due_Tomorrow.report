@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Action_Item__c$Name</field>
+    </columns>
+    <columns>
+        <field>Action_Item__c$Target_Due_Date__c</field>
+    </columns>
+    <columns>
+        <field>Action_Item__c$Action_Item__c</field>
+    </columns>
+    <columns>
+        <field>Action_Item__c$After_Release__c</field>
+    </columns>
+    <columns>
+        <field>Action_Item__c$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Action_Item__c$CMPL123_WF_Status__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <filter>
+        <criteriaItems>
+            <column>Action_Item__c$Target_Due_Date__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>TOMORROW</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Action Items Due Tomorrow</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Action_Item__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Action_Item__c$Target_Due_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
