@@ -473,6 +473,14 @@ IF(ISBLANK(Approver_6__c ),0,1))</formula>
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Performed_By_Automation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Performed By Automation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -513,8 +521,7 @@ IF(ISBLANK(Approver_6__c ),0,1))</formula>
         <description>Parent Change Control must be in Open status to cancel the Action Item</description>
         <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp;
 CMPL123_WF_Action__c =="Cancel" &amp;&amp;
-
- Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open"</errorConditionFormula>
+(Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open" || Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Closed - Canceled")</errorConditionFormula>
         <errorMessage>Parent Change Control must be in Open status to cancel the Action Item</errorMessage>
     </validationRules>
     <validationRules>
@@ -603,7 +610,8 @@ Change_Control__r.CMPL123_WF_Status__c   &lt;&gt;  'Open'
 ($User.Id !=  Change_Control__r.Change_Owner__c ||
 ($User.Id ==  Change_Control__r.Change_Owner__c &amp;&amp; 
 Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open")) &amp;&amp;
-NOT(INCLUDES($User.TWD_Role__c, 'Change Coordinator'))</errorConditionFormula>
+NOT(INCLUDES($User.TWD_Role__c, 'Change Coordinator')) &amp;&amp;
+NOT(Performed_By_Automation__c)</errorConditionFormula>
         <errorMessage>Only Change Coordinator's or the Assigned Change Owner of the parent CC can cancel. Change Owner can only cancel when parent CC is Open</errorMessage>
     </validationRules>
     <webLinks>

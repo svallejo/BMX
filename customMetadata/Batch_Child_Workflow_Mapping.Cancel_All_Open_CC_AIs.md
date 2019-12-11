@@ -3,6 +3,10 @@
     <label>Cancel All Open CC AIs</label>
     <protected>false</protected>
     <values>
+        <field>Bypass_Validation_Rule__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
         <field>Child_Object_API_Name__c</field>
         <value xsi:type="xsd:string">Action_Item__c</value>
     </values>

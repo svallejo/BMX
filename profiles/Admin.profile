@@ -27916,6 +27916,11 @@
         <field>CMPL123QMS__Change_Control__c.Origin__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Action_Item__c.Performed_By_Automation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>

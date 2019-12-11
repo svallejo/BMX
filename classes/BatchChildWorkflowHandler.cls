@@ -34,6 +34,9 @@ global class BatchChildWorkflowHandler implements Database.Batchable<sObject> {
         for ( SObject childObject : childObjectList ) {
             String childWorkflowStatus = childObject.get('CMPL123_WF_Status__c').toString();
             if(childWorkflowStatus.equals(currentWorkflowMapping.Child_Workflow_Status__c)) {
+                if (currentWorkflowMapping.Bypass_Validation_Rule__c) {
+                    childObject.put('Performed_By_Automation__c', currentWorkflowMapping.Bypass_Validation_Rule__c);
+                }
                 childObject.put('CMPL123Task_Key_Value__c', currentWorkflowMapping.X123_Task_Key_Value__c);
                 System.debug('Updating ' + currentWorkflowMapping.Child_Object_API_Name__c + ': '+ childObject.id);
             }

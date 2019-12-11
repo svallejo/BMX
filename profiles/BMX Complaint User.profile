@@ -2681,6 +2681,10 @@
         <apexPage>CMPL123CME__EU_MIR_Medical_Device_Problem</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123CMEEU_MIRWorkflowPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.AccountSource</field>

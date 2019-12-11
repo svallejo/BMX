@@ -3,6 +3,10 @@
     <label>Cancel All Open CC Ext Reqs</label>
     <protected>false</protected>
     <values>
+        <field>Bypass_Validation_Rule__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
         <field>Child_Object_API_Name__c</field>
         <value xsi:type="xsd:string">Extension_Request_Change_Control__c</value>
     </values>
