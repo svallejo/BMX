@@ -28746,6 +28746,14 @@
     <layoutAssignments>
         <layout>Workflow_Batch_Size__mdt-Workflow Batch Size Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Action_Item__c-Action Item Layout</layout>
+        <recordType>Action_Item__c.Action_Item</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Action_Item__c-Predefined %28Not Required%29 Layout</layout>
+        <recordType>Action_Item__c.Locked</recordType>
+    </layoutAssignments>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>BMX_Generic_Report__c.BMX_Lock_Generic_Report</recordType>
@@ -28896,6 +28904,16 @@
         <default>false</default>
         <recordType>CMPL123QMS__Change_Control__c.CC_Custom_Read_Only</recordType>
         <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>Action_Item__c.Action_Item</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Action_Item__c.Locked</recordType>
+        <visible>false</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
         <tab>Account__x</tab>

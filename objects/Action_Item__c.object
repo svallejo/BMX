@@ -509,6 +509,18 @@ IF(ISBLANK(Approver_6__c ),0,1))</formula>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <recordTypes>
+        <fullName>Action_Item</fullName>
+        <active>true</active>
+        <description>Record type for a requried action item</description>
+        <label>Action Item</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Locked</fullName>
+        <active>true</active>
+        <description>Record type for predefined (not required) action item</description>
+        <label>Locked</label>
+    </recordTypes>
     <validationRules>
         <fullName>limit_action_items_to_10000</fullName>
         <active>true</active>
@@ -641,6 +653,17 @@ NOT(Performed_By_Automation__c)</errorConditionFormula>
 ISCHANGED(  Change_Control__c  ) || ISCHANGED( Short_Description__c ) ||
 ISCHANGED(  Target_Due_Date__c)) &amp;&amp; (  Change_Control__r.CMPL123_WF_Status__c &lt;&gt; 'Open')</errorConditionFormula>
         <errorMessage>Action Item, Change Control, Short Description, and Target Due Date are locked</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Only_CCOwner_Assignee_Coordinator_Open</fullName>
+        <active>true</active>
+        <description>Only Change Coordinators, Assigned Change Owner of the parent CC, or Assignee can open an action item.</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+CMPL123_WF_Action__c ="Open" &amp;&amp;
+$User.Id !=  Change_Control__r.Change_Owner__c &amp;&amp;
+$User.Id !=  Assignee__c &amp;&amp;
+NOT(INCLUDES($User.TWD_Role__c, 'Change Coordinator'))</errorConditionFormula>
+        <errorMessage>Only Change Coordinators, Assigned Change Owner, or Assignee of record can perform Open.</errorMessage>
     </validationRules>
     <webLinks>
         <fullName>Change_Controlc</fullName>

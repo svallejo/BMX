@@ -179,10 +179,43 @@
             <section>esig history</section>
         </sections>
     </layouts>
+    <layouts>
+        <layout>Predefined (Not Required) Layout</layout>
+        <sections>
+            <label><!-- Approvers --></label>
+            <section>Approvers</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Developer --></label>
+            <section>Developer</section>
+        </sections>
+        <sections>
+            <label><!-- Workflow --></label>
+            <section>Workflow</section>
+        </sections>
+        <sections>
+            <label><!-- esig history --></label>
+            <section>esig history</section>
+        </sections>
+    </layouts>
     <quickActions>
         <label><!-- Detach File --></label>
         <name>Detach_File</name>
     </quickActions>
+    <recordTypes>
+        <description><!-- Record type for a requried action item --></description>
+        <label><!-- Action Item --></label>
+        <name>Action_Item</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type for predefined (not required) action item --></description>
+        <label><!-- Locked --></label>
+        <name>Locked</name>
+    </recordTypes>
     <validationRules>
         <errorMessage><!-- You can not have more than 10,000 Action Item records related to one Change Control --></errorMessage>
         <name>limit_action_items_to_10000</name>
@@ -242,6 +275,10 @@
     <validationRules>
         <errorMessage><!-- Action Item, Change Control, Short Description, and Target Due Date are locked --></errorMessage>
         <name>Lock_fields_After_Open</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Change Coordinators, Assigned Change Owner, or Assignee of record can perform Open. --></errorMessage>
+        <name>Only_CCOwner_Assignee_Coordinator_Open</name>
     </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>

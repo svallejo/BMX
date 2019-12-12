@@ -20102,6 +20102,14 @@
     <layoutAssignments>
         <layout>Workflow_Batch_Size__mdt-Workflow Batch Size Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Action_Item__c-Action Item Layout</layout>
+        <recordType>Action_Item__c.Action_Item</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Action_Item__c-Predefined %28Not Required%29 Layout</layout>
+        <recordType>Action_Item__c.Locked</recordType>
+    </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>
@@ -21043,6 +21051,16 @@
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>CMPL123QMS__Change_Control__c.CC_Custom_Read_Only</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Action_Item__c.Action_Item</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Action_Item__c.Locked</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
