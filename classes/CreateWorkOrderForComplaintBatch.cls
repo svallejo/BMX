@@ -30,9 +30,13 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
     // querying the external Work Order records
     global Database.QueryLocator start(Database.BatchableContext bc) {
         if(!Test.isRunningTest()){
+          /** We are pulling in Work Orders associated with recently modified Cases because there is a scenario where a previously
+            created Case gets reclassified as a Technical Complaint so we will need to grab the previously created Work Orders. */
             String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
-            return Database.getQueryLocator('SELECT Id,LastModifiedDate__c, CaseId__r.Type__c,CaseId__r.TWComplaintNumber_c__c,  CaseId__r.ExternalId,StartDate__c,ClosedDate_c__c,ExternalId,Status__c,Categories_c__c,SAP_ServiceOrderType_c__c,' +
-                                            'SubCategory_c__c,Subject__c  FROM WorkOrder__x WHERE CaseId__r.LastModifiedDate__c >=' + formattedTime +
+            return Database.getQueryLocator('SELECT Id,LastModifiedDate__c,CaseId__r.Type__c,CaseId__r.TWComplaintNumber_c__c,  ' +
+                                            ' CaseId__r.ExternalId,StartDate__c,ClosedDate_c__c,ExternalId,Status__c,Categories_c__c,SAP_ServiceOrderType_c__c,' +
+                                            ' CaseId__r.CaseNumber_c__c,CaseId__r.CaseNumber__c, ' +
+                                            ' SubCategory_c__c,Subject__c  FROM WorkOrder__x WHERE CaseId__r.LastModifiedDate__c >=' + formattedTime + 
                                             ' or LastModifiedDate__c >=' + formattedTime);
         }else{
             return Database.getQueryLocator('SELECT Id,CaseId__r.Type__c,CaseId__r.TWComplaintNumber_c__c, CaseId__r.ExternalId,StartDate__c,ClosedDate_c__c,ExternalId,Status__c,Categories_c__c,SAP_ServiceOrderType_c__c,' +
@@ -46,7 +50,11 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
         if(!Test.isRunningTest()){
             for(Sobject sObj: workOrdrList){
                 WorkOrder__x extWorkOrdrObj = (WorkOrder__x) sObj;
-                records.add(extWorkOrdrObj);
+                if (extWorkOrdrObj.CaseId__r.CaseNumber_c__c == extWorkOrdrObj.CaseId__r.CaseNumber__c &&
+                    extWorkOrdrObj.CaseId__r.TWComplaintNumber_c__c == null && 
+                    extWorkOrdrObj.CaseId__r.Type__c == 'TechnicalComplaint') {
+                    records.add(extWorkOrdrObj);
+                }
             }
         }
         
@@ -84,12 +92,12 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
         System.debug('-------workOrderList------'+workOrderList);
         
         if(!workOrderList.isEmpty()) {
-		
-			// Upserting the external Work Order list of records
+        
+            // Upserting the external Work Order list of records
             upsertResultList = Database.Upsert(workOrderList,Work_Order__c.ExternalId__c, false);
         }
         
-		// creating error log records if any record gets failed during the execution of the batch
+        // creating error log records if any record gets failed during the execution of the batch
         if(!upsertResultList.isEmpty()) {
             List<Error_Log__c> errLogList = new List<Error_Log__c>();
             for(Integer i=0; i <upsertResultList.size(); i++) {

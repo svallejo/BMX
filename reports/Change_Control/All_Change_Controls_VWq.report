@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Change_Owner__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Change_Level__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Change_Type_s__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.CMPL123_WF_Status__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CMPL123QMS__Change_Control__c.Action_Items_Complete__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CMPL123QMS__Change_Control__c.impact_assessments_complete__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <format>Tabular</format>
+    <name>All Change Controls</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CMPL123QMS__Change_Control__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CMPL123QMS__Change_Control__c.Closed_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

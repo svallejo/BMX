@@ -214,6 +214,7 @@
     </fields>
     <fields>
         <fullName>CMPL123Rule_Key_Value__c</fullName>
+        <defaultValue>"Ad_Hoc"</defaultValue>
         <externalId>false</externalId>
         <label>Rule Field Update Key Value</label>
         <length>255</length>
@@ -577,7 +578,7 @@ Change_Control__r.CMPL123_WF_Status__c   &lt;&gt;  'Open'
         <fullName>Af_Releaseonlyeditable_in_Open_or_arip</fullName>
         <active>true</active>
         <description>After Release Items can only be edited in either Open status or After Items in Progress.</description>
-        <errorConditionFormula>After_Release__c = True &amp;&amp;  ((Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open") &amp;&amp; (Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "After Release in Progress"))</errorConditionFormula>
+        <errorConditionFormula>After_Release__c = True &amp;&amp;  ((Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open") &amp;&amp; (Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "After Release Items in Progress"))</errorConditionFormula>
         <errorMessage>After Release Items can only be edited in either Open status or After Items in Progress.</errorMessage>
     </validationRules>
     <validationRules>

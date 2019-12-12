@@ -35,9 +35,12 @@ global class CreateServiceAppointmentForWorkOrdrBatch implements Database.Batcha
     global Database.QueryLocator start(Database.BatchableContext bc) {
         // collect the batches of records or objects to be passed to execute
         if(!Test.isRunningTest()){
+             /** We are pulling in Service Appointments associated with recently modified Cases because there is a scenario where a previously
+            created Case gets reclassified as a Technical Complaint so we will need to grab the previously created Service Appointments. */
             String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
-            return Database.getQueryLocator('SELECT Id,LastModifiedDate__c, WorkOrder_c__r.CaseId__r.Type__c, WorkOrder_c__r.CaseId__r.TWComplaintNumber_c__c, WorkOrder_c__r.ExternalId,ExternalId,Description__c,Status__c, ' +
-                                            'ParentRecordId__r.WorkOrderNumber__c FROM ServiceAppointment__x WHERE WorkOrder_c__r.CaseId__r.LastModifiedDate__c >= ' + formattedTime +
+            return Database.getQueryLocator('SELECT Id,LastModifiedDate__c, WorkOrder_c__r.CaseId__r.Type__c, WorkOrder_c__r.CaseId__r.CaseNumber_c__c, WorkOrder_c__r.CaseId__r.CaseNumber__c, ' +
+                                            ' WorkOrder_c__r.CaseId__r.TWComplaintNumber_c__c, WorkOrder_c__r.ExternalId, ExternalId, Description__c,Status__c, ' +
+                                            ' ParentRecordId__r.WorkOrderNumber__c FROM ServiceAppointment__x WHERE WorkOrder_c__r.CaseId__r.LastModifiedDate__c >= ' + formattedTime +
                                             ' or LastModifiedDate__c >=' + formattedTime);  
         }else{
             return Database.getQueryLocator('SELECT Id,WorkOrder_c__r.CaseId__r.Type__c, WorkOrder_c__r.CaseId__r.TWComplaintNumber_c__c, WorkOrder_c__r.ExternalId,ExternalId,Description__c,Status__c,' +
@@ -51,7 +54,11 @@ global class CreateServiceAppointmentForWorkOrdrBatch implements Database.Batcha
         if(!Test.isRunningTest()){
             for(Sobject sObj: serviceAppointList){
                 ServiceAppointment__x extServiceAppointObj = (ServiceAppointment__x) sObj;
-                records.add(extServiceAppointObj);
+                if (extServiceAppointObj.WorkOrder_c__r.CaseId__r.CaseNumber_c__c == extServiceAppointObj.WorkOrder_c__r.CaseId__r.CaseNumber__c &&
+                    extServiceAppointObj.WorkOrder_c__r.CaseId__r.TWComplaintNumber_c__c == null && 
+                    extServiceAppointObj.WorkOrder_c__r.CaseId__r.Type__c == 'TechnicalComplaint') {
+                    records.add(extServiceAppointObj);
+                }
             }
         }
         

@@ -33,9 +33,12 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
     // querying the external Product Consumed recordss
     global Database.QueryLocator start(Database.BatchableContext bc) {
         if(!Test.isRunningTest()){
-            String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
-            return Database.getQueryLocator('SELECT Id,LastModifiedDate__c, WorkOrderId__r.CaseId__r.Type__c, WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c, WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c, ' +
-                       'PricebookEntryId__r.LocalProductName_c__c FROM ProductConsumed__x WHERE WorkOrderId__r.CaseId__r.LastModifiedDate__c >=' + formattedTime +
+          /** We are pulling in Products Consumed associated with recently modified Cases because there is a scenario where a previously
+            created Case gets reclassified as a Technical Complaint so we will need to grab the previously created Products Consumed. */
+           String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
+            return Database.getQueryLocator('SELECT Id,LastModifiedDate__c, WorkOrderId__r.CaseId__r.Type__c, WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c, '+ 
+                        ' WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c, WorkOrderId__r.CaseId__r.CaseNumber_c__c, WorkOrderId__r.CaseId__r.CaseNumber__c, ' +
+                        ' PricebookEntryId__r.LocalProductName_c__c FROM ProductConsumed__x WHERE WorkOrderId__r.CaseId__r.LastModifiedDate__c >=' + formattedTime +
                                             ' or LastModifiedDate__c >=' + formattedTime);
         }else{
             return Database.getQueryLocator('SELECT Id,WorkOrderId__r.CaseId__r.Type__c, WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c, WorkOrderId__r.ExternalId,ExternalId,WorkOrderId__r.WorkOrderNumber__c,QuantityConsumed__c,' +
@@ -49,7 +52,11 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
         if(!Test.isRunningTest()){
             for(Sobject sObj: prodConsumedList){
                 ProductConsumed__x extProdConsumedObj = (ProductConsumed__x) sObj;
-                records.add(extProdConsumedObj);
+                if (extProdConsumedObj.WorkOrderId__r.CaseId__r.CaseNumber_c__c == extProdConsumedObj.WorkOrderId__r.CaseId__r.CaseNumber__c &&
+                    extProdConsumedObj.WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c == null && 
+                    extProdConsumedObj.WorkOrderId__r.CaseId__r.Type__c == 'TechnicalComplaint') {
+                    records.add(extProdConsumedObj);
+                }
             }
         }
         
@@ -82,12 +89,12 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
         System.debug('-------productConsumedList------'+productConsumedList);
         
         if(!productConsumedList.isEmpty()) {
-		
-			// Upserting the external Product Consumed list of records 
+        
+            // Upserting the external Product Consumed list of records 
             upsertResultList = Database.Upsert(productConsumedList,Product_Consumed__c.ExternalId__c, false);
         }
         
-		// creating error log records if any record gets failed during the execution of the batch
+        // creating error log records if any record gets failed during the execution of the batch
         if(!upsertResultList.isEmpty()) {
             List<Error_Log__c> errLogList = new List<Error_Log__c>();
             for(Integer i=0; i <upsertResultList.size(); i++) {
@@ -109,7 +116,7 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
         // execute any post-processing operations
         system.debug('Product Conmsumed inserted/updated');
         if(!Test.isRunningTest()){
-		    // executing the CreateServiceAppointmentForWorkOrdrBatch batch class
+            // executing the CreateServiceAppointmentForWorkOrdrBatch batch class
             CreateServiceAppointmentForWorkOrdrBatch createServiceAppointment = new CreateServiceAppointmentForWorkOrdrBatch(true, lastExecuted);
             Database.executebatch(createServiceAppointment, 50);
         }

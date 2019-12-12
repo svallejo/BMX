@@ -56,6 +56,13 @@
                 <elementReference>Short_Description</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ActionItem.CMPL123Rule_Key_Value__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Predefined</stringValue>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Add_to_Implementation_Plan</targetReference>
         </connector>
@@ -110,8 +117,8 @@
             <label>Is Locked</label>
         </rules>
     </decisions>
-    <description>Removed Step Number from both ordering, storing, &amp; assignment.  Just ordering by predefined action item number.
-Added faults into the flow.</description>
+    <description>Readjusted faults to be more specific.
+Add in rule field update key value assignment for predefined action items workflow</description>
     <dynamicChoiceSets>
         <name>ListofPredefinedImplementationPlans</name>
         <dataType>String</dataType>
@@ -171,7 +178,7 @@ Added faults into the flow.</description>
             <targetReference>Action_Items_Created</targetReference>
         </connector>
         <faultConnector>
-            <targetReference>Error_Screen</targetReference>
+            <targetReference>Error_Screen_for_Creating_Action_Items</targetReference>
         </faultConnector>
         <inputReference>ImplementationPlan</inputReference>
     </recordCreates>
@@ -185,7 +192,7 @@ Added faults into the flow.</description>
             <targetReference>Implementation_Plan_Locked</targetReference>
         </connector>
         <faultConnector>
-            <targetReference>Error_Screen</targetReference>
+            <targetReference>Error_Screen_for_Retrieving_Change_Control</targetReference>
         </faultConnector>
         <filters>
             <field>Id</field>
@@ -203,14 +210,14 @@ Added faults into the flow.</description>
     <recordLookups>
         <name>Retrieve_List_of_Predefined_Action_Items</name>
         <label>Retrieve List of Predefined Action Items</label>
-        <locationX>630</locationX>
+        <locationX>633</locationX>
         <locationY>156</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Action_Items_Found</targetReference>
         </connector>
         <faultConnector>
-            <targetReference>Error_Screen</targetReference>
+            <targetReference>Error_Screen_for_Retrieving_Predefined_Action_Items</targetReference>
         </faultConnector>
         <filters>
             <field>Predefined_Implementation_Plan__c</field>
@@ -243,16 +250,48 @@ Added faults into the flow.</description>
         <showHeader>true</showHeader>
     </screens>
     <screens>
-        <name>Error_Screen</name>
-        <label>Error Screen</label>
-        <locationX>580</locationX>
-        <locationY>631</locationY>
+        <name>Error_Screen_for_Creating_Action_Items</name>
+        <label>Error Screen for Creating Action Items</label>
+        <locationX>1053</locationX>
+        <locationY>628</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <fields>
-            <name>ErrorMessage</name>
-            <fieldText>&lt;p&gt;You have encountered an error in this process.  Please reach out to your system admin and provide the below error message.&lt;/p&gt;&lt;p&gt;--&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(231, 7, 7);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <name>ErrorMessageforActionItemsNotCreated</name>
+            <fieldText>&lt;p&gt;System could not create the action items from the selected implementation plan.  Please reach out to your system admin and provide the below error message.&lt;/p&gt;&lt;p&gt;--&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(231, 7, 7);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Error_Screen_for_Retrieving_Change_Control</name>
+        <label>Error Screen for Retrieving Change Control</label>
+        <locationX>138</locationX>
+        <locationY>436</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>ErrorMessageRetrievingChangeControl</name>
+            <fieldText>&lt;p&gt;System is unable to retrieve the change control record.  Please reach out to your system admin and provide the below error message.&lt;/p&gt;&lt;p&gt;--&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(231, 7, 7);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Error_Screen_for_Retrieving_Predefined_Action_Items</name>
+        <label>Error Screen for Retrieving Predefined Action Items</label>
+        <locationX>630</locationX>
+        <locationY>449</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>ErrrorMessageRetrievingPredefinedActionItems</name>
+            <fieldText>&lt;p&gt;System is unable to find any predefined action items for the selected implementation plan.  Please reach out to your system admin and provide the below error message.&lt;/p&gt;&lt;p&gt;--&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(231, 7, 7);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -326,7 +365,7 @@ Added faults into the flow.</description>
         <showHeader>true</showHeader>
     </screens>
     <startElementReference>Get_Change_Control_Record</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>ActionItem</name>
         <dataType>SObject</dataType>

@@ -31,9 +31,12 @@ global virtual class CreateCaseCommentForComplaintBatch implements Database.Batc
     global virtual Database.QueryLocator start(Database.BatchableContext bc) {
         // collect the batches of records or objects to be passed to execute
         if(!Test.isRunningTest()){
+            /** We are pulling in Case Comments associated with recently modified Cases because there is a scenario where a previously
+            created Case gets reclassified as a Technical Complaint so we will need to grab the previously created Case Comments. */
             String formattedTime = lastExecuted.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ');
-            return Database.getQueryLocator('SELECT Id,LastModifiedDate__c, CommentBody__c,ParentId__r.ExternalId,ParentId__r.TWComplaintNumber_c__c,  ParentId__r.Type__c, CreatedById__r.Name__c,ExternalId,CreatedDate__c ' + 
-                                            'FROM CaseComment__x WHERE ParentId__r.LastModifiedDate__c >=' + formattedTime +
+            return Database.getQueryLocator('SELECT Id,LastModifiedDate__c, CommentBody__c,ParentId__r.ExternalId,ParentId__r.TWComplaintNumber_c__c,  ParentId__r.Type__c, ' + 
+                                            ' CreatedById__r.Name__c,ExternalId,CreatedDate__c, ParentId__r.CaseNumber_c__c, ParentId__r.CaseNumber__c ' + 
+                                            ' FROM CaseComment__x WHERE ParentId__r.LastModifiedDate__c >=' + formattedTime +
                                             ' or LastModifiedDate__c >=' + formattedTime);
         }else{
             return Database.getQueryLocator('SELECT Id,CommentBody__c,ParentId__r.ExternalId,ParentId__r.TWComplaintNumber_c__c, ParentId__r.Type__c, CreatedById__r.Name__c,ExternalId,CreatedDate__c '+
@@ -46,8 +49,13 @@ global virtual class CreateCaseCommentForComplaintBatch implements Database.Batc
         List<CaseComment__x> records = new List<CaseComment__x>();
         if(!Test.isRunningTest()){
             for(Sobject sObj: CaseCommList){
+                
                 CaseComment__x extCaseCommObj = (CaseComment__x) sObj;
-                records.add(extCaseCommObj);
+                if (extCaseCommObj.ParentId__r.CaseNumber_c__c == extCaseCommObj.ParentId__r.CaseNumber__c &&
+                    extCaseCommObj.ParentId__r.TWComplaintNumber_c__c == null && 
+                    extCaseCommObj.ParentId__r.Type__c == 'TechnicalComplaint') {
+                    records.add(extCaseCommObj);
+                }
             }
         }
         
@@ -79,12 +87,12 @@ global virtual class CreateCaseCommentForComplaintBatch implements Database.Batc
         System.debug('-------caseCommentList------'+caseCommentList);
         
         if(!caseCommentList.isEmpty()) {
-		
-			// Upserting the external Case Comment list of records
+        
+            // Upserting the external Case Comment list of records
             upsertResultList = Database.Upsert(caseCommentList,Case_Comment__c.ExternalId__c, false);
         }
         
-		// creating error log records if any record gets failed during the execution of the batch
+        // creating error log records if any record gets failed during the execution of the batch
         if(!upsertResultList.isEmpty()) {
             List<Error_Log__c> errLogList = new List<Error_Log__c>();
             for(Integer i=0; i <upsertResultList.size(); i++) {
@@ -104,7 +112,7 @@ global virtual class CreateCaseCommentForComplaintBatch implements Database.Batc
     
     global void finish(Database.BatchableContext bc){
         if(!Test.isRunningTest()){
-		    // Executing the CreateWorkOrderForComplaintBatch batch class
+            // Executing the CreateWorkOrderForComplaintBatch batch class
             CreateWorkOrderForComplaintBatch createWorkOrder = new CreateWorkOrderForComplaintBatch(true, lastExecuted);
             database.executebatch(createWorkOrder, 50);
         }
