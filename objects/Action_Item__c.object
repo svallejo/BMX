@@ -546,6 +546,7 @@ CMPL123_WF_Action__c =="Action Complete" &amp;&amp;
 Require_Approval__c == True &amp;&amp;
 
 ( Quality_Approver__c == null)</errorConditionFormula>
+        <errorDisplayField>Quality_Approver__c</errorDisplayField>
         <errorMessage>If Required Approval is Checked Assignee must populate a Quality Approver in order to move to the next status</errorMessage>
     </validationRules>
     <validationRules>
@@ -584,6 +585,7 @@ Change_Control__r.CMPL123_WF_Status__c   &lt;&gt;  'Open'
         <active>true</active>
         <description>Approver 1 field must be populated if optional approvals are required.</description>
         <errorConditionFormula>ISBLANK( Approver_1__c) &amp;&amp; NOT(AND(ISBLANK( Approver_2__c ),ISBLANK( Approver_3__c ),ISBLANK( Approver_4__c ),ISBLANK( Approver_5__c ), ISBLANK( Approver_6__c )))</errorConditionFormula>
+        <errorDisplayField>Approver_1__c</errorDisplayField>
         <errorMessage>Reassign an approver into the Approver 1 field.</errorMessage>
     </validationRules>
     <validationRules>
@@ -602,6 +604,7 @@ Change_Control__r.CMPL123_WF_Status__c   &lt;&gt;  'Open'
 ((Change_Control__r.CMPL123_WF_Status__c = "Open") || 
 (Change_Control__r.CMPL123_WF_Status__c = "Pending CRB Team Review") || 
 (Change_Control__r.CMPL123_WF_Status__c = "Pending Quality Review"))</errorConditionFormula>
+        <errorDisplayField>Summary_of_Action_Taken__c</errorDisplayField>
         <errorMessage>Summary of Action Taken is locked until CC is Approved</errorMessage>
     </validationRules>
     <validationRules>
@@ -613,6 +616,7 @@ Change_Control__r.CMPL123_WF_Status__c   &lt;&gt;  'Open'
 ((Change_Control__r.CMPL123_WF_Status__c = "Open") || 
 (Change_Control__r.CMPL123_WF_Status__c = "Pending CRB Team Review") || 
 (Change_Control__r.CMPL123_WF_Status__c = "Pending Quality Review"))</errorConditionFormula>
+        <errorDisplayField>URL_for_PECN_use__c</errorDisplayField>
         <errorMessage>URL (for PECN use) is locked until CC is Approved</errorMessage>
     </validationRules>
     <validationRules>

@@ -21,4 +21,14 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/TrackWise_Digital_Change_Control_Subject_Matter_Expert_SME_Assessment_Assi</template>
     </alerts>
+    <rules>
+        <fullName>Impact assessment has been assigned %28or reassigned%29</fullName>
+        <actions>
+            <name>Impact_assessment_has_been_assigned_or_reassigned</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>ISNEW() ||  ISCHANGED( Assignee__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
 </Workflow>

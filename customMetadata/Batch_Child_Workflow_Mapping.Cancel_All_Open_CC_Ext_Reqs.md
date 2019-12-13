@@ -23,10 +23,6 @@
         <value xsi:type="xsd:string">CMPL123QMS__Change_Control__c</value>
     </values>
     <values>
-        <field>Parent_Workflow_Action__c</field>
-        <value xsi:type="xsd:string">Cancel</value>
-    </values>
-    <values>
         <field>Parent_Workflow_Status__c</field>
         <value xsi:type="xsd:string">Closed - Canceled</value>
     </values>
