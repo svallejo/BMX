@@ -283,6 +283,26 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Change_Request_Closed_Unsuccessful</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_98_A2</name>
+        <label>Send Email that record is closed unsuccesful</label>
+        <locationX>8800</locationX>
+        <locationY>300</locationY>
+        <actionName>CMPL123QMS__Change_Control__c.Change_Request_Closed_Unsuccessful</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
     <decisions>
         <name>isChangedDecision103_myRule_102_CMPL123_WF_Action_c</name>
         <label>isChangedDecision103_myRule_102_CMPL123_WF_Action_c</label>
@@ -4604,7 +4624,7 @@
                 <stringValue>Today()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_100_myRule_98_A1_4974805156</name>
+        <name>formula_100_myRule_98_A1_0093324307</name>
         <dataType>Date</dataType>
         <expression>Today()</expression>
     </formulas>
@@ -4615,11 +4635,11 @@
                 <stringValue>Today()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_96_myRule_94_A1_1557889675</name>
+        <name>formula_96_myRule_94_A1_0873253846</name>
         <dataType>Date</dataType>
         <expression>Today()</expression>
     </formulas>
-    <interviewLabel>Change_Control_Custom_Processes-52_InterviewLabel</interviewLabel>
+    <interviewLabel>Change_Control_Custom_Processes-53_InterviewLabel</interviewLabel>
     <label>Change Control Custom Processes</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -7206,7 +7226,7 @@
             </processMetadataValues>
             <field>Closed_Date__c</field>
             <value>
-                <elementReference>formula_96_myRule_94_A1_1557889675</elementReference>
+                <elementReference>formula_96_myRule_94_A1_0873253846</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>
@@ -7240,6 +7260,9 @@
         <label>Make Close Date Today</label>
         <locationX>8800</locationX>
         <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_98_A2</targetReference>
+        </connector>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -7286,7 +7309,7 @@
             </processMetadataValues>
             <field>Closed_Date__c</field>
             <value>
-                <elementReference>formula_100_myRule_98_A1_4974805156</elementReference>
+                <elementReference>formula_100_myRule_98_A1_0093324307</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>

@@ -56,4 +56,15 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/Action_Item_Rejected</template>
     </alerts>
+    <alerts>
+        <fullName>Action_item_is_due_5_days_before_target_due_date</fullName>
+        <description>Action item is due 5 days before target due date</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Assignee__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/TrackWise_Digital_Change_Control_Action_Item_due_in_5_Days</template>
+    </alerts>
 </Workflow>

@@ -185,6 +185,17 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/Final_Approver_Email_Notification</template>
     </alerts>
+    <alerts>
+        <fullName>Change_Request_Closed_Unsuccessful</fullName>
+        <description>Change Request Closed Unsuccessful</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Change_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/TrackWise_Digital_Change_Control_Change_Request_Closed_Unsuccessful</template>
+    </alerts>
     <fieldUpdates>
         <fullName>Set_Change_Control_Review_Flag</fullName>
         <field>Change_Control_Review_Completed__c</field>
