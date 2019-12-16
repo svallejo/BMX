@@ -3,8 +3,8 @@
     <assignments>
         <name>Add_to_Implementation_Plan</name>
         <label>Add to Implementation Plan</label>
-        <locationX>1272</locationX>
-        <locationY>161</locationY>
+        <locationX>1421</locationX>
+        <locationY>149</locationY>
         <assignmentItems>
             <assignToReference>ImplementationPlan</assignToReference>
             <operator>Add</operator>
@@ -19,8 +19,8 @@
     <assignments>
         <name>Assign_Action_Item_Values</name>
         <label>Assign Action Item Values</label>
-        <locationX>1166</locationX>
-        <locationY>50</locationY>
+        <locationX>1315</locationX>
+        <locationY>39</locationY>
         <assignmentItems>
             <assignToReference>ActionItem.Action_Item__c</assignToReference>
             <operator>Assign</operator>
@@ -63,6 +63,13 @@
                 <stringValue>Predefined</stringValue>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ActionItem.RecordTypeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Retrieve_Locked_Record_Type_Id.Id</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Add_to_Implementation_Plan</targetReference>
         </connector>
@@ -87,7 +94,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Loop_Through_List_of_Predefined_Action_Items</targetReference>
+                <targetReference>Retrieve_Locked_Record_Type_Id</targetReference>
             </connector>
             <label>Yes, Action Items Found</label>
         </rules>
@@ -117,8 +124,7 @@
             <label>Is Locked</label>
         </rules>
     </decisions>
-    <description>Readjusted faults to be more specific.
-Add in rule field update key value assignment for predefined action items workflow</description>
+    <description>Use TWD Platform Event</description>
     <dynamicChoiceSets>
         <name>ListofPredefinedImplementationPlans</name>
         <dataType>String</dataType>
@@ -144,8 +150,8 @@ Add in rule field update key value assignment for predefined action items workfl
     <loops>
         <name>Loop_Through_List_of_Predefined_Action_Items</name>
         <label>Loop Through List of Predefined Action Items</label>
-        <locationX>1054</locationX>
-        <locationY>161</locationY>
+        <locationX>1203</locationX>
+        <locationY>149</locationY>
         <assignNextValueToReference>PredefinedActionItem</assignNextValueToReference>
         <collectionReference>ListofPredefinedActionItems</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -172,8 +178,8 @@ Add in rule field update key value assignment for predefined action items workfl
     <recordCreates>
         <name>Create_Action_Items</name>
         <label>Create Action Items</label>
-        <locationX>1052</locationX>
-        <locationY>447</locationY>
+        <locationX>1201</locationX>
+        <locationY>435</locationY>
         <connector>
             <targetReference>Action_Items_Created</targetReference>
         </connector>
@@ -233,11 +239,40 @@ Add in rule field update key value assignment for predefined action items workfl
         <sortField>Name</sortField>
         <sortOrder>Asc</sortOrder>
     </recordLookups>
+    <recordLookups>
+        <name>Retrieve_Locked_Record_Type_Id</name>
+        <label>Retrieve Locked Record Type Id</label>
+        <locationX>1059</locationX>
+        <locationY>149</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Through_List_of_Predefined_Action_Items</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Locked_Record_Type_Cannot_Be_Found</targetReference>
+        </faultConnector>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Locked</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Action_Item__c</stringValue>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <queriedFields>Id</queriedFields>
+    </recordLookups>
     <screens>
         <name>Action_Items_Created</name>
         <label>Action Items Created</label>
-        <locationX>1264</locationX>
-        <locationY>447</locationY>
+        <locationX>1413</locationX>
+        <locationY>435</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -252,8 +287,8 @@ Add in rule field update key value assignment for predefined action items workfl
     <screens>
         <name>Error_Screen_for_Creating_Action_Items</name>
         <label>Error Screen for Creating Action Items</label>
-        <locationX>1053</locationX>
-        <locationY>628</locationY>
+        <locationX>1202</locationX>
+        <locationY>616</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -314,6 +349,22 @@ Add in rule field update key value assignment for predefined action items workfl
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>Locked_Record_Type_Cannot_Be_Found</name>
+        <label>Locked Record Type Cannot Be Found</label>
+        <locationX>1060</locationX>
+        <locationY>400</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>RecordTypeErrorMessage</name>
+            <fieldText>&lt;p&gt;System is unable to find the locked record type to create the action items. Please reach out to your system admin and provide the below error message.&lt;/p&gt;&lt;p&gt;--&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(231, 7, 7);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <name>NoActionItemsFound</name>
         <label>NoActionItemsFound</label>
         <locationX>816</locationX>
@@ -365,7 +416,7 @@ Add in rule field update key value assignment for predefined action items workfl
         <showHeader>true</showHeader>
     </screens>
     <startElementReference>Get_Change_Control_Record</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>ActionItem</name>
         <dataType>SObject</dataType>
