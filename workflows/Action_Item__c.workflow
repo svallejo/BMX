@@ -67,4 +67,15 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/TrackWise_Digital_Change_Control_Action_Item_due_in_5_Days</template>
     </alerts>
+    <alerts>
+        <fullName>Action_Item_Assignee</fullName>
+        <description>Action Item Assignee</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Assignee__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/AI_Assigned_Email_Notification</template>
+    </alerts>
 </Workflow>
