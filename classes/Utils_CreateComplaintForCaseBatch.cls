@@ -18,9 +18,9 @@
 public class Utils_CreateComplaintForCaseBatch {
 
     public Static Boolean recordUpdateRequired = false;
-	 
-	
-	
+     
+    
+    
 /**
 * @Method       : populateComplaintDetailsFromExternalObjects
 * @Invoke       : 
@@ -39,6 +39,8 @@ public class Utils_CreateComplaintForCaseBatch {
                 obj.get(mdt.CRM_Field_API_Name__c) <> null) )  {
 
                     if(!isInsert && obj.get(mdt.CRM_Field_API_Name__c) <> cmplnt.get(mdt.TWD_Field_API_Name__c)) {
+                        System.debug('Complaint updated ' + obj.get('Id') + ': ' + mdt.CRM_Field_API_Name__c + ' ' + 
+                        mdt.TWD_Field_API_Name__c + ' ' + obj.get(mdt.CRM_Field_API_Name__c) + ' ' + cmplnt.get(mdt.TWD_Field_API_Name__c));
                         updateRequired = true;
                     }
                     if(isInsert || updateRequired) {
@@ -76,7 +78,7 @@ public class Utils_CreateComplaintForCaseBatch {
         }
         return errorLogList;   
     }
-	
+    
 /**
 * @Method       : returnSaveFailureLogs
 * @Invoke       : 
