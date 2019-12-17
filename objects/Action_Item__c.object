@@ -660,7 +660,7 @@ ISCHANGED(  Target_Due_Date__c)) &amp;&amp; (  Change_Control__r.CMPL123_WF_Stat
     </validationRules>
     <validationRules>
         <fullName>Only_CCOwner_Assignee_Coordinator_Open</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Only Change Coordinators, Assigned Change Owner of the parent CC, or Assignee can open an action item.</description>
         <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
 CMPL123_WF_Action__c ="Open" &amp;&amp;
