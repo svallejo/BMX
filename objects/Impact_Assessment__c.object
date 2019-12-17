@@ -498,6 +498,16 @@ ISNEW(),
 )</errorConditionFormula>
         <errorMessage>You cannot add an addtional Impact Assessment after the Quality Assurance Assessment was completed</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>No_Impact_Assessme_after_CC_is_reviewed</fullName>
+        <active>true</active>
+        <description>Impact Assessments can only be created when Change Control is in the Open status</description>
+        <errorConditionFormula>AND (
+ISNEW(),
+Change_Control__r.CMPL123_WF_Status__c &lt;&gt; 'Open'
+)</errorConditionFormula>
+        <errorMessage>Impact Assessments can only be created when Change Control is in the Open status</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>Change_Controlc</fullName>
         <availability>online</availability>
