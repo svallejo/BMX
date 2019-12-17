@@ -669,6 +669,17 @@ $User.Id !=  Assignee__c &amp;&amp;
 NOT(INCLUDES($User.TWD_Role__c, 'Change Coordinator'))</errorConditionFormula>
         <errorMessage>Only Change Coordinators, Assigned Change Owner, or Assignee of record can perform Open.</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>Only_CCOwner_Creator_Coordinator_Open</fullName>
+        <active>true</active>
+        <description>Only Change Coordinators, Assigned Change Owner of the parent CC, or Creator can open an action item.</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+CMPL123_WF_Action__c ="Open" &amp;&amp;
+$User.Id !=  Change_Control__r.Change_Owner__c &amp;&amp;
+$User.Id !=   CreatedById &amp;&amp;
+NOT(INCLUDES($User.TWD_Role__c, 'Change Coordinator'))</errorConditionFormula>
+        <errorMessage>Only Change Coordinators, Assigned Change Owner, or creator of record can perform Open.</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>Change_Controlc</fullName>
         <availability>online</availability>
