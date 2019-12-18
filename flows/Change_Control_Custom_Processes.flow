@@ -2,6 +2,68 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
         <processMetadataValues>
+            <name>ActionCallType</name>
+            <value>
+                <stringValue>flow</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>flowSelection</name>
+            <value>
+                <stringValue>Prerelease Action Items Notification</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_110_A1</name>
+        <label>Notify Assignees</label>
+        <locationX>8800</locationX>
+        <locationY>200</locationY>
+        <actionName>Prerelease_Action_Items_Notification</actionName>
+        <actionType>flow</actionType>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>ChangeControlID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>ChangeControlID</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
             <name>emailAlertSelection</name>
             <value>
                 <stringValue>Quality_Approver_Email</stringValue>
@@ -73,6 +135,9 @@
         <locationY>200</locationY>
         <actionName>CMPL123QMS__Change_Control__c.External_Customer_Impacted</actionName>
         <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>myDecision33</targetReference>
+        </connector>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -93,6 +158,9 @@
         <locationY>200</locationY>
         <actionName>CMPL123QMS__Change_Control__c.Internal_Customer_Impacted</actionName>
         <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>myDecision36</targetReference>
+        </connector>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -438,7 +506,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myPreWaitDecision_myWait_myRule_108</targetReference>
+            <targetReference>isChangedDecision111_myRule_110_CMPL123_WF_Status_c</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -459,9 +527,41 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myPreWaitDecision_myWait_myRule_108</targetReference>
+                <targetReference>isChangedDecision111_myRule_110_CMPL123_WF_Status_c</targetReference>
             </connector>
             <label>isChangedRule_106_myRule_105_CMPL123_WF_Action_c</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>isChangedDecision111_myRule_110_CMPL123_WF_Status_c</name>
+        <label>isChangedDecision111_myRule_110_CMPL123_WF_Status_c</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myPreWaitDecision_myWait_myRule_108</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>isChangedRule_111_myRule_110_CMPL123_WF_Status_c</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>myVariable_old.CMPL123_WF_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>myVariable_current.CMPL123_WF_Status__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myPreWaitDecision_myWait_myRule_108</targetReference>
+            </connector>
+            <label>isChangedRule_111_myRule_110_CMPL123_WF_Status_c</label>
         </rules>
     </decisions>
     <decisions>
@@ -1820,6 +1920,9 @@
         <label>myDecision107</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision109</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_108</name>
@@ -1890,6 +1993,89 @@
                 <targetReference>myRule_108_pmetdec</targetReference>
             </connector>
             <label>After Release Items in progress</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>36.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision109</name>
+        <label>myDecision109</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_110</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.CMPL123_WF_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Implementation in Progress</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>isChangedRule_111_myRule_110_CMPL123_WF_Status_c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_110_A1</targetReference>
+            </connector>
+            <label>Implementation in Progress</label>
         </rules>
     </decisions>
     <decisions>
@@ -5004,7 +5190,7 @@
                 <stringValue>Today()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_100_myRule_98_A1_0959684472</name>
+        <name>formula_100_myRule_98_A1_9426512700</name>
         <dataType>Date</dataType>
         <expression>Today()</expression>
     </formulas>
@@ -5015,11 +5201,11 @@
                 <stringValue>Today()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_96_myRule_94_A1_1901624679</name>
+        <name>formula_96_myRule_94_A1_2351531457</name>
         <dataType>Date</dataType>
         <expression>Today()</expression>
     </formulas>
-    <interviewLabel>Change_Control_Custom_Processes-54_InterviewLabel</interviewLabel>
+    <interviewLabel>Change_Control_Custom_Processes-55_InterviewLabel</interviewLabel>
     <label>Change Control Custom Processes</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -7606,7 +7792,7 @@
             </processMetadataValues>
             <field>Closed_Date__c</field>
             <value>
-                <elementReference>formula_96_myRule_94_A1_1901624679</elementReference>
+                <elementReference>formula_96_myRule_94_A1_2351531457</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>
@@ -7689,7 +7875,7 @@
             </processMetadataValues>
             <field>Closed_Date__c</field>
             <value>
-                <elementReference>formula_100_myRule_98_A1_0959684472</elementReference>
+                <elementReference>formula_100_myRule_98_A1_9426512700</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>
