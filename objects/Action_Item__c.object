@@ -651,12 +651,13 @@ NOT(Performed_By_Automation__c)</errorConditionFormula>
     </validationRules>
     <validationRules>
         <fullName>Lock_fields_After_Open</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Action Item, Change Control, Short Description, and Target Due Date are locked when change control is not in the open status</description>
         <errorConditionFormula>(ISCHANGED( Action_Item__c  ) ||
 ISCHANGED(  Change_Control__c  ) || ISCHANGED( Short_Description__c ) ||
+ISCHANGED ( Required__c ) ||
 ISCHANGED(  Target_Due_Date__c)) &amp;&amp; (  Change_Control__r.CMPL123_WF_Status__c &lt;&gt; 'Open')</errorConditionFormula>
-        <errorMessage>Action Item, Change Control, Short Description, and Target Due Date are locked</errorMessage>
+        <errorMessage>Action Item, Change Control, Short Description, Required, and Target Due Date are locked</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Only_CCOwner_Assignee_Coordinator_Open</fullName>
@@ -679,6 +680,13 @@ $User.Id !=  Change_Control__r.Change_Owner__c &amp;&amp;
 $User.Id !=   CreatedById &amp;&amp;
 NOT(INCLUDES($User.TWD_Role__c, 'Change Coordinator'))</errorConditionFormula>
         <errorMessage>Only Change Coordinators, Assigned Change Owner, or creator of record can perform Open.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Coordinator_canupdate_after_release_or_r</fullName>
+        <active>true</active>
+        <description>Only Change Coordinator can update After Release or Require Approval when CC is not in Open Status</description>
+        <errorConditionFormula>(ISCHANGED(   After_Release__c   ) || ISCHANGED (  Require_Approval__c  )) &amp;&amp;  !INCLUDES($User.TWD_Role__c, "Change Coordinator") &amp;&amp; Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open"</errorConditionFormula>
+        <errorMessage>Only Change Coordinator can update After Release or Require Approval when CC is not in Open Status</errorMessage>
     </validationRules>
     <webLinks>
         <fullName>Change_Controlc</fullName>

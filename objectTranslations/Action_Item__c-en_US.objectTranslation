@@ -273,7 +273,7 @@
         <name>Assignee_only_fields</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Action Item, Change Control, Short Description, and Target Due Date are locked --></errorMessage>
+        <errorMessage><!-- Action Item, Change Control, Short Description, Required, and Target Due Date are locked --></errorMessage>
         <name>Lock_fields_After_Open</name>
     </validationRules>
     <validationRules>
@@ -283,6 +283,10 @@
     <validationRules>
         <errorMessage><!-- Only Change Coordinators, Assigned Change Owner, or creator of record can perform Open. --></errorMessage>
         <name>Only_CCOwner_Creator_Coordinator_Open</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Change Coordinator can update After Release or Require Approval when CC is not in Open Status --></errorMessage>
+        <name>Coordinator_canupdate_after_release_or_r</name>
     </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>
