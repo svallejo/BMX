@@ -337,6 +337,16 @@
         <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp;  $User.Id !=  Change_Control__r.Change_Owner__c  ) &amp;&amp; ISNEW()</errorConditionFormula>
         <errorMessage>Only Change Owner of the change control or a Change Coordinator can create a new extension request for that record.</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>Cant_Open_a_Extension_Request_when_clos</fullName>
+        <active>true</active>
+        <description>You cannot create a extension request on a closed Change Control</description>
+        <errorConditionFormula>AND (
+ISNEW(),
+CONTAINS(Change_Control__r.CMPL123_WF_Status__c, "Closed")
+)</errorConditionFormula>
+        <errorMessage>You cannot create a extension request on a closed Change Control</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>Change_Controlc</fullName>
         <availability>online</availability>

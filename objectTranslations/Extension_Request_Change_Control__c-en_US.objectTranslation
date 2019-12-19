@@ -87,6 +87,10 @@
         <errorMessage><!-- Only Change Owner of the change control or a Change Coordinator can create a new extension request for that record. --></errorMessage>
         <name>limit_who_can_open_extension_request</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot create a extension request on a closed Change Control --></errorMessage>
+        <name>Cant_Open_a_Extension_Request_when_clos</name>
+    </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>
         <name>Change_Controlc</name>

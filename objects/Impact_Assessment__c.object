@@ -508,6 +508,26 @@ Change_Control__r.CMPL123_WF_Status__c &lt;&gt; 'Open'
 )</errorConditionFormula>
         <errorMessage>Impact Assessments can only be created when Change Control is in the Open status</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>Impact_Assessment_Restriction</fullName>
+        <active>true</active>
+        <description>Only the Assignee can modify the Impact Assessment field</description>
+        <errorConditionFormula>Assignee__c &lt;&gt; $User.Id &amp;&amp; 
+( ISCHANGED( impact_Assessment__c ) ||
+(ISNEW() &amp;&amp; !ISBlANK( impact_Assessment__c )))</errorConditionFormula>
+        <errorDisplayField>impact_Assessment__c</errorDisplayField>
+        <errorMessage>Only the Assignee can modify the Impact Assessment field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Implementation_Action_Restriction</fullName>
+        <active>true</active>
+        <description>Only the Assignee can modify the Implementation Action field</description>
+        <errorConditionFormula>Assignee__c &lt;&gt; $User.Id &amp;&amp; 
+( ISCHANGED(Implementation_Action__c) ||
+(ISNEW() &amp;&amp; !ISBlANK(Implementation_Action__c)))</errorConditionFormula>
+        <errorDisplayField>Implementation_Action__c</errorDisplayField>
+        <errorMessage>Only the Assignee can modify the Implementation Action field</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>Change_Controlc</fullName>
         <availability>online</availability>
