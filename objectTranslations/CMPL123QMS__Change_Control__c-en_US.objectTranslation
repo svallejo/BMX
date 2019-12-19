@@ -2055,7 +2055,7 @@
         <name>Implementati_Date_cannot_be_before_today</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- All action items must be in a closed status before user can perform &quot;Implementation Complete&quot; to progress record to Final Approval and Closure. --></errorMessage>
+        <errorMessage><!-- All action items must be in a closed status before user can perform &quot;Implementation Complete&quot; or &quot;After Release Items Complete&quot; --></errorMessage>
         <name>All_Action_Items_Must_be_Closed</name>
     </validationRules>
     <validationRules>
@@ -2081,6 +2081,10 @@
     <validationRules>
         <errorMessage><!-- You cannot submit the change for review with assignees missing for action items --></errorMessage>
         <name>assignees_missing_in_action_items</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Due Date Cannot be before Initiation Date --></errorMessage>
+        <name>Due_Date_Validation_Rule</name>
     </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>
