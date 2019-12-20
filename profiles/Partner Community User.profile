@@ -14631,4 +14631,16 @@
         <tab>Predefined_Implementation_Plan__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123CME__Complaints_Setup</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123CME__VMSR</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__EQMS_Setup</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
 </Profile>
