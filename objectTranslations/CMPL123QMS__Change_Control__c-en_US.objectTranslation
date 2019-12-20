@@ -406,10 +406,6 @@
         <label><!-- Change Level --></label>
         <name>Change_Level__c</name>
         <picklistValues>
-            <masterLabel>Administrative</masterLabel>
-            <translation><!-- Administrative --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Major</masterLabel>
             <translation><!-- Major --></translation>
         </picklistValues>
@@ -2085,6 +2081,18 @@
     <validationRules>
         <errorMessage><!-- Due Date Cannot be before Initiation Date --></errorMessage>
         <name>Due_Date_Validation_Rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- At least one Action Item must be created prior to performing &quot;Submit for Review&quot;. --></errorMessage>
+        <name>Action_Item_created_before_Revie</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot select &quot;Approve Change Successful&quot; if the picklist value for &quot;Was the Change Successful&quot; is No --></errorMessage>
+        <name>Change_Successful</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot select &quot;Approve Change Unsuccessful&quot; if the picklist value for &quot;Was the Change Successful&quot; is Yes --></errorMessage>
+        <name>Change_UnSuccessful</name>
     </validationRules>
     <webLinks>
         <label><!-- Change_Controlc --></label>
