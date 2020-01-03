@@ -19297,6 +19297,11 @@
         <field>CMPL123QMS__Change_Control__c.Total_Unassigned_Open_Action__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Impact_Assessment__c.Performed_By_Automation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>

@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Bypass_Validation_Rule__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>Child_Object_API_Name__c</field>

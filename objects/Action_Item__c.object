@@ -534,7 +534,8 @@ IF(ISBLANK(Approver_6__c ),0,1))</formula>
         <description>Parent Change Control must be in Open status to cancel the Action Item</description>
         <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp;
 CMPL123_WF_Action__c =="Cancel" &amp;&amp;
-(Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open" || Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Closed - Canceled")</errorConditionFormula>
+(Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open" || Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Closed - Canceled") &amp;&amp;
+NOT(Performed_By_Automation__c)</errorConditionFormula>
         <errorMessage>Parent Change Control must be in Open status to cancel the Action Item</errorMessage>
     </validationRules>
     <validationRules>
@@ -560,14 +561,15 @@ Require_Approval__c == True &amp;&amp;
         <fullName>LockAI_when_CC_is_Pending_Quality_Revie</fullName>
         <active>true</active>
         <description>All Child Records are locked when the Change Control is in the status of Pending Quality Review</description>
-        <errorConditionFormula>Change_Control__r.CMPL123_WF_Status__c = 'Pending Quality Review'</errorConditionFormula>
+        <errorConditionFormula>Change_Control__r.CMPL123_WF_Status__c = 'Pending Quality Review' &amp;&amp; NOT(Performed_By_Automation__c)</errorConditionFormula>
         <errorMessage>All Child Records are locked when the Change Control is in the status of Pending Quality Review</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Only_Change_Owner_or_Change_Coordinator</fullName>
         <active>true</active>
         <description>Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open</description>
-        <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp;  $User.Id !=  Change_Control__r.Change_Owner__c  ) &amp;&amp;  Change_Control__r.Only_Change_Owner_or_Change_Coordinator__c</errorConditionFormula>
+        <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp;  $User.Id !=  Change_Control__r.Change_Owner__c  ) &amp;&amp;  Change_Control__r.Only_Change_Owner_or_Change_Coordinator__c &amp;&amp; 
+NOT(Performed_By_Automation__c)</errorConditionFormula>
         <errorMessage>Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open</errorMessage>
     </validationRules>
     <validationRules>
@@ -592,7 +594,8 @@ Change_Control__r.CMPL123_WF_Status__c   &lt;&gt;  'Open'
         <fullName>Af_Releaseonlyeditable_in_Open_or_arip</fullName>
         <active>true</active>
         <description>After Release Items can only be edited in either Open status or After Items in Progress.</description>
-        <errorConditionFormula>After_Release__c = True &amp;&amp;  ((Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open") &amp;&amp; (Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "After Release Items in Progress"))</errorConditionFormula>
+        <errorConditionFormula>After_Release__c = True &amp;&amp;  ((Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open") &amp;&amp; (Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "After Release Items in Progress")) &amp;&amp;
+NOT(Performed_By_Automation__c)</errorConditionFormula>
         <errorMessage>After Release Items can only be edited in either Open status or After Items in Progress.</errorMessage>
     </validationRules>
     <validationRules>
@@ -685,7 +688,7 @@ NOT(INCLUDES($User.TWD_Role__c, 'Change Coordinator'))</errorConditionFormula>
         <fullName>Coordinator_canupdate_after_release_or_r</fullName>
         <active>true</active>
         <description>Only Change Coordinator can update After Release or Require Approval when CC is not in Open Status</description>
-        <errorConditionFormula>(ISCHANGED(   After_Release__c   ) || ISCHANGED (  Require_Approval__c  )) &amp;&amp;  !INCLUDES($User.TWD_Role__c, "Change Coordinator") &amp;&amp; Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open"</errorConditionFormula>
+        <errorConditionFormula>(ISCHANGED(   After_Release__c   ) || ISCHANGED (  Require_Approval__c  )) &amp;&amp;  !INCLUDES($User.TWD_Role__c, "Change Coordinator") &amp;&amp; Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open" &amp;&amp; NOT(Performed_By_Automation__c)</errorConditionFormula>
         <errorMessage>Only Change Coordinator can update After Release or Require Approval when CC is not in Open Status</errorMessage>
     </validationRules>
     <webLinks>

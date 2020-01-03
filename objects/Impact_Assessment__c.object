@@ -395,6 +395,14 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Performed_By_Automation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Performed By Automation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -468,7 +476,7 @@ CMPL123_WF_Action__c =="Assessment Completed" &amp;&amp;
         <fullName>Lock_when_CC_is_in_Pending_Quality_Revie</fullName>
         <active>true</active>
         <description>All Child Records are locked when the Change Control is in the status of Pending Quality Review</description>
-        <errorConditionFormula>Change_Control__r.CMPL123_WF_Status__c == "Pending Quality Review"</errorConditionFormula>
+        <errorConditionFormula>Change_Control__r.CMPL123_WF_Status__c == "Pending Quality Review" &amp;&amp; NOT(Performed_By_Automation__c)</errorConditionFormula>
         <errorMessage>All Child Records are locked when the Change Control is in the status of Pending Quality Review</errorMessage>
     </validationRules>
     <validationRules>
