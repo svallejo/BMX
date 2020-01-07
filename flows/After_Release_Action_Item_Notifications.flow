@@ -4,7 +4,7 @@
         <name>SendEmailtoAssignees</name>
         <label>SendEmailtoAssignees</label>
         <locationX>527</locationX>
-        <locationY>438</locationY>
+        <locationY>417</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <inputParameters>
@@ -27,10 +27,62 @@
         </inputParameters>
     </actionCalls>
     <actionCalls>
+        <name>SendGetActionItemErrortoAdmin</name>
+        <label>SendGetActionItemErrortoAdmin</label>
+        <locationX>344</locationX>
+        <locationY>420</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>After Release Action Item Notifications Flow Failed</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>AdminErrorHandling2.Addresses__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>GetAfterReleaseItemsErrorMessage</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>SendGetAssigneeErrortoAdmin</name>
+        <label>SendGetAssigneeErrortoAdmin</label>
+        <locationX>1056</locationX>
+        <locationY>63</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>After Release Action Item Notifications Flow Failed</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>AdminErrorHandling3.Addresses__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>GetAssigneeErrorMessage</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
         <name>SendGetChangeControlErrortoAdmin</name>
         <label>SendGetChangeControlErrortoAdmin</label>
-        <locationX>179</locationX>
-        <locationY>426</locationY>
+        <locationX>182</locationX>
+        <locationY>415</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <inputParameters>
@@ -72,8 +124,8 @@
         <description>Ensure there are emails in list</description>
         <name>Emails_Found</name>
         <label>Emails Found?</label>
-        <locationX>515</locationX>
-        <locationY>265</locationY>
+        <locationX>518</locationX>
+        <locationY>260</locationY>
         <defaultConnectorLabel>No Emails Found</defaultConnectorLabel>
         <rules>
             <name>Yes_Emails_Found</name>
@@ -125,8 +177,8 @@
     <recordLookups>
         <name>AdminErrorHandling</name>
         <label>AdminErrorHandling</label>
-        <locationX>181</locationX>
-        <locationY>254</locationY>
+        <locationX>182</locationX>
+        <locationY>262</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>SendGetChangeControlErrortoAdmin</targetReference>
@@ -134,14 +186,39 @@
         <object>AdminErrorHandling__c</object>
     </recordLookups>
     <recordLookups>
+        <name>AdminErrorHandling2</name>
+        <label>AdminErrorHandling</label>
+        <locationX>344</locationX>
+        <locationY>261</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SendGetActionItemErrortoAdmin</targetReference>
+        </connector>
+        <object>AdminErrorHandling__c</object>
+    </recordLookups>
+    <recordLookups>
+        <name>AdminErrorHandling3</name>
+        <label>AdminErrorHandling</label>
+        <locationX>924</locationX>
+        <locationY>62</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SendGetAssigneeErrortoAdmin</targetReference>
+        </connector>
+        <object>AdminErrorHandling__c</object>
+    </recordLookups>
+    <recordLookups>
         <name>Get_After_Release_Action_Item_Records</name>
         <label>Get After Release Action Item Records</label>
-        <locationX>353</locationX>
+        <locationX>346</locationX>
         <locationY>62</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>List_of_Assignees</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>AdminErrorHandling2</targetReference>
+        </faultConnector>
         <filters>
             <field>After_Release__c</field>
             <operator>EqualTo</operator>
@@ -194,11 +271,14 @@
         <name>RetrieveAssignee</name>
         <label>RetrieveAssignee</label>
         <locationX>764</locationX>
-        <locationY>59</locationY>
+        <locationY>64</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>AddEmailtoList</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>AdminErrorHandling3</targetReference>
+        </faultConnector>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -220,8 +300,19 @@ Access change request by logging into Trackwise Digital and going to your dashbo
 Do not reply to this e-Mail. Your e-Mail will not be read. This is an automatic message sent by the system.</text>
     </textTemplates>
     <textTemplates>
+        <name>GetAfterReleaseItemsErrorMessage</name>
+        <text>System was unable to retrieve after release action items for change control id {!ChangeControlID}
+Error Message:  {!$Flow.FaultMessage}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>GetAssigneeErrorMessage</name>
+        <text>System was unable to retrieve the Assignee record for Action Item {!ActionItemLV.Name}.
+Error Message:  {!$Flow.FaultMessage}</text>
+    </textTemplates>
+    <textTemplates>
         <name>GetChangeControlErrorMessage</name>
-        <text>System was unable to find the change control record with id of {!ChangeControlID}.</text>
+        <text>System was unable to find the change control record with id of {!ChangeControlID}.
+Error Message: {!$Flow.FaultMessage}</text>
     </textTemplates>
     <variables>
         <name>ActionItemLV</name>
