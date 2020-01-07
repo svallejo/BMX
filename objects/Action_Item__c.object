@@ -691,6 +691,13 @@ NOT(INCLUDES($User.TWD_Role__c, 'Change Coordinator'))</errorConditionFormula>
         <errorConditionFormula>(ISCHANGED(   After_Release__c   ) || ISCHANGED (  Require_Approval__c  )) &amp;&amp;  !INCLUDES($User.TWD_Role__c, "Change Coordinator") &amp;&amp; Change_Control__r.CMPL123_WF_Status__c &lt;&gt; "Open" &amp;&amp; NOT(Performed_By_Automation__c)</errorConditionFormula>
         <errorMessage>Only Change Coordinator can update After Release or Require Approval when CC is not in Open Status</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>After_Release_Item_Cannot_Be_Started</fullName>
+        <active>true</active>
+        <description>After Release Item Cannot Be Started Until After Implementation Date on Change Control</description>
+        <errorConditionFormula>After_Release__c &amp;&amp; Change_Control__r.CMPL123_WF_Status__c = "After Release Items in Progress" &amp;&amp;  Change_Control__r.Implementation_Date__c &gt; TODAY()</errorConditionFormula>
+        <errorMessage>After Release Items are locked until after implementation date on change control.</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>Change_Controlc</fullName>
         <availability>online</availability>

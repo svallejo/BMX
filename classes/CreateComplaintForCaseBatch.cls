@@ -130,7 +130,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                             AccountId__r.Reporting_Hierarchy_c__c,AccountId__r.Global_Reporting_Hierarchy_Level_1_c__c,AccountId__r.RecordTypeId__c FROM Case__x 
                             WHERE TWComplaintNumber_c__c = null AND Id IN: caseQueryList]) {
             
-            // Filter out any cases that are created outside CRM - Case Number (CaseNumber_c__c) SAP Case Number (CaseNumber_c__c)
+            // Filter out any cases that are created outside CRM - Case Number (CaseNumber__c) SAP Case Number (CaseNumber_c__c)
             if ( csx.CaseNumber_c__c == csx.CaseNumber__c) { // As of Winter 20' Direct field comparisons aren't allowed within SOQL
                 caseExList.add(csx);
             }
