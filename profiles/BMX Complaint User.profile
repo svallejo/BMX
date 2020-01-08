@@ -3816,22 +3816,22 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>BMX_Generic_Report__c.CMPL123_WF_Action_Performed_By__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>BMX_Generic_Report__c.CMPL123_WF_Action_Performed_On__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>BMX_Generic_Report__c.CMPL123_WF_Action__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>BMX_Generic_Report__c.CMPL123_WF_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -11351,22 +11351,22 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__Questionnaire__c.CMPL123_WF_Action_Performed_By__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__Questionnaire__c.CMPL123_WF_Action_Performed_On__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__Questionnaire__c.CMPL123_WF_Action__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__Questionnaire__c.CMPL123_WF_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
