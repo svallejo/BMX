@@ -39,8 +39,10 @@
                 <stringValue>Action_Item__c</stringValue>
             </value>
         </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>RecordType</object>
         <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
         <name>Update_Action_Item_Record</name>
@@ -62,7 +64,13 @@
         </inputAssignments>
         <object>Action_Item__c</object>
     </recordUpdates>
-    <startElementReference>Get_Action_Item_Record_Type_ID</startElementReference>
+    <start>
+        <locationX>51</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Get_Action_Item_Record_Type_ID</targetReference>
+        </connector>
+    </start>
     <status>Active</status>
     <variables>
         <description>Action Item Record Requiring Record Type Update</description>

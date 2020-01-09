@@ -183,7 +183,9 @@
         <connector>
             <targetReference>SendGetChangeControlErrortoAdmin</targetReference>
         </connector>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>AdminErrorHandling__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>AdminErrorHandling2</name>
@@ -194,7 +196,9 @@
         <connector>
             <targetReference>SendGetActionItemErrortoAdmin</targetReference>
         </connector>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>AdminErrorHandling__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>AdminErrorHandling3</name>
@@ -205,7 +209,9 @@
         <connector>
             <targetReference>SendGetAssigneeErrortoAdmin</targetReference>
         </connector>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>AdminErrorHandling__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>Get_After_Release_Action_Item_Records</name>
@@ -240,9 +246,11 @@
                 <elementReference>ChangeControlID</elementReference>
             </value>
         </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Action_Item__c</object>
         <queriedFields>Id</queriedFields>
         <queriedFields>Assignee__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>Get_Change_Control_Record</name>
@@ -263,9 +271,11 @@
                 <elementReference>ChangeControlID</elementReference>
             </value>
         </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>CMPL123QMS__Change_Control__c</object>
         <queriedFields>Id</queriedFields>
         <queriedFields>Name</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>RetrieveAssignee</name>
@@ -286,11 +296,19 @@
                 <elementReference>ActionItemLV.Assignee__c</elementReference>
             </value>
         </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>User</object>
         <queriedFields>Id</queriedFields>
         <queriedFields>Email</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <startElementReference>Get_Change_Control_Record</startElementReference>
+    <start>
+        <locationX>33</locationX>
+        <locationY>62</locationY>
+        <connector>
+            <targetReference>Get_Change_Control_Record</targetReference>
+        </connector>
+    </start>
     <status>Draft</status>
     <textTemplates>
         <name>EmailBody</name>

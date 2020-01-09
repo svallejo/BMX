@@ -265,8 +265,10 @@
                 <stringValue>Action_Item__c</stringValue>
             </value>
         </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>RecordType</object>
         <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <screens>
         <name>Action_Items_Created</name>
@@ -415,7 +417,13 @@
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
-    <startElementReference>Get_Change_Control_Record</startElementReference>
+    <start>
+        <locationX>36</locationX>
+        <locationY>156</locationY>
+        <connector>
+            <targetReference>Get_Change_Control_Record</targetReference>
+        </connector>
+    </start>
     <status>Active</status>
     <variables>
         <name>ActionItem</name>

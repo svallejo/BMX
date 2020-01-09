@@ -19542,6 +19542,11 @@
         <field>CMPL123CME__EU_MIR__c.BMX_Local_Assessment__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123QMS__Change_Control__c.Total_Impact_Assessments_Closed_Done__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>

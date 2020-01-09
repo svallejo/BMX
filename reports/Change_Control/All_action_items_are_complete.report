@@ -36,12 +36,18 @@
     <columns>
         <field>CMPL123QMS__Change_Control__c.Total_Action_Items__c</field>
     </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Origination__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Origination_Location__c</field>
+    </columns>
     <currency>EUR</currency>
     <description>List of change control records with all action items complete (ie. in a closed status)</description>
     <filter>
         <criteriaItems>
             <column>CMPL123QMS__Change_Control__c.Action_Items_Complete__c</column>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>100</value>
         </criteriaItems>

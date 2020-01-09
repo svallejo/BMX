@@ -27,12 +27,18 @@
     <columns>
         <field>CMPL123QMS__Change_Control__c.CMPL123_WF_Status__c</field>
     </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Origination__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Origination_Location__c</field>
+    </columns>
     <currency>EUR</currency>
     <description>List of change control records with Workflow Action = Approve Release (QA)</description>
     <filter>
         <criteriaItems>
             <column>CMPL123QMS__Change_Control__c.CMPL123_WF_Action__c</column>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Approve Release (QA)</value>
         </criteriaItems>

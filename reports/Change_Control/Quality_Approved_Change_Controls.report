@@ -24,20 +24,38 @@
     <columns>
         <field>CMPL123QMS__Change_Control__c.CMPL123_WF_Status__c</field>
     </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Origination__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__Change_Control__c.Origination_Location__c</field>
+    </columns>
     <currency>EUR</currency>
     <description>List of change control records with Workflow Action = Quality Approve</description>
     <filter>
         <criteriaItems>
             <column>CMPL123QMS__Change_Control__c.CMPL123_WF_Action__c</column>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Approve</value>
         </criteriaItems>
         <criteriaItems>
             <column>CMPL123QMS__Change_Control__c.CMPL123_WF_Status__c</column>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Implementation in Progress</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CMPL123QMS__Change_Control__c.Origination__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Corporate,Manufacturing Site,Subsidiary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CMPL123QMS__Change_Control__c.Origination_Location__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Algeria,Argentina,Australia &amp; New Zealand,Austria,Benelux,Brazil,BSB (Shanghai),Canada,Chile,China,Colombia,Combourg,Craponne_Manufacturing,Czech Republic,Denmark,Durham – Rodolphe St.,Finland,Firenze,France,Germany,Greece,Grenoble,Hong Kong,Hungary,Hyderabad,IDC Saint Vulbas,India,Italy,Japan,Kerlann,LaBalme,Lombard,Marcy,Mexico,NA ComOps,Nordics,Philadelphia,Poland,Portugal,Rio de Janeiro,Russia,Salt Lake City,San Diego,Serbia,Singapore,South Africa,South Korea,Spain,St. Louis,Switzerland,Sydney,Sydney BTF,Thailand,Third Party Products,Tres Cantos,Turkey,United Kingdom,Verniolle</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

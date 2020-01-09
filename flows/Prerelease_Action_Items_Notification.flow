@@ -112,9 +112,11 @@
                 <elementReference>ChangeControlID</elementReference>
             </value>
         </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>CMPL123QMS__Change_Control__c</object>
         <queriedFields>Id</queriedFields>
         <queriedFields>Name</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <description>Retrieves all action items that are open (required) and are not marked for after release.</description>
@@ -147,9 +149,11 @@
                 <elementReference>ChangeControlID</elementReference>
             </value>
         </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Action_Item__c</object>
         <queriedFields>Id</queriedFields>
         <queriedFields>Assignee__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>RetrieveAssignee</name>
@@ -167,11 +171,19 @@
                 <elementReference>ActionItemLV.Assignee__c</elementReference>
             </value>
         </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>User</object>
         <queriedFields>Id</queriedFields>
         <queriedFields>Email</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <startElementReference>Get_Change_Control_Record</startElementReference>
+    <start>
+        <locationX>53</locationX>
+        <locationY>73</locationY>
+        <connector>
+            <targetReference>Get_Change_Control_Record</targetReference>
+        </connector>
+    </start>
     <status>Active</status>
     <textTemplates>
         <name>EmailBody</name>
