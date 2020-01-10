@@ -11,6 +11,10 @@
         <value xsi:type="xsd:string">Action_Item__c</value>
     </values>
     <values>
+        <field>Child_Workflow_Keyvalue__c</field>
+        <value xsi:type="xsd:string">Predefined</value>
+    </values>
+    <values>
         <field>Child_Workflow_Status__c</field>
         <value xsi:type="xsd:string">Open</value>
     </values>

@@ -11,8 +11,12 @@
         <value xsi:type="xsd:string">Extension_Request_Change_Control__c</value>
     </values>
     <values>
+        <field>Child_Workflow_Keyvalue__c</field>
+        <value xsi:type="xsd:string">ER_CC</value>
+    </values>
+    <values>
         <field>Child_Workflow_Status__c</field>
-        <value xsi:type="xsd:string">Pending Approval</value>
+        <value xsi:type="xsd:string">Open</value>
     </values>
     <values>
         <field>Parent_Field_API_Name__c</field>

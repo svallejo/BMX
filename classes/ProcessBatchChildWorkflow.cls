@@ -30,7 +30,7 @@ public without Sharing class ProcessBatchChildWorkflow {
 
         String parentWorkflowStatus = currentObject.get(WF_STATUS_API_NAME).toString();
         List<Batch_Child_Workflow_Mapping__mdt> workflowMappingList = [SELECT X123_Task_Key_Value__c, Parent_Field_API_Name__c, Child_Workflow_Status__c,
-                                Parent_Object_API_Name__c, Parent_Workflow_Status__c, Child_Object_API_Name__c, Bypass_Validation_Rule__c 
+                                Parent_Object_API_Name__c, Parent_Workflow_Status__c, Child_Object_API_Name__c, Bypass_Validation_Rule__c, Child_Workflow_Keyvalue__c 
                                 FROM Batch_Child_Workflow_Mapping__mdt
                                 WHERE Parent_Object_API_Name__c =: parentApiName AND Parent_Workflow_Status__c =: parentWorkflowStatus];
         if ( !workflowMappingList.isEmpty()) {

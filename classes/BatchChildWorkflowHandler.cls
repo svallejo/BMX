@@ -25,9 +25,9 @@ global class BatchChildWorkflowHandler implements Database.Batchable<sObject> {
 
     @TestVisible
     private String createQuery(Batch_Child_Workflow_Mapping__mdt workflowMapping){
-        return 'SELECT ID, CMPL123Task_Key_Value__c, CMPL123_WF_Status__c,' + workflowMapping.Parent_Field_API_Name__c + 
+        return 'SELECT ID, CMPL123Task_Key_Value__c, CMPL123_WF_Status__c, CMPL123Rule_Key_Value__c, ' + workflowMapping.Parent_Field_API_Name__c + 
         ' FROM ' + workflowMapping.Child_Object_API_Name__c + 
-        ' WHERE CMPL123_WF_Status__c =\'' +  workflowMapping.Child_Workflow_Status__c + '\' AND ' +
+        ' WHERE CMPL123_WF_Status__c =\'' +  workflowMapping.Child_Workflow_Status__c + '\' AND ' + 
         workflowMapping.Parent_Field_API_Name__c + ' = \'' + parentRecordId + '\'';
     }
 
@@ -43,7 +43,20 @@ global class BatchChildWorkflowHandler implements Database.Batchable<sObject> {
     global void execute(Database.BatchableContext BC, List<SObject> childObjectList) {
         for ( SObject childObject : childObjectList ) {
             String childWorkflowStatus = childObject.get('CMPL123_WF_Status__c').toString();
-            if(childWorkflowStatus.equals(currentWorkflowMapping.Child_Workflow_Status__c)) {
+            String childWfKeyValue ='';
+            String childKeyValueMapping = '';
+
+            if (childObject.get('CMPL123Rule_Key_Value__c') != null) {
+               childWfKeyValue = childObject.get('CMPL123Rule_Key_Value__c').toString();
+            }
+            if ( currentWorkflowMapping.Child_Workflow_Keyvalue__c != null ){
+                childKeyValueMapping = currentWorkflowMapping.Child_Workflow_Keyvalue__c;
+            }
+
+            system.debug(' child key map; ' + childKeyValueMapping);
+            system.debug(' child wf key; ' + childWfKeyValue);
+
+            if(childWorkflowStatus.equals(currentWorkflowMapping.Child_Workflow_Status__c) && childKeyValueMapping.equals(childWfKeyValue)) {
                 if ( currentWorkflowMapping.Bypass_Validation_Rule__c) {
                     childObject.put('Performed_By_Automation__c', currentWorkflowMapping.Bypass_Validation_Rule__c);
                 }
