@@ -20665,7 +20665,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Impact_Assessment__c.Performed_By_Automation__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -20677,6 +20677,21 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123QMS__Change_Control__c.Total_Impact_Assessments_Closed_Done__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Action_Item__c.Performed_By_Automation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Extension_Request_Change_Control__c.CMPL123Task_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Impact_Assessment__c.CMPL123Task_Key_Value__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
