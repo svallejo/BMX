@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>approbateur</label>
+        <name>Approver__c</name>
+        <relationshipLabel><!-- Extension Requests Change Control (Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rule Field Update Key Value --></label>
+        <name>CMPL123Rule_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Task Field Update Key Value --></label>
+        <name>CMPL123Task_Key_Value__c</name>
+    </fields>
+    <fields>
+        <label>Action r�alis�e par</label>
+        <name>CMPL123_WF_Action_Performed_By__c</name>
+        <relationshipLabel>Action r�alis�e par</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Action r�alis�e le</label>
+        <name>CMPL123_WF_Action_Performed_On__c</name>
+    </fields>
+    <fields>
+        <label>Action</label>
+        <name>CMPL123_WF_Action__c</name>
+    </fields>
+    <fields>
+        <label>Statut</label>
+        <name>CMPL123_WF_Status__c</name>
+    </fields>
+    <fields>
+        <label>Change control</label>
+        <name>Change_Control__c</name>
+        <relationshipLabel>change control</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Current Due Date --></label>
+        <name>Current_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label>Demandeur de l'extension</label>
+        <name>Extension_Requester__c</name>
+        <relationshipLabel>Demandeur de l'extension</relationshipLabel>
+    </fields>
+    <fields>
+        <label>date d'�ch�ance propos�e</label>
+        <name>Proposed_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label>Justification de la demande d'extension</label>
+        <name>Reason_for_Extension__c</name>
+    </fields>
+    <fields>
+        <label>Titre</label>
+        <name>Title__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Extension Request Change Control --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Extension Request Change Control --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- ER-CC No --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Extension Request Change Control Layout</layout>
+        <sections>
+            <label><!-- Worfklow Panel --></label>
+            <section>Worfklow Panel</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- You cannot create a extension request on a closed Change Control --></errorMessage>
+        <name>Cant_Open_a_Extension_Request_when_clos</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Change Coordinator can update the extension requester field to assign to a different user. --></errorMessage>
+        <name>Extension_Requester_restrictions</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Seulement responsable de la modification ou Coordinateur</errorMessage>
+        <name>Only_Change_Owner_or_Change_Coordinator</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>date d'�ch�ance propos�e ne peut pas etre ant�rieure</errorMessage>
+        <name>Proposed_Due_Date_cannot_be_in_the_past</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Change Owner of the change control or a Change Coordinator can create a new extension request for that record. --></errorMessage>
+        <name>limit_who_can_open_extension_request</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Change_Controlc --></label>
+        <name>Change_Controlc</name>
+    </webLinks>
+    <workflowTasks>
+        <name>Extension_Request_for_CC</name>
+        <subject><!-- Extension Request for CC --></subject>
+    </workflowTasks>
+</CustomObjectTranslation>
