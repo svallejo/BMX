@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>CRM_Field_API_Name__c</field>
-        <value xsi:type="xsd:string">Justification_decision_make_c__c</value>
+        <value xsi:type="xsd:string">Justificationdecision_make_c__c</value>
     </values>
     <values>
         <field>Object_API_Name__c</field>

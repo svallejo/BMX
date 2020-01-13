@@ -115,7 +115,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
         Map<Id, CMPL123CME__Complaint__c> cmpResultMap = new Map<Id, CMPL123CME__Complaint__c>();
         Map<Id, Case__x> caseExUpdMap = new Map<Id, Case__x>();
         
-        for(Case__x csx : [SELECT Id, CaseNumber_c__c, Entitlement_Name__c, Justification_decision_make_c__c,TWComplaintNumber_c__c, ExternalId, BatchExpDate_c__c,SerialNumberAsset_c__c,Reason__c,ATC_c__c,
+        for(Case__x csx : [SELECT Id, CaseNumber_c__c, Entitlement_Name__c, Justificationdecision_make_c__c,TWComplaintNumber_c__c, ExternalId, BatchExpDate_c__c,SerialNumberAsset_c__c,Reason__c,ATC_c__c,
                             BatchNumber_c__c,UDI_Code_c__c,CaseNumber__c,FirstL2EscalationDate_c__c,DueDate_c__c,CVM_c__c,ClosedDate__c,CustomerContactDate_c__c,Product_c__c,
                             Initial_Software_Version_c__c,CurrentLevel_c__c,ContactEmail__c,isCreatedOnSite_c__c,ContactPhone__c,CatalogProfile_c__c,CaseHasWO_c__c,BatchNumberUnknown_c__c,
                             CreatedDate__c,BatchNumberStatus_c__c,WasEscalated_c__c,Type__c,SubOrigin_c__c,SIGcode_c__c,Subject__c,ShiptoLocationSapNumber_c__c,Status__c,
@@ -160,7 +160,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
             userExIdSet.add(cs.L1Owner_c__c);
             userExIdSet.add(cs.L2Owner_c__c);
             userExIdSet.add(cs.LastModifiedById__c);
-            userExIdSet.add(cs.Justification_decision_make_c__c);
+            userExIdSet.add(cs.Justificationdecision_make_c__c);
             entitlementExIdSet.add(cs.EntitlementId__c);
             accountExIdSet.add(cs.AccountId__c);
             accountExIdSet.add(cs.AccountId__r.Global_Reporting_Hierarchy_Level_3_c__c);

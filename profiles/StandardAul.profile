@@ -19245,6 +19245,11 @@
         <field>CMPL123QMS__Change_Control__c.Total_Impact_Assessments_Closed_Done__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case__x.Justificationdecision_make_c__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
