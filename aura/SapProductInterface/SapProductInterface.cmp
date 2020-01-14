@@ -1,0 +1,80 @@
+<aura:component controller="SapInterfaceHandler" implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" >
+	<aura:html tag="style">
+    .slds-modal__container {
+     min-width: 95vw;
+    }
+    .modal-body{ 
+        height : 60vh !important; 
+        max-height: 60vh !important; 
+      } 
+</aura:html>      
+    <!-- attributes -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <!-- <aura:attribute name="selectedRowsCount" type="Integer" default="0"/> -->
+    <aura:attribute name="maxRowSelection" type="Integer" default="1"/>
+    <aura:attribute name="showError" type="Boolean" default="false"/>
+    <aura:attribute name="productItemNumber" type="String" default=""/>
+    <aura:attribute name="selectedProduct" type="SapProductInformation"/>
+
+    
+	<aura:attribute name="HideSpinner" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
+<aura:renderIf isTrue="{!v.HideSpinner}">
+    <div class="slds-spinner_container" >
+        <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">
+            <span class="slds-assistive-text">Loading, Please Wait...</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+</aura:renderIf>
+
+    <!-- handlers-->
+    
+       <aura:if isTrue="{!v.showError}">
+        <!-- Show the message to ui -->
+        <div class="slds-notify slds-notify_toast slds-theme_error">
+            <span class="slds-assistive-text">error</span>
+            <div class="slds-notify__content">
+                <h5 class="slds-text-heading_small slds-align_absolute-center">Error Message </h5>
+                <br/>
+                <p class="slds-align_absolute-center">{!v.errorMessage}</p>                
+            </div>
+        </div>
+    </aura:if>
+
+    <lightning:layout multipleRows="true" verticalAlign="end">
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="1" largeDeviceSize="1" padding="around-small"/>
+        <lightning:layoutItem size="12" smallDeviceSize="10" mediumDeviceSize="8" largeDeviceSize="8" padding="around-small">
+            <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <lightning:input name="productItemNumber" placeholder="Enter Product Item Number here..." value="{!v.productItemNumber}"/>
+                    </div>
+                </div> 
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" smallDeviceSize="2" mediumDeviceSize="2" largeDeviceSize="2" padding="around-small">
+            <lightning:button class="slds-button slds-button--neutral slds-input__icon--right" label="Retrieve" onclick="{!c.search}"/> 
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="1" largeDeviceSize="1" padding="around-small"/>
+    </lightning:layout>
+    
+        <div style="height: 300px; padding-top: 25px">
+            
+            <h1 class="header" style="font-weight:bold">SAP Product Information</h1>
+            <lightning:datatable
+                columns="{! v.columns }"
+                data="{! v.data }"
+                keyField="id"
+                onrowselection ="{! c.setSelectedProduct }"
+                maxRowSelection="{! v.maxRowSelection }"
+                                 aura:id = "prodTable"/>
+    </div>
+    
+    <div class="slds-modal__footer">                
+                <lightning:button variant="neutral" label="Cancel" onclick="{!c.closeModal}"/>
+                <lightning:button variant="brand" label="Submit" onclick="{!c.saveRecord}" />
+    </div>
+
+</aura:component>
