@@ -42,6 +42,17 @@ public virtual class TestSetup{
         return complaintObj;
     }
 
+    public static CMPL123QMS__Change_Control__c  createChangeControl(Boolean withId) {
+        CMPL123QMS__Change_Control__c cc = new CMPL123QMS__Change_Control__c();
+        cc.Origination__c = 'Corporate';
+        cc.Title__c ='UnitTest';
+        cc.Change_Owner__c = createUser(true).Id;
+        if (withId) {
+            insert cc;
+        }
+        return cc;
+    }
+
     public static CMPL123QMS__Change_Control__c  createCC(Boolean withId, Id recordTypeId) {
        CMPL123QMS__Change_Control__c cc = new CMPL123QMS__Change_Control__c();
         cc.Title__c = 'Test';

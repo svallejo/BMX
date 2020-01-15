@@ -1,4 +1,15 @@
-public without sharing class SapProductInformation {
+/**
+ * @File Name          : SapProductInformation.cls
+ * @Description        : 
+ * @Author             : Jon Astemborski
+ * @Group              : 
+ * @Last Modified By   : Jon Astemborski
+ * @Last Modified On   : 1/15/2020, 10:48:43 AM
+ * @Modification Log   : 
+ * Ver       Date            Author      		    Modification
+ * 1.0    1/15/2020   Jon Astemborski     Initial Version
+**/
+public class SapProductInformation {
     @AuraEnabled
     public String productItemNumber {get;set;}
     @AuraEnabled
@@ -84,6 +95,114 @@ public without sharing class SapProductInformation {
                 this.originAnimalHuman = value;
             }
         }
-       
+    }
+
+    public SapProductInformation(Builder builder){
+        this.productItemNumber = builder.productItemNumber; 
+        this.productDescription = builder.productDescription; 
+        this.productRange = builder.productRange; 
+        this.productType = builder.productType; 
+        this.makeOrBuy = builder.makeOrBuy; 
+        this.tradeType = builder.tradeType; 
+        this.legalManufacturer = builder.legalManufacturer; 
+        this.siteResponsible = builder.siteResponsible; 
+        this.gtin = builder.gtin; 
+        this.ceApproved = builder.ceApproved; 
+        this.commercializationCoverage = builder.commercializationCoverage; 
+        this.originAnimalHuman = builder.originAnimalHuman; 
+    }
+
+    public class Builder{
+        @AuraEnabled
+        public String productItemNumber {get;set;}
+        @AuraEnabled
+        public String productDescription {get;set;}
+        @AuraEnabled
+        public String productRange {get;set;}
+        @AuraEnabled
+        public String productType {get;set;}
+        @AuraEnabled
+        public String makeOrBuy {get;set;}
+        @AuraEnabled
+        public String tradeType {get;set;}
+        @AuraEnabled
+        public String legalManufacturer {get;set;}
+        @AuraEnabled
+        public String siteResponsible {get;set;}
+        @AuraEnabled
+        public String gtin {get;set;}
+        @AuraEnabled
+        public String ceApproved {get;set;}
+        @AuraEnabled
+        public String commercializationCoverage {get;set;}
+        @AuraEnabled
+        public String originAnimalHuman {get;set;}
+
+        public Builder(SapProductInformation product){
+            this.productItemNumber = product.productItemNumber; 
+            this.productDescription = product.productDescription; 
+            this.productRange = product.productRange; 
+            this.productType = product.productType; 
+            this.makeOrBuy = product.makeOrBuy; 
+            this.tradeType = product.tradeType; 
+            this.legalManufacturer = product.legalManufacturer; 
+            this.siteResponsible = product.siteResponsible; 
+            this.gtin = product.gtin; 
+            this.ceApproved = product.ceApproved; 
+            this.commercializationCoverage = product.commercializationCoverage; 
+            this.originAnimalHuman = product.originAnimalHuman; 
+        }
+
+        public Builder productItemNumber(String val){
+            this.productItemNumber = val; return this;
+        }
+
+        public Builder productDescription(String val){
+            this.productDescription = val; return this;
+        }
+
+        public Builder productRange(String val){
+            this.productRange = val; return this;
+        }
+
+        public Builder productType(String val){
+            this.productType = val; return this;
+        }
+
+        public Builder makeOrBuy(String val){
+            this.makeOrBuy = val; return this;
+        }
+
+        public Builder tradeType(String val){
+            this.tradeType = val; return this;
+        }
+
+        public Builder legalManufacturer(String val){
+            this.legalManufacturer = val; return this;
+        }
+
+        public Builder siteResponsible(String val){
+            this.siteResponsible = val; return this;
+        }
+
+        public Builder gtin(String val){
+            this.gtin = val; return this;
+        }
+
+        public Builder ceApproved(String val){
+            this.ceApproved = val; return this;
+        }
+
+        public Builder commercializationCoverage(String val){
+            this.commercializationCoverage = val; return this;
+        }
+
+        public Builder originAnimalHuman(String val){
+            this.originAnimalHuman = val; return this;
+        }
+    
+        public SapProductInformation build(){
+            return new SapProductInformation(this);
+        }
     }
 }
