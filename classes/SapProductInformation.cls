@@ -4,11 +4,12 @@
  * @Author             : Jon Astemborski
  * @Group              : 
  * @Last Modified By   : Jon Astemborski
- * @Last Modified On   : 1/15/2020, 10:48:43 AM
+ * @Last Modified On   : 1/15/2020, 3:53:46 PM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/15/2020   Jon Astemborski     Initial Version
 **/
+
 public class SapProductInformation {
     @AuraEnabled
     public String productItemNumber {get;set;}
@@ -65,7 +66,8 @@ public class SapProductInformation {
     }
 
     public override String toString(){
-        return this.productItemNumber;
+        return 'Item Num: ' + this.productItemNumber + ' \nDescription: ' + this.productDescription + ' \nRange: ' + this.productRange + ' \nCEApproved: ' + 
+        this.ceApproved + ' \nProductType: ' + this.productType + ' \nmakeorbuy:' + this.makeOrBuy + ' \nSite Responsible' + this.siteResponsible;
     }
 
     public void buildFromString(String fieldName, String value){

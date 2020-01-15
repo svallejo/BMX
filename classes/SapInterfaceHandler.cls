@@ -1,27 +1,34 @@
 /**
-*   @description Clone document controller. Main functionality is seeting lookup to prior version of a document
-*	@author Jon Astemborski
-*/
+ * @File Name          : SapInterfaceHandler.cls
+ * @Description        : 
+ * @Author             : Jon Astemborski
+ * @Group              : 
+ * @Last Modified By   : Jon Astemborski
+ * @Last Modified On   : 1/15/2020, 4:09:12 PM
+ * @Modification Log   : 
+ * Ver       Date            Author      		    Modification
+ * 1.0    1/15/2020   Jon Astemborski     Initial Version
+**/
 public without Sharing class SapInterfaceHandler {
-    private static final String PRODUCT_PARAM_PREFIX = '?productID=';
-    private static final String ESCAPED_SINGLE_QUOTE = '\'';
-    private static final String GET_METHOD = 'GET';
-    private static final String ID = 'Id';
-    private static final String SAP_PRODUCT = 'Product';
-    private static final String SAP_PRODUCT_RANGE = 'ProductRange';
-    private static final String SAP_PRODUCT_STANDARD_ID = 'ProductStandardID';
-    private static final String SAP_PRODUCT_DESCRIPTION = 'ProductDescription';
-    private static final String SAP_DESCRIPTIONS = 'Descriptions';
-    private static final String SAP_CHARACTERISTICS = 'Characteristics';
-    private static final String SAP_RESULTS = 'results';
-    private static final String SAP_VALUATION = 'Valuation';
-    private static final String SAP_ELEMENT = 'element';
-    private static final String SAP_CODE = 'code';
-    private static final String SAP_ERROR_CODE = '$';
-    private static final String SAP_ERROR_MESSAGE = 'message';
-    private static final String SAP_CHAR_VALUE = 'CharcValue';
-    private static final String SAP_CHAR_ID = 'CharcInternalID';
-    private static final String EMPTY_STRING_ESCAPED = '\"\"';
+    public static final String PRODUCT_PARAM_PREFIX = '?productID=';
+    public static final String ESCAPED_SINGLE_QUOTE = '\'';
+    public static final String GET_METHOD = 'GET';
+    public static final String ID = 'Id';
+    public static final String SAP_PRODUCT = 'Product';
+    public static final String SAP_PRODUCT_RANGE = 'ProductRange';
+    public static final String SAP_PRODUCT_STANDARD_ID = 'ProductStandardID';
+    public static final String SAP_PRODUCT_DESCRIPTION = 'ProductDescription';
+    public static final String SAP_DESCRIPTIONS = 'Descriptions';
+    public static final String SAP_CHARACTERISTICS = 'Characteristics';
+    public static final String SAP_RESULTS = 'results';
+    public static final String SAP_VALUATION = 'Valuation';
+    public static final String SAP_ELEMENT = 'element';
+    public static final String SAP_CODE = 'code';
+    public static final String SAP_ERROR_CODE = '$';
+    public static final String SAP_ERROR_MESSAGE = 'message';
+    public static final String SAP_CHAR_VALUE = 'CharcValue';
+    public static final String SAP_CHAR_ID = 'CharcInternalID';
+    public static final String EMPTY_STRING_ESCAPED = '\"\"';
 
     @TestVisible
     private static String createProductUrlParam(String productItemNumber){
@@ -81,20 +88,18 @@ public without Sharing class SapInterfaceHandler {
         }
         List<SapProductInformation> prodInfoList = new List<SapProductInformation>();
         Map<String, Object> response = (Map<String, Object>) JSON.deserializeUntyped(sapResponse);
-        List<Map<String, Object>> productMapList = new List<Map<String, Object>>();
         List<Object> productList = buildProductObjectListFromResponse(response);
 
        for (Object product : productList) {
             SapProductInformation prodInfo = new SapProductInformation();
-            productMapList.add((Map<String, Object>)product);
             List<Map<String, Object>> characteristicMapList = new List<Map<String, Object>>();
             Map<String, Object> prodObjMap = (Map<String, Object>) product;
             prodInfo.productItemNumber = (String) prodObjMap.get(SAP_PRODUCT);
             prodInfo.productRange = (String) prodObjMap.get(SAP_PRODUCT_RANGE);
             prodInfo.gtin = (String) prodObjMap.get(SAP_PRODUCT_STANDARD_ID);
-            buildProductDescription(prodObjMap, prodInfo);
-            buildProductCharacteristics(productMapList, prodInfo);
-            prodInfoList.add(prodInfo);
+            SapProductInformation prodWithDescription = buildProductDescription(prodObjMap, prodInfo);
+            SapProductInformation prodWithDescriptionAndCharacteristics =  buildProductCharacteristics(prodObjMap, prodWithDescription);
+            prodInfoList.add(prodWithDescriptionAndCharacteristics);
         }
         return prodInfoList;
     }
@@ -109,7 +114,7 @@ public without Sharing class SapInterfaceHandler {
                 Map<String, Object> descriptionResultsMap = (Map<String, Object>) descriptionMap.get(SAP_RESULTS);
                 if (descriptionResultsMap.containsKey(SAP_ELEMENT)  && !(descriptionResultsMap.get(SAP_ELEMENT) instanceof String)) {
                     Map<String, Object> descriptionElementMap = (Map<String, Object>) descriptionResultsMap.get(SAP_ELEMENT);
-                    prodInfo.productDescription = (String)descriptionElementMap.get(SAP_PRODUCT_DESCRIPTION);
+                    productInformation.productDescription = (String)descriptionElementMap.get(SAP_PRODUCT_DESCRIPTION);
                 }
             }
         }
@@ -117,30 +122,36 @@ public without Sharing class SapInterfaceHandler {
     }
 
     @TestVisible
-    private static SapProductInformation buildProductCharacteristics(List<Map<String, Object>> productMapList,
+    private static SapProductInformation buildProductCharacteristics(Map<String, Object> prodObjMap,
                                                                      SapProductInformation currentProduct ){
         SapProductInformation productInformation = new SapProductInformation.Builder(currentProduct).build();
-        for ( Map<String, Object> characteristic :  productMapList ){
-            if ( !(characteristic.get(SAP_CHARACTERISTICS) instanceof String)){
-                Map<String, Object> characteristicMap = (Map<String, Object>) characteristic.get(SAP_CHARACTERISTICS);
-                if (!(characteristicMap.get(SAP_RESULTS) instanceof String)) {
-                    Map<String, Object> resultsMap = (Map<String, Object>) characteristicMap.get(SAP_RESULTS);
-                        if (!(resultsMap.get(SAP_ELEMENT) instanceof String)) {
-                        List<Object> elementList = (List<Object>) resultsMap.get(SAP_ELEMENT);
-                        List<Map<String, Object>> elementMapList = new List<Map<String, Object>>();
-                        for (Object element : elementList) {
-                            Map<String, Object> elementsMap = (Map<String, Object>) element;
-                            String fieldName = (String) elementsMap.get(SAP_CHAR_ID);
-                            elementMapList.add((Map<String, Object>)element);
-                            if (!(elementsMap.get(SAP_VALUATION) instanceof String)) {
-                                Map<String, Object> valuationMap = (Map<String, Object>) elementsMap.get(SAP_VALUATION);
-                                if (!(valuationMap.get(SAP_RESULTS) instanceof String)) {
-                                    Map<String, Object> results2Map = (Map<String, Object>) valuationMap.get(SAP_RESULTS);
-                                    if (!(results2Map.get(SAP_ELEMENT) instanceof String)) {
-                                        Map<String, Object> elements2Map = (Map<String, Object>) results2Map.get(SAP_ELEMENT);
-                                        String fieldValue = (String) elements2Map.get(SAP_CHAR_VALUE);
-                                        currentProduct.buildFromString(fieldName, fieldValue);
-                                    }
+        System.debug('1: ' + productInformation);
+        if ( !(prodObjMap.get(SAP_CHARACTERISTICS) instanceof String)){
+            Map<String, Object> characteristicMap = (Map<String, Object>) prodObjMap.get(SAP_CHARACTERISTICS);
+            if (!(characteristicMap.get(SAP_RESULTS) instanceof String)) {
+                Map<String, Object> resultsMap = (Map<String, Object>) characteristicMap.get(SAP_RESULTS);
+                if (!(resultsMap.get(SAP_ELEMENT) instanceof String)) {
+                    List<Object> elementList = new List<Object>();
+                    if ( resultsMap.get(SAP_ELEMENT) instanceof List<Object>) {
+                        elementList = (List<Object>) resultsMap.get(SAP_ELEMENT);
+                    }
+                    else if (!(resultsMap.get(SAP_ELEMENT) instanceof String)) 
+                    {
+                        elementList.add((Object) resultsMap.get(SAP_ELEMENT)); 
+                    }
+                    List<Map<String, Object>> elementMapList = new List<Map<String, Object>>();
+                    for (Object element : elementList) {
+                        Map<String, Object> elementsMap = (Map<String, Object>) element;
+                        String fieldName = (String) elementsMap.get(SAP_CHAR_ID);
+                        elementMapList.add((Map<String, Object>)element);
+                        if (!(elementsMap.get(SAP_VALUATION) instanceof String)) {
+                            Map<String, Object> valuationMap = (Map<String, Object>) elementsMap.get(SAP_VALUATION);
+                            if (!(valuationMap.get(SAP_RESULTS) instanceof String)) {
+                                Map<String, Object> results2Map = (Map<String, Object>) valuationMap.get(SAP_RESULTS);
+                                if (!(results2Map.get(SAP_ELEMENT) instanceof String)) {
+                                    Map<String, Object> elements2Map = (Map<String, Object>) results2Map.get(SAP_ELEMENT);
+                                    String fieldValue = (String) elements2Map.get(SAP_CHAR_VALUE);
+                                    productInformation.buildFromString(fieldName, fieldValue);
                                 }
                             }
                         }
@@ -148,6 +159,8 @@ public without Sharing class SapInterfaceHandler {
                 }
             }
         }
+        System.debug('2: ' + productInformation);
+
         return productInformation;
     }
 

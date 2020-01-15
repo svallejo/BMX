@@ -3,8 +3,8 @@
  * @Description        : 
  * @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
  * @Group              : 
- * @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
- * @Last Modified On   : 1/14/2020, 5:26:28 PM
+ * @Last Modified By   : Jon Astemborski
+ * @Last Modified On   : 1/15/2020, 3:29:26 PM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/14/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
@@ -85,5 +85,21 @@ public class SapInterfaceHandlerTest {
     public static void transformSapInterfaceResponse_nothingReturned(){
         List<SapProductInformation> prodList = SapInterfaceHandler.transformSapInterfaceResponse('');
         System.assert(prodList.isEmpty());
+    }
+
+    @IsTest
+    public static void buildProductCharacteristics_ArrayOfElements(){
+        List<Map<String,Object>> productObject = SapInterfaceBuilderTest.buildProductObjectMapList(SapCalloutMockRequest.sapResponseWithSingleProductArrayOfElementInCharacteristic);
+    }
+
+
+    @IsTest
+    public static void buildProductCharacteristics_SingleElement(){
+         List<Map<String,Object>> productObjectList = SapInterfaceBuilderTest.buildProductObjectMapList(SapCalloutMockRequest.sapResponseWithSingleProductSingleElementInCharacteristic);
+         for (Map<String,Object> productObject : productObjectList) {
+             SapProductInformation sapProdInfo  = new SapProductInformation();
+             SapProductInformation sapProdInfoUpdated = SapInterfaceHandler.buildProductCharacteristics(productObject, sapProdInfo);
+            System.assert(sapProdInfoUpdated.productItemNumber != '');
+         }
     }
 }

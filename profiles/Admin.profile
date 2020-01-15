@@ -4406,6 +4406,10 @@
         <apexClass>SapInterfaceHandlerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>SapInterfaceBuilderTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>
         <enabled>true</enabled>
