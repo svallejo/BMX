@@ -4,7 +4,7 @@
  * @Author             : Jon Astemborski
  * @Group              : 
  * @Last Modified By   : Jon Astemborski
- * @Last Modified On   : 1/15/2020, 3:24:28 PM
+ * @Last Modified On   : 1/15/2020, 4:14:23 PM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/15/2020   Jon Astemborski     Initial Version
@@ -28,7 +28,7 @@ public class SapInterfaceBuilderTest {
         List<Map<String, Object>> prodObjectMapList = new List<Map<String, Object>>();
         for (Object product : productList) {
             Map<String, Object> prodObjMap = (Map<String, Object>) product;
-            productList.add(prodObjMap);
+            prodObjectMapList.add(prodObjMap);
         }
         return prodObjectMapList;
     }

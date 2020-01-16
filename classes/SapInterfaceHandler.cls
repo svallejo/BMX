@@ -4,7 +4,7 @@
  * @Author             : Jon Astemborski
  * @Group              : 
  * @Last Modified By   : Jon Astemborski
- * @Last Modified On   : 1/15/2020, 4:09:12 PM
+ * @Last Modified On   : 1/16/2020, 8:59:17 AM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/15/2020   Jon Astemborski     Initial Version
@@ -44,10 +44,11 @@ public without Sharing class SapInterfaceHandler {
 
     @TestVisible
     private static void checkForError(Map<String, Object> response){
+        System.debug('error: ' + response);
         if ( response.containsKey(SAP_CODE)) {
             Map<String, Object> errorCodeMap = (Map<String, Object>) response.get(SAP_CODE);
             if (errorCodeMap.containsKey(SAP_ERROR_MESSAGE) && !(errorCodeMap.get(SAP_ERROR_MESSAGE) instanceof String)) {
-                Map<String, Object> errorMessageMap = (Map<String, Object>) response.get(SAP_ERROR_MESSAGE);
+                Map<String, Object> errorMessageMap = (Map<String, Object>) errorCodeMap.get(SAP_ERROR_MESSAGE);
                 throw new AuraHandledException(errorMessageMap.get(SAP_ERROR_CODE).toString());
             }
         }
@@ -76,7 +77,6 @@ public without Sharing class SapInterfaceHandler {
     private static boolean hasResponse(String sapResponse){
         return !sapResponse.equals(EMPTY_STRING_ESCAPED);
     }
-
     
     /**
         Handles parsing of SAP Response. We have to deserialize untyped 
@@ -125,7 +125,6 @@ public without Sharing class SapInterfaceHandler {
     private static SapProductInformation buildProductCharacteristics(Map<String, Object> prodObjMap,
                                                                      SapProductInformation currentProduct ){
         SapProductInformation productInformation = new SapProductInformation.Builder(currentProduct).build();
-        System.debug('1: ' + productInformation);
         if ( !(prodObjMap.get(SAP_CHARACTERISTICS) instanceof String)){
             Map<String, Object> characteristicMap = (Map<String, Object>) prodObjMap.get(SAP_CHARACTERISTICS);
             if (!(characteristicMap.get(SAP_RESULTS) instanceof String)) {
@@ -159,8 +158,6 @@ public without Sharing class SapInterfaceHandler {
                 }
             }
         }
-        System.debug('2: ' + productInformation);
-
         return productInformation;
     }
 

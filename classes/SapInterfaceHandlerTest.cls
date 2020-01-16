@@ -4,7 +4,7 @@
  * @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
  * @Group              : 
  * @Last Modified By   : Jon Astemborski
- * @Last Modified On   : 1/15/2020, 3:29:26 PM
+ * @Last Modified On   : 1/15/2020, 5:06:28 PM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/14/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
@@ -35,6 +35,41 @@ public class SapInterfaceHandlerTest {
         SapInterfaceHandler.updateChangeControlWithProductInformation(productInformation, cc.id);
         CMPL123QMS__Change_Control__c updatedCC = [select id, product_item_number__c from  CMPL123QMS__Change_Control__c where id=:cc.id];
         System.assertNotEquals('test12345', updatedCC.Product_Item_Number__c);
+    }
+
+    @IsTest
+    public static void checkForError_throwError(){
+        try{
+            Map<String, Object> response = (Map<String, Object>) JSON.deserializeUntyped(SapCalloutMockRequest.errorMesage);
+            SapInterfaceHandler.checkForError(response);
+        }
+        catch (AuraHandledException e){
+            System.assertEquals(e.getMessage(), e.getMessage());
+        }
+    }
+
+
+    @IsTest
+    public static void updateChangeControlWithProductInformation_dmlFailureCC(){
+        CMPL123QMS__Change_Control__c cc = Testsetup.createChangeControl(false);
+        cc.Product_Item_Number__c = 'test12345';
+        insert cc;
+
+        SapProductInformation productInformation = new SapProductInformation();
+        productInformation.productItemNumber = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend vulputate nibh, ut scelerisque nisl pellentesque non. ' + 
+                'Nunc vitae tortor mi. Mauris placerat eros varius auctor euismod. Mauris ac pharetra massa, non mollis lacus. Praesent semper tortor id eros finibus hendrerit. Donec lobortis' + 
+                'condimentum eros, vel auctor arcu iaculis eget. Proin vestibulum accumsan eleifend. Ut ultricies lacinia urna id lobortis. Aenean sollicitudin sit amet ipsum eget maximus. ' + 
+                'Nunc dictum nibh at pharetra pellentesque. Ut a ante a massa vehicula ultrices. Donec lorem justo, ultrices euismod porta scelerisque, vehicula at elit. Aliquam pretium, ' + 
+                'risus vel porta porta, ligula est tempor libero, in congue lacus erat non purus. Aenean lacinia elementum leo placerat lobortis. Suspendisse aliquet tellus neque.' + 
+                ' Pellentesque sit amet ipsum ante. Nulla facilisi. Suspendisse hendrerit mollis leo, ac pretium ligula dictum id. Quisque viverra gravida nunc tristique tincidunt. ' + 
+                'Sed ut ornare risus, a placerat velit.';
+        try{
+            SapInterfaceHandler.updateChangeControlWithProductInformation(productInformation, cc.id);
+        }
+        catch(AuraHandledException e) {
+            System.assert(e.getMessage().containsAny('STRING_TOO_LONG'));
+        }
+       
     }
 
     @IsTest(SeeAllData=true)
@@ -83,13 +118,19 @@ public class SapInterfaceHandlerTest {
 
     @IsTest
     public static void transformSapInterfaceResponse_nothingReturned(){
-        List<SapProductInformation> prodList = SapInterfaceHandler.transformSapInterfaceResponse('');
+        List<SapProductInformation> prodList = SapInterfaceHandler.transformSapInterfaceResponse('\"\"');
         System.assert(prodList.isEmpty());
     }
 
     @IsTest
     public static void buildProductCharacteristics_ArrayOfElements(){
-        List<Map<String,Object>> productObject = SapInterfaceBuilderTest.buildProductObjectMapList(SapCalloutMockRequest.sapResponseWithSingleProductArrayOfElementInCharacteristic);
+        List<Map<String,Object>> productObjectList = SapInterfaceBuilderTest.buildProductObjectMapList(SapCalloutMockRequest.sapResponseWithSingleProductArrayOfElementInCharacteristic);
+        for (Map<String,Object> productObject : productObjectList) {
+             SapProductInformation sapProdInfo  = new SapProductInformation();
+             SapProductInformation sapProdInfoUpdated = SapInterfaceHandler.buildProductCharacteristics(productObject, sapProdInfo);
+             System.assert(sapProdInfoUpdated != null);
+             System.assert(sapProdInfoUpdated.siteResponsible != '');
+         }
     }
 
 
@@ -99,7 +140,8 @@ public class SapInterfaceHandlerTest {
          for (Map<String,Object> productObject : productObjectList) {
              SapProductInformation sapProdInfo  = new SapProductInformation();
              SapProductInformation sapProdInfoUpdated = SapInterfaceHandler.buildProductCharacteristics(productObject, sapProdInfo);
-            System.assert(sapProdInfoUpdated.productItemNumber != '');
+             System.assert(sapProdInfoUpdated != null);
+             System.assert(sapProdInfoUpdated.siteResponsible != '');
          }
     }
 }

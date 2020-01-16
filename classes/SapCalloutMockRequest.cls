@@ -4,7 +4,7 @@
  * @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
  * @Group              : 
  * @Last Modified By   : Jon Astemborski
- * @Last Modified On   : 1/15/2020, 3:12:50 PM
+ * @Last Modified On   : 1/15/2020, 5:04:35 PM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/14/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
@@ -357,7 +357,7 @@ public class SapCalloutMockRequest {
   }
 }
  */
-public static final String sapResponseWithSingleProductSingleElementInCharacteristic = '{"Product":{"Product":"30454","ProductRange":"VIDAS CLINICAL","ProductStandardID":"03573026156350","Descriptions":{"results":{"element":{"Language":"EN","Product":"30454","ProductDescription":"VIDAS DHEA-S          30 TESTS"}}},"Characteristics":{"results":{"element":{"CharcInternalID":"TARGET_LAUNCH_DATE","Valuation":{"results":{"element":{"CharcValue":""}}}}}}}}';
+public static final String sapResponseWithSingleProductSingleElementInCharacteristic = '{"Product":{"Product":"30454","ProductRange":"VIDAS CLINICAL","ProductStandardID":"03573026156350","Descriptions":{"results":{"element":{"Language":"EN","Product":"30454","ProductDescription":"VIDAS DHEA-S          30 TESTS"}}},"Characteristics":{"results":{"element":{"CharcInternalID":"SITE_RESPONSIBLE","Valuation":{"results":{"element":{"CharcValue":"123"}}}}}}}}';
 
 /**
 {
@@ -391,7 +391,10 @@ public static final String sapResponseWithSingleProductSingleElementInCharacteri
   }
 }
  */
-public static final String sapResponseWithSingleProductArrayOfElementInCharacteristic = '{"Product":{"Product":"30454","ProductRange":"VIDAS CLINICAL","ProductStandardID":"03573026156350","Descriptions":{"results":{"element":{"Language":"EN","Product":"30454","ProductDescription":"VIDAS DHEA-S          30 TESTS"}}},"Characteristics":{"results":{"element":[{"CharcInternalID":"TARGET_LAUNCH_DATE","Valuation":{"results":{"element":{"CharcValue":""}}}}]}}}}';
+public static final String sapResponseWithSingleProductArrayOfElementInCharacteristic = '{"Product":{"Product":"30454","ProductRange":"VIDAS CLINICAL","ProductStandardID":"03573026156350","Descriptions":{"results":{"element":{"Language":"EN","Product":"30454","ProductDescription":"VIDAS DHEA-S          30 TESTS"}}},"Characteristics":{"results":{"element":[{"CharcInternalID":"SITE_RESPONSIBLE","Valuation":{"results":{"element":{"CharcValue":"123"}}}}]}}}}';
+
+
+public static final String errorMesage = '{"code":{"message":{"$":"test1"}}}';
 
 
 }
