@@ -9104,6 +9104,10 @@
         <layout>Action_Item__c-Action Item Layout</layout>
         <recordType>Action_Item__c.Locked</recordType>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__EU_MIR__c-CMPL123CME__EU MIR Layout</layout>
+        <recordType>CMPL123CME__EU_MIR__c.BMX_Lock_EU_MIR</recordType>
+    </layoutAssignments>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>BMX_Generic_Report__c.BMX_Lock_Generic_Report</recordType>
@@ -9263,6 +9267,11 @@
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Action_Item__c.Locked</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123CME__EU_MIR__c.BMX_Lock_EU_MIR</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <tabVisibilities>

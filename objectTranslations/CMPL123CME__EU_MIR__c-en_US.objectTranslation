@@ -4673,7 +4673,7 @@ Final Non-reportable - Event in initial is not reportable. --></help>
     <fields>
         <label><!-- Workflow Action Performed By --></label>
         <name>CMPL123_WF_Action_Performed_By__c</name>
-        <relationshipLabel><!-- EU MIR --></relationshipLabel>
+        <relationshipLabel><!-- EU MIR (Workflow Action Performed By) --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Workflow Action Performed On --></label>
@@ -4691,6 +4691,81 @@ Final Non-reportable - Event in initial is not reportable. --></help>
         <label><!-- Local Assessment --></label>
         <name>BMX_Local_Assessment__c</name>
         <relationshipLabel><!-- EU MIR --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approved Date --></label>
+        <name>BMX_Approved_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Done  By --></label>
+        <name>BMX_Approved_Done_By__c</name>
+        <relationshipLabel><!-- EU MIR (Approved Done  By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approved Done  On --></label>
+        <name>BMX_Approved_Done_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancel Done By --></label>
+        <name>BMX_Cancel_Done_By__c</name>
+        <relationshipLabel><!-- EU MIR (Cancel Done By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cancel Done On --></label>
+        <name>BMX_Cancel_Done_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Close Report Done By --></label>
+        <name>BMX_Close_Report_Done_By__c</name>
+        <relationshipLabel><!-- EU MIR (Close Report Done By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Close Report Done On --></label>
+        <name>BMX_Close_Report_Done_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date of Submission --></label>
+        <name>BMX_Date_of_Submission__c</name>
+    </fields>
+    <fields>
+        <label><!-- Due Date --></label>
+        <name>BMX_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Local Subsidiary Approver --></label>
+        <name>BMX_Local_Subsidiary_Approver__c</name>
+        <relationshipLabel><!-- EU MIR (Local Subsidiary Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Local Subsidiary Owner --></label>
+        <name>BMX_Local_Subsidiary_Owner__c</name>
+        <relationshipLabel><!-- EU MIR (Local Subsidiary Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Local Subsidiary --></label>
+        <name>BMX_Local_Subsidiary_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submit Report Done By --></label>
+        <name>BMX_Submit_Report_Done_By__c</name>
+        <relationshipLabel><!-- EU MIR (Submit Report Done By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Submit Report Done On --></label>
+        <name>BMX_Submit_Report_Done_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submit for Review Done By --></label>
+        <name>BMX_Submit_for_Review_Done_By__c</name>
+        <relationshipLabel><!-- EU MIR (Submit for Review Done By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Submit for Review Done On --></label>
+        <name>BMX_Submit_for_Review_Done_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time to Notify the CA --></label>
+        <name>BMX_Time_to_Notify_the_CA__c</name>
     </fields>
     <fieldSets>
         <label><!-- 1.1 Corresponding competent authority --></label>
@@ -4911,10 +4986,260 @@ Final Non-reportable - Event in initial is not reportable. --></help>
             <section>Workflow Panel</section>
         </sections>
     </layouts>
+    <layouts>
+        <layout>EU MIR Layout (BMX)</layout>
+        <sections>
+            <label><!-- 1.1 Corresponding competent authority --></label>
+            <section>1.1 Corresponding competent authority</section>
+        </sections>
+        <sections>
+            <label><!-- 1.2 Date, type and classification of incident report --></label>
+            <section>1.2 Date, type and classification of incident report</section>
+        </sections>
+        <sections>
+            <label><!-- 1.3.1 Submitter information --></label>
+            <section>1.3.1 Submitter information</section>
+        </sections>
+        <sections>
+            <label><!-- 1.3.2 Manufacturer information --></label>
+            <section>1.3.2 Manufacturer information</section>
+        </sections>
+        <sections>
+            <label><!-- 1.3.3 Authorized representative information --></label>
+            <section>1.3.3 Authorized representative information</section>
+        </sections>
+        <sections>
+            <label><!-- 1.3.4 Submitters details if not manufacturer or authorized representative --></label>
+            <section>1.3.4 Submitters details if not manufacturer or authorized representative</section>
+        </sections>
+        <sections>
+            <label><!-- 2.1 Unique Device Identification (UDI) --></label>
+            <section>2.1 Unique Device Identification (UDI)</section>
+        </sections>
+        <sections>
+            <label><!-- 2.2 Categorisation of device --></label>
+            <section>2.2 Categorisation of device</section>
+        </sections>
+        <sections>
+            <label><!-- 2.3 Description of device and commercial information --></label>
+            <section>2.3 Description of device and commercial information</section>
+        </sections>
+        <sections>
+            <label><!-- 2.4 Risk class of device when placed on market --></label>
+            <section>2.4 Risk class of device when placed on market</section>
+        </sections>
+        <sections>
+            <label><!-- 2.5 Market distribution of device (region/country) --></label>
+            <section>2.5 Market distribution of device (region/country)</section>
+        </sections>
+        <sections>
+            <label><!-- 2.6 Use of accessories, associated devices or other devices --></label>
+            <section>2.6 Use of accessories, associated devices or other devices</section>
+        </sections>
+        <sections>
+            <label><!-- 3.1 Nature of incident --></label>
+            <section>3.1 Nature of incident</section>
+        </sections>
+        <sections>
+            <label><!-- 3.2.1 IMDRF Medical device problem codes (Annex A) --></label>
+            <section>3.2.1 IMDRF Medical device problem codes (Annex A)</section>
+        </sections>
+        <sections>
+            <label><!-- 3.2.2 Medical device problem information --></label>
+            <section>3.2.2 Medical device problem information</section>
+        </sections>
+        <sections>
+            <label><!-- 3.3.1 IMDRF &apos;Health Effect&apos; terms and codes (Annex E, F) --></label>
+            <section>3.3.1 IMDRF 'Health Effect' terms and codes (Annex E, F)</section>
+        </sections>
+        <sections>
+            <label><!-- 3.3.2 Patient Information --></label>
+            <section>3.3.2 Patient Information</section>
+        </sections>
+        <sections>
+            <label><!-- 3.4 Initial reporter(can be healthcare professional,facility,patient,lay user) --></label>
+            <section>3.4 Initial reporter(can be healthcare professional,facility,patient,lay user)</section>
+        </sections>
+        <sections>
+            <label><!-- 4.1 Manufacturer’s preliminary comments --></label>
+            <section>4.1 Manufacturer’s preliminary comments</section>
+        </sections>
+        <sections>
+            <label><!-- 4.2.1 Cause investigation and conclusion --></label>
+            <section>4.2.1 Cause investigation and conclusion</section>
+        </sections>
+        <sections>
+            <label><!-- 4.2.2 IMDRF &apos;Cause Investigation&apos; terms and codes (Annex B, C, D) --></label>
+            <section>4.2.2 IMDRF 'Cause Investigation' terms and codes (Annex B, C, D)</section>
+        </sections>
+        <sections>
+            <label><!-- 4.2.3 IMDRF Component codes (Annex G) --></label>
+            <section>4.2.3 IMDRF Component codes (Annex G)</section>
+        </sections>
+        <sections>
+            <label><!-- 4.3.1 Use of IMDRF terms and codes for identifying similar incidents --></label>
+            <section>4.3.1 Use of IMDRF terms and codes for identifying similar incidents</section>
+        </sections>
+        <sections>
+            <label><!-- 4.3.2 Use of in-house terms/codes for identifying similar incidents --></label>
+            <section>4.3.2 Use of in-house terms/codes for identifying similar incidents</section>
+        </sections>
+        <sections>
+            <label><!-- 4.3.3 Number of similar incidents and devices on the market --></label>
+            <section>4.3.3 Number of similar incidents and devices on the market</section>
+        </sections>
+        <sections>
+            <label><!-- 5. General Comments --></label>
+            <section>5. General Comments</section>
+        </sections>
+        <sections>
+            <label><!-- Activity Section --></label>
+            <section>Activity Section</section>
+        </sections>
+        <sections>
+            <label><!-- Administrative information --></label>
+            <section>Administrative information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Workflow Panel --></label>
+            <section>Workflow Panel</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>EU MIR Layout (BMX_Locked)</layout>
+        <sections>
+            <label><!-- 1.1 Corresponding competent authority --></label>
+            <section>1.1 Corresponding competent authority</section>
+        </sections>
+        <sections>
+            <label><!-- 1.2 Date, type and classification of incident report --></label>
+            <section>1.2 Date, type and classification of incident report</section>
+        </sections>
+        <sections>
+            <label><!-- 1.3.1 Submitter information --></label>
+            <section>1.3.1 Submitter information</section>
+        </sections>
+        <sections>
+            <label><!-- 1.3.2 Manufacturer information --></label>
+            <section>1.3.2 Manufacturer information</section>
+        </sections>
+        <sections>
+            <label><!-- 1.3.3 Authorized representative information --></label>
+            <section>1.3.3 Authorized representative information</section>
+        </sections>
+        <sections>
+            <label><!-- 1.3.4 Submitters details if not manufacturer or authorized representative --></label>
+            <section>1.3.4 Submitters details if not manufacturer or authorized representative</section>
+        </sections>
+        <sections>
+            <label><!-- 2.1 Unique Device Identification (UDI) --></label>
+            <section>2.1 Unique Device Identification (UDI)</section>
+        </sections>
+        <sections>
+            <label><!-- 2.2 Categorisation of device --></label>
+            <section>2.2 Categorisation of device</section>
+        </sections>
+        <sections>
+            <label><!-- 2.3 Description of device and commercial information --></label>
+            <section>2.3 Description of device and commercial information</section>
+        </sections>
+        <sections>
+            <label><!-- 2.4 Risk class of device when placed on market --></label>
+            <section>2.4 Risk class of device when placed on market</section>
+        </sections>
+        <sections>
+            <label><!-- 2.5 Market distribution of device (region/country) --></label>
+            <section>2.5 Market distribution of device (region/country)</section>
+        </sections>
+        <sections>
+            <label><!-- 2.6 Use of accessories, associated devices or other devices --></label>
+            <section>2.6 Use of accessories, associated devices or other devices</section>
+        </sections>
+        <sections>
+            <label><!-- 3.1 Nature of incident --></label>
+            <section>3.1 Nature of incident</section>
+        </sections>
+        <sections>
+            <label><!-- 3.2.1 IMDRF Medical device problem codes (Annex A) --></label>
+            <section>3.2.1 IMDRF Medical device problem codes (Annex A)</section>
+        </sections>
+        <sections>
+            <label><!-- 3.2.2 Medical device problem information --></label>
+            <section>3.2.2 Medical device problem information</section>
+        </sections>
+        <sections>
+            <label><!-- 3.3.1 IMDRF &apos;Health Effect&apos; terms and codes (Annex E, F) --></label>
+            <section>3.3.1 IMDRF 'Health Effect' terms and codes (Annex E, F)</section>
+        </sections>
+        <sections>
+            <label><!-- 3.3.2 Patient Information --></label>
+            <section>3.3.2 Patient Information</section>
+        </sections>
+        <sections>
+            <label><!-- 3.4 Initial reporter(can be healthcare professional,facility,patient,lay user) --></label>
+            <section>3.4 Initial reporter(can be healthcare professional,facility,patient,lay user)</section>
+        </sections>
+        <sections>
+            <label><!-- 4.1 Manufacturer’s preliminary comments --></label>
+            <section>4.1 Manufacturer’s preliminary comments</section>
+        </sections>
+        <sections>
+            <label><!-- 4.2.1 Cause investigation and conclusion --></label>
+            <section>4.2.1 Cause investigation and conclusion</section>
+        </sections>
+        <sections>
+            <label><!-- 4.2.2 IMDRF &apos;Cause Investigation&apos; terms and codes (Annex B, C, D) --></label>
+            <section>4.2.2 IMDRF 'Cause Investigation' terms and codes (Annex B, C, D)</section>
+        </sections>
+        <sections>
+            <label><!-- 4.2.3 IMDRF Component codes (Annex G) --></label>
+            <section>4.2.3 IMDRF Component codes (Annex G)</section>
+        </sections>
+        <sections>
+            <label><!-- 4.3.1 Use of IMDRF terms and codes for identifying similar incidents --></label>
+            <section>4.3.1 Use of IMDRF terms and codes for identifying similar incidents</section>
+        </sections>
+        <sections>
+            <label><!-- 4.3.2 Use of in-house terms/codes for identifying similar incidents --></label>
+            <section>4.3.2 Use of in-house terms/codes for identifying similar incidents</section>
+        </sections>
+        <sections>
+            <label><!-- 4.3.3 Number of similar incidents and devices on the market --></label>
+            <section>4.3.3 Number of similar incidents and devices on the market</section>
+        </sections>
+        <sections>
+            <label><!-- 5. General Comments --></label>
+            <section>5. General Comments</section>
+        </sections>
+        <sections>
+            <label><!-- Activity Section --></label>
+            <section>Activity Section</section>
+        </sections>
+        <sections>
+            <label><!-- Administrative information --></label>
+            <section>Administrative information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Workflow Panel --></label>
+            <section>Workflow Panel</section>
+        </sections>
+    </layouts>
     <quickActions>
         <label><!-- Check/Validate Form --></label>
         <name>CMPL123CME__Check_Validate_Form</name>
     </quickActions>
+    <recordTypes>
+        <label><!-- Lock EU MIR --></label>
+        <name>BMX_Lock_EU_MIR</name>
+    </recordTypes>
     <webLinks>
         <label><!-- Check_Validate_Form --></label>
         <name>CMPL123CME__Check_Validate_Form</name>
