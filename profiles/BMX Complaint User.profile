@@ -20085,6 +20085,26 @@
         <field>CMPL123CME__EU_MIR__c.BMX_Time_to_Notify_the_CA__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.BMX_Close_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.BMX_Rework_Done_By__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.BMX_Rework_Done_On__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123Task_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
@@ -20733,7 +20753,7 @@
         <layout>CMPL123CME__EU_MIR_Code__c-CMPL123CME__EUMIR Code Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>CMPL123CME__EU_MIR__c-CMPL123CME__EU MIR Layout</layout>
+        <layout>CMPL123CME__EU_MIR__c-EU MIR Layout %28BMX%29</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123CME__IST_Objects__mdt-CMPL123CME__IST Objects Layout</layout>

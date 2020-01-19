@@ -20853,7 +20853,7 @@
         <layout>CMPL123CME__EU_MIR_Code__c-CMPL123CME__EUMIR Code Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>CMPL123CME__EU_MIR__c-CMPL123CME__EU MIR Layout</layout>
+        <layout>CMPL123CME__EU_MIR__c-EU MIR Layout %28BMX%29</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123CME__HHE__c-CMPL123CME__HHE</layout>
