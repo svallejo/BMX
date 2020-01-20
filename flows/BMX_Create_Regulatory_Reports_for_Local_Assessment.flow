@@ -748,7 +748,7 @@
 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_10_myRule_1_A1_0322861693</name>
+        <name>formula_10_myRule_1_A1_0494607895</name>
         <dataType>String</dataType>
         <expression>IF(
      AND({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} &lt;&gt; null , UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) == &quot;UNITED STATES&quot;),
@@ -764,7 +764,7 @@ AND( [CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c 
 UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c  ) == &quot;UNITED STATES&quot;), LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Postal_Code__c  ,5) , &quot;&quot;)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_11_myRule_1_A1_2107422117</name>
+        <name>formula_11_myRule_1_A1_5952073457</name>
         <dataType>String</dataType>
         <expression>IF(
 AND( {!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}   &lt;&gt; null, 
@@ -777,7 +777,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_UDI_Code__c ,150)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_12_myRule_1_A1_2256106172</name>
+        <name>formula_12_myRule_1_A1_3736472811</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_UDI_Code__c} ,150)</expression>
     </formulas>
@@ -790,7 +790,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
 </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_17_myRule_16_A1_7681255336</name>
+        <name>formula_17_myRule_16_A1_0067063226</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Street__c}  +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_City__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.BMX_Visitor_State__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_Postal_Code__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} 
 , 255)</expression>
@@ -802,7 +802,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Contact_Phone__c  + &quot; /&quot; +[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Contact_Email__c , 255) </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_18_myRule_16_A1_1184173070</name>
+        <name>formula_18_myRule_16_A1_1170875074</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Contact_Phone__c}  + &quot; /&quot; +{!myVariable_current.CMPL123CME__Complaint__r.BMX_Contact_Email__c} , 255)</expression>
     </formulas>
@@ -815,7 +815,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
 </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_21_myRule_20_A1_0407552736</name>
+        <name>formula_21_myRule_20_A1_5041243314</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Street__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_City__c}  +&quot;,&quot;+
 {!myVariable_current.CMPL123CME__Complaint__r.BMX_Visitor_State__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_Postal_Code__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  , 255)</expression>
@@ -827,7 +827,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>IF (ISBLANK([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Batch_Number_Reagent__c ) ,[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Serial_Number_Asset__c  ,[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Batch_Number_Reagent__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_22_myRule_20_A1_2062660201</name>
+        <name>formula_22_myRule_20_A1_4399044527</name>
         <dataType>String</dataType>
         <expression>IF (ISBLANK({!myVariable_current.CMPL123CME__Complaint__r.BMX_Batch_Number_Reagent__c} ) ,{!myVariable_current.CMPL123CME__Complaint__r.BMX_Serial_Number_Asset__c}  ,{!myVariable_current.CMPL123CME__Complaint__r.BMX_Batch_Number_Reagent__c} )</expression>
     </formulas>
@@ -838,7 +838,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Product_Name__c , 80) </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_3824048803</name>
+        <name>formula_2_myRule_1_A1_8435051349</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Product_Name__c} , 80)</expression>
     </formulas>
@@ -849,7 +849,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Product_Name__c ,80)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_5009113528</name>
+        <name>formula_3_myRule_1_A1_2518070722</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Product_Name__c} ,80)</expression>
     </formulas>
@@ -860,7 +860,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Material_Code__c ,30 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A1_5510569830</name>
+        <name>formula_4_myRule_1_A1_2586435991</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Material_Code__c} ,30 )</expression>
     </formulas>
@@ -871,7 +871,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Batch_Number_Reagent__c , 100) </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_5_myRule_1_A1_7199211270</name>
+        <name>formula_5_myRule_1_A1_7976063766</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Batch_Number_Reagent__c} , 100)</expression>
     </formulas>
@@ -882,7 +882,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Serial_Number_Asset__c,30 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_6_myRule_1_A1_6852931312</name>
+        <name>formula_6_myRule_1_A1_3885640380</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Serial_Number_Asset__c},30 )</expression>
     </formulas>
@@ -893,7 +893,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Street__c,30 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_7_myRule_1_A1_7062822146</name>
+        <name>formula_7_myRule_1_A1_0890236802</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Street__c},30 )</expression>
     </formulas>
@@ -904,7 +904,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_City__c,30 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_8_myRule_1_A1_5224831931</name>
+        <name>formula_8_myRule_1_A1_2268988654</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.Visitor_City__c},30 )</expression>
     </formulas>
@@ -915,11 +915,11 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Address_Name__c ,50)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_9_myRule_1_A1_9180944634</name>
+        <name>formula_9_myRule_1_A1_4371532323</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Address_Name__c} ,50)</expression>
     </formulas>
-    <interviewLabel>BMX_Create_Regulatory_Reports_for_Local_Assessment-19_InterviewLabel</interviewLabel>
+    <interviewLabel>BMX_Create_Regulatory_Reports_for_Local_Assessment-22_InterviewLabel</interviewLabel>
     <label>Create Regulatory Reports for Local Assessment with MIR)</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -1841,114 +1841,6 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             <processMetadataValues>
                 <name>leftHandSideLabel</name>
                 <value>
-                    <stringValue>Contact last name</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>CMPL123CME__Author_Contact_Last_Name__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123CME__Complaint__r.BMX_Contact_Name__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Postcode</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>CMPL123CME__Author_Postcode__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123CME__Complaint__r.Visitor_Postal_Code__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Street</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>CMPL123CME__Author_Street__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123CME__Complaint__r.Visitor_Street__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
                     <stringValue>Catalogue/Reference number</stringValue>
                 </value>
             </processMetadataValues>
@@ -2074,7 +1966,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__Expected_Date_Of_Next_Report__c</field>
             <value>
-                <elementReference>myVariable_current.BMX_Due_Date__c</elementReference>
+                <elementReference>myVariable_current.BMX_Report_Due_to_Authority__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -2219,6 +2111,78 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             <field>CMPL123CME__Initial_Reporter_Phone__c</field>
             <value>
                 <elementReference>myVariable_current.CMPL123CME__Complaint__r.BMX_Contact_Phone__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Postcode</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>CMPL123CME__Initial_Reporter_Postcode__c</field>
+            <value>
+                <elementReference>myVariable_current.CMPL123CME__Complaint__r.Visitor_Postal_Code__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Street</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>CMPL123CME__Initial_Reporter_Street__c</field>
+            <value>
+                <elementReference>myVariable_current.CMPL123CME__Complaint__r.Visitor_Street__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -2585,7 +2549,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__Address__c</field>
             <value>
-                <elementReference>formula_17_myRule_16_A1_7681255336</elementReference>
+                <elementReference>formula_17_myRule_16_A1_0067063226</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -2909,7 +2873,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__Telephone_No_Email_Address__c</field>
             <value>
-                <elementReference>formula_18_myRule_16_A1_1184173070</elementReference>
+                <elementReference>formula_18_myRule_16_A1_1170875074</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3132,7 +3096,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__D1_Brand_Name__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_3824048803</elementReference>
+                <elementReference>formula_2_myRule_1_A1_8435051349</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3168,7 +3132,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__D2_Common_Device_Name__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_5009113528</elementReference>
+                <elementReference>formula_3_myRule_1_A1_2518070722</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3204,7 +3168,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__D4_Catalog_No__c</field>
             <value>
-                <elementReference>formula_4_myRule_1_A1_5510569830</elementReference>
+                <elementReference>formula_4_myRule_1_A1_2586435991</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3276,7 +3240,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__D4_Lot_No__c</field>
             <value>
-                <elementReference>formula_5_myRule_1_A1_7199211270</elementReference>
+                <elementReference>formula_5_myRule_1_A1_7976063766</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3312,7 +3276,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__D4_Serial_No__c</field>
             <value>
-                <elementReference>formula_6_myRule_1_A1_6852931312</elementReference>
+                <elementReference>formula_6_myRule_1_A1_3885640380</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3348,7 +3312,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__E1_Address_1__c</field>
             <value>
-                <elementReference>formula_7_myRule_1_A1_7062822146</elementReference>
+                <elementReference>formula_7_myRule_1_A1_0890236802</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3384,7 +3348,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__E1_City__c</field>
             <value>
-                <elementReference>formula_8_myRule_1_A1_5224831931</elementReference>
+                <elementReference>formula_8_myRule_1_A1_2268988654</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3420,7 +3384,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__E1_Facility_Name__c</field>
             <value>
-                <elementReference>formula_9_myRule_1_A1_9180944634</elementReference>
+                <elementReference>formula_9_myRule_1_A1_4371532323</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3456,7 +3420,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__E1_Postal_Code__c</field>
             <value>
-                <elementReference>formula_10_myRule_1_A1_0322861693</elementReference>
+                <elementReference>formula_10_myRule_1_A1_0494607895</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3492,7 +3456,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__E1_Zip_Code__c</field>
             <value>
-                <elementReference>formula_11_myRule_1_A1_2107422117</elementReference>
+                <elementReference>formula_11_myRule_1_A1_5952073457</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3672,7 +3636,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__Unique_Identifier_UDI__c</field>
             <value>
-                <elementReference>formula_12_myRule_1_A1_2256106172</elementReference>
+                <elementReference>formula_12_myRule_1_A1_3736472811</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__EMDR__c</object>
@@ -3967,7 +3931,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__Healthcare_Facility_Address__c</field>
             <value>
-                <elementReference>formula_21_myRule_20_A1_0407552736</elementReference>
+                <elementReference>formula_21_myRule_20_A1_5041243314</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -4183,7 +4147,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__Ser_or_Lot__c</field>
             <value>
-                <elementReference>formula_22_myRule_20_A1_2062660201</elementReference>
+                <elementReference>formula_22_myRule_20_A1_4399044527</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__TGA__c</object>
