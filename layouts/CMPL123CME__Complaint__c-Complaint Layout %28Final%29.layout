@@ -485,7 +485,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>BMX_EU_MIR_Due_Date__c</field>
+                <field>BMX_EU_MIR_Report_Type__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -511,7 +511,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>BMX_EU_MIR_Report_Type__c</field>
+                <field>BMX_EU_MIR_Due_Date__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -832,12 +832,6 @@
         <relatedList>CMPL123CME__EMDR__c.CMPL123CME__Complaint__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <relatedList>CMPL123CME__EU_MIR__c.CMPL123CME__Complaint__c</relatedList>
-    </relatedLists>
-    <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>CMPL123CME__Type_of_Report__c</fields>
@@ -848,6 +842,18 @@
         <fields>CMPL123CME__Report_Date__c</fields>
         <fields>CREATEDBY_USER</fields>
         <relatedList>CMPL123CME__MEDDEV__c.CMPL123CME__Complaint__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>CMPL123CME__Type_Of_Report__c</fields>
+        <fields>CMPL123_WF_Status__c</fields>
+        <fields>BMX_Due_Date__c</fields>
+        <fields>CMPL123CME__Countries_List__c</fields>
+        <fields>CMPL123CME__Recipient_Name_Of_NCA__c</fields>
+        <fields>CMPL123CME__Date_Of_Submission__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <relatedList>CMPL123CME__EU_MIR__c.CMPL123CME__Complaint__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
