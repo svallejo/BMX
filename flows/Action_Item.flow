@@ -53,9 +53,9 @@
                 <stringValue>Update Action Item Record Type</stringValue>
             </value>
         </processMetadataValues>
-        <name>myRule_31_A2</name>
+        <name>myRule_34_A2</name>
         <label>Update Record Type</label>
-        <locationX>3100</locationX>
+        <locationX>3400</locationX>
         <locationY>300</locationY>
         <actionName>Update_Action_Item_Record_Type</actionName>
         <actionType>flow</actionType>
@@ -109,9 +109,9 @@
                 <stringValue>Action_Item_Assignee</stringValue>
             </value>
         </processMetadataValues>
-        <name>myRule_34_A1</name>
+        <name>myRule_37_A1</name>
         <label>Send Email</label>
-        <locationX>3400</locationX>
+        <locationX>3700</locationX>
         <locationY>200</locationY>
         <actionName>Action_Item__c.Action_Item_Assignee</actionName>
         <actionType>emailAlert</actionType>
@@ -169,14 +169,14 @@
                 <stringValue>Action_item_is_due_5_days_before_target_due_date</stringValue>
             </value>
         </processMetadataValues>
-        <name>myWaitEvent_myWait_myRule_38_event_0_SA1</name>
+        <name>myWaitEvent_myWait_myRule_41_event_0_SA1</name>
         <label>Send Email</label>
-        <locationX>3800</locationX>
+        <locationX>4100</locationX>
         <locationY>200</locationY>
         <actionName>Action_Item__c.Action_item_is_due_5_days_before_target_due_date</actionName>
         <actionType>emailAlert</actionType>
         <connector>
-            <targetReference>myWaitEvent_myWait_myRule_38_event_0_postWaitExecutionAssignment</targetReference>
+            <targetReference>myWaitEvent_myWait_myRule_41_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
         <inputParameters>
             <name>SObjectRowId</name>
@@ -186,15 +186,15 @@
         </inputParameters>
     </actionCalls>
     <assignments>
-        <name>myWaitAssignment_myWait_myRule_38</name>
-        <label>myWaitAssignment_myWait_myRule_38</label>
+        <name>myWaitAssignment_myWait_myRule_41</name>
+        <label>myWaitAssignment_myWait_myRule_41</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>cancelWaits</assignToReference>
             <operator>Add</operator>
             <value>
-                <stringValue>myWait_myRule_38</stringValue>
+                <stringValue>myWait_myRule_41</stringValue>
             </value>
         </assignmentItems>
         <connector>
@@ -202,19 +202,19 @@
         </connector>
     </assignments>
     <assignments>
-        <name>myWaitEvent_myWait_myRule_38_event_0_postWaitExecutionAssignment</name>
-        <label>myWaitEvent_myWait_myRule_38_event_0_postWaitExecutionAssignment</label>
+        <name>myWaitEvent_myWait_myRule_41_event_0_postWaitExecutionAssignment</name>
+        <label>myWaitEvent_myWait_myRule_41_event_0_postWaitExecutionAssignment</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference>myWaitEvent_myWait_myRule_38_event_0_postActionExecutionVariable</assignToReference>
+            <assignToReference>myWaitEvent_myWait_myRule_41_event_0_postActionExecutionVariable</assignToReference>
             <operator>Assign</operator>
             <value>
                 <booleanValue>true</booleanValue>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>myWait_myRule_38</targetReference>
+            <targetReference>myWait_myRule_41</targetReference>
         </connector>
     </assignments>
     <decisions>
@@ -479,7 +479,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>isChangedDecision35_myRule_34_Assignee_c</targetReference>
+            <targetReference>isChangedDecision35_myRule_34_CMPL123_WF_Action_c</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -500,54 +500,22 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>isChangedDecision35_myRule_34_Assignee_c</targetReference>
+                <targetReference>isChangedDecision35_myRule_34_CMPL123_WF_Action_c</targetReference>
             </connector>
             <label>isChangedRule_32_myRule_31_CMPL123_WF_Action_c</label>
         </rules>
     </decisions>
     <decisions>
-        <name>isChangedDecision35_myRule_34_Assignee_c</name>
-        <label>isChangedDecision35_myRule_34_Assignee_c</label>
+        <name>isChangedDecision35_myRule_34_CMPL123_WF_Action_c</name>
+        <label>isChangedDecision35_myRule_34_CMPL123_WF_Action_c</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>isChangedDecision41_myRule_40_CMPL123_WF_Action_c</targetReference>
+            <targetReference>isChangedDecision38_myRule_37_Assignee_c</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>isChangedRule_35_myRule_34_Assignee_c</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.Assignee__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.Assignee__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>isChangedDecision41_myRule_40_CMPL123_WF_Action_c</targetReference>
-            </connector>
-            <label>isChangedRule_35_myRule_34_Assignee_c</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>isChangedDecision41_myRule_40_CMPL123_WF_Action_c</name>
-        <label>isChangedDecision41_myRule_40_CMPL123_WF_Action_c</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myPreWaitDecision_myWait_myRule_38</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_41_myRule_40_CMPL123_WF_Action_c</name>
+            <name>isChangedRule_35_myRule_34_CMPL123_WF_Action_c</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>myVariable_old</leftValueReference>
@@ -564,9 +532,41 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myPreWaitDecision_myWait_myRule_38</targetReference>
+                <targetReference>isChangedDecision38_myRule_37_Assignee_c</targetReference>
             </connector>
-            <label>isChangedRule_41_myRule_40_CMPL123_WF_Action_c</label>
+            <label>isChangedRule_35_myRule_34_CMPL123_WF_Action_c</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>isChangedDecision38_myRule_37_Assignee_c</name>
+        <label>isChangedDecision38_myRule_37_Assignee_c</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myPreWaitDecision_myWait_myRule_41</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>isChangedRule_38_myRule_37_Assignee_c</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>myVariable_old.Assignee__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>myVariable_current.Assignee__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myPreWaitDecision_myWait_myRule_41</targetReference>
+            </connector>
+            <label>isChangedRule_38_myRule_37_Assignee_c</label>
         </rules>
     </decisions>
     <decisions>
@@ -1431,6 +1431,123 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_31</name>
+            <conditionLogic>(1 OR 2) AND 3</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.CMPL123_WF_Action__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Return to Open</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.CMPL123_WF_Action__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reopen Action Item</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>isChangedRule_32_myRule_31_CMPL123_WF_Action_c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_31_A1</targetReference>
+            </connector>
+            <label>Workflow Sent Back to Open</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>11.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision33</name>
+        <label>myDecision33</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision36</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_34</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -1488,14 +1605,14 @@
                         <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>isChangedRule_32_myRule_31_CMPL123_WF_Action_c</leftValueReference>
+                <leftValueReference>isChangedRule_35_myRule_34_CMPL123_WF_Action_c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_31_A1</targetReference>
+                <targetReference>myRule_34_A1</targetReference>
             </connector>
             <label>Open is Performed</label>
         </rules>
@@ -1504,19 +1621,19 @@
         <processMetadataValues>
             <name>index</name>
             <value>
-                <numberValue>11.0</numberValue>
+                <numberValue>12.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision33</name>
-        <label>myDecision33</label>
+        <name>myDecision36</name>
+        <label>myDecision36</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision37</targetReference>
+            <targetReference>myDecision40</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_34</name>
+            <name>myRule_37</name>
             <conditionLogic>1 AND ((2 AND 5) OR (3 AND 4 AND 6))</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -1549,7 +1666,7 @@
                         <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>isChangedRule_35_myRule_34_Assignee_c</leftValueReference>
+                <leftValueReference>isChangedRule_38_myRule_37_Assignee_c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -1645,7 +1762,7 @@
                 <leftValueReference>myVariable_current.Change_Control__r.Implementation_Date__c</leftValueReference>
                 <operator>LessThanOrEqualTo</operator>
                 <rightValue>
-                    <elementReference>formula_36_myRule_34_0991600493</elementReference>
+                    <elementReference>formula_39_myRule_37_1785251592</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
@@ -1711,7 +1828,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_34_A1</targetReference>
+                <targetReference>myRule_37_A1</targetReference>
             </connector>
             <label>Assignee is changed</label>
         </rules>
@@ -1720,19 +1837,16 @@
         <processMetadataValues>
             <name>index</name>
             <value>
-                <numberValue>12.0</numberValue>
+                <numberValue>13.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision37</name>
-        <label>myDecision37</label>
+        <name>myDecision40</name>
+        <label>myDecision40</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision39</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_38</name>
+            <name>myRule_41</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -1763,120 +1877,9 @@
                 <operator>NotEqualTo</operator>
             </conditions>
             <connector>
-                <targetReference>myRule_38_pmetdec</targetReference>
+                <targetReference>myRule_41_pmetdec</targetReference>
             </connector>
             <label>Target due date is not null</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <processMetadataValues>
-            <name>index</name>
-            <value>
-                <numberValue>13.0</numberValue>
-            </value>
-        </processMetadataValues>
-        <name>myDecision39</name>
-        <label>myDecision39</label>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>myRule_40</name>
-            <conditionLogic>(1 OR 2) AND 3</conditionLogic>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.CMPL123_WF_Action__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Return to Open</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.CMPL123_WF_Action__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Reopen Action Item</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>isChangedRule_41_myRule_40_CMPL123_WF_Action_c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <label>Workflow Sent Back to Open</label>
         </rules>
     </decisions>
     <decisions>
@@ -2083,16 +2086,16 @@
         </rules>
     </decisions>
     <decisions>
-        <name>myPostWaitDecision_myWaitEvent_myWait_myRule_38_event_0</name>
-        <label>myPostWaitDecision_myWaitEvent_myWait_myRule_38_event_0</label>
+        <name>myPostWaitDecision_myWaitEvent_myWait_myRule_41_event_0</name>
+        <label>myPostWaitDecision_myWaitEvent_myWait_myRule_41_event_0</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myWaitEvent_myWait_myRule_38_event_0_postWaitExecutionAssignment</targetReference>
+            <targetReference>myWaitEvent_myWait_myRule_41_event_0_postWaitExecutionAssignment</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myPostWaitRule_myWaitEvent_myWait_myRule_38_event_0</name>
+            <name>myPostWaitRule_myWaitEvent_myWait_myRule_41_event_0</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>myVariable_current.Target_Due_Date__c</leftValueReference>
@@ -2102,22 +2105,22 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myWaitEvent_myWait_myRule_38_event_0_SA1</targetReference>
+                <targetReference>myWaitEvent_myWait_myRule_41_event_0_SA1</targetReference>
             </connector>
-            <label>myPostWaitRule_myWaitEvent_myWait_myRule_38_event_0</label>
+            <label>myPostWaitRule_myWaitEvent_myWait_myRule_41_event_0</label>
         </rules>
     </decisions>
     <decisions>
-        <name>myPreWaitDecision_myWait_myRule_38</name>
-        <label>myPreWaitDecision_myWait_myRule_38</label>
+        <name>myPreWaitDecision_myWait_myRule_41</name>
+        <label>myPreWaitDecision_myWait_myRule_41</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myWaitAssignment_myWait_myRule_38</targetReference>
+            <targetReference>myWaitAssignment_myWait_myRule_41</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myPreWaitRule_myWait_myRule_38</name>
+            <name>myPreWaitRule_myWait_myRule_41</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -2150,20 +2153,20 @@
             <connector>
                 <targetReference>myDecision</targetReference>
             </connector>
-            <label>myPreWaitRule_myWait_myRule_38</label>
+            <label>myPreWaitRule_myWait_myRule_41</label>
         </rules>
     </decisions>
     <decisions>
-        <name>myRule_38_pmetdec</name>
+        <name>myRule_41_pmetdec</name>
         <label>Previously Met Decision</label>
-        <locationX>3800</locationX>
+        <locationX>4100</locationX>
         <locationY>100</locationY>
         <defaultConnector>
-            <targetReference>myWait_myRule_38</targetReference>
+            <targetReference>myWait_myRule_41</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
         <rules>
-            <name>myRule_38_pmetnullrule</name>
+            <name>myRule_41_pmetnullrule</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>myVariable_old</leftValueReference>
@@ -2173,12 +2176,12 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myWait_myRule_38</targetReference>
+                <targetReference>myWait_myRule_41</targetReference>
             </connector>
             <label>Previously Met - Null</label>
         </rules>
         <rules>
-            <name>myRule_38_pmetrule</name>
+            <name>myRule_41_pmetrule</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -2218,7 +2221,7 @@
                 <stringValue>TODAY()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_36_myRule_34_0991600493</name>
+        <name>formula_39_myRule_37_1785251592</name>
         <dataType>Date</dataType>
         <expression>TODAY()</expression>
     </formulas>
@@ -3086,11 +3089,88 @@
             <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_31_A1</name>
-        <label>Check Required</label>
+        <label>Clear TFUKV</label>
         <locationX>3100</locationX>
         <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Task Field Update Key Value</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>GlobalConstant</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>CMPL123Task_Key_Value__c</field>
+        </inputAssignments>
+        <object>Action_Item__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Action_Item__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_34_A1</name>
+        <label>Check Required</label>
+        <locationX>3400</locationX>
+        <locationY>200</locationY>
         <connector>
-            <targetReference>myRule_31_A2</targetReference>
+            <targetReference>myRule_34_A2</targetReference>
         </connector>
         <filters>
             <processMetadataValues>
@@ -3227,7 +3307,7 @@
         <object>Action_Item__c</object>
     </recordUpdates>
     <startElementReference>isChangedDecision2_myRule_1_CMPL123_WF_Action_c</startElementReference>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>cancelWaits</name>
         <dataType>String</dataType>
@@ -3252,7 +3332,7 @@
         <objectType>Action_Item__c</objectType>
     </variables>
     <variables>
-        <name>myWaitEvent_myWait_myRule_38_event_0_postActionExecutionVariable</name>
+        <name>myWaitEvent_myWait_myRule_41_event_0_postActionExecutionVariable</name>
         <dataType>Boolean</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
@@ -3262,8 +3342,8 @@
         </value>
     </variables>
     <waits>
-        <name>myWait_myRule_38</name>
-        <label>myWait_myRule_38</label>
+        <name>myWait_myRule_41</name>
+        <label>myWait_myRule_41</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>defaultLabel</defaultConnectorLabel>
@@ -3274,17 +3354,17 @@
                     <stringValue>referenced</stringValue>
                 </value>
             </processMetadataValues>
-            <name>myWaitEvent_myWait_myRule_38_event_0</name>
+            <name>myWaitEvent_myWait_myRule_41_event_0</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>myWaitEvent_myWait_myRule_38_event_0_postActionExecutionVariable</leftValueReference>
+                <leftValueReference>myWaitEvent_myWait_myRule_41_event_0_postActionExecutionVariable</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myPostWaitDecision_myWaitEvent_myWait_myRule_38_event_0</targetReference>
+                <targetReference>myPostWaitDecision_myWaitEvent_myWait_myRule_41_event_0</targetReference>
             </connector>
             <eventType>DateRefAlarmEvent</eventType>
             <inputParameters>
@@ -3317,7 +3397,7 @@
                     <stringValue>Target_Due_Date__c</stringValue>
                 </value>
             </inputParameters>
-            <label>myWaitEvent_myWait_myRule_38_event_0</label>
+            <label>myWaitEvent_myWait_myRule_41_event_0</label>
         </waitEvents>
     </waits>
 </Flow>
