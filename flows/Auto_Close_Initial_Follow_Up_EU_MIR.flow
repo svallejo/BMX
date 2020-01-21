@@ -185,11 +185,11 @@
                 <stringValue>IF(OR([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,[CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_1843364579</name>
+        <name>formula_3_myRule_1_A1_1850525217</name>
         <dataType>Date</dataType>
         <expression>IF(OR({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,{!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c} = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</expression>
     </formulas>
-    <interviewLabel>Auto_Close_Initial_Follow_Up_EU_MIR-1_InterviewLabel</interviewLabel>
+    <interviewLabel>Auto_Close_Initial_Follow_Up_EU_MIR-2_InterviewLabel</interviewLabel>
     <label>Auto Close Initial/Follow Up EU MIR</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -257,7 +257,79 @@
             </processMetadataValues>
             <field>BMX_Due_Date__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_1843364579</elementReference>
+                <elementReference>formula_3_myRule_1_A1_1850525217</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Local Assessment</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>CMPL123CME__Questionnaire__c</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Local_Assessment__c</field>
+            <value>
+                <elementReference>myVariable_current.BMX_Local_Assessment__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Complaint</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>CMPL123CME__Complaint__c</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>CMPL123CME__Complaint__c</field>
+            <value>
+                <elementReference>myVariable_current.CMPL123CME__Complaint__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
