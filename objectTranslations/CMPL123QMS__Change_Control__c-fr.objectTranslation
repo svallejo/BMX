@@ -4,7 +4,7 @@
         <name>Action_Item_Records__c</name>
     </fields>
     <fields>
-        <label>Action compl�t�e</label>
+        <label>Action complétée</label>
         <name>Action_Items_Complete__c</name>
     </fields>
     <fields>
@@ -12,36 +12,36 @@
         <name>Affected_Areas__c</name>
         <picklistValues>
             <masterLabel>Area 1</masterLabel>
-            <translation>Zone impact�e 1</translation>
+            <translation><!-- Area 1 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Area 2</masterLabel>
-            <translation>Zone impact�e 2</translation>
+            <translation><!-- Area 2 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Area 3</masterLabel>
-            <translation>Zone impact�e 3</translation>
+            <translation><!-- Area 3 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Area 4</masterLabel>
-            <translation>Zone impact�e 4</translation>
+            <translation><!-- Area 4 --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label>Action apr�s impl�mentation non close</label>
+        <label>Action après implémentation non close</label>
         <name>After_Release_Action_Items_Not_Closed__c</name>
     </fields>
     <fields>
-        <label>Assign�e �</label>
+        <label><!-- Final Approver 1 --></label>
         <name>Assigned_To__c</name>
         <relationshipLabel><!-- Change Control (Assigned To) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Num�ro de lot ou article</label>
+        <label><!-- Batch/Lot Number or Item # --></label>
         <name>Batch_Lot_Number_or_Item__c</name>
     </fields>
     <fields>
-        <label>B�timent</label>
+        <label><!-- Building --></label>
         <name>Building__c</name>
     </fields>
     <fields>
@@ -53,11 +53,11 @@
         <name>CMPL123QMS__Change_Description__c</name>
     </fields>
     <fields>
-        <label>date d'�ch�ance</label>
+        <label><!-- Date Due --></label>
         <name>CMPL123QMS__Date_Due__c</name>
     </fields>
     <fields>
-        <label>D�partement</label>
+        <label><!-- Department --></label>
         <name>CMPL123QMS__Department__c</name>
         <picklistValues>
             <masterLabel>Manufacturing</masterLabel>
@@ -65,15 +65,15 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Quality</masterLabel>
-            <translation>Qualit�</translation>
+            <translation><!-- Quality --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Regulatory</masterLabel>
-            <translation>R�glementaire</translation>
+            <translation><!-- Regulatory --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Safety</masterLabel>
-            <translation>S�curit�</translation>
+            <translation><!-- Safety --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -91,12 +91,12 @@
         <relationshipLabel><!-- Change Control (Final Approver 4) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approuv� par</label>
+        <label><!-- Management Approved By --></label>
         <name>CMPL123QMS__Management_Approved_By__c</name>
         <relationshipLabel><!-- Change Control (Final Approver 5) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approuv� le</label>
+        <label><!-- Management Approved On --></label>
         <name>CMPL123QMS__Management_Approved_On__c</name>
     </fields>
     <fields>
@@ -105,7 +105,7 @@
         <relationshipLabel><!-- Change Control (Final Approver 6) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Date d'�ch�ance initiale</label>
+        <label><!-- Original Due Date --></label>
         <name>CMPL123QMS__Original_Due_Date__c</name>
     </fields>
     <fields>
@@ -117,7 +117,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Incoming Inspection</masterLabel>
-            <translation>Process de contr�le � r�ception</translation>
+            <translation><!-- Incoming Inspection --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Manufacturing</masterLabel>
@@ -129,12 +129,12 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Approbation qualit� par</label>
+        <label><!-- QA Approved By --></label>
         <name>CMPL123QMS__QA_Approved_By__c</name>
         <relationshipLabel><!-- Change Control (QA Approved By) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbation qualit� le</label>
+        <label><!-- QA Approved On --></label>
         <name>CMPL123QMS__QA_Approved_On__c</name>
     </fields>
     <fields>
@@ -171,12 +171,12 @@
         <name>CMPL123Task_Key_Value__c</name>
     </fields>
     <fields>
-        <label>Action r�alis�e par</label>
+        <label><!-- Workflow Action Performed By --></label>
         <name>CMPL123_WF_Action_Performed_By__c</name>
         <relationshipLabel><!-- Change Control (Workflow Action Performed By) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Action r�alis�e le</label>
+        <label><!-- Workflow Action Performed On --></label>
         <name>CMPL123_WF_Action_Performed_On__c</name>
     </fields>
     <fields>
@@ -253,7 +253,7 @@
     </fields>
     <fields>
         <help>Revue du change control r�alis�e</help>
-        <label>Revue du change control r�alis�e</label>
+        <label><!-- Change Control Review Completed? --></label>
         <name>Change_Control_Review_Completed__c</name>
     </fields>
     <fields>
@@ -282,7 +282,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Moderate</masterLabel>
-            <translation>Mod�r�</translation>
+            <translation><!-- Moderate --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Project Transfer</masterLabel>
@@ -295,7 +295,7 @@
         <relationshipLabel><!-- Change Control (Change Owner) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Change control de type Autre</label>
+        <label><!-- Change Type - Other --></label>
         <name>Change_Type_Other__c</name>
     </fields>
     <fields>
@@ -303,7 +303,7 @@
         <name>Change_Type_s__c</name>
         <picklistValues>
             <masterLabel>Control Tool</masterLabel>
-            <translation>outils de contr�le</translation>
+            <translation><!-- Control Tool --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Decommissioning</masterLabel>
@@ -327,15 +327,15 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Equipment</masterLabel>
-            <translation>�quipement</translation>
+            <translation><!-- Equipment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Expiration</masterLabel>
-            <translation>p�remption</translation>
+            <translation><!-- Expiration --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Facilities/ Utilities</masterLabel>
-            <translation>locaux et utilit�s</translation>
+            <translation><!-- Facilities/ Utilities --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Firmware</masterLabel>
@@ -343,7 +343,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Hardware/Peripherals</masterLabel>
-            <translation>hardware/ p�riph�riques</translation>
+            <translation><!-- Hardware/Peripherals --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Instrument</masterLabel>
@@ -351,7 +351,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Labeling</masterLabel>
-            <translation>notice/�tiquette</translation>
+            <translation><!-- Labeling --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Non-product Software</masterLabel>
@@ -375,7 +375,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Product discontinuation</masterLabel>
-            <translation>arr�t de commercialisation</translation>
+            <translation><!-- Product discontinuation --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product – Finished</masterLabel>
@@ -387,15 +387,15 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>QC Specification</masterLabel>
-            <translation>Sp�cification de contr�le</translation>
+            <translation><!-- QC Specification --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>QMS Document</masterLabel>
-            <translation>documentation qualit�</translation>
+            <translation><!-- QMS Document --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Quality System</masterLabel>
-            <translation>syst�me qualit�</translation>
+            <translation><!-- Quality System --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Raw Material/ Component, or Vendor</masterLabel>
@@ -439,7 +439,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Impact sur le syst�me qualit�</label>
+        <label><!-- Change impacts Quality System? --></label>
         <name>Change_impacts_Quality_System__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -483,7 +483,7 @@
         <name>Comment_Product__c</name>
     </fields>
     <fields>
-        <label>version du logiciel</label>
+        <label><!-- Commercial Software Version --></label>
         <name>Commercial_Software_Version__c</name>
     </fields>
     <fields>
@@ -491,7 +491,7 @@
         <name>Commercialization_Coverage__c</name>
     </fields>
     <fields>
-        <label>Autorit�s comp�tentes impact�es</label>
+        <label><!-- Competent Authority Impacted? --></label>
         <name>Competent_Authority_Impacted__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -503,11 +503,11 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>actions apr�s impl�mentation compl�t�es</label>
+        <label><!-- % Complete - After Release --></label>
         <name>Complete_After_Release__c</name>
     </fields>
     <fields>
-        <label>actions avant impl�mentation compl�t�es</label>
+        <label><!-- % Complete - Before Release --></label>
         <name>Complete_Before_Release__c</name>
     </fields>
     <fields>
@@ -519,19 +519,19 @@
         <name>Days_Open__c</name>
     </fields>
     <fields>
-        <label>D�partement Autre</label>
+        <label><!-- Department - Other --></label>
         <name>Department_Other__c</name>
     </fields>
     <fields>
-        <label>D�partement</label>
+        <label><!-- Department --></label>
         <name>Department__c</name>
     </fields>
     <fields>
-        <label>D�partement</label>
+        <label><!-- Department(s) --></label>
         <name>Department_s__c</name>
         <picklistValues>
             <masterLabel>Calibration</masterLabel>
-            <translation>M�trologie</translation>
+            <translation><!-- Calibration --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Clinical Affairs</masterLabel>
@@ -555,7 +555,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>General Management</masterLabel>
-            <translation>Direction g�n�rale</translation>
+            <translation><!-- General Management --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Global Supply Chain QA</masterLabel>
@@ -579,7 +579,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Instrument Refurbishment Center</masterLabel>
-            <translation>Centre de remise � neuf des instruments</translation>
+            <translation><!-- Instrument Refurbishment Center --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>LIMS</masterLabel>
@@ -595,7 +595,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>MFG (Reagents)</masterLabel>
-            <translation>Production(r�actifs)</translation>
+            <translation><!-- MFG (Reagents) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Maintenance and Reliability</masterLabel>
@@ -691,7 +691,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>D�crire le type de formation</label>
+        <label><!-- Describe Type of Training --></label>
         <name>Describe_Type_of_Training__c</name>
     </fields>
     <fields>
@@ -699,11 +699,11 @@
         <name>Description_of_Change__c</name>
     </fields>
     <fields>
-        <label>N� lot</label>
+        <label><!-- Device Lot Number (s) --></label>
         <name>Device_Lot_Number_s__c</name>
     </fields>
     <fields>
-        <label>R�f�rence</label>
+        <label><!-- Device Number --></label>
         <name>Device_Number__c</name>
     </fields>
     <fields>
@@ -712,7 +712,7 @@
         <relationshipLabel><!-- Change Control --></relationshipLabel>
     </fields>
     <fields>
-        <label>Document impact�</label>
+        <label><!-- Document Impacted --></label>
         <name>Document_Impacted__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -732,7 +732,7 @@
         <name>Document_Name__c</name>
     </fields>
     <fields>
-        <label>R�f�rence du document</label>
+        <label><!-- Document Reference? --></label>
         <name>Document_Reference__c</name>
     </fields>
     <fields>
@@ -740,7 +740,7 @@
         <name>Document_Type__c</name>
     </fields>
     <fields>
-        <label>Document impact�</label>
+        <label><!-- Documents Affected? --></label>
         <name>Documents_Affected__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -756,7 +756,7 @@
         <name>Dosage__c</name>
     </fields>
     <fields>
-        <label>Date d'�ch�ance</label>
+        <label><!-- Due Date --></label>
         <name>Due_Date__c</name>
     </fields>
     <fields>
@@ -764,7 +764,7 @@
         <name>Emergency_Change__c</name>
     </fields>
     <fields>
-        <label>Equipement impact�</label>
+        <label><!-- Equipment Affected? --></label>
         <name>Equipment_Affected__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -780,7 +780,7 @@
         <name>Equipment_Description_Custom__c</name>
     </fields>
     <fields>
-        <label>Description de l'�quipement</label>
+        <label><!-- Equipment Description --></label>
         <name>Equipment_Description__c</name>
     </fields>
     <fields>
@@ -792,7 +792,7 @@
         <name>Equipment_ID__c</name>
     </fields>
     <fields>
-        <label>Equipement impact�</label>
+        <label><!-- Equipment Impacted --></label>
         <name>Equipment_Impacted__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -857,7 +857,7 @@
         <name>GxP_Change__c</name>
     </fields>
     <fields>
-        <label>Site de production impact�</label>
+        <label><!-- Impacted Manufacturing Site(s) --></label>
         <name>Impacted_Manufacturing_Site_s__c</name>
         <picklistValues>
             <masterLabel>BSB (Shanghai)</masterLabel>
@@ -941,31 +941,31 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Site impact�</label>
+        <label><!-- Impacted Site(s) --></label>
         <name>Impacted_Site_s__c</name>
         <picklistValues>
             <masterLabel>Site 1</masterLabel>
-            <translation>Site impact� 1</translation>
+            <translation><!-- Site 1 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Site 2</masterLabel>
-            <translation>Site impact� 2</translation>
+            <translation><!-- Site 2 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Site 3</masterLabel>
-            <translation>Site impact� 3</translation>
+            <translation><!-- Site 3 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Site 4</masterLabel>
-            <translation>Site impact� 4</translation>
+            <translation><!-- Site 4 --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label>Date d'impl�mentation finale</label>
+        <label><!-- Implementation Date --></label>
         <name>Implementation_Date_Final__c</name>
     </fields>
     <fields>
-        <label>Date d'impl�mentation</label>
+        <label><!-- Implementation Date --></label>
         <name>Implementation_Date__c</name>
     </fields>
     <fields>
@@ -1099,7 +1099,7 @@
         <name>Legal_Manufacturer__c</name>
     </fields>
     <fields>
-        <label>Process/Equipement/R�actif</label>
+        <label><!-- Linked Process/Equipment/Reagent --></label>
         <name>Linked_Process_Equipment_and_or_Reagen__c</name>
     </fields>
     <fields>
@@ -1111,7 +1111,7 @@
         <name>Location__c</name>
     </fields>
     <fields>
-        <label>Fabriqu� ou achet�</label>
+        <label><!-- Make or Buy --></label>
         <name>Make_or_Buy__c</name>
     </fields>
     <fields>
@@ -1119,7 +1119,7 @@
         <name>Manufactured_Date__c</name>
     </fields>
     <fields>
-        <label>n� lot</label>
+        <label><!-- Material Lot Number(s) --></label>
         <name>Material_Lot_Number_s__c</name>
     </fields>
     <fields>
@@ -1127,31 +1127,31 @@
         <name>Material_Name__c</name>
     </fields>
     <fields>
-        <label>R�f�rence du Composant/consommable</label>
+        <label><!-- Material Number --></label>
         <name>Material_Number__c</name>
     </fields>
     <fields>
-        <label>Composant/consommable impact�</label>
+        <label><!-- Material(s) Affected? --></label>
         <name>Material_s_Affected__c</name>
         <picklistValues>
             <masterLabel>Material 1</masterLabel>
-            <translation>Composant/consommable 1 impact�</translation>
+            <translation><!-- Material 1 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Material 2</masterLabel>
-            <translation>Composant/consommable 2 impact�</translation>
+            <translation><!-- Material 2 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Material 3</masterLabel>
-            <translation>Composant/consommable 3 impact�</translation>
+            <translation><!-- Material 3 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Material 4</masterLabel>
-            <translation>Composant/consommable 4 impact�</translation>
+            <translation><!-- Material 4 --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label>Non Produc Software impact�</label>
+        <label><!-- Non Product Software Impacted --></label>
         <name>Non_Product_Software_Impacted__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1183,7 +1183,7 @@
         <name>Origination_Location__c</name>
         <picklistValues>
             <masterLabel>Algeria</masterLabel>
-            <translation>Alg�rie</translation>
+            <translation><!-- Algeria --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Argentina</masterLabel>
@@ -1191,7 +1191,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Australia &amp; New Zealand</masterLabel>
-            <translation>Australie et Nouvelle-Z�lande</translation>
+            <translation><!-- Australia &amp; New Zealand --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Austria</masterLabel>
@@ -1207,7 +1207,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Brazil</masterLabel>
-            <translation>Br�sil</translation>
+            <translation><!-- Brazil --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Canada</masterLabel>
@@ -1235,7 +1235,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Czech Republic</masterLabel>
-            <translation>R�publique Tch�que</translation>
+            <translation><!-- Czech Republic --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Denmark</masterLabel>
@@ -1263,7 +1263,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Greece</masterLabel>
-            <translation>Gr�ce</translation>
+            <translation><!-- Greece --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Grenoble</masterLabel>
@@ -1431,12 +1431,12 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Cr�ateur</label>
+        <label><!-- Originator --></label>
         <name>Originator__c</name>
         <relationshipLabel><!-- Change Control (Originator) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Produit impact�</label>
+        <label><!-- Product Impacted --></label>
         <name>Product_Impacted__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1452,7 +1452,7 @@
         <name>Product_Item_Description__c</name>
     </fields>
     <fields>
-        <label>R�f�rence du produit</label>
+        <label><!-- Product Item Number --></label>
         <name>Product_Item_Number__c</name>
     </fields>
     <fields>
@@ -1486,42 +1486,42 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Produit associ�</label>
+        <label><!-- Product(s) Affected? --></label>
         <name>Product_s_Affected__c</name>
         <picklistValues>
             <masterLabel>Product 1</masterLabel>
-            <translation>Produit associ� 1</translation>
+            <translation><!-- Product 1 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product 2</masterLabel>
-            <translation>Produit associ� 2</translation>
+            <translation><!-- Product 2 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product 3</masterLabel>
-            <translation>Produit associ� 3</translation>
+            <translation><!-- Product 3 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product 4</masterLabel>
-            <translation>Produit associ� 4</translation>
+            <translation><!-- Product 4 --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label>Approbateur qualit�</label>
+        <label><!-- CRB Quality Approver --></label>
         <name>Quality_Approver__c</name>
         <relationshipLabel><!-- Change Control (CRB Quality Approver) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Contact Qualit�</label>
+        <label><!-- Final Approver 2 --></label>
         <name>Quality_Contact__c</name>
         <relationshipLabel><!-- Change Control (Quality Contact) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Ev�nement qualit�</label>
+        <label><!-- Quality Event --></label>
         <name>Quality_Event__c</name>
         <relationshipLabel><!-- Change Control --></relationshipLabel>
     </fields>
     <fields>
-        <label>SMQ impact�</label>
+        <label><!-- Quality Management System Impacted --></label>
         <name>Quality_Management_System_Impacted__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1533,7 +1533,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>R�f�rences</label>
+        <label><!-- Reference Numbers --></label>
         <name>Reference_Numbers__c</name>
     </fields>
     <fields>
@@ -1541,37 +1541,37 @@
         <name>Related_to_existing_Q_E_records__c</name>
     </fields>
     <fields>
-        <label>Approbateur 1 de l'impl�mentation</label>
+        <label><!-- Release Approver 1 --></label>
         <name>Release_Approver_1__c</name>
         <relationshipLabel><!-- Change Control (Release Approver 1) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbateur 2 de l'impl�mentation</label>
+        <label><!-- Release Approver 2 --></label>
         <name>Release_Approver_2__c</name>
         <relationshipLabel><!-- Change Control (Release Approver 2) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbateur 3 de l'impl�mentation</label>
+        <label><!-- Release Approver 3 --></label>
         <name>Release_Approver_3__c</name>
         <relationshipLabel><!-- Change Control (Release Approver 3) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbateur 4de l'impl�mentation</label>
+        <label><!-- Release Approver 4 --></label>
         <name>Release_Approver_4__c</name>
         <relationshipLabel><!-- Change Control (Release Approver 4) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbateur 5 de l'impl�mentation</label>
+        <label><!-- Release Approver 5 --></label>
         <name>Release_Approver_5__c</name>
         <relationshipLabel><!-- Change Control (Release Approver 5) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbateur 6 de l'impl�mentation</label>
+        <label><!-- Release Approver 6 --></label>
         <name>Release_Approver_6__c</name>
         <relationshipLabel><!-- Change Control (Release Approver 6) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Appobateur qualit� de l'impl�mentation</label>
+        <label><!-- Release (QA) Approver --></label>
         <name>Release_QA_Approver__c</name>
         <relationshipLabel><!-- Change Control (Release (QA) Approver) --></relationshipLabel>
     </fields>
@@ -1584,7 +1584,7 @@
         <name>Required_Qualitification_Description__c</name>
     </fields>
     <fields>
-        <label>R�f�rence de l'analyse de risque</label>
+        <label><!-- Risk Analysis Reference Number --></label>
         <name>Risk_Analysis_Reference_Number__c</name>
     </fields>
     <fields>
@@ -1616,7 +1616,7 @@
         <name>Rollback_Plan_Summary__c</name>
     </fields>
     <fields>
-        <label>Pi�ce/local</label>
+        <label><!-- Room --></label>
         <name>Room__c</name>
     </fields>
     <fields>
@@ -1624,7 +1624,7 @@
         <name>Short_Description__c</name>
     </fields>
     <fields>
-        <label>Significativit� du change</label>
+        <label><!-- Significance of the Change --></label>
         <name>Significance_of_the_Change__c</name>
         <picklistValues>
             <masterLabel>Non-Significant</masterLabel>
@@ -1669,7 +1669,7 @@
         <relationshipLabel><!-- Change Control (Supervisor/Manager) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Fournisseur impact�</label>
+        <label><!-- Supplier Impacted --></label>
         <name>Supplier_Impacted__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1681,7 +1681,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Syst�me impact�</label>
+        <label><!-- System Impacted --></label>
         <name>System_Impacted__c</name>
     </fields>
     <fields>
@@ -1741,11 +1741,11 @@
         <name>Total_Post_Release_Approvers__c</name>
     </fields>
     <fields>
-        <label>Nombre d'avis d'xpert qualit� r�alis�s</label>
+        <label><!-- Total Quality Assessments done --></label>
         <name>Total_Quality_Assessments_done__c</name>
     </fields>
     <fields>
-        <label>Nombre d'action ouverte non assign�e</label>
+        <label><!-- Total Unassigned Open Action --></label>
         <name>Total_Unassigned_Open_Action__c</name>
     </fields>
     <fields>
@@ -1789,7 +1789,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Avis d'expert compl�t�</label>
+        <label><!-- % impact assessments complete --></label>
         <name>impact_assessments_complete__c</name>
     </fields>
     <caseValues>
@@ -1986,11 +1986,11 @@
         <name>All_Action_Items_Must_be_Closed</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Tous les avis d'expert � clore avant revue</errorMessage>
+        <errorMessage><!-- All impact assessments created must be completed prior to performing Submit for Review --></errorMessage>
         <name>All_Impact_Ass_Closed_before_Review</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Toutes les actions avant impl�mentation closes</errorMessage>
+        <errorMessage><!-- &quot;Submit for Release Approval&quot; can only be performed when all action items that do not have After Release checked are in a closed status --></errorMessage>
         <name>All_PreRelease_Action_Items_are_Closed</name>
     </validationRules>
     <validationRules>
@@ -1998,7 +1998,7 @@
         <name>CRBCommentsonly_changed_at_crb_or_qa_rev</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Approbateur CRB1 doit etre compl�t�</errorMessage>
+        <errorMessage><!-- Reassign an approver into the CRB Approver 1 field. --></errorMessage>
         <name>CRB_Approver_1_Must_Be_Populated</name>
     </validationRules>
     <validationRules>
@@ -2026,7 +2026,7 @@
         <name>Change_UnSuccessful</name>
     </validationRules>
     <validationRules>
-        <errorMessage>D�partement - Autre � compl�ter</errorMessage>
+        <errorMessage><!-- If &quot;Other with Mandatory field to specify&quot; is selected for Department, Department-Other is required --></errorMessage>
         <name>Department_Other</name>
     </validationRules>
     <validationRules>
@@ -2038,15 +2038,15 @@
         <name>External_Responsible_Person</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Approbateur final 1 doit etre compl�t�</errorMessage>
+        <errorMessage><!-- Reassign a final approver into the Final Approver 1 field. --></errorMessage>
         <name>Final_Approver_1_Must_Be_Populated</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Avis d'expert � compl�ter avant Revue CRB</errorMessage>
+        <errorMessage><!-- At least one impact assessment must be created and completed for Change Levels that are Moderate, Major, or Project Transfer prior to performing &quot;Submit for Review&quot;. --></errorMessage>
         <name>Impact_Assessment_completed_before_Revie</name>
     </validationRules>
     <validationRules>
-        <errorMessage>La date d'impl�mentation ne peut pas �tre avant aujourd'hui</errorMessage>
+        <errorMessage><!-- Implementation Date must be the current date or a future date --></errorMessage>
         <name>Implementati_Date_cannot_be_before_today</name>
     </validationRules>
     <validationRules>
@@ -2058,7 +2058,7 @@
         <name>Internal_mfgsite_Responsible_Person</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Strat�gie de non application du change et retour � l'�tat initial</errorMessage>
+        <errorMessage><!-- Is a Rollback Required must be populated if No is provided for the &quot;Was the Change Successful?&quot; --></errorMessage>
         <name>Is_a_rollback_plan_required_required</name>
     </validationRules>
     <validationRules>
@@ -2078,11 +2078,11 @@
         <name>Prevent_Edit_Change_control_on_closed_QE</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Produit impact� requis</errorMessage>
+        <errorMessage><!-- When &quot;Yes&quot; is selected for Product Impacted, then either Product Item Number or Product Range must be populated. --></errorMessage>
         <name>Product_Impacted_Required_Fields</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Approbateur 1 de l'impl�mentation doit etre compl�t�</errorMessage>
+        <errorMessage><!-- Release Approver 1 field must be populated if release approvals are required. --></errorMessage>
         <name>Release_Approver_1_Must_Be_Populated</name>
     </validationRules>
     <validationRules>
@@ -2094,15 +2094,15 @@
         <name>Required_Training_Required</name>
     </validationRules>
     <validationRules>
-        <errorMessage>R�f�rence de l'analyse de risque requise</errorMessage>
+        <errorMessage><!-- Risk Analysis Reference Number required to be populated when &quot;Yes&quot; is selected for Risk Assessment --></errorMessage>
         <name>Risk_Analysis_Reference_Required</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Strat�gie de non application du change et retour � l'�tat initial</errorMessage>
+        <errorMessage><!-- Rollback Plan Summary must be populated if No is provided for the &quot;Was the Change Successful?&quot; --></errorMessage>
         <name>Rollback_Plan_Summary_Required</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Assign�s manquants dans l'action</errorMessage>
+        <errorMessage><!-- You cannot submit the change for review with assignees missing for action items --></errorMessage>
         <name>assignees_missing_in_action_items</name>
     </validationRules>
     <webLinks>

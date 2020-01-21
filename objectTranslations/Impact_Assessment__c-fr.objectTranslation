@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
-        <label>Assign�e</label>
+        <label><!-- Assignee --></label>
         <name>Assignee__c</name>
         <relationshipLabel>Assign�e</relationshipLabel>
     </fields>
@@ -13,12 +13,12 @@
         <name>CMPL123Task_Key_Value__c</name>
     </fields>
     <fields>
-        <label>Action r�alis�e par</label>
+        <label><!-- Workflow Action Performed By --></label>
         <name>CMPL123_WF_Action_Performed_By__c</name>
         <relationshipLabel>Action r�alis�e par</relationshipLabel>
     </fields>
     <fields>
-        <label>Action r�alis� le</label>
+        <label><!-- Workflow Action Performed On --></label>
         <name>CMPL123_WF_Action_Performed_On__c</name>
     </fields>
     <fields>
@@ -35,7 +35,7 @@
         <relationshipLabel>change control</relationshipLabel>
     </fields>
     <fields>
-        <label>Date de cr�ation?</label>
+        <label><!-- Created Date --></label>
         <name>CreatedDate__c</name>
     </fields>
     <fields>
@@ -213,7 +213,7 @@
         <name>Implementation_Action_Restriction</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Bloqu� en attente de revue qualit�</errorMessage>
+        <errorMessage><!-- All Child Records are locked when the Change Control is in the status of Pending Quality Review --></errorMessage>
         <name>Lock_when_CC_is_in_Pending_Quality_Revie</name>
     </validationRules>
     <validationRules>

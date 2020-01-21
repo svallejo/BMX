@@ -13,12 +13,12 @@
         <name>CMPL123Task_Key_Value__c</name>
     </fields>
     <fields>
-        <label>Action r�alis�e par</label>
+        <label><!-- Workflow Action Performed By --></label>
         <name>CMPL123_WF_Action_Performed_By__c</name>
         <relationshipLabel>Action r�alis�e par</relationshipLabel>
     </fields>
     <fields>
-        <label>Action r�alis�e le</label>
+        <label><!-- Workflow Action Performed On --></label>
         <name>CMPL123_WF_Action_Performed_On__c</name>
     </fields>
     <fields>
@@ -44,7 +44,7 @@
         <relationshipLabel>Demandeur de l'extension</relationshipLabel>
     </fields>
     <fields>
-        <label>date d'�ch�ance propos�e</label>
+        <label><!-- Proposed Due Date --></label>
         <name>Proposed_Due_Date__c</name>
     </fields>
     <fields>
@@ -86,7 +86,7 @@
         <name>Only_Change_Owner_or_Change_Coordinator</name>
     </validationRules>
     <validationRules>
-        <errorMessage>date d'�ch�ance propos�e ne peut pas etre ant�rieure</errorMessage>
+        <errorMessage><!-- Proposed Due Date cannot be in the past. --></errorMessage>
         <name>Proposed_Due_Date_cannot_be_in_the_past</name>
     </validationRules>
     <validationRules>
