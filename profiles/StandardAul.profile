@@ -5261,7 +5261,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint__c.CMPL123CME__Due_Date_Count__c</field>
         <readable>true</readable>
     </fieldPermissions>
