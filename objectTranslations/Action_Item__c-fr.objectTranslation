@@ -4,7 +4,7 @@
         <name>Action_Item__c</name>
     </fields>
     <fields>
-        <label><!-- After Release --></label>
+        <label>Après Mise en place</label>
         <name>After_Release__c</name>
     </fields>
     <fields>
@@ -68,9 +68,9 @@
         <relationshipLabel>Approbateur 6</relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Assignee --></label>
+        <label>Assigné</label>
         <name>Assignee__c</name>
-        <relationshipLabel>Assign�</relationshipLabel>
+        <relationshipLabel>Assigné</relationshipLabel>
     </fields>
     <fields>
         <label><!-- Rule Field Update Key Value --></label>
@@ -81,12 +81,12 @@
         <name>CMPL123Task_Key_Value__c</name>
     </fields>
     <fields>
-        <label><!-- Workflow Action Performed By --></label>
+        <label>Action réalisée par</label>
         <name>CMPL123_WF_Action_Performed_By__c</name>
-        <relationshipLabel>Action r�alis�e par</relationshipLabel>
+        <relationshipLabel>Action réalisée par</relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Workflow Action Performed On --></label>
+        <label>Action réalisée le</label>
         <name>CMPL123_WF_Action_Performed_On__c</name>
     </fields>
     <fields>
@@ -107,13 +107,13 @@
         <name>Performed_By_Automation__c</name>
     </fields>
     <fields>
-        <label><!-- Predefined Implementation Plan --></label>
+        <label>Plan d'&amp;action prédéfini</label>
         <name>Predefined_Implementation_Plan__c</name>
     </fields>
     <fields>
-        <label><!-- Quality Approver --></label>
+        <label>Approbateur qualité</label>
         <name>Quality_Approver__c</name>
-        <relationshipLabel>Approbateur qualit�</relationshipLabel>
+        <relationshipLabel>Approbateur qualité</relationshipLabel>
     </fields>
     <fields>
         <label>Approbation requise</label>
@@ -132,7 +132,7 @@
         <name>Step_Number__c</name>
     </fields>
     <fields>
-        <label><!-- Summary of Action Taken --></label>
+        <label>Synhtèse des actions</label>
         <name>Summary_of_Action_Taken__c</name>
     </fields>
     <fields>
@@ -223,7 +223,7 @@
         <name>After_Release_Item_Cannot_Be_Started</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Reassign an approver into the Approver 1 field. --></errorMessage>
+        <errorMessage>Approbateur 1 doit être complété</errorMessage>
         <name>Approver_1_Must_Be_Populated</name>
     </validationRules>
     <validationRules>
@@ -247,7 +247,7 @@
         <name>Coordinator_canupdate_after_release_or_r</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- All Child Records are locked when the Change Control is in the status of Pending Quality Review --></errorMessage>
+        <errorMessage>Bloqué en attente de revue qualité</errorMessage>
         <name>LockAI_when_CC_is_Pending_Quality_Revie</name>
     </validationRules>
     <validationRules>
@@ -275,11 +275,11 @@
         <name>Only_Change_Owner_or_Change_Coordinator</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- If Required Approval is Checked Assignee must populate a Quality Approver in order to move to the next status --></errorMessage>
+        <errorMessage>approbation qualité requise</errorMessage>
         <name>Quality_Approver_is_required_if_it_requi</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You can not have more than 10,000 Action Item records related to one Change Control --></errorMessage>
+        <errorMessage>Nombre d'action limité à 10000</errorMessage>
         <name>limit_action_items_to_10000</name>
     </validationRules>
     <validationRules>
