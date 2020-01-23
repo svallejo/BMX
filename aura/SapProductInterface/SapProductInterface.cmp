@@ -1,23 +1,40 @@
+<!--
+  @File Name          : SapProductInterface.cmp
+  @Description        : 
+  @Author             : Jon Astemborski
+  @Group              : 
+  @Last Modified By   : Jon Astemborski
+  @Last Modified On   : 1/23/2020, 12:44:31 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    1/17/2020   Jon Astemborski     Initial Version
+-->
 <aura:component controller="SapInterfaceHandler" implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" >
 	<aura:html tag="style">
     .slds-modal__container {
-     min-width: 95vw;
+     min-width: 85vw !important;
     }
     .modal-body{ 
-        height : 60vh !important; 
-        max-height: 60vh !important; 
+        height : 80vh !important; 
+        max-height: 80vh !important; 
       } 
+      .btn{
+        margin-top: 15px;
+      }
 </aura:html>      
-    <!-- attributes -->
+<aura:attribute name="pageReference" type="Object"/>
+<aura:attribute name="url" type="String"/>
     <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="selectedRows" type="Object"/>
     <aura:attribute name="columns" type="List"/>
-    <!-- <aura:attribute name="selectedRowsCount" type="Integer" default="0"/> -->
-    <aura:attribute name="maxRowSelection" type="Integer" default="1"/>
+    <aura:attribute name="disableSave" type="Boolean" default="true"/>
+    <aura:attribute name="disableReport" type="Boolean" default="true"/>
     <aura:attribute name="showError" type="Boolean" default="false"/>
     <aura:attribute name="productItemNumber" type="String" default=""/>
     <aura:attribute name="selectedProduct" type="SapProductInformation"/>
+    <aura:attribute name="productInformationList" type="List" default="[]"/>
+    <aura:attribute name="message" type="String"/>
 
-    
 	<aura:attribute name="HideSpinner" type="Boolean" default="false"/>
     <aura:handler name="init" value="{! this }" action="{! c.init }"/>
 
@@ -49,9 +66,7 @@
         <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="1" largeDeviceSize="1" padding="around-small"/>
         <lightning:layoutItem size="12" smallDeviceSize="10" mediumDeviceSize="8" largeDeviceSize="8" padding="around-small">
             <div class="slds-form-element">
-                    <div class="slds-form-element__control">
                         <lightning:input name="productItemNumber" placeholder="Enter Product Item Number here..." value="{!v.productItemNumber}"/>
-                    </div>
                 </div> 
         </lightning:layoutItem>
         <lightning:layoutItem size="12" smallDeviceSize="2" mediumDeviceSize="2" largeDeviceSize="2" padding="around-small">
@@ -60,21 +75,20 @@
         <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="1" largeDeviceSize="1" padding="around-small"/>
     </lightning:layout>
     
-        <div style="height: 300px; padding-top: 25px">
-            
+        <div style="height: 30vw; padding-top: 25px">
             <h1 class="header" style="font-weight:bold">SAP Product Information</h1>
             <lightning:datatable
                 columns="{! v.columns }"
                 data="{! v.data }"
                 keyField="id"
                 onrowselection ="{! c.setSelectedProduct }"
-                maxRowSelection="{! v.maxRowSelection }"
-                                 aura:id = "prodTable"/>
-    </div>
+                aura:id = "prodTable"/>
+        </div>
     
-    <div class="slds-modal__footer">                
-                <lightning:button variant="neutral" label="Cancel" onclick="{!c.closeModal}"/>
-                <lightning:button variant="brand" label="Submit" onclick="{!c.saveRecord}" />
-    </div>
-
+    <footer class="slds-modal__footer">  
+        <div class="btn">
+            <lightning:button label="Save Record" onclick="{!c.saveRecord}" disabled="{!v.disableSave}"/>
+            <c:ExportAsPdf data="{!v.selectedRows}" disabled="{!v.disableReport}" productItemNumber="{!v.productItemNumber}"/>
+        </div>
+        </footer>
 </aura:component>

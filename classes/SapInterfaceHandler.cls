@@ -4,7 +4,7 @@
  * @Author             : Jon Astemborski
  * @Group              : 
  * @Last Modified By   : Jon Astemborski
- * @Last Modified On   : 1/16/2020, 8:59:17 AM
+ * @Last Modified On   : 1/23/2020, 12:44:06 PM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/15/2020   Jon Astemborski     Initial Version
@@ -29,6 +29,9 @@ public without Sharing class SapInterfaceHandler {
     public static final String SAP_CHAR_VALUE = 'CharcValue';
     public static final String SAP_CHAR_ID = 'CharcInternalID';
     public static final String EMPTY_STRING_ESCAPED = '\"\"';
+
+    @AuraEnabled
+    public static List<SapProductInformation> productInformationList {get; set;} 
 
     @TestVisible
     private static String createProductUrlParam(String productItemNumber){
@@ -169,7 +172,7 @@ public without Sharing class SapInterfaceHandler {
             return httpResponse;
         } 
         catch (Exception e) {
-            throw new AuraHandledException('Unable to retrieve response from SAP. Please contact your System Administrator. \n'+e.getMessage());          
+            throw new AuraHandledException('Unable to retrieve response from SAP. Please try again. If problem persists please contact your System Administrator. \n'+e.getMessage());          
         }
     }
 

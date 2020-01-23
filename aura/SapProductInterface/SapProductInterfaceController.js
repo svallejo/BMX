@@ -67,11 +67,20 @@
         }
      },
     setSelectedProduct:function(component, event, helper){
-        let lines = {};
+        let lines = [];
         lines = component.find('prodTable').getSelectedRows();
-        component.set("v.selectedProduct", lines);
-        console.log('set product: ' + JSON.stringify(lines));
+        var disableReport = lines.length == 0 ? true : false;
+        var disableSave = lines.length == 0  || lines.length > 1 ? true : false;
 
+        if ( lines.length == 1 ) {
+            let selectedRow = {}
+            selectedRow = component.find('prodTable').getSelectedRows();
+            component.set("v.selectedProduct", lines[0]);
+        }
+
+        component.set("v.disableSave", disableSave);
+        component.set("v.disableReport", disableReport);
+        component.set("v.selectedRows", lines);
     },
     search: function(component, event, helper){
  		 component.set("v.HideSpinner", true);
@@ -87,6 +96,8 @@
                     console.log('response: ' + response.getReturnValue())
                     console.log(JSON.stringify(response.getReturnValue()))
                     component.set("v.data", result);
+                    component.set("v.productInformationList", result);
+                    
                     if (response.getReturnValue() == "") {
                         let errors = [];
                         let error = {};
