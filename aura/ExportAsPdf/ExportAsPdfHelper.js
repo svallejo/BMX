@@ -34,21 +34,7 @@
         return today;
     }, 
     formatHeader: function(productInformation){
-        let header = []
-        var updatedProductInformation = this.rearrangeKeys(productInformation);
-        updatedProductInformation.productItemNumber = "Item Number";
-        updatedProductInformation.productDescription = "Description";
-        updatedProductInformation.productRange = "Range";
-        updatedProductInformation.productType = "Type";
-        updatedProductInformation.makeOrBuy = "Make Or Buy";
-        updatedProductInformation.tradeType = "Trade Type";
-        updatedProductInformation.legalManufacturer = "Manufacturer";
-        updatedProductInformation.siteResponsible = "Site Responsible";
-        updatedProductInformation.gtin = "GTIN";
-        updatedProductInformation.ceApproved = "CE Approved";
-        updatedProductInformation.commercializationCoverage = "Coverage";
-        updatedProductInformation.originAnimalHuman = "Origin";
-        header = Object.values(updatedProductInformation);
+        let header = ["Item Number","Description","Range","Type","Make Or Buy","Trade Type","Manufacturer","Site Responsible","GTIN","CE Approved","Coverage","Origin"];
         return header;
     }, 
     buildFileName: function(productItemNumber){

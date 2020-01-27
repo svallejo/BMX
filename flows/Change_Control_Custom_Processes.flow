@@ -5190,7 +5190,7 @@
                 <stringValue>Today()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_100_myRule_98_A1_4808983154</name>
+        <name>formula_100_myRule_98_A1_9735416350</name>
         <dataType>Date</dataType>
         <expression>Today()</expression>
     </formulas>
@@ -5201,11 +5201,11 @@
                 <stringValue>Today()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_96_myRule_94_A1_5140867048</name>
+        <name>formula_96_myRule_94_A1_5164691553</name>
         <dataType>Date</dataType>
         <expression>Today()</expression>
     </formulas>
-    <interviewLabel>Change_Control_Custom_Processes-58_InterviewLabel</interviewLabel>
+    <interviewLabel>Change_Control_Custom_Processes-59_InterviewLabel</interviewLabel>
     <label>Change Control Custom Processes</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -5759,7 +5759,7 @@
             <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>Update Key Value</label>
+        <label>Update Key Value &amp; only CC and Coord field</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
         <connector>
@@ -5812,6 +5812,42 @@
             <field>CMPL123Task_Key_Value__c</field>
             <value>
                 <stringValue>NoCRBapprover</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Only Change Owner or Change Coordinator</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Only_Change_Owner_or_Change_Coordinator__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>
@@ -7864,7 +7900,7 @@
             </processMetadataValues>
             <field>Closed_Date__c</field>
             <value>
-                <elementReference>formula_96_myRule_94_A1_5140867048</elementReference>
+                <elementReference>formula_96_myRule_94_A1_5164691553</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>
@@ -7947,7 +7983,7 @@
             </processMetadataValues>
             <field>Closed_Date__c</field>
             <value>
-                <elementReference>formula_100_myRule_98_A1_4808983154</elementReference>
+                <elementReference>formula_100_myRule_98_A1_9735416350</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>
