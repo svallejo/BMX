@@ -1,0 +1,10 @@
+<aura:component controller="SapCustomerReportController" implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="Global">
+	<aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="visible" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+     <aura:handler event="force:refreshView" action="{!c.refresh}" />
+
+    <aura:if isTrue="{!v.visible}">
+    <lightning:button class="button" variant="neutral" label="Navigate to SAP Customer Report" title="SAP Customer Report" onclick="{! c.handleClick }"/>
+	</aura:if>
+</aura:component>
