@@ -21145,6 +21145,11 @@
         <field>CMPL123CME__EU_MIR__c.Submit_for_Review_Done_On__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__Complaint__c.CMPL123Rule_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
@@ -21966,6 +21971,10 @@
         <layout>CMPL123CME__EU_MIR__c-EU MIR Layout %28BMX_Locked%29</layout>
         <recordType>CMPL123CME__EU_MIR__c.BMX_Lock_EU_MIR</recordType>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__EU_MIR__c-EU MIR Layout %28BMX%29</layout>
+        <recordType>CMPL123CME__EU_MIR__c.Unlock_EU_MIR</recordType>
+    </layoutAssignments>
     <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
@@ -22577,6 +22586,11 @@
         <default>false</default>
         <recordType>CMPL123CME__EU_MIR__c.BMX_Lock_EU_MIR</recordType>
         <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>CMPL123CME__EU_MIR__c.Unlock_EU_MIR</recordType>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
         <tab>Account__x</tab>

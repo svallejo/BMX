@@ -78,4 +78,15 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/AI_Assigned_Email_Notification</template>
     </alerts>
+    <alerts>
+        <fullName>Action_Item_Reopened</fullName>
+        <description>Action Item Reopened</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Assignee__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/TrackWise_Digital_Change_Control_Action_Item_Reopened</template>
+    </alerts>
 </Workflow>
