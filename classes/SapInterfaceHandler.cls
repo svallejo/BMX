@@ -180,6 +180,7 @@ public without Sharing class SapInterfaceHandler {
     private static HttpRequest createHttpRequest(String productItemNumber){
         SAP_Product_Interface__c productInterface = SAP_Product_Interface__c.getInstance();
         HttpRequest req = new HttpRequest();
+        req.setTimeout(30000);
         req.setHeader(productInterface.auth_header_name__c, productInterface.auth_token__c);
         req.setEndpoint(productInterface.endpoint__c + createProductUrlParam(productItemNumber));
         req.setMethod(GET_METHOD);
