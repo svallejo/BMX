@@ -185,7 +185,7 @@
                 <stringValue>IF(OR([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,[CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_2001761998</name>
+        <name>formula_3_myRule_1_A1_7817719525</name>
         <dataType>Date</dataType>
         <expression>IF(OR({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,{!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c} = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</expression>
     </formulas>
@@ -196,11 +196,11 @@
                 <stringValue>IF(OR([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,[CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A1_9836135008</name>
+        <name>formula_4_myRule_1_A1_3174651650</name>
         <dataType>Date</dataType>
         <expression>IF(OR({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,{!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c} = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</expression>
     </formulas>
-    <interviewLabel>Auto_Close_Initial_Follow_Up_EU_MIR-3_InterviewLabel</interviewLabel>
+    <interviewLabel>Auto_Close_Initial_Follow_Up_EU_MIR-4_InterviewLabel</interviewLabel>
     <label>Auto Close Initial/Follow Up EU MIR</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -268,7 +268,7 @@
             </processMetadataValues>
             <field>BMX_Due_Date__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_2001761998</elementReference>
+                <elementReference>formula_3_myRule_1_A1_7817719525</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -484,7 +484,7 @@
             </processMetadataValues>
             <field>CMPL123CME__Expected_Date_Of_Next_Report__c</field>
             <value>
-                <elementReference>formula_4_myRule_1_A1_9836135008</elementReference>
+                <elementReference>formula_4_myRule_1_A1_3174651650</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1182,7 +1182,7 @@
         <object>CMPL123CME__EU_MIR__c</object>
     </recordUpdates>
     <startElementReference>isChangedDecision2_myRule_1_CMPL123_WF_Status_c</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
