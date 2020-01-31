@@ -5074,6 +5074,10 @@
         <apexPage>CMPL123CMEEU_MIR_CodeWorkflowPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123CMEEU_MIR_Code_ChoicesWorkflowPan</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.AccountSource</field>
