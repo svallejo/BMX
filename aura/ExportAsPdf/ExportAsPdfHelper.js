@@ -42,12 +42,12 @@
         return productItemNumber + '-' + today + '.pdf';
     },
     buildJsAutoTable: function(header, body){
-        var doc =  new jsPDF('l', 'pt');
+        var doc =  new jsPDF('l', 'in',[11,14]);
         doc.autoTable({
             head: [header],
             body: body,
-            bodyStyles:{fontSize:9},
-            headStyles:{fontSize:9},
+            bodyStyles:{fontSize:8},
+            headStyles:{fontSize:8},
           })
         return doc;
     }
