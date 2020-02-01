@@ -28198,6 +28198,11 @@
         <field>CMPL123CME__EU_MIR__c.Submit_for_Review_Done_On__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.BMX_Reportable_Country__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>

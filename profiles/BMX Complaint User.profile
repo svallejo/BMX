@@ -2173,6 +2173,10 @@
         <apexClass>CMPL123CME__EUMIRXmlConfigSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MIRReportSummaryService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <pageAccesses>
         <apexPage>AttachmentWorkflowPanel</apexPage>
         <enabled>true</enabled>
@@ -21148,6 +21152,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__Complaint__c.CMPL123Rule_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EU_MIR__c.BMX_Reportable_Country__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>

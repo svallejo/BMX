@@ -1299,6 +1299,39 @@
         <label>All</label>
         <language>en_US</language>
     </listViews>
+    <listViews>
+        <fullName>All_EUMIR_reports</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type_Of_Report__c</columns>
+        <columns>BMX_Reportable_Country__c</columns>
+        <columns>CMPL123CME__UDI_DI__c</columns>
+        <columns>CMPL123CME__Medical_Device_Name__c</columns>
+        <columns>CMPL123_WF_Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All EU MIR reports</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_submitted_reports</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Type_Of_Report__c</columns>
+        <columns>BMX_Reportable_Country__c</columns>
+        <columns>CMPL123CME__UDI_DI__c</columns>
+        <columns>CMPL123CME__Medical_Device_Name__c</columns>
+        <columns>CMPL123_WF_Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123_WF_Status__c</field>
+            <operation>equals</operation>
+            <value>Closed-Submitted</value>
+        </filters>
+        <label>All submitted reports</label>
+        <language>en_US</language>
+    </listViews>
     <recordTypes>
         <fullName>BMX_Lock_EU_MIR</fullName>
         <active>true</active>
