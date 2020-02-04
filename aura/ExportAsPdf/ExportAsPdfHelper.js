@@ -41,8 +41,8 @@
         var today = this.getTodaysDate();
         return productItemNumber + '-' + today + '.pdf';
     },
-    buildJsAutoTable: function(header, body){
-        var doc =  new jsPDF('l', 'in',[11,14]);
+    buildJsAutoTable :function(header, body) {
+        var doc =  new jsPDF('l', 'mm', [355, 279]);
         doc.autoTable({
             head: [header],
             body: body,
