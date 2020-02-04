@@ -4,7 +4,7 @@
   @Author             : Jon Astemborski
   @Group              : 
   @Last Modified By   : Jon Astemborski
-  @Last Modified On   : 1/23/2020, 11:41:34 AM
+  @Last Modified On   : 2/4/2020, 9:27:54 AM
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    1/21/2020   Jon Astemborski     Initial Version
@@ -12,11 +12,13 @@
 <aura:component>
     <aura:attribute name="data" type="Object"/>
     <aura:attribute name="disabled" type="Boolean"/>
+    <aura:attribute name="scriptsLoaded" type="Boolean" default="false"/>
     <aura:attribute name="productItemNumber" type="String"/>
 
-    <ltng:require scripts="{!$Resource.jspdf}"></ltng:require>
-    <ltng:require scripts="{!$Resource.jsAutoTable}"></ltng:require>
-
-    <lightning:button label="Export To PDF" onclick="{!c.export}" disabled="{!v.disabled}"/>
-
+    <ltng:require scripts= "{!join(',', 
+    $Resource.jspdf, 
+    $Resource.jsAutoTable)}" afterScriptsLoaded="{!c.afterScriptsLoaded}"/>
+    <aura:if isTrue="{!v.scriptsLoaded}">
+      <lightning:button label="Export To PDF" onclick="{!c.export}" disabled="{!v.disabled}"/>
+    </aura:if>
 </aura:component>

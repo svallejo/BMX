@@ -11,5 +11,8 @@
       catch(error){
           console.log(error)
       }
+  }, 
+  afterScriptsLoaded: function(component) {
+    component.set("v.scriptsLoaded", true);
   }
 })
