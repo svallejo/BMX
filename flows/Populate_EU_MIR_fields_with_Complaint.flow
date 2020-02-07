@@ -156,7 +156,7 @@
         <dataType>Boolean</dataType>
         <expression>true</expression>
     </formulas>
-    <interviewLabel>Populate_EU_MIR_fields_with_Complaint-5_InterviewLabel</interviewLabel>
+    <interviewLabel>Populate_EU_MIR_fields_with_Complaint-6_InterviewLabel</interviewLabel>
     <label>Autopopulate fields in EU MIR from Complaint</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -262,6 +262,42 @@
             <field>BMX_Due_Date__c</field>
             <value>
                 <elementReference>myVariable_current.BMX_Local_Assessment__r.BMX_Report_Due_to_Authority__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Local Subsidiary Owner</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Local_Subsidiary_Owner__c</field>
+            <value>
+                <elementReference>myVariable_current.BMX_Local_Assessment__r.BMX_Local_Subsidiary_Owner__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1104,42 +1140,6 @@
             <processMetadataValues>
                 <name>dataType</name>
                 <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Local Subsidiary Owner</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue>User</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>BMX_Local_Subsidiary_Owner__c</field>
-            <value>
-                <elementReference>myVariable_current.BMX_Local_Assessment__r.BMX_Local_Subsidiary_Owner__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
                     <stringValue>String</stringValue>
                 </value>
             </processMetadataValues>
@@ -1175,7 +1175,7 @@
         <object>CMPL123CME__EU_MIR__c</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

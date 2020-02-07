@@ -182,12 +182,12 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>IF(OR([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,[CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</stringValue>
+                <stringValue>IF([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_0783456605</name>
+        <name>formula_3_myRule_1_A1_8869256733</name>
         <dataType>Date</dataType>
-        <expression>IF(OR({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,{!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c} = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</expression>
+        <expression>IF({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
@@ -196,7 +196,7 @@
                 <stringValue>IF(OR([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,[CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A1_5891792735</name>
+        <name>formula_4_myRule_1_A1_4885307705</name>
         <dataType>Date</dataType>
         <expression>IF(OR({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,{!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c} = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</expression>
     </formulas>
@@ -268,7 +268,7 @@
             </processMetadataValues>
             <field>BMX_Due_Date__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_0783456605</elementReference>
+                <elementReference>formula_3_myRule_1_A1_8869256733</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -305,6 +305,42 @@
             <field>BMX_Local_Assessment__c</field>
             <value>
                 <elementReference>myVariable_current.BMX_Local_Assessment__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Local Subsidiary Owner</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Local_Subsidiary_Owner__c</field>
+            <value>
+                <elementReference>myVariable_current.BMX_Local_Subsidiary_Owner__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -988,7 +1024,7 @@
             </processMetadataValues>
             <field>CMPL123CME__Expected_Date_Of_Next_Report__c</field>
             <value>
-                <elementReference>formula_4_myRule_1_A1_5891792735</elementReference>
+                <elementReference>formula_4_myRule_1_A1_4885307705</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>

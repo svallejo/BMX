@@ -215,19 +215,17 @@
                                 <div class="divPadding">
                                     <div class="column inlineDiv leftAlign">{!$Label.cmpl123cme__cmplt_eudamed_s_reference_number}</div>
                                     <div class="fieldValue inlineDiv divStyleSection_1_3_1">
-                                        <apex:repeat value="{!textFieldMap['CMPL123CME__EUDAMED_S_Reference_Number__c']}" var="index">
+                                         <apex:repeat value="{!textFieldMap['CMPL123CME__EUDAMED_S_Reference_Number__c']}" var="index">
                                               <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c.CMPL123CME__EUDAMED_S_Reference_Number__c, if(index= 0, 0, 28*index+1), 28)}"></apex:outputText><br/>
-                                        </apex:repeat>
+                                         </apex:repeat>
                                     </div>
                                 </div><br/>
                                 <div class="divPadding">
                                     <div class="column inlineDiv leftAlign">{!$Label.cmpl123cme__cmplt_manufacturer_s_reference_number}</div>
-                                    <div>
-                                            <div class="fieldValue inlineDiv divStyleSection_1_3_1">
-                                                    <apex:repeat value="{!textFieldMap['CMPL123CME__Manufacturer_S_Reference_Number__c']}" var="index">
-                                                            <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_S_Reference_Number__c, if(index= 0, 0, 28*index+1), 28)}"></apex:outputText><br/>
-                                                 </apex:repeat>
-                                            </div>
+                                    <div class="fieldValue inlineDiv divStyleSection_1_3_1">
+                                        <apex:repeat value="{!textFieldMap['CMPL123CME__Manufacturer_S_Reference_Number__c']}" var="index">
+                                                <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_S_Reference_Number__c, if(index= 0, 0, 28*index+1), 28)}"></apex:outputText><br/>
+                                        </apex:repeat>
                                     </div>
                                 </div>
                             </td>
@@ -1043,20 +1041,14 @@
                                     <div class="column" style="width:260px">{!$Label.cmpl123cme__cmplt_notified_body_nb_id_number_s_if_applicable}</div>
                                     <div style="display:inline-block;">{!$Label.cmpl123cme__cmplt_1}</div>  
                                     <div class="fieldValue" style="width:230px;display:inline-block;">
-                                        <apex:repeat rendered="contains(newNBIdFieldString,'nb_id_1__c')" value="{!longTextAreaMap['nb_id_1__c']}" var="index">
-                                               <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c['nb_id_1__c'], if(index= 0, 0, 20*index+1), 20)}"></apex:outputText><br/>
-                                        </apex:repeat>
-                                        <apex:repeat rendered="!contains(newNBIdFieldString,'nb_id_1__c')" value="{!longTextAreaMap['CMPL123CME__NB_ID_Number_1__c']}" var="index">
-                                           <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c['nb_id_1__c'], if(index= 0, 0, 20*index+1), 20)}"></apex:outputText><br/>
+                                        <apex:repeat value="{! nbIdMap['nbId1']}" var="index">
+                                               <apex:outputText value="{!MID(nbId1, if(index= 0, 0, 20*index+1), 20)}"></apex:outputText><br/>
                                         </apex:repeat>
                                     </div><br/><br/>
                                     <div style="display:inline-block;">{!$Label.cmpl123cme__cmplt_2}</div>
                                     <div class="fieldValue" style="width:230px;display:inline-block;">
-                                        <apex:repeat rendered="contains(newNBIdFieldString,'nb_id_2__c')" value="{!longTextAreaMap['nb_id_2__c']}" var="index">
-                                           <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c['nb_id_2__c'], if(index= 0, 0, 20*index+1), 20)}"></apex:outputText><br/>
-                                        </apex:repeat>
-                                        <apex:repeat rendered="!contains(newNBIdFieldString,'nb_id_2__c')" value="{!longTextAreaMap['CMPL123CME__NB_ID_Number_2__c']}" var="index">
-                                           <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c['nb_id_2__c'], if(index= 0, 0, 20*index+1), 20)}"></apex:outputText><br/>
+                                        <apex:repeat value="{! nbIdMap['nbId2']}" var="index">
+                                           <apex:outputText value="{!MID(nbId2, if(index= 0, 0, 20*index+1), 20)}"></apex:outputText><br/>
                                         </apex:repeat>
                                     </div>
                                 </td>
@@ -2733,7 +2725,7 @@
                 </div>
                 <div class="outerDiv" style="height:60px">
                     Signature/Digital Signature
-                </div>    
+                </div>
             </div>
         </div>
     </body>
