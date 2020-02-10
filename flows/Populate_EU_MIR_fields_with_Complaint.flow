@@ -156,8 +156,8 @@
         <dataType>Boolean</dataType>
         <expression>true</expression>
     </formulas>
-    <interviewLabel>Populate_EU_MIR_fields_with_Complaint-6_InterviewLabel</interviewLabel>
-    <label>Autopopulate fields in EU MIR from Complaint</label>
+    <interviewLabel>Populate_EU_MIR_fields_with_Complaint-7_InterviewLabel</interviewLabel>
+    <label>Autopopulate fields in EU MIR from Complaint and LA</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
@@ -1054,6 +1054,42 @@
             <field>CMPL123CME__Serial_Numbers__c</field>
             <value>
                 <elementReference>myVariable_current.CMPL123CME__Complaint__r.BMX_Serial_Number_Asset__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Owner ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>Group;User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>myVariable_current.BMX_Local_Assessment__r.BMX_Local_Subsidiary_Owner__c</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__EU_MIR__c</object>
