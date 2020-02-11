@@ -3,6 +3,21 @@
     <label>Meddev/EU MIR permission for Local Subsidiary</label>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.BMX_Reportable_Country__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EU_MIR__c.Close_Report_Done_On__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EU_MIR__c.Submit_for_Review_Done_On__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__MEDDEV__c.BMX_Approve_Done_By__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1927,7 +1942,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__EU_MIR__c.BMX_Local_Assessment__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1942,7 +1957,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__EU_MIR__c.BMX_Local_Subsidiary_Text__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2169,12 +2184,12 @@
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
-        <allowDelete>false</allowDelete>
+        <allowDelete>true</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>CMPL123CME__EU_MIR__c</object>
-        <viewAllRecords>false</viewAllRecords>
+        <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>

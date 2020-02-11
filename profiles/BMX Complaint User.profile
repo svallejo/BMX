@@ -19974,7 +19974,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.BMX_Local_Assessment__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -20009,7 +20009,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.BMX_Approved_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -20049,37 +20049,37 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.BMX_Due_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.BMX_Local_Subsidiary_Approver__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.BMX_Local_Subsidiary_Owner__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.BMX_Local_Subsidiary_Text__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.BMX_Submit_Report_Done_By__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.BMX_Submit_Report_Done_On__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.BMX_Submit_for_Review_Done_By__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -20109,7 +20109,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123Task_Key_Value__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -20124,202 +20124,202 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_Address_Complement__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_City_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_Contact_First_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_Contact_Last_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_Country__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_E_mail__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_P_O_Box__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_Phone__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_Postcode__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_Single_Registration_Number_SRN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_Street_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Author_Street__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Basic_UDI_DI__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Basis_Of_Identifying_Similar_Events__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Body_Weight_Of_Patient__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Catalogue_Reference_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Classification_Of_Incident__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Complaint__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Countries_List__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Current_Device_Location_Other__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Current_Device_Location__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Date_Of_Incident_From__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Date_Of_Incident_To__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Date_Of_Submission__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Date_When_Device_Was_Explanted_From__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Date_When_Device_Was_Explanted_To__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Date_When_Device_Was_Implanted_From__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Date_When_Device_Was_Implanted_To__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Days_At_Time_Of_Incident__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Description_Of_Device_Nomenclature_Text__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Description_Of_Remedial_Action__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Details_Of_The_Selection_Made_Above__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Device_Expiry_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Device_Has_Been_Placed_On_Market_Before__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Device_Manufacturing_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Device_Operator_At_Event_Other__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Device_Operator_At_Event__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Device_Usage_Other__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Device_Usage__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__EUDAMED_ID_Of_PMCF_PMPF_Investigation__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -20329,642 +20329,642 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__EUDAMED_S_FSCA_Reference_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__EUDAMED_S_Reference_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Expected_Date_Of_Next_Report__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Explain_If_Component_Code_Missing__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Explain_If_Investigation_Code_Missing__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Explain_Incident_If_IMDRF_Code_Missing__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Explant_Facility__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Final_Comments_from_Mfr_Investigation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Firmware_Version__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Gender_Of_Patient__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__General_Comments__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Has_The_Risks_Assessment_Been_Reviewed__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Healthcare_Facility_Report_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__How_Were_Incidents_Devices_Determined__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__IMDRF_Code_Missing__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__IMDRF_Codes_Not_Used__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__IVDD_Class__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__IVDR_Class_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__IVDR_Class__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__If_Initial_Reporter_Is_Other_Specify__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__If_No_Reason_For_No_Review_Required__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__If_Other_Describe_Criteria__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__If_Others_Elaborate_Similar_Incidents__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__If_Yes_Is_Review_Adequate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Implant_Facility__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Incident_Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Indicate_Month__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Indicate_Year__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Actions_Taken_By_Manufacturer__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Address_Complement__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_City_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Contact_First_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Contact_Last_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Country__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Email__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_P_O_Box__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Phone__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Postcode__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Street_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Initial_Reporter_Street__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Investigation_Finding_Code_Annex_C__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Is_Root_Cause_Confirmed__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__List_Down_Further_Investigations__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Lot_Batch_Numbers__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__MDD_AIMDD_Class__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__MDR_Class_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__MDR_Class__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Address_Complement__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_City_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Contact_First_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Contact_Last_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Country__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_E_Mail__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Organisation_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_P_O_Box__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Phone__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Postcode__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Single_Registration_Number_SRN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Street_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufact_Street__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_Awareness_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_S_FSCA_Reference_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_S_Reference_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_s_Evaluation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Nomenclature_Code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Problem_Code_Annex_A__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Terminology_Other__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Medical_Device_Terminology__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Model__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Months_At_Time_of_Incident__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__NB_Certificate_Number_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__NB_Certificate_Number_2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number_2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__NCA_S_Local_FSCA_Reference_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__NCA_S_Local_Reference_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Name_Of_The_Healthcare_Facility__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_EEA_CH_TR_N_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_EEA_CH_TR_N_2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_EEA_CH_TR_N_3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_EEA_CH_TR_N__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_Incident_Country_N_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_Incident_Country_N_2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_Incident_Country_N_3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_Incident_Country_N__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_The_World_N_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_The_World_N_2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_The_World_N_3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Devices_In_The_World_N__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_EEA_CH_TR_N_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_EEA_CH_TR_N_2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_EEA_CH_TR_N_3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_EEA_CH_TR_N__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_Incident_Country_N_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_Incident_Country_N_2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_Incident_Country_N_3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_Incident_Country_N__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_Rest_Of_The_World_N__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_The_World_N_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_The_World_N_2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__No_Of_Incidents_In_The_World_N_3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Number_Of_Days__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Number_Of_Months__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Number_Of_Patients_Involved__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Number_Of_Years__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Org_Name_Of_Authorised_Representative__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Other_Countries_If_Any__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Patient_Remedial_Action__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Patients_Prior_Health_Condition__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Periodic_Summary_Report_PSR_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Please_Indicate_The_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Preliminary_Results_And_Conclusions__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Rationale_For_IMDRF_Codes_Not_Used__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Rationale_For_In_House_Code_Not_Used__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Rationale_For_Non_Reportable_Incident__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Recipient_Name_Of_NCA__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Reference_Number_By_EUDAMED__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Reference_Number_By_Manufacturer__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Reference_Number_By_NCA__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Region_Market_Distribution__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Registered_Commercial_Name_Of_Company__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Relevant_Accessories_Used_With_Device__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Relevant_Associated_Devices__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Results_Of_The_Assessment__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Role_Of_Initial_Reporter__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Serial_Numbers__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Software_Version__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -20974,162 +20974,162 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Address_Complement__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_City_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Contact_First_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Contact_Last_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Country__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_E_Mail__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Of_Report__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_P_O_Box__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Phone__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Postcode__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Street_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Submitter_Street__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_1_End_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_1_Start_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_2_End_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_2_Start_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_3_End_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_3_Start_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_End_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Time_Period_N_Start_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Time_Schedule_For_Implementing_Actions__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Type_Of_Report__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__UDI_DI__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__UDI_PI__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Unit_Of_Use_UDI_DI__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__What_Identifies_No_Of_Devices_On_Market__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123CME__Years_At_Time_Of_Incident__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123Rule_Key_Value__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123_WF_Action_Performed_By__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123_WF_Action_Performed_On__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123_WF_Action__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.CMPL123_WF_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -22602,6 +22602,7 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
+        <personAccountDefault>true</personAccountDefault>
         <recordType>CMPL123CME__EU_MIR__c.Unlock_EU_MIR</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
