@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
-        <label><!-- Action Item Records --></label>
+        <label>Action</label>
         <name>Action_Item_Records__c</name>
     </fields>
     <fields>
@@ -8,7 +8,7 @@
         <name>Action_Items_Complete__c</name>
     </fields>
     <fields>
-        <label><!-- Affected Areas --></label>
+        <label>Zone impactée</label>
         <name>Affected_Areas__c</name>
         <picklistValues>
             <masterLabel>Area 1</masterLabel>
@@ -28,11 +28,11 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Action après implémentation non close</label>
+        <label>Actions après implémentation non closes</label>
         <name>After_Release_Action_Items_Not_Closed__c</name>
     </fields>
     <fields>
-        <label>Assignée à</label>
+        <label>Approbateur Final 1</label>
         <name>Assigned_To__c</name>
         <relationshipLabel><!-- Change Control (Assigned To) --></relationshipLabel>
     </fields>
@@ -53,7 +53,7 @@
         <name>CMPL123QMS__Change_Description__c</name>
     </fields>
     <fields>
-        <label>date d'échéance</label>
+        <label>Date d'échéance</label>
         <name>CMPL123QMS__Date_Due__c</name>
     </fields>
     <fields>
@@ -86,12 +86,12 @@
         <name>CMPL123QMS__Justification__c</name>
     </fields>
     <fields>
-        <label>Contact principal</label>
+        <label>Approbateur Final 4</label>
         <name>CMPL123QMS__Main_Contact__c</name>
         <relationshipLabel><!-- Change Control (Final Approver 4) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approuvé par</label>
+        <label>Approbateur Final 5</label>
         <name>CMPL123QMS__Management_Approved_By__c</name>
         <relationshipLabel><!-- Change Control (Final Approver 5) --></relationshipLabel>
     </fields>
@@ -100,7 +100,7 @@
         <name>CMPL123QMS__Management_Approved_On__c</name>
     </fields>
     <fields>
-        <label><!-- Manager --></label>
+        <label>Approbateur Final 6</label>
         <name>CMPL123QMS__Manager__c</name>
         <relationshipLabel><!-- Change Control (Final Approver 6) --></relationshipLabel>
     </fields>
@@ -138,7 +138,7 @@
         <name>CMPL123QMS__QA_Approved_On__c</name>
     </fields>
     <fields>
-        <label>Contact AQ</label>
+        <label>Approbateur Final AQ</label>
         <name>CMPL123QMS__QA_Contact__c</name>
         <relationshipLabel><!-- Change Control (Final (QA) Approver) --></relationshipLabel>
     </fields>
@@ -184,41 +184,41 @@
         <name>CMPL123_WF_Action__c</name>
     </fields>
     <fields>
-        <label>statut</label>
+        <label>Statut du workflow</label>
         <name>CMPL123_WF_Status__c</name>
     </fields>
     <fields>
-        <label>Approbateur 1</label>
+        <label>Approbateur CRB 1</label>
         <name>CRB_Approver_1__c</name>
         <relationshipLabel><!-- Change Control (CRB Approver 1) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbateur 2</label>
+        <label>Approbateur CRB 2</label>
         <name>CRB_Approver_2__c</name>
         <relationshipLabel><!-- Change Control (CRB Approver 2) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbateur 3</label>
+        <label>Approbateur CRB 3</label>
         <name>CRB_Approver_3__c</name>
         <relationshipLabel><!-- Change Control (CRB Approver 3) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbateur 4</label>
+        <label>Approbateur CRB 4</label>
         <name>CRB_Approver_4__c</name>
         <relationshipLabel><!-- Change Control (CRB Approver 4) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbateur 5</label>
+        <label>Approbateur CRB 5</label>
         <name>CRB_Approver_5__c</name>
         <relationshipLabel><!-- Change Control (CRB Approver 5) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbateur 6</label>
+        <label>Approbateur CRB 6</label>
         <name>CRB_Approver_6__c</name>
         <relationshipLabel><!-- Change Control (CRB Approver 6) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Commentaires</label>
+        <label>Commentaires CRB</label>
         <name>CRB_Comments__c</name>
     </fields>
     <fields>
@@ -266,7 +266,7 @@
         <name>Change_Description__c</name>
     </fields>
     <fields>
-        <label>Impact validation</label>
+        <label>Impact validation?</label>
         <name>Change_Impact_on_Validation_Description__c</name>
     </fields>
     <fields>
@@ -286,7 +286,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Project Transfer</masterLabel>
-            <translation>transfert de technologie</translation>
+            <translation>Transfert de technologie</translation>
         </picklistValues>
     </fields>
     <fields>
@@ -303,79 +303,79 @@
         <name>Change_Type_s__c</name>
         <picklistValues>
             <masterLabel>Control Tool</masterLabel>
-            <translation>outils de contrôle</translation>
+            <translation>Outils de contrôle</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Decommissioning</masterLabel>
-            <translation>decommissioning</translation>
+            <translation>Decommissioning</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Design Change</masterLabel>
-            <translation>design</translation>
+            <translation>Design</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Documentation</masterLabel>
-            <translation>documentation</translation>
+            <translation>Documentation</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Emergency Change</masterLabel>
-            <translation>change urgent</translation>
+            <translation>Change urgent</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Environmental Monitoring</masterLabel>
-            <translation>monitoring environnemental</translation>
+            <translation>Monitoring environnemental</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Equipment</masterLabel>
-            <translation>équipement</translation>
+            <translation>Equipement</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Expiration</masterLabel>
-            <translation>péremption</translation>
+            <translation>Péremption</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Facilities/ Utilities</masterLabel>
-            <translation>locaux et utilités</translation>
+            <translation>Locaux et utilités</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Firmware</masterLabel>
-            <translation>firmware</translation>
+            <translation>Firmware</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hardware/Peripherals</masterLabel>
-            <translation>hardware/ périphériques</translation>
+            <translation>Hardware/ périphériques</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Instrument</masterLabel>
-            <translation>instruments</translation>
+            <translation>Instruments</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Labeling</masterLabel>
-            <translation>notice/étiquette</translation>
+            <translation>Notice/étiquette</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Non-product Software</masterLabel>
-            <translation>non product software</translation>
+            <translation>Non product software</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Organization</masterLabel>
-            <translation>organisation</translation>
+            <translation>Organisation</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other</masterLabel>
-            <translation>autre</translation>
+            <translation>Autre</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Packaging</masterLabel>
-            <translation>conditionnement</translation>
+            <translation>Conditionnement</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Process</masterLabel>
-            <translation>process</translation>
+            <translation>Process</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product discontinuation</masterLabel>
-            <translation>arrêt de commercialisation</translation>
+            <translation>Arrêt de commercialisation</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product – Finished</masterLabel>
@@ -383,7 +383,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Product – Semi-Finished</masterLabel>
-            <translation>semi-fini</translation>
+            <translation>Semi-fini</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>QC Specification</masterLabel>
@@ -391,15 +391,15 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>QMS Document</masterLabel>
-            <translation>documentation qualité</translation>
+            <translation>Documentation qualité</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Quality System</masterLabel>
-            <translation>système qualité</translation>
+            <translation>Système qualité</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Raw Material/ Component, or Vendor</masterLabel>
-            <translation>matière première, composant</translation>
+            <translation>Matière première, composant</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Reagent</masterLabel>
@@ -407,7 +407,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Software</masterLabel>
-            <translation>software</translation>
+            <translation>Software</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Spare part modification</masterLabel>
@@ -435,7 +435,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Third Party Products</masterLabel>
-            <translation>third party product</translation>
+            <translation>Third party product</translation>
         </picklistValues>
     </fields>
     <fields>
@@ -479,15 +479,15 @@
         <name>Comment_Material__c</name>
     </fields>
     <fields>
-        <label>Produit</label>
+        <label>Commentaires</label>
         <name>Comment_Product__c</name>
     </fields>
     <fields>
-        <label>version du logiciel</label>
+        <label>Version du software</label>
         <name>Commercial_Software_Version__c</name>
     </fields>
     <fields>
-        <label><!-- Commercialization Coverage --></label>
+        <label>Commercialisation Coverage</label>
         <name>Commercialization_Coverage__c</name>
     </fields>
     <fields>
@@ -511,11 +511,11 @@
         <name>Complete_Before_Release__c</name>
     </fields>
     <fields>
-        <label>date d'ouverture</label>
+        <label>Date d'ouverture</label>
         <name>Date_Opened__c</name>
     </fields>
     <fields>
-        <label>nombre de jours d'ouverture du change</label>
+        <label>Nombre de jours d'ouverture du change</label>
         <name>Days_Open__c</name>
     </fields>
     <fields>
@@ -527,7 +527,7 @@
         <name>Department__c</name>
     </fields>
     <fields>
-        <label>Département</label>
+        <label>Département(s)</label>
         <name>Department_s__c</name>
         <picklistValues>
             <masterLabel>Calibration</masterLabel>
@@ -707,7 +707,7 @@
         <name>Device_Number__c</name>
     </fields>
     <fields>
-        <label>dispositif</label>
+        <label>Dispositif</label>
         <name>Device__c</name>
         <relationshipLabel><!-- Change Control --></relationshipLabel>
     </fields>
@@ -776,7 +776,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Equipment Description --></label>
+        <label>Description équipement</label>
         <name>Equipment_Description_Custom__c</name>
     </fields>
     <fields>
@@ -804,7 +804,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Lien avec évènement qualité</label>
+        <label>N° Evènement Qualité</label>
         <name>Existing_Quality_Event_Records_URL__c</name>
     </fields>
     <fields>
@@ -829,7 +829,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Installations</label>
+        <label>Infrastructures impactées</label>
         <name>Facilities_Impacted__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -941,7 +941,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Site impacté</label>
+        <label>Site(s) Impacté(s)</label>
         <name>Impacted_Site_s__c</name>
         <picklistValues>
             <masterLabel>Site 1</masterLabel>
@@ -1019,7 +1019,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Qualification requise</label>
+        <label>Qualification requise?</label>
         <name>Is_a_Qualification_Required__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1031,7 +1031,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>impact sur la qualification</label>
+        <label>Qualification requise?</label>
         <name>Is_a_Qualification_Required_change_impac__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1043,7 +1043,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Rollback</label>
+        <label>Rollback requis?</label>
         <name>Is_a_Rollback_Plan_Required__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1055,7 +1055,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Impact SPOT/UDI</label>
+        <label>Impact SPOT/UDI?</label>
         <name>Is_a_UDI_SPOT_Assessment_required__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1067,7 +1067,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Impact sur un instrument</label>
+        <label>Impact sur un instrument?</label>
         <name>Is_this_a_change_to_an_instrument__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1079,7 +1079,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Formation requise</label>
+        <label>Formation requise?</label>
         <name>Is_training_required__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1119,7 +1119,7 @@
         <name>Manufactured_Date__c</name>
     </fields>
     <fields>
-        <label>n° lot</label>
+        <label>Numéro de lot</label>
         <name>Material_Lot_Number_s__c</name>
     </fields>
     <fields>
@@ -1433,7 +1433,7 @@
     <fields>
         <label>Créateur</label>
         <name>Originator__c</name>
-        <relationshipLabel><!-- Change Control (Originator) --></relationshipLabel>
+        <relationshipLabel>Change Control (créateur)</relationshipLabel>
     </fields>
     <fields>
         <label>Produit impacté</label>
@@ -1477,8 +1477,8 @@
         <relationshipLabel><!-- Change Control --></relationshipLabel>
     </fields>
     <fields>
-        <help><!-- Is the impacted Product a WHO prequalified Medical Device?  --></help>
-        <label><!-- Product is WHO prequalified Device? --></label>
+        <help>Le produit impacté est il préqualifié WHO</help>
+        <label>Produit Préqualifié WHO?</label>
         <name>Product_a_WHO_prequalified_Device__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1490,7 +1490,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Produit associé</label>
+        <label>Produit(s) impacté(s)?</label>
         <name>Product_s_Affected__c</name>
         <picklistValues>
             <masterLabel>Product 1</masterLabel>
@@ -1510,12 +1510,12 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Approbateur qualité</label>
+        <label>Approbateur qualité CRB</label>
         <name>Quality_Approver__c</name>
         <relationshipLabel><!-- Change Control (CRB Quality Approver) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Contact Qualité</label>
+        <label>Approbateur Final 2</label>
         <name>Quality_Contact__c</name>
         <relationshipLabel><!-- Change Control (Quality Contact) --></relationshipLabel>
     </fields>
@@ -1541,7 +1541,7 @@
         <name>Reference_Numbers__c</name>
     </fields>
     <fields>
-        <label>Lien avec évènement qualité</label>
+        <label>Evènement(s) Qualité associé(s)</label>
         <name>Related_to_existing_Q_E_records__c</name>
     </fields>
     <fields>
@@ -1560,7 +1560,7 @@
         <relationshipLabel><!-- Change Control (Release Approver 3) --></relationshipLabel>
     </fields>
     <fields>
-        <label>Approbateur 4de l'implémentation</label>
+        <label>Approbateur 4 de l'implémentation</label>
         <name>Release_Approver_4__c</name>
         <relationshipLabel><!-- Change Control (Release Approver 4) --></relationshipLabel>
     </fields>
@@ -1616,7 +1616,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Rollback</label>
+        <label>Description Rollback</label>
         <name>Rollback_Plan_Summary__c</name>
     </fields>
     <fields>
@@ -1668,7 +1668,7 @@
         <name>Software_Name__c</name>
     </fields>
     <fields>
-        <label>Manager</label>
+        <label>Approbater Final 3</label>
         <name>Supervisor_Manager__c</name>
         <relationshipLabel><!-- Change Control (Supervisor/Manager) --></relationshipLabel>
     </fields>
@@ -1705,11 +1705,11 @@
         <name>Total_Actions_Open__c</name>
     </fields>
     <fields>
-        <label>Nbr actions ultérieures closes</label>
+        <label>Nbr actions après implémentation closes</label>
         <name>Total_After_Release_Closed__c</name>
     </fields>
     <fields>
-        <label>Nbr actions ultérieures</label>
+        <label>Nbr actions après implémentation</label>
         <name>Total_After_Release__c</name>
     </fields>
     <fields>
@@ -1729,7 +1729,7 @@
         <name>Total_Final_Approvers__c</name>
     </fields>
     <fields>
-        <label><!-- Total Impact Assessments Closed - Done --></label>
+        <label>Nbr Avis d'expert Clos - Réalisés</label>
         <name>Total_Impact_Assessments_Closed_Done__c</name>
     </fields>
     <fields>
@@ -1781,7 +1781,7 @@
         <name>Version__c</name>
     </fields>
     <fields>
-        <label>Le change est-il efficace</label>
+        <label>Le change est-il efficace?</label>
         <name>Was_the_change_Successful__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -1793,60 +1793,60 @@
         </picklistValues>
     </fields>
     <fields>
-        <label>Avis d'expert complété</label>
+        <label>% Avis d'expert complété</label>
         <name>impact_assessments_complete__c</name>
     </fields>
     <caseValues>
         <plural>false</plural>
-        <value><!-- Change Control --></value>
+        <value>Change Control</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value><!-- Change Control --></value>
+        <value>Change Control</value>
     </caseValues>
-    <gender><!-- Masculine --></gender>
-    <nameFieldLabel><!-- Change Control Number --></nameFieldLabel>
-    <startsWith><!-- Consonant --></startsWith>
+    <gender>Masculine</gender>
+    <nameFieldLabel>N° Change control</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
     <layouts>
         <layout>Change Control Custom</layout>
         <sections>
-            <label><!-- Change Review Board Approvers --></label>
+            <label>Approbateurs CRB</label>
             <section>Change Review Board Approvers</section>
         </sections>
         <sections>
-            <label><!-- Customers Impacted --></label>
+            <label>Clients impactés</label>
             <section>Customers Impacted</section>
         </sections>
         <sections>
-            <label><!-- Document Change Details --></label>
+            <label>Document</label>
             <section>Document Change Details</section>
         </sections>
         <sections>
-            <label><!-- Equipment Change Details --></label>
+            <label>Equipement</label>
             <section>Equipment Change Details</section>
         </sections>
         <sections>
-            <label><!-- Facilities Change --></label>
+            <label>Infrastructure</label>
             <section>Facilities Change</section>
         </sections>
         <sections>
-            <label><!-- Final Approval --></label>
+            <label>Approbation Finale</label>
             <section>Final Approval</section>
         </sections>
         <sections>
-            <label><!-- General Information --></label>
+            <label>Informations Générales</label>
             <section>General Information</section>
         </sections>
         <sections>
-            <label><!-- Impact Assessment --></label>
+            <label>Avis d'expert</label>
             <section>Impact Assessment</section>
         </sections>
         <sections>
-            <label><!-- Implementation Details --></label>
+            <label>Détails de l'implémentation</label>
             <section>Implementation Details</section>
         </sections>
         <sections>
-            <label><!-- Metrics --></label>
+            <label>Indicateurs</label>
             <section>Metrics</section>
         </sections>
         <sections>
@@ -1854,66 +1854,66 @@
             <section>Non Product Software</section>
         </sections>
         <sections>
-            <label><!-- Product Related Details --></label>
+            <label>Produits</label>
             <section>Product Related Details</section>
         </sections>
         <sections>
-            <label><!-- Quality Management System --></label>
+            <label>Système de Management de la Qualité</label>
             <section>Quality Management System</section>
         </sections>
         <sections>
-            <label><!-- Release Approval --></label>
+            <label>Approbation de l'implémentation</label>
             <section>Release Approval</section>
         </sections>
         <sections>
-            <label><!-- Supplier Change --></label>
+            <label>Change Fournisseur</label>
             <section>Supplier Change</section>
         </sections>
         <sections>
-            <label><!-- System Information --></label>
+            <label>Informations</label>
             <section>System Information</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Change Control Custom Read Only</layout>
         <sections>
-            <label><!-- Change Review Board Approvers --></label>
+            <label>Approbateurs CRB</label>
             <section>Change Review Board Approvers</section>
         </sections>
         <sections>
-            <label><!-- Customers Impacted --></label>
+            <label>Clients impactés</label>
             <section>Customers Impacted</section>
         </sections>
         <sections>
-            <label><!-- Document Change Details --></label>
+            <label>Document</label>
             <section>Document Change Details</section>
         </sections>
         <sections>
-            <label><!-- Equipment Change Details --></label>
+            <label>Equipement</label>
             <section>Equipment Change Details</section>
         </sections>
         <sections>
-            <label><!-- Facilities Change --></label>
+            <label>Infrastructure</label>
             <section>Facilities Change</section>
         </sections>
         <sections>
-            <label><!-- Final Approval --></label>
+            <label>Approbation Finale</label>
             <section>Final Approval</section>
         </sections>
         <sections>
-            <label><!-- General Information --></label>
+            <label>Informations Générales</label>
             <section>General Information</section>
         </sections>
         <sections>
-            <label><!-- Impact Assessment --></label>
+            <label>Avis d'expert</label>
             <section>Impact Assessment</section>
         </sections>
         <sections>
-            <label><!-- Implementation Details --></label>
+            <label>Détails de l'implémentation</label>
             <section>Implementation Details</section>
         </sections>
         <sections>
-            <label><!-- Metrics --></label>
+            <label>Indicateurs</label>
             <section>Metrics</section>
         </sections>
         <sections>
@@ -1921,23 +1921,23 @@
             <section>Non Product Software</section>
         </sections>
         <sections>
-            <label><!-- Product Related Details --></label>
+            <label>Produits</label>
             <section>Product Related Details</section>
         </sections>
         <sections>
-            <label><!-- Quality Management System --></label>
+            <label>Système de Management de la Qualité</label>
             <section>Quality Management System</section>
         </sections>
         <sections>
-            <label><!-- Release Approval --></label>
+            <label>Approbation de l'implémentation</label>
             <section>Release Approval</section>
         </sections>
         <sections>
-            <label><!-- Supplier Change --></label>
+            <label>Change Fournisseur</label>
             <section>Supplier Change</section>
         </sections>
         <sections>
-            <label><!-- System Information --></label>
+            <label>Informations</label>
             <section>System Information</section>
         </sections>
     </layouts>
@@ -1948,7 +1948,7 @@
             <section>Change Control Detail</section>
         </sections>
         <sections>
-            <label><!-- Change Control Information --></label>
+            <label>Informations change control</label>
             <section>Change Control Information</section>
         </sections>
         <sections>
@@ -1965,7 +1965,7 @@
         <name>Detach_File</name>
     </quickActions>
     <quickActions>
-        <label><!-- SAP Product Interface --></label>
+        <label>SAP Interface Produit</label>
         <name>SAP_Product_Interface</name>
     </quickActions>
     <recordTypes>
@@ -1982,7 +1982,7 @@
         <name>CC_Read_Only</name>
     </recordTypes>
     <validationRules>
-        <errorMessage><!-- At least one Action Item must be created prior to performing &quot;Submit for Review&quot;. --></errorMessage>
+        <errorMessage>Créer au moins une action avant d'envoyer en revue CRB</errorMessage>
         <name>Action_Item_created_before_Revie</name>
     </validationRules>
     <validationRules>
@@ -1990,7 +1990,7 @@
         <name>All_Action_Items_Must_be_Closed</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Tous les avis d'expert à clore avant revue</errorMessage>
+        <errorMessage>Tous les avis d'expert à clore avant revue CRB</errorMessage>
         <name>All_Impact_Ass_Closed_before_Review</name>
     </validationRules>
     <validationRules>
@@ -2014,19 +2014,19 @@
         <name>Change_Impact_on_Validation_Required</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You cannot select &quot;Approve Change Successful&quot; if the picklist value for &quot;Was the Change Successful&quot; is No --></errorMessage>
+        <errorMessage>Impossi</errorMessage>
         <name>Change_Successful</name>
     </validationRules>
     <validationRules>
-        <errorMessage>champ Autre obligatoire</errorMessage>
+        <errorMessage>Champ Autre obligatoire</errorMessage>
         <name>Change_Type_Other_Mandatory_Field_To_fi</name>
     </validationRules>
     <validationRules>
-        <errorMessage>champ Autre obligatoire</errorMessage>
+        <errorMessage>Champ Autre obligatoire</errorMessage>
         <name>Change_Type_Other_Mandatory_Field_To_sp</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You cannot select &quot;Approve Change Unsuccessful&quot; if the picklist value for &quot;Was the Change Successful&quot; is Yes --></errorMessage>
+        <errorMessage>"Impossible de choisir ""Approbation change non efficace"" si valeur sélectionnée  ""change efficace"""</errorMessage>
         <name>Change_UnSuccessful</name>
     </validationRules>
     <validationRules>
@@ -2034,11 +2034,11 @@
         <name>Department_Other</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Due Date Cannot be before Initiation Date --></errorMessage>
+        <errorMessage>La date d'échéance ne peut pas être antérieure à la date d'initiation</errorMessage>
         <name>Due_Date_Validation_Rule</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Externe - Personne responsable</errorMessage>
+        <errorMessage>Externe - Personne responsable à compléter</errorMessage>
         <name>External_Responsible_Person</name>
     </validationRules>
     <validationRules>
@@ -2046,7 +2046,7 @@
         <name>Final_Approver_1_Must_Be_Populated</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Avis d'expert à compléter avant Revue CRB</errorMessage>
+        <errorMessage>"Au moins un avis d'expert à créer/compléter pour les CC Modérés, Majeurs, ou Projet Transfert avant Revue CRB"</errorMessage>
         <name>Impact_Assessment_completed_before_Revie</name>
     </validationRules>
     <validationRules>
@@ -2054,35 +2054,35 @@
         <name>Implementati_Date_cannot_be_before_today</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Responsable filiale</errorMessage>
+        <errorMessage>Responsable filiale à compléter</errorMessage>
         <name>Internal_Sub_Responsible_Person</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Responsable du site de production</errorMessage>
+        <errorMessage>Responsable du site de production à compléter</errorMessage>
         <name>Internal_mfgsite_Responsible_Person</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Stratégie de non application du change et retour à l'état initial</errorMessage>
+        <errorMessage>Champ Rollback requis à compléter pour CC inefficace</errorMessage>
         <name>Is_a_rollback_plan_required_required</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Seulement Responsable de la modification ou Coordinateur</errorMessage>
+        <errorMessage>Uniquement Responsable modification ou Coordinateur</errorMessage>
         <name>Only_Change_Owner_or_Change_Coordinator</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Manufacturing</errorMessage>
+        <errorMessage>Champ Localisation requis</errorMessage>
         <name>Origination_is_Manufacturing</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Filiale</errorMessage>
+        <errorMessage>Champ Localisation requis</errorMessage>
         <name>Origination_is_Subsidiary</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Impossible de modifier le change control apres cloture par QE</errorMessage>
+        <errorMessage>Enregistrement Verrouillé</errorMessage>
         <name>Prevent_Edit_Change_control_on_closed_QE</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Produit impacté requis</errorMessage>
+        <errorMessage>Champs Référence produit et Gamme à compléter</errorMessage>
         <name>Product_Impacted_Required_Fields</name>
     </validationRules>
     <validationRules>
@@ -2090,11 +2090,11 @@
         <name>Release_Approver_1_Must_Be_Populated</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Qualification requise</errorMessage>
+        <errorMessage>Champ Description de Qualification à compléter</errorMessage>
         <name>Required_Qualification_Required</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Formation requise</errorMessage>
+        <errorMessage>Champ Type de Formation à compléter</errorMessage>
         <name>Required_Training_Required</name>
     </validationRules>
     <validationRules>
@@ -2102,7 +2102,7 @@
         <name>Risk_Analysis_Reference_Required</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Stratégie de non application du change et retour à l'état initial</errorMessage>
+        <errorMessage>Champ Description Rollback à compléter pour CC inefficace</errorMessage>
         <name>Rollback_Plan_Summary_Required</name>
     </validationRules>
     <validationRules>
@@ -2114,7 +2114,7 @@
         <name>Change_Controlc</name>
     </webLinks>
     <webLinks>
-        <label><!-- Report --></label>
+        <label>Imprimer</label>
         <name>Report</name>
     </webLinks>
 </CustomObjectTranslation>

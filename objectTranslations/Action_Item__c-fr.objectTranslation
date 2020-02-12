@@ -4,7 +4,7 @@
         <name>Action_Item__c</name>
     </fields>
     <fields>
-        <label>Après Mise en place</label>
+        <label>Après implémentation</label>
         <name>After_Release__c</name>
     </fields>
     <fields>
@@ -98,16 +98,16 @@
         <name>CMPL123_WF_Status__c</name>
     </fields>
     <fields>
-        <label>change control</label>
+        <label>Change control</label>
         <name>Change_Control__c</name>
-        <relationshipLabel>change control</relationshipLabel>
+        <relationshipLabel>Plan d'action</relationshipLabel>
     </fields>
     <fields>
         <label><!-- Performed By Automation --></label>
         <name>Performed_By_Automation__c</name>
     </fields>
     <fields>
-        <label>Plan d'&amp;action prédéfini</label>
+        <label>Plan d’Action prédéfini</label>
         <name>Predefined_Implementation_Plan__c</name>
     </fields>
     <fields>
@@ -120,15 +120,15 @@
         <name>Require_Approval__c</name>
     </fields>
     <fields>
-        <label>Approbation requise</label>
+        <label>Requis</label>
         <name>Required__c</name>
     </fields>
     <fields>
-        <label>Requis</label>
+        <label>Courte description</label>
         <name>Short_Description__c</name>
     </fields>
     <fields>
-        <label>Courte description</label>
+        <label>Numéro d'étape</label>
         <name>Step_Number__c</name>
     </fields>
     <fields>
@@ -136,11 +136,11 @@
         <name>Summary_of_Action_Taken__c</name>
     </fields>
     <fields>
-        <label><!-- Target Due Date --></label>
+        <label>Date d'échéance cible</label>
         <name>Target_Due_Date__c</name>
     </fields>
     <fields>
-        <label><!-- Total Optional Approvers --></label>
+        <label>Nbr approbateurs optionnels</label>
         <name>Total_Optional_Approver__c</name>
     </fields>
     <fields>
@@ -149,19 +149,19 @@
     </fields>
     <caseValues>
         <plural>false</plural>
-        <value><!-- Action Item --></value>
+        <value>Action Item</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value><!-- Action Item --></value>
+        <value>Action Items</value>
     </caseValues>
-    <gender><!-- Masculine --></gender>
-    <nameFieldLabel><!-- Action Item Name --></nameFieldLabel>
-    <startsWith><!-- Consonant --></startsWith>
+    <gender>Masculine</gender>
+    <nameFieldLabel>N° Action</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
     <layouts>
         <layout>Action Item Layout</layout>
         <sections>
-            <label><!-- Approvers --></label>
+            <label>Approbateurs</label>
             <section>Approvers</section>
         </sections>
         <sections>
@@ -169,7 +169,7 @@
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Workflow --></label>
+            <label>Worflow</label>
             <section>Workflow</section>
         </sections>
         <sections>
@@ -180,7 +180,7 @@
     <layouts>
         <layout>Predefined (Not Required) Layout</layout>
         <sections>
-            <label><!-- Approvers --></label>
+            <label>Approbateurs</label>
             <section>Approvers</section>
         </sections>
         <sections>
@@ -192,7 +192,7 @@
             <section>Developer</section>
         </sections>
         <sections>
-            <label><!-- Workflow --></label>
+            <label>Worflow</label>
             <section>Workflow</section>
         </sections>
         <sections>
@@ -215,11 +215,11 @@
         <name>Locked</name>
     </recordTypes>
     <validationRules>
-        <errorMessage><!-- After Release Items can only be edited in either Open status or After Items in Progress. --></errorMessage>
+        <errorMessage>Actions après implémentation éditable uniquement au statut Initié du CC</errorMessage>
         <name>Af_Releaseonlyeditable_in_Open_or_arip</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- After Release Items are locked until after implementation date on change control. --></errorMessage>
+        <errorMessage>Actions après implémentation vérrouillées jusqu'à la date d'implémentation du CC</errorMessage>
         <name>After_Release_Item_Cannot_Be_Started</name>
     </validationRules>
     <validationRules>
@@ -227,23 +227,23 @@
         <name>Approver_1_Must_Be_Populated</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Only the Assignee, Change Owner of the Change Control, or Change Coordinator can modify the Assignee field --></errorMessage>
+        <errorMessage>"Uniquement Assigné, Responsable modification, Coordinateur peut modifier l'Assigné"</errorMessage>
         <name>Assignee_Restrictions</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Only Assignee can update URL (for PECN Use) and Summary of Action Taken --></errorMessage>
+        <errorMessage>Uniquement lAssigné peut modifier l'URL et le champ Synthèse des actions</errorMessage>
         <name>Assignee_only_fields</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- All Child Records are locked when the Change Control is in the status of Pending CRB Team Review --></errorMessage>
+        <errorMessage>Tous les enregistrements enfants sont verrouillés quand le CC est en attente de revue CRB</errorMessage>
         <name>CC_is_in_Pending_CRB_lock_child_recordai</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Le change doit etre ouvert pour annuler l'action</errorMessage>
+        <errorMessage>Le change doit etre au statut Initié pour annuler l'action</errorMessage>
         <name>CCmustbeOpenstatustocancelaction</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Only Change Coordinator can update After Release or Require Approval when CC is not in Open Status --></errorMessage>
+        <errorMessage>Uniquement Coordinateur peut modifier Actions après implémentation ou nécessitant approbation lorsque CC n'est pas au statut Initié</errorMessage>
         <name>Coordinator_canupdate_after_release_or_r</name>
     </validationRules>
     <validationRules>
@@ -251,23 +251,23 @@
         <name>LockAI_when_CC_is_Pending_Quality_Revie</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Summary of Action Taken is locked until CC is Approved --></errorMessage>
+        <errorMessage>Champ Synthèse des actions verrouillé jusqu'à l'approbation du CC</errorMessage>
         <name>Lock_Fields_before_CC_is_Approved</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- URL (for PECN use) is locked until CC is Approved --></errorMessage>
+        <errorMessage>URL est verrouillé juqu'à approbation du CC</errorMessage>
         <name>Lock_Fields_before_CC_is_Approved_URL</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Action Item, Change Control, Short Description, Required, and Target Due Date are locked --></errorMessage>
+        <errorMessage>"CC, Actions, Courte description et date d'échéance cible verrouillés"</errorMessage>
         <name>Lock_fields_After_Open</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Action Items can only be created when Change Control is in the Open status --></errorMessage>
+        <errorMessage>Actions peuvet être créées uniquement quand CC au statut intié</errorMessage>
         <name>No_Action_Items_after_CC_is_reviewed</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Only Change Coordinators, Assigned Change Owner, or creator of record can perform Open. --></errorMessage>
+        <errorMessage>"Uniquement Corrdinateur, Responsable modification, Créateur peuvent compléter l'initiation"</errorMessage>
         <name>Only_CCOwner_Creator_Coordinator_Open</name>
     </validationRules>
     <validationRules>
@@ -287,7 +287,7 @@
         <name>only_CC_Owner_or_Coordinator_Cancel</name>
     </validationRules>
     <webLinks>
-        <label><!-- Change_Controlc --></label>
+        <label>Nouvelle action</label>
         <name>Change_Controlc</name>
     </webLinks>
 </CustomObjectTranslation>

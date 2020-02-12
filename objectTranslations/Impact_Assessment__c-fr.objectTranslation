@@ -2,7 +2,7 @@
     <fields>
         <label>Assignée</label>
         <name>Assignee__c</name>
-        <relationshipLabel>Assignée</relationshipLabel>
+        <relationshipLabel>Avis d'expert (Assigné)</relationshipLabel>
     </fields>
     <fields>
         <label><!-- Rule Field Update Key Value --></label>
@@ -15,7 +15,7 @@
     <fields>
         <label>Action réalisée par</label>
         <name>CMPL123_WF_Action_Performed_By__c</name>
-        <relationshipLabel>Action réalisée par</relationshipLabel>
+        <relationshipLabel>Avis d'expert (Réalisé par)</relationshipLabel>
     </fields>
     <fields>
         <label>Action réalisé le</label>
@@ -30,20 +30,20 @@
         <name>CMPL123_WF_Status__c</name>
     </fields>
     <fields>
-        <label>change control</label>
+        <label>Change control</label>
         <name>Change_Control__c</name>
-        <relationshipLabel>change control</relationshipLabel>
+        <relationshipLabel>Avis d'expert</relationshipLabel>
     </fields>
     <fields>
-        <label>Date de création?</label>
+        <label>Date de création</label>
         <name>CreatedDate__c</name>
     </fields>
     <fields>
-        <label>Mise en place de l'action</label>
+        <label>Implémentation de l'action</label>
         <name>Implementation_Action__c</name>
     </fields>
     <fields>
-        <label>Autre</label>
+        <label>Autre - Expert</label>
         <name>Other_SME_Area__c</name>
     </fields>
     <fields>
@@ -55,7 +55,7 @@
         <name>SME_Area__c</name>
         <picklistValues>
             <masterLabel>Control Method</masterLabel>
-            <translation>méthode de contrôle</translation>
+            <translation>Méthode de contrôle</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Engineering</masterLabel>
@@ -160,15 +160,15 @@
     </fields>
     <caseValues>
         <plural>false</plural>
-        <value><!-- Impact Assessment --></value>
+        <value>Avis d’expert</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value><!-- Impact Assessment --></value>
+        <value>Avis d’expert</value>
     </caseValues>
-    <gender><!-- Masculine --></gender>
+    <gender>Masculine</gender>
     <nameFieldLabel><!-- Impact Assessment Name --></nameFieldLabel>
-    <startsWith><!-- Consonant --></startsWith>
+    <startsWith>Consonant</startsWith>
     <layouts>
         <layout>Impact Assessment Layout</layout>
         <sections>
@@ -176,11 +176,11 @@
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Esig History --></label>
+            <label>Historique des e-signatures</label>
             <section>Esig History</section>
         </sections>
         <sections>
-            <label><!-- Impact Assessment --></label>
+            <label>Avis d'expert</label>
             <section>Impact Assessment</section>
         </sections>
         <sections>
@@ -193,23 +193,23 @@
         <name>Detach_File</name>
     </quickActions>
     <validationRules>
-        <errorMessage><!-- Only the Assignee, Change Owner of the Change Control, or Change Coordinator can modify the Assignee field --></errorMessage>
+        <errorMessage>"Uniquement Assigné, Responsable modification, Coordinateur peut modifier l'Assigné"</errorMessage>
         <name>Assignee_restrictions</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- All Child Records are locked when the Change Control is in the status of Pending CRB Team Review --></errorMessage>
+        <errorMessage>Tous les enregistrements enfants sont verrouillés quand le CC est en attente de revue CRB</errorMessage>
         <name>CC_is_in_Pending_CRB_lock_child_records</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Only the Assignee can modify the Impact Assessment field --></errorMessage>
+        <errorMessage>Uniquement l'Assigné peut modifier l'avis d'expert</errorMessage>
         <name>Impact_Assessment_Restriction</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Impact Assessments can only be created when Change Control is in the Open status --></errorMessage>
+        <errorMessage>Avis d'expert peut être créé uniquement si le CC est au statut Initié</errorMessage>
         <name>Impact_Assessments_only_in_cc_open</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Only the Assignee can modify the Implementation Action field --></errorMessage>
+        <errorMessage>Uniquement l'Assigné peut modifier le champ d'implémentation de l'action</errorMessage>
         <name>Implementation_Action_Restriction</name>
     </validationRules>
     <validationRules>
@@ -217,11 +217,11 @@
         <name>Lock_when_CC_is_in_Pending_Quality_Revie</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Impact Assessments can only be created when Change Control is in the Open status --></errorMessage>
+        <errorMessage>Avis d'expert peut être créé uniquement si le CC est au statut Initié</errorMessage>
         <name>No_Impact_Assessme_after_CC_is_reviewed</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You cannot add an addtional Impact Assessment after the Quality Assurance Assessment was completed --></errorMessage>
+        <errorMessage>Impossible d'ajouter un avis d'expert après approbation qualité</errorMessage>
         <name>No_more_impact_assessments_after_quality</name>
     </validationRules>
     <validationRules>
@@ -229,15 +229,15 @@
         <name>Only_Change_Owner_or_Change_Coordinator</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Autre</errorMessage>
+        <errorMessage>Champ Autre - Expert obligatoire</errorMessage>
         <name>Other_SME_Area</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Quality Assurance assessment must be completed last --></errorMessage>
+        <errorMessage>Approbation qualité en dernier</errorMessage>
         <name>QA_assessment_if_created_must_be_last</name>
     </validationRules>
     <webLinks>
-        <label><!-- Change_Controlc --></label>
+        <label>Nouvel avis d'expert</label>
         <name>Change_Controlc</name>
     </webLinks>
 </CustomObjectTranslation>
