@@ -28,6 +28,7 @@ trigger CMPL123QMS_Change_Control_123Trigger on CMPL123QMS__Change_Control__c (b
         //ChangeControlHandler.preventChangeControlSubmission(Trigger.newMap, Trigger.oldMap);
         //ChangeControlHandler.preventChangeControlCompleteReview(Trigger.newMap, Trigger.oldMap);
         ProcessBatchChildWorkflow.ProcessBatchChildWorkflows('CMPL123QMS__Change_Control__c',Trigger.newMap, Trigger.oldMap);
+        SapProductInformationController.handleUpdateAfterProductImpacted(Trigger.newMap, Trigger.oldMap);
         X123handler.handleBeforeUpdate();
     }
 

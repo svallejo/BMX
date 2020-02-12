@@ -1,4 +1,16 @@
-public virtual class TestSetup{
+/**
+ * @File Name          : TestSetup.cls
+ * @Description        : 
+ * @Author             : Jon Astemborski
+ * @Group              : 
+ * @Last Modified By   : Jon Astemborski
+ * @Last Modified On   : 1/16/2020, 4:36:10 PM
+ * @Modification Log   : 
+ * Ver       Date            Author      		    Modification
+ * 1.0    1/16/2020   Jon Astemborski     Initial Version
+**/
+@IsTest
+public class TestSetup{
     private static final String WF_ACTION_API_NAME = 'CMPL123_WF_Action__c';
     private static final String WF_STATUS_API_NAME = 'CMPL123_WF_Status__c';
     private static final String ID_NAME = 'Id';
@@ -15,6 +27,17 @@ public virtual class TestSetup{
             insert product;
         }
         return product;
+    }
+
+    public static Impact_Assessment__c createIA(Boolean withId, Id ccId){
+        Impact_Assessment__c ia = new Impact_Assessment__c();
+        ia.change_control__c = ccId;
+        ia.CMPL123_WF_Status__c = 'Open';
+        ia.CMPL123Task_Key_Value__c = '';
+        if (withId) {
+            insert ia;
+        }
+        return ia;
     }
 
     public static Action_Item__c createAIWithCC(Boolean withId, Id ccId) {
@@ -40,17 +63,6 @@ public virtual class TestSetup{
             insert complaintObj;
         }
         return complaintObj;
-    }
-
-    public static CMPL123QMS__Change_Control__c  createChangeControl(Boolean withId) {
-        CMPL123QMS__Change_Control__c cc = new CMPL123QMS__Change_Control__c();
-        cc.Origination__c = 'Corporate';
-        cc.Title__c ='UnitTest';
-        cc.Change_Owner__c = createUser(true).Id;
-        if (withId) {
-            insert cc;
-        }
-        return cc;
     }
 
     public static CMPL123QMS__Change_Control__c  createCC(Boolean withId, Id recordTypeId) {

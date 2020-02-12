@@ -19770,6 +19770,9 @@
         <layout>Related_Location__c-Related Location Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>SAP_Product_Information__c-SAP Product Information Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Scorecard-Scorecard Layout</layout>
     </layoutAssignments>
     <layoutAssignments>

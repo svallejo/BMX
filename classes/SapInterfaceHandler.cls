@@ -4,7 +4,7 @@
  * @Author             : Jon Astemborski
  * @Group              : 
  * @Last Modified By   : Jon Astemborski
- * @Last Modified On   : 1/23/2020, 12:44:06 PM
+ * @Last Modified On   : 2/11/2020, 10:49:08 PM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/15/2020   Jon Astemborski     Initial Version
@@ -29,6 +29,7 @@ public without Sharing class SapInterfaceHandler {
     public static final String SAP_CHAR_VALUE = 'CharcValue';
     public static final String SAP_CHAR_ID = 'CharcInternalID';
     public static final String EMPTY_STRING_ESCAPED = '\"\"';
+    public static final String IS_SINGLE_PRODUCT_IMPACTED = 'YES – SINGLE ITEM IMPACTED';
 
     @AuraEnabled
     public static List<SapProductInformation> productInformationList {get; set;} 
@@ -37,6 +38,7 @@ public without Sharing class SapInterfaceHandler {
     private static String createProductUrlParam(String productItemNumber){
         return PRODUCT_PARAM_PREFIX + ESCAPED_SINGLE_QUOTE + productItemNumber + ESCAPED_SINGLE_QUOTE;
     }
+
     @AuraEnabled
     public static List<SapProductInformation> retrieveSapProductInformation(String productItemNumber){
         HttpRequest request = createHttpRequest(productItemNumber);
@@ -47,7 +49,6 @@ public without Sharing class SapInterfaceHandler {
 
     @TestVisible
     private static void checkForError(Map<String, Object> response){
-        System.debug('error: ' + response);
         if ( response.containsKey(SAP_CODE)) {
             Map<String, Object> errorCodeMap = (Map<String, Object>) response.get(SAP_CODE);
             if (errorCodeMap.containsKey(SAP_ERROR_MESSAGE) && !(errorCodeMap.get(SAP_ERROR_MESSAGE) instanceof String)) {
@@ -188,18 +189,94 @@ public without Sharing class SapInterfaceHandler {
     }
 
     @AuraEnabled
-    public static void updateChangeControlWithProductInformation(SapProductInformation selectedProduct, Id recordId){
+    public static void updateChangeControlWithProductInformation(List<SapProductInformation> selectedProducts, Id recordId){
+        CMPL123QMS__Change_Control__c currentCC = [SELECT Id, Name, Product_Impacted__c, Product_Item_Number__c, Product_Item_Description__c, Product_Range__c, Global_Trade_Identification_Number__c,
+                                                CE_Approved__c, Product_Type__c, Make_or_Buy__c, Trade_Type__c, Legal_Manufacturer__c, Site_Responsible__c,
+                                                Commercialization_Coverage__c, Origin__c FROM CMPL123QMS__Change_Control__c
+                                                WHERE Id = :recordId];
+        if ( !areProductsImpacted(currentCC)) {
+            throw new AuraException('Cannot perform operation as there are no Products Impacted.');
+        }
+        handleSapProductInformationRecords(currentCC, selectedProducts);
+    }
+
+    public static void handleSingleSapProductRecord(CMPL123QMS__Change_Control__c currentCc, SapProductInformation selectedProduct){
         try { 
-            CMPL123QMS__Change_Control__c currentCC = [SELECT Id, Name, Product_Item_Number__c, Product_Item_Description__c, Product_Range__c, Global_Trade_Identification_Number__c,
-                                                    CE_Approved__c, Product_Type__c, Make_or_Buy__c, Trade_Type__c, Legal_Manufacturer__c, Site_Responsible__c,
-                                                    Commercialization_Coverage__c, Origin__c FROM CMPL123QMS__Change_Control__c
-                                                    WHERE Id = :recordId];
-            System.debug(currentCc);
-            CMPL123QMS__Change_Control__c updatedCC = transformSapProductInformation(currentCC, selectedProduct);
+            CMPL123QMS__Change_Control__c updatedCC = transformSapProductInformation(currentCc, selectedProduct);
             update updatedCC;
         }
         catch (DmlException dmlException){
             throw new AuraHandledException('Unable update Change Control.\n'+dmlException.getMessage());          
+        }
+    }
+
+    public static void deleteProductInformationRecordsIfTheyExist(Id currentCcId){
+        List<SAP_Product_Information__c> productInformationList = [SELECT Id FROM SAP_Product_Information__c WHERE Change_Control__c =: currentCcId];
+        if (!productInformationList.isEmpty()){
+            delete productInformationList;
+        }
+    }
+
+    @AuraEnabled
+    public static boolean areMultipleProductsImpacted(String recordId){
+        CMPL123QMS__Change_Control__c cc = [SELECT Id, Product_Impacted__c FROM CMPL123QMS__Change_Control__c  WHERE id =: recordId limit 1];
+        if (cc.Product_Impacted__c  != null ) {
+            return cc.Product_Impacted__c.toUpperCase().equals('YES – MULTIPLE ITEMS IMPACTED') ? true : false;
+        }
+        return false;
+    }
+
+    public static boolean areProductsImpacted(CMPL123QMS__Change_Control__c cc){
+        Boolean productsImpacted = false;
+        if (cc.Product_Impacted__c  != null && cc.Product_Impacted__c.toUpperCase().contains('YES')) {
+            productsImpacted = true;
+        }
+        return productsImpacted;
+    }
+
+    @AuraEnabled
+    public static boolean isSingleProductImpacted(String recordId){
+        CMPL123QMS__Change_Control__c cc = [SELECT Id, Product_Impacted__c FROM CMPL123QMS__Change_Control__c  WHERE id =: recordId limit 1];
+        Boolean productsImpacted = false;
+        if (cc.Product_Impacted__c  != null && cc.Product_Impacted__c.toUpperCase().equals('YES – SINGLE ITEM IMPACTED')) {
+            productsImpacted = true;
+        }
+        return productsImpacted;
+    }
+
+    public static void handleMultipleSapProductRecords(CMPL123QMS__Change_Control__c currentCC, List<SapProductInformation> selectedProducts){
+        try { 
+            List<SAP_Product_Information__c> productInformationList = new List<SAP_Product_Information__c>();
+            for (SapProductInformation productInformation : selectedProducts ) {
+                productInformationList.add( new SAP_Product_Information__c(
+                    Change_Control__c = currentCC.id,
+                    Product_Item_Number__c = productInformation.productItemNumber,
+                    Product_Item_Description__c = productInformation.productDescription,
+                    Product_Range__c = productInformation.productRange,
+                    Global_Trade_Identification_Number__c = productInformation.gtin,
+                    CE_Approved__c = productInformation.ceApproved,
+                    Product_Type__c = productInformation.productType,
+                    Make_or_Buy__c = productInformation.makeOrBuy,
+                    Trade_Type__c = productInformation.tradeType,
+                    Legal_Manufacturer__c = productInformation.legalManufacturer,
+                    Site_Responsible__c = productInformation.siteResponsible,
+                    Commercialization_Coverage__c = productInformation.commercializationCoverage,
+                    Origin__c = productInformation.originAnimalHuman));
+            }
+            insert productInformationList;
+            System.debug('Updated prod info list: ' + productInformationList);
+        }
+        catch (DmlException dmlException){
+            throw new AuraHandledException('Unable update Change Control.\n'+dmlException.getMessage());          
+        }
+    }
+
+    public static void handleSapProductInformationRecords(CMPL123QMS__Change_Control__c currentCC, List<SapProductInformation> selectedProducts){
+        System.debug(currentCC.Product_Impacted__c);
+        handleMultipleSapProductRecords(currentCC, selectedProducts);
+
+        if (String.valueof(currentCC.Product_Impacted__c).toUpperCase().equals('YES – SINGLE ITEM IMPACTED')){
+            handleSingleSapProductRecord(currentCC, selectedProducts.get(0));
         }
     }
     

@@ -26,7 +26,7 @@ global class BatchChildWorkflowHandler implements Database.Batchable<sObject> {
     @TestVisible
     private String createQuery(Batch_Child_Workflow_Mapping__mdt workflowMapping){
         String performedByAutomation = '';
-        if ( currentWorkflowMapping.Bypass_Validation_Rule__c)
+        if ( workflowMapping.Bypass_Validation_Rule__c)
         {
             performedByAutomation = ' Performed_By_Automation__c, ';
         }

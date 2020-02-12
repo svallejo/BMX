@@ -15,7 +15,30 @@
             {label: 'Origin Animal/Human', fieldName: 'originAnimalHuman', type: 'text'}
         ]);
         cmp.set("v.HideSpinner", false);
-
+        
+        var action = cmp.get("c.isSingleProductImpacted");
+        action.setParams({'recordId': cmp.get("v.recordId")});
+        // Add callback behavior for when response is received
+        action.setCallback(this, function(response) {
+            let state = response.getState();
+            if (state === "SUCCESS") {
+                let result = response.getReturnValue();
+                cmp.set("v.isSingleProductImpacted", result);
+            }
+            else {
+                let errors = response.getError();
+                let message = 'Unknown error'; // Default error message
+                // Retrieve the error message sent by the server
+                if (errors && Array.isArray(errors) && errors.length > 0) {
+                    message = errors[0].message;
+                }
+                // Display the message
+                console.error(message)
+            }
+            cmp.set("v.HideSpinner", false);
+        });
+        // Send action off to be executed
+        $A.enqueueAction(action);
     },
     closeModal: function(component, event, helper){  
         var dismissActionPanel = $A.get("e.force:closeQuickAction");
@@ -25,10 +48,9 @@
     saveRecord:function(component, event, helper){
         component.set("v.HideSpinner", true);
         var action = component.get("c.updateChangeControlWithProductInformation");
-        var test =  JSON.stringify(component.get('v.selectedProduct')).replace('[','').replace(']','');
-        var test2 =  JSON.parse(test);
-        if (component.get("v.selectedProduct") != null) {
-            action.setParams({'selectedProduct' : test2, 'recordId': component.get("v.recordId")});
+        var selectedRows = component.get('v.selectedRows');
+        if (selectedRows != null) {
+            action.setParams({'selectedProducts' : selectedRows, 'recordId': component.get("v.recordId")});
             // Add callback behavior for when response is received
                 action.setCallback(this, function(response) {
                     let state = response.getState();
@@ -67,10 +89,11 @@
         }
      },
     setSelectedProduct:function(component, event, helper){
+        try {
         let lines = [];
         lines = component.find('prodTable').getSelectedRows();
         var disableReport = lines.length == 0 ? true : false;
-        var disableSave = lines.length == 0  || lines.length > 1 ? true : false;
+        var disableSave = lines.length == 0  ? true : false;
 
         if ( lines.length == 1 ) {
             let selectedRow = {}
@@ -78,9 +101,17 @@
             component.set("v.selectedProduct", lines[0]);
         }
 
+        if ( component.get("v.isSingleProductImpacted") && lines.length > 1) {
+            disableSave = true;
+        }
+
         component.set("v.disableSave", disableSave);
         component.set("v.disableReport", disableReport);
         component.set("v.selectedRows", lines);
+    }
+    catch (err){
+        console.log(err);
+    }
     },
     search: function(component, event, helper){
  		 component.set("v.HideSpinner", true);
