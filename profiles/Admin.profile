@@ -25197,7 +25197,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR_Code__c.CMPL123CME__Name_With_Code__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -25207,7 +25207,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR_Code__c.CMPL123CME__Parent_Active__c</field>
         <readable>true</readable>
     </fieldPermissions>
