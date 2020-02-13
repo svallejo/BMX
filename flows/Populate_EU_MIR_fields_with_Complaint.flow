@@ -12,7 +12,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision3</targetReference>
+            <targetReference>myDecision4</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -130,23 +130,23 @@
                 <numberValue>1.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision3</name>
-        <label>myDecision3</label>
+        <name>myDecision4</name>
+        <label>myDecision4</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_4</name>
+            <name>myRule_5</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_4</leftValueReference>
+                <leftValueReference>formula_myRule_5</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_4_A1</targetReference>
+                <targetReference>myRule_5_A1</targetReference>
             </connector>
             <label>Update Local Susidiary</label>
         </rules>
@@ -158,16 +158,27 @@
                 <stringValue>IF([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_0534369786</name>
+        <name>formula_2_myRule_1_A1_5222975412</name>
         <dataType>Date</dataType>
         <expression>IF({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</expression>
     </formulas>
     <formulas>
-        <name>formula_myRule_4</name>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Description_of_Issue__c  &amp; BR() &amp; BR() &amp; [CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reporting_Decision_Justification__c </stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_3_myRule_1_A1_4777002689</name>
+        <dataType>String</dataType>
+        <expression>{!myVariable_current.BMX_Local_Assessment__r.BMX_Description_of_Issue__c}  &amp; BR() &amp; BR() &amp; {!myVariable_current.BMX_Local_Assessment__r.BMX_Reporting_Decision_Justification__c}</expression>
+    </formulas>
+    <formulas>
+        <name>formula_myRule_5</name>
         <dataType>Boolean</dataType>
         <expression>true</expression>
     </formulas>
-    <interviewLabel>Populate_EU_MIR_fields_with_Complaint-8_InterviewLabel</interviewLabel>
+    <interviewLabel>Populate_EU_MIR_fields_with_Complaint-9_InterviewLabel</interviewLabel>
     <label>Autopopulate fields in EU MIR from Complaint and LA</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -224,7 +235,7 @@
         <locationX>100</locationX>
         <locationY>200</locationY>
         <connector>
-            <targetReference>myDecision3</targetReference>
+            <targetReference>myDecision4</targetReference>
         </connector>
         <filters>
             <processMetadataValues>
@@ -524,7 +535,7 @@
             </processMetadataValues>
             <field>CMPL123CME__Expected_Date_Of_Next_Report__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_0534369786</elementReference>
+                <elementReference>formula_2_myRule_1_A1_5222975412</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -591,12 +602,12 @@
             <processMetadataValues>
                 <name>rightHandSideType</name>
                 <value>
-                    <stringValue>Reference</stringValue>
+                    <stringValue>Formula</stringValue>
                 </value>
             </processMetadataValues>
             <field>CMPL123CME__Incident_Description__c</field>
             <value>
-                <elementReference>myVariable_current.CMPL123CME__Complaint__r.BMX_LongDescription__c</elementReference>
+                <elementReference>formula_3_myRule_1_A1_4777002689</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1130,9 +1141,9 @@
         <processMetadataValues>
             <name>referenceTargetField</name>
         </processMetadataValues>
-        <name>myRule_4_A1</name>
+        <name>myRule_5_A1</name>
         <label>Update Local Subsidiary</label>
-        <locationX>400</locationX>
+        <locationX>500</locationX>
         <locationY>200</locationY>
         <filters>
             <processMetadataValues>
@@ -1222,7 +1233,7 @@
         <object>CMPL123CME__EU_MIR__c</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
