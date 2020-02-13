@@ -123,22 +123,11 @@
                 <stringValue>IF([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_1340722072</name>
+        <name>formula_3_myRule_1_A1_4674957609</name>
         <dataType>Date</dataType>
         <expression>IF({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</expression>
     </formulas>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>IF(OR([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,[CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_4_myRule_1_A1_9088806278</name>
-        <dataType>Date</dataType>
-        <expression>IF(OR({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,{!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c} = &apos;ITALY&apos;),TODAY()+60,TODAY()+90)</expression>
-    </formulas>
-    <interviewLabel>Auto_Close_Initial_Follow_Up_EU_MIR-6_InterviewLabel</interviewLabel>
+    <interviewLabel>Auto_Close_Initial_Follow_Up_EU_MIR-7_InterviewLabel</interviewLabel>
     <label>Auto Close MIR and create FollowUp</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -206,7 +195,7 @@
             </processMetadataValues>
             <field>BMX_Due_Date__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_1340722072</elementReference>
+                <elementReference>formula_3_myRule_1_A1_4674957609</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1359,42 +1348,6 @@
             <field>CMPL123CME__Device_Usage__c</field>
             <value>
                 <elementReference>myVariable_current.CMPL123CME__Device_Usage__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Date</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Expected date of next report</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Formula</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>CMPL123CME__Expected_Date_Of_Next_Report__c</field>
-            <value>
-                <elementReference>formula_4_myRule_1_A1_9088806278</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -4565,6 +4518,42 @@
                 <elementReference>myVariable_current.CMPL123CME__Years_At_Time_Of_Incident__c</elementReference>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Owner ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>Group;User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>myVariable_current.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
         <object>CMPL123CME__EU_MIR__c</object>
     </recordCreates>
     <recordUpdates>
@@ -4792,7 +4781,7 @@
         <object>CMPL123CME__EU_MIR__c</object>
     </recordUpdates>
     <startElementReference>isChangedDecision2_myRule_1_CMPL123_WF_Status_c</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
