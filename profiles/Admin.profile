@@ -2287,6 +2287,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CcRecordLockController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ChangeControlEffectivenessHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>

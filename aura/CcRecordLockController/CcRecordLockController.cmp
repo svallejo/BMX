@@ -1,0 +1,6 @@
+<aura:component controller="CcRecordLockController" implements="flexipage:availableForAllPageTypes,force:hasRecordId" >
+    <aura:handler event="force:refreshView" action="{!c.refresh}" />
+    <aura:attribute name="cc" type="CMPL123QMS__Change_Control__c" default="{ 'sobjectType': 'CMPL123QMS__Change_Control__c' }"/>
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
+</aura:component>
