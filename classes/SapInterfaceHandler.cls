@@ -4,7 +4,7 @@
  * @Author             : Jon Astemborski
  * @Group              : 
  * @Last Modified By   : Jon Astemborski
- * @Last Modified On   : 2/11/2020, 10:49:08 PM
+ * @Last Modified On   : 2/14/2020, 12:17:50 PM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/15/2020   Jon Astemborski     Initial Version
@@ -247,21 +247,32 @@ public without Sharing class SapInterfaceHandler {
     public static void handleMultipleSapProductRecords(CMPL123QMS__Change_Control__c currentCC, List<SapProductInformation> selectedProducts){
         try { 
             List<SAP_Product_Information__c> productInformationList = new List<SAP_Product_Information__c>();
+            Set<String> existingProductIdSet = new Set<String>();
+
+            for ( SAP_Product_Information__c existingProduct : [SELECT Id, Product_Item_Number__c FROM SAP_Product_Information__c WHERE Change_Control__c =: currentCC.id]){
+                existingProductIdSet.add(existingProduct.Product_Item_Number__c);
+            }
+            
             for (SapProductInformation productInformation : selectedProducts ) {
-                productInformationList.add( new SAP_Product_Information__c(
-                    Change_Control__c = currentCC.id,
-                    Product_Item_Number__c = productInformation.productItemNumber,
-                    Product_Item_Description__c = productInformation.productDescription,
-                    Product_Range__c = productInformation.productRange,
-                    Global_Trade_Identification_Number__c = productInformation.gtin,
-                    CE_Approved__c = productInformation.ceApproved,
-                    Product_Type__c = productInformation.productType,
-                    Make_or_Buy__c = productInformation.makeOrBuy,
-                    Trade_Type__c = productInformation.tradeType,
-                    Legal_Manufacturer__c = productInformation.legalManufacturer,
-                    Site_Responsible__c = productInformation.siteResponsible,
-                    Commercialization_Coverage__c = productInformation.commercializationCoverage,
-                    Origin__c = productInformation.originAnimalHuman));
+                if (!existingProductIdSet.contains(productInformation.productItemNumber)) {
+                    productInformationList.add( new SAP_Product_Information__c(
+                        Change_Control__c = currentCC.id,
+                        Product_Item_Number__c = productInformation.productItemNumber,
+                        Product_Item_Description__c = productInformation.productDescription,
+                        Product_Range__c = productInformation.productRange,
+                        Global_Trade_Identification_Number__c = productInformation.gtin,
+                        CE_Approved__c = productInformation.ceApproved,
+                        Product_Type__c = productInformation.productType,
+                        Make_or_Buy__c = productInformation.makeOrBuy,
+                        Trade_Type__c = productInformation.tradeType,
+                        Legal_Manufacturer__c = productInformation.legalManufacturer,
+                        Site_Responsible__c = productInformation.siteResponsible,
+                        Commercialization_Coverage__c = productInformation.commercializationCoverage,
+                        Origin__c = productInformation.originAnimalHuman));
+                }
+                else {
+                    System.debug('Product ' + productInformation.productItemNumber + ' already exists on CC ' + currentCC.id);
+                }
             }
             insert productInformationList;
             System.debug('Updated prod info list: ' + productInformationList);

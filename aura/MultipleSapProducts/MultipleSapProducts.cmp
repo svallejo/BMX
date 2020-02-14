@@ -4,7 +4,7 @@
   @Author             : Jon Astemborski
   @Group              : 
   @Last Modified By   : Jon Astemborski
-  @Last Modified On   : 2/11/2020, 9:22:29 PM
+  @Last Modified On   : 2/14/2020, 11:11:36 AM
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    2/10/2020   Jon Astemborski     Initial Version
@@ -16,12 +16,11 @@
         <aura:attribute name="data" type="Object"/>
         <aura:attribute name="selectedRows" type="Object"/>
         <aura:attribute name="columns" type="List"/>
-        <aura:attribute name="disableSave" type="Boolean" default="true"/>
         <aura:attribute name="recordsSelected" type="Boolean" default="false"/>
         <aura:attribute name="areMultipleProductsImpacted" type="Boolean" default="false"/>
         <aura:attribute name="showError" type="Boolean" default="false"/>
+        <aura:attribute name="showDelete" type="Boolean" default="false"/>
         <aura:attribute name="productItemNumber" type="String" default=""/>
-        <aura:attribute name="selectedProduct" type="SapProductInformation"/>
         <aura:attribute name="sapProductIdList" type="List" default="[]"/>
         <aura:handler event="force:refreshView" action="{!c.refresh}" />
     
@@ -38,7 +37,12 @@
         data="{! v.data }"
         keyField="id"
         aura:id = "prodTable"
-        hideCheckboxColumn="true"/>
+        onrowselection ="{! c.setSelectedProduct }"/>
+        <div>
+            <aura:renderIf isTrue="{!v.showDelete}">
+                <lightning:button label="Delete Record(s)" onclick="{!c.deleteRecord}"/>
+            </aura:renderIf>
+        </div>
     </lightning:card>
     </aura:renderIf>
 </aura:component>
