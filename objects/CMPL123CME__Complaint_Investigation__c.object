@@ -139,6 +139,34 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123CME__Complaint__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Complaint</label>
+        <referenceTo>CMPL123CME__Complaint__c</referenceTo>
+        <relationshipLabel>Complaint Investigations</relationshipLabel>
+        <relationshipName>Complaint_Investigations</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Investigation_Evaluation__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Investigation/Evaluation</label>
+        <referenceTo>CMPL123CME__Investigation__c</referenceTo>
+        <relationshipLabel>Complaint Investigations</relationshipLabel>
+        <relationshipName>Complaint_Investigations</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

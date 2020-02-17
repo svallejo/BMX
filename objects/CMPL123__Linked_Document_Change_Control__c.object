@@ -139,6 +139,20 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123QMS__Change_Control__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Change Control</description>
+        <externalId>false</externalId>
+        <label>Parent</label>
+        <referenceTo>CMPL123QMS__Change_Control__c</referenceTo>
+        <relationshipLabel>Linked Document Change Controls</relationshipLabel>
+        <relationshipName>Linked_Document_Change_Controls</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -163,4 +177,31 @@
     <searchLayouts />
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>CMPL123QMSChange_Controlc</fullName>
+        <availability>online</availability>
+        <description>This button was created by TrackWise Digital to check the status of the Related List - Change Control-Linked Document Change Control(Parent).</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Linked Document Change Control (Parent)</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/CMPL123__LockRecord?objectType=CMPL123__Linked_Document_Change_Control__c&amp;parentId={!CMPL123QMS__Change_Control__c.Id}&amp;relationShipName=CMPL123QMS__Linked_Document_Change_Controls__r&amp;lookupField=CMPL123QMS__Change_Control__c</url>
+    </webLinks>
+    <webLinks>
+        <fullName>CMPL123QMS__New_Document</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Document</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/SPARTADMS__DMSCorporateDocument_Edit?parentId={!CMPL123QMS__Change_Control__c.Id}&amp;appInitiatedFrom=EQMS&amp;linkedObjectType=CMPL123__Linked_Document_Change_Control__c</url>
+    </webLinks>
 </CustomObject>

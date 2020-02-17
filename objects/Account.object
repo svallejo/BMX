@@ -241,6 +241,556 @@
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
+        <fullName>CMPL123__Account_Email__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Primary email for account</description>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Account_Sub_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Further distinction of the account type i.e. physician, clinic, hospital, etc.</description>
+        <externalId>false</externalId>
+        <label>Account Sub Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Physician</fullName>
+                    <default>false</default>
+                    <label>Physician</label>
+                </value>
+                <value>
+                    <fullName>Nurse Practitioner</fullName>
+                    <default>false</default>
+                    <label>Nurse Practitioner</label>
+                </value>
+                <value>
+                    <fullName>Administration</fullName>
+                    <default>false</default>
+                    <label>Administration</label>
+                </value>
+                <value>
+                    <fullName>Clinical Support</fullName>
+                    <default>false</default>
+                    <label>Clinical Support</label>
+                </value>
+                <value>
+                    <fullName>Coordinator</fullName>
+                    <default>false</default>
+                    <label>Coordinator</label>
+                </value>
+                <value>
+                    <fullName>Corporate</fullName>
+                    <default>false</default>
+                    <label>Corporate</label>
+                </value>
+                <value>
+                    <fullName>Dietitian</fullName>
+                    <default>false</default>
+                    <label>Dietitian</label>
+                </value>
+                <value>
+                    <fullName>Director</fullName>
+                    <default>false</default>
+                    <label>Director</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Administrator</fullName>
+                    <default>false</default>
+                    <label>Healthcare Administrator</label>
+                </value>
+                <value>
+                    <fullName>Medical Assistant</fullName>
+                    <default>false</default>
+                    <label>Medical Assistant</label>
+                </value>
+                <value>
+                    <fullName>Nurse</fullName>
+                    <default>false</default>
+                    <label>Nurse</label>
+                </value>
+                <value>
+                    <fullName>Pharmacist</fullName>
+                    <default>false</default>
+                    <label>Pharmacist</label>
+                </value>
+                <value>
+                    <fullName>Physician Assistant</fullName>
+                    <default>false</default>
+                    <label>Physician Assistant</label>
+                </value>
+                <value>
+                    <fullName>President</fullName>
+                    <default>false</default>
+                    <label>President</label>
+                </value>
+                <value>
+                    <fullName>Quality</fullName>
+                    <default>false</default>
+                    <label>Quality</label>
+                </value>
+                <value>
+                    <fullName>Social Worker</fullName>
+                    <default>false</default>
+                    <label>Social Worker</label>
+                </value>
+                <value>
+                    <fullName>Unspecified Profession</fullName>
+                    <default>false</default>
+                    <label>Unspecified Profession</label>
+                </value>
+                <value>
+                    <fullName>Vice President</fullName>
+                    <default>false</default>
+                    <label>Vice President</label>
+                </value>
+                <value>
+                    <fullName>Clinic</fullName>
+                    <default>false</default>
+                    <label>Clinic</label>
+                </value>
+                <value>
+                    <fullName>Home Health Care</fullName>
+                    <default>false</default>
+                    <label>Home Health Care</label>
+                </value>
+                <value>
+                    <fullName>Hospital</fullName>
+                    <default>false</default>
+                    <label>Hospital</label>
+                </value>
+                <value>
+                    <fullName>Miscellaneous</fullName>
+                    <default>false</default>
+                    <label>Miscellaneous</label>
+                </value>
+                <value>
+                    <fullName>Nursing Home</fullName>
+                    <default>false</default>
+                    <label>Nursing Home</label>
+                </value>
+                <value>
+                    <fullName>Pharmacy</fullName>
+                    <default>false</default>
+                    <label>Pharmacy</label>
+                </value>
+                <value>
+                    <fullName>Patient</fullName>
+                    <default>false</default>
+                    <label>Patient</label>
+                </value>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <label>Distributor</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Account_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Indicates whether the account is a healthcare provider, healthcare organization, patient, or distributor.</description>
+        <externalId>false</externalId>
+        <formula>$Label.cmpl123__platform_deprecated_field</formula>
+        <label>Account Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__CMPL123Rule_Key_Value__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Rule Field Update Key Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__CMPL123_WF_Action_Performed_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Workflow Action Performed By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>AccountCMPL123_Users</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__CMPL123_WF_Action_Performed_On__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Workflow Action Performed On</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__CMPL123_WF_Action__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Workflow Action</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__CMPL123_WF_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Workflow Status</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__CRM_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>HCPO/HCO identifier provided from CRM system</description>
+        <externalId>false</externalId>
+        <label>CRM ID</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Commercial_Account__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Commercial Account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Commercial Account</inlineHelpText>
+        <label>Commercial Account</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Date_of_Birth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date upon which patient was born.</description>
+        <externalId>false</externalId>
+        <label>Date of Birth</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Date_of_Death__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date upon which patient was pronounced dead.</description>
+        <externalId>false</externalId>
+        <label>Date of Death</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__First_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>HCP or patient first name.</description>
+        <externalId>false</externalId>
+        <label>First Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Gender__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Patient's gender.</description>
+        <externalId>false</externalId>
+        <label>Gender</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Female</fullName>
+                    <default>false</default>
+                    <label>Female</label>
+                </value>
+                <value>
+                    <fullName>Male</fullName>
+                    <default>false</default>
+                    <label>Male</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__IMS_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>HCPO/HCO identifier provided from IMS</description>
+        <externalId>false</externalId>
+        <label>IMS ID</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Last_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>HCP or patient last name.</description>
+        <externalId>false</externalId>
+        <label>Last Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__MDM_GUID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>HCPO/HCO globally unique identifier provided from MDM system</description>
+        <externalId>false</externalId>
+        <label>MDM GUID</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__ME_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Medical Education Number for the physician</description>
+        <externalId>false</externalId>
+        <label>ME #</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__NPI_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>National Provider Identifier</description>
+        <externalId>false</externalId>
+        <label>NPI #</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Notified__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates whether the patient was informed of risk.</description>
+        <externalId>false</externalId>
+        <label>Notified?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Opt_out_of_Tracking__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates whether the patient declined to be tracked in the database.</description>
+        <externalId>false</externalId>
+        <label>Opt out of Tracking?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Patient_ID_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Type of patient ID.</description>
+        <externalId>false</externalId>
+        <label>Patient ID Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SSN</fullName>
+                    <default>false</default>
+                    <label>SSN</label>
+                </value>
+                <value>
+                    <fullName>SIN</fullName>
+                    <default>false</default>
+                    <label>SIN</label>
+                </value>
+                <value>
+                    <fullName>Patient Declined</fullName>
+                    <default>false</default>
+                    <label>Patient Declined</label>
+                </value>
+                <value>
+                    <fullName>Unable to Obtain</fullName>
+                    <default>false</default>
+                    <label>Unable to Obtain</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Patient_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Unique identifier for the patient.  For example the social security number.</description>
+        <externalId>false</externalId>
+        <label>Patient ID</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Salutation__c</fullName>
+        <deprecated>false</deprecated>
+        <description>HCP or patient salutation.</description>
+        <externalId>false</externalId>
+        <label>Salutation</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Dr.</fullName>
+                    <default>false</default>
+                    <label>Dr.</label>
+                </value>
+                <value>
+                    <fullName>Mr.</fullName>
+                    <default>false</default>
+                    <label>Mr.</label>
+                </value>
+                <value>
+                    <fullName>Mrs.</fullName>
+                    <default>false</default>
+                    <label>Mrs.</label>
+                </value>
+                <value>
+                    <fullName>Ms.</fullName>
+                    <default>false</default>
+                    <label>Ms.</label>
+                </value>
+                <value>
+                    <fullName>Prof.</fullName>
+                    <default>false</default>
+                    <label>Prof.</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit status for an account.</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Compliant</fullName>
+                    <default>true</default>
+                    <label>Compliant</label>
+                </value>
+                <value>
+                    <fullName>Non-Compliant</fullName>
+                    <default>false</default>
+                    <label>Non-Compliant</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Suffix__c</fullName>
+        <deprecated>false</deprecated>
+        <description>HCP or patient suffix</description>
+        <externalId>false</externalId>
+        <label>Suffix</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>MD</fullName>
+                    <default>false</default>
+                    <label>MD</label>
+                </value>
+                <value>
+                    <fullName>PhD</fullName>
+                    <default>false</default>
+                    <label>PhD</label>
+                </value>
+                <value>
+                    <fullName>DDS</fullName>
+                    <default>false</default>
+                    <label>DDS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Third_Party_Release__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates whether the patient declined the release of their information.</description>
+        <externalId>false</externalId>
+        <label>Information Release?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__WK_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>HCPO/HCO identifier provided from Wolters Kluwer</description>
+        <externalId>false</externalId>
+        <label>WK ID</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CurrencyIsoCode</fullName>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>

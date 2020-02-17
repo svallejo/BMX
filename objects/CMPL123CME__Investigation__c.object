@@ -139,6 +139,1286 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>Approve_1_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Approve 1 Done By</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Approve 1 Done By</inlineHelpText>
+        <label>Approve 1 Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_Evaluations6</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Approve_2_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Approve 1 Done By</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Approve 1 Done By</inlineHelpText>
+        <label>Approve 2 Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_Evaluations7</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Approve_3_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Approve 3 Done By</description>
+        <externalId>false</externalId>
+        <label>Approve 3 Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_Evaluations8</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Approve_4_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Approve 4 Done By</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Approve 4 Done By</inlineHelpText>
+        <label>Approve 4 Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_Evaluations9</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Additional_Information__c</fullName>
+        <externalId>false</externalId>
+        <label>Additional Information</label>
+        <length>3000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BMX_All_Copies_of_Patient_Data_Destroyed__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If yes, did you follow corporate procedure on protection of patient data (SOP 031664 - Corporate Procedure to Protect Patient Data)?</inlineHelpText>
+        <label>If Yes, SOP 031664 followed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>BMX_Patient_Data_Copied_to_BMX_System__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Yes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>No</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BMX_Approver_1_Approved_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Approver 1 Approved On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Approver_1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Approver 1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_Evaluations1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Approver_2_Approved_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Approver 2  Approved On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Approver_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Approver 2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_Evaluations2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Approver_3_Approved_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Approver 3  Approved On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Approver_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Approver 3</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_Evaluations3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Approver_4_Approved_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Approver 4 Approved On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Approver_4__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Approver 4</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_Evaluations4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_CAPA_Justification__c</fullName>
+        <externalId>false</externalId>
+        <label>No CAPA Justification</label>
+        <length>1500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BMX_CAPA_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>CAPA Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_CAPA_Required__c</fullName>
+        <externalId>false</externalId>
+        <label>CAPA Required?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BMX_Cancel_Investigation_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Cancel Investigation By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFUwQ</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Cancel_Investigation_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancel Investigation On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Case_External__c</fullName>
+        <externalId>false</externalId>
+        <formula>CMPL123CME__Complaint__r.BMX_Case_External__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case External</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_Comments_Available__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Workflow History Comments Available</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Complaint_Ticket_No__c</fullName>
+        <externalId>false</externalId>
+        <formula>CMPL123CME__Complaint__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Complaint Ticket No.</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_Complaint_Workflow_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>CMPL123CME__Complaint__r.CMPL123CME__CMPL123_WF_Status__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Complaint Workflow Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_Complete_Expert_Investigation_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Complete Expert Investigation By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFUwF</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Complete_Expert_Investigation_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Complete Expert Investigation On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Complete_Investigation_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Complete Investigation By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFUw0</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Complete_Investigation_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Complete Investigation On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Containment_Correction_Action__c</fullName>
+        <externalId>false</externalId>
+        <label>Containment/Correction Action</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BMX_Correction_Required__c</fullName>
+        <externalId>false</externalId>
+        <label>Correction Required?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BMX_Count_of_GCS_Approvers__c</fullName>
+        <externalId>false</externalId>
+        <formula>1+(
+IF(ISBLANK(BMX_Approver_1__c),0,1)+
+IF(ISBLANK(BMX_Approver_2__c),0,1)+
+IF(ISBLANK(BMX_Approver_3__c),0,1)+
+IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Count of  Approvers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_Date_Product_Received__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Product Received</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Days_Open__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(CMPL123_WF_Status__c = 'Closed - Done', 
+     BMX_Investigation_Closed_Date__c - DATEVALUE(CreatedDate), 
+     TODAY() - DATEVALUE(CreatedDate) 
+   )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Days Open</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_Description__c</fullName>
+        <externalId>false</externalId>
+        <formula>Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_EstimatedInvestigationDuration_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Estimated Investigation Duration Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Evidence_of_Trend__c</fullName>
+        <externalId>false</externalId>
+        <label>Evidence of Trend</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BMX_Expert_Investigation_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Expert Investigation Details</label>
+        <length>15000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BMX_Expert_Investigation_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Expert Investigation End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Expert_Investigation_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Expert Investigation Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Expert_Investigator__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Expert Investigator</label>
+        <referenceTo>User</referenceTo>
+        <relationshipLabel>Investigations/Evaluations</relationshipLabel>
+        <relationshipName>Investigations_Evaluations</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Expert_Investigator_text__c</fullName>
+        <externalId>false</externalId>
+        <label>Expert Investigator (non-TWD)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_FAB_Justification__c</fullName>
+        <externalId>false</externalId>
+        <label>No FAB Justification</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BMX_FAB_Required__c</fullName>
+        <externalId>false</externalId>
+        <label>FAB Required?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BMX_First_Investigation_Closed_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>First Investigation Closed Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>BMX_INV_Reject_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>INV Reject Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFRZR</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Impact_Analysis__c</fullName>
+        <externalId>false</externalId>
+        <label>Impact Analysis</label>
+        <length>1500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BMX_Invest_Reference__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Invest Reference</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Investigation_Answer__c</fullName>
+        <externalId>false</externalId>
+        <label>Investigation Answer</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BMX_Investigation_Approved_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Investigation Approved By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_Evaluations5</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Investigation_Approved_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Investigation Approved On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Investigation_Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Investigation Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFF0F</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Investigation_Closed_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Investigation Closed Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Investigation_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Investigation Details</label>
+        <length>25000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BMX_Is_there_a_trend__c</fullName>
+        <externalId>false</externalId>
+        <label>Is there a trend?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BMX_Number_of_Questions_Unanswered__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Questions Unanswered</label>
+        <summaryFilterItems>
+            <field>CMPL123CME__Investigation_Items__c.CMPL123CME__Completed__c</field>
+            <operation>notEqual</operation>
+            <value>Yes, No, N/A</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CMPL123CME__Investigation_Items__c.CMPL123CME__Investigation__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Patient_Data_Copied_to_BMX_System__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have data containing Patient Health Information been copied from customer site to any bioMerieux system for this investigation?</inlineHelpText>
+        <label>Patient data copied to BMX system?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BMX_Product_Returned__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Returned?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Product Return Requested</fullName>
+                    <default>false</default>
+                    <label>Product Return Requested</label>
+                </value>
+                <value>
+                    <fullName>Product Return Not Requested</fullName>
+                    <default>false</default>
+                    <label>Product Return Not Requested</label>
+                </value>
+                <value>
+                    <fullName>Product Return Not Received</fullName>
+                    <default>false</default>
+                    <label>Product Return Not Received</label>
+                </value>
+                <value>
+                    <fullName>Product Return Received</fullName>
+                    <default>false</default>
+                    <label>Product Return Received</label>
+                </value>
+                <value>
+                    <fullName>Product Return Cancelled</fullName>
+                    <default>false</default>
+                    <label>Product Return Cancelled</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BMX_Reject_1_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Reject 1 Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFAL8</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Reject_2_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Reject 2  Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFAMa</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Reject_3_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Reject 3  Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFANs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Reject_4_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Reject 4 Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFAP5</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Rejected_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Rejected By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFUvR</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Rejected_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Rejected On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Reopened_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Reopened By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFUvq</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Reopened_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Reopened On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Require_Expert_Investigation_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Require Expert Investigation By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFUwZ</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Require_Expert_Investigation_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Require Expert Investigation On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Return_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Return Comments</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BMX_Rework_Requested_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Rework Requested By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Investigations_EvaluationsFUwo</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Rework_Requested_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Rework Requested On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Update_closed_date__c</fullName>
+        <externalId>false</externalId>
+        <formula>BMX_Investigation_Closed_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Update closed date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Complaint__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Complaint</label>
+        <referenceTo>CMPL123CME__Complaint__c</referenceTo>
+        <relationshipName>Investigations</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Findings_Code__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Findings Code</description>
+        <externalId>false</externalId>
+        <label>Findings Code</label>
+        <lookupFilter>
+            <active>false</active>
+            <filterItems>
+                <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Type__c</field>
+                <operation>equals</operation>
+                <value>FINDING CODE</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
+        <relationshipLabel>Investigations/Evaluations (Findings Code)</relationshipLabel>
+        <relationshipName>Investigations</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Investigation_Completed_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Investigation Completed Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Investigation_Due_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Investigation Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Key_Value__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Key Value</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Overdue__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Overdue</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Product_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>CMPL123CME__Complaint__r.CMPL123CME__Product__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__RCA__c</fullName>
+        <deprecated>false</deprecated>
+        <description>RCA</description>
+        <externalId>false</externalId>
+        <label>RCA</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Root_Cause_Coding__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Root Cause Code</label>
+        <lookupFilter>
+            <active>false</active>
+            <filterItems>
+                <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Type__c</field>
+                <operation>equals</operation>
+                <value>ROOT CAUSE CODE</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
+        <relationshipLabel>Investigations/Evaluations (Root Cause Code)</relationshipLabel>
+        <relationshipName>Investigations1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Root_Cause__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Root Cause</description>
+        <externalId>false</externalId>
+        <label>Root Cause</label>
+        <lookupFilter>
+            <active>false</active>
+            <filterItems>
+                <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Type__c</field>
+                <operation>equals</operation>
+                <value>ROOT CAUSE CODE</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
+        <relationshipLabel>Investigations/Evaluations (Root Cause)</relationshipLabel>
+        <relationshipName>Investigations2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Total_Score__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Total Score</label>
+        <summarizedField>CMPL123CME__Investigation_Items__c.CMPL123CME__Score__c</summarizedField>
+        <summaryForeignKey>CMPL123CME__Investigation_Items__c.CMPL123CME__Investigation__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Total_Weight__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Total Weight</label>
+        <summarizedField>CMPL123CME__Investigation_Items__c.CMPL123CME__Weight__c</summarizedField>
+        <summaryForeignKey>CMPL123CME__Investigation_Items__c.CMPL123CME__Investigation__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123Rule_Key_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Rule Field Update Key Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123Task_Key_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Task Field Update Key Value</label>
+        <length>254</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Action_Performed_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Workflow Action Performed By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CMPL123CMEInvestigationcCMPL123_Users</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Action_Performed_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Workflow Action Performed On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Action__c</fullName>
+        <externalId>false</externalId>
+        <label>Workflow Action</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Workflow Status</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Complaint_description__c</fullName>
+        <externalId>false</externalId>
+        <label>Complaint Description</label>
+        <length>15000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Count_of_Optional_Approvals__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Count of  Approvals</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Findings_Code__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Findings Code</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Type__c</field>
+                <operation>equals</operation>
+                <value>FINDING CODE</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
+        <relationshipLabel>Investigations/Evaluations (Findings Code)</relationshipLabel>
+        <relationshipName>Investigations_Evaluations</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>GCS_Approve_Approved__c</fullName>
+        <externalId>false</externalId>
+        <label>GCS Approve Approved</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inquiry__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Inquiry</label>
+        <referenceTo>Inquiry__c</referenceTo>
+        <relationshipLabel>Investigations/Evaluations</relationshipLabel>
+        <relationshipName>Investigations_Evaluations</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Investigation_Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Investigation Completed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Investigation_Evaluation_Number__c</fullName>
+        <displayFormat>INV-{0000}</displayFormat>
+        <externalId>false</externalId>
+        <label>Investigation/Evaluation Number</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Master_Investigation__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Master Investigation</label>
+        <referenceTo>CMPL123CME__Investigation__c</referenceTo>
+        <relationshipLabel>Referenced Investigations/Evaluations</relationshipLabel>
+        <relationshipName>Investigations_Evaluations</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>RCA__c</fullName>
+        <externalId>false</externalId>
+        <label>RCA</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Root_Cause_Code__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Root Cause/Conclusion</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Type__c</field>
+                <operation>equals</operation>
+                <value>ROOT CAUSE CODE</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
+        <relationshipLabel>Investigations/Evaluations (Root Cause Code)</relationshipLabel>
+        <relationshipName>Investigations_Evaluations1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Workflow_Status_For_CRM__c</fullName>
+        <description>If the workflow status is "Closed - Done" , then it will make it as "Closed done" else it will be as it is. This field value is send back to CRM.</description>
+        <externalId>false</externalId>
+        <formula>IF( CMPL123_WF_Status__c = 'Closed - Done', 'Closed Done',IF( CMPL123_WF_Status__c = 'Closed - Canceled', 'Closed Cancelled',CMPL123_WF_Status__c ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Workflow Status For CRM</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -398,4 +1678,123 @@
             </values>
         </picklistValues>
     </recordTypes>
+    <validationRules>
+        <fullName>BMX_CAPA_Justification_should_not_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISPICKVAL( BMX_CAPA_Required__c, 'No'),ISBLANK(  BMX_CAPA_Justification__c ) )</errorConditionFormula>
+        <errorDisplayField>BMX_CAPA_Justification__c</errorDisplayField>
+        <errorMessage>You must enter a value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>BMX_CAPA_Number_should_not_be_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISPICKVAL( BMX_CAPA_Required__c, 'Yes'),ISBLANK(   BMX_CAPA_Number__c ) )</errorConditionFormula>
+        <errorDisplayField>BMX_CAPA_Number__c</errorDisplayField>
+        <errorMessage>You must enter a value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>BMX_Date_Product_Recvd_should_nt_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISPICKVAL(BMX_Product_Returned__c, 'Product Return Received'),   ISBLANK( BMX_Date_Product_Received__c ) )</errorConditionFormula>
+        <errorDisplayField>BMX_Date_Product_Received__c</errorDisplayField>
+        <errorMessage>You must enter a value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>BMX_Evidence_of_Trend_should_nt_be_blank</fullName>
+        <active>true</active>
+        <description>US-INV-029 change log</description>
+        <errorConditionFormula>AND( ISPICKVAL(BMX_Is_there_a_trend__c, 'Yes'),   ISBLANK(BMX_Evidence_of_Trend__c) )</errorConditionFormula>
+        <errorDisplayField>BMX_Evidence_of_Trend__c</errorDisplayField>
+        <errorMessage>You must enter a value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>BMX_Fab_Justification_should_nt_be_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISPICKVAL( BMX_FAB_Required__c , 'No'),   ISBLANK(  BMX_FAB_Justification__c ) )</errorConditionFormula>
+        <errorDisplayField>BMX_FAB_Justification__c</errorDisplayField>
+        <errorMessage>You must enter a value.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>BMX_Locked_record_when_status_is_Opened</fullName>
+        <active>false</active>
+        <description>User can edit Additional Information field when record is Reopened</description>
+        <errorConditionFormula>AND(  CMPL123_WF_Action__c = 'Reopen',  
+      NOT(ISCHANGED(BMX_Additional_Information__c)),
+      ISCHANGED( BMX_Comments_Available__c )
+      )</errorConditionFormula>
+        <errorMessage>Record Locked</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>BMX_Patient_Data_Destroy_not_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISPICKVAL(BMX_Patient_Data_Copied_to_BMX_System__c,'Yes'),
+ISBLANK(TEXT(BMX_All_Copies_of_Patient_Data_Destroyed__c)))</errorConditionFormula>
+        <errorDisplayField>BMX_All_Copies_of_Patient_Data_Destroyed__c</errorDisplayField>
+        <errorMessage>You must enter a value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>BMX_Prevent_Edit_Investigation</fullName>
+        <active>true</active>
+        <errorConditionFormula>CMPL123CME__Complaint__r.CMPL123CME__CMPL123_WF_Status__c == "Closed - Completed"</errorConditionFormula>
+        <errorMessage>Record Locked</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>BMX_Prevent_Inv_Frm_Create_or_Edit</fullName>
+        <active>true</active>
+        <description>Prevent Editing or adding investigation when the complaint is closed</description>
+        <errorConditionFormula>OR( 
+AND(ISNEW(), CMPL123CME__Complaint__r.CMPL123CME__CMPL123_WF_Status__c ='Closed'), 
+CMPL123CME__Complaint__r.CMPL123CME__CMPL123_WF_Status__c ='Closed')</errorConditionFormula>
+        <errorMessage>Can not create/edit a Investigation for closed Complaint</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>BMX_Prevent_edit_for_closed_inquiry</fullName>
+        <active>true</active>
+        <errorConditionFormula>Inquiry__r.CMPL123_WF_Status__c =="Closed - Complaint"</errorConditionFormula>
+        <errorMessage>Record Locked</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>BMX_RCC_should_not_be_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(CMPL123_WF_Action__c = 'Complete Investigation', ISBLANK(     Root_Cause_Code__c ) )</errorConditionFormula>
+        <errorDisplayField>Root_Cause_Code__c</errorDisplayField>
+        <errorMessage>You must enter a value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_Investigation_Steps_are_Completed</fullName>
+        <active>true</active>
+        <description>All fields in all investigation steps need to be completed prior to performing "Complete Investigation" on the record.</description>
+        <errorConditionFormula>AND(CMPL123_WF_Action__c = 'Complete Investigation', BMX_Number_of_Questions_Unanswered__c &gt; 0)</errorConditionFormula>
+        <errorMessage>Complete Investigation Steps</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Expert_Investigator_should_not_be_blank</fullName>
+        <active>true</active>
+        <description>For investigation, system to check that at least one of the expert investigator fields is populated prior to the record moving to "Pending Expert Investigation" status.</description>
+        <errorConditionFormula>AND(
+OR(CMPL123_WF_Action__c = 'Require Expert Investigation', CMPL123_WF_Action__c = 'Rework'),
+AND(ISBLANK( BMX_Expert_Investigator__c),
+ISBLANK(BMX_Expert_Investigator_text__c)),
+ISCHANGED(CMPL123_WF_Action__c)
+)</errorConditionFormula>
+        <errorMessage>One of the Expert investigator is required.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Investigation_Approver_Should_nt_b_blnk</fullName>
+        <active>true</active>
+        <description>Investigation Approver field should be populated prior to entering "Pending Approval" status.</description>
+        <errorConditionFormula>AND(CMPL123_WF_Action__c = 'Complete Investigation', 
+    ISBLANK(BMX_Investigation_Approver__c))</errorConditionFormula>
+        <errorMessage>Investigation Approver must not be blank</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>BMX_Print_Investigation</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Print Investigation</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>openWindow = window.open("/apex/CMPL123__X123ReportTemplate?id={!CMPL123CME__Investigation__c.Id}","","width=800,height=620,top=40,left=300")</url>
+    </webLinks>
 </CustomObject>

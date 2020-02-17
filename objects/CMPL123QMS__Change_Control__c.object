@@ -142,6 +142,4180 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>Action_Item_Records__c</fullName>
+        <externalId>false</externalId>
+        <label>Action Item Records</label>
+        <summaryForeignKey>Action_Item__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Action_Items_Complete__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+   OR(
+       ISBLANK(  Total_Action_Items__c  ),
+      Total_Action_Items__c = 0
+     ), 0,
+     (  Total_Actions_Complete__c    /  Total_Action_Items__c)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>% Action Items Complete</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Affected_Areas__c</fullName>
+        <externalId>false</externalId>
+        <label>Affected Areas</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Area 1</fullName>
+                    <default>false</default>
+                    <label>Area 1</label>
+                </value>
+                <value>
+                    <fullName>Area 2</fullName>
+                    <default>false</default>
+                    <label>Area 2</label>
+                </value>
+                <value>
+                    <fullName>Area 3</fullName>
+                    <default>false</default>
+                    <label>Area 3</label>
+                </value>
+                <value>
+                    <fullName>Area 4</fullName>
+                    <default>false</default>
+                    <label>Area 4</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>After_Release_Action_Items_Not_Closed__c</fullName>
+        <externalId>false</externalId>
+        <label>After Release Action Items Not Closed</label>
+        <summaryFilterItems>
+            <field>Action_Item__c.CMPL123_WF_Status__c</field>
+            <operation>notContain</operation>
+            <value>Closed</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.After_Release__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Action_Item__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_To__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Final Approver 1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipLabel>Change Control (Assigned To)</relationshipLabel>
+        <relationshipName>Change_Control</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Batch_Lot_Number_or_Item__c</fullName>
+        <externalId>false</externalId>
+        <label>Batch/Lot Number or Item #</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Building__c</fullName>
+        <externalId>false</externalId>
+        <label>Building</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CE_Approved__c</fullName>
+        <externalId>false</externalId>
+        <label>CE Approved</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Change_Description__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Change Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Date_Due__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Date Due</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Department__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Department</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Regulatory</fullName>
+                    <default>false</default>
+                    <label>Regulatory</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Safety</fullName>
+                    <default>false</default>
+                    <label>Safety</label>
+                </value>
+                <value>
+                    <fullName>Quality</fullName>
+                    <default>false</default>
+                    <label>Quality</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Functional_Area__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Functional Area</label>
+        <referenceTo>CMPL123QMS__Functional_Area__c</referenceTo>
+        <relationshipLabel>Change Controls</relationshipLabel>
+        <relationshipName>Change_Control</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Justification__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Justification</label>
+        <length>4000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Main_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Main Contact</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Management_Approved_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Management Approved By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Management_Approved_On__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Management Approved On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Manager__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Manager</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Original_Due_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Original Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Process__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Process</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Customer Service</fullName>
+                    <default>false</default>
+                    <label>Customer Service</label>
+                </value>
+                <value>
+                    <fullName>Incoming Inspection</fullName>
+                    <default>false</default>
+                    <label>Incoming Inspection</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__QA_Approved_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>QA Approved By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__QA_Approved_On__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>QA Approved On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__QA_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>QA Contact</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Reason_for_Timeline__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Reason for Timeliness</label>
+        <length>4000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Type 1</fullName>
+                    <default>false</default>
+                    <label>Type 1</label>
+                </value>
+                <value>
+                    <fullName>Type 2</fullName>
+                    <default>false</default>
+                    <label>Type 2</label>
+                </value>
+                <value>
+                    <fullName>Type 3</fullName>
+                    <default>false</default>
+                    <label>Type 3</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123Rule_Key_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Rule Field Update Key Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123Task_Key_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Task Field Update Key Value</label>
+        <length>254</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Action_Performed_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Workflow Action Performed By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CMPL123QMSChange_ControlcCMPL123_Users</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Action_Performed_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Workflow Action Performed On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Action__c</fullName>
+        <externalId>false</externalId>
+        <label>Workflow Action</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Workflow Status</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRB_Approver_1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Approver 1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control5</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRB_Approver_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Approver 2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control6</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRB_Approver_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Approver 3</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control7</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRB_Approver_4__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Approver 4</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control8</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRB_Approver_5__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Approver 5</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control9</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRB_Approver_6__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Approver 6</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmFXj</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRB_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>CRB Comments</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRB_Reject_1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Reject 1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmFXy</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRB_Reject_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Reject 2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmFYD</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRB_Reject_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Reject 3</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmFYN</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRB_Reject_4__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Reject 4</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmFYX</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRB_Reject_5__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Reject 5</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmFYr</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRB_Reject_6__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Reject 6</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmFZ1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Change_Control_Review_Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Change Control Review Completed?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Change Control Review Completed?</inlineHelpText>
+        <label>Change Control Review Completed?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Change_Control__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Change Control</label>
+        <referenceTo>CMPL123QMS__Change_Control__c</referenceTo>
+        <relationshipLabel>Change Control</relationshipLabel>
+        <relationshipName>Change_Control</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Change_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Change Description</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Change_Impact_on_Validation_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Change Impact on Validation Description?</label>
+        <length>4000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Change_Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Change Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Minor</fullName>
+                    <default>false</default>
+                    <label>Minor</label>
+                </value>
+                <value>
+                    <fullName>Moderate</fullName>
+                    <default>false</default>
+                    <label>Moderate</label>
+                </value>
+                <value>
+                    <fullName>Major</fullName>
+                    <default>false</default>
+                    <label>Major</label>
+                </value>
+                <value>
+                    <fullName>Project Transfer</fullName>
+                    <default>false</default>
+                    <label>Project Transfer</label>
+                </value>
+                <value>
+                    <fullName>Administrative</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Administrative</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Change_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Change Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Change_Type_Other__c</fullName>
+        <externalId>false</externalId>
+        <label>Change Type - Other</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Change_Type_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Change Type(s)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Origination__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Control Tool</fullName>
+                    <default>false</default>
+                    <label>Control Tool</label>
+                </value>
+                <value>
+                    <fullName>Decommissioning</fullName>
+                    <default>false</default>
+                    <label>Decommissioning</label>
+                </value>
+                <value>
+                    <fullName>Design Change</fullName>
+                    <default>false</default>
+                    <label>Design Change</label>
+                </value>
+                <value>
+                    <fullName>Documentation</fullName>
+                    <default>false</default>
+                    <label>Documentation</label>
+                </value>
+                <value>
+                    <fullName>Emergency Change</fullName>
+                    <default>false</default>
+                    <label>Emergency Change</label>
+                </value>
+                <value>
+                    <fullName>Environmental Monitoring</fullName>
+                    <default>false</default>
+                    <label>Environmental Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Equipment (Should cover new or existing)</fullName>
+                    <default>false</default>
+                    <label>Equipment</label>
+                </value>
+                <value>
+                    <fullName>Expiration</fullName>
+                    <default>false</default>
+                    <label>Expiration</label>
+                </value>
+                <value>
+                    <fullName>Facilities/ Utilities</fullName>
+                    <default>false</default>
+                    <label>Facilities/ Utilities</label>
+                </value>
+                <value>
+                    <fullName>Facilities/ Utilities (Should cover utility, production area modification or new construction, relocation)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Facilities/ Utilities (Should cover utility, production area modification or new construction, relocation)</label>
+                </value>
+                <value>
+                    <fullName>Firmware</fullName>
+                    <default>false</default>
+                    <label>Firmware</label>
+                </value>
+                <value>
+                    <fullName>Hardware/Peripherals</fullName>
+                    <default>false</default>
+                    <label>Hardware/Peripherals</label>
+                </value>
+                <value>
+                    <fullName>Instrument</fullName>
+                    <default>false</default>
+                    <label>Instrument</label>
+                </value>
+                <value>
+                    <fullName>Labeling</fullName>
+                    <default>false</default>
+                    <label>Labeling</label>
+                </value>
+                <value>
+                    <fullName>Non-product Software</fullName>
+                    <default>false</default>
+                    <label>Non-product Software</label>
+                </value>
+                <value>
+                    <fullName>Organization</fullName>
+                    <default>false</default>
+                    <label>Organization</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Other – mandatory field to fill in description</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Other – mandatory field to fill in description</label>
+                </value>
+                <value>
+                    <fullName>Other – Mandatory field to specify</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Other – Mandatory field to specify</label>
+                </value>
+                <value>
+                    <fullName>Packaging</fullName>
+                    <default>false</default>
+                    <label>Packaging</label>
+                </value>
+                <value>
+                    <fullName>Process</fullName>
+                    <default>false</default>
+                    <label>Process</label>
+                </value>
+                <value>
+                    <fullName>Product discontinuation</fullName>
+                    <default>false</default>
+                    <label>Product discontinuation</label>
+                </value>
+                <value>
+                    <fullName>Product – Finished</fullName>
+                    <default>false</default>
+                    <label>Product – Finished</label>
+                </value>
+                <value>
+                    <fullName>Product – Semi-Finished</fullName>
+                    <default>false</default>
+                    <label>Product – Semi-Finished</label>
+                </value>
+                <value>
+                    <fullName>QC Specification</fullName>
+                    <default>false</default>
+                    <label>QC Specification</label>
+                </value>
+                <value>
+                    <fullName>QMS Document</fullName>
+                    <default>false</default>
+                    <label>QMS Document</label>
+                </value>
+                <value>
+                    <fullName>Quality System</fullName>
+                    <default>false</default>
+                    <label>Quality System</label>
+                </value>
+                <value>
+                    <fullName>Raw Material/ Component, or Vendor</fullName>
+                    <default>false</default>
+                    <label>Raw Material/ Component, or Vendor</label>
+                </value>
+                <value>
+                    <fullName>Reagent</fullName>
+                    <default>false</default>
+                    <label>Reagent</label>
+                </value>
+                <value>
+                    <fullName>Software</fullName>
+                    <default>false</default>
+                    <label>Software</label>
+                </value>
+                <value>
+                    <fullName>Spare part modification</fullName>
+                    <default>false</default>
+                    <label>Spare part modification</label>
+                </value>
+                <value>
+                    <fullName>Storage/Shipping</fullName>
+                    <default>false</default>
+                    <label>Storage/Shipping</label>
+                </value>
+                <value>
+                    <fullName>Supplier/Vendor</fullName>
+                    <default>false</default>
+                    <label>Supplier/Vendor</label>
+                </value>
+                <value>
+                    <fullName>Technology Transfer</fullName>
+                    <default>false</default>
+                    <label>Technology Transfer</label>
+                </value>
+                <value>
+                    <fullName>Temporary Shutdown/Change</fullName>
+                    <default>false</default>
+                    <label>Temporary Shutdown/Change</label>
+                </value>
+                <value>
+                    <fullName>Test Method(s)</fullName>
+                    <default>false</default>
+                    <label>Test Method(s)</label>
+                </value>
+                <value>
+                    <fullName>Third Party Products</fullName>
+                    <default>false</default>
+                    <label>Third Party Products</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Control Tool</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Decommissioning</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Design Change</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Documentation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Emergency Change</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Environmental Monitoring</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Equipment (Should cover new or existing)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Expiration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Facilities/ Utilities</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Firmware</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Hardware/Peripherals</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Instrument</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Labeling</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Non-product Software</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Organization</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Packaging</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Process</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Product discontinuation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Product – Finished</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Product – Semi-Finished</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>QC Specification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>QMS Document</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Quality System</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Raw Material/ Component, or Vendor</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Reagent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Software</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Spare part modification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Storage/Shipping</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Supplier/Vendor</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Technology Transfer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Temporary Shutdown/Change</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Test Method(s)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Third Party Products</valueName>
+            </valueSettings>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Change_impacts_Quality_System__c</fullName>
+        <externalId>false</externalId>
+        <label>Change impacts Quality System?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Change_impacts_the_validation__c</fullName>
+        <externalId>false</externalId>
+        <label>Change impacts the validation?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Closed_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Closed Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Closed_Impact_Assessments__c</fullName>
+        <externalId>false</externalId>
+        <label>Closed Impact NonQA Assessments</label>
+        <summaryFilterItems>
+            <field>Impact_Assessment__c.CMPL123_WF_Status__c</field>
+            <operation>contains</operation>
+            <value>Closed</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Impact_Assessment__c.SME_Area__c</field>
+            <operation>notEqual</operation>
+            <value>Quality Assurance</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Impact_Assessment__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Comment_Document__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Comment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Comment_Material__c</fullName>
+        <externalId>false</externalId>
+        <label>Material/Equipment Comment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Comment_Product__c</fullName>
+        <externalId>false</externalId>
+        <label>Device Comment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Commercial_Software_Version__c</fullName>
+        <externalId>false</externalId>
+        <label>Commercial Software Version</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Commercialization_Coverage__c</fullName>
+        <externalId>false</externalId>
+        <label>Commercialization Coverage</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Competent_Authority_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <label>Competent Authority Impacted?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Complete_After_Release__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+   OR(
+       ISBLANK(Total_After_Release__c),
+      Total_After_Release__c = 0
+     ), 0,
+     (Total_After_Release_Closed__c  /  Total_After_Release__c)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>% Complete - After Release</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Complete_Before_Release__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+   OR(
+       ISBLANK(Total_Before_Release__c),
+      Total_Before_Release__c = 0
+     ), 0,
+     (Total_Before_Release_Closed__c /  Total_Before_Release__c )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>% Complete - Before Release</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Date_Opened__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Date Opened</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Days_Open__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+   ISBLANK(Closed_Date__c),
+   Today() -  DATEVALUE(CreatedDate),
+   ( Closed_Date__c  - DATEVALUE(CreatedDate))
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Days Open</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Department_Other__c</fullName>
+        <externalId>false</externalId>
+        <label>Department - Other</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Department__c</fullName>
+        <externalId>false</externalId>
+        <label>Department</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Department_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Department(s)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Calibration</fullName>
+                    <default>false</default>
+                    <label>Calibration</label>
+                </value>
+                <value>
+                    <fullName>Clinical Affairs</fullName>
+                    <default>false</default>
+                    <label>Clinical Affairs</label>
+                </value>
+                <value>
+                    <fullName>Customer Service</fullName>
+                    <default>false</default>
+                    <label>Customer Service</label>
+                </value>
+                <value>
+                    <fullName>Engineering</fullName>
+                    <default>false</default>
+                    <label>Engineering</label>
+                </value>
+                <value>
+                    <fullName>Facilities</fullName>
+                    <default>false</default>
+                    <label>Facilities</label>
+                </value>
+                <value>
+                    <fullName>Field Service</fullName>
+                    <default>false</default>
+                    <label>Field Service</label>
+                </value>
+                <value>
+                    <fullName>General Management</fullName>
+                    <default>false</default>
+                    <label>General Management</label>
+                </value>
+                <value>
+                    <fullName>Global Supply Chain QA</fullName>
+                    <default>false</default>
+                    <label>Global Supply Chain QA</label>
+                </value>
+                <value>
+                    <fullName>Health Safety Environment (HSE)</fullName>
+                    <default>false</default>
+                    <label>Health Safety Environment (HSE)</label>
+                </value>
+                <value>
+                    <fullName>Human Resources</fullName>
+                    <default>false</default>
+                    <label>Human Resources</label>
+                </value>
+                <value>
+                    <fullName>Industrialization</fullName>
+                    <default>false</default>
+                    <label>Industrialization</label>
+                </value>
+                <value>
+                    <fullName>Instrument Refurbishment Center</fullName>
+                    <default>false</default>
+                    <label>Instrument Refurbishment Center</label>
+                </value>
+                <value>
+                    <fullName>Instrument R&amp;D</fullName>
+                    <default>false</default>
+                    <label>Instrument R&amp;D</label>
+                </value>
+                <value>
+                    <fullName>LIMS</fullName>
+                    <default>false</default>
+                    <label>LIMS</label>
+                </value>
+                <value>
+                    <fullName>Logistics</fullName>
+                    <default>false</default>
+                    <label>Logistics</label>
+                </value>
+                <value>
+                    <fullName>Marketing</fullName>
+                    <default>false</default>
+                    <label>Marketing</label>
+                </value>
+                <value>
+                    <fullName>Maintenance and Reliability</fullName>
+                    <default>false</default>
+                    <label>Maintenance and Reliability</label>
+                </value>
+                <value>
+                    <fullName>MFG (Instrument)</fullName>
+                    <default>false</default>
+                    <label>MFG (Instrument)</label>
+                </value>
+                <value>
+                    <fullName>MFG (Reagents)</fullName>
+                    <default>false</default>
+                    <label>MFG (Reagents)</label>
+                </value>
+                <value>
+                    <fullName>Packaging</fullName>
+                    <default>false</default>
+                    <label>Packaging</label>
+                </value>
+                <value>
+                    <fullName>PL&amp;D</fullName>
+                    <default>false</default>
+                    <label>PL&amp;D</label>
+                </value>
+                <value>
+                    <fullName>Product Validation</fullName>
+                    <default>false</default>
+                    <label>Product Validation</label>
+                </value>
+                <value>
+                    <fullName>Purchasing</fullName>
+                    <default>false</default>
+                    <label>Purchasing</label>
+                </value>
+                <value>
+                    <fullName>Quality Assurance/ QMS</fullName>
+                    <default>false</default>
+                    <label>Quality Assurance/ QMS</label>
+                </value>
+                <value>
+                    <fullName>QA R&amp;D</fullName>
+                    <default>false</default>
+                    <label>QA R&amp;D</label>
+                </value>
+                <value>
+                    <fullName>Quality Control,</fullName>
+                    <default>false</default>
+                    <label>Quality Control,</label>
+                </value>
+                <value>
+                    <fullName>QE Validation</fullName>
+                    <default>false</default>
+                    <label>QE Validation</label>
+                </value>
+                <value>
+                    <fullName>Reagent R&amp;D</fullName>
+                    <default>false</default>
+                    <label>Reagent R&amp;D</label>
+                </value>
+                <value>
+                    <fullName>Regulatory Affairs</fullName>
+                    <default>false</default>
+                    <label>Regulatory Affairs</label>
+                </value>
+                <value>
+                    <fullName>Regulatory Quality Compliance</fullName>
+                    <default>false</default>
+                    <label>Regulatory Quality Compliance</label>
+                </value>
+                <value>
+                    <fullName>Sales Administration</fullName>
+                    <default>false</default>
+                    <label>Sales Administration</label>
+                </value>
+                <value>
+                    <fullName>Service Share Center</fullName>
+                    <default>false</default>
+                    <label>Service Share Center</label>
+                </value>
+                <value>
+                    <fullName>Supply Chain</fullName>
+                    <default>false</default>
+                    <label>Supply Chain</label>
+                </value>
+                <value>
+                    <fullName>Supplier QA</fullName>
+                    <default>false</default>
+                    <label>Supplier QA</label>
+                </value>
+                <value>
+                    <fullName>System Development</fullName>
+                    <default>false</default>
+                    <label>System Development</label>
+                </value>
+                <value>
+                    <fullName>System R&amp;D</fullName>
+                    <default>false</default>
+                    <label>System R&amp;D</label>
+                </value>
+                <value>
+                    <fullName>Technical Support</fullName>
+                    <default>false</default>
+                    <label>Technical Support</label>
+                </value>
+                <value>
+                    <fullName>Third Party Products QA</fullName>
+                    <default>false</default>
+                    <label>Third Party Products QA</label>
+                </value>
+                <value>
+                    <fullName>Training</fullName>
+                    <default>false</default>
+                    <label>Training</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Other with mandatory field to specify</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Other with mandatory field to specify</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Describe_Type_of_Training__c</fullName>
+        <externalId>false</externalId>
+        <label>Describe Type of Training</label>
+        <length>750</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Description_of_Change__c</fullName>
+        <externalId>false</externalId>
+        <label>Description of Change</label>
+        <length>8000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Device_Lot_Number_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Device Lot Number (s)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Device_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Device Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Device__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Device</label>
+        <referenceTo>CMPL123__Device__c</referenceTo>
+        <relationshipLabel>Change Control</relationshipLabel>
+        <relationshipName>Change_Control</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Document_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Impacted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Document_List__c</fullName>
+        <externalId>false</externalId>
+        <label>Document List</label>
+        <length>4500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Document_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Document_Reference__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Reference?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Document_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Documents_Affected__c</fullName>
+        <externalId>false</externalId>
+        <label>Documents Affected?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Dosage__c</fullName>
+        <externalId>false</externalId>
+        <label>Dosage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Due_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Emergency_Change__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Emergency Change?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Equipment_Affected__c</fullName>
+        <externalId>false</externalId>
+        <label>Equipment Affected?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Equipment_Description_Custom__c</fullName>
+        <externalId>false</externalId>
+        <label>Equipment Description</label>
+        <length>750</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Equipment_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Equipment Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Equipment_ID_Custom__c</fullName>
+        <externalId>false</externalId>
+        <label>Equipment ID</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Equipment_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Equipment ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Equipment_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <label>Equipment Impacted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Existing_Quality_Event_Records_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>Existing Quality Event Records URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Expiry_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Expiry Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>External_Responsible_Person__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>External - Responsible Person</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmjNU</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>External__c</fullName>
+        <externalId>false</externalId>
+        <label>External</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Facilities_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <label>Facilities Impacted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Floor__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Form__c</fullName>
+        <externalId>false</externalId>
+        <label>Form</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Global_Trade_Identification_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Global Trade Identification Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GxP_Change__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>GxP Change?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Impacted_Manufacturing_Site_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Impacted Manufacturing Site(s)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Astute</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Astute</label>
+                </value>
+                <value>
+                    <fullName>bioFire</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>bioFire</label>
+                </value>
+                <value>
+                    <fullName>BSB (Shanghai)</fullName>
+                    <default>false</default>
+                    <label>BSB (Shanghai)</label>
+                </value>
+                <value>
+                    <fullName>Combourg</fullName>
+                    <default>false</default>
+                    <label>Combourg</label>
+                </value>
+                <value>
+                    <fullName>Craponne</fullName>
+                    <default>false</default>
+                    <label>Craponne</label>
+                </value>
+                <value>
+                    <fullName>Durham – Rodolphe St.</fullName>
+                    <default>false</default>
+                    <label>Durham – Rodolphe St.</label>
+                </value>
+                <value>
+                    <fullName>Firenze</fullName>
+                    <default>false</default>
+                    <label>Firenze</label>
+                </value>
+                <value>
+                    <fullName>Grenoble</fullName>
+                    <default>false</default>
+                    <label>Grenoble</label>
+                </value>
+                <value>
+                    <fullName>Hyderabad</fullName>
+                    <default>false</default>
+                    <label>Hyderabad</label>
+                </value>
+                <value>
+                    <fullName>IDC Saint Vulbas</fullName>
+                    <default>false</default>
+                    <label>IDC Saint Vulbas</label>
+                </value>
+                <value>
+                    <fullName>Invisible Sentinel</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Invisible Sentinel</label>
+                </value>
+                <value>
+                    <fullName>Kerlann</fullName>
+                    <default>false</default>
+                    <label>Kerlann</label>
+                </value>
+                <value>
+                    <fullName>LaBalme</fullName>
+                    <default>false</default>
+                    <label>LaBalme</label>
+                </value>
+                <value>
+                    <fullName>Lombard</fullName>
+                    <default>false</default>
+                    <label>Lombard</label>
+                </value>
+                <value>
+                    <fullName>Marcy</fullName>
+                    <default>false</default>
+                    <label>Marcy</label>
+                </value>
+                <value>
+                    <fullName>Philadelphia</fullName>
+                    <default>false</default>
+                    <label>Philadelphia</label>
+                </value>
+                <value>
+                    <fullName>Rio de Janeiro</fullName>
+                    <default>false</default>
+                    <label>Rio de Janeiro</label>
+                </value>
+                <value>
+                    <fullName>Salt Lake City</fullName>
+                    <default>false</default>
+                    <label>Salt Lake City</label>
+                </value>
+                <value>
+                    <fullName>St. Louis</fullName>
+                    <default>false</default>
+                    <label>St. Louis</label>
+                </value>
+                <value>
+                    <fullName>Sydney BTF</fullName>
+                    <default>false</default>
+                    <label>Sydney BTF</label>
+                </value>
+                <value>
+                    <fullName>Third Party Products</fullName>
+                    <default>false</default>
+                    <label>Third Party Products</label>
+                </value>
+                <value>
+                    <fullName>Tres Cantos</fullName>
+                    <default>false</default>
+                    <label>Tres Cantos</label>
+                </value>
+                <value>
+                    <fullName>Verniolle</fullName>
+                    <default>false</default>
+                    <label>Verniolle</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Impacted_Site_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Impacted Site(s)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Site 1</fullName>
+                    <default>false</default>
+                    <label>Site 1</label>
+                </value>
+                <value>
+                    <fullName>Site 2</fullName>
+                    <default>false</default>
+                    <label>Site 2</label>
+                </value>
+                <value>
+                    <fullName>Site 3</fullName>
+                    <default>false</default>
+                    <label>Site 3</label>
+                </value>
+                <value>
+                    <fullName>Site 4</fullName>
+                    <default>false</default>
+                    <label>Site 4</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Implementation_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Implementation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Instrument_ID_SN__c</fullName>
+        <externalId>false</externalId>
+        <label>Instrument ID/ SN</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Internal_Manufacturing_Site__c</fullName>
+        <externalId>false</externalId>
+        <label>Internal - Manufacturing Site</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Internal_Mfg_Site_Responsible_Person__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Internal - Mfg Site - Responsible Person</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmjO3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Internal_Sub_Responsible_Person__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Internal - Sub - Responsible Person</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmjNo</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Internal_Subsidiary__c</fullName>
+        <externalId>false</externalId>
+        <label>Internal - Subsidiary</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_AFNOR_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <label>Is AFNOR Impacted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_a_Qualification_Required__c</fullName>
+        <externalId>false</externalId>
+        <label>Is a Qualification Required?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_a_Qualification_Required_change_impac__c</fullName>
+        <externalId>false</externalId>
+        <label>Is a Qualification Required?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_a_Rollback_Plan_Required__c</fullName>
+        <externalId>false</externalId>
+        <label>Is a Rollback Plan Required?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_a_UDI_SPOT_Assessment_required__c</fullName>
+        <externalId>false</externalId>
+        <label>Is a UDI/SPOT Assessment required?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_this_a_change_to_an_instrument__c</fullName>
+        <externalId>false</externalId>
+        <label>Is this a change to an instrument?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_training_required__c</fullName>
+        <externalId>false</externalId>
+        <label>Is training required?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Justification__c</fullName>
+        <externalId>false</externalId>
+        <label>Justification</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Legal_Manufacturer__c</fullName>
+        <externalId>false</externalId>
+        <label>Legal Manufacturer</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Linked_Process_Equipment_and_or_Reagen__c</fullName>
+        <externalId>false</externalId>
+        <label>Linked Process/Equipment/Reagent</label>
+        <length>2500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Livelink_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>Livelink URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Location</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Make_or_Buy__c</fullName>
+        <externalId>false</externalId>
+        <label>Make or Buy</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Manufactured_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Manufactured Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Material_Lot_Number_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Material Lot Number(s)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Material_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Material Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Material_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Material Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Material_s_Affected__c</fullName>
+        <externalId>false</externalId>
+        <label>Material(s) Affected?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Material 1</fullName>
+                    <default>false</default>
+                    <label>Material 1</label>
+                </value>
+                <value>
+                    <fullName>Material 2</fullName>
+                    <default>false</default>
+                    <label>Material 2</label>
+                </value>
+                <value>
+                    <fullName>Material 3</fullName>
+                    <default>false</default>
+                    <label>Material 3</label>
+                </value>
+                <value>
+                    <fullName>Material 4</fullName>
+                    <default>false</default>
+                    <label>Material 4</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Non_Product_Software_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <label>Non Product Software Impacted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Only_Change_Owner_or_Change_Coordinator__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Only Change Owner or Change Coordinator</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Origin__c</fullName>
+        <externalId>false</externalId>
+        <label>Origin</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Animal</fullName>
+                    <default>false</default>
+                    <label>Animal</label>
+                </value>
+                <value>
+                    <fullName>Human</fullName>
+                    <default>false</default>
+                    <label>Human</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Origination_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Origination Location</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Origination__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Algeria</fullName>
+                    <default>false</default>
+                    <label>Algeria</label>
+                </value>
+                <value>
+                    <fullName>Argentina</fullName>
+                    <default>false</default>
+                    <label>Argentina</label>
+                </value>
+                <value>
+                    <fullName>Astute</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Astute</label>
+                </value>
+                <value>
+                    <fullName>Australia &amp; New Zealand</fullName>
+                    <default>false</default>
+                    <label>Australia &amp; New Zealand</label>
+                </value>
+                <value>
+                    <fullName>Austria</fullName>
+                    <default>false</default>
+                    <label>Austria</label>
+                </value>
+                <value>
+                    <fullName>Benelux</fullName>
+                    <default>false</default>
+                    <label>Benelux</label>
+                </value>
+                <value>
+                    <fullName>bioFire</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>bioFire</label>
+                </value>
+                <value>
+                    <fullName>bioMerieux, Inc</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>bioMerieux, Inc</label>
+                </value>
+                <value>
+                    <fullName>bioMerieux, SA</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>bioMerieux, SA</label>
+                </value>
+                <value>
+                    <fullName>Brazil</fullName>
+                    <default>false</default>
+                    <label>Brazil</label>
+                </value>
+                <value>
+                    <fullName>BSB (Shanghai)</fullName>
+                    <default>false</default>
+                    <label>BSB (Shanghai)</label>
+                </value>
+                <value>
+                    <fullName>Canada</fullName>
+                    <default>false</default>
+                    <label>Canada</label>
+                </value>
+                <value>
+                    <fullName>Chile</fullName>
+                    <default>false</default>
+                    <label>Chile</label>
+                </value>
+                <value>
+                    <fullName>China</fullName>
+                    <default>false</default>
+                    <label>China</label>
+                </value>
+                <value>
+                    <fullName>Colombia</fullName>
+                    <default>false</default>
+                    <label>Colombia</label>
+                </value>
+                <value>
+                    <fullName>Combourg</fullName>
+                    <default>false</default>
+                    <label>Combourg</label>
+                </value>
+                <value>
+                    <fullName>Craponne_Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Craponne</label>
+                </value>
+                <value>
+                    <fullName>Czech Republic</fullName>
+                    <default>false</default>
+                    <label>Czech Republic</label>
+                </value>
+                <value>
+                    <fullName>Denmark</fullName>
+                    <default>false</default>
+                    <label>Denmark</label>
+                </value>
+                <value>
+                    <fullName>Durham – Rodolphe St.</fullName>
+                    <default>false</default>
+                    <label>Durham – Rodolphe St.</label>
+                </value>
+                <value>
+                    <fullName>Finland</fullName>
+                    <default>false</default>
+                    <label>Finland</label>
+                </value>
+                <value>
+                    <fullName>Firenze</fullName>
+                    <default>false</default>
+                    <label>Firenze</label>
+                </value>
+                <value>
+                    <fullName>France</fullName>
+                    <default>false</default>
+                    <label>France</label>
+                </value>
+                <value>
+                    <fullName>Germany</fullName>
+                    <default>false</default>
+                    <label>Germany</label>
+                </value>
+                <value>
+                    <fullName>Greece</fullName>
+                    <default>false</default>
+                    <label>Greece</label>
+                </value>
+                <value>
+                    <fullName>Grenoble</fullName>
+                    <default>false</default>
+                    <label>Grenoble</label>
+                </value>
+                <value>
+                    <fullName>Hong Kong</fullName>
+                    <default>false</default>
+                    <label>Hong Kong</label>
+                </value>
+                <value>
+                    <fullName>Hungary</fullName>
+                    <default>false</default>
+                    <label>Hungary</label>
+                </value>
+                <value>
+                    <fullName>Hyderabad</fullName>
+                    <default>false</default>
+                    <label>Hyderabad</label>
+                </value>
+                <value>
+                    <fullName>IDC Saint Vulbas</fullName>
+                    <default>false</default>
+                    <label>IDC Saint Vulbas</label>
+                </value>
+                <value>
+                    <fullName>India</fullName>
+                    <default>false</default>
+                    <label>India</label>
+                </value>
+                <value>
+                    <fullName>Invisible Sentinel</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Invisible Sentinel</label>
+                </value>
+                <value>
+                    <fullName>Italy</fullName>
+                    <default>false</default>
+                    <label>Italy</label>
+                </value>
+                <value>
+                    <fullName>Japan</fullName>
+                    <default>false</default>
+                    <label>Japan</label>
+                </value>
+                <value>
+                    <fullName>Kerlann</fullName>
+                    <default>false</default>
+                    <label>Kerlann</label>
+                </value>
+                <value>
+                    <fullName>LaBalme</fullName>
+                    <default>false</default>
+                    <label>LaBalme</label>
+                </value>
+                <value>
+                    <fullName>Lombard</fullName>
+                    <default>false</default>
+                    <label>Lombard</label>
+                </value>
+                <value>
+                    <fullName>Marcy</fullName>
+                    <default>false</default>
+                    <label>Marcy</label>
+                </value>
+                <value>
+                    <fullName>Mexico</fullName>
+                    <default>false</default>
+                    <label>Mexico</label>
+                </value>
+                <value>
+                    <fullName>NA ComOps</fullName>
+                    <default>false</default>
+                    <label>NA ComOps</label>
+                </value>
+                <value>
+                    <fullName>Nordics</fullName>
+                    <default>false</default>
+                    <label>Nordics</label>
+                </value>
+                <value>
+                    <fullName>Philadelphia</fullName>
+                    <default>false</default>
+                    <label>Philadelphia</label>
+                </value>
+                <value>
+                    <fullName>Poland</fullName>
+                    <default>false</default>
+                    <label>Poland</label>
+                </value>
+                <value>
+                    <fullName>Portugal</fullName>
+                    <default>false</default>
+                    <label>Portugal</label>
+                </value>
+                <value>
+                    <fullName>Rio de Janeiro</fullName>
+                    <default>false</default>
+                    <label>Rio de Janeiro</label>
+                </value>
+                <value>
+                    <fullName>Russia</fullName>
+                    <default>false</default>
+                    <label>Russia</label>
+                </value>
+                <value>
+                    <fullName>Salt Lake City</fullName>
+                    <default>false</default>
+                    <label>Salt Lake City</label>
+                </value>
+                <value>
+                    <fullName>San Diego</fullName>
+                    <default>false</default>
+                    <label>San Diego</label>
+                </value>
+                <value>
+                    <fullName>Serbia</fullName>
+                    <default>false</default>
+                    <label>Serbia</label>
+                </value>
+                <value>
+                    <fullName>Singapore</fullName>
+                    <default>false</default>
+                    <label>Singapore</label>
+                </value>
+                <value>
+                    <fullName>South Africa</fullName>
+                    <default>false</default>
+                    <label>South Africa</label>
+                </value>
+                <value>
+                    <fullName>South Korea</fullName>
+                    <default>false</default>
+                    <label>South Korea</label>
+                </value>
+                <value>
+                    <fullName>Spain</fullName>
+                    <default>false</default>
+                    <label>Spain</label>
+                </value>
+                <value>
+                    <fullName>St. Louis</fullName>
+                    <default>false</default>
+                    <label>St. Louis</label>
+                </value>
+                <value>
+                    <fullName>Switzerland</fullName>
+                    <default>false</default>
+                    <label>Switzerland</label>
+                </value>
+                <value>
+                    <fullName>Sydney</fullName>
+                    <default>false</default>
+                    <label>Sydney</label>
+                </value>
+                <value>
+                    <fullName>Sydney BTF</fullName>
+                    <default>false</default>
+                    <label>Sydney BTF</label>
+                </value>
+                <value>
+                    <fullName>Thailand</fullName>
+                    <default>false</default>
+                    <label>Thailand</label>
+                </value>
+                <value>
+                    <fullName>Third Party Products</fullName>
+                    <default>false</default>
+                    <label>Third Party Products</label>
+                </value>
+                <value>
+                    <fullName>Tres Cantos</fullName>
+                    <default>false</default>
+                    <label>Tres Cantos</label>
+                </value>
+                <value>
+                    <fullName>Turkey</fullName>
+                    <default>false</default>
+                    <label>Turkey</label>
+                </value>
+                <value>
+                    <fullName>United Kingdom</fullName>
+                    <default>false</default>
+                    <label>United Kingdom</label>
+                </value>
+                <value>
+                    <fullName>Verniolle</fullName>
+                    <default>false</default>
+                    <label>Verniolle</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>BSB (Shanghai)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Combourg</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Craponne_Manufacturing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Durham – Rodolphe St.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Firenze</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Grenoble</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Hyderabad</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>IDC Saint Vulbas</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Kerlann</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>LaBalme</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Lombard</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Marcy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Philadelphia</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Rio de Janeiro</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Salt Lake City</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>San Diego</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>St. Louis</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Sydney BTF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Third Party Products</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Tres Cantos</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Manufacturing Site</controllingFieldValue>
+                <valueName>Verniolle</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Algeria</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Argentina</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Australia &amp; New Zealand</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Austria</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Benelux</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Brazil</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Canada</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Chile</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>China</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Colombia</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Czech Republic</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>France</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Germany</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Greece</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Hong Kong</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Hungary</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>India</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Italy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Japan</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Mexico</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>NA ComOps</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Nordics</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Poland</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Portugal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Russia</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Serbia</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Singapore</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>South Africa</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>South Korea</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Spain</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Switzerland</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Sydney</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Thailand</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Turkey</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>United Kingdom</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Origination__c</fullName>
+        <externalId>false</externalId>
+        <label>Origination</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Corporate</fullName>
+                    <default>false</default>
+                    <label>Corporate</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing Site</fullName>
+                    <default>false</default>
+                    <label>Manufacturing Site</label>
+                </value>
+                <value>
+                    <fullName>Subsidiary</fullName>
+                    <default>false</default>
+                    <label>Subsidiary</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Originator__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Originator</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Control4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Impacted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No - Not Required</label>
+                </value>
+                <value>
+                    <fullName>Yes – Single Item Impacted</fullName>
+                    <default>false</default>
+                    <label>Yes – Single Item Impacted</label>
+                </value>
+                <value>
+                    <fullName>Yes – Multiple Items Impacted</fullName>
+                    <default>false</default>
+                    <label>Yes – Multiple Items Impacted</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Item_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Item Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Item_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Item Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Product_Range__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Range</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Product</label>
+        <referenceTo>CMPL123__Product__c</referenceTo>
+        <relationshipLabel>Change Control</relationshipLabel>
+        <relationshipName>Change_Control</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product_a_WHO_prequalified_Device__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Is the impacted Product a WHO prequalified Medical Device? </inlineHelpText>
+        <label>Product is WHO prequalified Device?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_s_Affected__c</fullName>
+        <externalId>false</externalId>
+        <label>Product(s) Affected?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Product 1</fullName>
+                    <default>false</default>
+                    <label>Product 1</label>
+                </value>
+                <value>
+                    <fullName>Product 2</fullName>
+                    <default>false</default>
+                    <label>Product 2</label>
+                </value>
+                <value>
+                    <fullName>Product 3</fullName>
+                    <default>false</default>
+                    <label>Product 3</label>
+                </value>
+                <value>
+                    <fullName>Product 4</fullName>
+                    <default>false</default>
+                    <label>Product 4</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Quality_Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CRB Quality Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmJrd</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quality_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Final Approver 2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipLabel>Change Control (Quality Contact)</relationshipLabel>
+        <relationshipName>Change_Control2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quality_Event__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Quality Event</label>
+        <referenceTo>CMPL123QMS__Deviation__c</referenceTo>
+        <relationshipLabel>Change Control</relationshipLabel>
+        <relationshipName>Change_Control</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quality_Management_System_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <label>Quality Management System Impacted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reference_Numbers__c</fullName>
+        <externalId>false</externalId>
+        <label>Reference Numbers</label>
+        <length>750</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Related_to_existing_Q_E_records__c</fullName>
+        <externalId>false</externalId>
+        <label>Linked to Quality Event Records?</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Release_Approver_1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Release Approver 1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmjZk</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Release_Approver_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Release Approver 2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmjZu</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Release_Approver_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Release Approver 3</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_Controlmja4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Release_Approver_4__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Release Approver 4</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmjY0</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Release_Approver_5__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Release Approver 5</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmjaE</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Release_Approver_6__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Release Approver 6</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmjaO</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Release_QA_Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Release (QA) Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Change_ControlmjXt</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Requestor__c</fullName>
+        <externalId>false</externalId>
+        <label>Requestor</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Required_Qualitification_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Required Qualification Description</label>
+        <length>4000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Risk_Analysis_Reference_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Risk Analysis Reference Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Risk_Assessment_Needed__c</fullName>
+        <externalId>false</externalId>
+        <label>Risk Assessment Needed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Risk_Assessment__c</fullName>
+        <externalId>false</externalId>
+        <label>Risk Assessment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Rollback_Plan_Summary__c</fullName>
+        <externalId>false</externalId>
+        <label>Rollback Plan Summary</label>
+        <length>7500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Room__c</fullName>
+        <externalId>false</externalId>
+        <label>Room</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Short_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Short Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Significance_of_the_Change__c</fullName>
+        <externalId>false</externalId>
+        <label>Significance of the Change</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Change_Level__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Significant</fullName>
+                    <default>false</default>
+                    <label>Significant</label>
+                </value>
+                <value>
+                    <fullName>Non-Significant</fullName>
+                    <default>false</default>
+                    <label>Non-Significant</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Minor</controllingFieldValue>
+                <controllingFieldValue>Moderate</controllingFieldValue>
+                <controllingFieldValue>Major</controllingFieldValue>
+                <controllingFieldValue>Project Transfer</controllingFieldValue>
+                <valueName>Non-Significant</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Moderate</controllingFieldValue>
+                <controllingFieldValue>Major</controllingFieldValue>
+                <controllingFieldValue>Project Transfer</controllingFieldValue>
+                <valueName>Significant</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Site_Responsible__c</fullName>
+        <externalId>false</externalId>
+        <label>Site Responsible</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Site__c</fullName>
+        <externalId>false</externalId>
+        <label>Site</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Site 1</fullName>
+                    <default>false</default>
+                    <label>Site 1</label>
+                </value>
+                <value>
+                    <fullName>Site 2</fullName>
+                    <default>false</default>
+                    <label>Site 2</label>
+                </value>
+                <value>
+                    <fullName>Site 3</fullName>
+                    <default>false</default>
+                    <label>Site 3</label>
+                </value>
+                <value>
+                    <fullName>Site 4</fullName>
+                    <default>false</default>
+                    <label>Site 4</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Software_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Software Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Supervisor_Manager__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Final Approver 3</label>
+        <referenceTo>User</referenceTo>
+        <relationshipLabel>Change Control (Supervisor/Manager)</relationshipLabel>
+        <relationshipName>Change_Control1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Supplier_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <label>Supplier Impacted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>System_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <label>System Impacted</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Title__c</fullName>
+        <externalId>false</externalId>
+        <label>Title</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Action_Items__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Action Items</label>
+        <summaryFilterItems>
+            <field>Action_Item__c.Required__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.CMPL123_WF_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Closed - Canceled</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Action_Item__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Actions_Complete__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Actions Complete</label>
+        <summaryFilterItems>
+            <field>Action_Item__c.CMPL123_WF_Status__c</field>
+            <operation>contains</operation>
+            <value>Closed</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.Required__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Action_Item__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Actions_Open__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Actions Open</label>
+        <summaryFilterItems>
+            <field>Action_Item__c.CMPL123_WF_Status__c</field>
+            <operation>notContain</operation>
+            <value>Closed</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Action_Item__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_After_Release_Closed__c</fullName>
+        <externalId>false</externalId>
+        <label>Total After Release Closed</label>
+        <summaryFilterItems>
+            <field>Action_Item__c.After_Release__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.Required__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.CMPL123_WF_Status__c</field>
+            <operation>contains</operation>
+            <value>Closed</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.CMPL123_WF_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Closed - Canceled</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Action_Item__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_After_Release__c</fullName>
+        <externalId>false</externalId>
+        <label>Total After Release</label>
+        <summaryFilterItems>
+            <field>Action_Item__c.After_Release__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.Required__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.CMPL123_WF_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Closed - Canceled</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Action_Item__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Before_Release_Closed__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Before Release Closed</label>
+        <summaryFilterItems>
+            <field>Action_Item__c.Required__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.CMPL123_WF_Status__c</field>
+            <operation>contains</operation>
+            <value>Closed</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.After_Release__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.CMPL123_WF_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Closed - Canceled</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Action_Item__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Before_Release__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Before Release</label>
+        <summaryFilterItems>
+            <field>Action_Item__c.Required__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.After_Release__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.CMPL123_WF_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Closed - Canceled</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Action_Item__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_CRB_Approvers__c</fullName>
+        <externalId>false</externalId>
+        <formula>( 
+IF(ISBLANK(CRB_Approver_1__c),0,1)+ 
+IF(ISBLANK(CRB_Approver_2__c),0,1)+ 
+IF(ISBLANK(CRB_Approver_3__c),0,1)+
+IF(ISBLANK(CRB_Approver_4__c),0,1)+
+IF(ISBLANK(CRB_Approver_5__c),0,1))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total CRB Approvers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Final_Approvers__c</fullName>
+        <externalId>false</externalId>
+        <formula>( 
+IF(ISBLANK(Assigned_To__c),0,1)+ 
+IF(ISBLANK( Quality_Contact__c ),0,1)+ 
+IF(ISBLANK( Supervisor_Manager__c ),0,1)+
+IF(ISBLANK( CMPL123QMS__Main_Contact__c ),0,1)+
+IF(ISBLANK( CMPL123QMS__Management_Approved_By__c ),0,1))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Final Approvers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Impact_Assessments_Closed_Done__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Impact Assessments Closed - Done</label>
+        <summaryFilterItems>
+            <field>Impact_Assessment__c.CMPL123_WF_Status__c</field>
+            <operation>equals</operation>
+            <value>Closed - Done</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Impact_Assessment__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Impact_Assessments_Completed__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Impact Assessments Completed</label>
+        <summaryFilterItems>
+            <field>Impact_Assessment__c.CMPL123_WF_Status__c</field>
+            <operation>contains</operation>
+            <value>Closed</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Impact_Assessment__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Impact_Assessments_with_type_quali__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Impact Assessment  not type quali</label>
+        <summaryFilterItems>
+            <field>Impact_Assessment__c.SME_Area__c</field>
+            <operation>notEqual</operation>
+            <value>Quality Assurance</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Impact_Assessment__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Post_Release_Approvers__c</fullName>
+        <externalId>false</externalId>
+        <formula>(
+IF(ISBLANK( Release_Approver_1__c ),0,1)+
+IF(ISBLANK(Release_Approver_2__c ),0,1)+
+IF(ISBLANK(Release_Approver_3__c ),0,1)+
+IF(ISBLANK(Release_Approver_4__c ),0,1)+
+IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Post Release Approvers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Quality_Assessments_done__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Quality Assessments done</label>
+        <summaryFilterItems>
+            <field>Impact_Assessment__c.SME_Area__c</field>
+            <operation>equals</operation>
+            <value>Quality Assurance</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Impact_Assessment__c.CMPL123_WF_Status__c</field>
+            <operation>contains</operation>
+            <value>Closed</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Impact_Assessment__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Unassigned_Open_Action__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Unassigned Open Action</label>
+        <summaryFilterItems>
+            <field>Action_Item__c.Assignee__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Action_Item__c.CMPL123_WF_Status__c</field>
+            <operation>notContain</operation>
+            <value>Closed</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Action_Item__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_impact_Assessments__c</fullName>
+        <externalId>false</externalId>
+        <label>Total impact Assessments</label>
+        <summaryForeignKey>Impact_Assessment__c.Change_Control__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Trade_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Trade Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Training_Required_As_a_Result_of_Change__c</fullName>
+        <externalId>false</externalId>
+        <label>Training Required As a Result of Change</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type_of_Training_Required__c</fullName>
+        <externalId>false</externalId>
+        <label>Type of Training Required</label>
+        <length>4000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Version__c</fullName>
+        <externalId>false</externalId>
+        <label>Version</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Was_the_change_Successful__c</fullName>
+        <externalId>false</externalId>
+        <label>Was the change Successful?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>impact_assessments_complete__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+   OR(
+       ISBLANK( Total_impact_Assessments__c ),
+      Total_impact_Assessments__c = 0
+     ), 0,
+     ( Total_Impact_Assessments_Completed__c   /  Total_impact_Assessments__c)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>% impact assessments complete</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -3570,4 +7744,370 @@
             </values>
         </picklistValues>
     </recordTypes>
+    <validationRules>
+        <fullName>Action_Item_created_before_Revie</fullName>
+        <active>true</active>
+        <description>At least one Action Item must be created prior to performing "Submit for Review".</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+CMPL123_WF_Action__c =="Submit for Review" &amp;&amp; 
+ 
+( Total_Action_Items__c   = 0)</errorConditionFormula>
+        <errorMessage>At least one Action Item must be created prior to performing "Submit for Review".</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>All_Action_Items_Must_be_Closed</fullName>
+        <active>true</active>
+        <description>All action items must be in a closed status before user can perform "Implementation Complete" or "After Release Items Complete"</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+(CMPL123_WF_Action__c == "Implementation Complete" || CMPL123_WF_Action__c == "After Release Items Complete") &amp;&amp; 
+(  Total_Actions_Open__c    &lt;&gt;  0 )</errorConditionFormula>
+        <errorMessage>All action items must be in a closed status before user can perform "Implementation Complete" or "After Release Items Complete"</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>All_Impact_Ass_Closed_before_Review</fullName>
+        <active>true</active>
+        <description>All impact assessments created must be completed prior to performing "Submit for Review</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+CMPL123_WF_Action__c =="Submit for Review" &amp;&amp; 
+
+(Total_Impact_Assessments_Completed__c  &lt;&gt;  Total_impact_Assessments__c )</errorConditionFormula>
+        <errorMessage>All impact assessments created must be completed prior to performing Submit for Review</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>All_PreRelease_Action_Items_are_Closed</fullName>
+        <active>true</active>
+        <description>"Submit for Release Approval" can only be performed when all action items that do not have After Release checked are in a closed status</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+CMPL123_WF_Action__c == "Submit for Release Approval" &amp;&amp; 
+
+( After_Release_Action_Items_Not_Closed__c   &lt;&gt;  0 )</errorConditionFormula>
+        <errorMessage>"Submit for Release Approval" can only be performed when all action items that do not have After Release checked are in a closed status</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRBCommentsonly_changed_at_crb_or_qa_rev</fullName>
+        <active>true</active>
+        <description>CRB Comments can only be changed at CRB Team Review or Quality Review</description>
+        <errorConditionFormula>(NOT(CMPL123_WF_Status__c == "Pending CRB Team Review" || CMPL123_WF_Status__c =="Pending Quality Review") &amp;&amp; ISCHANGED( CRB_Comments__c )) || (ISNEW() &amp;&amp; NOT(ISBLANK(CRB_Comments__c)))</errorConditionFormula>
+        <errorMessage>CRB Comments can only be changed at CRB Team Review or Quality Review</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRB_Approver_1_Must_Be_Populated</fullName>
+        <active>true</active>
+        <description>CRB Approver 1 field must be populated if optional approvals are required.</description>
+        <errorConditionFormula>ISBLANK( CRB_Approver_1__c ) &amp;&amp; NOT(AND(ISBLANK( CRB_Approver_2__c ),ISBLANK( CRB_Approver_3__c ),ISBLANK( CRB_Approver_4__c ),ISBLANK( CRB_Approver_5__c ), ISBLANK( CRB_Approver_6__c )))</errorConditionFormula>
+        <errorDisplayField>CRB_Approver_1__c</errorDisplayField>
+        <errorMessage>Reassign an approver into the CRB Approver 1 field.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Change_Imp_Quest_Required_for_non_admin</fullName>
+        <active>false</active>
+        <description>All questions in Impact Assessment need to be answered prior to performing "Submit for Review".</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+CMPL123_WF_Action__c =="Submit for Review" &amp;&amp; 
+(ISPICKVAL(Change_Level__c, "Minor") || ISPICKVAL(Change_Level__c, "Moderate") || 
+ISPICKVAL(Change_Level__c, "Major") ||
+ISPICKVAL(Change_Level__c, "Project Transfer")) &amp;&amp;
+ 
+(
+ISPICKVAL(Is_a_UDI_SPOT_Assessment_required__c, "") ||
+ISPICKVAL(Product_a_WHO_prequalified_Device__c, "") ||
+ISPICKVAL(Change_impacts_Quality_System__c, "") ||
+ISPICKVAL(Competent_Authority_Impacted__c, "") ||
+ISPICKVAL(Is_AFNOR_Impacted__c, "") ||
+ISPICKVAL(Is_this_a_change_to_an_instrument__c, "") ||
+ISPICKVAL(Change_impacts_the_validation__c, "") ||
+ISPICKVAL(Is_a_Qualification_Required_change_impac__c, "") ||
+ISPICKVAL(Is_training_required__c, "") ||
+ISPICKVAL(Risk_Assessment__c, "")
+
+)</errorConditionFormula>
+        <errorMessage>All questions in Impact Assessment need to be answered prior to performing Submit for Review if the Change Level is anything but Administrative</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Change_Impact_on_Validation_Required</fullName>
+        <active>true</active>
+        <description>Change Impact on Validation Description is required if Change Impacts the Validation is Yes</description>
+        <errorConditionFormula>AND(
+         ISPICKVAL(Change_impacts_the_validation__c, "Yes"),
+         ISBLANK( Change_Impact_on_Validation_Description__c )
+)</errorConditionFormula>
+        <errorDisplayField>Change_Impact_on_Validation_Description__c</errorDisplayField>
+        <errorMessage>Change Impact on Validation Description is required if Change Impacts the Validation is Yes</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Change_Successful</fullName>
+        <active>true</active>
+        <description>You cannot select "Approve Change Successful" if the picklist value for "Was the Change Successful" is No</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+CMPL123_WF_Action__c =="Approve - Change Successful" &amp;&amp; 
+ISPICKVAL( Was_the_change_Successful__c , "No")</errorConditionFormula>
+        <errorDisplayField>Was_the_change_Successful__c</errorDisplayField>
+        <errorMessage>You cannot select "Approve Change Successful" if the picklist value for "Was the Change Successful" is No</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Change_Type_Other_Mandatory_Field_To_fi</fullName>
+        <active>false</active>
+        <description>If "Other" is selected for Change Type(s),Change Type-Other is required</description>
+        <errorConditionFormula>AND(
+         INCLUDES(Change_Type_s__c, "Other – mandatory field to fill in description"),
+         ISBLANK( Change_Type_Other__c )
+)</errorConditionFormula>
+        <errorMessage>If "Other" is selected for Change Type(s),Change Type-Other is required</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Change_Type_Other_Mandatory_Field_To_sp</fullName>
+        <active>true</active>
+        <description>If "Other" is selected for Change Type(s),Change Type-Other is required</description>
+        <errorConditionFormula>AND(
+         INCLUDES(Change_Type_s__c, "Other"),
+         ISBLANK( Change_Type_Other__c )
+)</errorConditionFormula>
+        <errorDisplayField>Change_Type_Other__c</errorDisplayField>
+        <errorMessage>If "Other" is selected for Change Type(s),Change Type-Other is required</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Change_UnSuccessful</fullName>
+        <active>true</active>
+        <description>You cannot select "Approve Change Unsuccessful" if the picklist value for "Was the Change Successful" is Yes</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+CMPL123_WF_Action__c =="Approve - Change Unsuccessful" &amp;&amp; 
+ISPICKVAL( Was_the_change_Successful__c , "Yes")</errorConditionFormula>
+        <errorDisplayField>Was_the_change_Successful__c</errorDisplayField>
+        <errorMessage>You cannot select "Approve Change Unsuccessful" if the picklist value for "Was the Change Successful" is Yes</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Department_Other</fullName>
+        <active>true</active>
+        <description>If "Other" is selected for Department, Department-Other is required</description>
+        <errorConditionFormula>AND(
+         INCLUDES(Department_s__c , "Other"),
+         ISBLANK( Department_Other__c )
+)</errorConditionFormula>
+        <errorDisplayField>Department_Other__c</errorDisplayField>
+        <errorMessage>If "Other with Mandatory field to specify" is selected for Department, Department-Other is required</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Due_Date_Validation_Rule</fullName>
+        <active>true</active>
+        <description>Due Date Cannot be before Initiation Date</description>
+        <errorConditionFormula>Due_Date__c  &lt;  Datevalue(CreatedDate)</errorConditionFormula>
+        <errorDisplayField>Due_Date__c</errorDisplayField>
+        <errorMessage>Due Date Cannot be before Initiation Date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>External_Responsible_Person</fullName>
+        <active>true</active>
+        <description>If an External Customer is Impacted and External Responsible Person must be filled out</description>
+        <errorConditionFormula>AND(
+ISPICKVAL(External__c, "Yes"),
+ISBLANK( External_Responsible_Person__c )
+)</errorConditionFormula>
+        <errorDisplayField>External_Responsible_Person__c</errorDisplayField>
+        <errorMessage>If an External Customer is Impacted a External Responsible Person must be filled out</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Final_Approver_1_Must_Be_Populated</fullName>
+        <active>true</active>
+        <description>Final Approver 1 field must be populated if Final approvals are required.</description>
+        <errorConditionFormula>ISBLANK( Assigned_To__c ) &amp;&amp; NOT(AND(ISBLANK( 	Quality_Contact__c),ISBLANK( Supervisor_Manager__c ),ISBLANK( CMPL123QMS__Main_Contact__c ),ISBLANK( CMPL123QMS__Management_Approved_By__c ), ISBLANK( CMPL123QMS__Manager__c )))</errorConditionFormula>
+        <errorDisplayField>Assigned_To__c</errorDisplayField>
+        <errorMessage>Reassign a final approver into the Final Approver 1 field.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Impact_Assessment_completed_before_Revie</fullName>
+        <active>true</active>
+        <description>At least one impact assessment must be created and completed for Change Levels that are Moderate, Major, or Project Transfer prior to performing "Submit for Review".</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+CMPL123_WF_Action__c =="Submit for Review" &amp;&amp; 
+(ISPICKVAL(Change_Level__c, "Moderate") || 
+ISPICKVAL(Change_Level__c, "Major") ||
+ISPICKVAL(Change_Level__c, "Project Transfer")) &amp;&amp;
+ 
+(Total_Impact_Assessments_Closed_Done__c  = 0)</errorConditionFormula>
+        <errorMessage>At least one impact assessment must be created and completed for Change Levels that are Moderate, Major, or Project Transfer prior to performing "Submit for Review".</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Implementati_Date_cannot_be_before_today</fullName>
+        <active>true</active>
+        <description>Implementation Date must be the current date or a future date</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
+(CMPL123_WF_Action__c == "Implementation Complete" || CMPL123_WF_Action__c == "Approve Release (QA)") &amp;&amp;
+
+Implementation_Date__c &lt; TODAY()</errorConditionFormula>
+        <errorMessage>Implementation Date must be the current date or a future date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Internal_Sub_Responsible_Person</fullName>
+        <active>true</active>
+        <description>If an Internal Subsidiary Customer is Impacted an Internal - Sub - Responsible Person must be filled out</description>
+        <errorConditionFormula>AND(
+ISPICKVAL(Internal_Subsidiary__c, "Yes"),
+ISBLANK( Internal_Sub_Responsible_Person__c)
+)</errorConditionFormula>
+        <errorDisplayField>Internal_Sub_Responsible_Person__c</errorDisplayField>
+        <errorMessage>If an Internal Subsidiary Customer is Impacted an Internal - Sub - Responsible Person must be filled out</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Internal_mfgsite_Responsible_Person</fullName>
+        <active>true</active>
+        <description>If an Internal Manufacturing Site is Impacted an Internal - Mfg Site - Responsible Person must be filled out</description>
+        <errorConditionFormula>AND(
+ISPICKVAL( Internal_Manufacturing_Site__c , "Yes"),
+ISBLANK(  Internal_Mfg_Site_Responsible_Person__c )
+)</errorConditionFormula>
+        <errorDisplayField>Internal_Mfg_Site_Responsible_Person__c</errorDisplayField>
+        <errorMessage>If an Internal Manufacturing Site is Impacted an Internal - Mfg Site - Responsible Person must be filled out</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Is_a_rollback_plan_required_required</fullName>
+        <active>true</active>
+        <description>Is a Rollback Required must be populated if No is provided for the "Was the Change Successful?"</description>
+        <errorConditionFormula>AND( 
+(ISPICKVAL( Was_the_change_Successful__c , "No")), 
+ ISPICKVAL( Is_a_Rollback_Plan_Required__c , "")
+   )</errorConditionFormula>
+        <errorDisplayField>Is_a_Rollback_Plan_Required__c</errorDisplayField>
+        <errorMessage>Is a Rollback Required must be populated if No is provided for the "Was the Change Successful?"</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Only_Change_Owner_or_Change_Coordinator</fullName>
+        <active>true</active>
+        <description>Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval</description>
+        <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp; $User.Id != Change_Owner__c) &amp;&amp; 
+Only_Change_Owner_or_Change_Coordinator__c &amp;&amp;
+!(ISCHANGED(CMPL123_WF_Action__c) || ISCHANGED(CMPL123_WF_Action_Performed_By__c) || ISCHANGED(CMPL123_WF_Action_Performed_On__c) || ISCHANGED(CMPL123_WF_Status__c) ||
+ISCHANGED(Only_Change_Owner_or_Change_Coordinator__c) ||
+ISCHANGED(Total_Impact_Assessments_Completed__c))</errorConditionFormula>
+        <errorMessage>Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Origination_is_Manufacturing</fullName>
+        <active>true</active>
+        <description>If Manufacturing is chosen for Origination, Origination Location is required</description>
+        <errorConditionFormula>AND( 
+(ISPICKVAL(Origination__c, "Manufacturing Site")), 
+ ISPICKVAL(Origination_Location__c, "")
+   )</errorConditionFormula>
+        <errorDisplayField>Origination_Location__c</errorDisplayField>
+        <errorMessage>Origination Location [Picklist] is required if either Manufacturing Site or Subsidiary is selected under Origination</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Origination_is_Subsidiary</fullName>
+        <active>true</active>
+        <description>If Subsidiary is chosen for Origination, Origination Location is required</description>
+        <errorConditionFormula>AND( 
+(ISPICKVAL(Origination__c, "Subsidiary")), 
+ ISPICKVAL(Origination_Location__c, "")
+   )</errorConditionFormula>
+        <errorDisplayField>Origination_Location__c</errorDisplayField>
+        <errorMessage>Origination Location [Picklist] is required if either Manufacturing Site or Subsidiary is selected under Origination</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Prevent_Edit_Change_control_on_closed_QE</fullName>
+        <active>false</active>
+        <errorConditionFormula>Quality_Event__r.CMPL123_WF_Status__c  =="Closed - Quality Event"</errorConditionFormula>
+        <errorMessage>Record Locked</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Product_Impacted_Required_Fields</fullName>
+        <active>true</active>
+        <description>When "Yes" is selected for Product Impacted, then either Product Item Number or Product Range must be populated.</description>
+        <errorConditionFormula>ISPICKVAL(Product_Impacted__c, "Yes") &amp;&amp; (ISBLANK( Product_Item_Number__c) &amp;&amp; ISBLANK(Product_Range__c))</errorConditionFormula>
+        <errorMessage>When "Yes" is selected for Product Impacted, then either Product Item Number or Product Range must be populated.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Release_Approver_1_Must_Be_Populated</fullName>
+        <active>true</active>
+        <description>Release Approver 1 field must be populated if optional approvals are required.</description>
+        <errorConditionFormula>ISBLANK( Release_Approver_1__c) &amp;&amp; NOT(AND(ISBLANK( Release_Approver_2__c ),ISBLANK( Release_Approver_3__c ),ISBLANK( Release_Approver_4__c ),ISBLANK( Release_Approver_5__c), ISBLANK( Release_Approver_6__c )))</errorConditionFormula>
+        <errorDisplayField>Release_Approver_1__c</errorDisplayField>
+        <errorMessage>Release Approver 1 field must be populated if release approvals are required.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Required_Qualification_Required</fullName>
+        <active>true</active>
+        <description>Required Qualification Description is required if Is a Qualification is Required is Yes</description>
+        <errorConditionFormula>AND(
+         ISPICKVAL(Is_a_Qualification_Required_change_impac__c, "Yes"),
+         ISBLANK( Required_Qualitification_Description__c )
+)</errorConditionFormula>
+        <errorDisplayField>Required_Qualitification_Description__c</errorDisplayField>
+        <errorMessage>Required Qualification Description is required if Is a Qualification is Required is Yes</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Required_Training_Required</fullName>
+        <active>true</active>
+        <description>Type of Training Required is required if Training will be Required is Yes</description>
+        <errorConditionFormula>AND(
+         ISPICKVAL(Is_training_required__c, "Yes"),
+         ISBLANK( Type_of_Training_Required__c )
+)</errorConditionFormula>
+        <errorDisplayField>Type_of_Training_Required__c</errorDisplayField>
+        <errorMessage>Type of Training Required is required if Training will be Required is Yes</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Risk_Analysis_Reference_Required</fullName>
+        <active>true</active>
+        <description>Risk Analysis Reference Number required to be populated when "Yes" is selected for Risk Assessment</description>
+        <errorConditionFormula>AND(
+         ISPICKVAL(Risk_Assessment__c, "Yes"),
+         ISBLANK( Risk_Analysis_Reference_Number__c )
+)</errorConditionFormula>
+        <errorDisplayField>Risk_Analysis_Reference_Number__c</errorDisplayField>
+        <errorMessage>Risk Analysis Reference Number required to be populated when "Yes" is selected for Risk Assessment</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Rollback_Plan_Summary_Required</fullName>
+        <active>true</active>
+        <description>Rollback Plan Summary [Long Text Area] must be populated if No is provided for the "Was the Change Successful?"</description>
+        <errorConditionFormula>AND(
+         ISPICKVAL( Was_the_change_Successful__c , "No"),
+         ISBLANK(  Rollback_Plan_Summary__c  )
+)</errorConditionFormula>
+        <errorDisplayField>Rollback_Plan_Summary__c</errorDisplayField>
+        <errorMessage>Rollback Plan Summary must be populated if No is provided for the "Was the Change Successful?"</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>assignees_missing_in_action_items</fullName>
+        <active>true</active>
+        <description>You cannot submit the change for review with assignees missing for action items.</description>
+        <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp;
+CMPL123_WF_Action__c == "Submit for Review" &amp;&amp;
+
+(  Total_Unassigned_Open_Action__c  &lt;&gt; 0 )</errorConditionFormula>
+        <errorMessage>You cannot submit the change for review with assignees missing for action items</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Change_Controlc</fullName>
+        <availability>online</availability>
+        <description>This button was created by TrackWise Digital to check the status of the Related List - Change Control-Change Control(Change Control).</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Change Control (Change Control)</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/CMPL123__LockRecord?objectType=CMPL123QMS__Change_Control__c&amp;parentId={!CMPL123QMS__Change_Control__c.Id}&amp;relationShipName=Change_Control__r&amp;lookupField=Change_Control__c</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Report</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Print</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/apex/CMPL123__X123ReportTemplate?id={!CMPL123QMS__Change_Control__c.Id }</url>
+    </webLinks>
 </CustomObject>

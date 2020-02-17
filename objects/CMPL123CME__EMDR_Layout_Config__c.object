@@ -1,4 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CMPL123CME__Behavior__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Behavior (Open in a same window)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Behavior (Open in a same window)</inlineHelpText>
+        <label>Behavior (Open in a same window)</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__FieldSet_API_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Child/Related Object FieldSet API Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Child/Related Object FieldSet API Name</inlineHelpText>
+        <label>FieldSet API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Is_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Uncheck if you want to hide it</inlineHelpText>
+        <label>Is Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Order__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Order</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Record_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Specify Record Type Name(s) with comma separated (Ex: Initial,Supplemental)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Record Type Name(s) with comma separated (Ex: Initial,Supplemental)</inlineHelpText>
+        <label>Record Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Related_Api__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Related Object API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Related (Child) Object API</inlineHelpText>
+        <label>Related Object API</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Show_Related_List_New_Button__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show Related List New Button</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Uncheck to hide the Related List New Button</inlineHelpText>
+        <label>Show Related List New Button</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>"Button" or "List"</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify "Button" or "List"</inlineHelpText>
+        <label>Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__URL__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Button URL or Field Id</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Button URL (Ex: for any apex pages start with /apex/&lt;pagename&gt;)
+or specify related lookup field Id (normally starts with 00N)</inlineHelpText>
+        <label>Button URL / Field Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <customSettingsType>List</customSettingsType>
     <description>EMDR Layout Button and Related List Settings</description>
     <enableFeeds>false</enableFeeds>

@@ -139,6 +139,144 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123CME__D11_End_Date_Null__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>D11 - End Date Null</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>NA</fullName>
+                    <default>false</default>
+                    <label>NA</label>
+                </value>
+                <value>
+                    <fullName>NI</fullName>
+                    <default>false</default>
+                    <label>NI</label>
+                </value>
+                <value>
+                    <fullName>ASKU</fullName>
+                    <default>false</default>
+                    <label>ASKU</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__D11_End_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>D11 - End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__D11_Product__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>D11 - Product</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__D11_Start_Date_Null__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>D11 - Date Null</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>NA</fullName>
+                    <default>false</default>
+                    <label>NA</label>
+                </value>
+                <value>
+                    <fullName>NI</fullName>
+                    <default>false</default>
+                    <label>NI</label>
+                </value>
+                <value>
+                    <fullName>ASKU</fullName>
+                    <default>false</default>
+                    <label>ASKU</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__D11_Start_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>D11 - Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__EMDR_IsEmpty_End_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>EMDR IsEmpty End Date</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(CMPL123CME__D11_End_Date__c),
+TEXT( CMPL123CME__D11_End_Date_Null__c) ,
+IF(LEN(TEXT(MONTH(CMPL123CME__D11_End_Date__c))) = 1, '0'&amp; TEXT(MONTH(CMPL123CME__D11_End_Date__c)), TEXT(MONTH(CMPL123CME__D11_End_Date__c))) 
+&amp;'/'&amp;
+IF(LEN(TEXT(DAY(CMPL123CME__D11_End_Date__c))) = 1, '0'&amp; 
+TEXT(DAY(CMPL123CME__D11_End_Date__c)), TEXT(DAY(CMPL123CME__D11_End_Date__c))) 
+&amp;'/'&amp;
+TEXT(YEAR(CMPL123CME__D11_End_Date__c)))</formula>
+        <inlineHelpText>EMDR IsEmpty End Date</inlineHelpText>
+        <label>EMDR IsEmpty End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__EMDR_IsEmpty_Start_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(CMPL123CME__D11_Start_Date__c),
+TEXT( CMPL123CME__D11_Start_Date_Null__c) ,
+IF(LEN(TEXT(MONTH(CMPL123CME__D11_Start_Date__c))) = 2,  TEXT(MONTH(CMPL123CME__D11_Start_Date__c)),'0'&amp; TEXT(MONTH(CMPL123CME__D11_Start_Date__c))) 
+&amp;'/'&amp;
+IF(LEN(TEXT(DAY(CMPL123CME__D11_Start_Date__c))) = 2, TEXT(DAY(CMPL123CME__D11_Start_Date__c)),'0'&amp; 
+TEXT(DAY(CMPL123CME__D11_Start_Date__c))) 
+&amp;'/'&amp;
+TEXT(YEAR(CMPL123CME__D11_Start_Date__c)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>EMDR IsEmpty Start Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Related_EMDR__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Related EMDR</label>
+        <referenceTo>CMPL123CME__EMDR__c</referenceTo>
+        <relationshipName>Concommitant_Products</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

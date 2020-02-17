@@ -139,6 +139,142 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123CME__Code_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Code Type is the group of Annexure provided by the FDA for selecting the right code according to the case/incident.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Choose a Code Type which satisfies the case the most.</inlineHelpText>
+        <label>Code Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A-Medical Device Problem Code</fullName>
+                    <default>false</default>
+                    <label>A-Medical Device Problem Code</label>
+                </value>
+                <value>
+                    <fullName>B-Investigation Type Code</fullName>
+                    <default>false</default>
+                    <label>B-Investigation Type Code</label>
+                </value>
+                <value>
+                    <fullName>C-Investigation Findings Code</fullName>
+                    <default>false</default>
+                    <label>C-Investigation Findings Code</label>
+                </value>
+                <value>
+                    <fullName>D-Investigation Conclusion Code</fullName>
+                    <default>false</default>
+                    <label>D-Investigation Conclusion Code</label>
+                </value>
+                <value>
+                    <fullName>E-Clinical Signs and Symptoms Code</fullName>
+                    <default>false</default>
+                    <label>E-Clinical Signs and Symptoms Code</label>
+                </value>
+                <value>
+                    <fullName>F-Health Impact Code</fullName>
+                    <default>false</default>
+                    <label>F-Health Impact Code</label>
+                </value>
+                <value>
+                    <fullName>G-Component Code</fullName>
+                    <default>false</default>
+                    <label>G-Component Code</label>
+                </value>
+                <value>
+                    <fullName>In-house medical device problem</fullName>
+                    <default>false</default>
+                    <label>In-house medical device problem</label>
+                </value>
+                <value>
+                    <fullName>In-house root cause evaluation</fullName>
+                    <default>false</default>
+                    <label>In-house root cause evaluation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Definition__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Description of the code.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description of the code.</inlineHelpText>
+        <label>Definition</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Inactive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Activates or deactivates this EU MIR code.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Activates or deactivates this EU MIR code.</inlineHelpText>
+        <label>EU MIR Code Inactive</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Name_With_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Name &amp; " - "&amp; CMPL123CME__Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Name With Code</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Name of the Code.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of the Code.</inlineHelpText>
+        <label>Term</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Parent_Active__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Parent EU MIR code active status (if any).</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(CMPL123CME__Parent_Code__c), false, NOT(CMPL123CME__Parent_Code__r.CMPL123CME__Inactive__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>EU MIR Parent code status Active/Inactive.</inlineHelpText>
+        <label>Parent Active?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Parent_Code__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Parent EU MIR Code.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Parent EU MIR Code.</inlineHelpText>
+        <label>Parent Code</label>
+        <referenceTo>CMPL123CME__EU_MIR_Code__c</referenceTo>
+        <relationshipLabel>EU MIR Codes</relationshipLabel>
+        <relationshipName>EU_MIR_Codes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

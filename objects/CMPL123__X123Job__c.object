@@ -139,6 +139,130 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123Rule_Key_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Rule Field Update Key Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Child_Filter_Condition__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Child Filter Condition</description>
+        <externalId>false</externalId>
+        <label>Child Filter Condition</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Description__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Is_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Is Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Job_External_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Job External Id</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Job_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Job Type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Job Type</inlineHelpText>
+        <label>Job Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Workflow Step by KeyValue</fullName>
+                    <default>false</default>
+                    <label>Workflow Step by KeyValue</label>
+                </value>
+                <value>
+                    <fullName>Set Parent Field by KeyValue</fullName>
+                    <default>false</default>
+                    <label>Set Parent Field by KeyValue</label>
+                </value>
+                <value>
+                    <fullName>Set Child Field by KeyValue</fullName>
+                    <default>false</default>
+                    <label>Set Child Field by KeyValue</label>
+                </value>
+                <value>
+                    <fullName>Create Child Record by KeyValue</fullName>
+                    <default>false</default>
+                    <label>Create Child Record by KeyValue</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Related_Task__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Related Task</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Related Task</inlineHelpText>
+        <label>Related Task</label>
+        <referenceTo>CMPL123__X123Task__c</referenceTo>
+        <relationshipLabel>123 Jobs</relationshipLabel>
+        <relationshipName>X123_Jobs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Workflow_Step__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Workflow Step</label>
+        <referenceTo>CMPL123__WF_Step__c</referenceTo>
+        <relationshipName>Intelligent_Jobs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

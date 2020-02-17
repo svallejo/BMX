@@ -139,6 +139,133 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123__Expiration_Time__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Expiration Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Extended_Relay_State__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Relay state is defined by the SAML specification and is optional extra information that may be sent along with a SAML message.</description>
+        <externalId>false</externalId>
+        <label>Extended Relay State</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Federation_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Federation Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Is_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Is Active</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is Active</inlineHelpText>
+        <label>Is Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Related_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Related User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipLabel>SAML Requests</relationshipLabel>
+        <relationshipName>SAML_Requests</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Relay_State__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Relay State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Request_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Request Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__SAML_Response_Time__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SAML Response Time</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SAML Response Time</inlineHelpText>
+        <label>SAML Response Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__SAML_Validation_Failed_Reason__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SAML Validation Failed Reason</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SAML Validation Failed Reason</inlineHelpText>
+        <label>SAML Validation Failed Reason</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123__SAML_Validation_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SAML Validation Status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SAML Validation Status</inlineHelpText>
+        <label>SAML Validation Status</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__SSO_Config_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SSO Config Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SSO Config Name</inlineHelpText>
+        <label>SSO Config Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

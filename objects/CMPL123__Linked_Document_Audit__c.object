@@ -139,6 +139,20 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123QMS__Internal_Audit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Internal Audit</description>
+        <externalId>false</externalId>
+        <label>Parent</label>
+        <referenceTo>CMPL123QMS__Internal_Audit__c</referenceTo>
+        <relationshipLabel>Linked Document Audits</relationshipLabel>
+        <relationshipName>Linked_Document_Audits</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -163,4 +177,17 @@
     <searchLayouts />
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>CMPL123QMS__New_Document</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Document</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/SPARTADMS__DMSCorporateDocument_Edit?parentId={!CMPL123QMS__Internal_Audit__c.Id}&amp;appInitiatedFrom=EQMS&amp;linkedObjectType=CMPL123__Linked_Document_Audit__c</url>
+    </webLinks>
 </CustomObject>

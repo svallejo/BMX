@@ -139,6 +139,240 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123__Competitor_Device__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Competitor Device</description>
+        <externalId>false</externalId>
+        <label>Competitor Device</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Courier_Tracking_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The shipment tracking number provided by the courier.</description>
+        <externalId>false</externalId>
+        <label>Courier Tracking Number</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Courier__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The courier used to deliver the device.</description>
+        <externalId>false</externalId>
+        <label>Courier</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>FDX</fullName>
+                    <default>false</default>
+                    <label>FDX</label>
+                </value>
+                <value>
+                    <fullName>UPS</fullName>
+                    <default>false</default>
+                    <label>UPS</label>
+                </value>
+                <value>
+                    <fullName>OTHER</fullName>
+                    <default>false</default>
+                    <label>OTHER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Days_Shipped__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Days Shipped</description>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(CMPL123__Shipped_Date__c)), ROUND((NOW() - CMPL123__Shipped_Date__c), 0), null)</formula>
+        <inlineHelpText>No. of days shipped</inlineHelpText>
+        <label>Days Shipped</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Disposition__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Current Disposition of the device</description>
+        <externalId>false</externalId>
+        <label>Disposition</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Shipped</fullName>
+                    <default>false</default>
+                    <label>Shipped</label>
+                </value>
+                <value>
+                    <fullName>Installed</fullName>
+                    <default>false</default>
+                    <label>Installed</label>
+                </value>
+                <value>
+                    <fullName>Removed</fullName>
+                    <default>false</default>
+                    <label>Removed</label>
+                </value>
+                <value>
+                    <fullName>Returned</fullName>
+                    <default>false</default>
+                    <label>Returned</label>
+                </value>
+                <value>
+                    <fullName>Discarded</fullName>
+                    <default>false</default>
+                    <label>Discarded</label>
+                </value>
+                <value>
+                    <fullName>Scrapped</fullName>
+                    <default>false</default>
+                    <label>Scrapped</label>
+                </value>
+                <value>
+                    <fullName>On-Consignment</fullName>
+                    <default>false</default>
+                    <label>On-Consignment</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Lot_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Lot number in which the product was produced.</description>
+        <externalId>false</externalId>
+        <label>Lot Number</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Manufactured_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date the product was manufactured</description>
+        <externalId>false</externalId>
+        <label>Manufactured Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Product_Expiry_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Expiration date of the product</description>
+        <externalId>false</externalId>
+        <label>Product Expiry Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Product</label>
+        <referenceTo>CMPL123__Product__c</referenceTo>
+        <relationshipLabel>Devices</relationshipLabel>
+        <relationshipName>Devices</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Shipped_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date the device was shipped to the account.</description>
+        <externalId>false</externalId>
+        <label>Shipped Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Shipped_to_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Account the device was shipped to.</description>
+        <externalId>false</externalId>
+        <label>Shipped to Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Devices</relationshipLabel>
+        <relationshipName>Devices</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Sterilization_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sterilization Run Number for a medical device product</description>
+        <externalId>false</externalId>
+        <label>Sterilization Number</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Sterilization_Run_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sterilization Run Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sterilization Run Date</inlineHelpText>
+        <label>Sterilization Run Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Sterilization_Run_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sterilization Run Number</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sterilization Run Number</inlineHelpText>
+        <label>Sterilization Run Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Unique_Device_Identifier__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Globally Unique Device Identifier.</description>
+        <externalId>false</externalId>
+        <label>Unique  Device Identifier</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

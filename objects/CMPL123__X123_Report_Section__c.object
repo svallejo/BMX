@@ -139,6 +139,115 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123__Fields__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Related Fields</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Related Fields</inlineHelpText>
+        <label>Fields</label>
+        <length>30000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Order__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Section Order</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Section Order</inlineHelpText>
+        <label>Order</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Relationship_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Relationship Name</description>
+        <externalId>false</externalId>
+        <label>Relationship Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Report_Section_External_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Report Section External Id</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Report_Template__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Report Template</description>
+        <externalId>false</externalId>
+        <label>Report Template</label>
+        <referenceTo>CMPL123__X123_Report_Template__c</referenceTo>
+        <relationshipName>Report_Sections</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Show_Border__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show related list table border</description>
+        <externalId>false</externalId>
+        <label>Show Border</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Show_Section_Header__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show Section Header</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show Section Header</inlineHelpText>
+        <label>Show Section Header</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Section/Related List</description>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Section</fullName>
+                    <default>false</default>
+                    <label>Section</label>
+                </value>
+                <value>
+                    <fullName>Related List</fullName>
+                    <default>false</default>
+                    <label>Related List</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

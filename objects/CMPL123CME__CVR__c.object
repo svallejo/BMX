@@ -139,6 +139,1197 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>BMX_AER_Classification__c</fullName>
+        <externalId>false</externalId>
+        <label>AER Classification</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Death</fullName>
+                    <default>false</default>
+                    <label>Death</label>
+                </value>
+                <value>
+                    <fullName>Serious Injury/Deterioration</fullName>
+                    <default>false</default>
+                    <label>Serious Injury/Deterioration</label>
+                </value>
+                <value>
+                    <fullName>Malfunction</fullName>
+                    <default>false</default>
+                    <label>Malfunction</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BMX_Approve_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Approve Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CVR</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Approve_Done_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Approve Done On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Approved_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Cancel_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Cancel Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CVR1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Cancel_Done_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancel Done On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Close_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Close Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Close_Not_Locally_Reporting_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Close - Not Locally Reporting Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CVR2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Close_Not_Locally_Reporting_Done_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Close - Not Locally Reporting Done On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Close_Report_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Close Report Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CVR3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Close_Report_Done_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Close Report Done On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Competent_Authority_Number__c</fullName>
+        <defaultValue>'N/A'</defaultValue>
+        <externalId>false</externalId>
+        <label>Competent Authority Number</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_Date_of_Submission__c</fullName>
+        <externalId>false</externalId>
+        <label>Date of Submission</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Days_in_Pending_Response__c</fullName>
+        <externalId>false</externalId>
+        <formula>MFLOOR(NOW()- BMX_Pending_Response_From__c)</formula>
+        <label>Days in Pending Response</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_Due_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Local_Assessment_Decision__c</fullName>
+        <description>US-AER-047</description>
+        <externalId>false</externalId>
+        <formula>If(BMX_Local_Assessment__r.RecordType.DeveloperName = 'Local_Assessment', TEXT(BMX_Local_Assessment__r.BMX_Is_Reportable__c) , '' )</formula>
+        <label>Local Assessment Decision</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_Local_Assessment__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Local Assessment</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>CMPL123CME__Questionnaire__c.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Local Assessment</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123CME__Questionnaire__c</referenceTo>
+        <relationshipLabel>CVR</relationshipLabel>
+        <relationshipName>CVR</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Pending_Response_From__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( CMPL123_WF_Status__c ='Pending Response',CMPL123_WF_Action_Performed_On__c, null)</formula>
+        <label>Pending Response From</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Reportable_Countrry__c</fullName>
+        <defaultValue>'Canada'</defaultValue>
+        <externalId>false</externalId>
+        <label>Reportable Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_Rework_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Rework Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CVR4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Rework_Done_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Rework Done On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Submit_Report_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Submit Report Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CVR6</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Submit_Report_Done_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Submit Report Done On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Submit_for_Review_Done_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Submit for Review Done By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CVR5</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Submit_for_Review_Done_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Submit for Review Done On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Time_to_Notify_the_CA__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(BMX_Approved_Date__c), '',
+TEXT(DATEVALUE(BMX_Approved_Date__c) - CMPL123CME__Related_Complaint__r.BMX_Customer_Contact_Date__c)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Time to Notify the CA</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Address__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Address</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Address</inlineHelpText>
+        <label>Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Age_of_Device__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Age of Device</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Age of Device</inlineHelpText>
+        <label>Age of Device</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Availability_of_device_for_evaluation__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Availability of device for evaluation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Availability of device for evaluation</inlineHelpText>
+        <label>Availability of device for evaluation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Destroyed</fullName>
+                    <default>false</default>
+                    <label>Destroyed</label>
+                </value>
+                <value>
+                    <fullName>Returned to Manufacturer/Importer</fullName>
+                    <default>false</default>
+                    <label>Returned to Manufacturer/Importer</label>
+                </value>
+                <value>
+                    <fullName>Neither(with explanation)</fullName>
+                    <default>false</default>
+                    <label>Neither(with explanation)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Complainant_is_a__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Complainant is a</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Complainant is a</inlineHelpText>
+        <label>Complainant is a</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Consumer</fullName>
+                    <default>false</default>
+                    <label>Consumer</label>
+                </value>
+                <value>
+                    <fullName>Health Professional</fullName>
+                    <default>false</default>
+                    <label>Health Professional</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Control_Lot_Serial_No__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Control/Lot/Serial No.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Control/Lot/Serial No.</inlineHelpText>
+        <label>Control/Lot/Serial No</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Corrective_Actions_taken__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Corrective Actions taken as a result of the investigation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Corrective Actions taken as a result of the investigation</inlineHelpText>
+        <label>Corrective Actions taken after investig.</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Date_Submitted__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date Submitted</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date Submitted</inlineHelpText>
+        <label>Date Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Date_of_Incident__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date of Incident</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date of Incident</inlineHelpText>
+        <label>Date of Incident</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Details_of_Incident__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Details of Incident</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Details of Incident</inlineHelpText>
+        <label>Details of Incident</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Device_Classification__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Device Classification</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Device Classification</inlineHelpText>
+        <label>Device Classification</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>I</fullName>
+                    <default>false</default>
+                    <label>I</label>
+                </value>
+                <value>
+                    <fullName>II</fullName>
+                    <default>false</default>
+                    <label>II</label>
+                </value>
+                <value>
+                    <fullName>III</fullName>
+                    <default>false</default>
+                    <label>III</label>
+                </value>
+                <value>
+                    <fullName>IV</fullName>
+                    <default>false</default>
+                    <label>IV</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Device_Identification_No__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Device Identification No</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Device Identification No</inlineHelpText>
+        <label>Device Identification No</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Device_License_No__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Device License No.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Device License No.</inlineHelpText>
+        <label>Device License No.</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Did_Importer_Reportred_Incid_to_Manufact__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Did the importer report the incident to the manufacturer?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Did the importer report the incident to the manufacturer?</inlineHelpText>
+        <label>Did Importer Report Incid to Manufact</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Expiration_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Expiration Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Expiration Date</inlineHelpText>
+        <label>Expiration Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Explanation_if_Neither__c</fullName>
+        <deprecated>false</deprecated>
+        <description>If Availability of device for evaluation is Neither, Please give appropriate explanation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If Availability of device for evaluation is Neither, Please give appropriate explanation</inlineHelpText>
+        <label>Explanation if above is neither</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Health_Canada_File_No__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Health Canada File No. (if applicable)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Health Canada File No. (if applicable)</inlineHelpText>
+        <label>Health Canada File No. (if applicable)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__How_Many_Days_Report__c</fullName>
+        <deprecated>false</deprecated>
+        <description>How Many Days Report</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the report is a 10 day or 30 day report, based on the seriousness of the incident associated with the medical device</inlineHelpText>
+        <label>How Many Days Report</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10-Day</fullName>
+                    <default>false</default>
+                    <label>10-Day</label>
+                </value>
+                <value>
+                    <fullName>30-Day</fullName>
+                    <default>false</default>
+                    <label>30-Day</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__How_long_was_the_device_in_use__c</fullName>
+        <deprecated>false</deprecated>
+        <description>How long was the device in use</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How long was the device in use</inlineHelpText>
+        <label>How long was the device in use?</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__If_Preliminary_final_report_date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>If “preliminary” only, anticipated date for the final report</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If “preliminary” only, anticipated date for the final report</inlineHelpText>
+        <label>If Preliminary, Expected Final Rpt Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__If_Update_Final_Previous_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>If “update/final”, date the previous report was submitted to Health Canada:</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If “update/final”, date the previous report was submitted to Health Canada</inlineHelpText>
+        <label>If 'Update/final', Previous Report Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__If_neither_give_explanation__c</fullName>
+        <deprecated>false</deprecated>
+        <description>If Availability of device for evaluation is neither give explanation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If Availability of device for evaluation is neither give explanation</inlineHelpText>
+        <label>If neither give explanation</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Importer_Establishment_Licence_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Importer Establishment Licence Number</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Importer : Establishment License Number
+(if applicable)</inlineHelpText>
+        <label>Importer Establishment Licence Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Importer_Health_Canada_ID_No__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Health Canada assigned
+company identification number
+(if known)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Importer : Health Canada assigned
+company identification number
+(if known)</inlineHelpText>
+        <label>Importer Health Canada ID No</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Importer_Name_and_Address__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Importer Name and Address</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Importer Name and Address</inlineHelpText>
+        <label>Importer Name and Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Incident_Occurred_During__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Incident Occurred During</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Incident Occurred During</inlineHelpText>
+        <label>Incident Occurred During</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Investigational testing</fullName>
+                    <default>false</default>
+                    <label>Investigational testing</label>
+                </value>
+                <value>
+                    <fullName>Special Access Program</fullName>
+                    <default>false</default>
+                    <label>Special Access Program</label>
+                </value>
+                <value>
+                    <fullName>Radiation emitting device (if applicable)</fullName>
+                    <default>false</default>
+                    <label>Radiation emitting device (if applicable)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Investigative_Actions_and_Timeline__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Investigative Actions and Timeline</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Investigative Actions and Timeline</inlineHelpText>
+        <label>Investigative Actions and Timeline</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Is_Importer_Submitting_Report__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Is the importer also submitting the report on behalf of the manufacturer ?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is the importer also submitting the report on behalf of the manufacturer ?</inlineHelpText>
+        <label>Is Importer Submitting Report</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Manufacturer_Establishment_License__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Manufacturer Establishment License Number(if applicable)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Establishment License Number(if applicable)</inlineHelpText>
+        <label>Manufacturer Establishment License #</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Manufacturer_Health_Canada_Id_No__c</fullName>
+        <deprecated>false</deprecated>
+        <description>. Health Canada assigned
+company identification number
+(if known)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Health Canada assigned
+company identification number
+(if known)</inlineHelpText>
+        <label>Manufacturer Health Canada Id No.</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Manufacturer_Medical_Device_Identifier__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Manufacturer’s Medical Device Identifier</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Manufacturer’s Medical Device Identifier</inlineHelpText>
+        <label>Manufacturer’s Medical Device Identifier</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Manufacturer_Name_and_Address__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Manufacturer Name and Address</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Name and Address</inlineHelpText>
+        <label>Manufacturer Name and Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Name_of_Complainant__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Name of Complainant</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of Complainant</inlineHelpText>
+        <label>Name of Complainant</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Name_of_Health_Care_Facility__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Name of Health Care Facility (if applicable)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of Health Care Facility (if applic)</inlineHelpText>
+        <label>Name of Health Care Facility (if applic)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Patient_Consequences__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Patient Consequences</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Patient Consequences</inlineHelpText>
+        <label>Patient Consequences</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Related_Complaint__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Complaint</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Complaint</inlineHelpText>
+        <label>Complaint</label>
+        <referenceTo>CMPL123CME__Complaint__c</referenceTo>
+        <relationshipLabel>CVR</relationshipLabel>
+        <relationshipName>CVR_Complaint</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Reporter_Awareness_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Reporter’s Awareness Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Reporter’s Awareness Date</inlineHelpText>
+        <label>Reporter’s Awareness Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Reporter_Contact_Information__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Reporter Contact Information</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Reporter Contact Information</inlineHelpText>
+        <label>Reporter Contact Information</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Reporter_File_No__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Reporter File No.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Reporter File No.</inlineHelpText>
+        <label>Reporter File No.</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Reporter_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Reporter Type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Reporter Type</inlineHelpText>
+        <label>Reporter Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Manufacturer</fullName>
+                    <default>false</default>
+                    <label>Manufacturer</label>
+                </value>
+                <value>
+                    <fullName>Importer</fullName>
+                    <default>false</default>
+                    <label>Importer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Root_Cause_of_Problem__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Root Cause of Problem</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Root Cause of Problem</inlineHelpText>
+        <label>Root Cause of Problem</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Software_Version__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Software Version</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Software Version</inlineHelpText>
+        <label>Software Version</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Telephone_No_Email_Address__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Telephone No./Email Address</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Telephone No./Email Address</inlineHelpText>
+        <label>Telephone No./Email Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Trade_Brand_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Trade/Brand Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Trade/Brand Name</inlineHelpText>
+        <label>Trade/Brand Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Type_of_Report__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Type of Report</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of Report</inlineHelpText>
+        <label>Type of Report</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Preliminary</fullName>
+                    <default>false</default>
+                    <label>Preliminary</label>
+                </value>
+                <value>
+                    <fullName>Update</fullName>
+                    <default>false</default>
+                    <label>Update</label>
+                </value>
+                <value>
+                    <fullName>Final</fullName>
+                    <default>false</default>
+                    <label>Final</label>
+                </value>
+                <value>
+                    <fullName>Preliminary and Final</fullName>
+                    <default>false</default>
+                    <label>Preliminary and Final</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Was_the_device_labelled_as_sterile__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Was the device labelled as sterile</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Was the device labelled as sterile</inlineHelpText>
+        <label>Was the device labelled as sterile</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Where_did_the_Incident_Occured__c</fullName>
+        <deprecated>false</deprecated>
+        <description>whether the incident occurred inside or outside Canada</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Whether the incident occurred inside or outside Canada</inlineHelpText>
+        <label>Where did the Incident Occured</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Canadian</fullName>
+                    <default>false</default>
+                    <label>Canadian</label>
+                </value>
+                <value>
+                    <fullName>Foreign</fullName>
+                    <default>false</default>
+                    <label>Foreign</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123Rule_Key_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Rule Field Update Key Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123Task_Key_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Task Field Update Key Value</label>
+        <length>254</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Action_Performed_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Workflow Action Performed By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CMPL123CMECVRcCMPL123_Users</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Action_Performed_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Workflow Action Performed On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Action__c</fullName>
+        <externalId>false</externalId>
+        <label>Workflow Action</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123_WF_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Workflow Status</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Title__c</fullName>
+        <externalId>false</externalId>
+        <label>Title</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -342,4 +1533,32 @@
             </values>
         </picklistValues>
     </recordTypes>
+    <validationRules>
+        <fullName>Prevent_Creation_or_Edit_of_CVR</fullName>
+        <active>false</active>
+        <description>Cannot create a new CVR from the Complaint record at any time when the Complaint record is Locked.</description>
+        <errorConditionFormula>OR( 
+AND(ISNEW(),  CMPL123CME__Related_Complaint__r.CMPL123CME__CMPL123_WF_Status__c ='Closed'), 
+CMPL123CME__Related_Complaint__r.CMPL123CME__CMPL123_WF_Status__c ='Closed')</errorConditionFormula>
+        <errorMessage>Cannot create/edit a CVR for closed Complaint</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>CMPL123CME__Print</fullName>
+        <availability>online</availability>
+        <description>Print</description>
+        <displayType>button</displayType>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>page</linkType>
+        <masterLabel>Print</masterLabel>
+        <openType>newWindow</openType>
+        <page>CMPL123CME__CanadaVigilanceReporting</page>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+    </webLinks>
 </CustomObject>

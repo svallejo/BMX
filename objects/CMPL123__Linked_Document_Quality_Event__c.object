@@ -139,6 +139,20 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123QMS__Deviation__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Quality Event</description>
+        <externalId>false</externalId>
+        <label>Parent</label>
+        <referenceTo>CMPL123QMS__Deviation__c</referenceTo>
+        <relationshipLabel>Linked Document Quality Events</relationshipLabel>
+        <relationshipName>Linked_Document_Quality_Events</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -163,4 +177,17 @@
     <searchLayouts />
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>CMPL123QMS__New_Document</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Document</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/SPARTADMS__DMSCorporateDocument_Edit?parentId={!CMPL123QMS__Deviation__c.Id}&amp;appInitiatedFrom=EQMS&amp;linkedObjectType=CMPL123__Linked_Document_Quality_Event__c</url>
+    </webLinks>
 </CustomObject>

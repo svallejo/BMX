@@ -139,6 +139,238 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123__Action__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Action</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Action</inlineHelpText>
+        <label>Action</label>
+        <referenceTo>CMPL123__WF_Action__c</referenceTo>
+        <relationshipLabel>Workflow Actions</relationshipLabel>
+        <relationshipName>WF_Actions</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Are_Child_Files_Locked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>When checked, the system prevents any user from editing or uploading a new version of any attached File record once the action button from this workflow step is pressed.</inlineHelpText>
+        <label>Lock Child Files?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__End_Status__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>End Status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select End Staus</inlineHelpText>
+        <label>End Status</label>
+        <referenceTo>CMPL123__WF_Status__c</referenceTo>
+        <relationshipLabel>Workflow End Steps</relationshipLabel>
+        <relationshipName>WF_End_Steps</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Is_Record_Lock_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Is Record Lock Required</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check if you want to lock (no edit/delete) the record</inlineHelpText>
+        <label>Lock Record?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Is_Related_Lists_Locked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Check if you want to lock (no add/delete) related list records</inlineHelpText>
+        <label>Lock Related Lists?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Is_Start_Step__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Is Start Step?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check, if it is the first step</inlineHelpText>
+        <label>Is Start Step?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Mandate_Fields__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Mandate Fields</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Object_Related_List_Relationship__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Object Related List Relationship</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Optional_Parallel_Step__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>When checked, the system requires this parallel workflow step be performed only if the referenced user lookup field on the record undergoing workflow specifies a user. If that field is blank, the system skips this workflow step.</inlineHelpText>
+        <label>Optional Parallel Step</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Order__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Step Order</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Step Order</inlineHelpText>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Parent_Step__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Parent Step Id</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select Parent Step (if applicable)</inlineHelpText>
+        <label>Parent Step</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>$Source.CMPL123__Action__c</field>
+                <operation>notEqual</operation>
+                <value>''</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.CMPL123__End_Status__c</field>
+                <operation>notEqual</operation>
+                <value>''</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.CMPL123__Start_Status__c</field>
+                <operation>notEqual</operation>
+                <value>''</value>
+            </filterItems>
+            <infoMessage>Please fill the required fields: Start Status, End Status, Action.</infoMessage>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123__WF_Step__c</referenceTo>
+        <relationshipLabel>Workflow Steps</relationshipLabel>
+        <relationshipName>Workflow_Steps</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Permission_Group__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Specify Permission group</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Permission group</inlineHelpText>
+        <label>Permission Group/User</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Start_Status__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Start Status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select Start Status</inlineHelpText>
+        <label>Start Status</label>
+        <referenceTo>CMPL123__WF_Status__c</referenceTo>
+        <relationshipLabel>Workflow Start Steps</relationshipLabel>
+        <relationshipName>WF_Start_Steps</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Validate_Against_Child_Record_Statuses__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>When checked, allows the workflow to proceed only if the child records are at the specified statuses.</inlineHelpText>
+        <label>Validate Against Child Record Statuses?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__WF_Rule__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Workflow Rule</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Parent Workflow Rule</inlineHelpText>
+        <label>Workflow Rule</label>
+        <referenceTo>CMPL123__WF_Rule__c</referenceTo>
+        <relationshipLabel>Workflow Steps</relationshipLabel>
+        <relationshipName>WF_Steps</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>CMPL123__WF_Step_External_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>WF Step External Id</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

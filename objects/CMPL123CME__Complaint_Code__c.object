@@ -139,6 +139,253 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>BMX_Competent_Authority__c</fullName>
+        <externalId>false</externalId>
+        <label>Competent Authority</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BMX_Is_Meddev__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checked for Meddev Countries</description>
+        <externalId>false</externalId>
+        <label>Is Meddev ?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Description__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Description about code</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description about code</inlineHelpText>
+        <label>Description</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Inactive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Activates or deactivates this complaint code.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Activates or deactivates this complaint code.</inlineHelpText>
+        <label>Complaint Code Inactive</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Medra_Code_Detail__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>MedDRA External Id</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Name_With_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Name &amp; " - "&amp; CMPL123CME__Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Name With Code</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__ParentCCode__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Parent Complaint Code</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Parent Complaint Code</inlineHelpText>
+        <label>Parent Code (Lookup)</label>
+        <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
+        <relationshipLabel>Complaint Codes</relationshipLabel>
+        <relationshipName>Complaint_Codes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Parent_Active__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Parent Complaint code active status (if any)</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(CMPL123CME__ParentCCode__c), false, NOT(CMPL123CME__ParentCCode__r.CMPL123CME__Inactive__c))</formula>
+        <inlineHelpText>Parent Complaint code active status (if any)</inlineHelpText>
+        <label>Parent Active?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Parent_CCode__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Parent Code</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Secondary_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Secondary Code</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Sub_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sub Type</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SYMPTOM CODE</fullName>
+                    <default>false</default>
+                    <label>SYMPTOM CODE</label>
+                </value>
+                <value>
+                    <fullName>ANALYSIS CODE</fullName>
+                    <default>false</default>
+                    <label>ANALYSIS CODE</label>
+                </value>
+                <value>
+                    <fullName>PATIENT CODE</fullName>
+                    <default>false</default>
+                    <label>PATIENT CODE</label>
+                </value>
+                <value>
+                    <fullName>DEVICE CODE</fullName>
+                    <default>false</default>
+                    <label>DEVICE CODE</label>
+                </value>
+                <value>
+                    <fullName>EVAL METHOD CODE</fullName>
+                    <default>false</default>
+                    <label>EVAL METHOD CODE</label>
+                </value>
+                <value>
+                    <fullName>EVAL RESULT CODE</fullName>
+                    <default>false</default>
+                    <label>EVAL RESULT CODE</label>
+                </value>
+                <value>
+                    <fullName>EVAL CONCLUSION CODE</fullName>
+                    <default>false</default>
+                    <label>EVAL CONCLUSION CODE</label>
+                </value>
+                <value>
+                    <fullName>COMPLAINT CODE</fullName>
+                    <default>false</default>
+                    <label>COMPLAINT CODE</label>
+                </value>
+                <value>
+                    <fullName>ROOT CAUSE CODE</fullName>
+                    <default>false</default>
+                    <label>ROOT CAUSE CODE</label>
+                </value>
+                <value>
+                    <fullName>FINDING CODE</fullName>
+                    <default>false</default>
+                    <label>FINDING CODE</label>
+                </value>
+                <value>
+                    <fullName>MEDDRA CODE</fullName>
+                    <default>false</default>
+                    <label>MEDDRA CODE</label>
+                </value>
+                <value>
+                    <fullName>COMPONENT CODE</fullName>
+                    <default>false</default>
+                    <label>COMPONENT CODE</label>
+                </value>
+                <value>
+                    <fullName>COUNTRY CODE</fullName>
+                    <default>false</default>
+                    <label>COUNTRY CODE</label>
+                </value>
+                <value>
+                    <fullName>STATE CODE</fullName>
+                    <default>false</default>
+                    <label>STATE CODE</label>
+                </value>
+                <value>
+                    <fullName>PRO CODE</fullName>
+                    <default>false</default>
+                    <label>PRO CODE</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Version__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Version</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Version</inlineHelpText>
+        <label>Version</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Local_Subsidiary_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Local Subsidiary</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

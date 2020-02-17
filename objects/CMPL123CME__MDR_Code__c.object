@@ -139,6 +139,120 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123CME__Category__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Evaluation Code</fullName>
+                    <default>false</default>
+                    <label>Evaluation Code</label>
+                </value>
+                <value>
+                    <fullName>Event Problem Code</fullName>
+                    <default>false</default>
+                    <label>Event Problem Code</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Complaint_Code__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Complaint Code</label>
+        <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
+        <relationshipLabel>MDR Codes</relationshipLabel>
+        <relationshipName>MDR_Codes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__EMDR_MDR_CODE_DESCRIPTION__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>CMPL123CME__Complaint_Code__r.CMPL123CME__Description__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>EMDR MDR Code Description</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__EMDR_MDR_CODE_SECONDARY__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>CMPL123CME__Complaint_Code__r.CMPL123CME__Secondary_Code__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>EMDR MDR CODE SECONDARY</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__EMDR_MDR_CODE_TYPE__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>TEXT(CMPL123CME__Complaint_Code__r.CMPL123CME__Type__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>EMDR MDR CODE TYPE</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__EMDR__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>EMDR</label>
+        <referenceTo>CMPL123CME__EMDR__c</referenceTo>
+        <relationshipLabel>MDR Codes</relationshipLabel>
+        <relationshipName>MDR_Codes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__MDR_Report__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>MDR Report</label>
+        <referenceTo>CMPL123CME__MDR__c</referenceTo>
+        <relationshipLabel>MDR Codes</relationshipLabel>
+        <relationshipName>MDR_Codes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__VMSR__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Link MDR Code to VMSR.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Link MDR Code to VMSR.</inlineHelpText>
+        <label>VMSR</label>
+        <referenceTo>CMPL123CME__EMDR__c</referenceTo>
+        <relationshipLabel>VMSR Codes</relationshipLabel>
+        <relationshipName>VMSR_Codes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

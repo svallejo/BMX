@@ -139,6 +139,145 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123QMS__Change_Control__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Change Control</label>
+        <referenceTo>CMPL123QMS__Change_Control__c</referenceTo>
+        <relationshipLabel>Change Control Items</relationshipLabel>
+        <relationshipName>Change_Control_Items</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Disposal_Value__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Disposal Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__New_Version__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>New Version</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Part_Disposition__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Part Disposition</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Use Existing</fullName>
+                    <default>false</default>
+                    <label>1 - Use Existing</label>
+                </value>
+                <value>
+                    <fullName>2 - Rework</fullName>
+                    <default>false</default>
+                    <label>2 - Rework</label>
+                </value>
+                <value>
+                    <fullName>3 - Scrap</fullName>
+                    <default>false</default>
+                    <label>3 - Scrap</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Part_Information__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Part Information</label>
+        <referenceTo>CMPL123QMS__Part_Information__c</referenceTo>
+        <relationshipLabel>Change Control Items</relationshipLabel>
+        <relationshipName>Change_Control_Items</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Quantity__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Statuses__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Statuses</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>On Order</fullName>
+                    <default>false</default>
+                    <label>On Order</label>
+                </value>
+                <value>
+                    <fullName>QC Hold</fullName>
+                    <default>false</default>
+                    <label>QC Hold</label>
+                </value>
+                <value>
+                    <fullName>In Stock</fullName>
+                    <default>false</default>
+                    <label>In Stock</label>
+                </value>
+                <value>
+                    <fullName>WIP</fullName>
+                    <default>false</default>
+                    <label>WIP</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -163,4 +302,18 @@
     <searchLayouts />
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>CMPL123QMSChange_Controlc</fullName>
+        <availability>online</availability>
+        <description>This button was created by TrackWise Digital to check the status of the Related List - Change Control-Change Control Item(Change Control).</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Change Control Item (Change Control)</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/CMPL123__LockRecord?objectType=CMPL123QMS__Change_Control_Item__c&amp;parentId={!CMPL123QMS__Change_Control__c.Id}&amp;relationShipName=CMPL123QMS__Change_Control_Items__r&amp;lookupField=CMPL123QMS__Change_Control__c</url>
+    </webLinks>
 </CustomObject>

@@ -139,6 +139,65 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123QMS__Date_Issued__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Date Issued</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Expiry_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Expiry Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ISO 9001</fullName>
+                    <default>false</default>
+                    <label>ISO 9001</label>
+                </value>
+                <value>
+                    <fullName>ISO 13485</fullName>
+                    <default>false</default>
+                    <label>ISO 13485</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Vendor__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Vendor</label>
+        <referenceTo>CMPL123QMS__Vendor__c</referenceTo>
+        <relationshipName>Certificates</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -188,4 +247,30 @@
         <fullName>CMPL123QMS__Vendor_Certificate_Sharing__c</fullName>
         <label>Vendor Certificate Sharing</label>
     </sharingReasons>
+    <webLinks>
+        <fullName>CMPL123QMS__Trigger_Sharing</fullName>
+        <availability>online</availability>
+        <description>This button has been deprecated.</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Share Certificate</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>https://login.salesforce.com/</url>
+    </webLinks>
+    <webLinks>
+        <fullName>CMPL123QMS__Trigger_Unsharing</fullName>
+        <availability>online</availability>
+        <description>This button has been deprecated.</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Unshare Certificate</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>https://login.salesforce.com/</url>
+    </webLinks>
 </CustomObject>

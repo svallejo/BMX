@@ -196,6 +196,136 @@
         <type>Default</type>
     </actionOverrides>
     <fields>
+        <fullName>CMPL123__ESign_Hint_Answer_1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Hint Answer 1</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify answer of question 1</inlineHelpText>
+        <label>E-Sign Hint Answer 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__ESign_Hint_Answer_2__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Hint Answer 2</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify answer of question # 2</inlineHelpText>
+        <label>E-Sign Hint Answer 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__ESign_Hint_Question_1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Choose Question</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Choose Hint Question 1</inlineHelpText>
+        <label>E-Sign Hint Question 1</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Name of your high school?</fullName>
+                    <default>false</default>
+                    <label>Name of your high school?</label>
+                </value>
+                <value>
+                    <fullName>City you went to college?</fullName>
+                    <default>false</default>
+                    <label>City you went to college?</label>
+                </value>
+                <value>
+                    <fullName>What is your favorite colour?</fullName>
+                    <default>false</default>
+                    <label>What is your favorite colour?</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__ESign_Hint_Question_2__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Hint Question2</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Choose Hint Question</inlineHelpText>
+        <label>E-Sign Hint Question 2</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Name of your high school?</fullName>
+                    <default>false</default>
+                    <label>Name of your high school?</label>
+                </value>
+                <value>
+                    <fullName>City you went to college?</fullName>
+                    <default>false</default>
+                    <label>City you went to college?</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__ESign_Password_Expired_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>E-Sign Password Expired Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>E-Sign Password Expired Date</inlineHelpText>
+        <label>E-Sign Password Expired Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__ESign_Password__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Esign password</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Esign password</inlineHelpText>
+        <label>E-Sign Password</label>
+        <length>175</length>
+        <maskChar>asterisk</maskChar>
+        <maskType>all</maskType>
+        <required>false</required>
+        <type>EncryptedText</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Occasional_User__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifies an Occasional User who has a limited allotment of yearly transactions (e.g., create or update a record).</inlineHelpText>
+        <label>Occasional User</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Original_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Original Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Original Name</inlineHelpText>
+        <label>Original Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>ManagerId</fullName>
         <trackFeedHistory>true</trackFeedHistory>
         <type>Hierarchy</type>
@@ -239,6 +369,200 @@
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>agf__Certified_Product_Owner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Certified Product Owner</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>agf__Certified_Scrum_Master__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Certified Scrum Master</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>agf__External_ID__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>External ID</label>
+        <length>32</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>agf__GUS_User_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Full Time Employee - This will be used to identify all FTEs in GUS
+Contractor - This will be used to identify all Contractors in GUS
+Team User - This will be used to identify all Team Users in GUS
+API user - This will be used to identify all API users in GUS</description>
+        <externalId>false</externalId>
+        <label>GUS User Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Full Time Employee</fullName>
+                    <default>false</default>
+                    <label>Full Time Employee</label>
+                </value>
+                <value>
+                    <fullName>Contractor</fullName>
+                    <default>false</default>
+                    <label>Contractor</label>
+                </value>
+                <value>
+                    <fullName>Team User</fullName>
+                    <default>false</default>
+                    <label>Team User</label>
+                </value>
+                <value>
+                    <fullName>API User</fullName>
+                    <default>false</default>
+                    <label>API User</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>agf__Notification_Level__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Adjusts how often you are sent emails about Work.
+
+Bread &amp; Butter:  User comments and added as an Assignee
+Meat &amp; Potatoes: User comments, status changes and added as Assignee
+The Whole Enchilada: All notifications (Default)</inlineHelpText>
+        <label>Work Notification Level</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Bread &amp; Butter</fullName>
+                    <default>false</default>
+                    <label>Bread &amp; Butter</label>
+                </value>
+                <value>
+                    <fullName>Meat &amp; Potatoes</fullName>
+                    <default>true</default>
+                    <label>Meat &amp; Potatoes</label>
+                </value>
+                <value>
+                    <fullName>The Whole Enchilada</fullName>
+                    <default>false</default>
+                    <label>The Whole Enchilada</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>agf__Product_Owner_Certified_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Product Owner Certified Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>agf__Scrum_Master_Certified_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Scrum Master Certified Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>agf__Show_All_Work_Comments__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Show All Work Comments</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>agf__Summary__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Summary</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>agf__Team_Member_Allocation__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>HYPERLINK('/apex/adm_teammemberallocation?Id=' +  Id, 'view' )</formula>
+        <label>Team Member Allocation</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>agf__User_Preference__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>User Preference</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>agf__Wall_Preference__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Wall Preference</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>agf__Work_User_Interface__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Determines which version of the Work page you will see for Bugs and User Stories.</inlineHelpText>
+        <label>Work User Interface</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Classic</fullName>
+                    <default>false</default>
+                    <label>Classic</label>
+                </value>
+                <value>
+                    <fullName>Next Generation</fullName>
+                    <default>true</default>
+                    <label>Next Generation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>true</enableFeeds>

@@ -139,6 +139,55 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123__Acknowledged_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Stores Acknowledged User Id</description>
+        <externalId>false</externalId>
+        <label>Acknowledged User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>MDC_Public_Group_User_Acknowledgements</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Acknowledgment_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Stores User Acknowledged Date Time</description>
+        <externalId>false</externalId>
+        <label>Acknowledgment Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Stores user acknowledgement comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Stores user acknowledgement comments</inlineHelpText>
+        <label>Comments</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123__MDC_Acknowledgement_Entry__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>MDC Acknowledgement Entry</label>
+        <referenceTo>CMPL123__MDC_Acknowledgement_Entry__c</referenceTo>
+        <relationshipLabel>MDC Public Group User Acknowledgements</relationshipLabel>
+        <relationshipName>MDC_Public_Group_User_Acknowledgements</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

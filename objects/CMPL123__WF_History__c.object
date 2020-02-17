@@ -139,6 +139,235 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123__Action_Label__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Label of the action at the time the workflow history was recorded</description>
+        <externalId>false</externalId>
+        <label>Action Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Action__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Action</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Current Action</inlineHelpText>
+        <label>Action</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Applied_By_Task__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Applied By Task</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Change_Summary_Long__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Store the Workflow Action activity Logs.</description>
+        <externalId>false</externalId>
+        <label>Change Summary (Long)</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Change_Summary__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Change Summary</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Change Summary</inlineHelpText>
+        <label>Change Summary</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Comment__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Comment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Comment</inlineHelpText>
+        <label>Comment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Created_By_User_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Created By Username</description>
+        <externalId>false</externalId>
+        <label>Created By Username</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Date_Updated__c</fullName>
+        <defaultValue>Now()</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Date Updated</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__ESign_Applied__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Is E-Sign Applied?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check, if E-Sign Applied.</inlineHelpText>
+        <label>E-Sign Applied?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__End_Status_Label__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>End Status Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Is_Optional__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Is Optional</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Last_Modified_DateTime__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Last Modified Date Time</description>
+        <externalId>false</externalId>
+        <formula>CMPL123__Date_Updated__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Last Modified Date Time</inlineHelpText>
+        <label>Last Modified Date Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Related_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Related valid Salesforce record Id</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Related Salesforce Id</inlineHelpText>
+        <label>Related Id</label>
+        <length>18</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Sequence_No__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>VALUE(TRIM(SUBSTITUTE(Name, 'WFH','')))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sequence No</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Start_Status_Label__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Label for the start status at the time the workflow history was recorded</description>
+        <externalId>false</externalId>
+        <label>Start Status Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Start_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Start Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Current Status</inlineHelpText>
+        <label>Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Workflow_Step__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Workflow Step</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Workflow Step</inlineHelpText>
+        <label>Workflow Step</label>
+        <referenceTo>CMPL123__WF_Step__c</referenceTo>
+        <relationshipLabel>Workflow History</relationshipLabel>
+        <relationshipName>Workflow_History</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

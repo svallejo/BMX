@@ -1,4 +1,369 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CMPL123CME__Enable_EMDR_Required_Fields__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable EMDR Required Fields?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable EMDR Required Fields?</inlineHelpText>
+        <label>Enable EMDR Required Fields?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__MEDDEV_Rev7__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>MEDDEV Rev7</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__MEDDEV_XML_Email_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Split with Comma</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter email Id's separated by comma(,). Use $USER if email should go to the current Salesforce user.</inlineHelpText>
+        <label>MEDDEV-XML Recipient Email Id(s)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Read_Only_Fields__c</fullName>
+        <deprecated>false</deprecated>
+        <description>EMDR Read Only Fields</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide field API names with comma separated.</inlineHelpText>
+        <label>EMDR Read Only Fields</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Show_Add_Investigation_Button__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show/Hide Add Investigation Button</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Uncheck to Hide Add Investigation Button</inlineHelpText>
+        <label>Show Add Investigation Button</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Show_Add_Question_Button__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Show/Hide Add Question Button</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Uncheck to Hide Add Question Button</inlineHelpText>
+        <label>Show Add Question Button</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__ACS_URL__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Assertion Consumer Service (ACS) URL</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Assertion Consumer Service (ACS) URL. A public site or a URL where SAML IDP can post the response.</inlineHelpText>
+        <label>ACS URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Allow_Task_Auto_Promotion_Update__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Allow Task Auto Promotion Update</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Allow Task Auto Promotion Update</inlineHelpText>
+        <label>Allow Task Auto Promotion Update</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Client_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Salesforce Remote App Client Id</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Salesforce Remote App Client Id</inlineHelpText>
+        <label>Consumer Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Client_Secret__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Salesforce Remote App Client Secret</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Salesforce Remote App Client Secret</inlineHelpText>
+        <label>Consumer Secret</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__E_sign_password_expire_in_days__c</fullName>
+        <defaultValue>90</defaultValue>
+        <deprecated>false</deprecated>
+        <description>E-sign password expire in days</description>
+        <externalId>false</externalId>
+        <inlineHelpText>E-sign password expire in days</inlineHelpText>
+        <label>E-Sign password expire in days</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Enable_AuditTrail_Translation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Enable AuditTrail Translation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Entity_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Identity Provider (IDP) unique URL where SAML request can be validated.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identity Provider (IDP) unique URL where SAML request can be validated.</inlineHelpText>
+        <label>Entity Id</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Force_Authentication_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Force Authentication Required?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Force Authentication Required?</inlineHelpText>
+        <label>Force Authentication Required?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Identity_Provider_Login_URL__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Identity Provider Login URL :  where generated SAML Request XML can be post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identity Provider Login URL:  where generated SAML Request XML can be post.</inlineHelpText>
+        <label>IDP Login URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Identity_Provider_Logout_URL__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to invalidate existing SAML session</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used to invalidate existing SAML session</inlineHelpText>
+        <label>IDP Logout URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Is_E_Sign_Password__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Uncheck, if you do not want to use salesforce password in e-signature.</inlineHelpText>
+        <label>Is Salesforce E-Sign Password?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Is_SAML_Auth__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Activate/Deactivate the Federated SSO Process. Default is not checked (deactivate)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Activate/Deactivate the Federated SSO Process. Default is not checked (deactivate)</inlineHelpText>
+        <label>Use Federated SSO</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Portal_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>If logged in as a portal user mention the portal Id.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If logged in as a portal user mention the portal Id.</inlineHelpText>
+        <label>Portal Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Report_Template_Logo_Document_Name__c</fullName>
+        <defaultValue>"123 Report Template Logo"</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Report Template Logo Document Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__SAML_Request_Certificate_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SSO Certificate Name used to sign the SAML Request</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SSO Certificate Name used to sign the SAML Request</inlineHelpText>
+        <label>SSO Certificate Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__SAML_Response_Provider__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SAML Response Provider URL: Used to validate the SAML response from un-authorized provider.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SAML Response Provider URL: Used to validate the SAML response from un-authorized provider.</inlineHelpText>
+        <label>SAML Response Provider URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__SAML_SSO_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SAML SSO API Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SAML SSO API Name</inlineHelpText>
+        <label>SAML SSO Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__SF_Base_Url__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Salesforce Base Url</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Salesforce Base Url</inlineHelpText>
+        <label>Salesforce Base Url</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__SF_Login_URL__c</fullName>
+        <defaultValue>"https://login.salesforce.com"</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>For Ex: 
+Prod/Dev: https://login.salesforce.com
+Sandbox: https://test.salesforce.com
+Custom Login: https://&lt;mydomain&gt;.salesforce.com</inlineHelpText>
+        <label>Salesforce Login URL</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__SSO_Session_Timeout_Limit__c</fullName>
+        <defaultValue>60</defaultValue>
+        <deprecated>false</deprecated>
+        <description>SSO Session Timeout Limit (in secs): Default to 60 seconds.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SSO Session Time Limit: Default to 60 seconds.</inlineHelpText>
+        <label>SSO Session Timeout Limit (in secs)</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Show_Unified_Audit_Report__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Uncheck to view separate reports for Workflow History and Audit Trail.</inlineHelpText>
+        <label>Show Unified Audit Trail</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Suppress_Insert_Audit_Records__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Suppress Insert Audit Records</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Suppress Insert Audit Records</inlineHelpText>
+        <label>Suppress Insert Audit Records</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Target_Consumer_Key__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Target Consumer Key</description>
+        <externalId>false</externalId>
+        <label>Target Consumer Key</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Target_Consumer_Secret__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Target Consumer Secret</description>
+        <externalId>false</externalId>
+        <label>Target Consumer Secret</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Use_Remote_App_Auth__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Check if remote app authentication is needed. By default it will authenticate using SOAP API.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check if remote app authentication is needed. By default it will authenticate using SOAP API.</inlineHelpText>
+        <label>Use Remote App Auth</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <customSettingsType>Hierarchy</customSettingsType>
     <description>Application level config parameters</description>
     <enableFeeds>false</enableFeeds>

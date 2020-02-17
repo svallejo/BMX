@@ -139,6 +139,92 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <fields>
+        <fullName>CMPL123CME__Choice__c</fullName>
+        <deprecated>false</deprecated>
+        <description>User will choose from the Choices provided in the list.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Choices made by the user.</inlineHelpText>
+        <label>Choice</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Choice 1</fullName>
+                    <default>false</default>
+                    <label>Choice 1</label>
+                </value>
+                <value>
+                    <fullName>Choice 2</fullName>
+                    <default>false</default>
+                    <label>Choice 2</label>
+                </value>
+                <value>
+                    <fullName>Choice 3</fullName>
+                    <default>false</default>
+                    <label>Choice 3</label>
+                </value>
+                <value>
+                    <fullName>Choice 4</fullName>
+                    <default>false</default>
+                    <label>Choice 4</label>
+                </value>
+                <value>
+                    <fullName>Choice 5</fullName>
+                    <default>false</default>
+                    <label>Choice 5</label>
+                </value>
+                <value>
+                    <fullName>Choice 6</fullName>
+                    <default>false</default>
+                    <label>Choice 6</label>
+                </value>
+                <value>
+                    <fullName>Choice 7</fullName>
+                    <default>false</default>
+                    <label>Choice 7</label>
+                </value>
+                <value>
+                    <fullName>Choice 8</fullName>
+                    <default>false</default>
+                    <label>Choice 8</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Related_EU_MIR_Code__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>It holds the information of EU MIR Code.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Information of EU MIR Code.</inlineHelpText>
+        <label>Related EU MIR Code</label>
+        <referenceTo>CMPL123CME__EU_MIR_Code__c</referenceTo>
+        <relationshipLabel>EU MIR Code Choices</relationshipLabel>
+        <relationshipName>EU_MIR_Code_Choices</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Related_EU_MIR__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>It holds the information of EU MIR record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Information of EU MIR Record.</inlineHelpText>
+        <label>Related EU MIR</label>
+        <referenceTo>CMPL123CME__EU_MIR__c</referenceTo>
+        <relationshipLabel>EU MIR Code Choices</relationshipLabel>
+        <relationshipName>EU_MIR_Code_Choices</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>

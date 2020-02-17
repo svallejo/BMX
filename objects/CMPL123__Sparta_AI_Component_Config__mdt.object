@@ -1,5 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CMPL123__Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Only 5 models should be active per record</inlineHelpText>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Criteria_Field__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The name of the field that is being used in the secondary criteria</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Criteria Field</label>
+        <metadataRelationshipControllingField>CMPL123__Sparta_AI_Component_Config__mdt.CMPL123__Object__c</metadataRelationshipControllingField>
+        <referenceTo>FieldDefinition</referenceTo>
+        <relationshipLabel>Sparta_AI_Component_Config</relationshipLabel>
+        <relationshipName>Sparta_AI_Component_Config</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Model_Deployment_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Model Deployment ID</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Object__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Object</label>
+        <referenceTo>EntityDefinition</referenceTo>
+        <relationshipLabel>Sparta_AI_Component_Configs</relationshipLabel>
+        <relationshipName>Sparta_AI_Component_Configs</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Operator__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Operator</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal To</fullName>
+                    <default>false</default>
+                    <label>Equal To</label>
+                </value>
+                <value>
+                    <fullName>Not Equal To</fullName>
+                    <default>false</default>
+                    <label>Not Equal To</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Order__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The sorted order of the metadata record, compared to other active records that are gathered at the same time.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Order runs from lowest to highest.  Ties cannot be guaranteed to present in a particular order.</inlineHelpText>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Result_Value__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The value that the Criteria field should include in the argument</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>For fields with multiple values, specify each value with a new line</inlineHelpText>
+        <label>Result Value</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Source_Text_Field__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Source Text Field</label>
+        <metadataRelationshipControllingField>CMPL123__Sparta_AI_Component_Config__mdt.CMPL123__Object__c</metadataRelationshipControllingField>
+        <referenceTo>FieldDefinition</referenceTo>
+        <relationshipLabel>Source_Sparta_AI_Component_Configs</relationshipLabel>
+        <relationshipName>Source_Sparta_AI_Component_Configs</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Target_Classification_Field__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Target Classification Field</label>
+        <metadataRelationshipControllingField>CMPL123__Sparta_AI_Component_Config__mdt.CMPL123__Object__c</metadataRelationshipControllingField>
+        <referenceTo>FieldDefinition</referenceTo>
+        <relationshipLabel>Sparta_AI_Component_Configs</relationshipLabel>
+        <relationshipName>Sparta_AI_Component_Configs</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
     <label>Sparta AI Component Config</label>
     <pluralLabel>Sparta AI Component Config</pluralLabel>
     <visibility>Public</visibility>
+    <validationRules>
+        <fullName>CMPL123__Allow_Criteria_If_Secondary_Populated</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF( ISBLANK(CMPL123__Criteria_Field__c),
+            OR( !ISBLANK(TEXT(CMPL123__Operator__c)),
+                !ISBLANK(CMPL123__Result_Value__c)),
+            FALSE)</errorConditionFormula>
+        <errorDisplayField>CMPL123__Criteria_Field__c</errorDisplayField>
+        <errorMessage>A Criteria Field must be specified if any secondary criteria is populated.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123__Allow_Only_Picklist_Fields_As_Criteria</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF( !ISBLANK(CMPL123__Criteria_Field__c),
+            !CONTAINS(CMPL123__Criteria_Field__r.DataType, 'Picklist'),
+            FALSE)</errorConditionFormula>
+        <errorDisplayField>CMPL123__Criteria_Field__c</errorDisplayField>
+        <errorMessage>The Criteria Field is limited to picklist or multi-picklist fields only</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123__Allow_Only_Picklist_Fields_As_Target</fullName>
+        <active>true</active>
+        <errorConditionFormula>!CONTAINS(CMPL123__Target_Classification_Field__r.DataType, 'Picklist')</errorConditionFormula>
+        <errorDisplayField>CMPL123__Target_Classification_Field__c</errorDisplayField>
+        <errorMessage>Target Classification Field is limited to picklist or multi-picklist fields only.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123__Allow_Only_Text_Fields_As_Source</fullName>
+        <active>true</active>
+        <errorConditionFormula>(
+    !CONTAINS( CMPL123__Source_Text_Field__r.DataType, 'Text' ) 
+) || 
+(
+    (
+        CONTAINS( CMPL123__Source_Text_Field__r.DataType, 'Encrypted' ) &amp;&amp; 
+        CONTAINS(CMPL123__Source_Text_Field__r.DataType, 'Text')
+    ) || 
+    (
+        CONTAINS( CMPL123__Source_Text_Field__r.DataType, 'Rich' ) &amp;&amp;
+        CONTAINS(CMPL123__Source_Text_Field__r.DataType, 'Text')   &amp;&amp;
+        CONTAINS(CMPL123__Source_Text_Field__r.DataType, 'Area')
+    )
+)</errorConditionFormula>
+        <errorDisplayField>CMPL123__Source_Text_Field__c</errorDisplayField>
+        <errorMessage>Source Text Field is limited to text, text area, and text area long.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123__Allow_Operator_If_Secondary_Populated</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF( ISBLANK(TEXT(CMPL123__Operator__c)),
+            OR( !ISBLANK(CMPL123__Result_Value__c),
+                !ISBLANK(CMPL123__Criteria_Field__c)),
+            FALSE)</errorConditionFormula>
+        <errorDisplayField>CMPL123__Operator__c</errorDisplayField>
+        <errorMessage>An Operator must be specified if any secondary criteria is populated.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123__Allow_Result_If_Secondary_Populated</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF( ISBLANK(CMPL123__Result_Value__c),
+            OR( !ISBLANK(TEXT(CMPL123__Operator__c)),
+                !ISBLANK(CMPL123__Criteria_Field__c)),
+            FALSE)</errorConditionFormula>
+        <errorDisplayField>CMPL123__Result_Value__c</errorDisplayField>
+        <errorMessage>A Result Value must be specified if any secondary criteria is populated.</errorMessage>
+    </validationRules>
 </CustomObject>
