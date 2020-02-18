@@ -8031,7 +8031,7 @@ For a device that may receive events over its entire service life, the ideal den
         <displayedFields>
             <field>CMPL123CME__Classification_Of_Incident__c</field>
             <isFieldManaged>false</isFieldManaged>
-            <isRequired>true</isRequired>
+            <isRequired>false</isRequired>
         </displayedFields>
         <label>1.2 Date, type and classification of incident report</label>
     </fieldSets>
@@ -16711,13 +16711,13 @@ For a device that may receive events over its entire service life, the ideal den
         <description>Check that field "Medical Device Problem Code (Annex A)"" is populated is Report Type if Combined or Final</description>
         <errorConditionFormula>if(OR(ISPICKVAL(CMPL123CME__Type_Of_Report__c ,'Combined initial and final'),ISPICKVAL( CMPL123CME__Type_Of_Report__c ,'Final (Reportable incident)')) &amp;&amp;   CMPL123CME__Medical_Device_Problem_Code_Annex_A__c = false   &amp;&amp; 
  CMPL123CME__Investigation_Finding_Code_Annex_C__c =false  &amp;&amp;  CMPL123CME__IMDRF_Codes_Not_Used__c =false &amp;&amp; OR(CMPL123_WF_Action__c = 'Submit for Review',CMPL123_WF_Action__c = 'Submit Report'),true,false)</errorConditionFormula>
-        <errorMessage>Tick at least one checkbox for Identifying similar incidents. (Section 4.2.1)</errorMessage>
+        <errorMessage>Tick at least one checkbox for Identifying similar incidents. (Section 4.3.1)</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>NoIncDev_mandat_for_Combined_and_Final</fullName>
         <active>true</active>
         <description>Check that fields No of incidents and Devices are populated if Report Type if Combined or Final</description>
-        <errorConditionFormula>if(OR(ISPICKVAL(CMPL123CME__Type_Of_Report__c ,'Combined initial and final'), ISPICKVAL( CMPL123CME__Type_Of_Report__c ,'Final (Reportable incident)'), ISPICKVAL( CMPL123CME__Type_Of_Report__c ,'Final (Non-Reportable incident)')) &amp;&amp;  OR(ISBLANK(   CMPL123CME__No_Of_Incidents_In_Incident_Country_N__c),ISBLANK(CMPL123CME__No_Of_Devices_In_Incident_Country_N__c), ISBLANK(CMPL123CME__No_Of_Incidents_In_EEA_CH_TR_N__c), ISBLANK(CMPL123CME__No_Of_Devices_In_EEA_CH_TR_N__c),  ISBLANK(CMPL123CME__No_Of_Incidents_In_Rest_Of_The_World_N__c),ISBLANK(CMPL123CME__No_Of_Devices_In_The_World_N__c))&amp;&amp; OR(CMPL123_WF_Action__c = 'Submit for Review',CMPL123_WF_Action__c = 'Submit Report'),true,false)</errorConditionFormula>
+        <errorConditionFormula>if(OR(ISPICKVAL(CMPL123CME__Type_Of_Report__c ,'Combined initial and final'), ISPICKVAL( CMPL123CME__Type_Of_Report__c ,'Final (Reportable incident)')) &amp;&amp;  OR(ISBLANK(   CMPL123CME__No_Of_Incidents_In_Incident_Country_N__c),ISBLANK(CMPL123CME__No_Of_Devices_In_Incident_Country_N__c), ISBLANK(CMPL123CME__No_Of_Incidents_In_EEA_CH_TR_N__c), ISBLANK(CMPL123CME__No_Of_Devices_In_EEA_CH_TR_N__c),  ISBLANK(CMPL123CME__No_Of_Incidents_In_Rest_Of_The_World_N__c),ISBLANK(CMPL123CME__No_Of_Devices_In_The_World_N__c))&amp;&amp; OR(CMPL123_WF_Action__c = 'Submit for Review',CMPL123_WF_Action__c = 'Submit Report'),true,false)</errorConditionFormula>
         <errorMessage>For this type of report, all values of no of incidents and devices for period N cannot be blank. (Section 4.3.3)</errorMessage>
     </validationRules>
     <validationRules>
