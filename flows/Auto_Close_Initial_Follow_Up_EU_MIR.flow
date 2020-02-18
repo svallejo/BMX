@@ -177,7 +177,7 @@
             <label>If Closed and not the Final MIR</label>
         </rules>
     </decisions>
-    <description>Creates follow up record, copying fields from initial</description>
+    <description>Creates follow up record, copying fields from initial URS-1709</description>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
@@ -185,11 +185,11 @@
                 <stringValue>IF([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_7968705426</name>
+        <name>formula_3_myRule_1_A1_7021962145</name>
         <dataType>Date</dataType>
         <expression>IF({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</expression>
     </formulas>
-    <interviewLabel>Auto_Close_Initial_Follow_Up_EU_MIR-17_InterviewLabel</interviewLabel>
+    <interviewLabel>Auto_Close_Initial_Follow_Up_EU_MIR-18_InterviewLabel</interviewLabel>
     <label>Create FollowUp at closure of Initial MIR</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -254,7 +254,7 @@
             </processMetadataValues>
             <field>BMX_Due_Date__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_7968705426</elementReference>
+                <elementReference>formula_3_myRule_1_A1_7021962145</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -801,42 +801,6 @@
             <processMetadataValues>
                 <name>dataType</name>
                 <value>
-                    <stringValue>MultiPicklist</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Countries list</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>CMPL123CME__Countries_List__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123CME__Countries_List__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
                     <stringValue>String</stringValue>
                 </value>
             </processMetadataValues>
@@ -975,42 +939,6 @@
             <field>CMPL123CME__Description_Of_Device_Nomenclature_Text__c</field>
             <value>
                 <elementReference>myVariable_current.CMPL123CME__Description_Of_Device_Nomenclature_Text__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Description of remedial action</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>CMPL123CME__Description_Of_Remedial_Action__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123CME__Description_Of_Remedial_Action__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1191,78 +1119,6 @@
             <field>CMPL123CME__Device_Usage__c</field>
             <value>
                 <elementReference>myVariable_current.CMPL123CME__Device_Usage__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Explain if Component Code missing</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>CMPL123CME__Explain_If_Component_Code_Missing__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123CME__Explain_If_Component_Code_Missing__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Explain if Investigation Code missing</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>CMPL123CME__Explain_If_Investigation_Code_Missing__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123CME__Explain_If_Investigation_Code_Missing__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3788,7 +3644,7 @@
         <object>CMPL123CME__EU_MIR__c</object>
     </recordCreates>
     <startElementReference>isChangedDecision2_myRule_1_CMPL123_WF_Status_c</startElementReference>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

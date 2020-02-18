@@ -212,6 +212,7 @@
             <label>For initial or combo only</label>
         </rules>
     </decisions>
+    <description>URS-1706 &amp; 1707</description>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
@@ -219,7 +220,7 @@
                 <stringValue>[CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Description_of_Issue__c  &amp; BR() &amp; BR() &amp; [CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reporting_Decision_Justification__c </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_8532454132</name>
+        <name>formula_2_myRule_1_A1_1152966140</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.BMX_Local_Assessment__r.BMX_Description_of_Issue__c}  &amp; BR() &amp; BR() &amp; {!myVariable_current.BMX_Local_Assessment__r.BMX_Reporting_Decision_Justification__c}</expression>
     </formulas>
@@ -230,7 +231,7 @@
                 <stringValue>IF([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_7_myRule_6_A1_5927257754</name>
+        <name>formula_7_myRule_6_A1_2230256948</name>
         <dataType>Date</dataType>
         <expression>IF({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</expression>
     </formulas>
@@ -239,7 +240,7 @@
         <dataType>Boolean</dataType>
         <expression>true</expression>
     </formulas>
-    <interviewLabel>Populate_EU_MIR_fields_with_Complaint-12_InterviewLabel</interviewLabel>
+    <interviewLabel>Populate_EU_MIR_fields_with_Complaint-14_InterviewLabel</interviewLabel>
     <label>Autopopulate fields in EU MIR from Complaint and LA</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -459,42 +460,6 @@
             <processMetadataValues>
                 <name>dataType</name>
                 <value>
-                    <stringValue>Picklist</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Current Device Location</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>CMPL123CME__Current_Device_Location__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123CME__Complaint__r.BMX_Account_Name__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
                     <stringValue>Date</stringValue>
                 </value>
             </processMetadataValues>
@@ -596,7 +561,7 @@
             </processMetadataValues>
             <field>CMPL123CME__Incident_Description__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_8532454132</elementReference>
+                <elementReference>formula_2_myRule_1_A1_1152966140</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1299,7 +1264,7 @@
             </processMetadataValues>
             <field>CMPL123CME__Expected_Date_Of_Next_Report__c</field>
             <value>
-                <elementReference>formula_7_myRule_6_A1_5927257754</elementReference>
+                <elementReference>formula_7_myRule_6_A1_2230256948</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
