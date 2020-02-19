@@ -23100,7 +23100,7 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123CME__EU_MIR__c</tab>
-        <visibility>DefaultOff</visibility>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123QMS__Approved_Material__c</tab>
