@@ -1157,24 +1157,14 @@ All other reportable incidents.</inlineHelpText>
                     <label>Healthcare facility/carer</label>
                 </value>
                 <value>
-                    <fullName>Patient/user</fullName>
-                    <default>false</default>
-                    <label>Patient/user</label>
-                </value>
-                <value>
-                    <fullName>In transit to manufacturer</fullName>
-                    <default>false</default>
-                    <label>In transit to manufacturer</label>
-                </value>
-                <value>
-                    <fullName>Manufacturer</fullName>
-                    <default>false</default>
-                    <label>Manufacturer</label>
-                </value>
-                <value>
                     <fullName>Distributor</fullName>
                     <default>false</default>
                     <label>Distributor</label>
+                </value>
+                <value>
+                    <fullName>Patient/user</fullName>
+                    <default>false</default>
+                    <label>Patient/user</label>
                 </value>
                 <value>
                     <fullName>Discarded</fullName>
@@ -1182,9 +1172,19 @@ All other reportable incidents.</inlineHelpText>
                     <label>Discarded</label>
                 </value>
                 <value>
+                    <fullName>In transit to manufacturer</fullName>
+                    <default>false</default>
+                    <label>In transit to manufacturer</label>
+                </value>
+                <value>
                     <fullName>Remains implanted</fullName>
                     <default>false</default>
                     <label>Remains implanted</label>
+                </value>
+                <value>
+                    <fullName>Manufacturer</fullName>
+                    <default>false</default>
+                    <label>Manufacturer</label>
                 </value>
                 <value>
                     <fullName>Unknown</fullName>
@@ -1358,7 +1358,7 @@ Description of the device and its intended use: Please describe the intended use
                 <value>
                     <fullName>This device has been placed on the market before the implementation of the MDD/AIMDD/IVDD OR MDR/IVDR</fullName>
                     <default>false</default>
-                    <label>This device has been placed on the market before the implementation of the MDD/AIMDD/IVDD OR MDR/IVDR</label>
+                    <label>This device has been placed on the market before the implementation of the MDD/AIMDD/IVDD</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -5281,11 +5281,6 @@ If you refer to an existing CAPA please provide the reference or identification 
                     <label>EMDN</label>
                 </value>
                 <value>
-                    <fullName>GIVD/EDMS</fullName>
-                    <default>false</default>
-                    <label>GIVD/EDMS</label>
-                </value>
-                <value>
                     <fullName>GMDN</fullName>
                     <default>false</default>
                     <label>GMDN</label>
@@ -5294,6 +5289,11 @@ If you refer to an existing CAPA please provide the reference or identification 
                     <fullName>UMDNS(ECRI)</fullName>
                     <default>false</default>
                     <label>UMDNS(ECRI)</label>
+                </value>
+                <value>
+                    <fullName>GIVD/EDMS</fullName>
+                    <default>false</default>
+                    <label>GIVD/EDMS</label>
                 </value>
                 <value>
                     <fullName>Other</fullName>
@@ -7500,14 +7500,14 @@ N.B- single choice"</description>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Authorised representative</fullName>
-                    <default>false</default>
-                    <label>Authorised representative</label>
-                </value>
-                <value>
                     <fullName>Manufacturer</fullName>
                     <default>false</default>
                     <label>Manufacturer</label>
+                </value>
+                <value>
+                    <fullName>Authorised representative</fullName>
+                    <default>false</default>
+                    <label>Authorised representative</label>
                 </value>
                 <value>
                     <fullName>Others</fullName>
