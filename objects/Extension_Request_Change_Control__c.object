@@ -311,9 +311,9 @@
     <visibility>Public</visibility>
     <validationRules>
         <fullName>Extension_Request_Cannot_Be_Approved</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Extension Request Cannot Be Approved When Change Control is Closed.</description>
-        <errorConditionFormula>CONTAINS( Change_Control__r.CMPL123_WF_Status__c, "Closed") &amp;&amp;  CMPL123_WF_Action__c = "Approved"</errorConditionFormula>
+        <errorConditionFormula>CONTAINS( Change_Control__r.CMPL123_WF_Status__c, "Closed") &amp;&amp;  CMPL123_WF_Action__c = "Approve"</errorConditionFormula>
         <errorMessage>Extension request cannot be approved for a closed change control.</errorMessage>
     </validationRules>
     <validationRules>
