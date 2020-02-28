@@ -310,6 +310,13 @@
     <startsWith>Vowel</startsWith>
     <visibility>Public</visibility>
     <validationRules>
+        <fullName>Extension_Request_Cannot_Be_Approved</fullName>
+        <active>false</active>
+        <description>Extension Request Cannot Be Approved When Change Control is Closed.</description>
+        <errorConditionFormula>CONTAINS( Change_Control__r.CMPL123_WF_Status__c, "Closed") &amp;&amp;  CMPL123_WF_Action__c = "Approved"</errorConditionFormula>
+        <errorMessage>Extension request cannot be approved for a closed change control.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Proposed_Due_Date_cannot_be_in_the_past</fullName>
         <active>true</active>
         <errorConditionFormula>Proposed_Due_Date__c &lt;  TODAY()</errorConditionFormula>
