@@ -142,6 +142,19 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Action_Item_Records__c</fullName>
         <externalId>false</externalId>
@@ -4316,37 +4329,7 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
         <trackTrending>false</trackTrending>
         <type>Percent</type>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>Change Control</label>
-    <nameField>
-        <displayFormat>CR-{00000}</displayFormat>
-        <label>Change Control Number</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
-    </nameField>
-    <pluralLabel>Change Control</pluralLabel>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
-    <searchLayouts>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
-        <lookupDialogsAdditionalFields>Title__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>CMPL123_WF_Status__c</lookupDialogsAdditionalFields>
-        <searchResultsAdditionalFields>Title__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CMPL123_WF_Status__c</searchResultsAdditionalFields>
-    </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
     <listViews>
         <fullName>CMPL123QMS__All</fullName>
         <columns>NAME</columns>
@@ -4357,6 +4340,14 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <nameField>
+        <displayFormat>CR-{00000}</displayFormat>
+        <label>Change Control Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Change Control</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>CC_Custom</fullName>
         <active>true</active>
@@ -7744,6 +7735,14 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
             </values>
         </picklistValues>
     </recordTypes>
+    <searchLayouts>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Title__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CMPL123_WF_Status__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Title__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123_WF_Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
     <validationRules>
         <fullName>Action_Item_created_before_Revie</fullName>
         <active>true</active>
@@ -7868,12 +7867,12 @@ ISPICKVAL( Was_the_change_Successful__c , "No")</errorConditionFormula>
     <validationRules>
         <fullName>Change_UnSuccessful</fullName>
         <active>true</active>
-        <description>You cannot select "Approve Change Unsuccessful" if the picklist value for "Was the Change Successful" is Yes</description>
+        <description>You cannot progres record to "Closed - Unsuccessful" if the picklist value for "Was the Change Successful" is Yes</description>
         <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
-CMPL123_WF_Action__c =="Approve - Change Unsuccessful" &amp;&amp; 
+ CMPL123_WF_Status__c =="Closed - Unsuccessful" &amp;&amp; 
 ISPICKVAL( Was_the_change_Successful__c , "Yes")</errorConditionFormula>
         <errorDisplayField>Was_the_change_Successful__c</errorDisplayField>
-        <errorMessage>You cannot select "Approve Change Unsuccessful" if the picklist value for "Was the Change Successful" is Yes</errorMessage>
+        <errorMessage>Change Control cannot be closed as unsuccessful if the picklist value for "Was the Change Successful" is Yes</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Department_Other</fullName>
@@ -8077,6 +8076,7 @@ CMPL123_WF_Action__c == "Submit for Review" &amp;&amp;
 (  Total_Unassigned_Open_Action__c  &lt;&gt; 0 )</errorConditionFormula>
         <errorMessage>You cannot submit the change for review with assignees missing for action items</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
     <webLinks>
         <fullName>Change_Controlc</fullName>
         <availability>online</availability>
