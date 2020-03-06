@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?><Profile xmlns="http://soap.sforce.com/2006/04/metadata">
-    <custom>false</custom>
-    <loginIpRanges>
-        <description>Default IP Ranges</description>
-        <endAddress>255.255.255.255</endAddress>
-        <startAddress>0.0.0.0</startAddress>
-    </loginIpRanges>
-    <userLicense>Salesforce</userLicense>
     <classAccesses>
         <apexClass>AssessmentHandler</apexClass>
         <enabled>true</enabled>
@@ -4426,6 +4419,12 @@
         <apexClass>SapCustomerReportController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <custom>false</custom>
+    <loginIpRanges>
+        <description>Default IP Ranges</description>
+        <endAddress>255.255.255.255</endAddress>
+        <startAddress>0.0.0.0</startAddress>
+    </loginIpRanges>
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>
         <enabled>true</enabled>
@@ -29817,4 +29816,5 @@
         <tab>CMPL123QMS__EQMS_Setup</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
+    <userLicense>Salesforce</userLicense>
 </Profile>

@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?><Profile xmlns="http://soap.sforce.com/2006/04/metadata">
-    <custom>true</custom>
-    <loginIpRanges>
-        <endAddress>255.255.255.255</endAddress>
-        <startAddress>0.0.0.0</startAddress>
-    </loginIpRanges>
-    <userLicense>Salesforce Platform</userLicense>
     <classAccesses>
         <apexClass>CMPL123CME__AASRAggregationController</apexClass>
         <enabled>true</enabled>
@@ -2125,6 +2119,11 @@
         <apexClass>CMPL123__test_MetadataServiceTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <custom>true</custom>
+    <loginIpRanges>
+        <endAddress>255.255.255.255</endAddress>
+        <startAddress>0.0.0.0</startAddress>
+    </loginIpRanges>
     <pageAccesses>
         <apexPage>AttachmentWorkflowPanel</apexPage>
         <enabled>true</enabled>
@@ -21490,4 +21489,5 @@
         <tab>CMPL123QMS__EQMS_Setup</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
+    <userLicense>Salesforce Platform</userLicense>
 </Profile>

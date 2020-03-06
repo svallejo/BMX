@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?><Profile xmlns="http://soap.sforce.com/2006/04/metadata">
-    <custom>true</custom>
-    <userLicense>Salesforce Platform</userLicense>
     <classAccesses>
         <apexClass>CMPL123CME__AASRAggregationController</apexClass>
         <enabled>true</enabled>
@@ -2121,6 +2119,7 @@
         <apexClass>CMPL123__test_MetadataServiceTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <custom>true</custom>
     <pageAccesses>
         <apexPage>AttachmentWorkflowPanel</apexPage>
         <enabled>true</enabled>
@@ -21504,4 +21503,5 @@
         <tab>CMPL123QMS__EQMS_Setup</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
+    <userLicense>Salesforce Platform</userLicense>
 </Profile>

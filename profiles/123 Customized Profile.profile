@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?><Profile xmlns="http://soap.sforce.com/2006/04/metadata">
-    <custom>true</custom>
-    <userLicense>Salesforce Platform</userLicense>
     <classAccesses>
         <apexClass>AssessmentHandler</apexClass>
         <enabled>true</enabled>
@@ -2165,6 +2163,7 @@
         <apexClass>TaskPreventionHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <custom>true</custom>
     <pageAccesses>
         <apexPage>Audit_FindingWorkflowPanel</apexPage>
         <enabled>true</enabled>
@@ -21664,4 +21663,5 @@
         <tab>CMPL123QMS__EQMS_Setup</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
+    <userLicense>Salesforce Platform</userLicense>
 </Profile>
