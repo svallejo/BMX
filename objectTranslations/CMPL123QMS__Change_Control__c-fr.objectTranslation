@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Change Control</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Change Control</value>
+    </caseValues>
     <fields>
         <label>Action</label>
         <name>Action_Item_Records__c</name>
@@ -920,6 +928,10 @@
             <translation>Salt lake City</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>San Diego</masterLabel>
+            <translation><!-- San Diego --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>St. Louis</masterLabel>
             <translation>St Louis</translation>
         </picklistValues>
@@ -1796,17 +1808,7 @@
         <label>% Avis d'expert complété</label>
         <name>impact_assessments_complete__c</name>
     </fields>
-    <caseValues>
-        <plural>false</plural>
-        <value>Change Control</value>
-    </caseValues>
-    <caseValues>
-        <plural>true</plural>
-        <value>Change Control</value>
-    </caseValues>
     <gender>Masculine</gender>
-    <nameFieldLabel>N° Change control</nameFieldLabel>
-    <startsWith>Consonant</startsWith>
     <layouts>
         <layout>Change Control Custom</layout>
         <sections>
@@ -1960,6 +1962,7 @@
             <section>Workflow</section>
         </sections>
     </layouts>
+    <nameFieldLabel>N° Change control</nameFieldLabel>
     <quickActions>
         <label><!-- Detach File --></label>
         <name>Detach_File</name>
@@ -1981,6 +1984,7 @@
         <label>Lecture seule</label>
         <name>CC_Read_Only</name>
     </recordTypes>
+    <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage>Créer au moins une action avant d'envoyer en revue CRB</errorMessage>
         <name>Action_Item_created_before_Revie</name>
