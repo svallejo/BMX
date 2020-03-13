@@ -139,6 +139,20 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>European Manufacturer Incident Report</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>BMX_Approved_Date__c</fullName>
         <externalId>false</externalId>
@@ -574,6 +588,11 @@ TEXT(DATEVALUE(BMX_Approved_Date__c) - CMPL123CME__Complaint__r.BMX_Customer_Con
                     <fullName>United Kingdom</fullName>
                     <default>false</default>
                     <label>United Kingdom</label>
+                </value>
+                <value>
+                    <fullName>USA</fullName>
+                    <default>false</default>
+                    <label>United States</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -7916,30 +7935,6 @@ For a device that may receive events over its entire service life, the ideal den
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <description>European Manufacturer Incident Report</description>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
-    <label>EU MIR</label>
-    <nameField>
-        <displayFormat>EU-MIR-{000000}</displayFormat>
-        <label>EU MIR Number</label>
-        <type>AutoNumber</type>
-    </nameField>
-    <pluralLabel>EU MIR</pluralLabel>
-    <searchLayouts />
-    <sharingModel>Private</sharingModel>
-    <visibility>Public</visibility>
     <fieldSets>
         <fullName>CMPL123CME__A1_1_CORRESPONDING_COMPETENT_AUTHORITY</fullName>
         <description>1.1 Corresponding competent authority.</description>
@@ -9080,6 +9075,7 @@ For a device that may receive events over its entire service life, the ideal den
         </displayedFields>
         <label>5. General Comments</label>
     </fieldSets>
+    <label>EU MIR</label>
     <listViews>
         <fullName>CMPL123CME__All</fullName>
         <columns>NAME</columns>
@@ -9124,6 +9120,12 @@ For a device that may receive events over its entire service life, the ideal den
         <label>All submitted reports</label>
         <language>en_US</language>
     </listViews>
+    <nameField>
+        <displayFormat>EU-MIR-{000000}</displayFormat>
+        <label>EU MIR Number</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>EU MIR</pluralLabel>
     <recordTypes>
         <fullName>BMX_Lock_EU_MIR</fullName>
         <active>true</active>
@@ -16663,6 +16665,8 @@ For a device that may receive events over its entire service life, the ideal den
             </values>
         </picklistValues>
     </recordTypes>
+    <searchLayouts />
+    <sharingModel>Private</sharingModel>
     <validationRules>
         <fullName>BasisIdent_mandat_for_Combined_and_Final</fullName>
         <active>true</active>
@@ -16783,6 +16787,7 @@ For a device that may receive events over its entire service life, the ideal den
         <errorConditionFormula>if(OR(ISPICKVAL(CMPL123CME__Type_Of_Report__c ,'Combined initial and final'),ISPICKVAL( CMPL123CME__Type_Of_Report__c ,'Final (Reportable incident)')) &amp;&amp;  ISPICKVAL( CMPL123CME__What_Identifies_No_Of_Devices_On_Market__c ,''),true,false)</errorConditionFormula>
         <errorMessage>"What Identifies No Of Devices On Market?" cannot be blank for this report type. (Section 4.3.3)</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
     <webLinks>
         <fullName>CMPL123CME__Check_Validate_Form</fullName>
         <availability>online</availability>

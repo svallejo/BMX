@@ -193,7 +193,7 @@
                 <leftValueReference>myVariable_current.Count_of_Optional_Approvals__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <elementReference>formula_6_myRule_5_2265618253</elementReference>
+                    <elementReference>formula_6_myRule_5_7253689117</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
@@ -303,7 +303,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_10_myRule_5_A1_6081949343</name>
+        <name>formula_10_myRule_5_A1_7461384942</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -314,7 +314,7 @@
                 <stringValue>[CMPL123CME__Investigation__c].Count_of_Optional_Approvals__c  + 1</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_7829578630</name>
+        <name>formula_3_myRule_1_A1_7055623836</name>
         <dataType>Number</dataType>
         <expression>{!myVariable_current.Count_of_Optional_Approvals__c}  + 1</expression>
         <scale>18</scale>
@@ -326,7 +326,7 @@
                 <stringValue>[CMPL123CME__Investigation__c].BMX_Count_of_GCS_Approvers__c -1</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_6_myRule_5_2265618253</name>
+        <name>formula_6_myRule_5_7253689117</name>
         <dataType>Number</dataType>
         <expression>{!myVariable_current.BMX_Count_of_GCS_Approvers__c} -1</expression>
         <scale>18</scale>
@@ -338,7 +338,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_8_myRule_5_A3_0063942239</name>
+        <name>formula_8_myRule_5_A3_1155893038</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -349,11 +349,11 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_9_myRule_5_A2_3953453400</name>
+        <name>formula_9_myRule_5_A2_8644553440</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
-    <interviewLabel>Autoclose_Investigation-13_InterviewLabel</interviewLabel>
+    <interviewLabel>Autoclose_Investigation-14_InterviewLabel</interviewLabel>
     <label>Autoclose Investigation</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -371,6 +371,12 @@
         <name>OldObjectVariable</name>
         <value>
             <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>RecursiveCountVariable</name>
+        <value>
+            <elementReference>RecursiveCountVariable</elementReference>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -458,7 +464,7 @@
             </processMetadataValues>
             <field>Count_of_Optional_Approvals__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_7829578630</elementReference>
+                <elementReference>formula_3_myRule_1_A1_7055623836</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
@@ -1381,7 +1387,7 @@
             </processMetadataValues>
             <field>BMX_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_10_myRule_5_A1_6081949343</elementReference>
+                <elementReference>formula_10_myRule_5_A1_7461384942</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1549,7 +1555,7 @@
             </processMetadataValues>
             <field>BMX_First_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_9_myRule_5_A2_3953453400</elementReference>
+                <elementReference>formula_9_myRule_5_A2_8644553440</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
@@ -1681,7 +1687,7 @@
             </processMetadataValues>
             <field>BMX_Oldest_investigation_completed_date__c</field>
             <value>
-                <elementReference>formula_8_myRule_5_A3_0063942239</elementReference>
+                <elementReference>formula_8_myRule_5_A3_1155893038</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Complaint__c</object>
@@ -2080,12 +2086,12 @@
             <processMetadataValues>
                 <name>rightHandSideType</name>
                 <value>
-                    <stringValue>Reference</stringValue>
+                    <stringValue>String</stringValue>
                 </value>
             </processMetadataValues>
             <field>CMPL123_WF_Status__c</field>
             <value>
-                <elementReference>myVariable_current.CMPL123_WF_Status__c</elementReference>
+                <stringValue>Closed - Done</stringValue>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
@@ -2107,5 +2113,13 @@
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>CMPL123CME__Investigation__c</objectType>
+    </variables>
+    <variables>
+        <name>RecursiveCountVariable</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
     </variables>
 </Flow>

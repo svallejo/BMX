@@ -303,7 +303,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A3_0426679467</name>
+        <name>formula_3_myRule_1_A3_7675009640</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -314,7 +314,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A2_8216565767</name>
+        <name>formula_4_myRule_1_A2_4875548788</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -325,11 +325,11 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_5_myRule_1_A1_5263892265</name>
+        <name>formula_5_myRule_1_A1_9286985089</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
-    <interviewLabel>Investigation_Closed_With_5_Approvers-4_InterviewLabel</interviewLabel>
+    <interviewLabel>Investigation_Closed_With_5_Approvers-5_InterviewLabel</interviewLabel>
     <label>Investigation Closed With 5 Approvers</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -347,6 +347,12 @@
         <name>OldObjectVariable</name>
         <value>
             <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>RecursiveCountVariable</name>
+        <value>
+            <elementReference>RecursiveCountVariable</elementReference>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -434,7 +440,7 @@
             </processMetadataValues>
             <field>BMX_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_5_myRule_1_A1_5263892265</elementReference>
+                <elementReference>formula_5_myRule_1_A1_9286985089</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
@@ -566,7 +572,7 @@
             </processMetadataValues>
             <field>BMX_First_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_4_myRule_1_A2_8216565767</elementReference>
+                <elementReference>formula_4_myRule_1_A2_4875548788</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
@@ -698,7 +704,7 @@
             </processMetadataValues>
             <field>BMX_Oldest_investigation_completed_date__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A3_0426679467</elementReference>
+                <elementReference>formula_3_myRule_1_A3_7675009640</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Complaint__c</object>
@@ -1531,5 +1537,13 @@
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>CMPL123CME__Investigation__c</objectType>
+    </variables>
+    <variables>
+        <name>RecursiveCountVariable</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
     </variables>
 </Flow>
