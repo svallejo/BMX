@@ -6,7 +6,7 @@
  * @Last Modified By   : Jon Astemborski
  * @Last Modified On   : 1/15/2020, 5:06:28 PM
  * @Modification Log   : 
- * Ver       Date            Author      		    Modification
+ * Ver       Date            Author                 Modification
  * 1.0    1/14/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
 **/
 @IsTest
@@ -15,7 +15,9 @@ public class SapInterfaceHandlerTest {
     private static final String ESCAPED_SINGLE_QUOTE = '\'';
     @IsTest
     public static void transformSapProductInformation_IdIsCloned(){
-        CMPL123QMS__Change_Control__c cc = Testsetup.createChangeControl(true);
+        Id recordTypeId = (Id)Schema.SObjectType.CMPL123QMS__Change_Control__c.getRecordTypeInfosByName().get('CC Custom').getRecordTypeId();
+        CMPL123QMS__Change_Control__c cc = Testsetup.createCC(true, recordTypeId);
+        cc.Product_Impacted__c = 'Yes – Single Item Impacted';
         SapProductInformation productInformation = new SapProductInformation();
         productInformation.productItemNumber = 'test123';
         CMPL123QMS__Change_Control__c updatedCC = SapInterfaceHandler.transformSapProductInformation(cc, productInformation);
@@ -25,14 +27,17 @@ public class SapInterfaceHandlerTest {
 
     @IsTest
     public static void updateChangeControlWithProductInformation_updatedCC(){
-        CMPL123QMS__Change_Control__c cc = Testsetup.createChangeControl(false);
+        Id recordTypeId = (Id)Schema.SObjectType.CMPL123QMS__Change_Control__c.getRecordTypeInfosByName().get('CC Custom').getRecordTypeId();
+        CMPL123QMS__Change_Control__c cc = Testsetup.createCC(false, recordTypeId);
         cc.Product_Item_Number__c = 'test12345';
+        cc.Product_Impacted__c = 'Yes – Single Item Impacted';
         insert cc;
 
         SapProductInformation productInformation = new SapProductInformation();
         productInformation.productItemNumber = 'test123';
+        List<SapProductInformation> prodList = new List<SapProductInformation>{productInformation};
 
-        SapInterfaceHandler.updateChangeControlWithProductInformation(productInformation, cc.id);
+        SapInterfaceHandler.updateChangeControlWithProductInformation(prodList, cc.id);
         CMPL123QMS__Change_Control__c updatedCC = [select id, product_item_number__c from  CMPL123QMS__Change_Control__c where id=:cc.id];
         System.assertNotEquals('test12345', updatedCC.Product_Item_Number__c);
     }
@@ -51,8 +56,10 @@ public class SapInterfaceHandlerTest {
 
     @IsTest
     public static void updateChangeControlWithProductInformation_dmlFailureCC(){
-        CMPL123QMS__Change_Control__c cc = Testsetup.createChangeControl(false);
+        Id recordTypeId = (Id)Schema.SObjectType.CMPL123QMS__Change_Control__c.getRecordTypeInfosByName().get('CC Custom').getRecordTypeId();
+        CMPL123QMS__Change_Control__c cc = Testsetup.createCC(false, recordTypeId);
         cc.Product_Item_Number__c = 'test12345';
+        cc.Product_Impacted__c = 'Yes – Single Item Impacted';
         insert cc;
 
         SapProductInformation productInformation = new SapProductInformation();
@@ -64,7 +71,8 @@ public class SapInterfaceHandlerTest {
                 ' Pellentesque sit amet ipsum ante. Nulla facilisi. Suspendisse hendrerit mollis leo, ac pretium ligula dictum id. Quisque viverra gravida nunc tristique tincidunt. ' + 
                 'Sed ut ornare risus, a placerat velit.';
         try{
-            SapInterfaceHandler.updateChangeControlWithProductInformation(productInformation, cc.id);
+            List<SapProductInformation> prodList = new List<SapProductInformation>{productInformation};
+            SapInterfaceHandler.updateChangeControlWithProductInformation(prodList, cc.id);
         }
         catch(AuraHandledException e) {
             System.assert(e.getMessage().containsAny('STRING_TOO_LONG'));
