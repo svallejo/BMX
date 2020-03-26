@@ -7928,6 +7928,30 @@ For a device that may receive events over its entire service life, the ideal den
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>NB_ID_1__c</fullName>
+        <description>Notified body (NB) ID number(s)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Notified body (NB) ID number(s)</inlineHelpText>
+        <label>Notified Body ID 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NB_ID_2__c</fullName>
+        <description>Notified body (NB) ID number(s)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Notified body (NB) ID number(s)</inlineHelpText>
+        <label>Notified Body ID 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Submit_for_Review_Done_On__c</fullName>
         <externalId>false</externalId>
         <label>Submit for Review Done On</label>
@@ -8342,6 +8366,16 @@ For a device that may receive events over its entire service life, the ideal den
     </fieldSets>
     <fieldSets>
         <fullName>CMPL123CME__B2_3_DESCRIPTION_OF_DEVICE</fullName>
+        <availableFields>
+            <field>CMPL123CME__NB_ID_Number_1__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>true</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>CMPL123CME__NB_ID_Number_2__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
         <description>2.3 Description of device and commercial information.</description>
         <displayedFields>
             <field>CMPL123CME__Medical_Device_Name__c</field>
@@ -8449,12 +8483,12 @@ For a device that may receive events over its entire service life, the ideal den
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>CMPL123CME__NB_ID_Number_1__c</field>
-            <isFieldManaged>true</isFieldManaged>
+            <field>NB_ID_1__c</field>
+            <isFieldManaged>false</isFieldManaged>
             <isRequired>true</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>CMPL123CME__NB_ID_Number_2__c</field>
+            <field>NB_ID_2__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
