@@ -57,7 +57,7 @@
             <name>Extension_Request_Current_Due_Date_CC</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <formula>true</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
@@ -67,7 +67,7 @@
             <name>Update_Due_Date_CC</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>Extension_Request_Change_Control__c.CMPL123_WF_Action__c</field>
             <operation>equals</operation>

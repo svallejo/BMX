@@ -7,9 +7,9 @@
                 <stringValue>Extension_Request_Approval</stringValue>
             </value>
         </processMetadataValues>
-        <name>myRule_1_A1</name>
+        <name>myRule_3_A1</name>
         <label>Send email to approver</label>
-        <locationX>100</locationX>
+        <locationX>300</locationX>
         <locationY>200</locationY>
         <actionName>Extension_Request_Change_Control__c.Extension_Request_Approval</actionName>
         <actionType>emailAlert</actionType>
@@ -27,12 +27,15 @@
                 <stringValue>Extension_Request_Approved</stringValue>
             </value>
         </processMetadataValues>
-        <name>myRule_4_A1</name>
+        <name>myRule_6_A1</name>
         <label>Send Email to Extension Requester</label>
-        <locationX>400</locationX>
+        <locationX>600</locationX>
         <locationY>200</locationY>
         <actionName>Extension_Request_Change_Control__c.Extension_Request_Approved</actionName>
         <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>myRule_6_A2</targetReference>
+        </connector>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -41,16 +44,16 @@
         </inputParameters>
     </actionCalls>
     <decisions>
-        <name>isChangedDecision2_myRule_1_CMPL123_WF_Action_c</name>
-        <label>isChangedDecision2_myRule_1_CMPL123_WF_Action_c</label>
+        <name>isChangedDecision4_myRule_3_CMPL123_WF_Action_c</name>
+        <label>isChangedDecision4_myRule_3_CMPL123_WF_Action_c</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>isChangedDecision5_myRule_4_CMPL123_WF_Action_c</targetReference>
+            <targetReference>isChangedDecision7_myRule_6_CMPL123_WF_Action_c</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>isChangedRule_2_myRule_1_CMPL123_WF_Action_c</name>
+            <name>isChangedRule_4_myRule_3_CMPL123_WF_Action_c</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>myVariable_old</leftValueReference>
@@ -67,14 +70,14 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>isChangedDecision5_myRule_4_CMPL123_WF_Action_c</targetReference>
+                <targetReference>isChangedDecision7_myRule_6_CMPL123_WF_Action_c</targetReference>
             </connector>
-            <label>isChangedRule_2_myRule_1_CMPL123_WF_Action_c</label>
+            <label>isChangedRule_4_myRule_3_CMPL123_WF_Action_c</label>
         </rules>
     </decisions>
     <decisions>
-        <name>isChangedDecision5_myRule_4_CMPL123_WF_Action_c</name>
-        <label>isChangedDecision5_myRule_4_CMPL123_WF_Action_c</label>
+        <name>isChangedDecision7_myRule_6_CMPL123_WF_Action_c</name>
+        <label>isChangedDecision7_myRule_6_CMPL123_WF_Action_c</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
@@ -82,7 +85,7 @@
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>isChangedRule_5_myRule_4_CMPL123_WF_Action_c</name>
+            <name>isChangedRule_7_myRule_6_CMPL123_WF_Action_c</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>myVariable_old</leftValueReference>
@@ -101,7 +104,7 @@
             <connector>
                 <targetReference>myDecision</targetReference>
             </connector>
-            <label>isChangedRule_5_myRule_4_CMPL123_WF_Action_c</label>
+            <label>isChangedRule_7_myRule_6_CMPL123_WF_Action_c</label>
         </rules>
     </decisions>
     <decisions>
@@ -116,11 +119,42 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision3</targetReference>
+            <targetReference>myDecision2</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>New Record</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision5</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -178,14 +212,14 @@
                         <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>isChangedRule_2_myRule_1_CMPL123_WF_Action_c</leftValueReference>
+                <leftValueReference>isChangedRule_4_myRule_3_CMPL123_WF_Action_c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_1_A1</targetReference>
+                <targetReference>myRule_3_A1</targetReference>
             </connector>
             <label>Status in approval</label>
         </rules>
@@ -194,16 +228,16 @@
         <processMetadataValues>
             <name>index</name>
             <value>
-                <numberValue>1.0</numberValue>
+                <numberValue>2.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision3</name>
-        <label>myDecision3</label>
+        <name>myDecision5</name>
+        <label>myDecision5</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_4</name>
+            <name>myRule_6</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -261,19 +295,30 @@
                         <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>isChangedRule_5_myRule_4_CMPL123_WF_Action_c</leftValueReference>
+                <leftValueReference>isChangedRule_7_myRule_6_CMPL123_WF_Action_c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_4_A1</targetReference>
+                <targetReference>myRule_6_A1</targetReference>
             </connector>
             <label>Extension Request Approved</label>
         </rules>
     </decisions>
-    <interviewLabel>extension_request_Change_Control_Custom-1_InterviewLabel</interviewLabel>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>ISNEW()</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>extension_request_Change_Control_Custom-2_InterviewLabel</interviewLabel>
     <label>extension request Change Control Custom</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -300,7 +345,203 @@
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
-    <startElementReference>isChangedDecision2_myRule_1_CMPL123_WF_Action_c</startElementReference>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Extension_Request_Change_Control__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Update fields</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Current Due Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Current_Due_Date__c</field>
+            <value>
+                <elementReference>myVariable_current.Change_Control__r.Due_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Extension Requester</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Extension_Requester__c</field>
+            <value>
+                <elementReference>myVariable_current.CreatedById</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Extension_Request_Change_Control__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Extension_Request_Change_Control__c].Change Control</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_6_A2</name>
+        <label>Update CC Due Date</label>
+        <locationX>600</locationX>
+        <locationY>300</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Change_Control__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Due Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Due_Date__c</field>
+            <value>
+                <elementReference>myVariable_current.Proposed_Due_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CMPL123QMS__Change_Control__c</object>
+    </recordUpdates>
+    <startElementReference>isChangedDecision4_myRule_3_CMPL123_WF_Action_c</startElementReference>
     <status>Active</status>
     <variables>
         <name>myVariable_current</name>
