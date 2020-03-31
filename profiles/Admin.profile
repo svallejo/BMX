@@ -2324,6 +2324,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ContentDocumentLinkSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CreateAllChildSchedulableBatch</apexClass>
         <enabled>true</enabled>
     </classAccesses>
