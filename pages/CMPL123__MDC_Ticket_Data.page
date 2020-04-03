@@ -1,4 +1,7 @@
 <apex:page standardcontroller="CMPL123__MDC_Ticket__c" extensions="CMPL123.MDC_TicketController" >
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/css/mdc_affected_fields_table.css')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/css/audit_richtext_output.css')}"/>
+	
     <apex:pageBlock title="{!$Label.cmpl123__ticket_information}"  >
         <apex:pageBlockSection >
             <apex:outputField value="{!CMPL123__MDC_Ticket__c.Name}"/>
@@ -26,20 +29,22 @@
     <apex:pageMessage summary="{!$Label.cmpl123__mdc_all_ack_recieved}" severity="confirm" strength="2" rendered="{!OR(CMPL123__MDC_Ticket__c.CMPL123__All_Acks_Received__c, allAcksRecieved)}" />
 
     <apex:pageBlock title="{!$Label.cmpl123__mdc_affected_fields}">
-        <apex:pageBlockTable value="{!affectedFields}" var="entry">
-            <apex:column headerValue="{!$Label.cmpl123__mdc_field_name}"> {!entry.fn} </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_action}"> {!entry.action} </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_old_value}" >
-                    <apex:outputText value="{!entry.ov}"/>
-            </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_new_value}">
-                <apex:outputText value="{!entry.nv}" />
-            </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_user}"> {!entry.user} </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_date}"> {!entry.timestamp} </apex:column>
-            <apex:column headerValue="{!$Label.cmpl123__mdc_field_condition}">  {!entry.condition} </apex:column>
-            
-        </apex:pageBlockTable>
+         <apex:outputpanel layout="block" styleClass="mdc-report-table">
+            <apex:pageBlockTable value="{!affectedFields}" var="entry">
+                <apex:column headerValue="{!$Label.cmpl123__mdc_field_name}"> {!entry.fn} </apex:column>
+                <apex:column headerValue="{!$Label.cmpl123__mdc_action}"> {!entry.action} </apex:column>
+                <apex:column headerValue="{!$Label.cmpl123__mdc_old_value}" headerClass="mdc-column-width">
+                        <apex:outputText value="{!entry.ov}" styleClass="{! If(entry.fieldType == 'RICHTEXTAREA', 'audit-rich-text-output', '') }" escape="{! If(entry.fieldType == 'RICHTEXTAREA', false, true) }"/>
+                </apex:column>
+                <apex:column headerValue="{!$Label.cmpl123__mdc_new_value}" headerClass="mdc-column-width">
+                    <apex:outputText value="{!entry.nv}" styleClass="{! If(entry.fieldType == 'RICHTEXTAREA', 'audit-rich-text-output', '') }" escape="{! If(entry.fieldType == 'RICHTEXTAREA', false, true) }"/>
+                </apex:column>
+                <apex:column headerValue="{!$Label.cmpl123__mdc_user}"> {!entry.user} </apex:column>
+                <apex:column headerValue="{!$Label.cmpl123__mdc_date}"> {!entry.timestamp} </apex:column>
+                <apex:column headerValue="{!$Label.cmpl123__mdc_field_condition}"> {!entry.condition} </apex:column>
+                
+            </apex:pageBlockTable>
+        </apex:outputpanel> 
     </apex:pageBlock> 
         <!--
             SECURITY FALSE POSITIVE

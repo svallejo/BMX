@@ -37,7 +37,8 @@
 
         //On page load DOMContentLoaded function to call redirectToEMDRMedWatch() based on condition.
         document.addEventListener('DOMContentLoaded', function(){
-            if ({!!showPopup}) {
+            var showPopup = {!IF(showPopup, "true", "false")};
+            if (!showPopup) {
                 redirectToEMDRMedWatch();
             }
         })
@@ -63,10 +64,10 @@
         <apex:outputPanel rendered="{!showPopup}">
                 <apex:outputPanel styleClass="popupBg" layout="block" />
                 <apex:outputPanel styleClass="popup" layout="block">
-                    <b>{!$Label.cmpl123cme__cmplt_warning}: </b><br/><br/>
-                    {!$Label.cmpl123cme__cmplt_medwatch_print_message}: <br/><br/>
+                    <b>{!HTMLENCODE($Label.cmpl123cme__cmplt_warning)}: </b><br/><br/>
+                    {!HTMLENCODE($Label.cmpl123cme__cmplt_medwatch_print_message)}: <br/><br/>
                     <div style="font-size:10px;">
-                        <apex:outputText value="{!fieldsTruncated}" escape="false"/>
+                        <apex:outputText value="{!fieldsTruncated}"/>
                     </div> <br/><br/>
                     <div style="float:right;"><apex:commandButton value="{!$Label.cmpl123cme__cmplt_ok}" action="{!setRenderFormatAsPDF}" reRender="outText" oncomplete="redirectToEMDRMedWatch();"/>
                     </div>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Assessment --></label>
+        <name>CMPL123QMS__Assessment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To Me? --></label>
+        <name>CMPL123QMS__Assigned_To_Me__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To --></label>
+        <name>CMPL123QMS__Assigned_To__c</name>
+        <relationshipLabel><!-- Global Change Assessments (Assigned To) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Due Date --></label>
+        <name>CMPL123QMS__Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Global Change Control --></label>
+        <name>CMPL123QMS__Global_Change_Control__c</name>
+        <relationshipLabel><!-- Global Change Assessments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Impact --></label>
+        <name>CMPL123QMS__Impact__c</name>
+    </fields>
+    <fields>
+        <label><!-- Impacted Site --></label>
+        <name>CMPL123QMS__Impacted_Site__c</name>
+        <picklistValues>
+            <masterLabel>Site 1</masterLabel>
+            <translation><!-- Site 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Site 2</masterLabel>
+            <translation><!-- Site 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Site 3</masterLabel>
+            <translation><!-- Site 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Implement Local Change Control? --></label>
+        <name>CMPL123QMS__Implement_Local_Change_Control__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Local Change Control Owner --></label>
+        <name>CMPL123QMS__Local_Change_Control_Owner__c</name>
+        <relationshipLabel><!-- Global Change Assessments (Local Change Control Owner) --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Global Change Assessment Layout</layout>
+        <sections>
+            <label><!-- Assessment --></label>
+            <section>Assessment</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- Hidden --></label>
+            <section>Hidden</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Due Dates cannot be populated with a data in the past --></errorMessage>
+        <name>CMPL123QMS__Due_Date_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Local Change Control Owner is required when Implement Local Change Control? is populated with a value of Yes. --></errorMessage>
+        <name>CMPL123QMS__Local_Change_Control_Owner</name>
+    </validationRules>
+</CustomObjectTranslation>

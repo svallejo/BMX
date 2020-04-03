@@ -13,7 +13,7 @@
     </style>
 
     <script type="text/javascript">
-        var __sfdcSessionId = '{!GETSESSIONID()}';
+        var __sfdcSessionId = '{!JSENCODE(GETSESSIONID())}';
     </script>
 
     <apex:includeScript value="/soap/ajax/26.0/connection.js"/>
@@ -60,14 +60,18 @@
 
                 if (qtsArr.length > 0) {
                     Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.CMPL_123_QItems_Ext.setQts}',qtsArr,relatedId,function(result, event){
-                        if (event.status) {
+                        if (event.status && event.result === 'Success') {
                             //Fix supports for Lightning and Classic Console app.
                             if(lexUtil.isConsoleTheme()){
                                 lexUtil.refreshFocusedParentTab();
                             }
                             //conditions to navigate based on user experience
                             lexUtil.navigateByUserTheme(recordId, pageId);
+                        } else{
+                            alert(event.message);
+                            setSaveButtonAsActive(elementObj, true);
                         }
+
                     }, {escape:true});
                 } else {
                     $('#oneQt').css("display", "block");
@@ -168,7 +172,7 @@
         }
 
         function disableButton(elementObj) {
-            if (confirm('{!$Label.cmpl123cme__cmplt_are_you_sure}')) {
+            if (confirm('{!JSENCODE($Label.cmpl123cme__cmplt_are_you_sure)}')) {
                 setSaveButtonAsActive(elementObj, false);
                 return true;
             } else {
@@ -264,22 +268,22 @@
 
                                     <!-- Conditionally highlight comment box if required based on answers -->
                                     <script>
-                                        var answerVal = "{! tsk.Answer__c }".replace("'","").toLowerCase();
+                                        var answerVal = "{!JSENCODE(tsk.Answer__c)}".replace("'","").toLowerCase();
                                         
-                                        if ("{! tsk.Assessment_Comment_Required_Options__c }".toLowerCase().indexOf("all") > -1 && answerVal !== "") {
-                                            var classval = "."+"comments"+'{! tsk.Questions_Template_Item__c }';
+                                        if ("{!JSENCODE(tsk.Assessment_Comment_Required_Options__c)}".toLowerCase().indexOf("all") > -1 && answerVal !== "") {
+                                            var classval = "."+"comments"+'{!JSENCODE(tsk.Questions_Template_Item__c)}';
                                             var ele = $(classval);
                                             ele.attr('style', 'width:200px;border-color:red;');
                                         } else {
-                                            var assecSplit = "{! tsk.Assessment_Comment_Required_Options__c }".toLowerCase().replace("'","").split(',');
+                                            var assecSplit = "{!JSENCODE(tsk.Assessment_Comment_Required_Options__c)}".toLowerCase().replace("'","").split(',');
                                             for (i = 0; i < assecSplit.length; i++) {
                                                 if (assecSplit[i] === answerVal && assecSplit[i].trim() !== "") {
-                                                    var classval = "."+"comments"+'{! tsk.Questions_Template_Item__c }';
+                                                    var classval = "."+"comments"+'{!JSENCODE(tsk.Questions_Template_Item__c)}';
                                                     var ele = $(classval);
                                                     ele.attr('style', 'width:200px;border-color:red;');
                                                     break;
                                                 } else {
-                                                    var classval = "."+"comments"+'{! tsk.Questions_Template_Item__c }';
+                                                    var classval = "."+"comments"+'{!JSENCODE(tsk.Questions_Template_Item__c)}';
                                                     var ele = $(classval);
                                                     ele.attr('style', 'width:200px;');
                                                 }
@@ -307,7 +311,7 @@
                 <apex:pageBlock title="{! $Label.CMPL123CME__cmplt_add_questions }" >
                     <div>
                         <!-- Label for dropdown -->
-                        {! $Label.CMPL123CME__CMPLT_QUESTIONNAIRE_NAME }:&nbsp;&nbsp;
+                        {!HTMLENCODE($Label.CMPL123CME__CMPLT_QUESTIONNAIRE_NAME)}:&nbsp;&nbsp;
 
                         <!-- Dropdown -->
                         <apex:selectList value="{! selectedAssessmentTemplateName }" size="1" onchange="qtLst()" >
@@ -319,11 +323,11 @@
                     </div>
 
                     <!-- Message when attempting to save without selecting -->
-                    <div id="oneQt" style="display:none;color:red;" >{! $Label.CMPL123CME__CMPLT_SELECT_ATLEAST_ONE_QUESTION }</div>
+                    <div id="oneQt" style="display:none;color:red;" >{!HTMLENCODE($Label.CMPL123CME__CMPLT_SELECT_ATLEAST_ONE_QUESTION)}</div>
 
                     <!-- Button when nothing is selected -->
                     <apex:outputPanel rendered="{! !showQuestionsTable }" >
-                        <input type="button" value="{! $Label.CMPL123CME__CMPLT_CLOSE }" onclick="doCancel();" style="margin-left:200px;" class="btn"/>
+                        <input type="button" value="{!HTMLENCODE($Label.CMPL123CME__CMPLT_CLOSE)}" onclick="doCancel();" style="margin-left:200px;" class="btn"/>
                     </apex:outputPanel>
 
                     <!-- Table of questions available from template to be added -->
@@ -345,15 +349,15 @@
 
                             <!-- Buttons for popup -->
                             <apex:pageBlockButtons location="bottom" >
-                                <input type="button" value="{! $Label.CMPL123CME__cmplt_save }" onclick="checkQt(this);" class="btn"/>
-                                <input type="button" value="{! $Label.CMPL123CME__CMPLT_CANCEL }" onclick="doCancel();" class="btn"/>
+                                <input type="button" value="{!HTMLENCODE($Label.CMPL123CME__cmplt_save)}" onclick="checkQt(this);" class="btn"/>
+                                <input type="button" value="{!HTMLENCODE($Label.CMPL123CME__CMPLT_CANCEL)}" onclick="doCancel();" class="btn"/>
                             </apex:pageBlockButtons>
                         </apex:pageBlock>
 
                         <apex:pageBlock rendered="{! IF(availableAssessmentTemplateQuestions != null && availableAssessmentTemplateQuestions.size == 0,true,false) }">
-                            <div style="text-align:center;">{! $Label.CMPL123CME__CMPLT_NO_QUESTIONS_FOUND_TO_ADD }</div>
+                            <div style="text-align:center;">{!HTMLENCODE($Label.CMPL123CME__CMPLT_NO_QUESTIONS_FOUND_TO_ADD)}</div>
                             <br/>
-                            <input type="button" value="{! $Label.CMPL123CME__CMPLT_CLOSE }" onclick="doCancel();" style="margin-left:200px;" class="btn"/>
+                            <input type="button" value="{!HTMLENCODE($Label.CMPL123CME__CMPLT_CLOSE)}" onclick="doCancel();" style="margin-left:200px;" class="btn"/>
                         </apex:pageBlock>
                     </apex:outputPanel>
                 </apex:pageBlock>

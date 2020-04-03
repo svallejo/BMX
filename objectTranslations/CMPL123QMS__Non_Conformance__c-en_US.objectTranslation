@@ -20,6 +20,18 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Additional Action(s) Required? --></label>
+        <name>CMPL123QMS__Additional_Action_s_Required__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Business Risk --></label>
         <name>CMPL123QMS__Business_Risk__c</name>
         <picklistValues>
@@ -64,6 +76,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Date Initiated --></label>
+        <name>CMPL123QMS__Date_Initiated__c</name>
+    </fields>
+    <fields>
         <label><!-- Date of Occurence --></label>
         <name>CMPL123QMS__Date_of_Occurence__c</name>
     </fields>
@@ -84,8 +100,36 @@
         <name>CMPL123QMS__Description__c</name>
     </fields>
     <fields>
+        <label><!-- Detectability --></label>
+        <name>CMPL123QMS__Detectability__c</name>
+        <picklistValues>
+            <masterLabel>Can be Detected</masterLabel>
+            <translation><!-- Can be Detected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Easy to Detect</masterLabel>
+            <translation><!-- Easy to Detect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undetectable</masterLabel>
+            <translation><!-- Undetectable --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Disposition Description --></label>
         <name>CMPL123QMS__Disposition_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Changes Required? --></label>
+        <name>CMPL123QMS__Document_Changes_Required__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Due Date --></label>
@@ -144,8 +188,50 @@
         <name>CMPL123QMS__Investigation_Summary__c</name>
     </fields>
     <fields>
+        <label><!-- Justification for No Additional Actions --></label>
+        <name>CMPL123QMS__Justification_for_No_Additional_Actions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Justification for No Investigation --></label>
+        <name>CMPL123QMS__Justification_for_No_Investigation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Likelihood of Occurrence --></label>
+        <name>CMPL123QMS__Likelihood_of_Occurrence__c</name>
+        <picklistValues>
+            <masterLabel>Highly Likely</masterLabel>
+            <translation><!-- Highly Likely --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Highly Unlikely</masterLabel>
+            <translation><!-- Highly Unlikely --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Likely</masterLabel>
+            <translation><!-- Likely --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unlikely</masterLabel>
+            <translation><!-- Unlikely --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Location --></label>
         <name>CMPL123QMS__Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nonconformance Date --></label>
+        <name>CMPL123QMS__Nonconformance_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nonconforming Material --></label>
+        <name>CMPL123QMS__Nonconforming_Material__c</name>
+        <relationshipLabel><!-- Non Conformances --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Nonconforming Product --></label>
+        <name>CMPL123QMS__Nonconforming_Product__c</name>
+        <relationshipLabel><!-- Non Conformances --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Place Identified --></label>
@@ -160,12 +246,32 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Potential NC Product in Field? --></label>
+        <name>CMPL123QMS__Potential_NC_Product_in_Field__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Probability Measure --></label>
         <name>CMPL123QMS__Probability_Measure__c</name>
         <picklistValues>
             <masterLabel>Other</masterLabel>
             <translation><!-- Other --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Process Name --></label>
+        <name>CMPL123QMS__Process_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product/Material --></label>
+        <name>CMPL123QMS__Product_Material__c</name>
     </fields>
     <fields>
         <label><!-- Quality Approval By --></label>
@@ -175,6 +281,10 @@
     <fields>
         <label><!-- Quality Approval On --></label>
         <name>CMPL123QMS__Quality_Approval_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- RPN --></label>
+        <name>CMPL123QMS__RPN_Score__c</name>
     </fields>
     <fields>
         <label><!-- Related CAPA --></label>
@@ -187,6 +297,26 @@
         <relationshipLabel><!-- Non Conformances --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Risk Category --></label>
+        <name>CMPL123QMS__Risk_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Risk Flag --></label>
+        <name>CMPL123QMS__Risk_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- SCAR Required? --></label>
+        <name>CMPL123QMS__SCAR_Required__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Severity Measure --></label>
         <name>CMPL123QMS__Severity_Measure__c</name>
         <picklistValues>
@@ -195,12 +325,57 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Severity --></label>
+        <name>CMPL123QMS__Severity__c</name>
+        <picklistValues>
+            <masterLabel>Critical</masterLabel>
+            <translation><!-- Critical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Major</masterLabel>
+            <translation><!-- Major --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Minor</masterLabel>
+            <translation><!-- Minor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Negligible</masterLabel>
+            <translation><!-- Negligible --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Short Description --></label>
         <name>CMPL123QMS__Short_Description__c</name>
     </fields>
     <fields>
+        <label><!-- Site --></label>
+        <name>CMPL123QMS__Site__c</name>
+        <picklistValues>
+            <masterLabel>Site 1</masterLabel>
+            <translation><!-- Site 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Site 2</masterLabel>
+            <translation><!-- Site 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Site 3</masterLabel>
+            <translation><!-- Site 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Site 4</masterLabel>
+            <translation><!-- Site 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Supplier Contact Person --></label>
         <name>CMPL123QMS__Supplier_Contact_Person__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supplier Site --></label>
+        <name>CMPL123QMS__Supplier_Site__c</name>
+        <relationshipLabel><!-- Non Conformances --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Type --></label>
@@ -229,4 +404,113 @@
             <section>INVESTIGATION</section>
         </sections>
     </layouts>
+    <layouts>
+        <layout>Nonconformance - Material</layout>
+        <sections>
+            <label><!-- Additional Action Determination --></label>
+            <section>Additional Action Determination</section>
+        </sections>
+        <sections>
+            <label><!-- Closure --></label>
+            <section>Closure</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- Nonconformance Scope --></label>
+            <section>Nonconformance Scope</section>
+        </sections>
+        <sections>
+            <label><!-- Risk Assessment --></label>
+            <section>Risk Assessment</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Process Nonconformance</layout>
+        <sections>
+            <label><!-- Additional Action Determination --></label>
+            <section>Additional Action Determination</section>
+        </sections>
+        <sections>
+            <label><!-- Closure --></label>
+            <section>Closure</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- Nonconformance Scope --></label>
+            <section>Nonconformance Scope</section>
+        </sections>
+        <sections>
+            <label><!-- Risk Assessment --></label>
+            <section>Risk Assessment</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Product Nonconformance</layout>
+        <sections>
+            <label><!-- Additional Action Determination --></label>
+            <section>Additional Action Determination</section>
+        </sections>
+        <sections>
+            <label><!-- Closure --></label>
+            <section>Closure</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- Nonconformance Scope --></label>
+            <section>Nonconformance Scope</section>
+        </sections>
+        <sections>
+            <label><!-- Risk Assessment --></label>
+            <section>Risk Assessment</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Material Nonconformance --></label>
+        <name>CMPL123QMS__Material_Nonconformance</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Process Nonconformance --></label>
+        <name>CMPL123QMS__Process_Nonconformance</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Product Nonconformance --></label>
+        <name>CMPL123QMS__Product_Nonconformance</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- The Due Date field cannot be populated with a date in the past. --></errorMessage>
+        <name>CMPL123QMS__Validation_for_Due_Date</name>
+    </validationRules>
 </CustomObjectTranslation>

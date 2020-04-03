@@ -43,7 +43,7 @@ global class EMDRController {
 
     }
     @RemoteAction
-    global static String complaintCodeList(String type, String filter) {
+    global static String complaintCodeList(String complaintCodeType, String complaintCodeNameFilter) {
         return null;
     }
     @RemoteAction
@@ -69,7 +69,7 @@ global class EMDRController {
         return null;
     }
     @RemoteAction
-    global static String getLookupFields(String fieldApi, String name) {
+    global static String getLookupFields(String lookupfieldApiName, String recordName) {
         return null;
     }
     global static String getRelatedList(String recordTypeId) {

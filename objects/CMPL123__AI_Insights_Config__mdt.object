@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CMPL123__Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Only 3 insights should be active per record</inlineHelpText>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Criteria__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Criteria</label>
+        <metadataRelationshipControllingField>CMPL123__AI_Insights_Config__mdt.CMPL123__Source_Object__c</metadataRelationshipControllingField>
+        <referenceTo>FieldDefinition</referenceTo>
+        <relationshipLabel>AI_Insights_Config</relationshipLabel>
+        <relationshipName>AI_Insights_Config</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Insight_Template_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Insight Template ID</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Operator__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Operator</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal To</label>
+                </value>
+                <value>
+                    <fullName>Not Equal To</fullName>
+                    <default>false</default>
+                    <label>Not Equal To</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Order__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Order runs from lowest to highest.</inlineHelpText>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>1</scale>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Record_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Please specify the Record Type Name.</inlineHelpText>
+        <label>Record Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Result__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Result</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Source_Object__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Source Object</label>
+        <referenceTo>EntityDefinition</referenceTo>
+        <relationshipLabel>AI_Insights_Config</relationshipLabel>
+        <relationshipName>AI_Insights_Config</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <label>AI Insights Config</label>
+    <pluralLabel>AI Insights Config</pluralLabel>
+    <validationRules>
+        <fullName>CMPL123__Allow_Only_Picklist_Fields_In_Criteria</fullName>
+        <active>true</active>
+        <description>It should allow only picklist OR multi-picklist type in criteria field.</description>
+        <errorConditionFormula>IF( !ISBLANK(CMPL123__Criteria__c),
+!CONTAINS(CMPL123__Criteria__r.DataType, 'Picklist'),
+FALSE)</errorConditionFormula>
+        <errorDisplayField>CMPL123__Criteria__c</errorDisplayField>
+        <errorMessage>The Criteria Field is limited to picklist or multi-picklist fields only.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123__Check_Criteria_If_Secondary_Populated</fullName>
+        <active>true</active>
+        <description>A Criteria Field value must be specified if any secondary criteria is populated.</description>
+        <errorConditionFormula>IF( ISBLANK(CMPL123__Criteria__c),
+OR( !ISBLANK(TEXT(CMPL123__Operator__c)),
+!ISBLANK(CMPL123__Result__c)),
+FALSE)</errorConditionFormula>
+        <errorDisplayField>CMPL123__Criteria__c</errorDisplayField>
+        <errorMessage>A Criteria Field must be specified if any secondary criteria is populated.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123__Check_Operator_If_Secondary_Populated</fullName>
+        <active>true</active>
+        <description>A Operator field value must be specified if any secondary criteria is populated.</description>
+        <errorConditionFormula>IF( ISBLANK(TEXT(CMPL123__Operator__c)),
+OR( !ISBLANK(CMPL123__Result__c),
+!ISBLANK(CMPL123__Criteria__c)),
+FALSE)</errorConditionFormula>
+        <errorDisplayField>CMPL123__Operator__c</errorDisplayField>
+        <errorMessage>An Operator must be specified if any secondary criteria is populated.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123__Check_Result_If_Secondary_Populated</fullName>
+        <active>true</active>
+        <description>A Result field value must be specified if any secondary criteria is populated.</description>
+        <errorConditionFormula>IF( ISBLANK(CMPL123__Result__c),
+OR( !ISBLANK(TEXT(CMPL123__Operator__c)),
+!ISBLANK(CMPL123__Criteria__c)),
+FALSE)</errorConditionFormula>
+        <errorDisplayField>CMPL123__Result__c</errorDisplayField>
+        <errorMessage>A Result Value must be specified if any secondary criteria is populated.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

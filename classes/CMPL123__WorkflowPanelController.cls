@@ -65,6 +65,10 @@ global class WorkflowPanelController {
         return null;
     }
     @RemoteAction
+    global static String performWorkflowAction(String recordId, String actionId, String stepId, String comment, String token) {
+        return null;
+    }
+    @RemoteAction
     global static String remotelyHandleActions(String recordId, String stepId, String comment) {
         return null;
     }

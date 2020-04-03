@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Quality Event</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quality Events</value>
+    </caseValues>
     <fields>
         <help><!-- Check this box only after completing the Action --></help>
         <label><!-- Action Completed --></label>
@@ -184,6 +192,11 @@
     <fields>
         <label><!-- Location --></label>
         <name>CMPL123QMS__Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- OOS --></label>
+        <name>CMPL123QMS__OOS__c</name>
+        <relationshipLabel><!-- Quality Events --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Place Identified --></label>
@@ -538,16 +551,6 @@
         <name>Supervisor__c</name>
         <relationshipLabel><!-- Quality Events (Supervisor) --></relationshipLabel>
     </fields>
-    <caseValues>
-        <plural>false</plural>
-        <value>Quality Event</value>
-    </caseValues>
-    <caseValues>
-        <plural>true</plural>
-        <value>Quality Events</value>
-    </caseValues>
-    <nameFieldLabel>Quality Event No</nameFieldLabel>
-    <startsWith>Consonant</startsWith>
     <layouts>
         <layout>Deviation Layout</layout>
         <sections>
@@ -567,6 +570,8 @@
             <section>Risk Analysis</section>
         </sections>
     </layouts>
+    <nameFieldLabel>Quality Event No</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- If Action Required is yes? Check the box Action Completed, If action Completed is No then select Submit Final Review - No Action Required --></errorMessage>
         <name>Action_Completed</name>

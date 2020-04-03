@@ -15,7 +15,13 @@ global class AuditHistoryEntry {
     global String comments {
         get;
     }
+    global String createdByUserName {
+        get;
+    }
     global Datetime datePosted {
+        get;
+    }
+    global Boolean eSignApplied {
         get;
     }
     global List<CMPL123.AuditHistoryEntry.FieldValueChange> fieldValueChanges {
@@ -31,6 +37,12 @@ global class AuditHistoryEntry {
         get;
     }
     global AuditHistoryEntry(String relatedRecordId, Datetime datePosted, Id activityTypeId, Id responsibleUserId, String application, String comments, String summary, List<CMPL123.AuditHistoryEntry.FieldValueChange> fieldValueChanges) {
+
+    }
+    global AuditHistoryEntry(String relatedRecordId, Datetime datePosted, Id activityTypeId, Id responsibleUserId, String application, String comments, String summary, Boolean eSignApplied, List<CMPL123.AuditHistoryEntry.FieldValueChange> fieldValueChanges) {
+
+    }
+    global AuditHistoryEntry(String relatedRecordId, Datetime datePosted, Id activityTypeId, Id responsibleUserId, String application, String comments, String summary, Boolean eSignApplied, String createdByUserName, List<CMPL123.AuditHistoryEntry.FieldValueChange> fieldValueChanges) {
 
     }
     global Boolean equals(Object obj) {

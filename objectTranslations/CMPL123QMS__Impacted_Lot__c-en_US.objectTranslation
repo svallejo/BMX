@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Action Created? --></label>
+        <name>CMPL123QMS__Action_Created__c</name>
+    </fields>
+    <fields>
+        <label><!-- Action Created for Return? --></label>
+        <name>CMPL123QMS__Action_Created_for_Return__c</name>
+    </fields>
+    <fields>
+        <label><!-- Action Created for Rework? --></label>
+        <name>CMPL123QMS__Action_Created_for_Rework__c</name>
+    </fields>
+    <fields>
+        <label><!-- Action Created for Scrap? --></label>
+        <name>CMPL123QMS__Action_Created_for_Scrap__c</name>
+    </fields>
+    <fields>
+        <label><!-- Conforming Qty --></label>
+        <name>CMPL123QMS__Conforming_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Visual indicator of the disposition status. Red means no disposition quantities are recorded, Yellow means not all quantities recorded, and Green means all quantities are recorded. --></help>
+        <label><!-- Disposition Status Flag --></label>
+        <name>CMPL123QMS__Disposition_Status_Flag__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates whether all of the Lot has been accounted for in the related lot disposition records. A status of &quot;Over&quot; indicates more product has been dispositioned than is part of the Lot. --></help>
+        <label><!-- Disposition Status --></label>
+        <name>CMPL123QMS__Disposition_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disposition --></label>
+        <name>CMPL123QMS__Disposition__c</name>
+        <picklistValues>
+            <masterLabel>Conforming</masterLabel>
+            <translation><!-- Conforming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recall</masterLabel>
+            <translation><!-- Recall --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Return to Supplier</masterLabel>
+            <translation><!-- Return to Supplier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rework</masterLabel>
+            <translation><!-- Rework --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scrap</masterLabel>
+            <translation><!-- Scrap --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use As Is</masterLabel>
+            <translation><!-- Use As Is --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Lot Number --></label>
+        <name>CMPL123QMS__Lot_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lot Qty UOM --></label>
+        <name>CMPL123QMS__Lot_Qty_UOM__c</name>
+        <picklistValues>
+            <masterLabel>Box</masterLabel>
+            <translation><!-- Box --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Each</masterLabel>
+            <translation><!-- Each --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pallet</masterLabel>
+            <translation><!-- Pallet --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Lot Qty --></label>
+        <name>CMPL123QMS__Lot_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Material --></label>
+        <name>CMPL123QMS__Material__c</name>
+        <relationshipLabel><!-- Impacted Lots --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Non Conformance --></label>
+        <name>CMPL123QMS__Non_Conformance__c</name>
+        <relationshipLabel><!-- Impacted Lots --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>CMPL123QMS__Product__c</name>
+        <relationshipLabel><!-- Impacted Lots --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Recall Qty --></label>
+        <name>CMPL123QMS__Recall_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Return To Supplier Qty --></label>
+        <name>CMPL123QMS__Return_To_Supplier_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rework Qty --></label>
+        <name>CMPL123QMS__Rework_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scrap Qty --></label>
+        <name>CMPL123QMS__Scrap_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Disposition Qty --></label>
+        <name>CMPL123QMS__Total_Disposition_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Use As Is Qty --></label>
+        <name>CMPL123QMS__Use_As_Is_Qty__c</name>
+    </fields>
+    <layouts>
+        <layout>Impacted Lot Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Disposition Summary --></label>
+            <section>Disposition Summary</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- You’ve entered more Disposition Quantity than the Total Quantity for this Lot. Check your Dispositions Quantities and update them accordingly. --></errorMessage>
+        <name>CMPL123QMS__Prevent_Dispo_of_Too_Much_Qty</name>
+    </validationRules>
+</CustomObjectTranslation>

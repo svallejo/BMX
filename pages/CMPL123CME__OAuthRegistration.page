@@ -51,7 +51,7 @@
                     </apex:selectList> 
                 </apex:pageBlockSectionItem>
             </apex:pageBlockSection>
-            <apex:pageBlockSection columns="1" rendered="{!IF(showOrgDetail == true && registrationType == 'type1',true,false)}" collapsible="false" title="Username & password registration"> 
+            <apex:pageBlockSection columns="1" rendered="{!IF(registrationType == 'type1',true,false)}" collapsible="false" title="{!$Label.cmpl123cme__cmplt_registration_title}"> 
                 <apex:pageMessages />
                     <apex:pageBlockSectionItem >
                         <apex:outputLabel >User Name</apex:outputLabel>

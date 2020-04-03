@@ -1,13 +1,15 @@
 <apex:page controller="CMPL123CME.ComplaintCodeLookupController" showHeader="false" sidebar="false" >
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery/jquery.js' )}" />
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery/jquery-ui.js' )}" />
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery-ui/external/jquery/jquery.js' )}" />
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery-ui/jquery-ui.min.js' )}" />
     <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/jquery.dynatree.js' )}" /> 
      <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__Keyboard)}" /> 
     <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/skin/ui.dynatree.css')}" /> 
     <!-- JS supports for Lightning Experience navigations -->
     <apex:includeScript value="/support/console/26.0/integration.js"/>
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
-    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/css/jquery-ui-1.12.1.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery-ui/jquery-ui.min.css' )}" />
+    <apex:includeScript value="{!$Resource.CMPL123CME__SecureFilters}"/>
+
     <style>
         .ui-dialog{z-index:1;}.actionLink {color: #015BA7;text-decoration: none;font-weight: normal;}
         .form-input{background:white;border: 1px solid  #CCC;border-radius:1px;box-shadow: 0 0 5px #CCC;padding: 8px 27px 8px 10px;width:350px;outline:none}
@@ -20,7 +22,13 @@
         .loadingLayer{  background-color:#F5F5F5;width:150px;height:50px;position:relative;z-index:3;border: 1px solid #E3E3E3;top:50px;left:200px;border-radius:8px;}       
     </style>
     <script>
-        var imageType = {"hlgt":"URL(/resource/CMPL123CME__TreeStructure/image/hlgt.png)","hlt":"URL(/resource/CMPL123CME__TreeStructure/image/hlt.png)","llt":"URL(/resource/CMPL123CME__TreeStructure/image/llt.png)","pt":"URL(/resource/CMPL123CME__TreeStructure/image/pt.png)","soc":"URL(/resource/CMPL123CME__TreeStructure/image/soc.png)"};
+        var imageType = {
+            "hlgt":"URL({!URLFOR($Resource.TreeStructure, 'image/hlgt.png')})",
+            "hlt":"URL({!URLFOR($Resource.TreeStructure, 'image/hlt.png')})",
+            "llt":"URL({!URLFOR($Resource.TreeStructure, 'image/llt.png')})",
+            "pt":"URL({!URLFOR($Resource.TreeStructure, 'image/pt.png')})",
+            "soc":"URL({!URLFOR($Resource.TreeStructure, 'image/soc.png')})"
+        };
         var jobtype;var selectedComplCodeId='';var recordId='';
         var subTypeMap = new Object(); 
         var fieldApi;var objApiName;var fieldType; var win;      
@@ -41,10 +49,10 @@
                   $(".expandAll").hide();
             });
             if(jobtype.length >0){
-                $(".ui-dialog-title").html(jobtype +"&nbsp;"+"{!$Label.CMPL123CME__CMPLT_SEARCH1}");
+                $(".ui-dialog-title").html(jobtype +"&nbsp;"+"{!JSENCODE($Label.CMPL123CME__CMPLT_SEARCH1)}");
                 getSearchResult(jobtype);
             }else{
-                $(".ui-dialog-title").html("{!$Label.CMPL123CME__CMPLT_SEARCH_CODE}");
+                $(".ui-dialog-title").html("{!JSENCODE($Label.CMPL123CME__CMPLT_SEARCH_CODE)}");
                 createCodeTypeSelectOption();
             }
            (recordId.length == 0 || fieldApi.length == 0)?$(".ui-dialog-buttonset").find("button")[0].style.display = "none":$(".ui-dialog-buttonset").find("button")[0].style.display = "inline";
@@ -54,18 +62,18 @@
         
         
         function createCodeTypeSelectOption(){
-                var mdrType = JSON.parse('{!mdrTypes}');
-                var select ="<select id='codeType' style='padding:0.5%;width:250px;'><option value=''>--{!$Label.CMPL123CME__CMPLT_SELECT}--</option>";
+                var mdrType = JSON.parse('{!JSENCODE(mdrTypes)}');
+                var select ="<select id='codeType' style='padding:0.5%;width:250px;'><option value=''>--{!JSENCODE($Label.CMPL123CME__CMPLT_SELECT)}--</option>";
                 for(var key=0;key< mdrType.length;key++){
                     select += "<option>"+mdrType[key]+"</option>";
                 }
                 select +="</select>";
-                $(".divType").append("<div style='padding:0.5%;'><label style='font-weight:bold;'>{!$Label.CMPL123CME__CMPLT_CODE_TYPE}</label>&nbsp;&nbsp;"+select+"</div>");
+                $(".divType").append("<div style='padding:0.5%;'><label style='font-weight:bold;'>{!JSENCODE($Label.CMPL123CME__CMPLT_CODE_TYPE)}</label>&nbsp;&nbsp;"+select+"</div>");
                 $("[id$=codeType]").change(function(){
                     $(".ui-menu-item").css('display','none');
                     $("[id$='errorContent']").hide();
                     $("[id$=selectedCode]").val('');
-                    $(".ui-dialog-title").html($(this).val()+"&nbsp;"+"{!$Label.CMPL123CME__CMPLT_SEARCH1}");
+                    $(".ui-dialog-title").html($(this).val()+"&nbsp;"+"{!JSENCODE($Label.CMPL123CME__CMPLT_SEARCH1)}");
                         if($(this).val().length >0){
                             jobtype = $(this).val();
                             getSearchResult($(this).val());
@@ -84,10 +92,10 @@
                 closeOnEscape: false,
                 modal:true,
                 buttons: {
-                    "{!$Label.CMPL123CME__CMPLT_SAVE}": function() {
+                    "{!JSENCODE($Label.CMPL123CME__CMPLT_SAVE)}": function() {
                         saveRecord();
                     },
-                    "{!$Label.CMPL123CME__CMPLT_CANCEL}":function() {
+                    "{!JSENCODE($Label.CMPL123CME__CMPLT_CANCEL)}":function() {
                         //close function will support for Classic, Console app and Lightning experience page navigation.
                         close();
                     },   
@@ -127,7 +135,7 @@
                     }else{
                         $(".loadingLayer").hide();
                         $("[id$=errorContent]").empty();
-                        var error ='<span style="font-size:14px;color:red;">{!$Label.CMPL123CME__CMPLT_NO} '+obj+' {!$Label.CMPL123CME__CMPLT_FOUND}</span>';
+                        var error ='<span style="font-size:14px;color:red;">{!JSENCODE($Label.CMPL123CME__CMPLT_NO)} '+obj+' {!JSENCODE($Label.CMPL123CME__CMPLT_FOUND)}</span>';
                         $("[id$=errorContent]").append(error);
                         $("[id$=errorContent]").show();
                          $(".loadingLayer").hide();
@@ -161,10 +169,10 @@
                     },
                     open:function(event,ui){
                         $(".ui-menu-item").hover(function(){
-                           if(codeMapJson[$(this).html()].split('~')[2] == 'null')
+                           if(codeMapJson[$(this).text()].split('~')[2] == 'null')
                                 $(this).attr("title","");
                              else 
-                                $(this).attr("title",codeMapJson[$(this).html()].split('~')[2]);
+                                $(this).attr("title",codeMapJson[$(this).text()].split('~')[2]);
                         });
                     },
                     minLength: 0
@@ -202,8 +210,8 @@
         }
         
         
-        function createTree(result){    
-            $("#tree").empty(); 
+        function createTree(result){
+            $("#tree").empty();
             $("#tree").dynatree({
                 children: result,
                 onActivate: function(node) {
@@ -258,11 +266,11 @@
         <div id="dialogContent" style="display:none;">
            <input type="hidden" autofocus="autofocus" />
             <div>
-            <input  type="text" placeholder="{!$Label.CMPL123CME__CMPLT_TYPE_PARTIAL_CODE_OR_DESCRIPTION}" style="width:475px;" id="selectedCode" class="form-input ui-autocomplete-loading" onkeyup="getComplaintCodeList($(this));" />
-            <input type="button"  class="btn find" value="{!$Label.CMPL123CME__CMPLT_FIND}"  style="display:none;" onclick="searchCode();"/>
+            <input  type="text" placeholder="{!HTMLENCODE($Label.CMPL123CME__CMPLT_TYPE_PARTIAL_CODE_OR_DESCRIPTION)}" style="width:475px;" id="selectedCode" class="form-input ui-autocomplete-loading" onkeyup="getComplaintCodeList($(this));" />
+            <input type="button"  class="btn find" value="{!HTMLENCODE($Label.CMPL123CME__CMPLT_FIND)}"  style="display:none;" onclick="searchCode();"/>
             </div>
             <div  class="expandAll" style="padding:1%;display:none;">
-                <span style="font-size:12px;color:red;;">{!$Label.CMPL123CME__CMPLT_NO_CODE_SELECTED}</span>
+                <span style="font-size:12px;color:red;;">{!HTMLENCODE($Label.CMPL123CME__CMPLT_NO_CODE_SELECTED)}</span>
             </div>
             <div id="tree" class="typeCodeDiv" style="padding:1%;"></div> 
         </div>

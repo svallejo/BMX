@@ -6,6 +6,7 @@
             <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/Angular/js/Angular.js')}"/>
             <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/Angular/js/angular-drag-and-drop-lists.js')}"/>
             <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/Angular/js/BootstrapAngular.js')}"/>
+			<apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
             
              <style>
                     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -452,10 +453,10 @@
                 }
 
                 if(JSON.parse(selectedObjectApi).Name.length >0){
-                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.getAllFields}',JSON.parse(selectedObjectApi).Name,function(result,event){
+                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.getAllFieldData}',JSON.parse(selectedObjectApi).Name,function(result,event){
                         if(event.status){
-                            $scope.selectedObjectRecordId = result.split("~")[1].length >0 ? result.split("~")[1] :'';
-                            $scope.relatedOrObjectList= JSON.parse(htmlDecode(result.split("~")[0]));
+                            $scope.selectedObjectRecordId = result[1];
+                            $scope.relatedOrObjectList= JSON.parse(htmlDecode(result[0]));
                             $scope.fieldsList = $filter('orderBy')($scope.relatedOrObjectList, 'label', false)
                             $scope.fieldsList = filteResult($scope.fieldsList,"Fields");
                             $scope.typeAheadList = $scope.fieldsList;
@@ -553,7 +554,7 @@
                 };
 
                 $scope.openPreviewAs = function(templateId, recordId){
-                    window.open("/apex/CMPL123__X123PrintReport?tid="+templateId+"&rid="+recordId,"","width=800,height=620,top=40,left=300");
+                    window.open("/apex/CMPL123__X123PrintReport?tid="+templateId+"&rid="+recordId+"&isClassic="+!lexUtil.inLEX(),"","width=800,height=620,top=40,left=300");
                 };
 
                 // $scope.fieldLabel = false;

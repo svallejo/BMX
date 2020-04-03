@@ -139,6 +139,19 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>CMPL123__Activity_Type__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -205,6 +218,19 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>CMPL123__Created_By_Username__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Created By Username</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Created By Username</inlineHelpText>
+        <label>Created By Username</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CMPL123__Date_Posted__c</fullName>
         <deprecated>false</deprecated>
         <description>Date and time of the entry being created</description>
@@ -213,6 +239,17 @@
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__ESign_Applied__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Is E-Sign Applied?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked, if E-Sign Applied.</inlineHelpText>
+        <label>E-Sign Applied?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>CMPL123__Related_Record_ID__c</fullName>
@@ -246,20 +283,15 @@
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <enableActivities>false</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>Audit History</label>
+    <listViews>
+        <fullName>CMPL123__All</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123__Related_Record_ID__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <displayFormat>AH-{0000}</displayFormat>
         <label>Audit History Name</label>
@@ -269,12 +301,4 @@
     <searchLayouts />
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
-    <listViews>
-        <fullName>CMPL123__All</fullName>
-        <columns>NAME</columns>
-        <columns>CMPL123__Related_Record_ID__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-        <language>en_US</language>
-    </listViews>
 </CustomObject>

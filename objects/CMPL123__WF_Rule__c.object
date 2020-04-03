@@ -139,6 +139,21 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Workflow Rules</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>CMPL123__Description__c</fullName>
         <deprecated>false</deprecated>
@@ -192,6 +207,7 @@
     <fields>
         <fullName>CMPL123__Target_Object_API_Name__c</fullName>
         <deprecated>false</deprecated>
+        <description>Checked if Target Object field contains value in parenthesis, returns the specified number of characters from the beginning of a text string</description>
         <externalId>false</externalId>
         <formula>IF( CONTAINS(CMPL123__Target_Object__c, "("), 
   LEFT(CMPL123__Target_Object__c, FIND("(", CMPL123__Target_Object__c)-1),
@@ -230,22 +246,18 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <description>Workflow Rules</description>
-    <enableActivities>false</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableEnhancedLookup>false</enableEnhancedLookup>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>Workflow Rule</label>
+    <listViews>
+        <fullName>CMPL123__All</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123__Description__c</columns>
+        <columns>CMPL123__Record_Type__c</columns>
+        <columns>CMPL123__Target_Object__c</columns>
+        <columns>CMPL123__Is_Active__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <label>Name</label>
         <trackHistory>false</trackHistory>
@@ -268,15 +280,4 @@
     </searchLayouts>
     <sharingModel>Read</sharingModel>
     <visibility>Public</visibility>
-    <listViews>
-        <fullName>CMPL123__All</fullName>
-        <columns>NAME</columns>
-        <columns>CMPL123__Description__c</columns>
-        <columns>CMPL123__Record_Type__c</columns>
-        <columns>CMPL123__Target_Object__c</columns>
-        <columns>CMPL123__Is_Active__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-        <language>en_US</language>
-    </listViews>
 </CustomObject>

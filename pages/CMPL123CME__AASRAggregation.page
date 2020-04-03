@@ -1,10 +1,10 @@
 <apex:page controller="CMPL123CME.AASRAggregationController" applyBodyTag="false" applyHtmlTag="false" showHeader="false"  standardStylesheets="false"  id="pg" docType="html-5.0">
     
     <apex:stylesheet value="{!$Resource.CMPL123CME__EMDRLayout}/css/EMDR_CSS_Min.css" /> 
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/jquery-3.2.1.min.js')}"/>
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/moment2.14.1.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/jquery-3.4.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/moment2.19.3.js')}"/>
     <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/Bootstrap/css/bootstrap.css')}"/>
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/bootstrap3.3.7.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/bootstrap-3.4.1.js')}"/>
     <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/bootstrap-datetimepicker4.17.47.js')}"/>
 
     <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/DataTable1.10.16JS.js')}"/> 
@@ -20,47 +20,47 @@
         var aasrObjArray = [];
         var iasrIndexArray = [];
         var aasrIndexArray = [];
-        var first = "{!$Label.cmpl123cme__cmplt_first}";
-        var previous = "{!$Label.cmpl123cme__cmplt_prev}";
-        var next = "{!$Label.cmpl123cme__cmplt_next}";
-        var last = "{!$Label.cmpl123cme__cmplt_last}";
-        var noDataAvailable = "{!$Label.cmpl123cme__cmplt_no_data_available}";
-        var showing = "{!$Label.cmpl123cme__cmplt_showing}" + " ";
-        var to = " " + "{!$Label.cmpl123cme__cmplt_to}" + " ";
-        var of = " " + "{!$Label.cmpl123cme__cmplt_of}" + " ";
-        var entries = ' '+"{!$Label.cmpl123cme__cmplt_entries}";
-        var search = "{!$Label.cmpl123cme__cmplt_search_in_table}";
-        var show = "{!$Label.cmpl123cme__cmplt_show}"+' ';
-        var noMatchingRecords = "{!$Label.cmpl123cme__cmplt_no_matching_records_found}";
-        var filteredFrom = "{!$Label.cmpl123cme__cmplt_filtered_from}";
-        var totalEntries = "{!$Label.cmpl123cme__cmplt_total_entries}";
+        var first = "{!JSENCODE($Label.cmpl123cme__cmplt_first)}";
+        var previous = "{!JSENCODE($Label.cmpl123cme__cmplt_prev)}";
+        var next = "{!JSENCODE($Label.cmpl123cme__cmplt_next)}";
+        var last = "{!JSENCODE($Label.cmpl123cme__cmplt_last)}";
+        var noDataAvailable = "{!JSENCODE($Label.cmpl123cme__cmplt_no_data_available)}";
+        var showing = "{!JSENCODE($Label.cmpl123cme__cmplt_showing)}" + " ";
+        var to = " " + "{!JSENCODE($Label.cmpl123cme__cmplt_to)}" + " ";
+        var of = " " + "{!JSENCODE($Label.cmpl123cme__cmplt_of)}" + " ";
+        var entries = ' '+"{!JSENCODE($Label.cmpl123cme__cmplt_entries)}";
+        var search = "{!JSENCODE($Label.cmpl123cme__cmplt_search_in_table)}";
+        var show = "{!JSENCODE($Label.cmpl123cme__cmplt_show)}"+' ';
+        var noMatchingRecords = "{!JSENCODE($Label.cmpl123cme__cmplt_no_matching_records_found)}";
+        var filteredFrom = "{!JSENCODE($Label.cmpl123cme__cmplt_filtered_from)}";
+        var totalEntries = "{!JSENCODE($Label.cmpl123cme__cmplt_total_entries)}";
 
         var dateFormat = '{!JSENCODE(dateLocaleFormat)}';
         var dateFormat = '{!JSENCODE(dateLocaleFormat)}';
         var userLang = '{!JSENCODE(userLanguage)}';
                 var calendarTitle = {
-                    selectMonth     : '{!$Label.cmpl123cme__cmplt_select}'    + ' ' + '{!$Label.cmpl123cme__cmplt_month}',
-                    prevMonth       : '{!$Label.cmpl123cme__cmplt_prev}'      + ' ' + '{!$Label.cmpl123cme__cmplt_month}',
-                    nextMonth       : '{!$Label.cmpl123cme__cmplt_next}'      + ' ' + '{!$Label.cmpl123cme__cmplt_month}',
-                    selectYear      : '{!$Label.cmpl123cme__cmplt_select}'    + ' ' + '{!$Label.cmpl123cme__cmplt_year}',
-                    prevYear        : '{!$Label.cmpl123cme__cmplt_prev}'      + ' ' + '{!$Label.cmpl123cme__cmplt_year}',
-                    nextYear        : '{!$Label.cmpl123cme__cmplt_next}'      + ' ' + '{!$Label.cmpl123cme__cmplt_year}',
-                    selectDecade    : '{!$Label.cmpl123cme__cmplt_select}'    + ' ' + '{!$Label.cmpl123cme__cmplt_decade}',
-                    prevDecade      : '{!$Label.cmpl123cme__cmplt_prev}'      + ' ' + '{!$Label.cmpl123cme__cmplt_decade}',
-                    nextDecade      : '{!$Label.cmpl123cme__cmplt_next}'      + ' ' + '{!$Label.cmpl123cme__cmplt_decade}',
-                    prevCentury     : '{!$Label.cmpl123cme__cmplt_prev}'      + ' ' + '{!$Label.cmpl123cme__cmplt_century}', 
-                    nextCentury     : '{!$Label.cmpl123cme__cmplt_next}'      + ' ' + '{!$Label.cmpl123cme__cmplt_century}',
-                    incrementHour   : '{!$Label.cmpl123cme__cmplt_increment}' + ' ' + '{!$Label.cmpl123cme__cmplt_hour}',
-                    pickHour        : '{!$Label.cmpl123cme__cmplt_pick}'      + ' ' + '{!$Label.cmpl123cme__cmplt_hour}',
-                    decrementHour   : '{!$Label.cmpl123cme__cmplt_decrement}' + ' ' + '{!$Label.cmpl123cme__cmplt_hour}',
-                    incrementMinute : '{!$Label.cmpl123cme__cmplt_increment}' + ' ' + '{!$Label.cmpl123cme__cmplt_minute}',
-                    pickMinute      : '{!$Label.cmpl123cme__cmplt_pick}'      + ' ' + '{!$Label.cmpl123cme__cmplt_minute}',
-                    decrementMinute : '{!$Label.cmpl123cme__cmplt_decrement}' + ' ' + '{!$Label.cmpl123cme__cmplt_minute}',
-                    incrementSecond : '{!$Label.cmpl123cme__cmplt_increment}' + ' ' + '{!$Label.cmpl123cme__cmplt_second}',
-                    pickSecond      : '{!$Label.cmpl123cme__cmplt_pick}'      + ' ' + '{!$Label.cmpl123cme__cmplt_second}',
-                    decrementSecond : '{!$Label.cmpl123cme__cmplt_decrement}' + ' ' + '{!$Label.cmpl123cme__cmplt_second}',
-                    selectTime      : '{!$Label.cmpl123cme__cmplt_select}'    + ' ' + '{!$Label.cmpl123cme__cmplt_time}',
-                    togglePeriod    : '{!$Label.cmpl123cme__cmplt_toggle_period}',
+                    selectMonth     : '{!JSENCODE($Label.cmpl123cme__cmplt_select)}'    + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_month)}',
+                    prevMonth       : '{!JSENCODE($Label.cmpl123cme__cmplt_prev)}'      + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_month)}',
+                    nextMonth       : '{!JSENCODE($Label.cmpl123cme__cmplt_next)}'      + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_month)}',
+                    selectYear      : '{!JSENCODE($Label.cmpl123cme__cmplt_select)}'    + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_year)}',
+                    prevYear        : '{!JSENCODE($Label.cmpl123cme__cmplt_prev)}'      + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_year)}',
+                    nextYear        : '{!JSENCODE($Label.cmpl123cme__cmplt_next)}'      + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_year)}',
+                    selectDecade    : '{!JSENCODE($Label.cmpl123cme__cmplt_select)}'    + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_decade)}',
+                    prevDecade      : '{!JSENCODE($Label.cmpl123cme__cmplt_prev)}'      + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_decade)}',
+                    nextDecade      : '{!JSENCODE($Label.cmpl123cme__cmplt_next)}'      + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_decade)}',
+                    prevCentury     : '{!JSENCODE($Label.cmpl123cme__cmplt_prev)}'      + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_century)}',
+                    nextCentury     : '{!JSENCODE($Label.cmpl123cme__cmplt_next)}'      + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_century)}',
+                    incrementHour   : '{!JSENCODE($Label.cmpl123cme__cmplt_increment)}' + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_hour)}',
+                    pickHour        : '{!JSENCODE($Label.cmpl123cme__cmplt_pick)}'      + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_hour)}',
+                    decrementHour   : '{!JSENCODE($Label.cmpl123cme__cmplt_decrement)}' + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_hour)}',
+                    incrementMinute : '{!JSENCODE($Label.cmpl123cme__cmplt_increment)}' + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_minute)}',
+                    pickMinute      : '{!JSENCODE($Label.cmpl123cme__cmplt_pick)}'      + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_minute)}',
+                    decrementMinute : '{!JSENCODE($Label.cmpl123cme__cmplt_decrement)}' + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_minute)}',
+                    incrementSecond : '{!JSENCODE($Label.cmpl123cme__cmplt_increment)}' + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_second)}',
+                    pickSecond      : '{!JSENCODE($Label.cmpl123cme__cmplt_pick)}'      + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_second)}',
+                    decrementSecond : '{!JSENCODE($Label.cmpl123cme__cmplt_decrement)}' + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_second)}',
+                    selectTime      : '{!JSENCODE($Label.cmpl123cme__cmplt_select)}'    + ' ' + '{!JSENCODE($Label.cmpl123cme__cmplt_time)}',
+                    togglePeriod    : '{!JSENCODE($Label.cmpl123cme__cmplt_toggle_period)}',
                 }
                 
                 console.log(calendarTitle.selectTime);
@@ -317,13 +317,14 @@
             if(aasrObjArray != null && aasrObjArray != undefined && aasrObjArray.length > 0){
                 Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.AASRAggregationController.createAASR}',JSON.stringify(aasrObjArray),function(result,event){
                     if(event.status){
+                        var recId = encodeURI(result);
                         // Redirecting the url to lightning user interface if the current user in lightning experience else redirects to classic user interface.
                         if (lexUtil.inLEX()) {
-                            lexUtil.lexNavigateToSObject(result);
+                            lexUtil.lexNavigateToSObject(recId);
                         } else if (lexUtil.inConsole()) {
-                            parent.top.location.href =  "/"+result;
+                            parent.top.location.href =  "/"+recId;
                         } else {
-                            parent.location.href = "/"+result;
+                            parent.location.href = "/"+recId;
                        }
                         
                     }else{
@@ -332,7 +333,7 @@
                     }                            
                 },{escape:true});
             }else{
-                alert('{!$Label.cmpl123cme__cmplt_aasr_no_records_selected}');
+                alert('{!JSENCODE($Label.cmpl123cme__cmplt_aasr_no_records_selected)}');
             }    
         }
         
@@ -355,11 +356,11 @@
          <div style="margin-left:3%;margin-right:3%;margin-top:1%;">
             <div class="row" >
                 <div class="panel panel-default">
-                    <div class="panel-heading">{!$Label.CMPLT_AASR_AGGREGATION}</div>
+                    <div class="panel-heading">{!HTMLENCODE($Label.CMPLT_AASR_AGGREGATION)}</div>
                     <div class="panel-body">
                         <div class="row" >
                             <div class="col-sm-3">
-                                <h5>{!$Label.CMPLT_START_DATE}</h5>
+                                <h5>{!HTMLENCODE($Label.CMPLT_START_DATE)}</h5>
                                  <div class="form-group">
                                     <div class='input-group date' id='sDate'>
                                         <apex:inputText styleClass="form-control" value="{!startDateString}" />
@@ -370,7 +371,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-3">
-                                <h5>{!$Label.CMPL123CME__cmplt_end_date}</h5>
+                                <h5>{!HTMLENCODE($Label.CMPL123CME__cmplt_end_date)}</h5>
                                 <div class="form-group">
                                     <div class='input-group date' id='eDate'>
                                         <apex:inputText styleClass="form-control" value="{!endDateString}" />
@@ -391,7 +392,7 @@
                         </div>  
                         <div class="row" style="margin-top:1%;" >
                             <div class="col-sm-3">
-                                <h6>{!$Label.CMPLT_MODEL_NO}</h6>
+                                <h6>{!HTMLENCODE($Label.CMPLT_MODEL_NO)}</h6>
                                 <apex:selectList multiselect="false" styleClass="form-control" size="1" style="width:90%;" value="{!modelNoVal}" >
                                     <apex:selectOption itemLabel="{!$Label.cmpl123cme__cmplt_aasr_select}" itemValue="" />
                                        <!--<apex:actionSupport event="onchange" action="{!setCodes}" reRender="one"/>-->
@@ -400,28 +401,28 @@
                                 </apex:selectList>
                             </div>
                             <div class="col-sm-2">
-                                <h6>{!$Label.cmpl123cme__cmplt_mdr_device_code}</h6>
+                                <h6>{!HTMLENCODE($Label.cmpl123cme__cmplt_mdr_device_code)}</h6>
                                 <apex:selectList multiselect="false" size="1" style="width:100%;" styleClass="form-control" value="{!deviceCodeVal}">
                                     <apex:selectOption itemLabel="{!$Label.cmpl123cme__cmplt_aasr_select}" itemValue="" />
                                    <apex:selectOptions value="{!deviceCodes}"/>
                                 </apex:selectList>
                             </div>
                             <div class="col-sm-2">
-                                <h6>{!$Label.cmpl123cme__cmplt_mdr_component_code}</h6>
+                                <h6>{!HTMLENCODE($Label.cmpl123cme__cmplt_mdr_component_code)}</h6>
                                 <apex:selectList multiselect="false" size="1" style="width:100%;" styleClass="form-control" value="{!componentCodeVal}">
                                     <apex:selectOption itemLabel="{!$Label.cmpl123cme__cmplt_aasr_select}" itemValue="" />
                                   <apex:selectOptions value="{!componentCodes}"/>
                                 </apex:selectList>
                             </div>
                             <div class="col-sm-2">
-                                <h6>{!$Label.cmpl123cme__cmplt_mdr_eval_result_code}</h6>
+                                <h6>{!HTMLENCODE($Label.cmpl123cme__cmplt_mdr_eval_result_code)}</h6>
                                 <apex:selectList multiselect="false" size="1" style="width:100%;" styleClass="form-control" value="{!evalResultCodeVal}">
                                     <apex:selectOption itemLabel="{!$Label.cmpl123cme__cmplt_aasr_select}" itemValue="" />
                                    <apex:selectOptions value="{!evalResultCodes}"/>
                                 </apex:selectList>
                             </div>
                             <div class="col-sm-2">
-                                <h6>{!$Label.cmpl123cme__cmplt_mdr_eval_conclusion_code}</h6>
+                                <h6>{!HTMLENCODE($Label.cmpl123cme__cmplt_mdr_eval_conclusion_code)}</h6>
                                 <apex:selectList multiselect="false" size="1" style="width:100%;" styleClass="form-control" value="{!evalConcCodeVal}">
                                     <apex:selectOption itemLabel="{!$Label.cmpl123cme__cmplt_aasr_select}" itemValue="" />
                                     <apex:selectOptions value="{!evalConclusionCodes}"/>
@@ -439,18 +440,18 @@
     <apex:outputPanel id="thePanel" layout="block" rendered="{!showCreatAasr}">
         <div class="row">
             <div class="col-sm-5" style="float:right">
-                <button type="button" class="btn btn-primary" onclick="createAASR()">{!$Label.CMPLT_CREATE_AASR}</button>
+                <button type="button" class="btn btn-primary" onclick="createAASR()">{!HTMLENCODE($Label.CMPLT_CREATE_AASR)}</button>
             </div>    
         </div>
         <div class="row" style="margin:1%">
         
             <div class="col-sm-5">
-            <h5 align="center">{!$Label.CMPLT_UNASSIGNED_IASR_LIST}</h5>
+            <h5 align="center">{!HTMLENCODE($Label.CMPLT_UNASSIGNED_IASR_LIST)}</h5>
                 <div class="panel panel-default" id="manage_iasr"> 
                     <!--<div class="panel-heading">AASR Aggregation</div> -->
                         <div class="panel-body" >
                             <apex:outputPanel rendered="{!IF(iasrMdrRecords != null,false,true)}">
-                                <span>{!$Label.cmpl123cme__cmplt_no_data_available}</span>   
+                                <span>{!HTMLENCODE($Label.cmpl123cme__cmplt_no_data_available)}</span>
                             </apex:outputPanel>
                             <apex:outputPanel rendered="{!IF(iasrMdrRecords != null,true,false)}">
                                 <div>
@@ -459,9 +460,9 @@
                                         <thead style="background:#54698D ;color:white;" >                       
                                              <tr>
                                                 <th><small><input type="checkbox" id="selectallLeft" /></small></th>
-                                                <th><small>{!$Label.CMPLT_NAME}</small></th>
-                                                <th><small>{!$Label.CMPLT_MODEL}</small></th>
-                                                <th><small>{!$Label.CMPLT_CODE}</small></th>
+                                                <th><small>{!HTMLENCODE($Label.CMPLT_NAME)}</small></th>
+                                                <th><small>{!HTMLENCODE($Label.CMPLT_MODEL)}</small></th>
+                                                <th><small>{!HTMLENCODE($Label.CMPLT_CODE)}</small></th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -481,13 +482,13 @@
                </div>
                
                <div class="col-sm-5">
-               <h5 align="center">{!$Label.CMPLT_ASSIGNED_IASR_LIST}</h5>
+               <h5 align="center">{!HTMLENCODE($Label.CMPLT_ASSIGNED_IASR_LIST)}</h5>
                  <div class="panel panel-default" id="manage_aasr"> 
                     <!--<div class="panel-heading">AASR Aggregation</div> -->
                     
                         <div class="panel-body" >
                             <!--<apex:outputPanel rendered="{!IF(aasrMdrRecords != null,false,true)}">
-                                <span>{!$Label.cmpl123cme__cmplt_no_data_available}</span>   
+                                <span>{!$Label.CMPL123CME__cmplt_no_data_available}</span>   
                             </apex:outputPanel> -->
                             
                             <apex:outputPanel >
@@ -497,9 +498,9 @@
                                         <thead style="background:#54698D ;color:white;" >                       
                                              <tr>
                                                 <th><small><input type="checkbox" id="selectallRight"/></small></th>
-                                                <th><small>{!$Label.CMPLT_NAME}</small></th>
-                                                <th><small>{!$Label.CMPLT_MODEL}</small></th>
-                                                <th><small>{!$Label.CMPLT_CODE}</small></th>
+                                                <th><small>{!HTMLENCODE($Label.CMPLT_NAME)}</small></th>
+                                                <th><small>{!HTMLENCODE($Label.CMPLT_MODEL)}</small></th>
+                                                <th><small>{!HTMLENCODE($Label.CMPLT_CODE)}</small></th>
                                             </tr>
                                         </thead>
                                     </table>

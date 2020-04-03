@@ -112,9 +112,11 @@
         <!--Makes standard controller's save method callable from JS-->
         <apex:actionFunction name="standardSave" action="{! save }"/>
         <script>
-            function customSubmit() {
+            function customSubmit(buttonEvent) {
                 // This ID is generated when Visualforce renders and will change if elements are added before it
                 document.querySelector('[id$="submit-button"]').disabled = true;
+                //Prevent default form submit behaviour in Firefox
+                buttonEvent.preventDefault();
                 standardSave();
             }
         </script>
@@ -130,7 +132,7 @@
                     <apex:commandButton styleClass="slds-button slds-button_neutral"
                                         action="{! cancel }" value="{! $Label.CANCEL }"/>
                     <apex:commandButton styleClass="slds-button slds-button_brand"
-                                        onclick="customSubmit()" value="{! $Label.SAVE }"
+                                        onclick="customSubmit(event)" value="{! $Label.SAVE }"
                                         disabled="{! ISNULL(selectedChildWorkflowStatus) }" 
                                         id="submit-button"/>
                 </apex:outputPanel>

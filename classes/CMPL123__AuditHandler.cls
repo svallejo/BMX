@@ -16,7 +16,7 @@ global class AuditHandler {
 
     }
     @Deprecated
-    global static void handleAudit(CMPL123.AuditTrigger atObj) {
+    global static void handleAudit(CMPL123.AuditTrigger triggerWrapper) {
 
     }
 }

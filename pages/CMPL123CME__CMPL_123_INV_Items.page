@@ -56,7 +56,7 @@
     </style>
 
     <script type="text/javascript">
-        var __sfdcSessionId = '{!GETSESSIONID()}';
+        var __sfdcSessionId = '{!JSENCODE(GETSESSIONID())}';
     </script>
 
     <apex:includeScript value="/soap/ajax/26.0/connection.js"/>
@@ -127,12 +127,12 @@
                         // Service Call Fails in an Expected (Sparta Handled) Way
                         if(result && result.notification && result.notification.errors.length > 0) {
                             var errorArray = result.notification.errors;
-                            displayPopupErrors([{ message: '{! $Label.cmpl123cme__permission_error}'}]);
+                            displayPopupErrors([{ message: '{!JSENCODE($Label.cmpl123cme__permission_error)}'}]);
                             enableSaveButton(elementObj);
                         } else {
                             if (!event.status) {
                                 // Service call failed because of a Salesforce issue or unhandled error
-                                displayPopupErrors([{ message: '{! $Label.cmpl123cme__permission_error}'}]);
+                                displayPopupErrors([{ message: '{!JSENCODE($Label.cmpl123cme__permission_error)}'}]);
                                 enableSaveButton(elementObj);
                             } else {
                                 // Service call was successful
@@ -149,7 +149,7 @@
                         }
                     },{escape:true});
             } else {
-                displayPopupErrors([{ message: '{! $Label.cmpl123cme__cmplt_select_atleast_one_question}'}]);
+                displayPopupErrors([{ message: '{!JSENCODE($Label.cmpl123cme__cmplt_select_atleast_one_question)}'}]);
                 enableSaveButton(elementObj);
             }
 
@@ -352,7 +352,7 @@
                                 <apex:inputField value="{!tsk.CMPL123CME__Datetime_Value__c}" rendered="{!if(tsk.Investigation_Template_Item__r.Field_Type__c == 'Datetime',true,false)}"/>
                                 <apex:inputField value="{!tsk.CMPL123CME__Number_Value__c}" rendered="{!if(tsk.Investigation_Template_Item__r.Field_Type__c == 'Number',true,false)}"/>
                                 <apex:selectList size="1" multiselect="false" value="{!tsk.Value__c}" rendered="{!if(tsk.Investigation_Template_Item__r.Field_Type__c == 'Picklist',true,false)}">
-                                    <apex:selectOptions value="{!selectOptionIdMap[tsk.Id]}"/>
+                                    <apex:selectOptions value="{!selectOptionIdMap[tsk.Investigation_Template_Item__c]}"/>
                                 </apex:selectList>
                             </apex:column>
                             <apex:column headerValue="{!$Label.cmpl123cme__cmplt_completed}" width="15%">
@@ -372,7 +372,7 @@
 
                 <apex:pageBlock title="{!$Label.cmpl123cme__cmplt_add_investigations}">
 
-                    {!$Label.CMPL123CME__CMPLT_INVESTIGATION_NUMBER}:&nbsp;&nbsp;
+                    {!HTMLENCODE($Label.CMPL123CME__CMPLT_INVESTIGATION_NUMBER)}:&nbsp;&nbsp;
 
                     <apex:selectList value="{!investigationTemplateName}" size="1" onchange="invLst();">
                         <apex:actionFunction name="invLst" action="{!getInvestigationTemplateItems}" reRender="inv,fm" oncomplete="unCheckHeader();"/>
@@ -385,7 +385,7 @@
                     <div id="popup-error-block" class="message errorM3" style="display:none;"></div>
 
                     <apex:outputPanel rendered="{!displayClose}">
-                        <input type="button" value="{!$Label.CMPL123CME__CMPLT_CLOSE}" onclick="handlePopupCancel();" style="margin-left:200px;" class="btn"/>
+                        <input type="button" value="{!HTMLENCODE($Label.CMPL123CME__CMPLT_CLOSE)}" onclick="handlePopupCancel();" style="margin-left:200px;" class="btn"/>
                     </apex:outputPanel>
 
                     <apex:outputPanel rendered="{!displayBlock}" id="inv">
@@ -403,8 +403,8 @@
                             </apex:pageBlockTable>
 
                             <apex:pageBlockButtons location="bottom">
-                                <input id="popup-button-save" type="button" class="btn" value="{!$Label.cmpl123cme__cmplt_save}"  onclick="checkInvestigationItem(this);"/>
-                                <input id="popup-button-cancel" type="button" value="{!$Label.CMPL123CME__CMPLT_CANCEL}" onclick="handlePopupCancel();" class="btn" />
+                                <input id="popup-button-save" type="button" class="btn" value="{!HTMLENCODE($Label.CMPL123CME__cmplt_save)}"  onclick="checkInvestigationItem(this);"/>
+                                <input id="popup-button-cancel" type="button" value="{!HTMLENCODE($Label.CMPL123CME__CMPLT_CANCEL)}" onclick="handlePopupCancel();" class="btn" />
                             </apex:pageBlockButtons>
 
                         </apex:pageBlock>

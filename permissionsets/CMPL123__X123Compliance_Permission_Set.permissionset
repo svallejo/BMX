@@ -216,6 +216,10 @@
     <label>TrackWise Digital Admin</label>
     <license>Salesforce</license>
     <pageAccesses>
+        <apexPage>CMPL123__AuditTrailPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>CMPL123__CaseWorkflowPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -240,6 +244,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>CMPL123__PersonDetailsPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>CMPL123__Setup</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -248,7 +256,19 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>CMPL123__UnifiedAuditTrailPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123__UserSessionId</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>CMPL123__ValidChildStatus</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123__WFPanelSSoOpener</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -18331,6 +18351,16 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Audit_History__c.CMPL123__Created_By_Username__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Audit_History__c.CMPL123__ESign_Applied__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123__Audit_Trail_Entry__c.CMPL123__Action__c</field>
         <readable>true</readable>
@@ -18367,6 +18397,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123__Audit_Trail_Entry__c.CMPL123__NewValue_LTA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123__Audit_Trail_Entry__c.CMPL123__NewValue__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -18383,6 +18418,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123__Audit_Trail_Entry__c.CMPL123__Object_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123__Audit_Trail_Entry__c.CMPL123__OldValue_LTA__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -18508,6 +18548,26 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123__Contact__c.CMPL123__Weight__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Context_Based_Security__c.CMPL123__Config_Deploy_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123__Context_Based_Security__c.CMPL123__Corresponding_Object__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Context_Based_Security__c.CMPL123__Initial_CBS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Context_Based_Security__c.CMPL123__Workflow_Step__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -19042,6 +19102,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123__RDC_Cache__c.CMPL123__Cache_Data__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Cache__c.CMPL123__Cache_Key__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Cache__c.CMPL123__Cache_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123__Record_Access_Rule__c.CMPL123__Active_of_the_rule__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -19308,6 +19383,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123__WF_Step__c.CMPL123__Validate_Against_Child_Record_Statuses__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__WF_Step__c.CMPL123__WF_Locked_Fields__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -28365,12 +28445,21 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
-        <allowCreate>true</allowCreate>
+        <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>CMPL123__Audit_Trail_Entry__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>CMPL123__Context_Based_Security__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -28496,6 +28585,15 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
+        <object>CMPL123__RDC_Cache__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
         <object>CMPL123__Record_Access_Rule__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
@@ -28507,6 +28605,24 @@
         <modifyAllRecords>true</modifyAllRecords>
         <object>CMPL123__SAML_Request__c</object>
         <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>CMPL123__TWD_Action_Performed_Event__e</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>CMPL123__TWD_Context_Based_Security_Event__e</object>
+        <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
@@ -28653,9 +28769,9 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
-        <allowCreate>true</allowCreate>
+        <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
-        <allowEdit>true</allowEdit>
+        <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>CMPL123__WF_History__c</object>
@@ -28674,6 +28790,10 @@
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
+        <tab>CMPL123__Context_Based_Security__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>CMPL123__Device__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
@@ -28687,6 +28807,10 @@
     </tabSettings>
     <tabSettings>
         <tab>CMPL123__MDC_Trigger__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>CMPL123__Multiple_Record_Link</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>

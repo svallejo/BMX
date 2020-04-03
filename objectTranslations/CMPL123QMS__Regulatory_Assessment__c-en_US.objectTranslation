@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Assessment --></label>
+        <name>CMPL123QMS__Assessment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To Me? --></label>
+        <name>CMPL123QMS__Assigned_To_Me__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To --></label>
+        <name>CMPL123QMS__Assigned_To__c</name>
+        <relationshipLabel><!-- Regulatory Assessments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Due Date --></label>
+        <name>CMPL123QMS__Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Global Change Control --></label>
+        <name>CMPL123QMS__Global_Change_Control__c</name>
+        <relationshipLabel><!-- Regulatory Assessments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Impacted Site --></label>
+        <name>CMPL123QMS__Impacted_Site__c</name>
+        <picklistValues>
+            <masterLabel>Global</masterLabel>
+            <translation><!-- Global --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Site 1</masterLabel>
+            <translation><!-- Site 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Site 2</masterLabel>
+            <translation><!-- Site 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Site 3</masterLabel>
+            <translation><!-- Site 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Implement Change Control? --></label>
+        <name>CMPL123QMS__Implement_Change_Control__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reason for No Change Control --></label>
+        <name>CMPL123QMS__Reason_for_No_Change_Control__c</name>
+    </fields>
+    <fields>
+        <label><!-- Regulatory Impacts --></label>
+        <name>CMPL123QMS__Regulatory_Impacts__c</name>
+    </fields>
+    <layouts>
+        <layout>Regulatory Assessment Layout</layout>
+        <sections>
+            <label><!-- Assessment --></label>
+            <section>Assessment</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- Hidden --></label>
+            <section>Hidden</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Due Dates cannot be populated with a data in the past --></errorMessage>
+        <name>CMPL123QMS__Due_Date_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Reason for No Change Control is required when Implement Change Control? is populated with a value of No. --></errorMessage>
+        <name>CMPL123QMS__Reason_for_No_Change_Control</name>
+    </validationRules>
+</CustomObjectTranslation>

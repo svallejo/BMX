@@ -1,9 +1,9 @@
 <apex:page sidebar="false">
     <apex:pageBlock title="{!$Label.cmpl123__x123compliance_platform_setup}">
         <div style="padding-left:3%">
-            <h4>{!HTMLENCODE($Label.PLEASE_PERFORM_THE_FOLLOWING_STEPS_TO_SETUP_THE_APPLICATION)} : </h4><br /><br />
-            <span style="font-weight:bold;font-size:16px">{!HTMLENCODE($Label.STEP_1)} :- {!HTMLENCODE($Label.PERMISSION_SET_ASSIGNMENT)} </span><br /><br />
-            <span style="font-size:16px">{!HTMLENCODE($Label.THERE_ARE_THREE_PERMISSON_SETS_FOR_THE_ADMIN_AND_USERS)} </span><br /><br />
+            <h4>{!HTMLENCODE($Label.PLEASE_PERFORM_THE_FOLLOWING_STEPS_TO_SETUP_THE_APPLICATION)}: </h4><br /><br />
+            <span style="font-weight:bold;font-size:16px">{!HTMLENCODE($Label.STEP_1)}: {!HTMLENCODE($Label.PERMISSION_SET_ASSIGNMENT)} </span><br /><br />
+            <span style="font-size:14px">{!HTMLENCODE($Label.THERE_ARE_THREE_PERMISSON_SETS_FOR_THE_ADMIN_AND_USERS)} </span><br /><br />
             <span style="font-size:14px;"><b> {!HTMLENCODE($Label.SETUP)} -> {!HTMLENCODE($Label.MANAGE_USERS)} -> {!HTMLENCODE($Label.PERMISSION_SETS)}</b></span><br /><br />
             <div style="padding:10px;background-color:#E0E0E0 ;width:300px">
                 <!-- Trackwise permission sets -->
@@ -11,8 +11,8 @@
 				<span style="font-size:12px;"><b>. {!HTMLENCODE($Label.TRACKWISE_DIGITAL)} {!HTMLENCODE($Label.USER)}</b> </span><br /><br />
                 <span style="font-size:12px;"><b>. {!HTMLENCODE($Label.TRACKWISE_DIGITAL)} {!HTMLENCODE($Label.PLATFORM_USER)}</b> </span>
             </div><br />
-            <span style="font-size:14px;">{!HTMLENCODE($Label.GO_TO_SETUP_MANAGE_USERS_PERMISSION_SETS_AND_ASSIGN_THE_USERS_TO_APPROPRIATE)}</span><br /><br />
-            <span style="font-weight:bold;font-size:16px">{!HTMLENCODE($Label.STEP_2)} :- {!HTMLENCODE($Label.APPLICATION_SETUP_CONFIGURATION)} </span><br /><br />
+            <span style="font-size:14px;">{!HTMLENCODE($Label.GO_TO_SETUP)} -> {!HTMLENCODE($Label.MANAGE_USERS)} -> {!HTMLENCODE($Label.GO_TO_SETUP_MANAGE_USERS_PERMISSION_SETS_AND_ASSIGN_THE_USERS_TO_APPROPRIATE)}</span><br /><br />
+            <span style="font-weight:bold;font-size:16px">{!HTMLENCODE($Label.STEP_2)}: {!HTMLENCODE($Label.APPLICATION_SETUP_CONFIGURATION)} </span><br /><br />
             <div style="font-size:14px">
                 <!--Added to support redirecting URLs in Lightning Experience and Classic -->
                 <b> 1. </b><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app?source=alohaHeader#/setup/CustomSettings/home', '/setup/ui/listCustomSettings.apexp')}" style="color:blue" target="_blank">{!HTMLENCODE($Label.cmpl123__click_here)}</apex:outputLink> {!HTMLENCODE($Label.TO_CONFIGURE_THE_APPLICATION)}<br />
@@ -21,9 +21,9 @@
                 <b> 3. </b> {!HTMLENCODE($Label.CLICK_NEW_AND_ENTER_THE_VALUES_FOR_ALL_FIELDS)}
             </div> <br />
 
-            <span style="font-weight:bold;font-size:16px">{!HTMLENCODE($Label.STEP_3)} :- {!HTMLENCODE($Label.REMOTE_SITE_SETTINGS)} </span><br /><br />
+            <span style="font-weight:bold;font-size:16px">{!HTMLENCODE($Label.STEP_3)}: {!HTMLENCODE($Label.REMOTE_SITE_SETTINGS)} </span><br /><br />
             <!--Added support for redirecting URLs in Lightning Experience and Classic -->
-            <span style="font-size:14px"><b> 1.</b><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app?source=alohaHeader#/setup/SecurityRemoteProxy/page?address=/0rp/e', '/0rp/e')}" style="color:blue" target="_blank">{!HTMLENCODE($Label.cmpl123__click_here)}</apex:outputLink> {!HTMLENCODE($Label.TO_SETUP_NEW_REMOTE_SITE_SETTINGS)}</span><br /><br />
+            <span style="font-size:14px"><b> 1. </b><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app?source=alohaHeader#/setup/SecurityRemoteProxy/page?address=/0rp/e', '/0rp/e')}" style="color:blue" target="_blank">{!HTMLENCODE($Label.cmpl123__click_here)}</apex:outputLink> {!HTMLENCODE($Label.TO_SETUP_NEW_REMOTE_SITE_SETTINGS)}</span><br /><br />
             <span style="font-size:14px"><b> 2.</b> {!HTMLENCODE($Label.PROVIDE_THE_FOLLOWING)} </span><br /><br />
             <div style="padding-left:30px">
                 <div style="font-size:13px;">
@@ -35,7 +35,7 @@
                         <tr><td><b>e.</b> {!HTMLENCODE($Label.ACTIVE)}</td><td>: {!HTMLENCODE($Label.CHECK_IT)}</td></tr>
                     </table>
                 </div>
-            </div>
+            </div> <br/>
             <span style="font-size:14px"><b> 3.</b> {!HTMLENCODE($Label.CLICK_ON_SAVE)} </span><br /><br />
         </div>
     </apex:pageBlock>
@@ -55,9 +55,12 @@
 			<span style="font-weight:bold;font-size:16px">4. {!HTMLENCODE($Label.trackwise_digital_record_admin)}</span><br /><br />
             <!--Added support for redirecting URLs in Lightning Experience and Classic -->
             <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__EnableRecordDeletion', '/apex/EnableRecordDeletion')}" style="color:blue" target="_blank">{!HTMLENCODE($Label.cmpl123__click_here)}</apex:outputLink> {!HTMLENCODE($Label.CMPL123__to_administer_trackwise_digital_quality_records)}</span><br /><br />
-            <span style="font-weight:bold;font-size:16px">5. {!$Label.cmpl123__POST_UPGRADE_DATA_SYNC}</span><br /><br />
+            <span style="font-weight:bold;font-size:16px">5. {!HTMLENCODE($Label.TRACKWISE_DIGITAL_DATA_SYNC)}</span><br /><br />
             <!--Added support for redirecting URLs in Lightning Experience and Classic -->
-            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__DataSync', '/apex/DataSync')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.CMPL123__FOR_POST_UPGRADE_DATA_SYNC}</span><br /><br />
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__DataSync', '/apex/DataSync')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!HTMLENCODE($Label.TO_SYNCHRONIZE_TRACKWISE_DIGITAL_DATA)}</span><br /><br />
+            <span style="font-weight:bold;font-size:16px">6. {!$Label.TRACKWISE_DIGITAL_RECORD_DETAIL_COMPONENT}</span><br /><br />
+            <!--Added support for redirecting URLs in Lightning Experience and Classic -->
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__RDCConfigurationPage', '/apex/RDCConfigurationPage')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.TO_CONFIGURE_RDC}</span><br /><br />
         </div>
     </apex:pageBlock>
     <script>

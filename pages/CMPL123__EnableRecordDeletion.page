@@ -35,6 +35,14 @@
                 <apex:outputLabel value="{!$Label.cmpl123__enable_delete}"/>
                 <apex:inputCheckbox value="{!enableDeletion}" disabled="true"/>
             </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem helpText="{!$ObjectType.CMPL123__App_Config__c.fields.CMPL123__Allow_Search__c.inlineHelpText}" rendered="{!!readOnlyMode}">
+                <apex:outputLabel value="{!$Label.cmpl123__enable_audit_search}"/>
+                <apex:inputCheckbox value="{!enableAuditRecordSearch}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem helpText="{!$ObjectType.CMPL123__App_Config__c.fields.CMPL123__Allow_Search__c.inlineHelpText}" rendered="{!readOnlyMode}">
+                <apex:outputLabel value="{!$Label.cmpl123__enable_audit_search}"/>
+                <apex:inputCheckbox value="{!enableAuditRecordSearch}" disabled="true"/>
+            </apex:pageBlockSectionItem>
         </apex:pageBlockSection>
 
         <apex:pageBlockButtons >

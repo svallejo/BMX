@@ -1171,21 +1171,9 @@
                 JSON.stringify(parentOrChildObjectArray),jobType,function(result,event){
 
                 if(event.status){
-                    if(recordId.length == 0){
-                        if(lexUtil.inLEX()){
-                            lexUtil.lexNavigateToSObject(result);
-                        }else{
-                            parent.document.location.href= "/"+result;
-                        }
-                    }
-                    else{
-                        if(lexUtil.inLEX()){
-                            lexUtil.lexNavigateToSObject(parentIdentifier);
-                        }else{
-                            parent.document.location.href= "/"+parentIdentifier;
-                        }
-                    }
-                }else{
+                    lexUtil.viewRecord(result);
+                }
+                else{
                     showErrorMessage(event.message);
                 }
             },{escape:true});
@@ -1357,7 +1345,7 @@
                 </h4>
                 &nbsp;&nbsp;
                 <span class="parent-object">
-                ({!HTMLENCODE(ParentName)} - {!HTMLENCODE(parentObjectApiName)})
+                ({!ParentName} - {!parentObjectApiName})
                 </span>
             </div>
             <div class="error-div" id='itErrorMessage'></div>
@@ -1365,7 +1353,7 @@
                 <table class='tableCss'>
                     <tr>
                         <td class="main-tds">
-                            <apex:outputLabel styleClass="tableLabel">{!HTMLENCODE($Label.cmpl123__name)}</apex:outputLabel>
+                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__name}</apex:outputLabel>
                         </td>
                         <td>
                             <div class="requiredInput">
@@ -1373,25 +1361,25 @@
                                                                               onkeydown="$('[id=itErrorMessage]').css('visibility','hidden');"
                                                                               class="form-input" style="width:246px;"
                                                                               id='Name'
-                                                                              placeholder="{!HTMLENCODE($Label.TYPE_NAME)}"/></div>
+                                                                              placeholder="{!$Label.TYPE_NAME}"/></div>
                         </td>
                     </tr>
                     <tr>
                         <td class="main-tds">
-                            <apex:outputLabel styleClass="tableLabel">{!HTMLENCODE($Label.cmpl123__is_active)}</apex:outputLabel>
+                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__is_active}</apex:outputLabel>
                         </td>
                         <td><input type='checkbox' id='CMPL123__Is_Active__c' checked='checked'/></td>
                     </tr>
                     <tr>
                         <td class="main-tds">
-                            <apex:outputLabel styleClass="tableLabel">{!HTMLENCODE($Label.cmpl123__description)}</apex:outputLabel>
+                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__description}</apex:outputLabel>
                         </td>
-                        <td><textarea cols='53' placeholder="{!HTMLENCODE($Label.TYPE_DESCRIPTION)}"
+                        <td><textarea cols='53' placeholder="{!$Label.TYPE_DESCRIPTION}"
                                       id='CMPL123__Description__c'/></td>
                     </tr>
                     <tr class="workflowJob">
                         <td class="main-tds">
-                            <apex:outputLabel styleClass="tableLabel">{!HTMLENCODE($Label.cmpl123__job_type)}</apex:outputLabel>
+                            <apex:outputLabel styleClass="tableLabel">{!$Label.cmpl123__job_type}</apex:outputLabel>
                         </td>
                         <td><span id='workflowStep'></span></td>
                     </tr>
@@ -1401,10 +1389,10 @@
 
             </div>
             <div class="button-div">
-                <input class="Input-btn btn control-buttons" type="button" value="{!HTMLENCODE($Label.Save)}"
-                       onclick="SaveIntelligentJob(this, '{!JSENCODE(parentId)}');"/>
-                <input class="Input-btn-cancel btn control-buttons" type="button" value="{!HTMLENCODE($Label.Cancel)}"
-                       onclick="redirectToMainPage('{!JSENCODE(parentId)}');"/>
+                <input class="Input-btn btn control-buttons" type="button" value="{!$Label.Save}"
+                       onclick="SaveIntelligentJob(this, '{!parentId}');"/>
+                <input class="Input-btn-cancel btn control-buttons" type="button" value="{!$Label.Cancel}"
+                       onclick="redirectToMainPage('{!parentId}');"/>
 
             </div>
         </div>

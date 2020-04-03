@@ -107,34 +107,10 @@
                     <apex:inputCheckbox value="{!currentWorkflowStep.CMPL123__Is_Start_Step__c}" id="inputcheck" disabled="{!if(currentWorkflowStep.CMPL123__Parent_Step__c != null,true,false)}"  />
                 </apex:pageBlockSectionItem>
                 <apex:pageBlockSectionItem >
-                    <apex:outputLabel value="{!$Label.cmpl123__create_workflow_rule}" />
-                    <div><input type="checkbox" class="validationWF"  name="Workflow Rule" value="Workflow Rule" onclick ="openWorkflowRulePageSec(this.checked);"></input><span id="errmsg2" style="display:none;color:red;font-weight:bold;"></span></div>
-                </apex:pageBlockSectionItem>
-                <apex:pageBlockSectionItem >
                     <apex:outputLabel value="{!$ObjectType.CMPL123__WF_Step__c.fields.CMPL123__Validate_Against_Child_Record_Statuses__c.Label}" />
                     <apex:inputCheckbox value="{!currentWorkflowStep.CMPL123__Validate_Against_Child_Record_Statuses__c}"/>
                 </apex:pageBlockSectionItem>
             </apex:pageBlockSection>
-            <apex:outputPanel id="pgSecWFRule" style="display:none">
-                <apex:pageBlockSection columns="1" title="{!$Label.cmpl123__workflow_rule}" >
-                    <apex:pageBlockSectionItem >
-                        <apex:outputText value="{!$Label.cmpl123__workflow_rule_criteria} :"/>
-                        <span id="rulecriteria"></span>
-                    </apex:pageBlockSectionItem>
-                    <apex:pageBlockSectionItem >
-                        <apex:outputText value="{!$Label.cmpl123__update_field_by_action_performed_by}:"/>
-                        <apex:selectList id="WRBy" size="1">
-                            <apex:selectOptions value="{!workflowRuleByOptions}"></apex:selectOptions>
-                        </apex:selectList>
-                    </apex:pageBlockSectionItem>
-                    <apex:pageBlockSectionItem >
-                        <apex:outputText value="{!$Label.cmpl123__update_field_by_action_performed_on} :"/>
-                        <apex:selectList id="WROn" size="1">
-                            <apex:selectOptions value="{!workflowRuleOnOptions}"></apex:selectOptions>
-                        </apex:selectList>
-                    </apex:pageBlockSectionItem>
-                </apex:pageBlockSection>
-            </apex:outputPanel>
             <apex:outputPanel layout="block" style="width:100%">
                 <pre style="background-color: #f5f5f5;border: 1px solid #e3e3e3;font-size: 1.1em;padding: 4px 16px;font-family: Arial,Helvetica,sans-serif;"><b>{!HTMLENCODE($Label.CMPL123__PLATFORM_MANDATORY_FIELDS)}</b><div id="deselectDiv1" style="float:right;"><a href="#" id="deselect" >{!HTMLENCODE($Label.DESELECT_ALL_FIELDS)}</a></div></pre>
                 <apex:pageBlockSection columns="3">
@@ -299,8 +275,6 @@
             }
         }
         function showMessage(btype,msg,objApi){
-            $("[id$=pgSecVRule]").hide();
-            $("[id$=pgSecWFRule]").hide();
             if(msg === 'one'){
                 if(confirm('{!JSENCODE($Label.CMPL123__start_step_already_exist_do_you_want_to_replace)}'))
                     doSave(btype,true,objApi);
@@ -365,27 +339,6 @@
                 document.getElementById("selective-related-list-locking").classList.add("slds-hide");
             }
             return false;
-        }
-
-        function openWorkflowRulePageSec(check){
-            if(check == true){
-                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.WorkflowStepController.isAutofieldsCreated}','{!JSENCODE(targetObject)}',function(result, event){
-                    if(event.status){
-                        if(result.length >  0){
-                            $('#errmsg2').show();
-                            $('#errmsg2').text(result);
-                        }else{
-                            $('#rulecriteria').text('CMPL123_WF_Status__c equal to(=)'+$('.EndStatus').val());
-                            $("[id$=pgSecWFRule]").show();
-                        }
-                    }
-                }, {escape:true});
-            }else{
-                $("[id$=pgSecWFRule]").hide();
-                $("select[id*=WRBy]").val('');
-                $('#errmsg2').text('');
-                $('#errmsg2').hide();
-            }
         }
 
         $("#deselect").click(function () {

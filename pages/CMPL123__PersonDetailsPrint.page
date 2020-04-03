@@ -1,0 +1,71 @@
+<apex:page controller="CMPL123.UserDetailController" applyBodyTag="false" renderAs="pdf" showHeader="false">
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, "/css/PersonDetailsPrint.css")}"/>
+    </head>
+    <body>
+        <div id="main-heading" class="main-heading">
+            {!HTMLENCODE($Label.PERSON_DETAILS)}
+            <div id="sub-heading" class="sub-heading">
+                {!userRecord.Name}
+            </div>  
+        </div>
+        <div class="print-top-padding">
+            <table id="main-table" class="print-main-table">
+                <tr class="print-font-style bgcolor">
+                    <td colspan="2" class="bold-font"> {!HTMLENCODE($Label.PROFILE)} </td>
+                </tr>
+                <tr>
+                    <td class="td-width">
+                        <table class="sub-table">
+                            <tr>
+                                <td class="print-font-style print-font-color print-col-width">{!HTMLENCODE($Label.RECORD_ID)}</td>
+                                <td class="print-font-style print-font-color">{!userRecord.Id}</td>
+                            </tr>
+                            <apex:repeat var="field" value="{!userFields}" first="0" rows="4">
+                                <tr>
+                                    <td class="print-font-style print-font-color print-col-width">{!field.label}</td>
+                                    <td class="print-font-style print-font-color">{!field.value}</td>
+                                </tr>
+                            </apex:repeat>
+                        </table> 
+                    </td>
+                    <td class="td-width">
+                        <table class="sub-table">
+                            <apex:repeat var="field" value="{!userFields}" first="4" rows="5">
+                                <tr>
+                                    <td class="print-font-style print-font-color print-col-width">{!field.label}</td>
+                                    <td class="print-font-style print-font-color">{!field.value}</td>
+                                </tr>
+                            </apex:repeat>
+                        </table> 
+                    </td>
+                </tr>
+                <tr class="print-font-style bgcolor">
+                    <td colspan="2" class="bold-font"> {!HTMLENCODE($Label.cmpl123__contact_details)} </td>
+                </tr>
+                <tr>
+                    <td class="td-width">
+                        <table class="sub-table">
+                            <apex:repeat var="field" value="{!userFields}" first="9" rows="5">
+                                <tr>
+                                    <td class="print-font-style print-font-color print-col-width">{!field.label}</td>
+                                    <td class="print-font-style print-font-color">{!field.value}</td>
+                                </tr>
+                            </apex:repeat>
+                        </table>
+                    </td>
+                    <td class="td-width">
+                        <table class="sub-table">
+                            <apex:repeat var="field" value="{!userFields}" first="14" rows="5">
+                                <tr>
+                                    <td class="print-font-style print-font-color print-col-width">{!field.label}</td>
+                                    <td class="print-font-style print-font-color">{!field.value}</td>
+                                </tr>
+                            </apex:repeat>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</apex:page>

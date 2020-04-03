@@ -139,6 +139,19 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Action_Completed__c</fullName>
         <defaultValue>false</defaultValue>
@@ -538,6 +551,20 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__OOS__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>OOS</label>
+        <referenceTo>CMPL123QMS__OOS__c</referenceTo>
+        <relationshipLabel>Quality Events</relationshipLabel>
+        <relationshipName>Quality_Events</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>CMPL123QMS__Place_Identified__c</fullName>
@@ -1286,30 +1313,7 @@
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>Quality Event</label>
-    <nameField>
-        <displayFormat>DEV-{00000}</displayFormat>
-        <label>Quality Event</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
-    </nameField>
-    <pluralLabel>Quality Events</pluralLabel>
-    <searchLayouts />
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
     <listViews>
         <fullName>CMPL123QMS__All</fullName>
         <columns>NAME</columns>
@@ -1321,6 +1325,15 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <nameField>
+        <displayFormat>DEV-{00000}</displayFormat>
+        <label>Quality Event</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Quality Events</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
     <validationRules>
         <fullName>Action_Completed</fullName>
         <active>true</active>
@@ -1357,4 +1370,5 @@
         <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; CMPL123_WF_Action__c =="Submit Final Review - No Action Required" &amp;&amp; ISPICKVAL( Action_Required__c , "Yes")</errorConditionFormula>
         <errorMessage>If Action Required? is Yes, should not select “Submit Final Review - No Action Required” action.</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
 </CustomObject>

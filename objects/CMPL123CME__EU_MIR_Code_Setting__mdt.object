@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Settings related to EU MIR UI(New, Edit and View screen) configuration.</description>
     <fields>
         <fullName>CMPL123CME__Field_Set_Name__c</fullName>
         <deprecated>false</deprecated>
@@ -11,6 +12,16 @@
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Mapped_Field_APIs__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Mapped Field APIs</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>CMPL123CME__Number_Of_Choices__c</fullName>
@@ -40,7 +51,6 @@
         <type>Number</type>
         <unique>false</unique>
     </fields>
-    <description>Settings related to EU MIR UI(New, Edit and View screen) configuration.</description>
     <label>EU MIR Code Setting</label>
     <pluralLabel>EU MIR Code Settings</pluralLabel>
     <visibility>Public</visibility>

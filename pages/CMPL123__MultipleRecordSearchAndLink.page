@@ -1,0 +1,31 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" lightningStylesheets="true">
+     <apex:includeLightning />
+   <div id="lightningComponentId"/>
+   <script>
+   $Lightning.use("CMPL123:MultipleRecordSearchAndLinkApp", function() 
+   {
+       $Lightning.createComponent("CMPL123:MultipleRecordSearchAndLink",
+       {
+           'targetObject'  : '{!JSENCODE($CurrentPage.parameters.targetObject)}',
+           'recordId'      : '{!JSENCODE($CurrentPage.parameters.recordId)}',
+           'linkObject'    : '{!JSENCODE($CurrentPage.parameters.linkObject)}'
+       },
+      "lightningComponentId",function(cmp) {
+          $A.eventService.addHandler({
+              event: 'force:navigateToSObject',
+              handler: function(event) {
+                window.parent.location = '/' + '{!JSENCODE($CurrentPage.parameters.recordId)}'; 
+              }
+          });
+          $A.eventService.addHandler({
+              event: 'force:navigateToObjectHome',
+              handler: function(event) {
+                  if (sforce && sforce.one) {
+                    sforce.one.navigateToObjectHome(event.getParams().scope);
+                  }
+              }
+          });
+      });
+    });
+   </script>
+</apex:page>

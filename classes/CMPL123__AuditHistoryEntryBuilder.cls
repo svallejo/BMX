@@ -21,7 +21,13 @@ global class AuditHistoryEntryBuilder {
     global CMPL123.AuditHistoryEntryBuilder withComments(String comments) {
         return null;
     }
+    global CMPL123.AuditHistoryEntryBuilder withCreatedByUserName(String createdByUserName) {
+        return null;
+    }
     global CMPL123.AuditHistoryEntryBuilder withDatePosted(Datetime datePosted) {
+        return null;
+    }
+    global CMPL123.AuditHistoryEntryBuilder withESignApplied(Boolean eSignApplied) {
         return null;
     }
     global CMPL123.AuditHistoryEntryBuilder withFieldValueChange(String fieldName, Object oldValue, Object newValue) {

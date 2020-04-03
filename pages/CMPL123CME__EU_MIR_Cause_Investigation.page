@@ -4,7 +4,7 @@
     <div id="IMDRFCauseInvestigation" />
     <script>
         
-        var recordId = '{!EU_MIR__c.Id}';
+        var recordId = '{!JSENCODE(EU_MIR__c.Id)}';
         var causeInvestigationCodes = [];
         
         //JSON for IMDRF Cause investigation: Type of investigation (Annex B)

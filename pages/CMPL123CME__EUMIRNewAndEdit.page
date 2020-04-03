@@ -1,15 +1,21 @@
 <apex:page showHeader="true" sidebar="false" standardStylesheets="false" standardController="CMPL123CME__EU_MIR__c">
     <apex:includeLightning />
-    
-    <div id="lightning" />
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__EUMIR)}/slds/salesforce-lightning-design-system.min.css" />
+	
+	<div id="lightning" />
 
     <script>
-        var recordId = '{!CMPL123CME__EU_MIR__c.Id}';
-        var showValidationErrors = '{!$CurrentPage.parameters.showValidationErrors}';
+        var recordId = '{!JSENCODE(CMPL123CME__EU_MIR__c.Id)}';
+        var showValidationErrors = '{!JSENCODE($CurrentPage.parameters.showValidationErrors)}';
+		var isClone = false;
+		if('{!JSENCODE($CurrentPage.parameters.clone)}' == '1'){
+			isClone = true;
+		}
         $Lightning.use("CMPL123CME:EUMIRNewAndEditApp", function() {
           $Lightning.createComponent("CMPL123CME:EUMIRNewAndEdit",
           { "recordId" : recordId,
-          	"showValidationErrors" : showValidationErrors
+          	"showValidationErrors" : showValidationErrors,
+			"isClone" : isClone
           },
           "lightning",
           function(cmp) {}

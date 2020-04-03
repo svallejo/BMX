@@ -188,8 +188,24 @@
                 if(configType[key] == 'Workflow Rule Config'){
                     Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ConfigController.createWorkflowRuleJson}',function(result,event){
                         if(event.status){
+                            var parseResult = JSON.parse(JSON.parse($("<div />").html(result).text()));
+                            if(parseResult && parseResult !=null && parseResult.wf_rule && parseResult.wf_rule.length > 0){
+                                for (var i = 0; i < parseResult.wf_rule.length; i++) {
+                                    if(parseResult.wf_rule[i].CMPL123__WF_Steps__r != undefined){
+                                        for(var j =0; j < parseResult.wf_rule[i].CMPL123__WF_Steps__r.records.length; j++){
+                                            if(parseResult.wf_rule[i].CMPL123__WF_Steps__r.records[j].CMPL123__WF_Locked_Fields__c == undefined){
+                                                parseResult.wf_rule[i].CMPL123__WF_Steps__r.records[j].CMPL123__WF_Locked_Fields__c = '';
+                                            }
+                                        }
+                                    }else {
+                                        parseResult.wf_rule[i].CMPL123__WF_Steps__r == null;
+                                    }
+                                }
+                            }else {
+                                parseResult.wf_rule == null;
+                            }
                             deploykey++;
-                            callRestService('Workflow Rule Config',JSON.parse($("<div />").html(result).text()),deploykey);
+                            callRestService('Workflow Rule Config',JSON.stringify(parseResult),deploykey);
                         }
                     },{escape:true});
                 }else if(configType[key] == 'Task Config'){
@@ -264,17 +280,6 @@
                     errorMessage(JSON.stringify(error));
                 },
                 success: function(result){
-                   /* if(configType.split('~').length >1){
-                        result = JSON.parse(result);
-                        for(var key in result){
-                            deploykey++;
-                            deployComplaintObject(key,JSON.stringify(result[key]),deploykey);
-                        }
-                    }else{
-                       deploykey++;
-                        deployComplaintObject(configType,result,deploykey);
-                    }*/
-                    
                     /* Added later while EMDR and Report config deployed on 17/07/2015  */
                     result = JSON.parse(result);
                     for(var key in result){
@@ -285,7 +290,7 @@
                 },
                 beforeSend: function(jqXHR) {
                     jqXHR.setRequestHeader("Authorization", "OAuth "+currentOrgSessionid);  
-                    jqXHR.setRequestHeader('SalesforceProxy-Endpoint', host+'/services/apexrest/CMPL123CME/ConfigService/v1.0?configType='+encodeURI(configType));
+                    jqXHR.setRequestHeader('SalesforceProxy-Endpoint', host+'services/apexrest/CMPL123CME/ConfigService/v1.0?configType='+encodeURI(configType));
                     jqXHR.setRequestHeader("Content-Type", "application/json");
                 }
             });

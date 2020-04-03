@@ -8,11 +8,19 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__CMPL123ConfigServiceControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__CMPL123DSVHelper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123CME__CMPL123ProcessMeddraFileBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__CMPL123ProcessMeddraFileBatchTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -44,6 +52,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__CMPL_123_QItemsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__CMPL_123_QItems_Ext</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -60,7 +72,35 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__ComplaintCodeLookupControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__ComplaintSetupController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__ComplaintSetupControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__Complaint_MDRGenerationTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__ComplaintsUpgradeSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__ComplaintsUpgradeSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__CustomMetadataCallback</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__CustomMetadataCallbackTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -69,6 +109,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123CME__DynamicReportController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__DynamicReportControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -81,6 +125,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123CME__EMDRFDAMappingController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EMDRFDAMappingControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -105,6 +153,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123CME__EMDRService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EMDRServiceTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -136,6 +188,34 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__EUMIRDataMigrationBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EUMIRDataMigrationBatchTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EUMIRNbIdFieldsDataMigrationBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EUMIRNbIdFieldsDataMigrationBatchTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EUMIRRequiredCodesSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EUMIRRequiredCodesSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EUMIRValidationServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__EmailXmlDataController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -148,11 +228,51 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__FDASubmissionTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__FieldUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__FormatDatetimeController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__IComplaintsUpgradeSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__IEUMIRRequiredCodesSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__IQILogicImpl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__ITestUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__IUserRecordAccessService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__InvestigationLogicImpl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__InvestigationLogicImplTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__InvestigationLogicUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__InvestigationLogicUtilTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -168,6 +288,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__MDRSupplementControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__MDR_GenerateMFRReportNoTriggerHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -176,7 +300,15 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__MDRcodeControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__MdrReportController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MdrReportControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -209,6 +341,70 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123CME__OauthRegistrationController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__PermissionMockFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QIContainerController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QIContainerControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QIFileContainerController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QIFileContainerControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QIFilesServiceImpl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QIFilesServiceImplTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QIInvestigationPickListDateStyle</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QIInvestigationPickListDateStyleTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QILogicProvider</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QILogicProviderTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QIWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QuestionnaireLogicImpl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QuestionnaireLogicImplTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QuestionnaireLogicUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__QuestionnaireLogicUtilTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -248,7 +444,215 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__TriggerService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__TriggerServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__UpgradeComplaintsController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__UpgradeComplaintsControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__UserPermissionTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__UserRecordAccessException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__UserRecordAccessService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__UserRecordAccessServiceFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__UserRecordAccessServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__test_MDRreport</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__RedirectSFDCReportController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__Test_RedirectSFDCReportController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightAPIHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightAPIHelperTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightAPIMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightAPIMockTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightAuraController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightAuraControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightConfigSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightConfigSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightConfigurationResponseModel</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightConfigurationResponseModelTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightEndpoint</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightEndpointHttpMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightEndpointTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightLabelSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightLabelSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightRequestModel</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightRequestModelTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightResponseModel</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightResponseModelTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightSStateGarbageCollectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightSessionState</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightSessionStateGarbageCollector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightSessionStateModel</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightSessionStateTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightTWDResponseModelTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightTrackWiseResponseModelTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightTrackwiseDigitalResponseHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightTrackwiseDigitalResponseModel</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightTrackwiseDigitalResponseTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightTrackwiseResponseHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightTrackwiseResponseHandlerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightTrackwiseResponseModel</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsights</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightsContainerDTO</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightsLoadMoreController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightsLoadMoreControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightsRefreshBarController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightsRefreshBarControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIInsightsTestDataFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -272,7 +676,47 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AncientSObjectTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ApexManagedSharingException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__ApexSharingReasonException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ApexSharingReasonService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ApexSharingReasonServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ApplicationDataConfigSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ApplicationDataConfigSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AssociationSetupSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AssociationSetupSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AssociationSetupUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AssociationSetupUtilTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -297,6 +741,18 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__AuditActivityTypeSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditChildRelationships</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditChildRelationshipsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditConfigException</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -392,7 +848,51 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AuditJSONEntry</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditJSONEntryTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__AuditMDCTriggerLogicHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditParentRelationship</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditParentRelationshipTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditParentRelationships</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditParentRelationshipsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditSObjectHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditSObjectHandlerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditSetupApi</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditSetupApiCallException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditSetupApiTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -404,11 +904,23 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AuditTrailConfig</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__AuditTrailConfigMap</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__AuditTrailConfigMapTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditTrailConfigSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditTrailConfigSelectorTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -425,6 +937,18 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__AuditTrailConfigServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditTrailConfigTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditTrailConfigs</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditTrailConfigsTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -448,11 +972,23 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AuditTrailEntryConsolidator</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditTrailEntryConsolidatorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__AuditTrailEntrySelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__AuditTrailEntrySelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditTrailEntryTestSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -484,6 +1020,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AuditedChange</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditedRelationship</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__AuraResponse</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -504,11 +1048,103 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AutomationTask</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AutomationTaskTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__BatchAssociationSetupController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__BatchAssociationSetupControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__BatchObjectQueueSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__BatchObjectQueueSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CBSDataSyncBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CBSDataSyncBatchTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CBSEmailNotification</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CBSEmailNotificationAbstractionMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CBSEmailNotificationTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CBSFailureEmailNotification</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CBSFailureEmailNotificationTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CBSPartialSuccessEmailNotification</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CBSPartialSuccessEmailNotificationTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CBSSuccessEmailNotification</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CBSSuccessEmailNotificationTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CbsConfigurationUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CbsDataSyncController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CbsDataSyncControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__ChildFilesLockedServiceModule</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__ChildFilesLockedServiceModuleTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ChildRelationshipDescribe</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ChildRelationshipDescribeCache</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ChildRelationshipDescribes</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -533,6 +1169,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__ComplianceService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ComplianceServiceTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -724,6 +1364,46 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__ContextBasedSecurityEventPublisher</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ContextBasedSecurityEventPublisherTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ContextBasedSecurityPublisherException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ContextBasedSecuritySelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ContextBasedSecuritySelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ContextBasedSecuritySharing</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ContextBasedSecuritySharingTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ContextBasedSecurityTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ContextBasedSecurityTriggerHandlerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ContextBasedSecurityTriggerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__ContractViolationException</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -756,6 +1436,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__CreateChildRecordJob</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CreateChildRecordJobTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__CreateTestClassController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -768,11 +1456,39 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__CustomSettingService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__DataSyncUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__DataSyncUtilTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__DataTypeProviderController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__DataTypeProviderControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__DeletionAuditedByChild</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__DeprecationException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__DescribeAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__DescribeApiManifest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -784,6 +1500,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__DescribeException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__DocumentExtension</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -792,7 +1512,79 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__DocumentSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__DocumentSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__DuplicateJobException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__DynamicDataTableController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__DynamicDataTableControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__ENCPartnerService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EmailNotification</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EmailNotificationDispatchException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EmailNotificationDispatchExceptionTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EmailNotificationDispatcher</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EmailNotificationDispatcherFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EmailNotificationDispatcherMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EmailNotificationExternalDispatcher</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EmailNotificationExternalDispatcherTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EmailNotificationMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EncryptedTextController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EncryptedTextControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EncryptedTextService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__EncryptedTextServiceTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -804,11 +1596,63 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__ExternalLookupFieldController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ExternalLookupFieldControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__FLSSecurityException</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__FieldChangeAuditedByCurrentRecord</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FieldConfigurationController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FieldConfigurationControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FieldDescribe</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FieldDescribeCache</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FieldDescribes</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__FieldProviderController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FieldSetDescribe</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FieldSetDescribeCache</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FieldSetDescribes</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FieldSetMemberDescribe</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FieldSetMemberDescribes</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -836,6 +1680,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__GlobalDescribeCache</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__GroupMemberSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -844,7 +1692,31 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__GroupSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__GroupSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IAIInsightConfigSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__IAccessViolationService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IApexSharingReasonService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IApplicationDataConfigSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IAssociationSetupSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -877,6 +1749,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__IAuditTriggerDecorator</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IBatchObjectQueueSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IConfigurationUtil</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -924,11 +1804,23 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__IContextBasedSecuritySelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__ICryptoUtil</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__IDocumentSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__IGroupMemberSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IGroupSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -937,6 +1829,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__IObjectRelationshipUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IParentChildAuditTrailViewSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IRecordAccessService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -953,6 +1853,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__ISecurityService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ISessionStateInsightSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -973,6 +1877,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__ITriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IUserRecordAccessService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -997,6 +1905,22 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__IWorkflowHistoryService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IWorkflowLockedFieldDescribe</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IWorkflowLockedFieldsConfigDescribe</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IWorkflowLockedFieldsDescribeForRecords</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IWorkflowLockedFieldsService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1036,7 +1960,47 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__InvalidChildRelationshipNameException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__InvalidChildStatusException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__InvalidFieldNameException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__InvalidFieldSetNameException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__InvalidFieldTokenException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__InvalidSObjectNameException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__InvalidSObjectTypeException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__JWTAuthorizer</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__JWTAuthorizerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__Job</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__JobFieldMap</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1045,6 +2009,30 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__JobFieldMapSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__JobFieldMapTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__JobFieldType</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__JobFieldTypeTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__JobTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__JobType</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__JobTypeTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1084,11 +2072,47 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__LookupChangeAuditedByCurrentRecord</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__LookupChangeAuditedByParent</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__LookupChangeAuditedByParentTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__LookupFieldController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__LookupFieldControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__LookupFilterFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__LookupFilterFactoryTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__LookupFilterService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__MDCCondition</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__MDCConditionController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MDCConditionControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1156,6 +2180,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__MetaDataDeploymentFailureException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__MetadataService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1164,7 +2192,47 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__MetadataWebServiceCalloutMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MobileUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MobileUtilTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__Mocks</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MultipleRecordLinkPicklistController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MultipleRecordLinkPicklistControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MultipleRecordSearchAndLinkController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MultipleRecordSearchControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__Must</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__NameChangeAuditedByChild</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__NameChangeAuditedByParent</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1181,6 +2249,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__NoteTriggerHandlerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ObjectConfigurationController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ObjectConfigurationControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1208,7 +2284,39 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__ParentChildAuditTrailViewSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ParentChildAuditTrailViewSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__PermissionGuard</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__PermissionGuardPlatform</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__PermissionGuardTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__PlatformApplication</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__PlatformEventPublisher</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__PlatformEventPublisherTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__PopoverUtil</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1221,6 +2329,94 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__ProxyFactoryTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCApiService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCApiServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCCacheUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCCacheUtilTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCCalloutMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCConfigurationCtrlTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCConfigurationsCtrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCDatabaseUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCMetadataService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCMetadataServiceMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCMetadataServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCTestDataFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCUserService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCUserServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RDCUtils</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordAccessService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordDetailComponentController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordDetailComponentControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordFieldChange</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordFieldChangeTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordIdSearchController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordIdSearchControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1276,11 +2472,27 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__RecordLockedFieldsModule</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordLockedFieldsModuleTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__RecordLockedServiceModule</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__RecordLockedServiceModuleTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordNewController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordNewControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1301,6 +2513,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__RecordSharingUtility</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordTypeComponentController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecordTypeComponentControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1332,6 +2552,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__ReferenceInfoPopoverController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ReferenceInfoPopoverControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__RelatedListsLockedServiceModule</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1344,11 +2572,39 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__ReportTemplateUtility</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ReportTemplateUtilityTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RichTextQuirks</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RichTextQuirksTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SObjectDescribe</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SObjectDescribeCache</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__SObjectProxy</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__SObjectProxyTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SObjectTriggerHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1380,7 +2636,47 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__SessionStateInsightSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SessionStateInsightSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SetChildFieldJob</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SetChildFieldJobTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SetFieldJob</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SetFieldJobTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SetParentFieldJob</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SetParentFieldJobTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__SetupAuditController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ShareRecordSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ShareRecordSelectorTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1393,6 +2689,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__SpartaSelectOption</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__StackTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1452,7 +2752,39 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__TaskAuditHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TaskAuditHandlerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__TaskDashboardController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TaskExecutor</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TaskExecutorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TaskProxy</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TaskSObjectAttachmentAuditTrail</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TaskSObjectAttachmentAuditTrailTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TaskTestDataFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1540,11 +2872,51 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__TimeZones</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TimeZonesTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__TriggerGenerationService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__TriggerGenerationServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TriggerHandlerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TriggerHandlerWithContext</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TriggerQuirkHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TriggerQuirkHandlerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TriggerStack</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TriggerStackTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TriggerVersionTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1556,7 +2928,35 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__TwdContextBasedSecurityEventTriggerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__UniversalCalloutMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__UserController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__UserControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__UserRecordAccessException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__UserRecordAccessService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__UserRecordAccessServiceFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__UserRecordAccessServiceTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1600,11 +3000,75 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__ValidChildStatusesPopupControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__ValidateOrg</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__WFActionsComponentController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WFActionsComponentControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WFEsignController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WFEsignControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WFPlatformEventController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WFPlatformEventControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WFReportSettingsController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WFReportSettingsControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WFRuleLockedFieldsController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__WFStepRequiredFieldController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WFSteps</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WFStepsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowAction</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowActionResult</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowActionResultTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1616,6 +3080,42 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__WorkflowActionTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowActivity</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowActivityTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowApiTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowApiTestUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowAppBuilderPickListUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowAppBuilderPickListUtilTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowChildFileLockProcedure</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowChildFileLockProcedureTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__WorkflowChildObjectTriggerHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1624,7 +3124,59 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__WorkflowChildRelationship</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowChildRelationshipTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowCommentRequirement</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowCommentRequirementTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__WorkflowController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowDataProperties</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowDefinition</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowDefinitionTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowDesktopContainerController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowDesktopContainerControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowEsignRequirement</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowEsignRequirementTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowEventPublisher</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowEventPublisherTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1637,6 +3189,18 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__WorkflowFieldAPITest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowGroupRequirement</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowGroupRequirementTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowHistory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1653,6 +3217,22 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__WorkflowHistoryComponentControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowHistoryDataSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowHistoryDataSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowHistoryDomain</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowHistoryDomainTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1680,7 +3260,51 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__WorkflowHistoryTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__WorkflowHistoryTestDataFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowLockedFieldDescribe</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowLockedFieldsConfigDescribe</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowLockedFieldsConfigManager</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowLockedFieldsConfigManagerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowLockedFieldsDescribeForRecords</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowLockedFieldsService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowMandatoryFieldRequirement</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowMandatoryFieldRequirementTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowMobileContainerController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowMobileContainerControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1693,6 +3317,50 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__WorkflowPanelControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowProcedure</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowProcedureType</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowRecordLockProcedure</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowRecordLockProcedureTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowRelatedListLockProcedure</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowRelatedListLockProcedureTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowRelatedRecordSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowRelatedRecordSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowRequirement</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowRequirementType</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowRule</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1720,7 +3388,31 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__WorkflowRuleTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__WorkflowService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowStage</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowStageTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowState</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowStateTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowStatus</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1729,6 +3421,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__WorkflowStatusSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowStatusTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowStep</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1748,11 +3448,23 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__WorkflowStepJob</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowStepJobTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__WorkflowStepSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__WorkflowStepSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowStepTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1768,6 +3480,30 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__WorkflowTransaction</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowTransactionTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowTriggerHandlerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowUserFieldRequirement</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowUserFieldRequirementTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__WorkflowUtil</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1776,7 +3512,27 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__WorkflowValidChildStatus</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowValidChildStatusRequirement</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowValidChildStatusRequirementTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowValidChildStatusTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__X123ConfigController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__X123ConfigControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -2153,6 +3909,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>CMPL123CME__ComplaintSetup</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>CMPL123CME__EMDR</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -2269,11 +4029,19 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>CMPL123QMS__RedirectSFDCReport</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>CMPL123__AuditHistoryTablePage</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>CMPL123__AuditTrail</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123__AuditTrailPrint</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -2329,6 +4097,22 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>CMPL123__MultipleRecordSearchAndLink</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123__PersonDetailsPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123__RDCConfigurationPage</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123__RecordIdSearch</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>CMPL123__Setup</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -2345,11 +4129,27 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>CMPL123__UnifiedAuditTrailPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123__UserSessionId</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>CMPL123__ValidChildStatus</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>CMPL123__ValidChildStatusesPopup</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123__WFPanelSSoOpener</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123__WFRuleLockedFields</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -2521,6 +4321,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.CMPL123__Rich_Text_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.CMPL123__Salutation__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2532,6 +4337,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.CMPL123__Suffix__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.CMPL123__Test_User__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7641,6 +9451,266 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__EU_MIR_Code_Setting__mdt.CMPL123CME__Mapped_Field_APIs__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR_Required_Code_Type_and_Choice__mdt.CMPL123CME__EU_MIR_Code_Type_and_Choice__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR_Required_Code_Type_and_Choice__mdt.CMPL123CME__Field_Set_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR_Required_Code_Type_and_Choice__mdt.CMPL123CME__Required__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__A_Medical_Device_Problem_Code_Choice_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__A_Medical_Device_Problem_Code_Choice_2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__A_Medical_Device_Problem_Code_Choice_3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__A_Medical_Device_Problem_Code_Choice_4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__A_Medical_Device_Problem_Code_Choice_5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__A_Medical_Device_Problem_Code_Choice_6__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__B_Investigation_Type_Code_Choice_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__B_Investigation_Type_Code_Choice_2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__B_Investigation_Type_Code_Choice_3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__B_Investigation_Type_Code_Choice_4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__B_Investigation_Type_Code_Choice_5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__B_Investigation_Type_Code_Choice_6__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__B_Investigation_Type_Code_Choice_7__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__B_Investigation_Type_Code_Choice_8__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__C_Investigation_Findings_Code_Choice_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__C_Investigation_Findings_Code_Choice_2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__C_Investigation_Findings_Code_Choice_3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__C_Investigation_Findings_Code_Choice_4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__C_Investigation_Findings_Code_Choice_5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__C_Investigation_Findings_Code_Choice_6__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__D_Investigation_Conclusion_Choice_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__D_Investigation_Conclusion_Choice_2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__D_Investigation_Conclusion_Choice_3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__D_Investigation_Conclusion_Choice_4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__D_Investigation_Conclusion_Choice_5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__D_Investigation_Conclusion_Choice_6__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__E_Clinical_Signs_Symptoms_Code_Choice_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__E_Clinical_Signs_Symptoms_Code_Choice_2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__E_Clinical_Signs_Symptoms_Code_Choice_3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__E_Clinical_Signs_Symptoms_Code_Choice_4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__E_Clinical_Signs_Symptoms_Code_Choice_5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__E_Clinical_Signs_Symptoms_Code_Choice_6__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__F_Health_Impact_Code_Choice_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__F_Health_Impact_Code_Choice_2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__F_Health_Impact_Code_Choice_3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__F_Health_Impact_Code_Choice_4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__F_Health_Impact_Code_Choice_5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__F_Health_Impact_Code_Choice_6__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__G_Component_Code_Choice_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__G_Component_Code_Choice_2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__G_Component_Code_Choice_3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__G_Component_Code_Choice_4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__G_Component_Code_Choice_5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__G_Component_Code_Choice_6__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__In_house_medical_device_problem_Choice_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__In_house_root_cause_evaluation_Choice_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__HHE__c.CMPL123CME__AnySignificant_Public_Health_Impact__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -11611,6 +13681,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__Upgrades_for_Complaints__mdt.CMPL123CME__Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Upgrades_for_Complaints__mdt.CMPL123CME__Job_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Upgrades_for_Complaints__mdt.CMPL123CME__Process_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__Vigilance__c.CMPL123CME__Accessories_or_Associated_Device__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -11966,6 +14051,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__CAPA__c.CMPL123QMS__OOS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__CAPA__c.CMPL123QMS__Objective_of_Investigation__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -12307,6 +14397,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123QMS__Change_Control__c.CMPL123QMS__Functional_Area__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Change_Control__c.CMPL123QMS__Global_Change_Control__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -12666,6 +14761,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__Deviation__c.CMPL123QMS__OOS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__Deviation__c.CMPL123QMS__Place_Identified__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -12856,6 +14956,306 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Assessment__c.CMPL123QMS__Assessment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Assessment__c.CMPL123QMS__Assigned_To_Me__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Assessment__c.CMPL123QMS__Assigned_To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Assessment__c.CMPL123QMS__Due_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Assessment__c.CMPL123QMS__Global_Change_Control__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Assessment__c.CMPL123QMS__Impact__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Assessment__c.CMPL123QMS__Impacted_Site__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Assessment__c.CMPL123QMS__Implement_Local_Change_Control__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Assessment__c.CMPL123QMS__Local_Change_Control_Owner__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Advance_Without_Assessment_Closure__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Affected_Materials__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Assigned_To_Me__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Assigned_To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Auto_Close_Upon_Completion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Change_Evaluation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Current_State__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Device_Affected__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Device_Comment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Device_Lot_Number_s__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Device_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Device__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Document_Comment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Documents_Affected__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Equipment_Affected__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Equipment_Comment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Equipment_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Global_Change_Assessments_Closed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Impacted_Sites__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Implemented_As_Planned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Justification__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Material_Affected__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Material_Comment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Material_Lot_Number_s__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Material_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Product_Affected__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Product_Comment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Product_Lot_Number_s__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Product_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Product__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Proposed_State__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Action_Created__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Action_Created_for_Return__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Action_Created_for_Rework__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Action_Created_for_Scrap__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Conforming_Qty__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Disposition_Status_Flag__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Disposition_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Disposition__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Lot_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Lot_Qty_UOM__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Lot_Qty__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Material__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Product__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Recall_Qty__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Return_To_Supplier_Qty__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Rework_Qty__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Scrap_Qty__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Total_Disposition_Qty__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Impacted_Lot__c.CMPL123QMS__Use_As_Is_Qty__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__Internal_Audit__c.Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -13006,6 +15406,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Additional_Action_s_Required__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Business_Risk__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -13017,6 +15422,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Compliance_Risk__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Date_Initiated__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -13036,7 +15446,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Detectability__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Disposition_Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Document_Changes_Required__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -13076,7 +15496,37 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Justification_for_No_Additional_Actions__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Justification_for_No_Investigation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Likelihood_of_Occurrence__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Location__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Nonconformance_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Nonconforming_Material__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Nonconforming_Product__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -13086,7 +15536,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Potential_NC_Product_in_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Probability_Measure__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Process_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Product_Material__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -13101,6 +15566,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__RPN_Score__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Related_CAPA__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -13111,7 +15581,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Risk_Category__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Risk_Flag__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__SCAR_Required__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Severity_Measure__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Severity__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -13121,12 +15611,327 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Site__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Supplier_Contact_Person__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Supplier_Site__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Assigned_To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Comments__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Conclusion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Department__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Due_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Hypothesis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Investigation_Results__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Is_Additional_Testing_Required__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__OOS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Root_Cause_Category__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Root_Cause_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Root_Cause_Determined__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Short_Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Test_Plan__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Actual_Results__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Affected_Material__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Assigned_To_Me__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Assigned_To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Background__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Batch_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Detected_By__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Detected_On__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Disposition_Recommendation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Due_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Expected_Results__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Further_Actions_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Further_Actions_Needed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Lab_Analyst__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Lot__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Non_Obvious_Lab_Error__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Obvious_Lab_Error__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Other_Batches_Affected__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Other_Phase_1A_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Other_Phase_1B_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Other_Phase_2_Lab_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Other_Phase_2_Mfr_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Phase_1A_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Phase_1A_Error_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Phase_1B_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Phase_1B_Error_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Phase_2_Lab_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Phase_2_Lab_Error_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Phase_2_Lab_Error__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Phase_2_Mfr_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Phase_2_Mfr_Error_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Phase_2_Mfr_Error__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Product__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Reference__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Reported_Results__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Root_Cause_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Root_Cause_Determined__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Root_Cause_Identified_as__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Scope_of_Impact__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Spec_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Statement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Supervisor__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__TWD_Product__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Test_Method_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__OOS__c.CMPL123QMS__Test__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -13137,6 +15942,256 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123QMS__Part_Information__c.CMPL123QMS__Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__Assessment_Confirmation_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__Assessment_Confirmed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__Assigned_To_Me__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__Assigned_To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__Hypothesis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__OOS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__Other_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__Phase_1B_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__Phase_1B_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__Root_Cause_Determined__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_1B_Investigation__c.CMPL123QMS__Testing_Results__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Lab_Investigation__c.CMPL123QMS__Assigned_To_Me__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Lab_Investigation__c.CMPL123QMS__Assigned_To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Lab_Investigation__c.CMPL123QMS__Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Lab_Investigation__c.CMPL123QMS__Hypothesis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Lab_Investigation__c.CMPL123QMS__Investigation_Outcome__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Lab_Investigation__c.CMPL123QMS__OOS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Lab_Investigation__c.CMPL123QMS__Other_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Lab_Investigation__c.CMPL123QMS__Phase_2_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Lab_Investigation__c.CMPL123QMS__Phase_2_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Lab_Investigation__c.CMPL123QMS__Root_Cause_Determined__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Lab_Investigation__c.CMPL123QMS__Test_Plan__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Manufacturing_Investigation__c.CMPL123QMS__Assigned_To_Me__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Manufacturing_Investigation__c.CMPL123QMS__Assigned_To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Manufacturing_Investigation__c.CMPL123QMS__Department__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Manufacturing_Investigation__c.CMPL123QMS__Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Manufacturing_Investigation__c.CMPL123QMS__Hypothesis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Manufacturing_Investigation__c.CMPL123QMS__OOS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Manufacturing_Investigation__c.CMPL123QMS__Other_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Manufacturing_Investigation__c.CMPL123QMS__Phase_2_Cause__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Manufacturing_Investigation__c.CMPL123QMS__Phase_2_Details__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Manufacturing_Investigation__c.CMPL123QMS__Root_Cause_Determined__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Phase_2_Manufacturing_Investigation__c.CMPL123QMS__Testing_Results__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Regulatory_Assessment__c.CMPL123QMS__Assessment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Regulatory_Assessment__c.CMPL123QMS__Assigned_To_Me__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Regulatory_Assessment__c.CMPL123QMS__Assigned_To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Regulatory_Assessment__c.CMPL123QMS__Due_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Regulatory_Assessment__c.CMPL123QMS__Global_Change_Control__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Regulatory_Assessment__c.CMPL123QMS__Impacted_Site__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Regulatory_Assessment__c.CMPL123QMS__Implement_Change_Control__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Regulatory_Assessment__c.CMPL123QMS__Reason_for_No_Change_Control__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__Regulatory_Assessment__c.CMPL123QMS__Regulatory_Impacts__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123QMS__SCARs__c.CMPL123QMS__Non_Conformance__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__AIInsightMock__mdt.CMPL123__MockPayload__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__AI_Insights_Config__mdt.CMPL123__Active__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__AI_Insights_Config__mdt.CMPL123__Criteria__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__AI_Insights_Config__mdt.CMPL123__Operator__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__AI_Insights_Config__mdt.CMPL123__Record_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__AI_Insights_Config__mdt.CMPL123__Result__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -13172,6 +16227,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123__AcknowledgementMapping__c.CMPL123__UsersFieldAcknowledgment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Action__c.CMPL123QMS__Department__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Action__c.CMPL123QMS__Impacted_Lot__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -13262,6 +16327,56 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123__Address__c.CMPL123__Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Application_Data_Config__mdt.CMPL123__Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Application_Data_Config__mdt.CMPL123__Feature__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Application_Data_Config__mdt.CMPL123__Job_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Application_Data_Config__mdt.CMPL123__Sync_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Association_Setup__mdt.CMPL123__Related_List_Object__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Association_Setup__mdt.CMPL123__Search_Parameters_Fields__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Association_Setup__mdt.CMPL123__Search_Results_Fields__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Association_Setup__mdt.CMPL123__Source_Object__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Association_Setup__mdt.CMPL123__Target_Object__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Association_Setup__mdt.CMPL123__Target_Object_fields__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -15691,7 +18806,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123__Audit_History__c.CMPL123__Created_By_Username__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123__Audit_History__c.CMPL123__Date_Posted__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Audit_History__c.CMPL123__ESign_Applied__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -15746,6 +18871,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123__Audit_Trail_Entry__c.CMPL123__NewValue_LTA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123__Audit_Trail_Entry__c.CMPL123__NewValue__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -15762,6 +18892,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123__Audit_Trail_Entry__c.CMPL123__Object_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Audit_Trail_Entry__c.CMPL123__OldValue_LTA__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -15887,6 +19022,26 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123__Contact__c.CMPL123__Weight__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Context_Based_Security__c.CMPL123__Config_Deploy_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Context_Based_Security__c.CMPL123__Corresponding_Object__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Context_Based_Security__c.CMPL123__Initial_CBS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Context_Based_Security__c.CMPL123__Workflow_Step__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -16331,6 +19486,311 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Auto_Number_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Checkbox_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Currency_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Date_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Date_Time_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Email_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Formula_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Geolocation_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Long_Text_Area_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Lookup_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__MultiSelect_Picklist_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Number_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Percent_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Phone_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Picklist_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Rich_Text_Area_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Text_Area_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Text_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__Time_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V1_Trigger__c.CMPL123__URL_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Auto_Number_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Checkbox_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Currency_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Date_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Date_Time_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Email_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Formula_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Geolocation_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Long_Text_Area_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Lookup_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__MultiSelect_Picklist_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Number_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Percent_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Phone_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Picklist_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Rich_Text_Area_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Text_Area_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Text_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__Time_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V2_Trigger__c.CMPL123__URL_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Auto_Number_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Checkbox_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Currency_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Date_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Date_Time_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Email_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Formula_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Geolocation_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Long_Text_Area_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Lookup_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__MultiSelect_Picklist_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Number_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Percent_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Phone_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Picklist_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Rich_Text_Area_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Text_Area_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Text_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__Time_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Object_With_V3_Trigger__c.CMPL123__URL_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Parent_Child_Audit_Trail_View__mdt.CMPL123__IsActive__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123__Product__c.CMPL123__Active__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -16396,12 +19856,37 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123__RAR_Child_Test_Object__c.CMPL123__CMPL123Rule_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RAR_Child_Test_Object__c.CMPL123__CMPL123Task_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123__RAR_Child_Test_Object__c.CMPL123__RAR_Target_Test_Object__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123__RAR_Sub_Child_Test_Object__c.CMPL123__RAR_Child_Test_Object__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RAR_Target_Test_Object__c.CMPL123__CMPL123Rule_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RAR_Target_Test_Object__c.CMPL123__CMPL123Task_Key_Value__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RAR_Target_User_Test_object__c.CMPL123__CMPL123Rule_Key_Value__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -16417,6 +19902,76 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123__RAR_Target_User_Test_object__c.CMPL123__User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Cache__c.CMPL123__Cache_Data__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Cache__c.CMPL123__Cache_Key__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Cache__c.CMPL123__Cache_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Test_Object__c.CMPL123__AutoNumber__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Test_Object__c.CMPL123__Checkbox__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Test_Object__c.CMPL123__Datetime__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Test_Object__c.CMPL123__Encrypted_Text__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Test_Object__c.CMPL123__Multipicklist__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Test_Object__c.CMPL123__Picklist__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Test_Object__c.CMPL123__Rich_Text__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Test_Object__c.CMPL123__TextArea__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Test_Object__c.CMPL123__Text_not_exist_on_layout__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Test_Object__c.CMPL123__Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__RDC_Test_Object__c.CMPL123__User__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -16486,6 +20041,31 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123__Session_State_Insights__c.CMPL123__Insight_Payload_Seq__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Session_State_Insights__c.CMPL123__Insight_Payload__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Session_State_Insights__c.CMPL123__Insight_Template_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Session_State_Insights__c.CMPL123__TrackWiseDigital__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__Session_State__c.CMPL123__RecordId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123__TWDLog__c.CMPL123__LogWrapped__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -16532,6 +20112,51 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123__TWDLog__c.CMPL123__User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__TWD_Audit_Default_Object__mdt.CMPL123__Application__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__TWD_Audit_Default_Object__mdt.CMPL123__AuditTrail_External_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__TWD_Audit_Default_Object__mdt.CMPL123__Audited_Object__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__TWD_Audit_Default_Object__mdt.CMPL123__Child_Relationships_Object__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__TWD_Audit_Default_Object__mdt.CMPL123__Fields__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__TWD_Audit_Default_Object__mdt.CMPL123__Parent_Relationship_Object__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__TWD_Context_Based_Security_Event__e.CMPL123__Source_Record_Field_Change__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__TWD_Context_Based_Security_Settings__mdt.CMPL123__Active__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__TWD_Deletion_Whitelist__mdt.CMPL123__TWD_Deletion_Whitelist_Object__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -16747,6 +20372,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123__WF_Step__c.CMPL123__Validate_Against_Child_Record_Statuses__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__WF_Step__c.CMPL123__WF_Locked_Fields__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -19560,6 +23190,9 @@
         <recordType>CMPL123CME__EMDR__c.CMPL123CME__Supplemental</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123CME__EU_MIR_Required_Code_Type_and_Choice__mdt-CMPL123CME__EU MIR Required Codes Type and Choice Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123CME__HHE__c-CMPL123CME__HHE</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -19667,6 +23300,9 @@
         <recordType>CMPL123CME__TGA__c.BMX_Lock_TGA</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123CME__Upgrades_for_Complaints__mdt-CMPL123CME__Upgrade for Complaint Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123CME__Vigilance__c-CMPL123CME__Vigilance Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -19683,6 +23319,19 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Functional_Area__c-CMPL123QMS__Functional Area Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Global_Change_Assessment__c-CMPL123QMS__Global Change Assessment Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Global_Change_Control__c-CMPL123QMS__Default Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Global_Change_Control__c-CMPL123QMS__Default Layout</layout>
+        <recordType>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Default_Layout</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Impacted_Lot__c-CMPL123QMS__Impacted Lot Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Internal_Audit__c-CMPL123QMS__Internal Audit Layout</layout>
@@ -19702,6 +23351,40 @@
         <layout>CMPL123QMS__Non_Conformance__c-CMPL123QMS__Non Conformance Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123QMS__Non_Conformance__c-CMPL123QMS__Non Conformance Layout</layout>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Material_Nonconformance</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Non_Conformance__c-CMPL123QMS__Non Conformance Layout</layout>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Process_Nonconformance</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Non_Conformance__c-CMPL123QMS__Non Conformance Layout</layout>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Product_Nonconformance</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS_Investigation__c-CMPL123QMS__Phase 1A Investigation</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS_Investigation__c-CMPL123QMS__Phase 1A Investigation</layout>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_1A_Investigation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS_Investigation__c-CMPL123QMS__Phase 1A Investigation</layout>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_1B_Investigation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS_Investigation__c-CMPL123QMS__Phase 1A Investigation</layout>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_2_Lab_Investigation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS_Investigation__c-CMPL123QMS__Phase 1A Investigation</layout>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_2_Manufacturing_Investigation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS__c-CMPL123QMS__OOS Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123QMS__Part_Information__c-CMPL123QMS__Part Information Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -19713,6 +23396,27 @@
         <recordType>CMPL123QMS__Part_Information__c.CMPL123QMS__Part</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123QMS__Phase_1A_Investigation__c-CMPL123QMS__Phase 1A Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Phase_1B_Investigation__c-CMPL123QMS__Phase 1B Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Phase_2_Lab_Investigation__c-CMPL123QMS__Phase 2 Lab Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Phase_2_Manufacturing_Investigation__c-CMPL123QMS__Phase 2 Manufacturing Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Regulatory_Assessment__c-CMPL123QMS__Regulatory Assessment Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__AIInsightMock__mdt-CMPL123__AIInsightMock Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__AI_Insights_Config__mdt-CMPL123__AI Insights Config Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__AcknowledgementMapping__c-CMPL123__AcknowledgmentMapping Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -19720,6 +23424,12 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Address__c-CMPL123__Address Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Application_Data_Config__mdt-CMPL123__Release Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Association_Setup__mdt-CMPL123__Association Setup Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__AuditTrail_Config__c-CMPL123__Audit Trail Config Layout</layout>
@@ -19748,6 +23458,9 @@
     <layoutAssignments>
         <layout>CMPL123__Contact__c-CMPL123__Contact Layout</layout>
         <recordType>CMPL123__Contact__c.CMPL123__Patient</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Context_Based_Security__c-CMPL123__Context-Based Security Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Device__c-CMPL123__Device Layout</layout>
@@ -19780,6 +23493,18 @@
         <layout>CMPL123__Memo__c-CMPL123__Memo Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__Object_With_V1_Trigger__c-CMPL123__Object With V1 Trigger Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Object_With_V2_Trigger__c-CMPL123__Object With V2 Trigger Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Object_With_V3_Trigger__c-CMPL123__Object With V3 Trigger Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Parent_Child_Audit_Trail_View__mdt-CMPL123__Parent Child Audit Trail View Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__Product__c-CMPL123__Product Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -19798,13 +23523,35 @@
         <layout>CMPL123__RAR_Target_User_Test_object__c-CMPL123__RAR Target User Test object Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__RDC_Cache__c-CMPL123__RDC Cache Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__RDC_Test_Object__c-CMPL123__RDC_Test_Object Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__RDC_Test_Object__c-CMPL123__RDC_Test_Object Layout</layout>
+        <recordType>CMPL123__RDC_Test_Object__c.CMPL123__RDC_First_Record_Type</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__Record_Access_Rule__c-CMPL123__Record Access Rule Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__SAML_Request__c-CMPL123__SAML Request Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__Session_State_Insights__c-CMPL123__Session State Insight Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__TWDLog__c-CMPL123__TWDLog Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__TWD_Audit_Default_Object__mdt-CMPL123__TWD Audit Default Object Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__TWD_Context_Based_Security_Settings__mdt-CMPL123__TWD Context Based Security Setting Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__TWD_Deletion_Whitelist__mdt-CMPL123__TWD Deletion Whitelist Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Valid_Child_Status__c-CMPL123__Valid Child Status Layout</layout>
@@ -20361,6 +24108,11 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
+        <recordType>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Default_Layout</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
         <recordType>CMPL123QMS__Internal_Audit__c.External</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -20368,6 +24120,41 @@
         <default>true</default>
         <recordType>CMPL123QMS__Internal_Audit__c.Internal</recordType>
         <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Material_Nonconformance</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Process_Nonconformance</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Product_Nonconformance</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_1A_Investigation</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_1B_Investigation</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_2_Lab_Investigation</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_2_Manufacturing_Investigation</recordType>
+        <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -20383,6 +24170,11 @@
         <default>true</default>
         <recordType>CMPL123__Contact__c.CMPL123__Patient</recordType>
         <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123__RDC_Test_Object__c.CMPL123__RDC_First_Record_Type</recordType>
+        <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -20533,6 +24325,10 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123CME__Regulatory_Setup</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123CME__Repair__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
@@ -20569,11 +24365,19 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123QMS__Global_Change_Control__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123QMS__Internal_Audit__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123QMS__Non_Conformance__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__OOS__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -20605,6 +24409,10 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123__Context_Based_Security__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123__Device__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
@@ -20621,7 +24429,15 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123__Multiple_Record_Link</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123__Product__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123__RecordIDSearch</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>

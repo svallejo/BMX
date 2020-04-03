@@ -8481,6 +8481,9 @@
         <recordType>CMPL123CME__EMDR__c.CMPL123CME__Supplemental</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123CME__EU_MIR_Required_Code_Type_and_Choice__mdt-CMPL123CME__EU MIR Required Codes Type and Choice Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123CME__HHE__c-CMPL123CME__HHE</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8588,6 +8591,9 @@
         <recordType>CMPL123CME__TGA__c.BMX_Lock_TGA</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123CME__Upgrades_for_Complaints__mdt-CMPL123CME__Upgrade for Complaint Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123CME__Vigilance__c-CMPL123CME__Vigilance Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8604,6 +8610,19 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Functional_Area__c-CMPL123QMS__Functional Area Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Global_Change_Assessment__c-CMPL123QMS__Global Change Assessment Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Global_Change_Control__c-CMPL123QMS__Default Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Global_Change_Control__c-CMPL123QMS__Default Layout</layout>
+        <recordType>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Default_Layout</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Impacted_Lot__c-CMPL123QMS__Impacted Lot Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Internal_Audit__c-CMPL123QMS__Internal Audit Layout</layout>
@@ -8623,6 +8642,40 @@
         <layout>CMPL123QMS__Non_Conformance__c-CMPL123QMS__Non Conformance Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123QMS__Non_Conformance__c-CMPL123QMS__Non Conformance Layout</layout>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Material_Nonconformance</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Non_Conformance__c-CMPL123QMS__Non Conformance Layout</layout>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Process_Nonconformance</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Non_Conformance__c-CMPL123QMS__Non Conformance Layout</layout>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Product_Nonconformance</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS_Investigation__c-CMPL123QMS__Phase 1A Investigation</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS_Investigation__c-CMPL123QMS__Phase 1A Investigation</layout>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_1A_Investigation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS_Investigation__c-CMPL123QMS__Phase 1A Investigation</layout>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_1B_Investigation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS_Investigation__c-CMPL123QMS__Phase 1A Investigation</layout>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_2_Lab_Investigation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS_Investigation__c-CMPL123QMS__Phase 1A Investigation</layout>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_2_Manufacturing_Investigation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__OOS__c-CMPL123QMS__OOS Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123QMS__Part_Information__c-CMPL123QMS__Part Information Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8634,6 +8687,27 @@
         <recordType>CMPL123QMS__Part_Information__c.CMPL123QMS__Part</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123QMS__Phase_1A_Investigation__c-CMPL123QMS__Phase 1A Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Phase_1B_Investigation__c-CMPL123QMS__Phase 1B Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Phase_2_Lab_Investigation__c-CMPL123QMS__Phase 2 Lab Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Phase_2_Manufacturing_Investigation__c-CMPL123QMS__Phase 2 Manufacturing Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Regulatory_Assessment__c-CMPL123QMS__Regulatory Assessment Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__AIInsightMock__mdt-CMPL123__AIInsightMock Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__AI_Insights_Config__mdt-CMPL123__AI Insights Config Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__AcknowledgementMapping__c-CMPL123__AcknowledgmentMapping Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8641,6 +8715,12 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Address__c-CMPL123__Address Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Application_Data_Config__mdt-CMPL123__Release Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Association_Setup__mdt-CMPL123__Association Setup Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__AuditTrail_Config__c-CMPL123__Audit Trail Config Layout</layout>
@@ -8669,6 +8749,9 @@
     <layoutAssignments>
         <layout>CMPL123__Contact__c-CMPL123__Contact Layout</layout>
         <recordType>CMPL123__Contact__c.CMPL123__Patient</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Context_Based_Security__c-CMPL123__Context-Based Security Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Device__c-CMPL123__Device Layout</layout>
@@ -8701,6 +8784,18 @@
         <layout>CMPL123__Memo__c-CMPL123__Memo Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__Object_With_V1_Trigger__c-CMPL123__Object With V1 Trigger Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Object_With_V2_Trigger__c-CMPL123__Object With V2 Trigger Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Object_With_V3_Trigger__c-CMPL123__Object With V3 Trigger Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Parent_Child_Audit_Trail_View__mdt-CMPL123__Parent Child Audit Trail View Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__Product__c-CMPL123__Product Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8719,13 +8814,35 @@
         <layout>CMPL123__RAR_Target_User_Test_object__c-CMPL123__RAR Target User Test object Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__RDC_Cache__c-CMPL123__RDC Cache Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__RDC_Test_Object__c-CMPL123__RDC_Test_Object Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__RDC_Test_Object__c-CMPL123__RDC_Test_Object Layout</layout>
+        <recordType>CMPL123__RDC_Test_Object__c.CMPL123__RDC_First_Record_Type</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__Record_Access_Rule__c-CMPL123__Record Access Rule Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__SAML_Request__c-CMPL123__SAML Request Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__Session_State_Insights__c-CMPL123__Session State Insight Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__TWDLog__c-CMPL123__TWDLog Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__TWD_Audit_Default_Object__mdt-CMPL123__TWD Audit Default Object Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__TWD_Context_Based_Security_Settings__mdt-CMPL123__TWD Context Based Security Setting Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__TWD_Deletion_Whitelist__mdt-CMPL123__TWD Deletion Whitelist Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Valid_Child_Status__c-CMPL123__Valid Child Status Layout</layout>
@@ -9283,12 +9400,52 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
+        <recordType>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Default_Layout</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
         <recordType>CMPL123QMS__Internal_Audit__c.External</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>CMPL123QMS__Internal_Audit__c.Internal</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Material_Nonconformance</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Process_Nonconformance</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Product_Nonconformance</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_1A_Investigation</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_1B_Investigation</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_2_Lab_Investigation</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_2_Manufacturing_Investigation</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
@@ -9305,6 +9462,11 @@
         <default>true</default>
         <recordType>CMPL123__Contact__c.CMPL123__Patient</recordType>
         <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123__RDC_Test_Object__c.CMPL123__RDC_First_Record_Type</recordType>
+        <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -9455,6 +9617,10 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123CME__Regulatory_Setup</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123CME__Repair__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -9491,11 +9657,19 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123QMS__Global_Change_Control__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123QMS__Internal_Audit__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123QMS__Non_Conformance__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__OOS__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -9527,6 +9701,10 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123__Context_Based_Security__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123__Device__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -9543,7 +9721,15 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123__Multiple_Record_Link</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123__Product__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123__RecordIDSearch</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>

@@ -3,7 +3,6 @@
            showHeader="{! !hasError }" sidebar="{! !hasError }">
 
     <apex:stylesheet value="{! URLFOR($Resource.Compliance123, '/css/ManageWorkflow.css') }"/>
-
     <!-- Enable Lightning if we are in LEX -->
     <apex:form rendered="{!isLEX}">
         <apex:includeLightning />
@@ -105,9 +104,57 @@
                     <div class="tooltip-container" id="e-sign-panel-checkbox"></div>
                     <apex:inputCheckbox value="{! createEsignPage }" disabled="{! isEsignPageCreated }"/>
                 </apex:pageBlockSectionItem>
-
             </apex:pageBlockSection>
-
+            <!-- Lock fields configuration section -->
+            <apex:pageBlockSection columns="1"
+                                   rendered="{!if(workflowRule != null && targetObject  != '',true,false)}"
+                                   title="{!$Label.cmpl123__wf_lock_field_configuration}">
+                <apex:pageBlockSectionItem rendered="{!workflowTableWrapper.allEndStatuses.empty}">
+                    <p style="text-align: center">{!$Label.cmpl123__wf_message_if_not_statuses}</p>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:outputPanel rendered="{! NOT(workflowTableWrapper.allEndStatuses.empty)}">
+                <div class = "{!IF(isLEX, "table-wrapper", "table-wrapper max_width")}">
+                    <div id="table-container">
+                        <apex:repeat value="{!workflowTableWrapper}" var="tableWrapper">
+                            <div class="container-wrapper">
+                                <table id="ie-WF-table">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="div-wrapper">
+                                                {!$Label.cmpl123__wf_field_status}
+                                            </div>
+                                        </th>
+                                        <apex:repeat value="{!tableWrapper.allEndStatuses}" var="endStatus">
+                                            <th>
+                                                {!endStatus}
+                                            </th>
+                                        </apex:repeat>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <apex:repeat value="{!tableWrapper.rowWrappers}" var="rowWrapper">
+                                        <tr>
+                                            <th>
+                                                <div class="div-wrapper">
+                                                    {!rowWrapper.fieldLabel}
+                                                </div>
+                                            </th>
+                                            <apex:repeat value="{!rowWrapper.statusWrappers}" var="statusWrapper">
+                                                <td>
+                                                    <apex:inputCheckbox value="{!statusWrapper.isChecked}"/>
+                                                </td>
+                                            </apex:repeat>
+                                        </tr>
+                                    </apex:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </apex:repeat>
+                    </div>
+                </div>
+            </apex:outputPanel>
             <!-- Buttons -->
             <apex:pageBlockButtons location="bottom" rendered="{!if(workflowRule != null && targetObject  != '',true,false)}">
                 <apex:commandButton value="{!$Label.cmpl123__save}" action="{!saveWorkflow}"/>
@@ -118,6 +165,211 @@
     </apex:form>
 
     <script>
+
+/*=============For IE 11=====================*/
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        isBrowserIE();
+    }
+
+function isBrowserIE() {
+    correctTableInIE(this);
+
+    function getDomElementById(i) {return document.getElementById(i);}
+    function createElementBySelectorName(s) {return document.createElement(s);}
+    function appendChildElement(parent, child) {parent.appendChild(child);}
+
+    function getScrollWidth() {
+        var dv = createElementBySelectorName('div');
+        dv.style.overflowY = 'scroll';
+        dv.style.width = '50px';
+        dv.style.height = '50px';
+        dv.style.position = 'absolute';
+        dv.style.visibility = 'hidden';
+        appendChildElement(document.body,dv);
+        var scrollWidth = dv.offsetWidth - dv.clientWidth;
+        document.body.removeChild(dv);
+        return (scrollWidth);
+    }
+
+    function getContainerWidth(containerClassName) {
+        var dv = document.getElementsByClassName(containerClassName);
+        var containerWidth = dv[0].offsetWidth;
+        return containerWidth;
+    }
+
+    function compareParams(tableParam, containerParam) {
+        return tableParam >= containerParam;
+    }
+
+    function correctTableInIE(el) {
+        FixHeaderCol(getDomElementById('ie-WF-table'), 350);
+        el.parentNode.removeChild(el);
+    }
+
+    function FixHeaderCol(tbl, hh) {
+        //change mackup to use in IE
+        var divElement = document.getElementById('table-container');
+        divElement.className += "ie-table-container";
+
+        var tableElement = document.getElementById('ie-WF-table');
+        var trElements = tableElement.getElementsByTagName('tr');
+        var thElements = trElements[0].getElementsByTagName('th');
+
+        for (var b = 0; b < thElements.length; b++) {
+            var thElement = thElements[b];
+            thElement.className += "ie-header-th";
+        }
+
+        for (var d = 1; d < trElements.length; d++) {
+            thElements = trElements[d].getElementsByTagName('th');
+            thElement = thElements[0];
+            thElement.className += "ie-tbody-th";
+        }
+
+        var scrollWidth = getScrollWidth();
+        var wfTableContainer = createElementBySelectorName('div');
+        var tblHead = createElementBySelectorName('table');
+        var tblCol = createElementBySelectorName('table');
+        var tblFixCorner = createElementBySelectorName('table');
+        var containerWidth = getContainerWidth('table-wrapper');
+
+        wfTableContainer.className = 'divFixHeaderCol';
+
+        if (compareParams(tbl.offsetWidth, containerWidth)) {
+            wfTableContainer.style.width = containerWidth + 'px';
+        } else {
+            wfTableContainer.style.width = tbl.offsetWidth + 'px';
+        }
+
+        if (compareParams(tbl.offsetHeight, hh)) {
+            wfTableContainer.style.height = hh + 'px';
+        } else {
+            wfTableContainer.style.height = tbl.offsetHeight + 'px';
+        }
+
+        tbl.parentNode.insertBefore(wfTableContainer,tbl);
+        appendChildElement(wfTableContainer,tbl);
+
+        var rows = tbl.rows;
+        var rowsCnt = rows.length;
+        var i=0;
+        var j=0;
+        var colspanCnt=0;
+        var columnCnt=0;
+        var newRow;
+        var newCell;
+        var td;
+
+        for (j=0; j<rows[0].cells.length; j++) {
+            columnCnt += rows[0].cells[j].colSpan;
+        }
+        var delta = columnCnt - 1;
+
+        // Run one time by all rows and build fixed tables
+        for (i=0; i<rowsCnt; i++) {
+            columnCnt = 0; colspanCnt = 0;
+            newRow = rows[i].cloneNode(true);
+            td = rows[i].cells;
+
+            for (j=0; j<td.length; j++) {
+                columnCnt += td[j].colSpan;
+                if (i<1) {
+                    newRow.cells[j].style.width = getComputedStyle(td[j]).width;
+                    appendChildElement(tblHead,newRow);
+                }
+            }
+
+            newRow = createElementBySelectorName('tr');
+            for (j=0; j<1; j++) {
+                if (!td[j]) continue;
+                colspanCnt += td[j].colSpan;
+                if (columnCnt - colspanCnt >= delta) {
+                    newCell = td[j].cloneNode(true);
+                    newCell.style.width = getComputedStyle(td[j]).width;
+                    newCell.style.height = td[j].clientHeight - parseInt(getComputedStyle(td[j]).paddingBottom) - parseInt(getComputedStyle(td[j]).paddingTop) + 'px';
+                    appendChildElement(newRow,newCell);
+                }
+            }
+            if (i<1) {appendChildElement(tblFixCorner,newRow);}
+            appendChildElement(tblCol,newRow.cloneNode(true));
+        }
+
+        tblFixCorner.className = 'tblFixCorner';
+        tblFixCorner.style.position = 'absolute';
+        tblFixCorner.style.zIndex = '3';
+
+        tblHead.className = 'tblHead';
+        tblHead.style.position = 'absolute';
+        tblHead.style.zIndex = '2';
+        tblHead.style.width = tbl.offsetWidth + 'px';
+
+        tblCol.className = 'tblCol';
+        tblCol.style.position = 'absolute';
+        tblCol.style.zIndex = '2';
+
+        wfTableContainer.insertBefore(tblHead,tbl);
+        wfTableContainer.insertBefore(tblFixCorner,tbl);
+        wfTableContainer.insertBefore(tblCol,tbl);
+
+        var bodyCont = createElementBySelectorName('div');
+        bodyCont.style.cssText = 'position:absolute; overflow:hidden;';
+
+        // Horizontal scroll
+        var divHscroll = createElementBySelectorName('div');
+        var d1 = createElementBySelectorName('div');
+
+        divHscroll.className = 'divHscroll';
+        divHscroll.style.cssText = 'width:100%; bottom:0; overflow-x:auto; overflow-y:hidden; position:absolute; z-index:3;';
+        divHscroll.onscroll = function () {
+            var x = -this.scrollLeft + 'px';
+            bodyCont.style.left = x;
+            tblHead.style.left = x;
+        }
+
+        d1.className = 'd1';
+        d1.style.width = tbl.offsetWidth + scrollWidth + 'px';
+        d1.style.height = '2px';
+
+        appendChildElement(divHscroll,d1);
+        appendChildElement(bodyCont,tbl);
+        appendChildElement(wfTableContainer,bodyCont);
+        appendChildElement(wfTableContainer,divHscroll);
+
+        if (compareParams(tbl.offsetWidth, containerWidth)) {
+            divHscroll.style.display = 'block';
+        } else {
+            divHscroll.style.display = 'none';
+        }
+
+        // Vertical scroll
+        var divVscroll = createElementBySelectorName('div');
+        var d2 = createElementBySelectorName('div');
+
+        divVscroll.className = 'divVscroll';
+        divVscroll.style.cssText = 'height:100%; right:0; overflow-x:hidden; overflow-y:auto; position:absolute; z-index:3';
+        divVscroll.onscroll = function () {
+            var y = -this.scrollTop + 'px';
+            bodyCont.style.top = y;
+            tblCol.style.top = y;
+        }
+
+        d2.style.height = tbl.offsetHeight + scrollWidth + 'px';
+        d2.style.width = scrollWidth + 'px';
+
+        appendChildElement(divVscroll,d2);
+        appendChildElement(wfTableContainer,divVscroll);
+
+        if (compareParams(tbl.offsetHeight, hh)) {
+            divVscroll.style.display = 'block';
+        } else {
+            divVscroll.style.display = 'none';
+        }
+    }
+}
+/*=============For IE 11=====================*/
         document.addEventListener("DOMContentLoaded", generateTooltips);
 
         function generateTooltips() {

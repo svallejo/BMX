@@ -18,7 +18,7 @@
                     <apex:repeat value="{!flsWrap.fieldsList}" var="fld">
                         <apex:pageBlockSectionItem >
                         <apex:outputLabel value="{!fld.fieldLabelName}"/>
-                        <apex:inputCheckbox value="{!fld.isSelected}" onchange="changeVal('{!fld.fieldApiName}', this)" styleClass="{!fld.fieldApiName}"/>
+                        <apex:inputCheckbox value="{!fld.isSelected}" onchange="changeVal('{!JSENCODE(fld.fieldApiName)}', this)" styleClass="{!fld.fieldApiName}"/>
                         </apex:pageBlockSectionItem>
                     </apex:repeat>
                 </apex:pageBlockSection>

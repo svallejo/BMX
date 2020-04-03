@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Assigned To Me? --></label>
+        <name>CMPL123QMS__Assigned_To_Me__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To --></label>
+        <name>CMPL123QMS__Assigned_To__c</name>
+        <relationshipLabel><!-- Phase 2 Lab Investigations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Department --></label>
+        <name>CMPL123QMS__Department__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>CMPL123QMS__Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Due Date --></label>
+        <name>CMPL123QMS__Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hypothesis --></label>
+        <name>CMPL123QMS__Hypothesis__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investigation Outcome --></label>
+        <name>CMPL123QMS__Investigation_Outcome__c</name>
+    </fields>
+    <fields>
+        <label><!-- OOS --></label>
+        <name>CMPL123QMS__OOS__c</name>
+        <relationshipLabel><!-- Phase 2 Lab Investigations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Other Cause --></label>
+        <name>CMPL123QMS__Other_Cause__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phase 2 Cause --></label>
+        <name>CMPL123QMS__Phase_2_Cause__c</name>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBD</masterLabel>
+            <translation><!-- TBD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Phase 2 Details --></label>
+        <name>CMPL123QMS__Phase_2_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- Root Cause Determined? --></label>
+        <name>CMPL123QMS__Root_Cause_Determined__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Short Description --></label>
+        <name>CMPL123QMS__Short_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test Plan --></label>
+        <name>CMPL123QMS__Test_Plan__c</name>
+    </fields>
+    <layouts>
+        <layout>Phase 2 Lab Investigation Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Determination --></label>
+            <section>Determination</section>
+        </sections>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+        <sections>
+            <label><!-- Investigation --></label>
+            <section>Investigation</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Due Date cannot be set in the past. --></errorMessage>
+        <name>CMPL123QMS__Due_Date_Cannot_Be_Set_In_Past</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Other Cause is required when Phase 2 Cause is populated with a value of Other. --></errorMessage>
+        <name>CMPL123QMS__Other_Cause_is_Required</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -7,7 +7,7 @@
     $Lightning.use("CMPL123CME:EUMIRNewAndEditApp", function () {
         $Lightning.createComponent("CMPL123CME:EUMIRNewAndEdit",
                                    {
-                                       parentId: '{!$CurrentPage.parameters.id}'
+                                       parentId: '{!JSENCODE($CurrentPage.parameters.id)}'
                                    },
                                    "lightning");
     });

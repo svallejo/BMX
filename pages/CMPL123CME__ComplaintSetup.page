@@ -1,0 +1,12 @@
+<apex:page showHeader="true" sidebar="false" standardStylesheets="false">
+    <apex:includeLightning />
+    <div id="setup-container" />
+    <script>
+    $Lightning.use("CMPL123CME:ComplaintSetupApp", function() {
+        $Lightning.createComponent("CMPL123CME:ComplaintSetup",
+                                   {},
+                                   "setup-container"                                    
+                                  );
+    });    
+    </script>
+</apex:page>

@@ -13,7 +13,7 @@ global class AutoPromotionHandler {
     global static void processJobs(List<CMPL123.AutoPromotionHandler.StepParams> stepParamList) {
 
     }
-    global static void stepAutoPromote(List<Id> recIdList, String stepNum) {
+    global static void stepAutoPromote(List<Id> recordIdsToProgress, String stepName) {
 
     }
 global class StepParams {

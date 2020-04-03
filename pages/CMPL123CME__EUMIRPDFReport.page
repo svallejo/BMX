@@ -222,10 +222,12 @@
                                 </div><br/>
                                 <div class="divPadding">
                                     <div class="column inlineDiv leftAlign">{!$Label.cmpl123cme__cmplt_manufacturer_s_reference_number}</div>
-                                    <div class="fieldValue inlineDiv divStyleSection_1_3_1">
-                                        <apex:repeat value="{!textFieldMap['CMPL123CME__Manufacturer_S_Reference_Number__c']}" var="index">
-                                                <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_S_Reference_Number__c, if(index= 0, 0, 28*index+1), 28)}"></apex:outputText><br/>
-                                        </apex:repeat>
+                                    <div>
+                                            <div class="fieldValue inlineDiv divStyleSection_1_3_1">
+                                                    <apex:repeat value="{!textFieldMap['CMPL123CME__Manufacturer_S_Reference_Number__c']}" var="index">
+                                                            <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_S_Reference_Number__c, if(index= 0, 0, 28*index+1), 28)}"></apex:outputText><br/>
+                                                 </apex:repeat>
+                                            </div>
                                     </div>
                                 </div>
                             </td>
@@ -1041,14 +1043,16 @@
                                     <div class="column" style="width:260px">{!$Label.cmpl123cme__cmplt_notified_body_nb_id_number_s_if_applicable}</div>
                                     <div style="display:inline-block;">{!$Label.cmpl123cme__cmplt_1}</div>  
                                     <div class="fieldValue" style="width:230px;display:inline-block;">
-                                        <apex:repeat value="{! nbIdMap['nbId1']}" var="index">
-                                               <apex:outputText value="{!MID(nbId1, if(index= 0, 0, 20*index+1), 20)}"></apex:outputText><br/>
+                                        <apex:repeat value="{!textFieldMap['CMPL123CME__NB_ID_Number1__c']}" var="index">
+                                            <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number1__c, if(index= 0, 0, 20*index+1), 20)}">
+                                            </apex:outputText><br/>
                                         </apex:repeat>
                                     </div><br/><br/>
                                     <div style="display:inline-block;">{!$Label.cmpl123cme__cmplt_2}</div>
                                     <div class="fieldValue" style="width:230px;display:inline-block;">
-                                        <apex:repeat value="{! nbIdMap['nbId2']}" var="index">
-                                           <apex:outputText value="{!MID(nbId2, if(index= 0, 0, 20*index+1), 20)}"></apex:outputText><br/>
+                                        <apex:repeat value="{!textFieldMap['CMPL123CME__NB_ID_Number2__c']}" var="index">
+                                            <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c.CMPL123CME__NB_ID_Number2__c, if(index= 0, 0, 20*index+1), 20)}">
+                                            </apex:outputText><br/>
                                         </apex:repeat>
                                     </div>
                                 </td>
@@ -2714,17 +2718,17 @@
             </table>
             <div class="pageBreakAlways">
                 <p>
-                    {!$Label.cmpl123cme__cmplt_submission_of_this_report_does_not_represent_a_conclusion_by_the_manufactu}<br/><br/>
-                    {!$Label.cmpl123cme__cmplt_i_affirm_that_the_information_given_above_is_correct_to_the_best_of_my_kno}
+                    {!$Label.CMPL123CME__cmplt_submission_of_this_report_does_not_represent_a_conclusion_by_the_manufactu}<br/><br/>
+                    {!$Label.CMPL123CME__cmplt_i_affirm_that_the_information_given_above_is_correct_to_the_best_of_my_kno}
                 </p>
                 <div class="outerDiv">
-                    {!$Label.cmpl123cme__cmplt_date}
-                    <div class="fieldValue outerDivField leftPadding" style="min-height:20px;width:300px">
-                        {!pdfGeneratedDatetime}
+                    {!$Label.CMPL123CME__cmplt_date}
+                    <div class="fieldValue outerDivField leftPadding"  style="min-height:20px;width:300px">
+                    {!pdfGeneratedDatetime}
                     </div>
                 </div>
                 <div class="outerDiv" style="height:60px">
-                    Signature/Digital Signature
+                    {!$Label.CMPLT_SIGNATURE_DIGITAL_SIGNATURE}
                 </div>
             </div>
         </div>

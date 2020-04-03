@@ -1,0 +1,21 @@
+<apex:page showHeader="true" sidebar="true" standardStylesheets="false" lightningStylesheets="true" controller="CMPL123.RecordIdSearchController">
+    <apex:includeLightning />
+    <div id="LightningComponentId"/>
+    <script>
+    let homePageUrl = '{!JSENCODE(homePageUrl)}';
+    $Lightning.use("CMPL123:RecordIdSearchApp", function() {
+        $Lightning.createComponent("CMPL123:RecordIdSearchComponent",{},
+                                   "LightningComponentId",function(cmp) {
+                                       $A.eventService.addHandler({
+                                           event: 'force:navigateToURL',
+                                           handler: function (event) {
+                                               if (typeof sforce != 'undefined' && sforce.one) {
+                                                   sforce.one.navigateToURL(homePageUrl);                                                   
+                                               } else {
+                                                   window.parent.location.href = '/'+homePageUrl;
+                                               }
+                                           }});                    
+                                   });}
+                  );
+    </script>
+</apex:page>

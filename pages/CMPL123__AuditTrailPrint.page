@@ -1,0 +1,107 @@
+<apex:page controller="CMPL123.AuditHistoryComponentController" applyBodyTag="false" sidebar="false" showHeader="false">
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, "/jquery-ui-1.12.1/js/jquery-3.4.0.min.js")}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, "/DataTable/js/datatable.js")}"/>
+    
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, "/css/AuditTrailPrint.css")}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, "/css/audit_richtext_output.css")}"/>
+    
+    <apex:variable var="noteSelectValue" value="Note" />
+    <apex:variable var="attachmentSelectValue" value="Attachment" />
+    <!-- Below style is only working for Chrome -->
+    <style type="text/css" media="print"> 
+        @page {
+        size: landscape;
+        }
+    </style>
+    <script>
+    var table;
+    function htmlEncode(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    $(document).ready(function() {
+        
+        table =  $("#audit-history-table").dataTable( {
+            "paging":   false,
+            "ordering": false,
+            "info":     false,
+            "searching": false,
+            "data": JSON.parse("{! JSENCODE(auditList) }"),
+            "aoColumns": [
+                { "mDataProp": "fieldName", sDefaultContent:"" },
+                { "mDataProp": "action", sDefaultContent:"" },
+                { "mDataProp": "oldValue", sDefaultContent:"",
+                 "render": function(data, type, row){
+                     if(row.fieldType === 'RICHTEXTAREA'){ 
+                         var dataBefore = $('<span/>').html(data);
+                         return $('<div>').append($('<div class="{!if($CurrentPage.parameters.isClassic == "true", "audit-list-style-classic", "audit-rich-text-output")}">').append($(dataBefore).text())).html();
+                     } 
+                     return data;
+                 }
+                },
+                { "mDataProp": "newValue", sDefaultContent:"",
+                 "render": function(data, type, row){
+                     if(row.fieldType === 'RICHTEXTAREA') {
+                         var dataAfter = $('<span/>').html(data);
+                         return $('<div>').append($('<div class="{!if($CurrentPage.parameters.isClassic == "true", "audit-list-style-classic audit-rich-text-output-align", "audit-rich-text-output audit-rich-text-output-align")}">').append($(dataAfter).text())).html();
+                     }
+                     return data;
+                 }
+                },
+                { "mDataProp": "createdBy", sDefaultContent:"" ,
+                 "render": function(data, type, row, meta) {
+                     //Unfriendly looking escape clause because we can't use JSINHTMLENCODE since we're in datatable land, not VF land
+                     let userName = htmlEncode(data.userName) + '<br/>' + '(' + htmlEncode(data.userId) + ')';
+                     
+                     if(type === 'sort') {
+                         data = userName;
+                     }
+                     else if(type === 'display') {
+                         if(userName === 'Automated Process') {
+                             data = userName;
+                         }
+                         else {
+                             data = userName;
+                         }
+                     }
+                     return data;
+                 } 
+                },
+                { "mDataProp": "createdDate", sDefaultContent:"" }
+            ]
+        });
+        window.print();
+    });
+    </script>
+    
+    <body>
+        <div class="header_center">
+            <apex:outputLabel rendered="{!HTMLENCODE($CurrentPage.parameters.selectedValue) == 'Record'}"> {!HTMLENCODE($Label.AUDIT_TRAIL_HISTORY_OF)}&nbsp;{!parentObjName}</apex:outputLabel>
+            <apex:outputLabel rendered="{!HTMLENCODE($CurrentPage.parameters.selectedValue) == 'Note'}"> {!HTMLENCODE($Label.AUDIT_TRAIL_HISTORY_OF_Note_FOR)}&nbsp;{!parentObjName}</apex:outputLabel>
+            <apex:outputLabel rendered="{!HTMLENCODE($CurrentPage.parameters.selectedValue) == 'Attachment'}"> {!HTMLENCODE($Label.AUDIT_TRAIL_HISTORY_OF_Attachment_FOR)}&nbsp;{!parentObjName}</apex:outputLabel>
+        </div>
+        <h1>
+            <apex:outputLabel rendered="{!HTMLENCODE($CurrentPage.parameters.selectedValue) == 'Record'}"> {!HTMLENCODE($Label.AUDIT_TRAIL_HISTORY_OF)}&nbsp;{!parentObjName}</apex:outputLabel>
+            <apex:outputLabel rendered="{!HTMLENCODE($CurrentPage.parameters.selectedValue) == 'Note'}"> {!HTMLENCODE($Label.AUDIT_TRAIL_HISTORY_OF_Note_FOR)}&nbsp;{!parentObjName}</apex:outputLabel>
+            <apex:outputLabel rendered="{!HTMLENCODE($CurrentPage.parameters.selectedValue) == 'Attachment'}"> {!HTMLENCODE($Label.AUDIT_TRAIL_HISTORY_OF_Attachment_FOR)}&nbsp;{!parentObjName}</apex:outputLabel>
+        </h1>
+        <apex:outputPanel rendered="{! auditList == null }">
+            <span>{!HTMLENCODE($Label.cmpl123__no_data_available)}</span>
+        </apex:outputPanel> 
+        <apex:outputPanel rendered="{! auditList != null }">
+            <div>
+                <table id="audit-history-table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th class="fieldName">{!HTMLENCODE($Label.cmpl123__field_name)}</th>
+                            <th>{!HTMLENCODE($Label.cmpl123__action)}</th>
+                            <th class="oldValue">{!HTMLENCODE($Label.cmpl123__old_value)}</th>
+                            <th class="newValue">{!HTMLENCODE($Label.cmpl123__new_value)}</th>
+                            <th class="fieldName">{!HTMLENCODE($Label.cmpl123__created_by)}</th>
+                            <th>{!HTMLENCODE($Label.cmpl123__created_date)} <br/> ({!HTMLENCODE(userTimezoneOffset)})</th>
+                        </tr> 
+                    </thead>  
+                </table>
+            </div>
+        </apex:outputPanel>
+    </body>
+</apex:page>

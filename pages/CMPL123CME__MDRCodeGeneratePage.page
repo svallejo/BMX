@@ -1,14 +1,14 @@
 <apex:page standardController="CMPL123CME__MDR__c"  extensions="CMPL123CME.MDRcodeController"  sidebar="false" showHeader="false" cache="true" id="pag" >
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery/jquery.js' )}" />
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery/jquery-ui.js' )}" />
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery-ui/external/jquery/jquery.js' )}" />
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery-ui/jquery-ui.min.js' )}" />
     <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/jquery.dynatree.js' )}" /> 
-    <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/skin/ui.dynatree.css')}" /> 
-    <apex:stylesheet value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/css/jquery-ui-1.12.1.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/skin/ui.dynatree.min.css')}" /> 
+    <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery-ui/jquery-ui.min.css' )}" />
 
     <!-- Resources support for lightning experience -->
     <apex:includeScript value="/support/console/26.0/integration.js"/>
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
-    
+
     <style>
         .ui-autocomplete-loading{ background:url('/img/loading32.gif') no-repeat center;padding:3%;}
         .ui-dialog .ui-dialog-buttonpane {text-align: center;}.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {float:none; }
@@ -22,7 +22,7 @@
         background-image: url(/img/setup_plus.gif);background-position: 0 0;position:static;margin-top:0.5%;}
         .errorMsg{padding-top:1%;padding-bottom:1%;padding-left:1%;color: rgb(169, 68, 66);background-color: rgb(242, 222, 222);border-color: rgb(235, 204, 209);border-radius:3px;}
         .ui-dialog{z-index:1;}.actionLink {color: #015BA7;text-decoration: none;font-weight: normal;}
-        span.custom1 span.dynatree-icon{background-position: 0 0;background-image: url('/resource/TreeStructure/image/llt.png');}
+        span.custom1 span.dynatree-icon{background-position: 0 0;background-image: url('{!URLFOR($Resource.TreeStructure, 'image/llt.png')}');}
         .expandAll a:link{text-decoration:none;}
         .expandAll a:hover{text-decoration:underline;}
         a.delLink {
@@ -49,10 +49,10 @@
                 height:400,
                 modal:true,
                 buttons: {
-                    "{!$Label.CMPL123CME__CMPLT_SAVE}": function() {
+                    "{!JSENCODE($Label.CMPL123CME__CMPLT_SAVE)}": function() {
                         saveRecord();
                     },
-                    "{!$Label.CMPL123CME__CMPLT_CANCEL}": function() {
+                    "{!JSENCODE($Label.CMPL123CME__CMPLT_CANCEL)}": function() {
                          $( this ).dialog( "close" );
                         
                     }
@@ -171,7 +171,7 @@
         }
 
         function deleteRecord(recordId){
-            if(window.confirm('{!$Label.CMPL123CME__CMPLT_ARE_YOU_SURE}')){
+            if(window.confirm('{!JSENCODE($Label.CMPL123CME__CMPLT_ARE_YOU_SURE)}')){
                 Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.MDRcodeController.deleteRecord}',recordId,function(result,event){
                     if(event.status){
 
@@ -189,7 +189,7 @@
             }  
         
         }
-         function createTree(result){    
+         function createTree(result){
            $("#tree").empty(); 
            $("#tree").dynatree({
                 onActivate: function(node) {
@@ -257,11 +257,11 @@
       //Fix supports for Classic, Console app and Lightning Experience
       function navigateToDetailPage() {
         if (lexUtil.inLEX()) {
-            lexUtil.lexNavigateToSObject("{!MDR__c.Id}");
+            lexUtil.lexNavigateToSObject("{!JSENCODE(MDR__c.Id)}");
         } else if (lexUtil.inConsole()) {
             lexUtil.refreshParentTab();
         } else {
-            window.top.location = '/{!MDR__c.Id}#{!pageId}';
+            window.top.location = '/{!JSENCODE(MDR__c.Id)}#{!JSENCODE(pageId)}';
         }
       }
     </script>
@@ -277,18 +277,18 @@
                <apex:pageBlockTable value="{!codeTypeRecordMap[key]}" var="codeList">
                    <apex:column width="5%">
                          <apex:facet name="header">{!$Label.cmpl123cme__cmplt_complaint_code_actions}</apex:facet>
-                         <apex:outputLink onclick="deleteRecord('{!codeList.Id}'); return false;" styleClass="delLink">{!$Label.cmpl123cme__cmplt_del}</apex:outputLink>
+                         <apex:outputLink onclick="deleteRecord('{!JSENCODE(codeList.Id)}'); return false;" styleClass="delLink">{!$Label.cmpl123cme__cmplt_del}</apex:outputLink>
                     </apex:column>
                     <apex:column width="15%" headerValue="{!$Label.cmpl123cme__cmplt_complaint_code_code}" rendered="{!$User.UIThemeDisplayed == 'Theme4d'}">
-                       <apex:outputLink onclick="lexUtil.lexNavigateToSObject('{!codeList.Complaint_Code__c}');return false;" target="_blank">{!codeList.Complaint_Code__r.Name}</apex:outputLink>
+                       <apex:outputLink onclick="lexUtil.lexNavigateToSObject('{!JSENCODE(codeList.Complaint_Code__c)}');return false;" target="_blank">{!JSENCODE(codeList.Complaint_Code__r.Name)}</apex:outputLink>
                    </apex:column>
                     <apex:column width="15%" headerValue="{!$Label.cmpl123cme__cmplt_complaint_code_code}" rendered="{!$User.UIThemeDisplayed == 'Theme3'}">
-                        <a href="/{!codeList.Complaint_Code__c}" target="_blank"
-                            id="lookup{!codeList.Complaint_Code__c}"
-                            onblur="LookupHoverDetail.getHover('lookup{!codeList.Complaint_Code__c}').hide();"
-                            onfocus="LookupHoverDetail.getHover('lookup{!codeList.Complaint_Code__c}', '/{!codeList.Complaint_Code__c}/m?retURL=/{!codeList.Complaint_Code__c}&isAjaxRequest=1').show();setPosition('{!codeList.Complaint_Code__c}','hover')"
-                            onmouseout="LookupHoverDetail.getHover('lookup{!codeList.Complaint_Code__c}').hide();"
-                            onmouseover="LookupHoverDetail.getHover('lookup{!codeList.Complaint_Code__c}', '/{!codeList.Complaint_Code__c}/m?retURL=/{!codeList.Complaint_Code__c}&isAjaxRequest=1').show();setPosition('{!codeList.Complaint_Code__c}','hover')">
+                        <a href="/{!codeList.Complaint_Code__c}" target="_blank" rel="noopener noreferrer"
+                           id="lookup{!codeList.Complaint_Code__c}"
+                           onblur="LookupHoverDetail.getHover('lookup{!JSENCODE(codeList.Complaint_Code__c)}').hide();"
+                           onfocus="LookupHoverDetail.getHover('lookup{!JSENCODE(codeList.Complaint_Code__c)}', '/{!JSENCODE(codeList.Complaint_Code__c)}/m?retURL=/{!JSENCODE(codeList.Complaint_Code__c)}&isAjaxRequest=1').show();setPosition('{!JSENCODE(codeList.Complaint_Code__c)}','hover')"
+                           onmouseout="LookupHoverDetail.getHover('lookup{!JSENCODE(codeList.Complaint_Code__c)}').hide();"
+                           onmouseover="LookupHoverDetail.getHover('lookup{!JSENCODE(codeList.Complaint_Code__c)}', '/{!JSENCODE(codeList.Complaint_Code__c)}/m?retURL=/{!JSENCODE(codeList.Complaint_Code__c)}&isAjaxRequest=1').show();setPosition('{!JSENCODE(codeList.Complaint_Code__c)}','hover')">
                             {!codeList.Complaint_Code__r.Name}
                         </a>
                     </apex:column>
@@ -299,14 +299,14 @@
             </apex:pageBlock>
          </apex:repeat>  
     </apex:form>   
-    <div id="dialog" title="{!$Label.CMPL123CME__CMPLT_MDR_CODE_SEARCH}" class="ui-widget">
+    <div id="dialog" title="{!HTMLENCODE($Label.CMPL123CME__CMPLT_MDR_CODE_SEARCH)}" class="ui-widget">
         <input type="hidden" autofocus="autofocus" />
         <div>
-            <input  type="text" placeholder="{!$Label.CMPL123CME__CMPLT_TYPE_PARTIAL_CODE_OR_DESCRIPTION}" style="width:460px;" id="selectedCode" class="form-input ui-autocomplete-loading" onkeyup="getComplaintCodeList($(this));" />
-            <input type="button"  class="btn find" value="{!$Label.CMPL123CME__CMPLT_FIND}"  style="display:none;" onclick="getSearchResult();"/>
+            <input  type="text" placeholder="{!HTMLENCODE($Label.CMPL123CME__CMPLT_TYPE_PARTIAL_CODE_OR_DESCRIPTION)}" style="width:460px;" id="selectedCode" class="form-input ui-autocomplete-loading" onkeyup="getComplaintCodeList($(this));" />
+            <input type="button"  class="btn find" value="{!HTMLENCODE($Label.CMPL123CME__CMPLT_FIND)}"  style="display:none;" onclick="getSearchResult();"/>
         </div>
         <div  class="expandAll" style="padding:1%;display:none;">
-            <span style="font-size:12px;color:red;;">{!$Label.CMPL123CME__CMPLT_MDR_NO_CODE_SELECTED}</span>
+            <span style="font-size:12px;color:red;;">{!HTMLENCODE($Label.CMPL123CME__CMPLT_MDR_NO_CODE_SELECTED)}</span>
         </div>
         <div id="tree" class="typeCodeDiv" style="padding:1%;"></div> 
         <div class="loadingLyer" style="display:none;">

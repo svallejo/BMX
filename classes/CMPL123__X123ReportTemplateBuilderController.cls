@@ -19,6 +19,11 @@ global class X123ReportTemplateBuilderController {
         return null;
     }
     @RemoteAction
+    global static List<String> getAllFieldData(String objectName) {
+        return null;
+    }
+    @Deprecated
+    @RemoteAction
     global static String getAllFields(String objectName) {
         return null;
     }

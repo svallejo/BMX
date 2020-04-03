@@ -1,0 +1,29 @@
+<apex:page >
+    <script>
+        document.onreadystatechange = function () {
+            if (document.readyState === "complete") {
+                const origin ='{!$CurrentPage.parameters.Origin}';
+                const url = location.protocol + '//' + location.host + location.pathname;
+                if(origin && url && parent) {
+                    parent.postMessage(url, origin);
+                }
+            }
+        }
+        window.addEventListener("message", function(event) {
+            const origin ='{!$CurrentPage.parameters.Origin}';
+            const redirectUrl = event.data;
+            if(typeof redirectUrl == 'string' && redirectUrl.includes('/apex/CMPL123__X123SAMLInit?RelayState=')){
+                const win = window.open(redirectUrl, '_blank', 'location=no,width=600,height=600,scrollbars=yes,top=100,left=700,resizable = no');
+                if(win && win.opener){
+                    win.opener = null;
+                }
+                let timer = setInterval(function() {
+                    if(win && win.closed && parent && origin) {
+                        parent.postMessage('sso_closed', origin);
+                        clearInterval(timer);
+                    }
+                }, 1000);
+            };
+        }, false);
+    </script>
+</apex:page>

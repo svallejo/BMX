@@ -139,6 +139,19 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Action_Plan__c</fullName>
         <description>Action Plan</description>
@@ -538,6 +551,20 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__OOS__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>OOS</label>
+        <referenceTo>CMPL123QMS__OOS__c</referenceTo>
+        <relationshipLabel>CAPAs</relationshipLabel>
+        <relationshipName>CAPAs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>CMPL123QMS__Objective_of_Investigation__c</fullName>
@@ -1452,30 +1479,7 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>CAPA</label>
-    <nameField>
-        <displayFormat>CAPA-{00000}</displayFormat>
-        <label>CAPA Number</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
-    </nameField>
-    <pluralLabel>CAPAs</pluralLabel>
-    <searchLayouts />
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
     <listViews>
         <fullName>CMPL123QMS__All</fullName>
         <columns>NAME</columns>
@@ -1489,6 +1493,15 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <nameField>
+        <displayFormat>CAPA-{00000}</displayFormat>
+        <label>CAPA Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>CAPAs</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
     <validationRules>
         <fullName>Effec_Check_is_None</fullName>
         <active>false</active>
@@ -1513,4 +1526,5 @@
         <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; CMPL123_WF_Action__c =="Submit for Review - CAPA" &amp;&amp; Description__c ==""</errorConditionFormula>
         <errorMessage>Please fill all the required fields before proceeding.</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
 </CustomObject>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Access Type --></label>
+        <name>CMPL123__Access_Type__c</name>
+        <picklistValues>
+            <masterLabel>Read-Only</masterLabel>
+            <translation><!-- Read-Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Read-Write</masterLabel>
+            <translation><!-- Read-Write --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Config Deploy Id --></label>
+        <name>CMPL123__Config_Deploy_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Corresponding Object --></label>
+        <name>CMPL123__Corresponding_Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Initial CBS --></label>
+        <name>CMPL123__Initial_CBS__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Field (API name) on Record --></label>
+        <name>CMPL123__User_Field_On_Record__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Rule --></label>
+        <name>CMPL123__Workflow_Rule__c</name>
+        <relationshipLabel><!-- Context-Based Security --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Workflow Step --></label>
+        <lookupFilter>
+            <errorMessage><!-- The selected Workflow Step must belong to the selected Workflow Rule. --></errorMessage>
+        </lookupFilter>
+        <name>CMPL123__Workflow_Step__c</name>
+        <relationshipLabel><!-- Context-Based Security --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Context-Based Security Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- You cannot create an Initial CBS rule for a Workflow Step. Either uncheck the Initial CBS checkbox or clear the Workflow Step field. --></errorMessage>
+        <name>CMPL123__No_Initial_CBS_for_Workflow_Step</name>
+    </validationRules>
+</CustomObjectTranslation>

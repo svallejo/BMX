@@ -324,7 +324,7 @@
                         fileIdNamesMap[result[0].id] = attachmentName;
                         var dv='';
                         for(var key in fileIdNamesMap) {
-                            dv += '<div style="margin-top:6px;font-style:italic;"><a href="/servlet/servlet.FileDownload?file='+key+'" id="att-'+key+'" target="_blank">'+attachmentName+'</a><img onclick=deleteAttachment("'+key+'",this) src="/img/search_dismiss.gif" style="cursor:pointer;margin-left:20px;display:;"></div>'
+                            dv += '<div style="margin-top:6px;font-style:italic;"><a href="/servlet/servlet.FileDownload?file='+key+'" id="att-'+key+'" target="_blank" rel="noopener noreferrer">'+attachmentName+'</a><img onclick=deleteAttachment("'+key+'",this) src="/img/search_dismiss.gif" style="cursor:pointer;margin-left:20px;display:;"></div>'
 
                         }
 
@@ -368,7 +368,7 @@
         }
 
     </script>
-    <apex:outputLink styleClass="investigation-item-audit-link" value="/apex/CMPL123__AuditTrail?qid={!CMPL123CME__Investigation__c.Id}" id="theLink" target="_blank">{!$Label.cmpl123cme__cmplt_investigation_audit_trail}</apex:outputLink>
+    <apex:outputLink styleClass="investigation-item-audit-link" value="/apex/CMPL123__AuditTrail?qid={!CMPL123CME__Investigation__c.Id}" id="theLink" target="_blank" rel="noopener noreferrer">{!$Label.cmpl123cme__cmplt_investigation_audit_trail}</apex:outputLink>
     <apex:form id="fm" styleClass="invItemsFontSize">
         <apex:pageBlock title="{!$Label.cmpl123cme__cmplt_hello} {!$User.FirstName}! {!$Label.cmpl123cme__cmplt_investigation_steps_are_below}" mode="edit">
             <apex:pageMessages id="showMsg"/>
@@ -393,7 +393,7 @@
                             <apex:column value="{!tsk.Row_No__c}" width="10%"  />
                             <apex:column headerValue="{!$Label.cmpl123cme__cmplt_step_description}" width="20%">
                                 <div style="display:{!if(tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c == null && tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c == '' , '','none')}">{!tsk.Investigation_Step_Description__c} &nbsp;<img style="display:{!if(tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Instructions__c != null && tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Instructions__c != '' , '','none')}" src="/img/msg_icons/info16.png" data-toggle="modal" data-target="#{!tsk.CMPL123CME__Investigation_Template_Item__c}"/></div>
-                                <div style="display:{!if(tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c != null && tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c != '', '','none')}"><apex:outputLink onclick="navigateLink('{!tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c}');return false;" target="_blank">{!tsk.Investigation_Step_Description__c}</apex:outputLink>&nbsp;<img style="display:{!if(tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Instructions__c != null && tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Instructions__c != '' , '','none')}" src="/img/msg_icons/info16.png" data-toggle="modal" data-target="#{!tsk.CMPL123CME__Investigation_Template_Item__c}" /></div>
+                                <div style="display:{!if(tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c != null && tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c != '', '','none')}"><apex:outputLink onclick="navigateLink('{!tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Description_URL__c}');return false;" target="_blank" rel="noopener noreferrer">{!tsk.Investigation_Step_Description__c}</apex:outputLink>&nbsp;<img style="display:{!if(tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Instructions__c != null && tsk.CMPL123CME__Investigation_Template_Item__r.CMPL123CME__Instructions__c != '' , '','none')}" src="/img/msg_icons/info16.png" data-toggle="modal" data-target="#{!tsk.CMPL123CME__Investigation_Template_Item__c}" /></div>
 
                                 <div class="modal fade" id="{!tsk.CMPL123CME__Investigation_Template_Item__c}" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-body">
                                                 <p>
@@ -415,7 +415,7 @@
                                     <apex:outputPanel layout="block" rendered="{!if(tsk.Id!= null,true,false)}">
                                         <div id="reqObj-{!tsk.Investigation_Template_Item__c}" style="width: 45%;word-wrap: break-word;float: left;">
                                             <apex:repeat value="{!attachmentsMap[tsk.Id]}" var="attachmentData">
-                                                <div style="margin-top:6px;font-style:italic;"><a href="/servlet/servlet.FileDownload?file={!attachmentData.Id}" target="_blank" id="att-{!attachmentData.Id}">{!attachmentData.Name}</a><img src="/img/search_dismiss.gif" onclick="deleteAttachment('{!attachmentData.Id}',this)" style="cursor:pointer;margin-left:20px;display:{!if(attachmentData.Id != null,'','none')};"/></div>
+                                                <div style="margin-top:6px;font-style:italic;"><a href="/servlet/servlet.FileDownload?file={!attachmentData.Id}" target="_blank" rel="noopener noreferrer" id="att-{!attachmentData.Id}">{!attachmentData.Name}</a><img src="/img/search_dismiss.gif" onclick="deleteAttachment('{!attachmentData.Id}',this)" style="cursor:pointer;margin-left:20px;display:{!if(attachmentData.Id != null,'','none')};"/></div>
                                             </apex:repeat>
                                         </div>
                                     </apex:outputPanel>

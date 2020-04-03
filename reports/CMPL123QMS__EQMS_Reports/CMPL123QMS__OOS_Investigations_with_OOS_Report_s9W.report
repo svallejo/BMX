@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Root_Cause_Determined__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Root_Cause_Category__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Root_Cause_Details__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Comments__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Investigation_Results__c</field>
+    </columns>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>OOS Investigations with OOS Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CMPL123QMS__OOS_Investigation__c@CMPL123QMS__OOS_Investigation__c.CMPL123QMS__OOS__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Due_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
