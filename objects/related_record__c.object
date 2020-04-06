@@ -57,16 +57,20 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
-        <type>Default</type>
+        <content>CMPL123__RecordEditWrapperComponent</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
-        <formFactor>Large</formFactor>
-        <type>Default</type>
+        <content>CMPL123__RecordEditWrapperComponent</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
-        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -85,16 +89,20 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>New</actionName>
+        <content>CMPL123__RecordNewWrapperComponent</content>
         <formFactor>Large</formFactor>
-        <type>Default</type>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
+        <content>CMPL123__RecordNewWrapperComponent</content>
         <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -139,6 +147,18 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Change_Control_Title__c</fullName>
         <externalId>false</externalId>
@@ -207,18 +227,6 @@
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <enableActivities>false</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>Related Record</label>
     <nameField>
         <displayFormat>RR-{0000}</displayFormat>
@@ -228,7 +236,6 @@
     <pluralLabel>Related Records</pluralLabel>
     <searchLayouts />
     <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
     <validationRules>
         <fullName>Only_Change_Owner_or_Change_Coordinator</fullName>
         <active>true</active>
@@ -236,6 +243,7 @@
         <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp;  $User.Id !=  Change_Control__r.Change_Owner__c  ) &amp;&amp;  Change_Control__r.Only_Change_Owner_or_Change_Coordinator__c</errorConditionFormula>
         <errorMessage>Only Change Owner or Change Coordinator can modify fields in the initiation, impact assessment, and implementation plan sections after CRB Approval and the WF was sent back to Open</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
     <webLinks>
         <fullName>Change_Controlc</fullName>
         <availability>online</availability>

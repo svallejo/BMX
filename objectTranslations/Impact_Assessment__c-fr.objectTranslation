@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Avis d’expert</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Avis d’expert</value>
+    </caseValues>
     <fields>
         <label>Assignée</label>
         <name>Assignee__c</name>
@@ -158,17 +166,7 @@
         <label>Avis d'expert</label>
         <name>impact_Assessment__c</name>
     </fields>
-    <caseValues>
-        <plural>false</plural>
-        <value>Avis d’expert</value>
-    </caseValues>
-    <caseValues>
-        <plural>true</plural>
-        <value>Avis d’expert</value>
-    </caseValues>
     <gender>Masculine</gender>
-    <nameFieldLabel><!-- Impact Assessment Name --></nameFieldLabel>
-    <startsWith>Consonant</startsWith>
     <layouts>
         <layout>Impact Assessment Layout</layout>
         <sections>
@@ -183,15 +181,13 @@
             <label>Avis d'expert</label>
             <section>Impact Assessment</section>
         </sections>
-        <sections>
-            <label><!-- Workflow --></label>
-            <section>Workflow</section>
-        </sections>
     </layouts>
+    <nameFieldLabel><!-- Impact Assessment Name --></nameFieldLabel>
     <quickActions>
         <label><!-- Detach File --></label>
         <name>Detach_File</name>
     </quickActions>
+    <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage>"Uniquement Assigné, Responsable modification, Coordinateur peut modifier l'Assigné"</errorMessage>
         <name>Assignee_restrictions</name>

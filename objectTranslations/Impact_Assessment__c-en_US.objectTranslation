@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Impact Assessment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Impact Assessments</value>
+    </caseValues>
     <fields>
         <label><!-- Assignee --></label>
         <name>Assignee__c</name>
@@ -158,15 +166,6 @@
         <label><!-- Performed By Automation --></label>
         <name>Performed_By_Automation__c</name>
     </fields>
-    <caseValues>
-        <plural>false</plural>
-        <value>Impact Assessment</value>
-    </caseValues>
-    <caseValues>
-        <plural>true</plural>
-        <value>Impact Assessments</value>
-    </caseValues>
-    <startsWith>Consonant</startsWith>
     <layouts>
         <layout>Impact Assessment Layout</layout>
         <sections>
@@ -181,15 +180,12 @@
             <label><!-- Impact Assessment --></label>
             <section>Impact Assessment</section>
         </sections>
-        <sections>
-            <label><!-- Workflow --></label>
-            <section>Workflow</section>
-        </sections>
     </layouts>
     <quickActions>
         <label><!-- Detach File --></label>
         <name>Detach_File</name>
     </quickActions>
+    <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- If Other is selected in SME Area, then Other - SME Area must be populated. --></errorMessage>
         <name>Other_SME_Area</name>

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Action Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Action Items</value>
+    </caseValues>
     <fields>
         <label>Action</label>
         <name>Action_Item__c</name>
@@ -147,17 +155,7 @@
         <label><!-- URL (for PECN use) --></label>
         <name>URL_for_PECN_use__c</name>
     </fields>
-    <caseValues>
-        <plural>false</plural>
-        <value>Action Item</value>
-    </caseValues>
-    <caseValues>
-        <plural>true</plural>
-        <value>Action Items</value>
-    </caseValues>
     <gender>Masculine</gender>
-    <nameFieldLabel>N° Action</nameFieldLabel>
-    <startsWith>Consonant</startsWith>
     <layouts>
         <layout>Action Item Layout</layout>
         <sections>
@@ -167,10 +165,6 @@
         <sections>
             <label><!-- Custom Links --></label>
             <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label>Worflow</label>
-            <section>Workflow</section>
         </sections>
         <sections>
             <label><!-- esig history --></label>
@@ -192,14 +186,11 @@
             <section>Developer</section>
         </sections>
         <sections>
-            <label>Worflow</label>
-            <section>Workflow</section>
-        </sections>
-        <sections>
             <label><!-- esig history --></label>
             <section>esig history</section>
         </sections>
     </layouts>
+    <nameFieldLabel>N° Action</nameFieldLabel>
     <quickActions>
         <label><!-- Detach File --></label>
         <name>Detach_File</name>
@@ -214,6 +205,7 @@
         <label><!-- Locked (System Use Only) --></label>
         <name>Locked</name>
     </recordTypes>
+    <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage>Actions après implémentation éditable uniquement au statut Initié du CC</errorMessage>
         <name>Af_Releaseonlyeditable_in_Open_or_arip</name>
