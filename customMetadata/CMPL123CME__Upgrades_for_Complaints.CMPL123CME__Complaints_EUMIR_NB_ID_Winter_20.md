@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>CMPL123CME__Job_Status__c</field>
-        <value xsi:type="xsd:string">Not Started</value>
+        <value xsi:type="xsd:string">Completed</value>
     </values>
     <values>
         <field>CMPL123CME__Process_Name__c</field>
