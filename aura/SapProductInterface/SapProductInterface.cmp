@@ -40,6 +40,7 @@
 
 <aura:attribute name="HideSpinner" type="Boolean" default="false"/>
 <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+<aura:handler event="force:refreshView" action="{!c.isRefreshed}" />
 
 <aura:renderIf isTrue="{!v.HideSpinner}">
     <div class="slds-spinner_container" >

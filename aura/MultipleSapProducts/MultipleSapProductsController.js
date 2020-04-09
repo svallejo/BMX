@@ -1,5 +1,6 @@
 ({
     init: function (cmp, event) {
+        console.log('init');
         cmp.set('v.columns', [
             {label: 'Item #', fieldName: 'Product_Item_Number__c', type: 'text'},
             {label: 'Description', fieldName: 'Product_Item_Description__c', type: 'text'},

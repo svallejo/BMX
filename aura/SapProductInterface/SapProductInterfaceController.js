@@ -59,6 +59,7 @@
                         console.log(JSON.stringify(response.getReturnValue()))
                          $A.get("e.force:closeQuickAction").fire();  
                         $A.get('e.force:refreshView').fire();  
+                        console.log('refreshed screen');
                     }
                     else {
                         let errors = response.getError();
@@ -167,5 +168,8 @@
             helper.handleErrors("Warning", errors, "warning");
   			component.set("v.HideSpinner", false);
         }
+    },
+    isRefreshed: function(component, event, helper) {
+        location.reload();
     }
 });
