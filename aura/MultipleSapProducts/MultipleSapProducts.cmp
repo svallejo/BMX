@@ -24,13 +24,15 @@
         <aura:attribute name="sapProductIdList" type="List" default="[]"/>
         <aura:handler event="force:refreshView" action="{!c.refresh}" />
         <aura:attribute name="simpleRecord" type="Object"/>
-
+        <aura:attribute name="record" type="Object" />
+    	<aura:attribute name="recordId" type="String" />
         <aura:handler name="init" value="{! this }" action="{! c.init }"/>
-    
-   <force:recordData aura:id="forceRecordDataCmp"
+
+    <force:recordData aura:id="forceRecordDataCmp"
     recordId="{!v.recordId}" 
-    fields="product_impacted__c"
-    targetRecord="{!v._record}"
+    targetRecord="{!v.record}"
+    targetFields="{!v.simpleRecord}"
+    fields="Product_Impacted__c, Name"
     targetError="{!v._error}"
     recordUpdated="{!c.recordUpdated}" />
     
