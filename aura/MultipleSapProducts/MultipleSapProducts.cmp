@@ -23,8 +23,16 @@
         <aura:attribute name="productItemNumber" type="String" default=""/>
         <aura:attribute name="sapProductIdList" type="List" default="[]"/>
         <aura:handler event="force:refreshView" action="{!c.refresh}" />
-    
+        <aura:attribute name="simpleRecord" type="Object"/>
+
         <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+   <force:recordData aura:id="forceRecordDataCmp"
+    recordId="{!v.recordId}" 
+    fields="product_impacted__c"
+    targetRecord="{!v._record}"
+    targetError="{!v._error}"
+    recordUpdated="{!c.recordUpdated}" />
     
     <aura:renderIf isTrue="{!v.areMultipleProductsImpacted}">
     <lightning:card>

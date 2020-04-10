@@ -152,5 +152,8 @@
 
         component.set("v.showDelete", showDelete);
         component.set("v.selectedRows", lines);
-    }
+    },
+        recordUpdated:function(cmp, event, helper){
+            console.log('record updated')
+        }
 })
