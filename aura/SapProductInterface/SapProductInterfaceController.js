@@ -168,8 +168,5 @@
             helper.handleErrors("Warning", errors, "warning");
   			component.set("v.HideSpinner", false);
         }
-    },
-    isRefreshed: function(component, event, helper) {
-        location.reload();
     }
 });
