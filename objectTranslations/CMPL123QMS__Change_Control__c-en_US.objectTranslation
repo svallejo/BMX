@@ -1980,6 +1980,10 @@
         <name>CC_Read_Only</name>
     </recordTypes>
     <validationRules>
+        <errorMessage><!-- Only the Change Coordinator can modify the Change Owner field --></errorMessage>
+        <name>Only_Change_Coordinator_can_modify_Chang</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Record Locked --></errorMessage>
         <name>Prevent_Edit_Change_control_on_closed_QE</name>
     </validationRules>
