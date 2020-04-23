@@ -139,6 +139,19 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>CMPL123CME__Assigned_No__c</fullName>
         <deprecated>false</deprecated>
@@ -401,20 +414,16 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>Registered Site</label>
+    <listViews>
+        <fullName>CMPL123CME__All</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123CME__Site_Name__c</columns>
+        <columns>CMPL123CME__Assigned_No__c</columns>
+        <columns>CMPL123CME__Sequence_No__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>RS-{0000}</displayFormat>
         <label>RS No</label>
@@ -432,17 +441,6 @@
         <lookupDialogsAdditionalFields>CMPL123CME__Site_Name__c</lookupDialogsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
-    <listViews>
-        <fullName>CMPL123CME__All</fullName>
-        <columns>NAME</columns>
-        <columns>CMPL123CME__Site_Name__c</columns>
-        <columns>CMPL123CME__Assigned_No__c</columns>
-        <columns>CMPL123CME__Sequence_No__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-        <language>en_US</language>
-    </listViews>
     <validationRules>
         <fullName>CMPL123CME__Check_Sequence_No_Size</fullName>
         <active>true</active>
@@ -450,4 +448,5 @@
         <errorDisplayField>CMPL123CME__Sequence_No__c</errorDisplayField>
         <errorMessage>Sequence No needs to contain 5 digits</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
 </CustomObject>
