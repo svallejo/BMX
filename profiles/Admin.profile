@@ -6942,6 +6942,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>Extension_Request_Change_Control_cESignH</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>Extension_Request_QEWorkflowPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>

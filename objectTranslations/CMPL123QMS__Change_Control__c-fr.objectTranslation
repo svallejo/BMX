@@ -2122,6 +2122,10 @@
         <errorMessage>Assignés manquants dans l'action</errorMessage>
         <name>assignees_missing_in_action_items</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- When status is Implementation in Progress only the change owner or a change coordinator can edit the record --></errorMessage>
+        <name>record_locked_at_imp_in_prog_x_co_or_cc</name>
+    </validationRules>
     <webLinks>
         <label>Nouveau Change Control</label>
         <name>Change_Controlc</name>

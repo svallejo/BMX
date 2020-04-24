@@ -8115,6 +8115,14 @@ CMPL123_WF_Action__c == "Submit for Review" &amp;&amp;
 (  Total_Unassigned_Open_Action__c  &lt;&gt; 0 )</errorConditionFormula>
         <errorMessage>You cannot submit the change for review with assignees missing for action items</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>record_locked_at_imp_in_prog_x_co_or_cc</fullName>
+        <active>true</active>
+        <description>When status is Implementation in Progress only the change owner or a change coordinator can edit the record</description>
+        <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp; $User.Id !=  Change_Owner__c ) &amp;&amp;  CMPL123_WF_Status__c = 'Implementation in Progress' &amp;&amp; 
+!(ISCHANGED(CMPL123_WF_Action__c) || ISCHANGED(CMPL123_WF_Action_Performed_By__c) || ISCHANGED(CMPL123_WF_Action_Performed_On__c) || ISCHANGED(CMPL123_WF_Status__c))</errorConditionFormula>
+        <errorMessage>When status is Implementation in Progress only the change owner or a change coordinator can edit the record</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
     <webLinks>
         <fullName>Change_Controlc</fullName>
