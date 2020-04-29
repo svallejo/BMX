@@ -26,8 +26,6 @@
                 console.error(message)
             }
         });
-        component.set('v.isLoaded', true);
-        
         // Send action off to be executed
         $A.enqueueAction(action);
     },
@@ -68,7 +66,6 @@
                 console.error(message)
             }
         });
-        component.set('v.isLoaded', true);
         
         // Send action off to be executed
         $A.enqueueAction(action);
