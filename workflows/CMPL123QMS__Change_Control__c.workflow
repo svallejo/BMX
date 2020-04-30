@@ -23,6 +23,10 @@
             <field>CRB_Approver_5__c</field>
             <type>userLookup</type>
         </recipients>
+        <recipients>
+            <field>CRB_Approver_6__c</field>
+            <type>userLookup</type>
+        </recipients>
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/CRB_Quality_Approver_Email_Notification</template>
     </alerts>

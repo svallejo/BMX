@@ -8120,7 +8120,27 @@ CMPL123_WF_Action__c == "Submit for Review" &amp;&amp;
         <active>true</active>
         <description>When status is Implementation in Progress only the change owner or a change coordinator can edit the record</description>
         <errorConditionFormula>(!Includes($User.TWD_Role__c, 'Change Coordinator') &amp;&amp; $User.Id !=  Change_Owner__c ) &amp;&amp;  CMPL123_WF_Status__c = 'Implementation in Progress' &amp;&amp; 
-!(ISCHANGED(CMPL123_WF_Action__c) || ISCHANGED(CMPL123_WF_Action_Performed_By__c) || ISCHANGED(CMPL123_WF_Action_Performed_On__c) || ISCHANGED(CMPL123_WF_Status__c))</errorConditionFormula>
+!(ISCHANGED(CMPL123_WF_Action__c) || ISCHANGED(CMPL123_WF_Action_Performed_By__c) || ISCHANGED(CMPL123_WF_Action_Performed_On__c) || ISCHANGED(CMPL123_WF_Status__c)|| 
+ISCHANGED(Action_Items_Complete__c) ||
+ISCHANGED(Complete_After_Release__c) ||
+ISCHANGED(Complete_Before_Release__c) ||
+ISCHANGED(impact_assessments_complete__c) ||
+ISCHANGED(Action_Item_Records__c) ||
+ISCHANGED(After_Release_Action_Items_Not_Closed__c) ||
+ISCHANGED(Closed_Impact_Assessments__c) ||
+ISCHANGED(Total_Action_Items__c) ||
+ISCHANGED(Total_Actions_Complete__c) ||
+ISCHANGED(Total_Actions_Open__c) ||
+ISCHANGED(Total_After_Release__c) ||
+ISCHANGED(Total_After_Release_Closed__c) ||
+ISCHANGED(Total_Before_Release__c) ||
+ISCHANGED(Total_Before_Release_Closed__c) ||
+ISCHANGED(Total_Impact_Assessments_with_type_quali__c) ||
+ISCHANGED(Total_impact_Assessments__c) ||
+ISCHANGED(Total_Impact_Assessments_Closed_Done__c) ||
+ISCHANGED(Total_Impact_Assessments_Completed__c) ||
+ISCHANGED(Total_Quality_Assessments_done__c) ||
+ISCHANGED(Total_Unassigned_Open_Action__c))</errorConditionFormula>
         <errorMessage>When status is Implementation in Progress only the change owner or a change coordinator can edit the record</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
