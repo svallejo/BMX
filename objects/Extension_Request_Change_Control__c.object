@@ -372,4 +372,23 @@ CONTAINS(Change_Control__r.CMPL123_WF_Status__c, "Closed")
         <requireRowSelection>false</requireRowSelection>
         <url>/apex/CMPL123__LockRecord?objectType=Extension_Request_Change_Control__c&amp;parentId={!CMPL123QMS__Change_Control__c.Id}&amp;relationShipName=Extension_Requests_Change_Control__r&amp;lookupField=Change_Control__c</url>
     </webLinks>
+    <webLinks>
+        <fullName>Report</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Print</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/apex/CMPL123__X123ReportTemplate?id={!Extension_Request_Change_Control__c.Id }</url>
+    </webLinks>
 </CustomObject>
