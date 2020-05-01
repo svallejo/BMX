@@ -6994,6 +6994,14 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>Predefined_Action_ItemWorkflowPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Predefined_Implementation_PlanWorkflowPa</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>Quality_Event_InvestigationWorkflowPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
