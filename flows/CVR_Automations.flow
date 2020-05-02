@@ -1,21 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <assignments>
-        <name>myVariable_waitStartTimeAssignment</name>
-        <label>myVariable_waitStartTimeAssignment</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
-            <operator>Assign</operator>
+    <actionCalls>
+        <processMetadataValues>
+            <name>ActionCallType</name>
             <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
+                <stringValue>flow</stringValue>
             </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>isChangedDecision2_myRule_1_CMPL123_WF_Action_c</targetReference>
-        </connector>
-    </assignments>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>flowSelection</name>
+            <value>
+                <stringValue>Update CVR Record Type</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_10_A3</name>
+        <label>Update to Locked Record Type</label>
+        <locationX>1000</locationX>
+        <locationY>400</locationY>
+        <actionName>Update_CVR_Record_Type</actionName>
+        <actionType>flow</actionType>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>SObject</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>CVR_Record</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue>CMPL123CME__CVR__c</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>SObject</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>CVR_Record</name>
+            <value>
+                <elementReference>myVariable_current</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
     <decisions>
         <name>isChangedDecision11_myRule_10_CMPL123_WF_Action_c</name>
         <label>isChangedDecision11_myRule_10_CMPL123_WF_Action_c</label>
@@ -54,7 +100,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>isChangedDecision17_myRule_16_CMPL123_WF_Action_c</targetReference>
+            <targetReference>myDecision</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -75,73 +121,9 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>isChangedDecision17_myRule_16_CMPL123_WF_Action_c</targetReference>
-            </connector>
-            <label>isChangedRule_14_myRule_13_CMPL123_WF_Action_c</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>isChangedDecision17_myRule_16_CMPL123_WF_Action_c</name>
-        <label>isChangedDecision17_myRule_16_CMPL123_WF_Action_c</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>isChangedDecision20_myRule_19_CMPL123_WF_Action_c</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_17_myRule_16_CMPL123_WF_Action_c</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.CMPL123_WF_Action__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.CMPL123_WF_Action__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>isChangedDecision20_myRule_19_CMPL123_WF_Action_c</targetReference>
-            </connector>
-            <label>isChangedRule_17_myRule_16_CMPL123_WF_Action_c</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>isChangedDecision20_myRule_19_CMPL123_WF_Action_c</name>
-        <label>isChangedDecision20_myRule_19_CMPL123_WF_Action_c</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_20_myRule_19_CMPL123_WF_Action_c</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.CMPL123_WF_Action__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.CMPL123_WF_Action__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
                 <targetReference>myDecision</targetReference>
             </connector>
-            <label>isChangedRule_20_myRule_19_CMPL123_WF_Action_c</label>
+            <label>isChangedRule_14_myRule_13_CMPL123_WF_Action_c</label>
         </rules>
     </decisions>
     <decisions>
@@ -317,7 +299,7 @@
                 <leftValueReference>myVariable_current.CMPL123_WF_Action__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Approve</stringValue>
+                    <stringValue>Submit for Review</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -348,13 +330,13 @@
                 <leftValueReference>myVariable_current.CMPL123_WF_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Pending Local Assessment</stringValue>
+                    <stringValue>Review In Progress</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>When &quot;Approve&quot;  action is performed</label>
+            <label>When &quot;Submit for Review Done By&quot;  action is performed</label>
         </rules>
     </decisions>
     <decisions>
@@ -368,9 +350,6 @@
         <label>myDecision12</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision15</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_13</name>
@@ -434,7 +413,7 @@
                 <leftValueReference>myVariable_current.CMPL123_WF_Action__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Rework</stringValue>
+                    <stringValue>Close Report</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -465,244 +444,13 @@
                 <leftValueReference>myVariable_current.CMPL123_WF_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Opened</stringValue>
+                    <stringValue>Closed - Done</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>myRule_13_A1</targetReference>
             </connector>
-            <label>When &quot;Rework Done By&quot; action is performed</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <processMetadataValues>
-            <name>index</name>
-            <value>
-                <numberValue>5.0</numberValue>
-            </value>
-        </processMetadataValues>
-        <name>myDecision15</name>
-        <label>myDecision15</label>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision18</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>myRule_16</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>isChangedRule_17_myRule_16_CMPL123_WF_Action_c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.CMPL123_WF_Action__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Submit for Review</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.CMPL123_WF_Status__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Review In Progress</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_16_A1</targetReference>
-            </connector>
-            <label>When &quot;Submit for Review Done By&quot;  action is performed</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <processMetadataValues>
-            <name>index</name>
-            <value>
-                <numberValue>6.0</numberValue>
-            </value>
-        </processMetadataValues>
-        <name>myDecision18</name>
-        <label>myDecision18</label>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>myRule_19</name>
-            <conditionLogic>(1 AND (2 OR 3))</conditionLogic>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>isChangedRule_20_myRule_19_CMPL123_WF_Action_c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.CMPL123_WF_Status__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Pending Response</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.CMPL123_WF_Status__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Closed-Submitted</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_19_A1</targetReference>
-            </connector>
-            <label>When &quot;Submit Report Done By&quot; action is performed</label>
+            <label>When &quot;Close Report Done By&quot; action is performed</label>
         </rules>
     </decisions>
     <decisions>
@@ -899,7 +647,7 @@
                 <leftValueReference>myVariable_current.CMPL123_WF_Action__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Close - Not Locally Reporting</stringValue>
+                    <stringValue>Rework</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -930,13 +678,13 @@
                 <leftValueReference>myVariable_current.CMPL123_WF_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Closed - Not Reporting</stringValue>
+                    <stringValue>Opened</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>myRule_7_A1</targetReference>
             </connector>
-            <label>When &quot;Close - Not Locally Reporting Done By&quot; action is performed</label>
+            <label>When &quot;Rework Done By&quot; action is performed</label>
         </rules>
     </decisions>
     <decisions>
@@ -956,7 +704,7 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_10</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>(1 AND (2 OR 3))</conditionLogic>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
@@ -1013,10 +761,10 @@
                         <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.CMPL123_WF_Action__c</leftValueReference>
+                <leftValueReference>myVariable_current.CMPL123_WF_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Close Report</stringValue>
+                    <stringValue>Pending Response</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -1047,18 +795,17 @@
                 <leftValueReference>myVariable_current.CMPL123_WF_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Closed - Done</stringValue>
+                    <stringValue>Closed-Submitted</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>myRule_10_A1</targetReference>
             </connector>
-            <label>When &quot;Close Report Done By&quot; action is performed</label>
+            <label>When &quot;Submit Report Done By&quot; action is performed</label>
         </rules>
     </decisions>
-    <description>US-AER-038</description>
-    <interviewLabel>CVR_auto_update_fields-3_InterviewLabel</interviewLabel>
-    <label>CVR update activity fields</label>
+    <interviewLabel>CVR_Automations-1_InterviewLabel</interviewLabel>
+    <label>CVR Automations</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
@@ -1092,6 +839,9 @@
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -1103,9 +853,263 @@
                 <stringValue>[CMPL123CME__CVR__c]</stringValue>
             </value>
         </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
         <name>myRule_10_A1</name>
-        <label>Update &quot;Close Report Done By&quot; and &quot;Close Report Done On&quot;</label>
+        <label>Update &quot;Submit Report Done By&quot; and &quot;Submit Report Done On&quot;</label>
         <locationX>1000</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_10_A2</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Submit Report Done By</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Submit_Report_Done_By__c</field>
+            <value>
+                <elementReference>myVariable_current.CMPL123_WF_Action_Performed_By__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>DateTime</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Submit Report Done On</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Submit_Report_Done_On__c</field>
+            <value>
+                <elementReference>myVariable_current.CMPL123_WF_Action_Performed_On__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CMPL123CME__CVR__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>criteria</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[CMPL123CME__CVR__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_10_A2</name>
+        <label>Update Closed Date</label>
+        <locationX>1000</locationX>
+        <locationY>300</locationY>
+        <connector>
+            <targetReference>myRule_10_A3</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>inputDataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Workflow Status</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>operatorDataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>CMPL123_WF_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed-Submitted</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>DateTime</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Close Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Close_Date__c</field>
+            <value>
+                <elementReference>myVariable_current.CMPL123_WF_Action_Performed_On__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CMPL123CME__CVR__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[CMPL123CME__CVR__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_13_A1</name>
+        <label>Update &quot;Close Report Done By&quot; and &quot;Close Report Done On&quot;</label>
+        <locationX>1300</locationX>
         <locationY>200</locationY>
         <filters>
             <processMetadataValues>
@@ -1120,6 +1124,42 @@
                 <elementReference>myVariable_current.Id</elementReference>
             </value>
         </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>DateTime</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Close Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Close_Date__c</field>
+            <value>
+                <elementReference>myVariable_current.CMPL123_WF_Action_Performed_On__c</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <processMetadataValues>
                 <name>dataType</name>
@@ -1202,114 +1242,7 @@
             </value>
         </processMetadataValues>
         <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[CMPL123CME__CVR__c]</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_13_A1</name>
-        <label>Update &quot;Rework Done By&quot; and &quot;Rework Done On&quot;</label>
-        <locationX>1300</locationX>
-        <locationY>200</locationY>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Rework Done By</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue>User</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>BMX_Rework_Done_By__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123_WF_Action_Performed_By__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>DateTime</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Rework Done On</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>BMX_Rework_Done_On__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123_WF_Action_Performed_On__c</elementReference>
-            </value>
-        </inputAssignments>
-        <object>CMPL123CME__CVR__c</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
+            <name>extraTypeInfo</name>
         </processMetadataValues>
         <processMetadataValues>
             <name>isChildRelationship</name>
@@ -1323,9 +1256,12 @@
                 <stringValue>[CMPL123CME__CVR__c]</stringValue>
             </value>
         </processMetadataValues>
-        <name>myRule_16_A1</name>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
         <label>Update &quot;Submit for Review Done By&quot;</label>
-        <locationX>1600</locationX>
+        <locationX>100</locationX>
         <locationY>200</locationY>
         <filters>
             <processMetadataValues>
@@ -1422,114 +1358,7 @@
             </value>
         </processMetadataValues>
         <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[CMPL123CME__CVR__c]</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_19_A1</name>
-        <label>Update &quot;Submit Report Done By&quot; and &quot;Submit Report Done On&quot;</label>
-        <locationX>1900</locationX>
-        <locationY>200</locationY>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Submit Report Done By</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue>User</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>BMX_Submit_Report_Done_By__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123_WF_Action_Performed_By__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>DateTime</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Submit Report Done On</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>BMX_Submit_Report_Done_On__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123_WF_Action_Performed_On__c</elementReference>
-            </value>
-        </inputAssignments>
-        <object>CMPL123CME__CVR__c</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
+            <name>extraTypeInfo</name>
         </processMetadataValues>
         <processMetadataValues>
             <name>isChildRelationship</name>
@@ -1543,115 +1372,8 @@
                 <stringValue>[CMPL123CME__CVR__c]</stringValue>
             </value>
         </processMetadataValues>
-        <name>myRule_1_A1</name>
-        <label>Update &quot;Approve Done By&quot; and &quot;Approve Done On&quot;</label>
-        <locationX>100</locationX>
-        <locationY>200</locationY>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Approve Done By</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue>User</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>BMX_Approve_Done_By__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123_WF_Action_Performed_By__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>DateTime</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Approve Done On</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>BMX_Approve_Done_On__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123_WF_Action_Performed_On__c</elementReference>
-            </value>
-        </inputAssignments>
-        <object>CMPL123CME__CVR__c</object>
-    </recordUpdates>
-    <recordUpdates>
         <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[CMPL123CME__CVR__c]</stringValue>
-            </value>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_4_A1</name>
         <label>Update &quot;Cancel Done By&quot; and &quot;Cancel Done On&quot;</label>
@@ -1752,6 +1474,9 @@
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -1763,8 +1488,11 @@
                 <stringValue>[CMPL123CME__CVR__c]</stringValue>
             </value>
         </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
         <name>myRule_7_A1</name>
-        <label>Update &quot;Close - Not Locally Reporting Done By&quot;</label>
+        <label>Update &quot;Rework Done By&quot; and &quot;Rework Done On&quot;</label>
         <locationX>700</locationX>
         <locationY>200</locationY>
         <filters>
@@ -1796,7 +1524,7 @@
             <processMetadataValues>
                 <name>leftHandSideLabel</name>
                 <value>
-                    <stringValue>Close - Not Locally Reporting Done By</stringValue>
+                    <stringValue>Rework Done By</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -1811,7 +1539,7 @@
                     <stringValue>Reference</stringValue>
                 </value>
             </processMetadataValues>
-            <field>BMX_Close_Not_Locally_Reporting_Done_By__c</field>
+            <field>BMX_Rework_Done_By__c</field>
             <value>
                 <elementReference>myVariable_current.CMPL123_WF_Action_Performed_By__c</elementReference>
             </value>
@@ -1832,7 +1560,7 @@
             <processMetadataValues>
                 <name>leftHandSideLabel</name>
                 <value>
-                    <stringValue>Close - Not Locally Reporting Done On</stringValue>
+                    <stringValue>Rework Done On</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -1847,15 +1575,15 @@
                     <stringValue>Reference</stringValue>
                 </value>
             </processMetadataValues>
-            <field>BMX_Close_Not_Locally_Reporting_Done_On__c</field>
+            <field>BMX_Rework_Done_On__c</field>
             <value>
                 <elementReference>myVariable_current.CMPL123_WF_Action_Performed_On__c</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__CVR__c</object>
     </recordUpdates>
-    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
-    <status>Obsolete</status>
+    <startElementReference>isChangedDecision2_myRule_1_CMPL123_WF_Action_c</startElementReference>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
@@ -1871,15 +1599,5 @@
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>CMPL123CME__CVR__c</objectType>
-    </variables>
-    <variables>
-        <name>myVariable_waitStartTimeVariable</name>
-        <dataType>DateTime</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <elementReference>$Flow.CurrentDateTime</elementReference>
-        </value>
     </variables>
 </Flow>
