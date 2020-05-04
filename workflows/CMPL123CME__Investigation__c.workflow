@@ -170,7 +170,7 @@ CMPL123CME__Complaint__c &lt;&gt; null, TEXT(CMPL123CME__Complaint__r.BMX_PRE__c
             <name>Update_to_locked_Record_Type</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Investigation__c.CMPL123_WF_Status__c</field>
             <operation>equals</operation>
