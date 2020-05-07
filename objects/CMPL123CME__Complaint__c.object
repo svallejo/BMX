@@ -139,6 +139,20 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>AccountId__c</fullName>
         <externalId>false</externalId>
@@ -694,7 +708,7 @@
         <fullName>BMX_Complaint_Level__c</fullName>
         <externalId>false</externalId>
         <formula>IF(!BMX_Was_Escalated_c__c ,'level 1',
-  IF(BMX_Was_Escalated_c__c &amp;&amp; ISPICKVAL(BMX_INVEST__c , 'No'), 'Escalated',
+  IF(BMX_Was_Escalated_c__c &amp;&amp; (OR(ISPICKVAL(BMX_INVEST__c , 'No'), ISBLANK(TEXT(BMX_INVEST__c)))), 'Escalated',
      IF(BMX_Was_Escalated_c__c &amp;&amp; ISPICKVAL(BMX_INVEST__c , 'Yes'), 'Investigation','')
   )
 )</formula>
@@ -4193,49 +4207,7 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableEnhancedLookup>false</enableEnhancedLookup>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>Complaint</label>
-    <nameField>
-        <displayFormat>CN-{000000}</displayFormat>
-        <label>Ticket No</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
-    </nameField>
-    <pluralLabel>Complaints</pluralLabel>
-    <searchLayouts>
-        <customTabListAdditionalFields>CMPL123CME__Customer__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__Date_Due__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__Assigned_To__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__CMPL123_WF_Status__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>BMX_Is_Reportable__c</customTabListAdditionalFields>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
-        <lookupDialogsAdditionalFields>OBJECT_ID</lookupDialogsAdditionalFields>
-        <searchFilterFields>NAME</searchFilterFields>
-        <searchFilterFields>CMPL123CME__Expiration_Date__c</searchFilterFields>
-        <searchFilterFields>CMPL123CME__Symptom_Codes__c</searchFilterFields>
-        <searchFilterFields>CMPL123CME__Type__c</searchFilterFields>
-        <searchResultsAdditionalFields>CMPL123CME__Initial_Reporter__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CMPL123CME__MDR_Creation__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CMPL123CME__Symptom_Codes__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CMPL123CME__Type__c</searchResultsAdditionalFields>
-    </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
     <listViews>
         <fullName>BMX_Australia_Culture_Media</fullName>
         <columns>NAME</columns>
@@ -5182,6 +5154,33 @@
         </filters>
         <label>Case Summary &amp; Closure</label>
     </listViews>
+    <nameField>
+        <displayFormat>CN-{000000}</displayFormat>
+        <label>Ticket No</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Complaints</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>CMPL123CME__Customer__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Date_Due__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Assigned_To__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__CMPL123_WF_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>BMX_Is_Reportable__c</customTabListAdditionalFields>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>OBJECT_ID</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Expiration_Date__c</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Symptom_Codes__c</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Type__c</searchFilterFields>
+        <searchResultsAdditionalFields>CMPL123CME__Initial_Reporter__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__MDR_Creation__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__Symptom_Codes__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__Type__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
     <validationRules>
         <fullName>Assessment_Not_Completed</fullName>
         <active>true</active>
@@ -5194,6 +5193,7 @@
         <errorConditionFormula>ISCHANGED( CMPL123CME__CMPL123_WF_Action__c ) &amp;&amp; CMPL123CME__CMPL123_WF_Action__c = "Close Complaint" &amp;&amp; ISPICKVAL( Investigation_Status__c , "")</errorConditionFormula>
         <errorMessage>Please fill Investigation Status field</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
     <webLinks>
         <fullName>CMPL123CME__Send_Email</fullName>
         <availability>online</availability>

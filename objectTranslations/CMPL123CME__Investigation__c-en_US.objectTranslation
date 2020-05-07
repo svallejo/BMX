@@ -461,6 +461,10 @@
         <name>Complaint_description__c</name>
     </fields>
     <fields>
+        <label><!-- Correction Number --></label>
+        <name>Correction_Number__c</name>
+    </fields>
+    <fields>
         <label><!-- Count of  Approvals --></label>
         <name>Count_of_Optional_Approvals__c</name>
     </fields>
@@ -485,6 +489,10 @@
     <fields>
         <label><!-- Investigation/Evaluation Number --></label>
         <name>Investigation_Evaluation_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Justification --></label>
+        <name>Justification__c</name>
     </fields>
     <fields>
         <label><!-- Master Investigation --></label>
@@ -626,6 +634,10 @@
     <validationRules>
         <errorMessage><!-- You must enter a value --></errorMessage>
         <name>BMX_CAPA_Number_should_not_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Correction Number field is mandatory. --></errorMessage>
+        <name>BMX_Correction_Number_Required</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You must enter a value --></errorMessage>

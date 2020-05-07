@@ -139,6 +139,21 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>INVESTIGATION AND ROOT CAUSE INFORMATION</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Approve_1_Done_By__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -1285,6 +1300,18 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Correction_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Correction Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Count_of_Optional_Approvals__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
@@ -1362,6 +1389,17 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <type>AutoNumber</type>
     </fields>
     <fields>
+        <fullName>Justification__c</fullName>
+        <externalId>false</externalId>
+        <label>Justification</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Master_Investigation__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -1419,36 +1457,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <description>INVESTIGATION AND ROOT CAUSE INFORMATION</description>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableEnhancedLookup>true</enableEnhancedLookup>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>Investigation/Evaluation</label>
-    <nameField>
-        <label>Investigation/Evaluation Title</label>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-    </nameField>
-    <pluralLabel>Investigations/Evaluations</pluralLabel>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
-    <searchLayouts>
-        <customTabListAdditionalFields>CMPL123_WF_Status__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
-        <lookupDialogsAdditionalFields>Investigation_Evaluation_Number__c</lookupDialogsAdditionalFields>
-    </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
     <listViews>
         <fullName>CMPL123CME__All</fullName>
         <columns>Investigation_Evaluation_Number__c</columns>
@@ -1480,6 +1489,13 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         </filters>
         <label>MY Pending Approval Investigations</label>
     </listViews>
+    <nameField>
+        <label>Investigation/Evaluation Title</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Investigations/Evaluations</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>BMX_Lock_Investigation</fullName>
         <active>true</active>
@@ -1678,6 +1694,12 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
             </values>
         </picklistValues>
     </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>CMPL123_WF_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Investigation_Evaluation_Number__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
     <validationRules>
         <fullName>BMX_CAPA_Justification_should_not_blank</fullName>
         <active>true</active>
@@ -1691,6 +1713,15 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <errorConditionFormula>AND(ISPICKVAL( BMX_CAPA_Required__c, 'Yes'),ISBLANK(   BMX_CAPA_Number__c ) )</errorConditionFormula>
         <errorDisplayField>BMX_CAPA_Number__c</errorDisplayField>
         <errorMessage>You must enter a value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>BMX_Correction_Number_Required</fullName>
+        <active>true</active>
+        <description>Correction number field is mandatory when Correction Required Field is set YES</description>
+        <errorConditionFormula>AND(ISPICKVAL(BMX_Correction_Required__c, 'Yes'),
+ISBLANK( Correction_Number__c ))</errorConditionFormula>
+        <errorDisplayField>Correction_Number__c</errorDisplayField>
+        <errorMessage>Correction Number field is mandatory.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>BMX_Date_Product_Recvd_should_nt_blank</fullName>
@@ -1787,6 +1818,7 @@ ISCHANGED(CMPL123_WF_Action__c)
     ISBLANK(BMX_Investigation_Approver__c))</errorConditionFormula>
         <errorMessage>Investigation Approver must not be blank</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
     <webLinks>
         <fullName>BMX_Print_Investigation</fullName>
         <availability>online</availability>
