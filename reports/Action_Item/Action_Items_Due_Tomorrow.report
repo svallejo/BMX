@@ -30,12 +30,6 @@
     <currency>EUR</currency>
     <filter>
         <criteriaItems>
-            <column>Action_Item__c$Target_Due_Date__c</column>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>TOMORROW</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Action_Item__c$Change_Control__c.Origination__c</column>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -53,10 +47,16 @@
             <operator>notEqual</operator>
             <value></value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Action_Item__c$CMPL123_WF_Status__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Open</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Action Items Due Tomorrow</name>
+    <name>Open Action Items</name>
     <params>
         <name>co</name>
         <value>1</value>
