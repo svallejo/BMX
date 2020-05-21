@@ -1,0 +1,24 @@
+<!--************************************************
+ * Copyright (c) 2020 Sparta Systems, Inc.
+****************************************************
+ 
+ * This Page is to embed a lightning app which will house the ltng component that will display list of templates for respective object 
+-->
+
+<apex:page sidebar="false" showHeader="false">
+	<apex:includeLightning />
+    <div id="ConsolidatedPrintComp"/>
+
+    <!-- Calling lightning App which can get/show templates and then process further -->
+    <script>
+        $Lightning.use("CMPL123:ConsolidatedPrintApp", function() {
+            $Lightning.createComponent(
+                "CMPL123:ConsolidatedPrintUI",
+                {"recordId" : "{!$CurrentPage.parameters.id}"},
+                "ConsolidatedPrintComp",
+              	function(cmp){
+              	}
+          	);
+        });
+    </script>
+</apex:page>

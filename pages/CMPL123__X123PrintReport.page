@@ -15,6 +15,8 @@
         </apex:outputPanel>
 
         <!-- Render populated template if there are no issues -->
+        <!-- Security False Positives: Rich text values in the following code are not escaped because styling is desired for print output. Since a browser does not 
+                                        execute the code and only the PDF renderer does, there is no security risk. -->
         <apex:outputPanel rendered="{! !isError }">
 
             <!-- Header component start-->
@@ -74,15 +76,13 @@
                                     <td width="25%" class="sparta-font-size-12 sparta-font-ariel-font-family" valign="top"
                                         colspan="{! if(len(field.label) == 0,'2','1') }"
                                         align="{! if(len(field.label) == 0,'left','right') }">
-                                        <!-- Security false postive: The value in the outputText block is being escaped via the PDF renderer, there is no XSS risk here -->
-                                        <apex:outputText value="{! if(len(field.label) == 0,field.value,field.label) }"  escape="false"/>
+                                        <apex:outputText value="{! if(len(field.label) == 0,field.value,field.label) }" />
                                     </td>
                                     <td width="75%" class="{! if(field.dataType != 'RICHTEXTAREA','sparta-font-size-11 sparta-text-align-justify sparta-font-ariel-font-family sparta-font-weight-lighter', if($CurrentPage.parameters.isClassic == 'true', 'audit-list-style-classic audit-rich-text-output-align rich-text-parent', 'audit-rich-text-output audit-rich-text-output-align rich-text-parent')) }">
-                                        <!-- Security false postive: The value in the outputText block is being escaped via the PDF renderer, there is no XSS risk here -->
+                                        <!-- Security false postive: The value in the outputText block is only run by the PDF renderer so there is no XSS risk here -->
                                         <apex:outputText value="{! if(len(field.label) == 0, '', if(field.dataType == 'MULTIPICKLIST', substitute(field.value,';','; '), field.value)) }"
                                                          styleClass="sparta-white-space-pre-line sparta-padding-left-5"
-                                                         escape="{! field.dataType != 'RICHTEXTAREA' }" >
-                                        </apex:outputText>
+                                                         escape="{! field.dataType != 'RICHTEXTAREA' }" />
                                     </td>
                                 </tr>
                             </apex:repeat>
@@ -107,25 +107,55 @@
                             </tr>
                         </thead>
                         <tbody class="sparta-font-size-11 sparta-font-weight-lighter">
-                            <apex:repeat value="{! queriedRecord[sectionNameIdMap[section]] }" var="relObj" >
+                            <apex:repeat value="{! relationshipObjectMap[sectionNameIdMap[section]] }" var="childRecord" >
                                 <tr class="{! if(and(
                                                     contains(upper(sectionNameIdMap[section]), 'MDR_CODES__R'),
                                                     sectionIdTypeMap[section] != 'NULL',
-                                                    relObj['CMPL123CME__Complaint_Code__r.CMPL123CME__Type__c'] != sectionIdTypeMap[section]),
+                                                    childRecord['CMPL123CME__Complaint_Code__r.CMPL123CME__Type__c'] != sectionIdTypeMap[section]),
                                               'sparta-display-none',
                                               'sparta-display-table-row') }">
-                                    <apex:repeat value="{! relationShipNameToLabelToApiMap[section] }" var="fldApi">
-                                        <td class="{!if(fldApi.dataType != 'TEXTAREA','sparta-font-size-10 sparta-font-ariel-font-family', if($CurrentPage.parameters.isClassic == 'true', 'audit-list-style-classic audit-rich-text-output-align rich-text-related', 'audit-rich-text-output audit-rich-text-output-align rich-text-related'))} ">
-                                            <apex:outputText rendered="{! if(fldApi.dataType == 'DATE' || fldApi.dataType == 'DATETIME', true, false) }"
-                                                             value="{0,date,MMMM dd, yyyy}">
-                                                <apex:param value="{! relObj[fldApi.value] }" />
+
+                                    <apex:repeat value="{! relationShipNameToLabelToApiMap[section] }" var="childRecordField">
+
+                                        <td class="{!if (childRecordField.dataType == 'RICHTEXTAREA',                                                        
+                                                        if( $CurrentPage.parameters.isClassic == 'true', 
+                                                            'audit-list-style-classic audit-rich-text-output-align rich-text-related', 
+                                                            'audit-rich-text-output audit-rich-text-output-align rich-text-related'
+                                                        ),
+                                                        'sparta-font-size-10 sparta-font-ariel-font-family'
+                                                    )}">
+                                            
+                                            <apex:outputText rendered="{! childRecordField.dataType == 'DATE' || 
+                                                                          childRecordField.dataType == 'DATETIME' }"
+                                                                          value="{0,date,MMMM dd, yyyy}">
+
+                                                <apex:param value="{! childRecord[childRecordField.value] }" />
                                             </apex:outputText>
-                                            <apex:outputField rendered="{!fldApi.dataType == 'REFERENCE'}" value="{! relObj[fldApi.value]}"/> 
-                                            <apex:outputText rendered="{! if(fldApi.dataType == 'DATE' || fldApi.dataType == 'DATETIME' || fldApi.dataType == 'TEXTAREA' || fldApi.dataType == 'REFERENCE', false, true) }"
-                                                             value="{! if(len(fldApi.label) == 0,'', if(fldApi.dataType == 'MULTIPICKLIST', substitute(relObj[fldApi.value],';','; '), relObj[fldApi.value])) }"
+
+                                            <apex:outputText rendered="{!childRecordField.dataType == 'REFERENCE'}" 
+                                                             value="{! IF(AND(childRecord[childRecordField.referenceName] != null
+                                                                    ,childRecord[childRecordField.referenceName] != '')
+                                                                ,childRecord[childRecordField.referenceName] + ' (' +  childRecord[childRecordField.value] + ')'
+                                                                ,childRecord[childRecordField.value])}"/> 
+                                            
+                                            <apex:outputField rendered="{!childRecordField.dataType == 'TEXTAREA' || 
+                                                                          childRecordField.dataType == 'RICHTEXTAREA'}" 
+                                                              value="{!childRecord[childRecordField.value]}"
+                                                              styleClass="sparta-white-space-pre-line sparta-padding-left-5" />
+                                            
+                                            <apex:outputText rendered="{! childRecordField.dataType != 'DATE' && 
+                                                                          childRecordField.dataType != 'DATETIME' && 
+                                                                          childRecordField.dataType != 'TEXTAREA' && 
+                                                                          childRecordField.dataType != 'REFERENCE' && 
+                                                                          childRecordField.dataType != 'RICHTEXTAREA' }"
+                                                             value="{! if( len(childRecordField.label) == 0, 
+                                                                            '', 
+                                                                            if(childRecordField.dataType == 'MULTIPICKLIST', 
+                                                                                substitute(childRecord[childRecordField.value],';','; '), 
+                                                                                childRecord[childRecordField.value]
+                                                                            )
+                                                                        )}"
                                                              styleClass="sparta-white-space-pre-line" />
-											<apex:outputField rendered="{!fldApi.dataType == 'TEXTAREA'}" value="{!relObj[fldApi.value]}"
-														   styleClass="sparta-white-space-pre-line sparta-padding-left-5" />
                                         </td>
                                     </apex:repeat>
                                 </tr>

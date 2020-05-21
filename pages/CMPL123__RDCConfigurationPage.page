@@ -5,9 +5,14 @@
     <div id="lightning" />
 
     <script>
+        let currentUrl = new URL(window.location.href);
+        let activeTab = currentUrl.searchParams.get("activeTab");
+
         $Lightning.use("CMPL123:RDCConfigurationPageApp", function() {
             $Lightning.createComponent("CMPL123:RDCConfigurationPage",
-                {},
+                {
+                    "activeTab": activeTab
+                },
                 "lightning",
                 function(cmp) {});
         });

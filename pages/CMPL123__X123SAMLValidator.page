@@ -114,7 +114,7 @@
                                     <apex:facet name="stop">
                                         <apex:commandButton value="{!HTMLENCODE($Label.cmpl123__complete)} {!HTMLENCODE($Label.cmpl123__e_signature)}" style="width:150px"
                                             action="{!completeEsign}" status="saveStatus" styleClass="btn btn-base" oncomplete="closePopup({!isError})"
-                                            rerender="{!if(isError,'errdiv','maindiv')}" /> 
+                                            rerender="fm" />
                                     </apex:facet> 
                                     <apex:facet name="start">
                                         <apex:commandButton value="{!HTMLENCODE($Label.cmpl123__processing)}..." disabled="true" style="width:150px" status="saveStatus"

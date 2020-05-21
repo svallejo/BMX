@@ -129,15 +129,19 @@
                                         action="{! cancel }" value="{! $Label.OK }"/>
                 </apex:outputPanel>
                 <apex:outputPanel rendered="{! AND(!ISNULL(availableChildRelationships), availableChildRelationships.size > 0) }">
-                    <apex:commandButton styleClass="slds-button slds-button_neutral"
-                                        action="{! cancel }" value="{! $Label.CANCEL }"/>
-                    <apex:commandButton styleClass="slds-button slds-button_brand"
-                                        onclick="customSubmit(event)" value="{! $Label.SAVE }"
-                                        disabled="{! ISNULL(selectedChildWorkflowStatus) }" 
-                                        id="submit-button"/>
+                    <div class="slds-button-group-row">
+                        <div class="slds-button-group-item">
+                            <apex:commandButton styleClass="slds-button slds-button_neutral"
+                                                action="{! cancel }" value="{! $Label.CANCEL }"/>
+                        </div>
+                        <div class="slds-button-group-item">
+                            <apex:commandButton styleClass="slds-button slds-button_brand"
+                                                onclick="customSubmit(event)" value="{! $Label.SAVE }"
+                                                disabled="{! ISNULL(selectedChildWorkflowStatus) }" 
+                                                id="submit-button"/>
+                        </div>
+                    </div>
                 </apex:outputPanel>
-
-
             </footer>
         </apex:outputPanel>
     </c:ModalComponent>

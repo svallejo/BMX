@@ -139,6 +139,19 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>CMPL123QMS__External_Workflow_Action_Performed_By__c</fullName>
         <deprecated>false</deprecated>
@@ -260,7 +273,7 @@
         <lookupFilter>
             <active>true</active>
             <filterItems>
-                <field>CMPL123QMS__Vendor__c.RecordTypeId</field>
+                <field>CMPL123QMS__Vendor__c.RecordType.Name</field>
                 <operation>equals</operation>
                 <value>Supplier</value>
             </filterItems>
@@ -274,20 +287,14 @@
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>Supplier Site</label>
+    <listViews>
+        <fullName>CMPL123QMS__All</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123QMS__Parent_Supplier__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>Supplier Site Name</label>
         <trackHistory>false</trackHistory>
@@ -301,14 +308,6 @@
         <searchResultsAdditionalFields>CMPL123QMS__Parent_Supplier__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
-    <visibility>Public</visibility>
-    <listViews>
-        <fullName>CMPL123QMS__All</fullName>
-        <columns>NAME</columns>
-        <columns>CMPL123QMS__Parent_Supplier__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <validationRules>
         <fullName>CMPL123QMS__Prevent_Editing_Name_Field_Internal</fullName>
         <active>true</active>
@@ -320,6 +319,7 @@ ISCHANGED( Name ),
 )</errorConditionFormula>
         <errorMessage>Cannot Edit Name field</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
     <webLinks>
         <fullName>CMPL123QMS__Trigger_Sharing</fullName>
         <availability>online</availability>

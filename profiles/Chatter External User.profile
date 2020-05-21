@@ -8486,6 +8486,9 @@
         <recordType>CMPL123CME__EMDR__c.CMPL123CME__Supplemental</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123CME__EUMIR_Configuration__mdt-CMPL123CME__EUMIR Configuration Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123CME__EU_MIR_Required_Code_Type_and_Choice__mdt-CMPL123CME__EU MIR Required Codes Type and Choice Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8659,6 +8662,29 @@
         <recordType>CMPL123QMS__Non_Conformance__c.CMPL123QMS__Product_Nonconformance</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123QMS__Nonconformance_Action__c-CMPL123QMS__Containment</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Nonconformance_Action__c-CMPL123QMS__Containment</layout>
+        <recordType>CMPL123QMS__Nonconformance_Action__c.CMPL123QMS__Containment</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Nonconformance_Action__c-CMPL123QMS__Containment</layout>
+        <recordType>CMPL123QMS__Nonconformance_Action__c.CMPL123QMS__Escalated_Action</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Nonconformance_Action__c-CMPL123QMS__Containment</layout>
+        <recordType>CMPL123QMS__Nonconformance_Action__c.CMPL123QMS__Return</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Nonconformance_Action__c-CMPL123QMS__Containment</layout>
+        <recordType>CMPL123QMS__Nonconformance_Action__c.CMPL123QMS__Rework</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Nonconformance_Action__c-CMPL123QMS__Containment</layout>
+        <recordType>CMPL123QMS__Nonconformance_Action__c.CMPL123QMS__Scrap</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123QMS__OOS_Investigation__c-CMPL123QMS__Phase 1A Investigation</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8749,6 +8775,9 @@
         <layout>CMPL123__Audit_Trail_Entry__c-CMPL123__Audit Trial Entry Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__Consolidated_Report_Config__mdt-CMPL123__Consolidated Report Config Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__Contact__c-CMPL123__Contact Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8819,7 +8848,13 @@
         <layout>CMPL123__RAR_Target_User_Test_object__c-CMPL123__RAR Target User Test object Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__RDC_Advanced_Lookup_Configuration__mdt-CMPL123__RDC Advanced Lookup Configuration Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__RDC_Cache__c-CMPL123__RDC Cache Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__RDC_Multi_Edit_Info__c-CMPL123__RDC Multi Edit Info Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__RDC_Test_Object__c-CMPL123__RDC_Test_Object Layout</layout>
@@ -8830,6 +8865,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Record_Access_Rule__c-CMPL123__Record Access Rule Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Report_Generation_Status__c-CMPL123__Report Generation Status Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__SAML_Request__c-CMPL123__SAML Request Layout</layout>
@@ -8848,6 +8886,15 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__TWD_Deletion_Whitelist__mdt-CMPL123__TWD Deletion Whitelist Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__TWD_Platform_Connected_App_Settings__mdt-CMPL123__TWD Platform Connected App Settings Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Test_Child_Object__c-CMPL123__Test Child Object Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Test_Parent_Object__c-CMPL123__Test Parent Object Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Valid_Child_Status__c-CMPL123__Valid Child Status Layout</layout>
@@ -9434,6 +9481,31 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
+        <recordType>CMPL123QMS__Nonconformance_Action__c.CMPL123QMS__Containment</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Nonconformance_Action__c.CMPL123QMS__Escalated_Action</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Nonconformance_Action__c.CMPL123QMS__Return</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Nonconformance_Action__c.CMPL123QMS__Rework</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Nonconformance_Action__c.CMPL123QMS__Scrap</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
         <recordType>CMPL123QMS__OOS_Investigation__c.CMPL123QMS__Phase_1A_Investigation</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
@@ -9673,6 +9745,10 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123QMS__Nonconformance_Action__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123QMS__OOS__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -9698,6 +9774,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123__Audit_Trail_Entry__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123__Completed_Reports</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>

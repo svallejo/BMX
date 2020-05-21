@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Configuration container for consolidated report generations</description>
+    <fields>
+        <fullName>CMPL123__IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123__Report_History_Age__c</fullName>
+        <defaultValue>72</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This field is to set max age of report generation history in hours, this field represent how long the record history will be preserved in hours. Default value will be 72 hours.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This field is to set max age of report generation history in hours, this field represents the time in hours for which the report generation history will be preserved. Default value for preserving will be 72 hours.</inlineHelpText>
+        <label>Report History Age Hour</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Consolidated Report Config</label>
+    <pluralLabel>Consolidated Reports Config</pluralLabel>
+    <validationRules>
+        <fullName>CMPL123__Minimum_Required_Value</fullName>
+        <active>true</active>
+        <description>This value must be greater than 0</description>
+        <errorConditionFormula>CMPL123__Report_History_Age__c &lt;= 0</errorConditionFormula>
+        <errorDisplayField>CMPL123__Report_History_Age__c</errorDisplayField>
+        <errorMessage>This value must be greater than 0</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

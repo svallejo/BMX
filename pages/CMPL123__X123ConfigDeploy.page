@@ -1,7 +1,5 @@
 <apex:page controller="CMPL123.X123ConfigController">
-  <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123,'/jquery-ui-1.12.1/js/jquery-3.4.0.min.js')}"/> 
-
- <!-- <apex:includeScript value="{!URLFOR($Resource.Compliance123, '/123Compliance/lib/jquery/jquery-ui-1.8.20/js/jquery-1.7.2.min.js')}"/>  -->
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123,'/jquery-ui-1.12.1/js/jquery-3.4.0.min.js')}"/>
    
     <style>
          .form-input{background:white;border: 1px solid  #CCC;border-radius:5px;padding: 8px 27px 8px 10px;width:250px;}    
@@ -268,10 +266,11 @@
             },100);
         }
         
-        
         function classComplaintRestService(configType){
             var currentOrgSessionid = '{!GETSESSIONID()}';
             var host = "{!JSENCODE($Setup.CMPL123__CMPL_App_Config__c.CMPL123__SF_Base_Url__c)}";
+            host = host.replace(/\/+$/, '');
+
             $.ajax({
                 type:"GET",
                 url:"/services/proxy",
@@ -290,7 +289,7 @@
                 },
                 beforeSend: function(jqXHR) {
                     jqXHR.setRequestHeader("Authorization", "OAuth "+currentOrgSessionid);  
-                    jqXHR.setRequestHeader('SalesforceProxy-Endpoint', host+'services/apexrest/CMPL123CME/ConfigService/v1.0?configType='+encodeURI(configType));
+                    jqXHR.setRequestHeader('SalesforceProxy-Endpoint', host+'/services/apexrest/CMPL123CME/ConfigService/v1.0?configType='+encodeURI(configType));
                     jqXHR.setRequestHeader("Content-Type", "application/json");
                 }
             });

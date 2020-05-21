@@ -721,7 +721,7 @@
                         }
                     });
                     modalInstance.result.then(function (selectedItem) {
-                        if(selectedItem.length >0)
+                        if(selectedItem!==undefined && selectedItem.length >0)
                             $scope.sectionList[key].fields[key1].value = selectedItem;
                     }, function () {
                     });

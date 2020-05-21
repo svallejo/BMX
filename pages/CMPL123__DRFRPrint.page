@@ -1,0 +1,102 @@
+<apex:page title="{!$Label.cmpl123__report}" showHeader="false" sidebar="false" standardStylesheets="false" controller="CMPL123.DRFRPrintController">
+	<apex:includeScript value="{!URLFOR($Resource.CMPL123__PrintJS)}"/>
+
+	<style>
+		.document-embed {
+			position: fixed;
+			left: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+
+	<script>
+		var renditionUrl = '{!JSENCODE(renditionUrl)}';
+
+		/* SECURITY FALSE POSITIVE: Rich text values in the following code are not escaped because styling is desired for print output. Since a browser does not
+		execute the code and only the PDF renderer does, there is no security risk. */
+		var isIE = {!isIE};
+
+		if (!isIE) {
+			if(renditionUrl != '') {
+				downloadFile(renditionUrl).then(function () {
+					if (downloadedFile != undefined) {
+						var data = downloadedFile;
+
+						printJS({
+							printable: data,
+							type: 'pdf',
+							base64: true,
+							onPrintDialogClose: printJobComplete,
+							onPdfOpen: printJobComplete
+						});
+					}
+				});
+			}
+		} else {
+			document.addEventListener('readystatechange', removeSpinner);
+		}
+
+		function printJobComplete() {
+			removeSpinner();
+			window.close();
+		}
+
+		function removeSpinner() {
+			var spinner = document.getElementsByClassName('slds-spinner_container')[0];
+			if (document.readyState === 'complete' && spinner) {
+				spinner.style = 'display: none';
+			}
+		}
+
+		function downloadFile(filedownLoadURL) {
+			return new Promise( function(resolve, reject) {
+				var b64encoded;
+				var req = new XMLHttpRequest();
+				req.open('GET', filedownLoadURL, true);
+				req.responseType = 'arraybuffer';
+				req.onreadystatechange = function() {
+
+					if (req.readyState == 4 && req.status == 200) {
+						var strings = [], chunksize = 0xffff;
+						var uInt8Array = new Uint8Array(this.response);
+						var len = uInt8Array.length;
+						for (var i = 0; i * chunksize < len; i++){
+							strings.push(String.fromCharCode.apply(null, uInt8Array.subarray(i * chunksize, (i + 1) * chunksize)));
+						}
+						var base64Encoded = btoa(strings.join(''));
+						downloadedFile = base64Encoded;
+					}
+				};
+
+				req.onload = function() { resolve(req.response); };
+				req.onerror = function() { reject(req.statusText); };
+				req.send();
+
+			});
+		}
+	</script>
+
+	<apex:form >
+		<apex:pageblock >
+			<apex:pageMessages id="showmsg"></apex:pageMessages>
+		</apex:pageblock>
+
+		<apex:outputPanel rendered="{!showPdfPreview}">
+			<apex:slds />
+			<div id="spinner" class="slds-spinner_container" >
+				<div class="slds-spinner slds-spinner--large slds-spinner--brand">
+					<div class="slds-spinner__dot-a"></div>
+					<div class="slds-spinner__dot-b"></div>
+				</div>
+			</div>
+
+			<apex:outputPanel rendered="{!isIE}">
+				<!-- SECURITY FALSE POSITIVE: Rich text values in the following code are not escaped because styling is desired for print output. Since a browser does not
+				execute the code and only the PDF renderer does, there is no security risk. -->
+				<iframe class="document-embed" src="{!renditionUrl}"/>
+			</apex:outputPanel>
+		</apex:outputPanel>
+	</apex:form>
+</apex:page>

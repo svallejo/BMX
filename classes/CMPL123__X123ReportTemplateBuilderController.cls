@@ -72,6 +72,10 @@ global class LabelApiMap {
         get;
         set;
     }
+    global String referenceName {
+        get;
+        set;
+    }
     global String type {
         get;
         set;

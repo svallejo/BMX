@@ -1,4 +1,4 @@
-<apex:page sidebar="false">
+<apex:page sidebar="false" controller="CMPL123.SetupController">
     <apex:pageBlock title="{!$Label.cmpl123__x123compliance_platform_setup}">
         <div style="padding-left:3%">
             <h4>{!HTMLENCODE($Label.PLEASE_PERFORM_THE_FOLLOWING_STEPS_TO_SETUP_THE_APPLICATION)}: </h4><br /><br />
@@ -8,7 +8,7 @@
             <div style="padding:10px;background-color:#E0E0E0 ;width:300px">
                 <!-- Trackwise permission sets -->
                 <span style="font-size:12px;"><b>. {!HTMLENCODE($Label.TRACKWISE_DIGITAL)} {!HTMLENCODE($Label.ADMIN)}</b> </span><br /><br />
-				<span style="font-size:12px;"><b>. {!HTMLENCODE($Label.TRACKWISE_DIGITAL)} {!HTMLENCODE($Label.USER)}</b> </span><br /><br />
+                <span style="font-size:12px;"><b>. {!HTMLENCODE($Label.TRACKWISE_DIGITAL)} {!HTMLENCODE($Label.USER)}</b> </span><br /><br />
                 <span style="font-size:12px;"><b>. {!HTMLENCODE($Label.TRACKWISE_DIGITAL)} {!HTMLENCODE($Label.PLATFORM_USER)}</b> </span>
             </div><br />
             <span style="font-size:14px;">{!HTMLENCODE($Label.GO_TO_SETUP)} -> {!HTMLENCODE($Label.MANAGE_USERS)} -> {!HTMLENCODE($Label.GO_TO_SETUP_MANAGE_USERS_PERMISSION_SETS_AND_ASSIGN_THE_USERS_TO_APPROPRIATE)}</span><br /><br />
@@ -37,6 +37,22 @@
                 </div>
             </div> <br/>
             <span style="font-size:14px"><b> 3.</b> {!HTMLENCODE($Label.CLICK_ON_SAVE)} </span><br /><br />
+            <span style="font-weight:bold;font-size:16px">{!HTMLENCODE($Label.STEP_4)}: {!HTMLENCODE($Label.SCHEDULE_REPORT_GENERATION_STATUS_BATCH)} </span><br /><br />
+            <!--Added support for redirecting URLs in Lightning Experience and Classic -->
+            <span style="font-size:14px"><b> 1. </b><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app?source=alohaHeader#/setup/ApexClasses/page?address=/ui/setup/apex/batch/ScheduleBatchApexPage', '/ui/setup/apex/batch/ScheduleBatchApexPage')}" style="color:blue" target="_blank">{!HTMLENCODE($Label.cmpl123__click_here)}</apex:outputLink> {!HTMLENCODE($Label.TO_CLEAN_UP_REPORT_GENERATION_STATUS_RECORDS)}</span><br /><br />
+            <span style="font-size:14px"><b> 2.</b> {!HTMLENCODE($Label.PROVIDE_THE_FOLLOWING)} </span><br /><br />
+            <div style="padding-left:30px">
+                <div style="font-size:13px;">
+                    <table>
+                        <tr><td><b>a.</b> {!HTMLENCODE($Label.JOB_NAME)}</td><td>: {!HTMLENCODE($Label.ENTER_A_SCHEDULER_JOB_NAME)}</td></tr>
+                        <tr><td><b>b.</b> {!HTMLENCODE($Label.APEX_CLASS)}</td><td>: {!HTMLENCODE($Label.REPORT_GENERATION_STATUS_BATCH_SCHEDULER)}</td></tr>
+                        <tr><td><b>c.</b> {!HTMLENCODE($Label.SCHEDULE_APEX_EXECUTION)}</td><td>: {!HTMLENCODE($Label.FREQUENCY)}</td></tr>
+                        <tr><td><td><b>{!HTMLENCODE($Label.FREQUENCY_OPTION_1)}:</b> {!HTMLENCODE($Label.WEEKLY_DAYS_OF_THE_WEEK)}</td></td></tr>
+                        <tr><td><td><b>{!HTMLENCODE($Label.FREQUENCY_OPTION_2)}:</b> {!HTMLENCODE($Label.MONTHLY_DAYS_RANGE)}</td></td></tr>                        
+                    </table>
+                </div>
+            </div> <br/>
+            <span style="font-size:14px"><b> 3.</b> {!HTMLENCODE($Label.CLICK_ON_SAVE)} </span><br /><br />
         </div>
     </apex:pageBlock>
     <apex:pageBlock title="{!$Label.cmpl123__x123compliance_application} {!$Label.cmpl123__utilities}">
@@ -51,8 +67,8 @@
             <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__X123GenerateTestClass', '/apex/X123GenerateTestClass')}" style="color:blue" target="_blank">{!HTMLENCODE($Label.cmpl123__click_here)}</apex:outputLink> {!HTMLENCODE($Label.CMPL123__to_generate_the_sample_test_class)}</span><br /><br />
             <span style="font-weight:bold;font-size:16px">3. {!HTMLENCODE($Label.CMPL123__x123_report_template_builder)}</span><br /><br />
             <!--Added support for redirecting URLs in Lightning Experience and Classic -->
-            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__X123ManageReportTemplate', '/apex/X123ManageReportTemplate')}" style="color:blue" target="_blank">{!HTMLENCODE($Label.cmpl123__click_here)}</apex:outputLink> {!HTMLENCODE($Label.CMPL123__to_build_report_templates)}</span><br/><br/>
-			<span style="font-weight:bold;font-size:16px">4. {!HTMLENCODE($Label.trackwise_digital_record_admin)}</span><br /><br />
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__X123ManageReportTemplate', '/apex/X123ManageReportTemplate')}" style="color:blue" target="_blank">{!HTMLENCODE($Label.cmpl123__click_here)}</apex:outputLink> {!HTMLENCODE($Label.CMPL123__TO_BUILD_REPORT_TEMPLATES)}</span><br/><br/>
+            <span style="font-weight:bold;font-size:16px">4. {!HTMLENCODE($Label.trackwise_digital_record_admin)}</span><br /><br />
             <!--Added support for redirecting URLs in Lightning Experience and Classic -->
             <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__EnableRecordDeletion', '/apex/EnableRecordDeletion')}" style="color:blue" target="_blank">{!HTMLENCODE($Label.cmpl123__click_here)}</apex:outputLink> {!HTMLENCODE($Label.CMPL123__to_administer_trackwise_digital_quality_records)}</span><br /><br />
             <span style="font-weight:bold;font-size:16px">5. {!HTMLENCODE($Label.TRACKWISE_DIGITAL_DATA_SYNC)}</span><br /><br />
@@ -60,7 +76,17 @@
             <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__DataSync', '/apex/DataSync')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!HTMLENCODE($Label.TO_SYNCHRONIZE_TRACKWISE_DIGITAL_DATA)}</span><br /><br />
             <span style="font-weight:bold;font-size:16px">6. {!$Label.TRACKWISE_DIGITAL_RECORD_DETAIL_COMPONENT}</span><br /><br />
             <!--Added support for redirecting URLs in Lightning Experience and Classic -->
-            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__RDCConfigurationPage', '/apex/RDCConfigurationPage')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.TO_CONFIGURE_RDC}</span><br /><br />
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__RDCConfigurationPage?activeTab=rdcCommonConfiguration', '/apex/RDCConfigurationPage?activeTab=rdcCommonConfiguration')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.TO_CONFIGURE_RDC}</span><br /><br />
+            <!--Added support for redirecting URLs in Lightning Experience and Classic -->
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__RDCConfigurationPage?activeTab=rdcAdminAdvancedLookupContainer', '/apex/RDCConfigurationPage?activeTab=rdcAdminAdvancedLookupContainer')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.TO_CONFIGURE_ENHANCED_LOOKUP_SEARCH}</span><br /><br />
+            <!--Added support for redirecting URLs in Lightning Experience and Classic -->
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__RDCConfigurationPage?activeTab=rdcMultiEditConfiguration', '/apex/RDCConfigurationPage?activeTab=rdcMultiEditConfiguration')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.TO_CONFIGURE_MULTI_USER_NOTIFICATIONS}</span><br /><br />
+            <!-- To add detail family report to setup starts here -->
+            <apex:outputPanel rendered="{!IF(LEN(JSINHTMLENCODE(startURL)) > 0, true, false)}">
+                <span style="font-weight:bold;font-size:16px">7. {!HTMLENCODE($Label.CMPL123__DETAIL_FAMILY_RECORD_REPORT_ADMIN)}</span><br /><br />
+                <span style="font-size:14px"><apex:outputLink value="{!startURL}" style="color:blue" target="_blank">{!HTMLENCODE($Label.cmpl123__click_here)}</apex:outputLink> {!HTMLENCODE($Label.cmpl123__to_build_detail_family_record_reports)}</span><br/><br/>
+            </apex:outputPanel>
+            <!-- To add detail family report to setup ends here -->
         </div>
     </apex:pageBlock>
     <script>

@@ -15,4 +15,7 @@ global class AuditHistoryService implements CMPL123.IAuditHistoryService {
     global Boolean save(CMPL123.AuditHistoryEntry auditHistoryEntry) {
         return null;
     }
+    global void save(List<CMPL123.AuditHistoryEntry> auditHistoryEntries) {
+
+    }
 }

@@ -223,11 +223,11 @@
                                 <div class="divPadding">
                                     <div class="column inlineDiv leftAlign">{!$Label.cmpl123cme__cmplt_manufacturer_s_reference_number}</div>
                                     <div>
-                                            <div class="fieldValue inlineDiv divStyleSection_1_3_1">
-                                                    <apex:repeat value="{!textFieldMap['CMPL123CME__Manufacturer_S_Reference_Number__c']}" var="index">
-                                                            <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_S_Reference_Number__c, if(index= 0, 0, 28*index+1), 28)}"></apex:outputText><br/>
-                                                 </apex:repeat>
-                                            </div>
+                                        <div class="fieldValue inlineDiv divStyleSection_1_3_1">
+                                            <apex:repeat value="{!textFieldMap['CMPL123CME__Manufacturer_S_Reference_Number__c']}" var="index">
+                                                <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c.CMPL123CME__Manufacturer_S_Reference_Number__c, if(index= 0, 0, 28*index+1), 28)}"></apex:outputText><br/>
+                                            </apex:repeat>
+                                        </div>
                                     </div>
                                 </div>
                             </td>
@@ -2627,7 +2627,7 @@
                     <td class="highlightBackground columnStyle height20"></td>
                     <td class="columnStyle height40">
                         <div class="inlineDiv labelDiv" style="padding-right:30px;">
-                            {!$Label.CMPL123CME__CMPLT_BASIC_UDI_DI}
+                            {!$Label.CMPL123CME__CMPLT_BASIC_UDI_DI_CODED_SUMMARY}
                         </div> 
                         <div class="fieldValueOther leftPadding inlineDiv" style="width:150px;">
                                 <apex:repeat value="{!textFieldMap['CMPL123CME__Basic_UDI_DI__c']}" var="index">
@@ -2642,7 +2642,7 @@
                     <td class="highlightBackground columnStyle height20"></td>
                     <td class="columnStyle height40">
                         <div class="inlineDiv labelDiv width90" style="padding-right:20px;">
-                            {!$Label.CMPL123CME__CMPLT_UDI_DEVICE_IDENTIFIER_PDF}
+                            {!$Label.CMPL123CME__CMPLT_UDI_DEVICE_IDENTIFIER_CODED_SUMMARY_PDF}
                         </div> 
                         <div class="fieldValueOther inlineDiv width150">
                             <apex:repeat value="{!textFieldMap['CMPL123CME__UDI_DI__c']}" var="index">
@@ -2656,7 +2656,7 @@
                         </div> 
                         <div class="fieldValueOther inlineDiv width150">
                                 <apex:repeat value="{!textFieldMap['CMPL123CME__UDI_PI__c']}" var="index">
-                                    <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c.CMPL123CME__UDI_PI__c, if(index= 0, 0, 12*index+1), 12)}"/><br/>
+                                    <apex:outputText value="{!MID(CMPL123CME__EU_MIR__c.CMPL123CME__UDI_PI__c, if(index= 0, 0, 15*index+1), 15)}"/><br/>
                                 </apex:repeat>
                         </div>
                     </td>
@@ -2724,7 +2724,7 @@
                 <div class="outerDiv">
                     {!$Label.CMPL123CME__cmplt_date}
                     <div class="fieldValue outerDivField leftPadding"  style="min-height:20px;width:300px">
-                    {!pdfGeneratedDatetime}
+                        {!pdfGeneratedDatetime}
                     </div>
                 </div>
                 <div class="outerDiv" style="height:60px">

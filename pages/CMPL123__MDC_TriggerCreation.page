@@ -56,7 +56,7 @@
                 <!-- END Error/Validation Text Bubble -->
 
                 <!-- Help `(?)` Button -->
-                <apex:pageBlockSectionItem helpText="{!getHelpTextModifyTargetObject}">
+                <apex:pageBlockSectionItem helpText="{!getHelpTextModifyTargetObject}" rendered="{!IF(objects.size<1000,true,false)}">
 
                     <!-- Dropdown Box Label -->
                     <apex:outputPanel >
@@ -87,6 +87,39 @@
                     <!-- END Target Object Drop Down List -->
 
                 </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem helpText="{!getHelpTextModifyTargetObject}" rendered="{!IF(objects.size>1000 && NOT(ISNULL(listSelectOptions)) && listSelectOptions.size>0,true,false)}">
+                  
+                   <!-- Dropdown Box Label -->
+                  <apex:outputPanel >
+                      <!-- LEX Label with Tooltip -->
+                      <apex:outputLabel rendered="{!isLEX}">
+                          <div id="lightningTargetObject"></div>
+                      </apex:outputLabel>
+
+                      <!-- VF Label -->
+                      <apex:outputLabel rendered="{!NOT(isLEX)}">
+                          {! getLabelTargetObject}
+                      </apex:outputLabel>
+                  </apex:outputPanel>                
+                
+                  <apex:outputPanel >
+                      <apex:outputText value="{!selectedobj}" rendered="{!isTriggerInstanceValid}"/>
+                      <apex:variable value="{!listSelectOptions.size}" var="multiOptionSize" />
+                      <apex:variable value="{!startIndex}" var="currentIndex" />
+                      <apex:selectList styleClass="objlist" id="selectlist" value="{!selectedobj}" size="1" style="width:180px;" rendered="{!NOT(isTriggerInstanceValid)}" html-formnovalidate="novalidate" readonly="{!isNameAndDescriptionValid}" >
+                          <apex:selectOption itemLabel="{!getInitialDropdownSelection}" itemValue=""/>
+                              <apex:selectOptions value="{!listSelectOptions[currentIndex]}" rendered="{!IF(currentIndex<multiOptionSize,true,false)}"></apex:selectOptions> 
+                              <apex:selectOptions value="{!listSelectOptions[currentIndex+1]}" rendered="{!IF(currentIndex+1<multiOptionSize,true,false)}"></apex:selectOptions>
+                              <apex:selectOptions value="{!listSelectOptions[currentIndex+2]}" rendered="{!IF(currentIndex+2<multiOptionSize,true,false)}"></apex:selectOptions>
+                              <apex:selectOptions value="{!listSelectOptions[currentIndex+3]}" rendered="{!IF(currentIndex+3<multiOptionSize,true,false)}"></apex:selectOptions>
+                              <apex:selectOptions value="{!listSelectOptions[currentIndex+4]}" rendered="{!IF(currentIndex+4<multiOptionSize,true,false)}"></apex:selectOptions>
+                              <apex:selectOptions value="{!listSelectOptions[currentIndex+5]}" rendered="{!IF(currentIndex+5<multiOptionSize,true,false)}"></apex:selectOptions>
+                              <apex:actionSupport event="onchange" action="{!setfields}" />
+                      </apex:selectList>
+                      
+                  </apex:outputPanel>
+              </apex:pageBlockSectionItem>
 
             </apex:pageBlockSection>
             <!-- END `MDC Trigger` Section -->

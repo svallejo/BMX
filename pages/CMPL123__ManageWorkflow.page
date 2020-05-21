@@ -27,8 +27,9 @@
                     <apex:pageMessages />
                 </apex:pageBlockSectionItem>
 
-                <!-- Object drop down -->
-                <apex:pageBlockSectionItem >
+                <!-- START Select Object drop down -->
+				<!-- If Object List size() < 1000 -->
+                <apex:pageBlockSectionItem rendered="{!IF(objectList.size<1000,true,false)}">
                     <apex:outputLabel value="{!$Label.cmpl123__select_object}"/>
                     <apex:outputPanel >
                         <apex:outputText value="{!targetObject}" rendered="{!if(workflowRule != null && workflowRule.Id != null,true,false)}"/>
@@ -39,6 +40,29 @@
                         </apex:selectList>
                     </apex:outputPanel>
                 </apex:pageBlockSectionItem>
+				<!-- END Select Object drop down -->
+				
+				<!-- START Select Object drop down -->
+				<!-- If Object List size() > 1000 -->
+				<apex:pageBlockSectionItem rendered="{!IF(objectList.size>1000 && NOT(ISNULL(listSelectOptions)) && listSelectOptions.size>0,true,false)}">
+                    <apex:outputLabel value="{!$Label.cmpl123__select_object}"/>
+                    <apex:outputPanel >
+                        <apex:outputText value="{!targetObject}" rendered="{!if(workflowRule != null && workflowRule.Id != null,true,false)}"/>
+						<apex:variable value="{!listSelectOptions.size}" var="multiOptionSize" />
+						<apex:variable value="{!startIndex}" var="currentIndex" />
+                        <apex:selectList id="selectlist" value="{!targetObject}" size="1" rendered="{!if(workflowRule != null && workflowRule.Id != null,false,true )}">
+                            <apex:selectOption itemLabel="-{!$Label.cmpl123__select}-" itemValue=""/>
+                                <apex:selectOptions value="{!listSelectOptions[currentIndex]}" rendered="{!IF(currentIndex<multiOptionSize,true,false)}"></apex:selectOptions> 
+                                <apex:selectOptions value="{!listSelectOptions[currentIndex+1]}" rendered="{!IF(currentIndex+1<multiOptionSize,true,false)}"></apex:selectOptions>
+                                <apex:selectOptions value="{!listSelectOptions[currentIndex+2]}" rendered="{!IF(currentIndex+2<multiOptionSize,true,false)}"></apex:selectOptions>
+                                <apex:selectOptions value="{!listSelectOptions[currentIndex+3]}" rendered="{!IF(currentIndex+3<multiOptionSize,true,false)}"></apex:selectOptions>
+                                <apex:selectOptions value="{!listSelectOptions[currentIndex+4]}" rendered="{!IF(currentIndex+4<multiOptionSize,true,false)}"></apex:selectOptions>
+                                <apex:selectOptions value="{!listSelectOptions[currentIndex+5]}" rendered="{!IF(currentIndex+5<multiOptionSize,true,false)}"></apex:selectOptions>
+                            <apex:actionSupport event="onchange" action="{!handleTargetObjectChange}"/>
+                        </apex:selectList>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+				<!-- END Select Object drop down -->
 
                 <!-- Key Value -->
                 <apex:pageBlockSectionItem >
