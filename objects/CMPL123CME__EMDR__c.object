@@ -139,6 +139,19 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>BMX_Approved_Date__c</fullName>
         <externalId>false</externalId>
@@ -277,6 +290,11 @@ TEXT(DATEVALUE(BMX_Approved_Date__c) - CMPL123CME__Complaint__r.BMX_Customer_Con
                     <fullName>Months</fullName>
                     <default>false</default>
                     <label>Months</label>
+                </value>
+                <value>
+                    <fullName>Weeks</fullName>
+                    <default>false</default>
+                    <label>Weeks</label>
                 </value>
                 <value>
                     <fullName>Days</fullName>
@@ -5858,6 +5876,11 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
                     <label>Nursing Home</label>
                 </value>
                 <value>
+                    <fullName>Outpatient Clinic/Surgery</fullName>
+                    <default>false</default>
+                    <label>Outpatient Clinic/Surgery</label>
+                </value>
+                <value>
                     <fullName>Outpatient Diagnostic Facility</fullName>
                     <default>false</default>
                     <label>Outpatient Diagnostic Facility</label>
@@ -5866,6 +5889,11 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
                     <fullName>Outpatient Treatment Facility</fullName>
                     <default>false</default>
                     <label>Outpatient Treatment Facility</label>
+                </value>
+                <value>
+                    <fullName>Patient's Home</fullName>
+                    <default>false</default>
+                    <label>Patient's Home</label>
                 </value>
                 <value>
                     <fullName>Other</fullName>
@@ -8815,38 +8843,6 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
-    <label>EMDR</label>
-    <nameField>
-        <displayFormat>EMDR-{00000}</displayFormat>
-        <label>EMDR No</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
-    </nameField>
-    <pluralLabel>EMDR</pluralLabel>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
-    <searchLayouts>
-        <customTabListAdditionalFields>RECORDTYPE</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__MFR_Report_Ref__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__MDR_Due_Date__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__MDR_Submission__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__Initial_MDR__c</customTabListAdditionalFields>
-        <listViewButtons>CMPL123CME__Multiple_EMDR_Print</listViewButtons>
-    </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
     <fieldSets>
         <fullName>CMPL123CME__A_1_GENERAL_INFORMATION</fullName>
         <availableFields>
@@ -24827,6 +24823,7 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
         </displayedFields>
         <label>Related EMDR</label>
     </fieldSets>
+    <label>EMDR</label>
     <listViews>
         <fullName>CMPL123CME__All</fullName>
         <columns>NAME</columns>
@@ -24859,6 +24856,14 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
         <label>VMSR</label>
         <language>en_US</language>
     </listViews>
+    <nameField>
+        <displayFormat>EMDR-{00000}</displayFormat>
+        <label>EMDR No</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>EMDR</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>CMPL123CME__Initial</fullName>
         <active>true</active>
@@ -24884,6 +24889,10 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
             </values>
             <values>
                 <fullName>NI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Weeks</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -27033,11 +27042,19 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Outpatient Clinic%2FSurgery</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Outpatient Diagnostic Facility</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outpatient Treatment Facility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Patient%27s Home</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -27852,6 +27869,10 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Weeks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Years</fullName>
                 <default>false</default>
             </values>
@@ -29987,6 +30008,14 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outpatient Clinic%2FSurgery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Patient%27s Home</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -30773,6 +30802,10 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Weeks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Years</fullName>
                 <default>false</default>
             </values>
@@ -32911,6 +32944,14 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Outpatient Clinic%2FSurgery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Patient%27s Home</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Unknown</fullName>
                 <default>false</default>
             </values>
@@ -33692,6 +33733,10 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
             </values>
             <values>
                 <fullName>NI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Weeks</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -35841,11 +35886,19 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Outpatient Clinic%2FSurgery</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Outpatient Diagnostic Facility</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outpatient Treatment Facility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Patient%27s Home</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -36633,6 +36686,15 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
             </values>
         </picklistValues>
     </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>RECORDTYPE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__MFR_Report_Ref__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__MDR_Due_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__MDR_Submission__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Initial_MDR__c</customTabListAdditionalFields>
+        <listViewButtons>CMPL123CME__Multiple_EMDR_Print</listViewButtons>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
     <validationRules>
         <fullName>A1_Patient_Identifier_cannot_be_blank</fullName>
         <active>true</active>
@@ -36844,6 +36906,7 @@ CMPL123CME__Complaint__r.CMPL123CME__CMPL123_WF_Status__c ='Closed')</errorCondi
         <errorConditionFormula>AND(CMPL123CME__CMPL123_WF_Action__c = 'Submit Report',ISBLANK(CMPL123CME__Registered_Site__c))</errorConditionFormula>
         <errorMessage>Register site must have a value</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
     <webLinks>
         <fullName>CMPL123CME__Multiple_EMDR_Print</fullName>
         <availability>online</availability>
