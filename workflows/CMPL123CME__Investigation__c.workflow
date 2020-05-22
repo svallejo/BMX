@@ -130,7 +130,7 @@
             <name>Assign_Record_Type_to_Child_Inv</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Investigation__c.BMX_Invest_Reference__c</field>
             <operation>equals</operation>
@@ -145,7 +145,7 @@
             <name>Email_alert_to_RQC_US_group_when_an_investigation_is_closed_for_a_complaint_with</name>
             <type>Alert</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <description>RQC (US) group receives an email alert when an investigation is closed for a complaint with an initial eMDR created.</description>
         <formula>AND(CONTAINS(CMPL123_WF_Status__c ,'Closed'), CMPL123CME__Complaint__r.BMX_Initial_emdr_created__c = True, CMPL123CME__Complaint__c  &lt;&gt; null)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -156,12 +156,9 @@
             <name>BMX_Email_alert_to_RQC_Group_when_Investigation_is_Closed_with_Complaint_PRE_has</name>
             <type>Alert</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <description>US-AER-016 #AC1</description>
-        <formula>AND(
-CMPL123_WF_Status__c = 'Closed - Done',
-CMPL123CME__Complaint__c &lt;&gt; null, TEXT(CMPL123CME__Complaint__r.BMX_PRE__c) = 'Yes'
-)</formula>
+        <formula>AND( CMPL123_WF_Status__c = 'Closed - Done', CMPL123CME__Complaint__c &lt;&gt; null, TEXT(CMPL123CME__Complaint__r.BMX_PRE__c) = 'Yes' )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

@@ -8888,6 +8888,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__Consolidate_As_VMSR__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__EMDR__c.CMPL123CME__D10_Date_Returned_to_Mfg_Null__c</field>
         <readable>true</readable>
@@ -10214,6 +10219,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__Is_VMSR__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__EMDR__c.CMPL123CME__MDR_Clock_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -10285,6 +10295,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__EMDR__c.CMPL123CME__Unique_Identifier_UDI__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__VMSR__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -11855,6 +11870,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__MDR_Code__c.CMPL123CME__MDR_Report__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MDR_Code__c.CMPL123CME__VMSR__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -26675,6 +26695,15 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
+        <object>CMPL123CME__Concomitant_Product__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
         <object>CMPL123CME__EMDR__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
@@ -26720,6 +26749,24 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
+        <object>CMPL123CME__MDR_Code__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>CMPL123CME__MDR__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
         <object>CMPL123CME__MEDDEV__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
@@ -26757,6 +26804,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>CMPL123CME__Questions_Template__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>CMPL123CME__Submission_History__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>

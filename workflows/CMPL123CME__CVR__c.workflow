@@ -27,8 +27,7 @@
         </actions>
         <active>false</active>
         <description>US-AER-047 : Populate Close Date  Date/Time when  CVR enters either "Closed - Submitted" or "Closed - Done"</description>
-        <formula>OR(CMPL123_WF_Status__c = 'Closed - Done', 
-CMPL123_WF_Status__c ='Closed-Submitted')</formula>
+        <formula>OR(CMPL123_WF_Status__c = 'Closed - Done',  CMPL123_WF_Status__c ='Closed-Submitted')</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

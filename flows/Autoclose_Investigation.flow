@@ -1,67 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <processMetadataValues>
-            <name>ActionCallType</name>
-            <value>
-                <stringValue>flow</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>flowSelection</name>
-            <value>
-                <stringValue>Assign Locked Investigation Record Type</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_5_A5</name>
-        <label>Update Record Type</label>
-        <locationX>500</locationX>
-        <locationY>600</locationY>
-        <actionName>Assign_Locked_Investigation_Record_Type</actionName>
-        <actionType>flow</actionType>
-        <inputParameters>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>SObject</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>InvestigationRecord</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>maxOccurs</name>
-                <value>
-                    <numberValue>1.0</numberValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>objectType</name>
-                <value>
-                    <stringValue>CMPL123CME__Investigation__c</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>SObject</stringValue>
-                </value>
-            </processMetadataValues>
-            <name>InvestigationRecord</name>
-            <value>
-                <elementReference>myVariable_current</elementReference>
-            </value>
-        </inputParameters>
-    </actionCalls>
     <decisions>
         <name>isChangedDecision2_myRule_1_CMPL123_WF_Action_c</name>
         <label>isChangedDecision2_myRule_1_CMPL123_WF_Action_c</label>
@@ -255,7 +193,7 @@
                 <leftValueReference>myVariable_current.Count_of_Optional_Approvals__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <elementReference>formula_6_myRule_5_7791405649</elementReference>
+                    <elementReference>formula_6_myRule_5_7831183091</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
@@ -365,7 +303,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_10_myRule_5_A1_9478970325</name>
+        <name>formula_10_myRule_5_A1_1978524656</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -376,7 +314,7 @@
                 <stringValue>[CMPL123CME__Investigation__c].Count_of_Optional_Approvals__c  + 1</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_2651958066</name>
+        <name>formula_3_myRule_1_A1_2155217269</name>
         <dataType>Number</dataType>
         <expression>{!myVariable_current.Count_of_Optional_Approvals__c}  + 1</expression>
         <scale>18</scale>
@@ -388,7 +326,7 @@
                 <stringValue>[CMPL123CME__Investigation__c].BMX_Count_of_GCS_Approvers__c -1</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_6_myRule_5_7791405649</name>
+        <name>formula_6_myRule_5_7831183091</name>
         <dataType>Number</dataType>
         <expression>{!myVariable_current.BMX_Count_of_GCS_Approvers__c} -1</expression>
         <scale>18</scale>
@@ -400,7 +338,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_8_myRule_5_A3_2145837771</name>
+        <name>formula_8_myRule_5_A3_7766368273</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -411,11 +349,11 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_9_myRule_5_A2_0852903299</name>
+        <name>formula_9_myRule_5_A2_3792389363</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
-    <interviewLabel>Autoclose_Investigation-3_InterviewLabel</interviewLabel>
+    <interviewLabel>Autoclose_Investigation-15_InterviewLabel</interviewLabel>
     <label>Autoclose Investigation</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -520,7 +458,7 @@
             </processMetadataValues>
             <field>Count_of_Optional_Approvals__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_2651958066</elementReference>
+                <elementReference>formula_3_myRule_1_A1_2155217269</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
@@ -1443,7 +1381,7 @@
             </processMetadataValues>
             <field>BMX_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_10_myRule_5_A1_9478970325</elementReference>
+                <elementReference>formula_10_myRule_5_A1_1978524656</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1611,7 +1549,7 @@
             </processMetadataValues>
             <field>BMX_First_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_9_myRule_5_A2_0852903299</elementReference>
+                <elementReference>formula_9_myRule_5_A2_3792389363</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
@@ -1743,7 +1681,7 @@
             </processMetadataValues>
             <field>BMX_Oldest_investigation_completed_date__c</field>
             <value>
-                <elementReference>formula_8_myRule_5_A3_2145837771</elementReference>
+                <elementReference>formula_8_myRule_5_A3_7766368273</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Complaint__c</object>
@@ -1777,9 +1715,6 @@
         <label>Update child investigations</label>
         <locationX>500</locationX>
         <locationY>500</locationY>
-        <connector>
-            <targetReference>myRule_5_A5</targetReference>
-        </connector>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -2156,7 +2091,7 @@
         <object>CMPL123CME__Investigation__c</object>
     </recordUpdates>
     <startElementReference>isChangedDecision2_myRule_1_CMPL123_WF_Action_c</startElementReference>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

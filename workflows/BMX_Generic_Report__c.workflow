@@ -26,7 +26,7 @@
             <name>Populate_Close_Date_in_Generic_Report</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <description>US-AER-047</description>
         <formula>OR( CMPL123_WF_Status__c = 'Closed - Done', CMPL123_WF_Status__c ='Closed-Submitted')</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -37,7 +37,7 @@
             <name>BMX_Update_to_locked_Record_Type</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>BMX_Generic_Report__c.CMPL123_WF_Status__c</field>
             <operation>equals</operation>

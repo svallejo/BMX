@@ -740,8 +740,8 @@
             <translation><!-- Quality Assurance/ QMS --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Quality Control,</masterLabel>
-            <translation><!-- Quality Control, --></translation>
+            <masterLabel>Quality Control</masterLabel>
+            <translation><!-- Quality Control --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Reagent R&amp;D</masterLabel>
@@ -2102,6 +2102,10 @@
     <validationRules>
         <errorMessage><!-- Change Control cannot be closed as unsuccessful if the picklist value for &quot;Was the Change Successful&quot; is Yes --></errorMessage>
         <name>Change_UnSuccessful</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When status is Implementation in Progress only the change owner or a change coordinator can edit the record --></errorMessage>
+        <name>record_locked_at_imp_in_prog_x_co_or_c2</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- When status is Implementation in Progress only the change owner or a change coordinator can edit the record --></errorMessage>

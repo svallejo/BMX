@@ -24,7 +24,7 @@
             <name>BMX_Update_Close_Date_in_TGA</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <description>US-AER-047 :Close Date to be populated When TGA enters either "Closed - Submitted" or "Closed - Done"</description>
         <formula>OR( CMPL123_WF_Status__c = 'Closed-Submitted',CMPL123_WF_Status__c ='Closed - Done')</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -35,7 +35,7 @@
             <name>BMX_Update_to_locked_Record_Type</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__TGA__c.CMPL123_WF_Status__c</field>
             <operation>equals</operation>

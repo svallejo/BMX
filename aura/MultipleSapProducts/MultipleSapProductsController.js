@@ -1,9 +1,11 @@
 ({
     init: function (cmp, event) {
+        console.log('init');
         cmp.set('v.columns', [
             {label: 'Item #', fieldName: 'Product_Item_Number__c', type: 'text'},
             {label: 'Description', fieldName: 'Product_Item_Description__c', type: 'text'},
         ]);
+        cmp.set("v.HideSpinner", false);
         var action = cmp.get("c.retrieveSapProductInformation");
         action.setParams({'recordId' : cmp.get("v.recordId")});
         action.setCallback(this, function(response) {
@@ -23,7 +25,9 @@
                 }
                 // Display the message
                 console.error(message)
+                // helper.handleErrors("Error", errors, "error");
             }
+            cmp.set("v.HideSpinner", false);
         });
 
         // Send action off to be executed
@@ -35,6 +39,8 @@
             let state = response.getState();
             if (state === "SUCCESS") {
                 let result = response.getReturnValue();
+                // console.log('response: ' + response.getReturnValue())
+                // console.log(JSON.stringify(response.getReturnValue()))
                 cmp.set("v.areMultipleProductsImpacted", result);
             }
             else {
@@ -46,12 +52,14 @@
                 }
                 // Display the message
                 console.error(message)
+                // helper.handleErrors("Error", errors, "error");
             }
+            cmp.set("v.HideSpinner", false);
         });
         // Send action off to be executed
         $A.enqueueAction(ccAction);
     },
-     refresh:function(cmp, event, helper){
+     recordUpdated:function(cmp, event, helper){
         var ccAction = cmp.get("c.areMultipleProductsImpacted");
         var action = cmp.get("c.retrieveSapProductInformation");
         action.setParams({'recordId' : cmp.get("v.recordId")});
@@ -60,6 +68,8 @@
             let state = response.getState();
             if (state === "SUCCESS") {
                 let result = response.getReturnValue();
+                // console.log('response: ' + response.getReturnValue())
+                // console.log(JSON.stringify(response.getReturnValue()))
                 cmp.set("v.areMultipleProductsImpacted", result);
             }
             else {
@@ -71,7 +81,9 @@
                 }
                 // Display the message
                 console.error(message)
+                // helper.handleErrors("Error", errors, "error");
             }
+            cmp.set("v.HideSpinner", false);
         });
 
         // Send action off to be executed
@@ -96,6 +108,7 @@
                 console.error(message)
                 // helper.handleErrors("Error", errors, "error");
             }
+            cmp.set("v.HideSpinner", false);
         });
 
         // Send action off to be executed
@@ -140,4 +153,5 @@
         component.set("v.showDelete", showDelete);
         component.set("v.selectedRows", lines);
     }
+
 })

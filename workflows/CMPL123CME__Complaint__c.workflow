@@ -244,7 +244,7 @@
             <name>Approved_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.CMPL123CME__CMPL123_WF_Action__c</field>
             <operation>equals</operation>
@@ -258,7 +258,7 @@
             <name>Rule_field_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <description>Update Rule key value field</description>
         <formula>true</formula>
         <triggerType>onCreateOnly</triggerType>
@@ -273,7 +273,7 @@
             <name>Closed_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.CMPL123CME__CMPL123_WF_Action__c</field>
             <operation>equals</operation>
@@ -287,7 +287,7 @@
             <name>BMX_Complaint_Notify_RQC_Group_when_possible_Serious_Injury_Death</name>
             <type>Alert</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.BMX_PRE1_Patient_or_operator_death__c</field>
@@ -312,7 +312,7 @@
             <name>Complete_Investigation_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.CMPL123CME__CMPL123_WF_Action__c</field>
             <operation>equals</operation>
@@ -330,7 +330,7 @@
             <name>Evaluation_Completed_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.CMPL123CME__CMPL123_WF_Action__c</field>
             <operation>equals</operation>
@@ -348,7 +348,7 @@
             <name>Opened_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.CMPL123CME__CMPL123_WF_Status__c</field>
             <operation>equals</operation>
@@ -366,7 +366,7 @@
             <name>Re_Opened_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.CMPL123CME__CMPL123_WF_Action__c</field>
             <operation>equals</operation>
@@ -384,7 +384,7 @@
             <name>Reject_Complaint_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.CMPL123CME__CMPL123_WF_Action__c</field>
             <operation>equals</operation>
@@ -402,7 +402,7 @@
             <name>Rejected_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.CMPL123CME__CMPL123_WF_Action__c</field>
             <operation>equals</operation>
@@ -420,7 +420,7 @@
             <name>Submitted_For_Evaluation_by</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.CMPL123CME__CMPL123_WF_Action__c</field>
             <operation>equals</operation>
@@ -438,7 +438,7 @@
             <name>Submitted_for_Review_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.CMPL123CME__CMPL123_WF_Action__c</field>
             <operation>equals</operation>
@@ -452,7 +452,7 @@
             <name>Update_Customer_Contact_Date_Field</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.BMX_Customer_Contact_Date_Time__c</field>
             <operation>notEqual</operation>

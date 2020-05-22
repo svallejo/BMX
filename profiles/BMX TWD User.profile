@@ -8981,6 +8981,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__Consolidate_As_VMSR__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__EMDR__c.CMPL123CME__D10_Date_Returned_to_Mfg_Null__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -10310,6 +10315,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__Is_VMSR__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__EMDR__c.CMPL123CME__MDR_Clock_Status__c</field>
         <readable>true</readable>
@@ -10382,6 +10392,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__EMDR__c.CMPL123CME__Unique_Identifier_UDI__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EMDR__c.CMPL123CME__VMSR__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -11927,6 +11942,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__MDR_Code__c.CMPL123CME__MDR_Report__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MDR_Code__c.CMPL123CME__VMSR__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
