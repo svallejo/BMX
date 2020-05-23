@@ -92,6 +92,7 @@ public without Sharing class SapInterfaceHandler {
         }
         List<SapProductInformation> prodInfoList = new List<SapProductInformation>();
         Map<String, Object> response = (Map<String, Object>) JSON.deserializeUntyped(sapResponse);
+        System.debug(response);
         List<Object> productList = buildProductObjectListFromResponse(response);
 
        for (Object product : productList) {
