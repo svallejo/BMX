@@ -25,7 +25,7 @@
             <name>Notify_US_User_Group_when_emdr_is_sent_back_for_Rework</name>
             <type>Alert</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__EMDR__c.CMPL123CME__CMPL123_WF_Action__c</field>
             <operation>equals</operation>
@@ -40,7 +40,7 @@
             <name>BMX_Update_Submit_for_Review_Done_by</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>CMPL123CME__EMDR__c.CMPL123CME__CMPL123_WF_Action__c</field>
             <operation>equals</operation>
