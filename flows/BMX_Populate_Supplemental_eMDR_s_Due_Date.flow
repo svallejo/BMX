@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignments>
+        <name>myVariable_waitStartTimeAssignment</name>
+        <label>myVariable_waitStartTimeAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -1029,7 +1045,7 @@
 [CMPL123CME__EMDR__c].CMPL123CME__Complaint__c.BMX_Related_Investigation_linked_Date__c + 30) </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_11_myRule_10_A1_0315896077</name>
+        <name>formula_11_myRule_10_A1_1590985719</name>
         <dataType>Date</dataType>
         <expression> IF({!myVariable_current.CMPL123CME__Complaint__r.BMX_Related_Investigation_linked_Date__c} &gt;= {!myVariable_current.CMPL123CME__Complaint__r.BMX_Oldest_investigation_completed_date__c} , 
 {!myVariable_current.CMPL123CME__Complaint__r.BMX_Oldest_investigation_completed_date__c} + 30, 
@@ -1042,7 +1058,7 @@
                 <stringValue>[CMPL123CME__EMDR__c].CMPL123CME__Complaint__c.BMX_Investigation__c.BMX_Investigation_Closed_Date__c + 30</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_6601855317</name>
+        <name>formula_2_myRule_1_A1_6428256666</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.CMPL123CME__Complaint__r.BMX_Investigation__r.BMX_Investigation_Closed_Date__c} + 30</expression>
     </formulas>
@@ -1053,7 +1069,7 @@
                 <stringValue>[CMPL123CME__EMDR__c].CMPL123CME__Complaint__c.BMX_Related_Investigation_linked_Date__c  + 30 </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_5_myRule_4_A1_2662879195</name>
+        <name>formula_5_myRule_4_A1_1734798850</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.CMPL123CME__Complaint__r.BMX_Related_Investigation_linked_Date__c}  + 30</expression>
     </formulas>
@@ -1064,11 +1080,11 @@
                 <stringValue>[CMPL123CME__EMDR__c].CMPL123CME__Complaint__c.BMX_Oldest_investigation_completed_date__c + 30</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_8_myRule_7_A1_1415997099</name>
+        <name>formula_8_myRule_7_A1_9499781818</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.CMPL123CME__Complaint__r.BMX_Oldest_investigation_completed_date__c} + 30</expression>
     </formulas>
-    <interviewLabel>BMX_Populate_Supplemental_eMDR_s_Due_Date-21_InterviewLabel</interviewLabel>
+    <interviewLabel>BMX_Populate_Supplemental_eMDR_s_Due_Date-20_InterviewLabel</interviewLabel>
     <label>Populate Supplemental eMDR&apos;s Due Date</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -1109,9 +1125,6 @@
             </value>
         </processMetadataValues>
         <processMetadataValues>
-            <name>extraTypeInfo</name>
-        </processMetadataValues>
-        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -1122,9 +1135,6 @@
             <value>
                 <stringValue>[CMPL123CME__EMDR__c]</stringValue>
             </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_10_A1</name>
         <label>Update Date Due</label>
@@ -1176,7 +1186,7 @@
             </processMetadataValues>
             <field>CMPL123CME__MDR_Due_Date__c</field>
             <value>
-                <elementReference>formula_11_myRule_10_A1_0315896077</elementReference>
+                <elementReference>formula_11_myRule_10_A1_1590985719</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__EMDR__c</object>
@@ -1189,9 +1199,6 @@
             </value>
         </processMetadataValues>
         <processMetadataValues>
-            <name>extraTypeInfo</name>
-        </processMetadataValues>
-        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -1202,9 +1209,6 @@
             <value>
                 <stringValue>[CMPL123CME__EMDR__c]</stringValue>
             </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_1_A1</name>
         <label>Update Date Due field</label>
@@ -1259,7 +1263,7 @@
             </processMetadataValues>
             <field>CMPL123CME__MDR_Due_Date__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_6601855317</elementReference>
+                <elementReference>formula_2_myRule_1_A1_6428256666</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__EMDR__c</object>
@@ -1272,9 +1276,6 @@
             </value>
         </processMetadataValues>
         <processMetadataValues>
-            <name>extraTypeInfo</name>
-        </processMetadataValues>
-        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -1285,9 +1286,6 @@
             <value>
                 <stringValue>[CMPL123CME__EMDR__c]</stringValue>
             </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_4_A1</name>
         <label>Update Date  Due</label>
@@ -1342,7 +1340,7 @@
             </processMetadataValues>
             <field>CMPL123CME__MDR_Due_Date__c</field>
             <value>
-                <elementReference>formula_5_myRule_4_A1_2662879195</elementReference>
+                <elementReference>formula_5_myRule_4_A1_1734798850</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__EMDR__c</object>
@@ -1355,9 +1353,6 @@
             </value>
         </processMetadataValues>
         <processMetadataValues>
-            <name>extraTypeInfo</name>
-        </processMetadataValues>
-        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -1368,9 +1363,6 @@
             <value>
                 <stringValue>[CMPL123CME__EMDR__c]</stringValue>
             </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_7_A1</name>
         <label>Update Date Due with Investigation Closed Date</label>
@@ -1425,13 +1417,13 @@
             </processMetadataValues>
             <field>CMPL123CME__MDR_Due_Date__c</field>
             <value>
-                <elementReference>formula_8_myRule_7_A1_1415997099</elementReference>
+                <elementReference>formula_8_myRule_7_A1_9499781818</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__EMDR__c</object>
     </recordUpdates>
-    <startElementReference>myDecision</startElementReference>
-    <status>Draft</status>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <status>Obsolete</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
@@ -1447,6 +1439,16 @@
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>CMPL123CME__EMDR__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_waitStartTimeVariable</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
     </variables>
     <variables>
         <name>RecursiveCountVariable</name>

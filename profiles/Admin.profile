@@ -17822,6 +17822,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__Questionnaire__c.NOW_59MIN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__Questionnaire__c.Number_of_Questions_Unanswered__c</field>
         <readable>true</readable>
     </fieldPermissions>

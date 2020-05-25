@@ -139,6 +139,19 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Audit__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -2249,6 +2262,17 @@ If( CMPL123CME__Total_Score__c  &gt;  1, 'Local Assessment','Not Reportable')
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>NOW_59MIN__c</fullName>
+        <externalId>false</externalId>
+        <formula>NOW()-(59/(60*24))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NOW-59MIN</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>Number_of_Questions_Unanswered__c</fullName>
         <externalId>false</externalId>
         <label>Number of Questions Unanswered</label>
@@ -2300,34 +2324,7 @@ If( CMPL123CME__Total_Score__c  &gt;  1, 'Local Assessment','Not Reportable')
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>Assessment</label>
-    <nameField>
-        <displayFormat>Q-{00000}</displayFormat>
-        <label>Questionnaire No</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
-    </nameField>
-    <pluralLabel>Assessments</pluralLabel>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
-    <searchLayouts>
-        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123_WF_Status__c</customTabListAdditionalFields>
-    </searchLayouts>
-    <sharingModel>Private</sharingModel>
-    <visibility>Public</visibility>
     <listViews>
         <fullName>BMX_RQC_Questionnaire</fullName>
         <columns>NAME</columns>
@@ -2359,6 +2356,14 @@ If( CMPL123CME__Total_Score__c  &gt;  1, 'Local Assessment','Not Reportable')
         <label>All</label>
         <language>en_US</language>
     </listViews>
+    <nameField>
+        <displayFormat>Q-{00000}</displayFormat>
+        <label>Questionnaire No</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Assessments</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Audit</fullName>
         <active>false</active>
@@ -9135,6 +9140,11 @@ If( CMPL123CME__Total_Score__c  &gt;  1, 'Local Assessment','Not Reportable')
             </values>
         </picklistValues>
     </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123_WF_Status__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
     <validationRules>
         <fullName>Global_Assessment_Classification_Req</fullName>
         <active>true</active>
@@ -9191,6 +9201,7 @@ ISBLANK( BMX_Local_Assessment_Country_4__c)
         <errorConditionFormula>Audit__r.CMPL123_WF_Status__c =="Closed - Done"</errorConditionFormula>
         <errorMessage>Record Locked</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
     <webLinks>
         <fullName>Share_Assessment</fullName>
         <availability>online</availability>
