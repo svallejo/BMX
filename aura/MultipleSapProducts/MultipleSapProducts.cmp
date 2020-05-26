@@ -4,7 +4,7 @@
   @Author             : Jon Astemborski
   @Group              : 
   @Last Modified By   : Jon Astemborski
-  @Last Modified On   : 5/17/2020, 9:35:07 PM
+  @Last Modified On   : 5/26/2020, 3:54:35 PM
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    2/10/2020   Jon Astemborski     Initial Version
@@ -26,14 +26,11 @@
         <aura:attribute name="record" type="Object" />
     	<aura:attribute name="recordId" type="String" />
         <aura:handler name="init" value="{! this }" action="{! c.init }"/>
-        <aura:handler event="force:refreshView" action="{!c.refresh}" />
-
     <force:recordData aura:id="forceRecordDataCmp"
     recordId="{!v.recordId}" 
     targetRecord="{!v.record}"
     targetFields="{!v.simpleRecord}"
     fields="Product_Impacted__c, Name"
-    targetError="{!v._error}"
     recordUpdated="{!c.recordUpdated}" />
     <aura:renderIf isTrue="{!v.areMultipleProductsImpacted}">
     <lightning:card>
