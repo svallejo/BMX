@@ -139,6 +139,21 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Workflow Actions</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>CMPL123__Action_Custom_Label__c</fullName>
         <deprecated>false</deprecated>
@@ -264,22 +279,20 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <description>Workflow Actions</description>
-    <enableActivities>false</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableEnhancedLookup>false</enableEnhancedLookup>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>Workflow Action</label>
+    <listViews>
+        <fullName>CMPL123__All</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123__Action_Custom_Label__c</columns>
+        <columns>CMPL123__Is_ESign_Required__c</columns>
+        <columns>CMPL123__Is_Comment_Required__c</columns>
+        <columns>CMPL123__Esign_Message__c</columns>
+        <columns>CMPL123__E_Sign_Message_Custom_Label__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>Action Name</label>
         <trackHistory>false</trackHistory>
@@ -306,17 +319,4 @@
     </searchLayouts>
     <sharingModel>Read</sharingModel>
     <visibility>Public</visibility>
-    <listViews>
-        <fullName>CMPL123__All</fullName>
-        <columns>NAME</columns>
-        <columns>CMPL123__Action_Custom_Label__c</columns>
-        <columns>CMPL123__Is_ESign_Required__c</columns>
-        <columns>CMPL123__Is_Comment_Required__c</columns>
-        <columns>CMPL123__Esign_Message__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-        <language>en_US</language>
-    </listViews>
 </CustomObject>

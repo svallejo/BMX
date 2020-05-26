@@ -177,7 +177,6 @@
                 console.error(message)
                 // helper.handleErrors("Error", errors, "error");
             }
-            cmp.set("v.HideSpinner", false);
         });
 
         // Send action off to be executed
@@ -202,7 +201,6 @@
                 console.error(message)
                 // helper.handleErrors("Error", errors, "error");
             }
-            cmp.set("v.HideSpinner", false);
         });
 
         // Send action off to be executed
