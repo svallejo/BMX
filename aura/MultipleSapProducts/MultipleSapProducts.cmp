@@ -26,6 +26,7 @@
         <aura:attribute name="record" type="Object" />
     	<aura:attribute name="recordId" type="String" />
         <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    	<aura:handler event="force:refreshView" action="{! c.recordUpdated}" />
     <force:recordData aura:id="forceRecordDataCmp"
     recordId="{!v.recordId}" 
     targetRecord="{!v.record}"
