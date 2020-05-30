@@ -24288,6 +24288,9 @@
         <layout>Contact-Contact Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>ContactPointAddress-Contact Point Address Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>ContactPointEmail-Contact Point Email Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
