@@ -3679,6 +3679,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>INV_Reference_Creation_Justification__c</fullName>
+        <description>Investigation Reference Creation Justification</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Investigation Reference Creation Justification</inlineHelpText>
+        <label>INV Reference Creation Justification</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>If_no_reason_for_the_non_complaint_st__c</fullName>
         <externalId>false</externalId>
         <label>If no, reason for the non-complaint st</label>
@@ -5186,6 +5199,15 @@
         <active>true</active>
         <errorConditionFormula>ISCHANGED( CMPL123CME__CMPL123_WF_Action__c ) &amp;&amp; CMPL123CME__CMPL123_WF_Action__c = "Close Complaint" &amp;&amp; Assessment_Completed__c = False</errorConditionFormula>
         <errorMessage>Please complete the Assessment and check the box Assessment Completed</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>INV_Reference_Creation_Justification</fullName>
+        <active>true</active>
+        <description>INV Reference Creation Justification field is mandatory when Master Investigation Field is available</description>
+        <errorConditionFormula>AND( NOT(ISBLANK(BMX_Investigation__c)),
+ISBLANK( INV_Reference_Creation_Justification__c))</errorConditionFormula>
+        <errorDisplayField>INV_Reference_Creation_Justification__c</errorDisplayField>
+        <errorMessage>INV Reference Creation Justification field is mandatory when Master Investigation Field is available</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Investigation_Not_Completed</fullName>

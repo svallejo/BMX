@@ -3389,7 +3389,7 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_72</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
@@ -3421,10 +3421,41 @@
                     <stringValue>Closed - Done</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.CMPL123_WF_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed - Canceled</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>myRule_72_A1</targetReference>
             </connector>
-            <label>Workflow Status = Closed - Done?</label>
+            <label>Workflow Status = Closed - Done/Closed - Canceled?</label>
         </rules>
     </decisions>
     <decisions>
@@ -3594,7 +3625,7 @@
                 <stringValue>TODAY()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_19_myRule_17_A1_1135835151</name>
+        <name>formula_19_myRule_17_A1_4883877410</name>
         <dataType>Date</dataType>
         <expression>TODAY()</expression>
     </formulas>
@@ -3605,7 +3636,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_23_myRule_21_A4_5794668287</name>
+        <name>formula_23_myRule_21_A4_1986425777</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -3616,7 +3647,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_24_myRule_21_A3_4156926040</name>
+        <name>formula_24_myRule_21_A3_7056879903</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -3627,7 +3658,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_25_myRule_21_A2_9623095225</name>
+        <name>formula_25_myRule_21_A2_1158237885</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -3642,7 +3673,7 @@
         <dataType>Boolean</dataType>
         <expression>ISNEW() &amp;&amp; NOT(ISBLANK({!myVariable_current.CMPL123CME__Complaint__c} )) &amp;&amp; NOT({!myVariable_current.BMX_Invest_Reference__c} )</expression>
     </formulas>
-    <interviewLabel>Investigation_Automations-3_InterviewLabel</interviewLabel>
+    <interviewLabel>Investigation_Automations-4_InterviewLabel</interviewLabel>
     <label>Investigation Automations</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -3793,7 +3824,7 @@
             </processMetadataValues>
             <field>BMX_Oldest_investigation_completed_date__c</field>
             <value>
-                <elementReference>formula_19_myRule_17_A1_1135835151</elementReference>
+                <elementReference>formula_19_myRule_17_A1_4883877410</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Complaint__c</object>
@@ -4039,7 +4070,7 @@
             </processMetadataValues>
             <field>BMX_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_25_myRule_21_A2_9623095225</elementReference>
+                <elementReference>formula_25_myRule_21_A2_1158237885</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
@@ -4171,7 +4202,7 @@
             </processMetadataValues>
             <field>BMX_First_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_24_myRule_21_A3_4156926040</elementReference>
+                <elementReference>formula_24_myRule_21_A3_7056879903</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
@@ -4303,7 +4334,7 @@
             </processMetadataValues>
             <field>BMX_Oldest_investigation_completed_date__c</field>
             <value>
-                <elementReference>formula_23_myRule_21_A4_5794668287</elementReference>
+                <elementReference>formula_23_myRule_21_A4_1986425777</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Complaint__c</object>
@@ -6866,7 +6897,7 @@
         <object>CMPL123CME__Investigation__c</object>
     </recordUpdates>
     <startElementReference>isChangedDecision4_myRule_3_BMX_Date_Product_Received_c</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

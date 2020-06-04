@@ -1387,6 +1387,11 @@
         <name>File_Attachments__c</name>
     </fields>
     <fields>
+        <help><!-- Investigation Reference Creation Justification --></help>
+        <label><!-- INV Reference Creation Justification --></label>
+        <name>INV_Reference_Creation_Justification__c</name>
+    </fields>
+    <fields>
         <label><!-- If no, reason for the non-complaint st --></label>
         <name>If_no_reason_for_the_non_complaint_st__c</name>
     </fields>
@@ -1801,6 +1806,10 @@
     <validationRules>
         <errorMessage><!-- Please complete the Assessment and check the box Assessment Completed --></errorMessage>
         <name>Assessment_Not_Completed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- INV Reference Creation Justification field is mandatory when Master Investigation Field is available --></errorMessage>
+        <name>INV_Reference_Creation_Justification</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please fill Investigation Status field --></errorMessage>
