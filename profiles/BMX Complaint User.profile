@@ -8248,6 +8248,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Complaint__c.INV_Reference_Creation_Justification__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__Complaint__c.If_no_reason_for_the_non_complaint_st__c</field>
         <readable>true</readable>
