@@ -3625,7 +3625,7 @@
                 <stringValue>TODAY()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_19_myRule_17_A1_4635065645</name>
+        <name>formula_19_myRule_17_A1_4183180825</name>
         <dataType>Date</dataType>
         <expression>TODAY()</expression>
     </formulas>
@@ -3636,7 +3636,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_23_myRule_21_A4_7475283647</name>
+        <name>formula_23_myRule_21_A4_7424826736</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -3647,7 +3647,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_24_myRule_21_A3_5095553582</name>
+        <name>formula_24_myRule_21_A3_5566605526</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -3658,7 +3658,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_25_myRule_21_A2_7906661594</name>
+        <name>formula_25_myRule_21_A2_1576103405</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -3673,7 +3673,7 @@
         <dataType>Boolean</dataType>
         <expression>ISNEW() &amp;&amp; NOT(ISBLANK({!myVariable_current.CMPL123CME__Complaint__c} )) &amp;&amp; NOT({!myVariable_current.BMX_Invest_Reference__c} )</expression>
     </formulas>
-    <interviewLabel>Investigation_Automations-4_InterviewLabel</interviewLabel>
+    <interviewLabel>Investigation_Automations-5_InterviewLabel</interviewLabel>
     <label>Investigation Automations</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -3824,7 +3824,7 @@
             </processMetadataValues>
             <field>BMX_Oldest_investigation_completed_date__c</field>
             <value>
-                <elementReference>formula_19_myRule_17_A1_4635065645</elementReference>
+                <elementReference>formula_19_myRule_17_A1_4183180825</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Complaint__c</object>
@@ -4070,7 +4070,7 @@
             </processMetadataValues>
             <field>BMX_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_25_myRule_21_A2_7906661594</elementReference>
+                <elementReference>formula_25_myRule_21_A2_1576103405</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
@@ -4202,7 +4202,7 @@
             </processMetadataValues>
             <field>BMX_First_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_24_myRule_21_A3_5095553582</elementReference>
+                <elementReference>formula_24_myRule_21_A3_5566605526</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
@@ -4334,7 +4334,7 @@
             </processMetadataValues>
             <field>BMX_Oldest_investigation_completed_date__c</field>
             <value>
-                <elementReference>formula_23_myRule_21_A4_7475283647</elementReference>
+                <elementReference>formula_23_myRule_21_A4_7424826736</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Complaint__c</object>
@@ -5271,42 +5271,6 @@
             <field>CMPL123_WF_Status__c</field>
             <value>
                 <elementReference>myVariable_current.CMPL123_WF_Status__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Justification</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>Justification__c</field>
-            <value>
-                <elementReference>myVariable_current.CMPL123CME__Complaint__r.INV_Reference_Creation_Justification__c</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
