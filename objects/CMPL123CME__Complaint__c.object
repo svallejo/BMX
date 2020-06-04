@@ -3682,7 +3682,7 @@
         <fullName>INV_Reference_Creation_Justification__c</fullName>
         <description>Investigation Reference Creation Justification</description>
         <externalId>false</externalId>
-        <inlineHelpText>Investigation Reference Creation Justification</inlineHelpText>
+        <inlineHelpText>This Justification is mandatory when you select an existing record in "MAster Investigation" to justify why the Investigations are similar.</inlineHelpText>
         <label>INV Reference Creation Justification</label>
         <length>255</length>
         <required>false</required>
@@ -5205,7 +5205,7 @@
         <active>true</active>
         <description>INV Reference Creation Justification field is mandatory when Master Investigation Field is available</description>
         <errorConditionFormula>AND( NOT(ISBLANK(BMX_Investigation__c)),
-NOT(ISBLANK( INV_Reference_Creation_Justification__c)))</errorConditionFormula>
+ISBLANK( INV_Reference_Creation_Justification__c))</errorConditionFormula>
         <errorDisplayField>INV_Reference_Creation_Justification__c</errorDisplayField>
         <errorMessage>INV Reference Creation Justification field is mandatory when Master Investigation Field is available</errorMessage>
     </validationRules>
