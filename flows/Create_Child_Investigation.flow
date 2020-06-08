@@ -3,7 +3,7 @@
     <assignments>
         <name>Populate_Investigation_Fields</name>
         <label>Populate Investigation Fields</label>
-        <locationX>335</locationX>
+        <locationX>537</locationX>
         <locationY>50</locationY>
         <assignmentItems>
             <assignToReference>ChildInvestigation.RecordTypeId</assignToReference>
@@ -117,6 +117,13 @@
                 <elementReference>InvestigationTitle</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ChildInvestigation.Justification__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ComplaintRecord.INV_Reference_Creation_Justification__c</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Create_Investigation</targetReference>
         </connector>
@@ -144,14 +151,14 @@
     <recordCreates>
         <name>Create_Investigation</name>
         <label>Create Investigation</label>
-        <locationX>504</locationX>
+        <locationX>706</locationX>
         <locationY>50</locationY>
         <inputReference>ChildInvestigation</inputReference>
     </recordCreates>
     <recordLookups>
         <name>Get_Child_Investigation_Record_Type</name>
         <label>Get Child Investigation Record Type</label>
-        <locationX>188</locationX>
+        <locationX>390</locationX>
         <locationY>50</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
