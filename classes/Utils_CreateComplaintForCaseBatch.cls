@@ -36,7 +36,7 @@ public class Utils_CreateComplaintForCaseBatch {
             
             if((mdt.Object_API_Name__c == objType && 
                 ((mdt.Relationship_Name__c == null && relationShipFieldName == '') || mdt.Relationship_Name__c == relationShipFieldName) && 
-                obj.get(mdt.CRM_Field_API_Name__c) <> null) )  {
+                (obj.get(mdt.CRM_Field_API_Name__c) <> null || obj.get(mdt.CRM_Field_API_Name__c) == null)) )  {
 
                     if(!isInsert && obj.get(mdt.CRM_Field_API_Name__c) <> cmplnt.get(mdt.TWD_Field_API_Name__c)) {
                         System.debug('Complaint updated ' + obj.get('Id') + ': ' + mdt.CRM_Field_API_Name__c + ' ' + 

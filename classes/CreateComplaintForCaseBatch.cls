@@ -246,6 +246,9 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
         if(codeGrpExIdSetSize < recordLimit){
             codeGrpSetIds.addAll(codeGroupExIdSet);
             codeGrpLstIds.add(codeGrpSetIds);
+            System.debug('@@@ codeGrpSetIds' + codeGrpSetIds);
+            System.debug('@@@ codeGrpLstIds' + codeGrpLstIds);
+            
         } else {
             for(Id key : codeGroupExIdSet){
                 codeGrpSetIds.add(key);
@@ -292,6 +295,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
         
         if(codeGrpExIdSetSize > recordLimit && math.mod(codeGrpExIdSetSize, recordLimit) != 0){
             codeGrpLstIds.add(codeGrpSetIds);
+            System.debug('@@@ codeGrpLstIds1' + codeGrpLstIds);
         }
         
         if(userExIdSetSize > recordLimit && math.mod(userExIdSetSize, recordLimit) != 0){
@@ -342,9 +346,12 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                 assetExMap.put(asx.ExternalId, asx);
             }
         }
+        System.debug('@@@ codeGrpLstIds2' + codeGrpLstIds);
         for(Set<Id> setId : codeGrpLstIds){
+            System.debug('@@@ codeGrpLstIds3' + codeGrpLstIds);
             for(CodeGroup_c__x cgx : [SELECT Id, ExternalId, Name__c , Code_c__c FROM CodeGroup_c__x WHERE ID IN : setId]) {
                 codeGroupExMap.put(cgx.ExternalId, cgx);
+                System.debug('@@@ codeGroupExMap' + codeGroupExMap);
             }
         }
         for(Set<Id> setId : userLstIds){
@@ -482,18 +489,23 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                     cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.ErrorCode_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'ErrorCode_c__c');
                 }
             }
+            System.debug('@@@ codeGroupExMap' + codeGroupExMap);
             //-----------------------------
             if(cs.NoInvestJustif_c__c <> null && codeGroupExMap.get(cs.NoInvestJustif_c__c) <> null) {
+                System.debug('@@@ codeGroupExMap1' + codeGroupExMap);
+                System.debug('@@@ techComplaint' + techComplaint);
                 if(techComplaint) {
                     cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.NoInvestJustif_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'NoInvestJustif_c__c');
                 }
             }
                         
-            else if(cs.NoInvestJustif_c__c == null && codeGroupExMap.get(cs.NoInvestJustif_c__c) == null) {
+            /***else if(cs.NoInvestJustif_c__c == null && codeGroupExMap.get(cs.NoInvestJustif_c__c) == null) {
+                System.debug('@@@ codeGroupExMap2' + codeGroupExMap);
+                System.debug('@@@ techComplaint1' + techComplaint);
                 if(techComplaint) {
                     cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.NoInvestJustif_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'NoInvestJustif_c__c');
                 }
-            }
+            } ***/
             //--------------------------------------
             
             

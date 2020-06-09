@@ -4,11 +4,12 @@
  * @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
  * @Group              : 
  * @Last Modified By   : Jon Astemborski
- * @Last Modified On   : 1/15/2020, 5:04:35 PM
+ * @Last Modified On   : 6/9/2020, 10:17:58 AM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/14/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
 **/
+@IsTest
 public class SapCalloutMockRequest {
 
 /**

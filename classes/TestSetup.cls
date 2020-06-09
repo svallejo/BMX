@@ -4,7 +4,7 @@
  * @Author             : Jon Astemborski
  * @Group              : 
  * @Last Modified By   : Jon Astemborski
- * @Last Modified On   : 1/16/2020, 4:36:10 PM
+ * @Last Modified On   : 6/9/2020, 12:12:33 PM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/16/2020   Jon Astemborski     Initial Version
@@ -38,6 +38,32 @@ public class TestSetup{
             insert ia;
         }
         return ia;
+    }
+
+    public static Extension_Request_Change_Control__c createExtCC(Boolean withId, Id ccId){
+        Extension_Request_Change_Control__c extReq = new Extension_Request_Change_Control__c();
+        extReq.Change_Control__c = ccId;
+        if (withId) {
+            insert extReq;
+        }
+        return extReq;
+    }
+
+    public static Predefined_Action_Item__c createPredefinedAI(Boolean withId, Id planId){
+        Predefined_Action_Item__c preAi = new Predefined_Action_Item__c();
+        preAi.Predefined_Implementation_Plan__c = planId;
+        if (withId) {
+            insert preAi;
+        }
+        return preAi;
+    }
+
+    public static Predefined_Implementation_Plan__c createdPredefinedImplementationPlan(Boolean withId){
+        Predefined_Implementation_Plan__c plan = new Predefined_Implementation_Plan__c();
+        if (withId) {
+            insert plan;
+        }
+        return plan;
     }
 
     public static Action_Item__c createAIWithCC(Boolean withId, Id ccId) {
@@ -99,6 +125,7 @@ public class TestSetup{
                                 Localesidkey = 'en_US',
                                 Profileid = stdProfile.Id,
                                 Timezonesidkey ='America/Los_Angeles',
+                                TWD_Role__c = 'Change Coordinator',
                                 Username = 'test' + key.substring(0,15) + '@' + key.substring(16,22)+'.com'
                                 );
         if(withId){
