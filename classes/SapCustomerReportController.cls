@@ -1,9 +1,26 @@
+/**
+ * @File Name          : SapCustomerReportController.cls
+ * @Description        : 
+ * @Author             : Jon Astemborski
+ * @Group              : 
+ * @Last Modified By   : Jon Astemborski
+ * @Last Modified On   : 6/9/2020, 9:35:29 AM
+ * @Modification Log   : 
+ * Ver       Date            Author      		    Modification
+ * 1.0    6/9/2020   Jon Astemborski     Initial Version
+**/
 public class SapCustomerReportController {
     private static final String TWD_ROLE_CHANGE_COORDINATOR = 'Change Coordinator';
     public Boolean isUserCoordinatorOrOwner {get;set;}
     
     public SapCustomerReportController(){
         
+    }
+
+    @AuraEnabled
+    public static String getReportUrl(){
+        SAP_Customer_Report__c customerReport = SAP_Customer_Report__c.getOrgDefaults();
+        return customerReport.URL__c;
     }
     
     @AuraEnabled

@@ -31,13 +31,33 @@
     },
 	handleClick : function(component, event, helper) {
         var urlEvent = $A.get("e.force:navigateToURL");
-        urlEvent.setParams({
-          "url": "https://customerlist-ab54cfe76.dispatcher.hana.ondemand.com/index.html"   
+        var reportAction = component.get("c.getReportUrl");
+        reportAction.setCallback(this, function(response) {
+            let state = response.getState();
+            if (state === "SUCCESS") {
+                let reportUrl = response.getReturnValue();
+                console.log(reportUrl)
+                 urlEvent.setParams({
+                  "url": reportUrl   
+                });
+                urlEvent.fire();
+                setTimeout(function(){
+                   $A.get("e.force:closeQuickAction").fire();
+                },500);
+            }
+            else {
+                let errors = response.getError();
+                let message = 'Unknown error'; // Default error message
+                // Retrieve the error message sent by the server
+                if (errors && Array.isArray(errors) && errors.length > 0) {
+                    message = errors[0].message;
+                }
+                // Display the message
+                console.error(message)
+            }
         });
-        urlEvent.fire();
-        setTimeout(function(){
-           $A.get("e.force:closeQuickAction").fire();
-        },500);
+        // Send action off to be executed
+        $A.enqueueAction(reportAction);
     },
     refresh : function(component, event, helper) {
         var action = component.get("c.doesUserHaveAccess");

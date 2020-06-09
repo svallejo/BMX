@@ -1,5 +1,17 @@
+<!--
+  @File Name          : SapCustomerReport.cmp
+  @Description        : 
+  @Author             : Jon Astemborski
+  @Group              : 
+  @Last Modified By   : Jon Astemborski
+  @Last Modified On   : 6/9/2020, 9:41:27 AM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    6/9/2020   Jon Astemborski     Initial Version
+-->
 <aura:component controller="SapCustomerReportController" implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="Global">
 	<aura:attribute name="recordId" type="Id" />
+	<aura:attribute name="reportUrl" type="String" />
     <aura:attribute name="visible" type="Boolean" default="false"/>
     <aura:handler name="init" value="{! this }" action="{! c.init }"/>
      <aura:handler event="force:refreshView" action="{!c.refresh}" />

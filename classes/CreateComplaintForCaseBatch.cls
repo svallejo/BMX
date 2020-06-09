@@ -186,7 +186,8 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
         caseExIdSet.remove(null);
         contactExIdSet.remove(null);
         assetExIdSet.remove(null);
-        codeGroupExIdSet.remove(null);
+        codeGroupExIdSet.remove(null);       
+        System.debug('@@@ codeGroupExIdSet' + codeGroupExIdSet);
         userExIdSet.remove(null);
         entitlementExIdSet.remove(null);
         accountExIdSet.remove(null);
@@ -206,6 +207,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
         List<Set<Id>> codeGrpLstIds = new List<Set<Id>>();
         Set<Id> codeGrpSetIds = new Set<Id>();
         Integer codeGrpExIdSetSize = codeGroupExIdSet.size();
+        System.debug('@@@ codeGrpExIdSetSize' + codeGrpExIdSetSize);
         
         List<Set<Id>> userLstIds = new List<Set<Id>>();
         Set<Id> userSetIds = new Set<Id>();
@@ -480,12 +482,20 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                     cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.ErrorCode_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'ErrorCode_c__c');
                 }
             }
-            
+            //-----------------------------
             if(cs.NoInvestJustif_c__c <> null && codeGroupExMap.get(cs.NoInvestJustif_c__c) <> null) {
                 if(techComplaint) {
                     cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.NoInvestJustif_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'NoInvestJustif_c__c');
                 }
             }
+                        
+            else if(cs.NoInvestJustif_c__c == null && codeGroupExMap.get(cs.NoInvestJustif_c__c) == null) {
+                if(techComplaint) {
+                    cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.NoInvestJustif_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'NoInvestJustif_c__c');
+                }
+            }
+            //--------------------------------------
+            
             
             if(cs.CreatedById__c <> null && userExMap.get(cs.CreatedById__c) <> null && techComplaint) {
                 cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, userExMap.get(cs.CreatedById__c), caseOtherObjMappingList, userExObjAPIName, isInsert, 'CreatedById__c');
