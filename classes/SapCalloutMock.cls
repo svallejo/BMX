@@ -3,8 +3,8 @@
  * @Description        : 
  * @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
  * @Group              : 
- * @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
- * @Last Modified On   : 1/14/2020, 4:34:52 PM
+ * @Last Modified By   : Jon Astemborski
+ * @Last Modified On   : 6/9/2020, 3:25:50 PM
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    1/14/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
@@ -14,7 +14,6 @@ global class SapCalloutMock implements HttpCalloutMock {
     global HTTPResponse respond(HTTPRequest req) {
         SAP_Product_Interface__c productInterface = SAP_Product_Interface__c.getInstance();
         System.assert(req.getEndpoint().contains(productInterface.Endpoint__c));
-        System.assertEquals('cNyfOZd1v3Oii6zKT4aoIfvjDClC2Vjr', req.getHeader('APIKey'));
         System.assertEquals('GET', req.getMethod());
         
         // Create a fake response
