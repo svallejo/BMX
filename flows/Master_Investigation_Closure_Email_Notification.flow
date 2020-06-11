@@ -182,12 +182,12 @@
     <textTemplates>
         <description>EmailBody</description>
         <name>EmailBody</name>
-        <text>The Master Investigation {!GetInvestigation.Investigation_Evaluation_Number__c} has been {!GetInvestigation.CMPL123_WF_Status__c}. You are the owner of one of its Related Investigation.</text>
+        <text>The Master Investigation {!GetInvestigation.Investigation_Evaluation_Number__c} has been {!GetInvestigation.Master_Investigation__r.CMPL123_WF_Status__c}. You are the owner of one of its Related Investigation.</text>
     </textTemplates>
     <textTemplates>
         <description>Subject line of email</description>
         <name>EmailSubject</name>
-        <text>Master Investigation {!GetInvestigation.Investigation_Evaluation_Number__c} has been {!GetInvestigation.CMPL123_WF_Status__c}</text>
+        <text>Master Investigation {!GetInvestigation.Investigation_Evaluation_Number__c} has been {!GetInvestigation.Master_Investigation__r.CMPL123_WF_Status__c}</text>
     </textTemplates>
     <variables>
         <name>InvestigationVariable</name>
