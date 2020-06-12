@@ -3,8 +3,8 @@
     <actionCalls>
         <name>send_email</name>
         <label>send email</label>
-        <locationX>248</locationX>
-        <locationY>598</locationY>
+        <locationX>462</locationX>
+        <locationY>487</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <inputParameters>
@@ -43,6 +43,28 @@
             <targetReference>List_of_Child_Investigation</targetReference>
         </connector>
     </assignments>
+    <decisions>
+        <name>Child_Records_Found</name>
+        <label>Child Records Found?</label>
+        <locationX>1165</locationX>
+        <locationY>76</locationY>
+        <defaultConnectorLabel>No Child Records Found</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Child_Records_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetMasterInvestigationDetails</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>List_of_Child_Investigation</targetReference>
+            </connector>
+            <label>Yes - Child Records Found</label>
+        </rules>
+    </decisions>
     <description>Flow - Master Investigation Closure Email Notification (andrea&apos;s version)</description>
     <interviewLabel>Master Investigation Closure Email Notification {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Master Investigation Closure Email Notification</label>
@@ -50,7 +72,7 @@
         <description>List of child investigation</description>
         <name>List_of_Child_Investigation</name>
         <label>List of Child Investigation</label>
-        <locationX>460</locationX>
+        <locationX>461</locationX>
         <locationY>253</locationY>
         <assignNextValueToReference>InvestigationVariable</assignNextValueToReference>
         <collectionReference>GetMasterInvestigationDetails</collectionReference>
@@ -59,7 +81,7 @@
             <targetReference>retrieve_Assigne</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>getEmailTemplate</targetReference>
+            <targetReference>send_email</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -75,30 +97,6 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <description>Get Email Template</description>
-        <name>getEmailTemplate</name>
-        <label>getEmailTemplate</label>
-        <locationX>298</locationX>
-        <locationY>440</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>send_email</targetReference>
-        </connector>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Master_Investigation_Closure_Email_Notification</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>EmailTemplate</object>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Body</queriedFields>
-        <queriedFields>Subject</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordLookups>
         <description>Get Investigation record details</description>
         <name>GetInvestigation</name>
@@ -133,7 +131,7 @@
         <locationY>66</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>List_of_Child_Investigation</targetReference>
+            <targetReference>Child_Records_Found</targetReference>
         </connector>
         <filters>
             <field>Master_Investigation__c</field>
@@ -146,13 +144,14 @@
         <object>CMPL123CME__Investigation__c</object>
         <queriedFields>Id</queriedFields>
         <queriedFields>Master_Investigation__c</queriedFields>
+        <queriedFields>CreatedById</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <description>Get user email details</description>
         <name>retrieve_Assigne</name>
         <label>retrieve Assigne</label>
-        <locationX>900</locationX>
+        <locationX>901</locationX>
         <locationY>254</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -162,7 +161,7 @@
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>InvestigationVariable.Master_Investigation__r.CreatedById</elementReference>
+                <elementReference>InvestigationVariable.CreatedById</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -182,12 +181,12 @@
     <textTemplates>
         <description>EmailBody</description>
         <name>EmailBody</name>
-        <text>The Master Investigation {!GetInvestigation.Investigation_Evaluation_Number__c} has been {!GetInvestigation.Master_Investigation__r.CMPL123_WF_Status__c}. You are the owner of one of its Related Investigation.</text>
+        <text>The Master Investigation {!GetInvestigation.Investigation_Evaluation_Number__c} has been {!GetInvestigation.CMPL123_WF_Status__c}. You are the owner of one of its Related Investigation.</text>
     </textTemplates>
     <textTemplates>
         <description>Subject line of email</description>
         <name>EmailSubject</name>
-        <text>Master Investigation {!GetInvestigation.Investigation_Evaluation_Number__c} has been {!GetInvestigation.Master_Investigation__r.CMPL123_WF_Status__c}</text>
+        <text>Master Investigation {!GetInvestigation.Investigation_Evaluation_Number__c} has been {!GetInvestigation.CMPL123_WF_Status__c}</text>
     </textTemplates>
     <variables>
         <name>InvestigationVariable</name>
