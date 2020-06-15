@@ -127,7 +127,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                             NoInvestJustif_c__c,SoftwareCode_c__c,ActionCode_c__c,ParentId__c, OwnerId__c,LastModifiedDate__c,Case_First_Closed_Date_c__c,FixedOnPhone_c__c,
                             GDPR_L1Q2_c__c,GDPR_L2Q2_c__c,GDPR_L1Q1_c__c,GDPR_L2Q1_c__c,RE_c__c,ShipToLocation_c__r.VisitorAddressId__c,AccountId__r.Global_Reporting_Hierarchy_Level_3_c__c,
                             AccountId__r.Global_Reporting_Hierarchy_Level_2_c__c,AccountId__r.Key_Account_Hierarchy_c__c,AccountId__r.Pricing_Hierarchy_2_c__c,AccountId__r.Pricing_Hierarchy_c__c,
-                            AccountId__r.Reporting_Hierarchy_c__c,AccountId__r.Global_Reporting_Hierarchy_Level_1_c__c,AccountId__r.RecordTypeId__c ,PRE1P2__c, NumberOfSamplesAffected__c ,ANALYZE_Name_c__c ,Product_Code_c__c      FROM Case__x 
+                            AccountId__r.Reporting_Hierarchy_c__c,AccountId__r.Global_Reporting_Hierarchy_Level_1_c__c,AccountId__r.RecordTypeId__c ,PRE1P2__c, NumberOfSamplesAffected__c,Product_Code_c__c,ANALYZE_Name_c__c  FROM Case__x 
                             WHERE TWComplaintNumber_c__c = null AND Id IN: caseQueryList]) {
             
             // Filter out any cases that are created outside CRM - Case Number (CaseNumber__c) SAP Case Number (CaseNumber_c__c)
@@ -155,8 +155,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
             codeGroupExIdSet.add(cs.ActionCode_c__c);
             codeGroupExIdSet.add(cs.ErrorCode_c__c);
             codeGroupExIdSet.add(cs.NoInvestJustif_c__c);
-           // codeGroupExIdSet.add(cs.ANALYZE_Name_c__c);
-           // codeGroupExIdSet.add(cs.Product_Code_c__c);
+            codeGroupExIdSet.add(cs.ANALYZE_Name_c__c);
             userExIdSet.add(cs.CreatedById__c);
             userExIdSet.add(cs.OwnerId__c);
             userExIdSet.add(cs.L1Owner_c__c);
@@ -175,6 +174,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
             recordTypeExIdSet.add(cs.AccountId__r.RecordTypeId__c);
             productExIdSet.add(cs.ProductId__c);
             productExIdSet.add(cs.Product_c__c);
+            productExIdSet.add(cs.Product_Code_c__c);           
             locationExIdSet.add(cs.ShipToLocation_c__c);
             
             System.debug('Account Id Set' + accountExIdSet.size());
@@ -365,9 +365,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                                       
                                   }  
         }
-        
-        
-        
+             
         for(RecordType__x rcx : [SELECT Id, ExternalId, Name__c FROM RecordType__x WHERE Id IN: recordTypeExIdSet ]) {
             recordTypeExMap.put(rcx.ExternalId, rcx);
         }
@@ -489,18 +487,11 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                 }
             }
             
-            /*if(cs.ANALYZE_Name_c__c <> null && codeGroupExMap.get(cs.ANALYZE_Name_c__c) <> null) {
+            if(cs.ANALYZE_Name_c__c <> null && codeGroupExMap.get(cs.ANALYZE_Name_c__c) <> null) {
                 if(techComplaint) {
-                    cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.ANALYZE_Name_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'ANALYZE_Name_c__c');
+                    cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.NoInvestJustif_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'ANALYZE_Name_c__c');
                 }
-            }
-            
-            if(cs.Product_Code_c__c <> null && codeGroupExMap.get(cs.Product_Code_c__c) <> null) {
-                if(techComplaint) {
-                    cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.Product_Code_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'Product_Code_c__c');
-                }
-            } */
-            
+            }           
             
             if(cs.CreatedById__c <> null && userExMap.get(cs.CreatedById__c) <> null && techComplaint) {
                 cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, userExMap.get(cs.CreatedById__c), caseOtherObjMappingList, userExObjAPIName, isInsert, 'CreatedById__c');
@@ -579,6 +570,12 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
             if(cs.Product_c__c <> null && productExMap.get(cs.Product_c__c) <> null) {
                 if(techComplaint) {
                     cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, productExMap.get(cs.Product_c__c), caseOtherObjMappingList, productExObjAPIName, isInsert, 'Product_c__c');
+                }
+            }
+            
+             if(cs.Product_Code_c__c <> null && productExMap.get(cs.Product_Code_c__c) <> null) {
+                if(techComplaint) {
+                    cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, productExMap.get(cs.Product_Code_c__c), caseOtherObjMappingList, productExObjAPIName, isInsert, 'Product_Code_c__c');
                 }
             }
             
