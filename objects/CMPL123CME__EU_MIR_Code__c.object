@@ -139,6 +139,30 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>This object is used to store EUMIR Code provided by European government codes and In-house codes.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Annex_Version__c</fullName>
+        <externalId>false</externalId>
+        <label>Annex Version</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>CMPL123CME__Code_Type__c</fullName>
         <deprecated>false</deprecated>
@@ -275,51 +299,7 @@
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <description>This object is used to store EUMIR Code provided by European government codes and In-house codes.</description>
-    <enableActivities>false</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>EU MIR Code</label>
-    <nameField>
-        <label>Code</label>
-        <type>Text</type>
-    </nameField>
-    <pluralLabel>EU MIR Codes</pluralLabel>
-    <searchLayouts>
-        <customTabListAdditionalFields>CMPL123CME__Name__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__Name_With_Code__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__Code_Type__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__Parent_Code__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__Definition__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__Inactive__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>CMPL123CME__Parent_Active__c</customTabListAdditionalFields>
-        <searchFilterFields>NAME</searchFilterFields>
-        <searchFilterFields>CMPL123CME__Name__c</searchFilterFields>
-        <searchFilterFields>CMPL123CME__Name_With_Code__c</searchFilterFields>
-        <searchFilterFields>CMPL123CME__Code_Type__c</searchFilterFields>
-        <searchFilterFields>CMPL123CME__Parent_Code__c</searchFilterFields>
-        <searchFilterFields>CMPL123CME__Inactive__c</searchFilterFields>
-        <searchFilterFields>CMPL123CME__Parent_Active__c</searchFilterFields>
-        <searchResultsAdditionalFields>CMPL123CME__Name__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CMPL123CME__Name_With_Code__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CMPL123CME__Code_Type__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CMPL123CME__Parent_Code__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CMPL123CME__Definition__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CMPL123CME__Inactive__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CMPL123CME__Parent_Active__c</searchResultsAdditionalFields>
-    </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
     <listViews>
         <fullName>CMPL123CME__A_Medical_Device_Problem_Codes</fullName>
         <columns>NAME</columns>
@@ -505,4 +485,34 @@
         <label>In-house root cause evaluation codes</label>
         <language>en_US</language>
     </listViews>
+    <nameField>
+        <label>Code</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>EU MIR Codes</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>CMPL123CME__Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Name_With_Code__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Code_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Parent_Code__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Definition__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Inactive__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CMPL123CME__Parent_Active__c</customTabListAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Name__c</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Name_With_Code__c</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Code_Type__c</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Parent_Code__c</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Inactive__c</searchFilterFields>
+        <searchFilterFields>CMPL123CME__Parent_Active__c</searchFilterFields>
+        <searchResultsAdditionalFields>CMPL123CME__Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__Name_With_Code__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__Code_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__Parent_Code__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__Definition__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__Inactive__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__Parent_Active__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
 </CustomObject>

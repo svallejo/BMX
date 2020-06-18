@@ -8460,6 +8460,18 @@ For a device that may receive events over its entire service life, the ideal den
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>Investigation_Evaluation__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Investigation/Evaluation</label>
+        <referenceTo>CMPL123CME__Investigation__c</referenceTo>
+        <relationshipLabel>EU MIR</relationshipLabel>
+        <relationshipName>EU_MIR</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>NB_ID_1__c</fullName>
         <description>Notified body (NB) ID number(s)</description>
         <externalId>false</externalId>

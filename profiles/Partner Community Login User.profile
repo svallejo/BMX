@@ -8207,6 +8207,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__Investigation__c.C_Investigation_Findings_Code_Choice_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__Investigation__c.Findings_Code__c</field>
         <readable>true</readable>
     </fieldPermissions>
