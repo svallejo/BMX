@@ -174,7 +174,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
             recordTypeExIdSet.add(cs.AccountId__r.RecordTypeId__c);
             productExIdSet.add(cs.ProductId__c);
             productExIdSet.add(cs.Product_c__c);
-            productExIdSet.add(cs.Product_Code_c__c);           
+            productExIdSet.add(cs.ProductId__r.ProductCode__c);           
             locationExIdSet.add(cs.ShipToLocation_c__c);
             
             System.debug('Account Id Set' + accountExIdSet.size());
@@ -487,7 +487,13 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                 }
             }
             
+            system.debug('@@@Outside AnalyseName  ----> ' + cs.ANALYZE_Name_c__c );
+            system.debug('@@@AnalyseNameMap1 ----> ' + codeGroupExMap.get(cs.ANALYZE_Name_c__c));
+            
             if(cs.ANALYZE_Name_c__c <> null && codeGroupExMap.get(cs.ANALYZE_Name_c__c) <> null) {
+                
+                system.debug('@@@InsideAnalyseName  ----> ' + cs.ANALYZE_Name_c__c );
+                system.debug('@@@AnalyseNameMap2 ----> ' + codeGroupExMap.get(cs.ANALYZE_Name_c__c));
                 if(techComplaint) {
                     cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.NoInvestJustif_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'ANALYZE_Name_c__c');
                 }
@@ -573,9 +579,13 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                 }
             }
             
-             if(cs.Product_Code_c__c <> null && productExMap.get(cs.Product_Code_c__c) <> null) {
+             system.debug('@@@ProductCode OUT > ' + cs.ProductId__r.ProductCode__c);
+             system.debug('@@@productExMap OUT> ' + productExMap.get(cs.ProductId__r.ProductCode__c) );
+             if(cs.ProductId__r.ProductCode__c <> null && productExMap.get(cs.ProductId__r.ProductCode__c) <> null) {
+                 system.debug('@@@ProductCode IN > ' + cs.ProductId__r.ProductCode__c);
+                 system.debug('@@@productExMap IN> ' + productExMap.get(cs.ProductId__r.ProductCode__c) );
                 if(techComplaint) {
-                    cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, productExMap.get(cs.Product_Code_c__c), caseOtherObjMappingList, productExObjAPIName, isInsert, 'Product_Code_c__c');
+                    cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, productExMap.get(cs.ProductId__r.ProductCode__c), caseOtherObjMappingList, productExObjAPIName, isInsert, 'ProductCode__c');
                 }
             }
             
