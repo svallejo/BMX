@@ -127,7 +127,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                             NoInvestJustif_c__c,SoftwareCode_c__c,ActionCode_c__c,ParentId__c, OwnerId__c,LastModifiedDate__c,Case_First_Closed_Date_c__c,FixedOnPhone_c__c,
                             GDPR_L1Q2_c__c,GDPR_L2Q2_c__c,GDPR_L1Q1_c__c,GDPR_L2Q1_c__c,RE_c__c,ShipToLocation_c__r.VisitorAddressId__c,AccountId__r.Global_Reporting_Hierarchy_Level_3_c__c,
                             AccountId__r.Global_Reporting_Hierarchy_Level_2_c__c,AccountId__r.Key_Account_Hierarchy_c__c,AccountId__r.Pricing_Hierarchy_2_c__c,AccountId__r.Pricing_Hierarchy_c__c,
-                            AccountId__r.Reporting_Hierarchy_c__c,AccountId__r.Global_Reporting_Hierarchy_Level_1_c__c,AccountId__r.RecordTypeId__c ,PRE1P2__c, NumberOfSamplesAffected__c,ProductId__r.ProductCode__c,ANALYZE_Name_c__c  FROM Case__x 
+                            AccountId__r.Reporting_Hierarchy_c__c,AccountId__r.Global_Reporting_Hierarchy_Level_1_c__c,AccountId__r.RecordTypeId__c ,PRE1P2__c, NumberOfSamplesAffected__c,ANALYZE_Name_c__c,Product_Code_c__c FROM Case__x 
                             WHERE TWComplaintNumber_c__c = null AND Id IN: caseQueryList]) {
             
             // Filter out any cases that are created outside CRM - Case Number (CaseNumber__c) SAP Case Number (CaseNumber_c__c)
@@ -174,8 +174,8 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
             recordTypeExIdSet.add(cs.AccountId__r.RecordTypeId__c);
             productExIdSet.add(cs.ProductId__c);
             productExIdSet.add(cs.Product_c__c);
-            productExIdSet.add(cs.ProductId__r.ProductCode__c); 
-            System.debug('@@@ProductCode'+cs.ProductId__r.ProductCode__c)   ;
+            //productExIdSet.add(cs.ProductId__r.ProductCode__c); 
+            //System.debug('@@@ProductCode'+cs.ProductId__r.ProductCode__c) ;
             locationExIdSet.add(cs.ShipToLocation_c__c);
             
             System.debug('Account Id Set' + accountExIdSet.size());
@@ -358,11 +358,11 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
         }
         
         for(Set<Id> setId : accountLstIds){
-            for(Account__x acx : [SELECT Id, ExternalId, Name__c,Market_c__c , Region_c__c , SubCategory_c__c , Category_c__c , Subsidiary_c__c , Activities_c__c ,
-                                  Division_c__c ,Pricing_Hierarchy_c__c,Pricing_Hierarchy_2_c__c,Reporting_Hierarchy_c__c ,
-                                  Global_Reporting_Hierarchy_Level_1_c__c, Global_Reporting_Hierarchy_Level_2_c__c , Global_Reporting_Hierarchy_Level_3_c__c, 
-                                  Key_Account_Hierarchy_c__c , RecordTypeId__c FROM Account__x WHERE ID IN : setId]) {
-                                      accountExMap.put(acx.ExternalId, acx);
+            for(Account__x acx : [SELECT Id, ExternalId, Name__c,Market_c__c, Region_c__c, SubCategory_c__c, Category_c__c, Subsidiary_c__c, Activities_c__c,
+                                  Division_c__c,Pricing_Hierarchy_c__c,Pricing_Hierarchy_2_c__c,Reporting_Hierarchy_c__c,
+                                  Global_Reporting_Hierarchy_Level_1_c__c, Global_Reporting_Hierarchy_Level_2_c__c, Global_Reporting_Hierarchy_Level_3_c__c, 
+                                  Key_Account_Hierarchy_c__c, RecordTypeId__c FROM Account__x WHERE ID IN : setId]) {
+                                  accountExMap.put(acx.ExternalId, acx);
                                       
                                   }  
         }
