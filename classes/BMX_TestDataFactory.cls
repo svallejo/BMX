@@ -226,7 +226,7 @@ public class BMX_TestDataFactory {
                                   BatchNumber_c__c = '1234',UDI_Code_c__c = '12-34',Type__c = 'TechnicalComplaint',ProductId__c = '01t22000004CcVaAAK',
                                   DueDate_c__c = Date.today(),CustomerContactDate_c__c = Date.today(),NoInvestJustif_c__c = 'a1r4E000000PUNcQAO',
                                   isCreatedOnSite_c__c = true,CaseHasWO_c__c = 'WO Open',BatchNumberUnknown_c__c = true,
-                                  Opened_Date__c = Date.today(),Status__c = 'Closed',SIGcode_c__c = '12-34',Product_c__c = '01t22000004CcVaAAK',
+                                  Opened_Date__c = Date.today(),Status__c = 'Closed',SIGcode_c__c = '12-34',Product_c__c = '01t22000004CcVaAAK',Product_Code_c__c='210147',
                                   Subject__c = 'test subject',SAPCustomerNumber_c__c = '7654',Priority__c = 'Test priority',
                                   PRE5_c__c = 'Yes',PRE6_c__c = 'Yes',PRE4_c__c = 'Yes',PRE2P2_c__c = 'Yes',
                                   PRE3P2_c__c = 'Yes',PRE3_1_c__c = 'Yes',PRE1_c__c = 'Yes',PRE2_1_c__c = 'Yes',
