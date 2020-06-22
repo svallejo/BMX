@@ -111,6 +111,14 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableFeeds>false</enableFeeds>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <externalDataSource>BMX_EXTERNAL</externalDataSource>
+    <externalName>Case</externalName>
     <fields>
         <fullName>ANALYZE_Name_c__c</fullName>
         <externalDeveloperName>ANALYZE_Name__c</externalDeveloperName>
@@ -5841,6 +5849,18 @@ Field hidden.  "Origin__c" is not hidden.</inlineHelpText>
         </valueSet>
     </fields>
     <fields>
+        <fullName>ProductCode__c</fullName>
+        <externalDeveloperName>Product_Code__c</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Product Code</label>
+        <length>1300</length>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
         <fullName>ProductId__c</fullName>
         <externalDeveloperName>ProductId</externalDeveloperName>
         <externalId>false</externalId>
@@ -8938,22 +8958,7 @@ You can uncheck it to unflag the L2 deescalation and continue working on the Cas
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <enableFeeds>false</enableFeeds>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <externalDataSource>BMX_EXTERNAL</externalDataSource>
-    <externalName>Case</externalName>
     <label>Case</label>
-    <pluralLabel>Case</pluralLabel>
-    <searchLayouts>
-        <customTabListAdditionalFields>CaseNumber__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>SuppliedName__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>DisplayUrl</customTabListAdditionalFields>
-        <customTabListAdditionalFields>ExternalId</customTabListAdditionalFields>
-    </searchLayouts>
     <listViews>
         <fullName>All</fullName>
         <columns>CaseNumber__c</columns>
@@ -8967,4 +8972,11 @@ You can uncheck it to unflag the L2 deescalation and continue working on the Cas
         <label>All</label>
         <language>en_US</language>
     </listViews>
+    <pluralLabel>Case</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>CaseNumber__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SuppliedName__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>DisplayUrl</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ExternalId</customTabListAdditionalFields>
+    </searchLayouts>
 </CustomObject>
