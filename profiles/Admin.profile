@@ -15617,6 +15617,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__Investigation__c.B_Choice1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__Investigation__c.B_Investigation_Conclusion_Choice_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -15698,6 +15703,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__Investigation__c.B_Investigation_Type_Code_Choice_4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Investigation__c.B_Investigation_Type_Code_Choice_5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Investigation__c.B_Investigation_Type_Code_Choice_6__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

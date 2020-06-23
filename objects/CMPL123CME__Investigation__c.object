@@ -1051,6 +1051,28 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <type>Date</type>
     </fields>
     <fields>
+        <fullName>B_Choice1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>B Choice1</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>CMPL123CME__EU_MIR_Code__c.Name</field>
+                <operation>startsWith</operation>
+                <value>B</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123CME__EU_MIR_Code__c</referenceTo>
+        <relationshipLabel>Investigations/Evaluations</relationshipLabel>
+        <relationshipName>Investigations_Evaluations</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>B_Investigation_Conclusion_Choice_1__c</fullName>
         <externalId>false</externalId>
         <label>B-Investigation Conclusion-Choice 1</label>
@@ -1195,135 +1217,69 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
     </fields>
     <fields>
         <fullName>B_Investigation_Type_Code_Choice_1__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>B-Investigation Type Code-Choice 1</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>CMPL123CME__EU_MIR_Code__c.Name</field>
-                <operation>startsWith</operation>
-                <value>B</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>CMPL123CME__EU_MIR_Code__c</referenceTo>
-        <relationshipLabel>Investigations/Evaluations</relationshipLabel>
-        <relationshipName>Investigations_Evaluations</relationshipName>
+        <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>B_Investigation_Type_Code_Choice_2__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>B-Investigation Type Code-Choice 2</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>CMPL123CME__EU_MIR_Code__c.Name</field>
-                <operation>startsWith</operation>
-                <value>B</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>CMPL123CME__EU_MIR_Code__c</referenceTo>
-        <relationshipLabel>Investigations/Evaluations (B-Investigation Type Code-Choice 2)</relationshipLabel>
-        <relationshipName>Investigations_Evaluations1</relationshipName>
+        <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>B_Investigation_Type_Code_Choice_3__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>B-Investigation Type Code-Choice 3</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>CMPL123CME__EU_MIR_Code__c.Name</field>
-                <operation>startsWith</operation>
-                <value>B</value>
-            </filterItems>
-            <isOptional>true</isOptional>
-        </lookupFilter>
-        <referenceTo>CMPL123CME__EU_MIR_Code__c</referenceTo>
-        <relationshipLabel>Investigations/Evaluations (B-Investigation Type Code-Choice 3)</relationshipLabel>
-        <relationshipName>Investigations_Evaluations3</relationshipName>
+        <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>B_Investigation_Type_Code_Choice_4__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>B-Investigation Type Code-Choice 4</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>CMPL123CME__EU_MIR_Code__c.Name</field>
-                <operation>startsWith</operation>
-                <value>B</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>CMPL123CME__EU_MIR_Code__c</referenceTo>
-        <relationshipLabel>Investigations/Evaluations (B-Investigation Type Code-Choice 4)</relationshipLabel>
-        <relationshipName>Investigations_Evaluations2</relationshipName>
+        <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>B_Investigation_Type_Code_Choice_5__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>B-Investigation Type Code-Choice 5</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>CMPL123CME__EU_MIR_Code__c.Name</field>
-                <operation>startsWith</operation>
-                <value>B</value>
-            </filterItems>
-            <isOptional>true</isOptional>
-        </lookupFilter>
-        <referenceTo>CMPL123CME__EU_MIR_Code__c</referenceTo>
-        <relationshipLabel>Investigations/Evaluations (B-Investigation Type Code-Choice 5)</relationshipLabel>
-        <relationshipName>Investigations_Evaluations4</relationshipName>
+        <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>B_Investigation_Type_Code_Choice_6__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>B-Investigation Type Code-Choice 6</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>CMPL123CME__EU_MIR_Code__c.Name</field>
-                <operation>startsWith</operation>
-                <value>B</value>
-            </filterItems>
-            <isOptional>true</isOptional>
-        </lookupFilter>
-        <referenceTo>CMPL123CME__EU_MIR_Code__c</referenceTo>
-        <relationshipLabel>Investigations/Evaluations (B-Investigation Type Code-Choice 6)</relationshipLabel>
-        <relationshipName>Investigations_Evaluations5</relationshipName>
+        <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>B_Investigation_Type_Code_Choice_7__c</fullName>
