@@ -1216,6 +1216,98 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>B_Investigation_TypeCode_Choice_1__c</fullName>
+        <externalId>false</externalId>
+        <label>B-Investigation Type Code-Choice 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Code_Type__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>B_Choice_1</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B01 - Testing of Actual/Suspected Device</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B02 - Testing of Device from Same Lot/Batch Retained by Manufacturer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B03 - Testing of Device from Same Lot/Batch Returned from User</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B04 - Testing of Device from Other Lot/Batch Retained by Manufacturer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B05 - Testing of Device from Other Lot/Batch Returned From User</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B06 - Testing of Model Variant</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B07 - Testing of Raw/Starting Materials</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B08 - Testing of Patient Sample or Reference Material Using Manufacturer's Device</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>B_Investigation_TypeCode_Choice_2__c</fullName>
+        <externalId>false</externalId>
+        <label>B-Investigation Type Code-Choice 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Code_Type__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>B_Choice_1</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B01 - Testing of Actual/Suspected Device</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B02 - Testing of Device from Same Lot/Batch Retained by Manufacturer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B03 - Testing of Device from Same Lot/Batch Returned from User</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B04 - Testing of Device from Other Lot/Batch Retained by Manufacturer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B05 - Testing of Device from Other Lot/Batch Returned From User</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B06 - Testing of Model Variant</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B07 - Testing of Raw/Starting Materials</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>B-Investigation Type Code</controllingFieldValue>
+                <valueName>B08 - Testing of Patient Sample or Reference Material Using Manufacturer's Device</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>B_Investigation_Type_Code_Choice_1__c</fullName>
         <externalId>false</externalId>
         <label>B-Investigation Type Code-Choice 1</label>
@@ -1302,6 +1394,19 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CChoiceParent1__c</fullName>
+        <externalId>false</externalId>
+        <label>C Choice Parent1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>C_Choice_Parent1</valueSetName>
+        </valueSet>
     </fields>
     <fields>
         <fullName>CMPL123CME__Complaint__c</fullName>
@@ -1543,6 +1648,44 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>C_Investigation_Findings_CodeChoice_1__c</fullName>
+        <externalId>false</externalId>
+        <label>C-Investigation Findings Code-Choice 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>CChoiceParent1__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>C_Choice_1</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>C01</controllingFieldValue>
+                <valueName>C01</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>C01</controllingFieldValue>
+                <valueName>C02</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>C01</controllingFieldValue>
+                <valueName>C03</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>C01</controllingFieldValue>
+                <valueName>C04</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>C01</controllingFieldValue>
+                <valueName>C05</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>C01</controllingFieldValue>
+                <valueName>C06</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>C_Investigation_Findings_Code_Choic_del1__c</fullName>
         <externalId>false</externalId>
         <label>C-Investigation Findings Code-Choice 2</label>
@@ -1673,6 +1816,19 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Code_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>INV_EVL_Code_Type</valueSetName>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Complaint_description__c</fullName>
@@ -2168,6 +2324,169 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>B_Investigation_TypeCode_Choice_1__c</picklist>
+            <values>
+                <fullName>B01 - Testing of Actual%2FSuspected Device</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B02 - Testing of Device from Same Lot%2FBatch Retained by Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B03 - Testing of Device from Same Lot%2FBatch Returned from User</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B04 - Testing of Device from Other Lot%2FBatch Retained by Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B05 - Testing of Device from Other Lot%2FBatch Returned From User</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B06 - Testing of Model Variant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B07 - Testing of Raw%2FStarting Materials</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B08 - Testing of Patient Sample or Reference Material Using Manufacturer%27s Device</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>B_Investigation_TypeCode_Choice_2__c</picklist>
+            <values>
+                <fullName>B01 - Testing of Actual%2FSuspected Device</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B02 - Testing of Device from Same Lot%2FBatch Retained by Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B03 - Testing of Device from Same Lot%2FBatch Returned from User</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B04 - Testing of Device from Other Lot%2FBatch Retained by Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B05 - Testing of Device from Other Lot%2FBatch Returned From User</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B06 - Testing of Model Variant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B07 - Testing of Raw%2FStarting Materials</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B08 - Testing of Patient Sample or Reference Material Using Manufacturer%27s Device</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CChoiceParent1__c</picklist>
+            <values>
+                <fullName>C01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C0102</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C0103</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C0104</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C0105</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C0106</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>C_Investigation_Findings_CodeChoice_1__c</picklist>
+            <values>
+                <fullName>C01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C02</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C04</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C05</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C06</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Code_Type__c</picklist>
+            <values>
+                <fullName>A-Medical Device Problem Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B-Investigation Type Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C-Investigation Findings Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D-Investigation Conclusion Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-Clinical Signs and Symptoms Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F-Health Impact Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G-Component Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-house medical device problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-house root cause evaluation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Child_Investigation</fullName>
@@ -2264,6 +2583,169 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
             </values>
             <values>
                 <fullName>Product Return Requested</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>B_Investigation_TypeCode_Choice_1__c</picklist>
+            <values>
+                <fullName>B01 - Testing of Actual%2FSuspected Device</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B02 - Testing of Device from Same Lot%2FBatch Retained by Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B03 - Testing of Device from Same Lot%2FBatch Returned from User</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B04 - Testing of Device from Other Lot%2FBatch Retained by Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B05 - Testing of Device from Other Lot%2FBatch Returned From User</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B06 - Testing of Model Variant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B07 - Testing of Raw%2FStarting Materials</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B08 - Testing of Patient Sample or Reference Material Using Manufacturer%27s Device</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>B_Investigation_TypeCode_Choice_2__c</picklist>
+            <values>
+                <fullName>B01 - Testing of Actual%2FSuspected Device</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B02 - Testing of Device from Same Lot%2FBatch Retained by Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B03 - Testing of Device from Same Lot%2FBatch Returned from User</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B04 - Testing of Device from Other Lot%2FBatch Retained by Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B05 - Testing of Device from Other Lot%2FBatch Returned From User</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B06 - Testing of Model Variant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B07 - Testing of Raw%2FStarting Materials</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B08 - Testing of Patient Sample or Reference Material Using Manufacturer%27s Device</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CChoiceParent1__c</picklist>
+            <values>
+                <fullName>C01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C0102</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C0103</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C0104</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C0105</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C0106</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>C_Investigation_Findings_CodeChoice_1__c</picklist>
+            <values>
+                <fullName>C01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C02</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C04</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C05</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C06</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Code_Type__c</picklist>
+            <values>
+                <fullName>A-Medical Device Problem Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B-Investigation Type Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C-Investigation Findings Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D-Investigation Conclusion Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-Clinical Signs and Symptoms Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F-Health Impact Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G-Component Code</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-house medical device problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-house root cause evaluation</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
