@@ -37,18 +37,19 @@
                 <processMetadataValues>
                     <name>rightHandSideType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>Reference</stringValue>
                     </value>
                 </processMetadataValues>
                 <leftValueReference>myVariable_current.BMX_Case_External_Id__c</leftValueReference>
-                <operator>NotEqualTo</operator>
+                <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>NULL</stringValue>
+                    <elementReference>myVariable_current.BMX_Case_External_Id__c</elementReference>
                 </rightValue>
             </conditions>
             <label>UpdateProductCode</label>
         </rules>
     </decisions>
+    <description>Updated the Product Code from Case External to Complaint</description>
     <interviewLabel>Complaint_Product_Code-1_InterviewLabel</interviewLabel>
     <label>Complaint Product Code</label>
     <processMetadataValues>
