@@ -4524,6 +4524,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CreateNonComplaintForCaseBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CreateProductConsumedForWorkOrderBatch</apexClass>
         <enabled>true</enabled>
     </classAccesses>
