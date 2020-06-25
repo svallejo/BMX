@@ -20,10 +20,12 @@ global class CreateNonComplaintForCaseBatch  {
 
     public Static Final String caseExObjAPIName1 = 'Case__x';
     
-    List<CMPL123CME__Complaint__c> complaintUpsertList = new List<CMPL123CME__Complaint__c>();
+    List<CMPL123CME__Complaint__c> complaintListupdate = new List<CMPL123CME__Complaint__c>();
     Map<Id, CMPL123CME__Complaint__c> cmpResultMap = new Map<Id, CMPL123CME__Complaint__c>();
+  
     Map<Id, Case__x> totCaseExUpdMap = new Map<Id, Case__x>();
     Set<Id> caseIdSet = new Set<Id>();
+    
     //Intializing external Case query string, limit count and latest time stamp in the constructor
     global CreateNonComplaintForCaseBatch(String queryString) {
         this.queryString = queryString;
@@ -40,14 +42,51 @@ global class CreateNonComplaintForCaseBatch  {
             return Database.getQueryLocator('SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c= \'Opened\'AND BMX_CaseNumber__c!=Null AND Createddate=LAST_YEAR');
         } 
     }
-    global void Execute(Database.BatchableContext bc,List<sobject> ComplaintsList){
-         List<CMPL123CME__Complaint__c> CMPL123List = new List<CMPL123CME__Complaint__c>();
-           if(!Test.isRunningTest()){
-            for(Sobject sObj: ComplaintsList){
-                CMPL123CME__Complaint__c extCMPObj = (CMPL123CME__Complaint__c) sObj;
-                CMPL123List.add(extCMPObj);
+    global void Execute(Database.BatchableContext bc,List<CMPL123CME__Complaint__c> ComplaintsList){
+           
+        Set<Id> SetIds=new Set<Id>();
+        List<Case__x> caseExList = new List<Case__x>();
+        for(Case__x csx : [SELECT Id, CaseNumber_c__c,Type__c from Case__x WHERE Type__c!='TechnicalComplaint']){
+        if ( csx.CaseNumber_c__c == csx.CaseNumber__c) { // As of Winter 20' Direct field comparisons aren't allowed within SOQL
+                caseExList.add(csx);
             }
         }
-         system.debug('==caseQueryList=='+CMPL123List);
+        if(Test.isRunningTest()){
+            caseExList.add(BMX_TestDataFactory.getCaseExRecords());
+        }                     
+        
+        
+         for(Case__x cs : caseExList) {
+             
+                Boolean isInsert = false;
+                Boolean techComplaint = false;
+                CMPL123CME__Complaint__c cmplnt;
+             
+                if(cmpResultMap.get(cs.ExternalId) <> null) {
+                    cmplnt = cmpResultMap.get(cs.ExternalId);
+                }
+             
+                if(cs.Type__c != 'TechnicalComplaint') {
+                    techComplaint = true;
+                }
+          }
+        List<CMPL123CME__Complaint__c> CMPL123List = new List<CMPL123CME__Complaint__c>();
+        for(Sobject sObj: ComplaintsList){
+                CMPL123CME__Complaint__c extCMPObj = (CMPL123CME__Complaint__c)sObj;
+                CMPL123List.add(extCMPObj);
+            }
+        
+        for(CMPL123CME__Complaint__c CMPScope:[Select id,BMX_Case_External__c,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c from CMPL123CME__Complaint__c WHERE  BMX_Case_External__c in:SetIds]){
+             cmpResultMap.put(CMPScope.BMX_Case_External__c, CMPScope);
+             CMPL123List.add(CMPScope);
+        }
+         for(CMPL123CME__Complaint__c CMPScope:CMPL123List){
+             if(CMPScope.BMX_Case_Type__c!='TechnicalComplaint')
+              CMPScope.CMPL123CME__CMPL123_WF_Status__c='';
+         } 
+            
+           if(!CMPL123List.isEmpty()){
+            Database.update(CMPL123List, false);
+        }
     }
 }
