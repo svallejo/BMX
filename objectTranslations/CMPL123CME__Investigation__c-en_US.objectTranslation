@@ -894,6 +894,14 @@
         <name>Child_Investigation</name>
     </recordTypes>
     <validationRules>
+        <errorMessage><!-- If Annex B Contains the picklist &quot;B21 - Type of Investigation Not Yet Determined&quot; Investigation cannot be closed --></errorMessage>
+        <name>Annex_B_Code_choice_should_not_be_in_B21</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If Annex C Contains the picklist &quot;C21 - Results Pending Completion of Investigation&quot; Investigation cannot be closed --></errorMessage>
+        <name>Annex_C_Code_choice_should_not_be_in_C21</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You must enter a value --></errorMessage>
         <name>BMX_CAPA_Justification_should_not_blank</name>
     </validationRules>
