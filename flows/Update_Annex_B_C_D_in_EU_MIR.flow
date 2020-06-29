@@ -83,8 +83,23 @@
             <label>Check WF Status as Closed- Done or not?</label>
         </rules>
     </decisions>
-    <description>Update annex B,C,D in EU MIR object- Final_V5</description>
-    <interviewLabel>Update_Annex_B_C_D_in_EU_MIR-12_InterviewLabel</interviewLabel>
+    <description>Update annex B,C,D in EU MIR object- Final_V6</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[CMPL123CME__Investigation__c].Justification_for_Annex_B__c +
+[CMPL123CME__Investigation__c].Justification_for_Annex_C__c + 
+[CMPL123CME__Investigation__c].Justification_for_Annex_D__c </stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_2_myRule_1_A1_5355924749</name>
+        <dataType>String</dataType>
+        <expression>{!myVariable_current.Justification_for_Annex_B__c} +
+{!myVariable_current.Justification_for_Annex_C__c} + 
+{!myVariable_current.Justification_for_Annex_D__c}</expression>
+    </formulas>
+    <interviewLabel>Update_Annex_B_C_D_in_EU_MIR-13_InterviewLabel</interviewLabel>
     <label>Update Annex B,C,D in EU MIR</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -922,10 +937,46 @@
                 <elementReference>myVariable_current.D_Investigation_Conclusion_Choice_6__c</elementReference>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Explain if Investigation Code missing</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>CMPL123CME__Explain_If_Investigation_Code_Missing__c</field>
+            <value>
+                <elementReference>formula_2_myRule_1_A1_5355924749</elementReference>
+            </value>
+        </inputAssignments>
         <object>CMPL123CME__EU_MIR__c</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
