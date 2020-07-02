@@ -2289,6 +2289,11 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123_WF_Status__c</field>
+            <operation>contains</operation>
+            <value>Cancel</value>
+        </filters>
         <label>All</label>
         <language>en_US</language>
     </listViews>

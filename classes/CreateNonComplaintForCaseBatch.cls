@@ -21,7 +21,10 @@ global class CreateNonComplaintForCaseBatch implements Database.Batchable<sObjec
     
     Map<Id, CMPL123CME__Complaint__c> cmpResultMap = new Map<Id, CMPL123CME__Complaint__c>();
     List<CMPL123CME__Complaint__c> CMPL123List = new List<CMPL123CME__Complaint__c>();
-    List<CMPL123CME__Complaint__c> CMPUpdatelist = new List<CMPL123CME__Complaint__c>();
+    List<CMPL123CME__Complaint__c> complaintUpdate = new List<CMPL123CME__Complaint__c>();
+    list<CMPL123CME__Investigation__c> investlist=new list<CMPL123CME__Investigation__c>();
+     list<CMPL123CME__Investigation__c> investupdate=new list<CMPL123CME__Investigation__c>();
+    
     //Map<Id, Case__x> totCaseExUpdMap = new Map<Id, Case__x>();
     //Set<Id> caseIdSet = new Set<Id>();
     
@@ -36,41 +39,52 @@ global class CreateNonComplaintForCaseBatch implements Database.Batchable<sObjec
         if(!Test.isRunningTest()){
             return Database.getQueryLocator(queryString);
         }else{
-		    //string Query='SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c='Opened' AND Createddate=LAST_YEAR'
+            //string Query='SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c='Opened' AND Createddate=LAST_YEAR'
             return Database.getQueryLocator('SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c= \'Opened\'AND BMX_CaseNumber__c!=Null AND Createddate=LAST_YEAR');
+            
         } 
     }
     global void Execute(Database.BatchableContext bc,List<CMPL123CME__Complaint__c> ComplaintsList){
-        
-        Set<Id> SetIds=new Set<Id>();
+       
         List<Case__x> caseExList = new List<Case__x>();
-        for(Case__x csx : [SELECT Id, CaseNumber_c__c,Type__c from Case__x WHERE Type__c!='TechnicalComplaint']){
-        if ( csx.CaseNumber_c__c == csx.CaseNumber__c) { // As of Winter 20' Direct field comparisons aren't allowed within SOQL
-                caseExList.add(csx);
-            }
+        Set<Id> SetIds=new Set<Id>();
+        CMPL123CME__Complaint__c CMPlist=[SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c= 'Opened'AND BMX_CaseNumber__c!=Null AND Createddate=LAST_YEAR];
+        for(Case__x csx : [SELECT Id, CaseNumber_c__c,Type__c from Case__x WHERE Type__c!='TechnicalComplaint' AND CaseNumber__c =:CMPlist.BMX_CaseNumber__c]){
+           caseExList.add(csx);
         }
-        system.debug('caseExList...'+caseExList);
-        if(Test.isRunningTest()){
-            caseExList.add(BMX_TestDataFactory.getCaseExRecords());
-        }                     
         
-         for(Case__x cs : caseExList) {
-          	SetIds.add(cs.ExternalId);
-          }
-      
-        for(CMPL123CME__Complaint__c CMPScope:[Select id,BMX_Case_External__c,BMX_CaseNumber__c,BMX_Case_Type__c,CMPL123CME__CMPL123_WF_Status__c from CMPL123CME__Complaint__c WHERE BMX_Case_Type__c!='TechnicalComplain' AND BMX_Case_External__c in:SetIds]){
-             cmpResultMap.put(CMPScope.BMX_Case_External__c, CMPScope);
-             CMPL123List.add(CMPScope);
+        for(Case__x cs:caseExList){
+            SetIds.add(cs.ExternalId);
         }
-         for(CMPL123CME__Complaint__c CMPScopevalue:CMPL123List){
-             if(CMPScopevalue.BMX_Case_Type__c!='TechnicalComplaint')
-             CMPScopevalue.CMPL123CME__CMPL123_WF_Status__c='Closed-Canceled';
-             CMPUpdatelist.add(CMPScopevalue);
-         } 
-           system.debug('CMPUpdatelist....'+CMPUpdatelist);
-           if(!CMPL123List.isEmpty()){
-           Database.update(CMPL123List, false);
-        }
+        
+             for(CMPL123CME__Complaint__c CMPScope:[Select id,BMX_Case_External__c,BMX_CaseNumber__c,BMX_Case_Type__c,CMPL123CME__CMPL123_WF_Status__c from CMPL123CME__Complaint__c WHERE BMX_Case_External__c in:SetIds]){
+                 //cmpResultMap.put(CMPScope.BMX_Case_External__c, CMPScope);
+                 CMPL123List.add(CMPScope);
+            }
+            
+        
+           for(CMPL123CME__Investigation__c Investi:[select id from CMPL123CME__Investigation__c WHERE CMPL123CME__Complaint__c=:CMPL123List]){
+           investlist.add(Investi);
+           }
+            
+             for(CMPL123CME__Investigation__c Investcope:investlist){
+                 Investcope.CMPL123_WF_Status__c='Closed - Canceled';
+                 investupdate.add(Investcope);
+             } 
+        
+        
+            for(CMPL123CME__Complaint__c CMPScopevalue:CMPL123List){
+                 
+                 CMPScopevalue.CMPL123CME__CMPL123_WF_Status__c='Closed-Canceled';
+                 complaintUpdate.add(CMPScopevalue);
+             } 
+        
+               system.debug('CMPUpdatelist....'+CMPL123List);
+               if(!CMPL123List.isEmpty()){
+               Database.update(complaintUpdate, false);
+               Database.update(investupdate, false);    
+               }
+        
     }
     global void finish(Database.BatchableContext bc){
     
