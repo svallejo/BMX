@@ -721,14 +721,17 @@
         <name>Justification__c</name>
     </fields>
     <fields>
+        <help><!-- This field is mandatory if you have not select the most detailed level for Type/Method --></help>
         <label><!-- Justification for Annex B --></label>
         <name>Justification_for_Annex_B__c</name>
     </fields>
     <fields>
+        <help><!-- This field is mandatory if you have not select the most detailed level for Findings/Results --></help>
         <label><!-- Justification for Annex C --></label>
         <name>Justification_for_Annex_C__c</name>
     </fields>
     <fields>
+        <help><!-- This field is mandatory if you have not select the most detailed level for Root Cause/Conclusion --></help>
         <label><!-- Justification for Annex D --></label>
         <name>Justification_for_Annex_D__c</name>
     </fields>
@@ -767,6 +770,18 @@
         <sections>
             <label><!-- Investigation/Evaluation Detail --></label>
             <section>Investigation/Evaluation Detail</section>
+        </sections>
+        <sections>
+            <label><!-- Type of Investigation (Annex C)) --></label>
+            <section>Type of Investigation (Annex C))</section>
+        </sections>
+        <sections>
+            <label><!-- Type of Investigation (Annex D) --></label>
+            <section>Type of Investigation (Annex D)</section>
+        </sections>
+        <sections>
+            <label><!-- Type of investigation (Annex B) --></label>
+            <section>Type of investigation (Annex B)</section>
         </sections>
     </layouts>
     <layouts>
@@ -831,18 +846,6 @@
             <section>Additional Information</section>
         </sections>
         <sections>
-            <label><!-- Annex B --></label>
-            <section>Annex B</section>
-        </sections>
-        <sections>
-            <label><!-- Annex C --></label>
-            <section>Annex C</section>
-        </sections>
-        <sections>
-            <label><!-- Annex D --></label>
-            <section>Annex D</section>
-        </sections>
-        <sections>
             <label><!-- Approval Metrics --></label>
             <section>Approval Metrics</section>
         </sections>
@@ -879,6 +882,18 @@
             <section>Product Return</section>
         </sections>
         <sections>
+            <label><!-- Type of Investigation (Annex B) --></label>
+            <section>Type of Investigation (Annex B)</section>
+        </sections>
+        <sections>
+            <label><!-- Type of Investigation (Annex C) --></label>
+            <section>Type of Investigation (Annex C)</section>
+        </sections>
+        <sections>
+            <label><!-- Type of Investigation (Annex D) --></label>
+            <section>Type of Investigation (Annex D)</section>
+        </sections>
+        <sections>
             <label><!-- Workflow Information --></label>
             <section>Workflow Information</section>
         </sections>
@@ -900,6 +915,10 @@
     <validationRules>
         <errorMessage><!-- If Annex C Contains the picklist &quot;C21 - Results Pending Completion of Investigation&quot; Investigation cannot be closed --></errorMessage>
         <name>Annex_C_Code_choice_should_not_be_in_C21</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If Annex D Contains the picklist &quot;D16 - Conclusion Not Yet Available&quot; Investigation cannot be closed --></errorMessage>
+        <name>Annex_D_Code_choice_should_not_be_in_D16</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You must enter a value --></errorMessage>
