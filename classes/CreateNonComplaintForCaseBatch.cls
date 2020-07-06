@@ -18,7 +18,7 @@ global class CreateNonComplaintForCaseBatch implements Database.Batchable<sObjec
     
     String queryString;
     public Static Final String caseExObjAPIName1 = 'Case__x';
-    
+    public Integer count = 0;
     Map<Id, CMPL123CME__Complaint__c> cmpResultMap = new Map<Id, CMPL123CME__Complaint__c>();
     List<CMPL123CME__Complaint__c> CMPL123List = new List<CMPL123CME__Complaint__c>();
     List<CMPL123CME__Complaint__c> complaintUpdate = new List<CMPL123CME__Complaint__c>();
@@ -29,11 +29,7 @@ global class CreateNonComplaintForCaseBatch implements Database.Batchable<sObjec
     //Set<Id> caseIdSet = new Set<Id>();
     
     //Intializing external Case query string, limit count and latest time stamp in the constructor
-    global CreateNonComplaintForCaseBatch(String queryString) {
-        this.queryString = queryString;
-       
-    }
-    
+   
     // querying the external Case records
     global Database.QueryLocator start(Database.BatchableContext bc) { 
         if(!Test.isRunningTest()){
@@ -83,10 +79,11 @@ global class CreateNonComplaintForCaseBatch implements Database.Batchable<sObjec
                if(!CMPL123List.isEmpty()){
                Database.update(complaintUpdate, false);
                Database.update(investupdate, false);    
+               count++;
                }
         
     }
     global void finish(Database.BatchableContext bc){
-    
+    system.debug('count the Records...@@@@'+count);
     }
 }
