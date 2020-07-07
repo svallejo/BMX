@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Relationship_Name__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">ProductId__c</value>
     </values>
     <values>
         <field>TWD_Field_API_Name__c</field>
