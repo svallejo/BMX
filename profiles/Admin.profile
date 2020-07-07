@@ -14526,6 +14526,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.Organisation_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__EU_MIR__c.TestPicklist__c</field>
         <readable>true</readable>
     </fieldPermissions>

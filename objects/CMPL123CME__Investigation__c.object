@@ -12840,7 +12840,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
     <validationRules>
         <fullName>Annex_B_Code_choice_should_not_be_in_B21</fullName>
         <active>true</active>
-        <errorConditionFormula>AND((CMPL123_WF_Status__c = 'Closed - Done'),
+        <errorConditionFormula>AND((CMPL123_WF_Status__c = 'Complete Investigation'),
 OR(
 ISPICKVAL(B_Investigation_Type_Code_Choice_1__c, 'B21 - Type of Investigation Not Yet Determined'),
 ISPICKVAL(B_Investigation_Type_Code_Choice_2__c	, 'B21 - Type of Investigation Not Yet Determined'),
@@ -12855,7 +12855,7 @@ ISPICKVAL(B_Investigation_Type_Code_Choice_8__c	, 'B21 - Type of Investigation N
     <validationRules>
         <fullName>Annex_C_Code_choice_should_not_be_in_C21</fullName>
         <active>true</active>
-        <errorConditionFormula>AND((CMPL123_WF_Status__c = 'Closed - Done'),
+        <errorConditionFormula>AND((CMPL123_WF_Status__c = 'Complete Investigation'),
 OR(
 ISPICKVAL(C_Investigation_Findings_Code_Choice_1__c, 'C21 - Results Pending Completion of Investigation'),
 ISPICKVAL(C_Investigation_Findings_Code_Choice_2__c , 'C21 - Results Pending Completion of Investigation'),
@@ -12868,7 +12868,7 @@ ISPICKVAL(C_Investigation_Findings_Code_Choice_6__c , 'C21 - Results Pending Com
     <validationRules>
         <fullName>Annex_D_Code_choice_should_not_be_in_D16</fullName>
         <active>true</active>
-        <errorConditionFormula>AND((CMPL123_WF_Status__c = 'Closed - Done'),
+        <errorConditionFormula>AND((CMPL123_WF_Status__c = 'Complete Investigation'),
 OR(
 ISPICKVAL(D_Investigation_Conclusion_Choice_1__c, 'D16 - Conclusion Not Yet Available'),
 ISPICKVAL(D_Investigation_Conclusion_Choice_2__c, 'D16 - Conclusion Not Yet Available'),
