@@ -14,37 +14,45 @@
 *   MALLI Sekhar           25-06-2020         Created.
 *  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **/
-global class CreateNonComplaintForCaseBatch implements Database.Batchable<sObject>, Database.Stateful {
+global class CreateNonComplaintForCaseBatch implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts{
     
     String queryString;
+    public Integer limitCount;
+    Datetime lastExecuted;
+    Datetime latestTimeStamp;
     public Static Final String caseExObjAPIName1 = 'Case__x';
     public Integer count = 0;
+    
     Map<Id, CMPL123CME__Complaint__c> cmpResultMap = new Map<Id, CMPL123CME__Complaint__c>();
     List<CMPL123CME__Complaint__c> CMPL123List = new List<CMPL123CME__Complaint__c>();
     List<CMPL123CME__Complaint__c> complaintUpdate = new List<CMPL123CME__Complaint__c>();
     list<CMPL123CME__Investigation__c> investlist=new list<CMPL123CME__Investigation__c>();
-     list<CMPL123CME__Investigation__c> investupdate=new list<CMPL123CME__Investigation__c>();
+    list<CMPL123CME__Investigation__c> investupdate=new list<CMPL123CME__Investigation__c>();
     
-    //Map<Id, Case__x> totCaseExUpdMap = new Map<Id, Case__x>();
-    //Set<Id> caseIdSet = new Set<Id>();
     
     //Intializing external Case query string, limit count and latest time stamp in the constructor
+     global CreateNonComplaintForCaseBatch(String queryString, Integer limitCount, Datetime lastExecuted) {
+        this.queryString = queryString;
+        this.limitCount = limitCount;
+        this.lastExecuted = lastExecuted;
+        this.latestTimeStamp = Complaint_Creation_Batch_Time__c.getInstance().Batch_Completion_Time__c;
+    }
    
     // querying the external Case records
     global Database.QueryLocator start(Database.BatchableContext bc) { 
         if(!Test.isRunningTest()){
             return Database.getQueryLocator(queryString);
-        }else{
+         }else{      
+        
             //string Query='SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c='Opened' AND Createddate=LAST_YEAR'
-            return Database.getQueryLocator('SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c= \'Opened\'AND BMX_CaseNumber__c!=Null AND Createddate=LAST_YEAR');
-            
+            return Database.getQueryLocator('SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c= \'Opened\'AND BMX_CaseNumber__c!=Null');
         } 
     }
     global void Execute(Database.BatchableContext bc,List<CMPL123CME__Complaint__c> ComplaintsList){
        
         List<Case__x> caseExList = new List<Case__x>();
         Set<Id> SetIds=new Set<Id>();
-        CMPL123CME__Complaint__c CMPlist=[SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c= 'Opened'AND BMX_CaseNumber__c!=Null AND Createddate=LAST_YEAR];
+        CMPL123CME__Complaint__c CMPlist=[SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c= 'Opened'AND BMX_CaseNumber__c!=Null];
         for(Case__x csx : [SELECT Id, CaseNumber_c__c,Type__c from Case__x WHERE Type__c!='TechnicalComplaint' AND CaseNumber__c =:CMPlist.BMX_CaseNumber__c]){
            caseExList.add(csx);
         }
