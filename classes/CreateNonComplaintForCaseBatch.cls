@@ -1,97 +1,44 @@
-/**
-*  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-* @Who   : Copyright (c) 2020 - 2021  Cognizant Technologies Solutions Pvt Ltd.
-* @What  : CreateNonComplaintForCaseBatch
-* @Why   : Batch class to create Non Complaint records from the Cases which are of type "Non Technical Complaint" coming from CRM through External Data Source.
-*          Also getting All open Records when User Modified or Create "Non Technical Complaint"Records from last Six Months data to upate the Complaints as Closed Cancel.
-* @When  : 25-06-2020
-
-*  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-*  Modification Log:  
-*  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-*   Developer                Date             Description 
-*  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-*   MALLI Sekhar           25-06-2020         Created.
-*  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**/
-global class CreateNonComplaintForCaseBatch implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts{
+global class CreateNonComplaintForCaseBatch implements Database.Batchable <sObject> {
     
-    String queryString;
-    public Integer limitCount;
-    Datetime lastExecuted;
-    Datetime latestTimeStamp;
-    public Static Final String caseExObjAPIName1 = 'Case__x';
-    public Integer count = 0;
-    
-    Map<Id, CMPL123CME__Complaint__c> cmpResultMap = new Map<Id, CMPL123CME__Complaint__c>();
-    List<CMPL123CME__Complaint__c> CMPL123List = new List<CMPL123CME__Complaint__c>();
-    List<CMPL123CME__Complaint__c> complaintUpdate = new List<CMPL123CME__Complaint__c>();
-    list<CMPL123CME__Investigation__c> investlist=new list<CMPL123CME__Investigation__c>();
-    list<CMPL123CME__Investigation__c> investupdate=new list<CMPL123CME__Investigation__c>();
-    
-    
-    //Intializing external Case query string, limit count and latest time stamp in the constructor
-     global CreateNonComplaintForCaseBatch(String queryString, Integer limitCount, Datetime lastExecuted) {
-        this.queryString = queryString;
-        this.limitCount = limitCount;
-        this.lastExecuted = lastExecuted;
-        this.latestTimeStamp = Complaint_Creation_Batch_Time__c.getInstance().Batch_Completion_Time__c;
-    }
-   
-    // querying the external Case records
-    global Database.QueryLocator start(Database.BatchableContext bc) { 
-        if(!Test.isRunningTest()){
-            return Database.getQueryLocator(queryString);
-         }else{      
+    List<CMPL123CME__Complaint__c> CMPL123List =new list<CMPL123CME__Complaint__c>();
+    List<CMPL123CME__Complaint__c> CMPL123List1 =new list<CMPL123CME__Complaint__c>();
+    global Database.QueryLocator start(Database.BatchableContext BC) {
+        // collect the batches of records or objects to be passed to execute
         
-            //string Query='SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c='Opened' AND Createddate=LAST_YEAR'
-            return Database.getQueryLocator('SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c= \'Opened\'AND BMX_CaseNumber__c!=Null');
-        } 
+        //String query = 'SELECT Id, CaseNumber_c__c,Type__c,(Select Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c from RelatedComplaints__r WHERE BMX_CaseNumber__c!=Null AND CMPL123CME__CMPL123_WF_Status__c='\Opened\') from Case__x WHERE Type__c!='TechnicalComplaint' ';
+        
+        String query='SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,BMX_Case_Type__c FROM CMPL123CME__Complaint__c WHERE BMX_CaseNumber__c!=null AND CMPL123CME__CMPL123_WF_Status__c=\'Opened\' AND BMX_Case_Type__c=\'TechnicalComplaint\' ';
+        return Database.getQueryLocator(query);
     }
-    global void Execute(Database.BatchableContext bc,List<CMPL123CME__Complaint__c> ComplaintsList){
-       
-        List<Case__x> caseExList = new List<Case__x>();
-        Set<Id> SetIds=new Set<Id>();
-        CMPL123CME__Complaint__c CMPlist=[SELECT Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c,Name from CMPL123CME__Complaint__c WHERE CMPL123CME__CMPL123_WF_Status__c= 'Opened'AND BMX_CaseNumber__c!=Null];
-        for(Case__x csx : [SELECT Id, CaseNumber_c__c,Type__c from Case__x WHERE Type__c!='TechnicalComplaint' AND CaseNumber__c =:CMPlist.BMX_CaseNumber__c]){
-           caseExList.add(csx);
+    
+    global void execute(Database.BatchableContext BC, List<CMPL123CME__Complaint__c> ComplineList ) {
+        
+        //Map<Id,CMPL123CME__Complaint__c> ExecaseMap=new <Id,CMPL123CME__Complaint__c>();
+        list<Case__x > caseExelist=new list<Case__x>();
+        Set<Id> SetIds=new set<Id>();
+        
+        for(CMPL123CME__Complaint__c scopeCMP:ComplineList){
+            CMPL123List.add(scopeCMP);
         }
         
-        for(Case__x cs:caseExList){
-            SetIds.add(cs.ExternalId);
+        CMPL123CME__Complaint__c  CMPList=[Select id,BMX_CaseNumber__c from CMPL123CME__Complaint__c  limit 1];
+        for(Case__x csx:[SELECT Id, CaseNumber_c__c, Type__c FROM Case__x WHERE Type__c!='TechnicalComplaint' AND CaseNumber__c =:CMPList.BMX_CaseNumber__c]){
+            caseExelist.add(csx);
         }
         
-             for(CMPL123CME__Complaint__c CMPScope:[Select id,BMX_Case_External__c,BMX_CaseNumber__c,BMX_Case_Type__c,CMPL123CME__CMPL123_WF_Status__c from CMPL123CME__Complaint__c WHERE BMX_Case_External__c in:SetIds]){
-                 //cmpResultMap.put(CMPScope.BMX_Case_External__c, CMPScope);
-                 CMPL123List.add(CMPScope);
-            }
-            
+        for(CMPL123CME__Complaint__c CMPScope:[Select id,BMX_Case_External__c,BMX_CaseNumber__c,BMX_Case_Type__c,CMPL123CME__CMPL123_WF_Status__c from CMPL123CME__Complaint__c WHERE BMX_Case_External__c in:SetIds]){
+            CMPScope.CMPL123CME__CMPL123_WF_Status__c='Closed-Canceled';
+            CMPL123List1.add(CMPScope);
+        }
         
-           for(CMPL123CME__Investigation__c Investi:[select id from CMPL123CME__Investigation__c WHERE CMPL123CME__Complaint__c=:CMPL123List]){
-           investlist.add(Investi);
-           }
-            
-             for(CMPL123CME__Investigation__c Investcope:investlist){
-                 Investcope.CMPL123_WF_Status__c='Closed - Canceled';
-                 investupdate.add(Investcope);
-             } 
-        
-        
-            for(CMPL123CME__Complaint__c CMPScopevalue:CMPL123List){
-                 
-                 CMPScopevalue.CMPL123CME__CMPL123_WF_Status__c='Closed-Canceled';
-                 complaintUpdate.add(CMPScopevalue);
-             } 
-        
-               system.debug('CMPUpdatelist....'+CMPL123List);
-               if(!CMPL123List.isEmpty()){
-               Database.update(complaintUpdate, false);
-               Database.update(investupdate, false);    
-               count++;
-               }
+        if(!CMPL123List1.isEmpty()){
+            update CMPL123List1;
+        }
         
     }
-    global void finish(Database.BatchableContext bc){
-    system.debug('count the Records...@@@@'+count);
+    global void finish(Database.BatchableContext BC) {
+        // execute any post-processing operations like sending email
     }
+    
+    
 }
