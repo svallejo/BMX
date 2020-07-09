@@ -4628,6 +4628,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>UpdateNonComplaintForCaseBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Utils_CreateComplaintForCaseBatch</apexClass>
         <enabled>true</enabled>
     </classAccesses>
