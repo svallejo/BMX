@@ -36,20 +36,14 @@ global class UpdateNonComplaintForCaseBatch implements Database.Batchable <sObje
                 caseQueryList.add(extCaseObj);
             }        
         system.debug('==caseQueryList=='+caseQueryList); 
-        
-        List<Case__x> caseExList = new List<Case__x>();
-        
+               
         // Sets to keep external record Ids of all the external objects
         Set<Id> caseIdSet = new Set<Id>();        
         // Maps to keep all the external records            
         Map<Id, CMPL123CME__Complaint__c> cmpResultMap = new Map<Id, CMPL123CME__Complaint__c>();
         List<CMPL123CME__Complaint__c> cmpResultList = new List<CMPL123CME__Complaint__c>();
-        
-        for(Case__x csx : [SELECT Id,CaseNumber_c__c,Type__c,ExternalId,TWComplaintNumber_c__c FROM Case__x WHERE Type__c!='TechnicalComplaint' AND Id IN: caseQueryList]) {
-            caseExList.add(csx);       
-        }        
-         system.debug('==caseExList1=='+caseExList);  
-        for(Case__x cs : caseExList) {
+  
+        for(Case__x cs : caseQueryList) {
             // populating the sets with the parent Ids of the Case Object
             caseIdSet.add(cs.ExternalId);
         }
@@ -60,7 +54,7 @@ global class UpdateNonComplaintForCaseBatch implements Database.Batchable <sObje
             //cmpResultList.add(cmp);
         }
         
-        for(Case__x cs : caseExList){
+        for(Case__x cs : caseQueryList){
             CMPL123CME__Complaint__c cmplnt;
             CMPL123CME__Complaint__c reoependCmplntRecord;
             
