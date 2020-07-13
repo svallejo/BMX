@@ -14555,6 +14555,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.Title__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__HHE__c.CMPL123CME__AnySignificant_Public_Health_Impact__c</field>
         <readable>true</readable>
     </fieldPermissions>
