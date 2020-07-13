@@ -5163,6 +5163,15 @@
         <columns>Visitor_Country__c</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123CME__CMPL123_WF_Status__c</field>
+            <operation>contains</operation>
+            <value>Closed-Canceled</value>
+        </filters>
+        <filters>
+            <field>BMX_Case_External__c</field>
+            <operation>notEqual</operation>
+        </filters>
         <label>All</label>
         <language>en_US</language>
     </listViews>
