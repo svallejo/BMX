@@ -16,18 +16,21 @@
     <filter>
         <criteriaItems>
             <column>CMPL123CME__Investigation__c.CMPL123_WF_Status__c</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>CMPL123CME__Investigation__c.BMX_Days_Open__c</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
             <value>100</value>
         </criteriaItems>
         <criteriaItems>
             <column>CMPL123CME__Investigation__c.BMX_Patient_Data_Copied_to_BMX_System__c</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Yes</value>

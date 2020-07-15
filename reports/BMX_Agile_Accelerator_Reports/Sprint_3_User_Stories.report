@@ -39,12 +39,14 @@
     <filter>
         <criteriaItems>
             <column>agf__ADM_Work__c.agf__Status__c</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Void,Closed - Defunct,Fixed</value>
         </criteriaItems>
         <criteriaItems>
             <column>agf__ADM_Work__c.agf__Sprint__c</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>2018.09a-Sprint3</value>
