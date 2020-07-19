@@ -13033,7 +13033,7 @@ ISPICKVAL(D_Investigation_Conclusion_Choice_6__c, 'D16 - Conclusion Not Yet Avai
         <fullName>BMX_Correction_Number_Required</fullName>
         <active>true</active>
         <description>Correction number field is mandatory when Correction Required Field is set YES</description>
-        <errorConditionFormula>AND(ISPICKVAL(BMX_Correction_Required__c, 'Yes'),
+        <errorConditionFormula>AND( OR(CMPL123_WF_Action__c = "Complete Investigation",CMPL123_WF_Action__c = "Complete Expert Investigation"),ISPICKVAL(BMX_Correction_Required__c, 'Yes'),
 ISBLANK( Correction_Number__c ))</errorConditionFormula>
         <errorDisplayField>Correction_Number__c</errorDisplayField>
         <errorMessage>Correction Number field is mandatory.</errorMessage>

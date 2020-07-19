@@ -5229,7 +5229,7 @@
         <active>true</active>
         <description>INV Reference Creation Justification field is mandatory when Master Investigation Field is available</description>
         <errorConditionFormula>AND( NOT(ISBLANK(BMX_Investigation__c)),
-ISBLANK( INV_Reference_Creation_Justification__c))</errorConditionFormula>
+ISBLANK( INV_Reference_Creation_Justification__c), CMPL123CME__CMPL123_WF_Status__c = "Opened")</errorConditionFormula>
         <errorDisplayField>INV_Reference_Creation_Justification__c</errorDisplayField>
         <errorMessage>INV Reference Creation Justification field is mandatory when Master Investigation Field is available</errorMessage>
     </validationRules>
