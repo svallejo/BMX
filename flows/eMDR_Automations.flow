@@ -708,6 +708,7 @@
             <label>WF Status = Closed - Submitted</label>
         </rules>
     </decisions>
+    <description>V2 change the Update Complaint rule</description>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
@@ -718,7 +719,7 @@
 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_10_myRule_1_A1_8538367182</name>
+        <name>formula_10_myRule_1_A1_3582813983</name>
         <dataType>String</dataType>
         <expression>IF(
      AND({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visitor_Country__c}  &lt;&gt; null , UPPER({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visitor_Country__c} ) == &quot;UNITED STATES&quot;),
@@ -734,7 +735,7 @@ AND( [CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.Visi
 UPPER([CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.Visitor_Country__c ) == &quot;UNITED STATES&quot;), LEFT([CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.Visitor_Postal_Code__c  ,5) , &quot;&quot;)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_11_myRule_1_A1_7499439492</name>
+        <name>formula_11_myRule_1_A1_7385915639</name>
         <dataType>String</dataType>
         <expression>IF(
 AND( {!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visitor_Country__c}  &lt;&gt; null, 
@@ -747,7 +748,7 @@ UPPER({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visi
                 <stringValue>LEFT([CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.BMX_UDI_Code__c , 150)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_12_myRule_1_A1_4743803906</name>
+        <name>formula_12_myRule_1_A1_1868328255</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.BMX_UDI_Code__c} , 150)</expression>
     </formulas>
@@ -758,7 +759,7 @@ UPPER({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visi
                 <stringValue>[CMPL123CME__EMDR__c].CMPL123CME__CMPL123_WF_Action_Performed_By__c.FirstName +&apos; &apos;+ [CMPL123CME__EMDR__c].CMPL123CME__CMPL123_WF_Action_Performed_By__c.LastName</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_20_myRule_18_A1_0381468930</name>
+        <name>formula_20_myRule_18_A1_5636283010</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.CMPL123CME__CMPL123_WF_Action_Performed_By__r.FirstName} +&apos; &apos;+ {!myVariable_current.CMPL123CME__CMPL123_WF_Action_Performed_By__r.LastName}</expression>
     </formulas>
@@ -769,7 +770,7 @@ UPPER({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visi
                 <stringValue>LEFT([CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.BMX_Product_Name__c , 80)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_6443754638</name>
+        <name>formula_2_myRule_1_A1_4298285799</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.BMX_Product_Name__c} , 80)</expression>
     </formulas>
@@ -780,7 +781,7 @@ UPPER({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visi
                 <stringValue>LEFT([CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.BMX_Product_Name__c , 80)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_6509869174</name>
+        <name>formula_3_myRule_1_A1_8414334501</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.BMX_Product_Name__c} , 80)</expression>
     </formulas>
@@ -791,7 +792,7 @@ UPPER({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visi
                 <stringValue>LEFT([CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.BMX_Material_Code__c , 30)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A1_9311718829</name>
+        <name>formula_4_myRule_1_A1_9510900419</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.BMX_Material_Code__c} , 30)</expression>
     </formulas>
@@ -802,7 +803,7 @@ UPPER({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visi
                 <stringValue>LEFT([CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.BMX_Batch_Number_Reagent__c  , 100)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_5_myRule_1_A1_6718788687</name>
+        <name>formula_5_myRule_1_A1_9321296198</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.BMX_Batch_Number_Reagent__c}  , 100)</expression>
     </formulas>
@@ -813,7 +814,7 @@ UPPER({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visi
                 <stringValue>LEFT([CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.BMX_Serial_Number_Asset__c  , 30)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_6_myRule_1_A1_5074380440</name>
+        <name>formula_6_myRule_1_A1_2223532309</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.BMX_Serial_Number_Asset__c}  , 30)</expression>
     </formulas>
@@ -824,7 +825,7 @@ UPPER({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visi
                 <stringValue>LEFT([CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.Visitor_Street__c , 30)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_7_myRule_1_A1_3275011226</name>
+        <name>formula_7_myRule_1_A1_7961191036</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visitor_Street__c} , 30)</expression>
     </formulas>
@@ -835,7 +836,7 @@ UPPER({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visi
                 <stringValue>LEFT([CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.Visitor_City__c  , 30)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_8_myRule_1_A1_4479977683</name>
+        <name>formula_8_myRule_1_A1_3117547911</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visitor_City__c}  , 30)</expression>
     </formulas>
@@ -846,7 +847,7 @@ UPPER({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visi
                 <stringValue>LEFT([CMPL123CME__EMDR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.Visitor_Address_Name__c , 50)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_9_myRule_1_A1_1541931488</name>
+        <name>formula_9_myRule_1_A1_4127512889</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visitor_Address_Name__c} , 50)</expression>
     </formulas>
@@ -878,7 +879,7 @@ ISCHANGED({!myVariable_current.CMPL123CME__MDR_Due_Date__c} ),
 ISCHANGED({!myVariable_current.RecordTypeId} )  
  )</expression>
     </formulas>
-    <interviewLabel>eMDR_Automations-1_InterviewLabel</interviewLabel>
+    <interviewLabel>eMDR_Automations-2_InterviewLabel</interviewLabel>
     <label>eMDR Automations</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -1228,7 +1229,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>BMX_Submit_for_Review_Done_by__c</field>
             <value>
-                <elementReference>formula_20_myRule_18_A1_0381468930</elementReference>
+                <elementReference>formula_20_myRule_18_A1_5636283010</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__EMDR__c</object>
@@ -1383,7 +1384,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>CMPL123CME__D1_Brand_Name__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_6443754638</elementReference>
+                <elementReference>formula_2_myRule_1_A1_4298285799</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1419,7 +1420,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>CMPL123CME__D2_Common_Device_Name__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_6509869174</elementReference>
+                <elementReference>formula_3_myRule_1_A1_8414334501</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1455,7 +1456,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>CMPL123CME__D4_Catalog_No__c</field>
             <value>
-                <elementReference>formula_4_myRule_1_A1_9311718829</elementReference>
+                <elementReference>formula_4_myRule_1_A1_9510900419</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1527,7 +1528,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>CMPL123CME__D4_Lot_No__c</field>
             <value>
-                <elementReference>formula_5_myRule_1_A1_6718788687</elementReference>
+                <elementReference>formula_5_myRule_1_A1_9321296198</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1563,7 +1564,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>CMPL123CME__D4_Serial_No__c</field>
             <value>
-                <elementReference>formula_6_myRule_1_A1_5074380440</elementReference>
+                <elementReference>formula_6_myRule_1_A1_2223532309</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1599,7 +1600,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>CMPL123CME__E1_Address_1__c</field>
             <value>
-                <elementReference>formula_7_myRule_1_A1_3275011226</elementReference>
+                <elementReference>formula_7_myRule_1_A1_7961191036</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1635,7 +1636,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>CMPL123CME__E1_City__c</field>
             <value>
-                <elementReference>formula_8_myRule_1_A1_4479977683</elementReference>
+                <elementReference>formula_8_myRule_1_A1_3117547911</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1671,7 +1672,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>CMPL123CME__E1_Facility_Name__c</field>
             <value>
-                <elementReference>formula_9_myRule_1_A1_1541931488</elementReference>
+                <elementReference>formula_9_myRule_1_A1_4127512889</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1707,7 +1708,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>CMPL123CME__E1_Postal_Code__c</field>
             <value>
-                <elementReference>formula_10_myRule_1_A1_8538367182</elementReference>
+                <elementReference>formula_10_myRule_1_A1_3582813983</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1743,7 +1744,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>CMPL123CME__E1_Zip_Code__c</field>
             <value>
-                <elementReference>formula_11_myRule_1_A1_7499439492</elementReference>
+                <elementReference>formula_11_myRule_1_A1_7385915639</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1815,7 +1816,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
             </processMetadataValues>
             <field>CMPL123CME__Unique_Identifier_UDI__c</field>
             <value>
-                <elementReference>formula_12_myRule_1_A1_4743803906</elementReference>
+                <elementReference>formula_12_myRule_1_A1_1868328255</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__EMDR__c</object>
@@ -2133,7 +2134,7 @@ ISCHANGED({!myVariable_current.RecordTypeId} )
         <object>CMPL123CME__EMDR__c</object>
     </recordUpdates>
     <startElementReference>isChangedDecision19_myRule_18_CMPL123CME_CMPL123_WF_Action_c</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
