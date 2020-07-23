@@ -445,35 +445,35 @@
         <name>B_Investigation_TypeCode_Choice_2__c</name>
     </fields>
     <fields>
-        <label><!-- B-Investigation Type Code-Choice 1 --></label>
+        <label><!-- Type/Method Choice 1 --></label>
         <name>B_Investigation_Type_Code_Choice_1__c</name>
     </fields>
     <fields>
-        <label><!-- B-Investigation Type Code-Choice 2 --></label>
+        <label><!-- Type/Method Choice 2 --></label>
         <name>B_Investigation_Type_Code_Choice_2__c</name>
     </fields>
     <fields>
-        <label><!-- B-Investigation Type Code-Choice 3 --></label>
+        <label><!-- Type/Method Choice 3 --></label>
         <name>B_Investigation_Type_Code_Choice_3__c</name>
     </fields>
     <fields>
-        <label><!-- B-Investigation Type Code-Choice 4 --></label>
+        <label><!-- Type/Method Choice 4 --></label>
         <name>B_Investigation_Type_Code_Choice_4__c</name>
     </fields>
     <fields>
-        <label><!-- B-Investigation Type Code-Choice 5 --></label>
+        <label><!-- Type/Method Choice 5 --></label>
         <name>B_Investigation_Type_Code_Choice_5__c</name>
     </fields>
     <fields>
-        <label><!-- B-Investigation Type Code-Choice 6 --></label>
+        <label><!-- Type/Method Choice 6 --></label>
         <name>B_Investigation_Type_Code_Choice_6__c</name>
     </fields>
     <fields>
-        <label><!-- B-Investigation Type Code-Choice 7 --></label>
+        <label><!-- Type/Method Choice 7 --></label>
         <name>B_Investigation_Type_Code_Choice_7__c</name>
     </fields>
     <fields>
-        <label><!-- B-Investigation Type Code-Choice 8 --></label>
+        <label><!-- Type/Method Choice 8 --></label>
         <name>B_Investigation_Type_Code_Choice_8__c</name>
     </fields>
     <fields>
@@ -582,17 +582,17 @@
         <name>C_Investigation_Findings_Code_Choic_del5__c</name>
     </fields>
     <fields>
-        <label><!-- C-Investigation Findings Code-Choice 1 --></label>
+        <label><!-- Findings/Results Choice 1 --></label>
         <name>C_Investigation_Findings_Code_Choice1__c</name>
         <relationshipLabel><!-- Investigations/Evaluations --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- C-Investigation Findings Code-Choice 2 --></label>
+        <label><!-- Findings/Results Choice 2 --></label>
         <name>C_Investigation_Findings_Code_Choice2__c</name>
         <relationshipLabel><!-- Investigations/Evaluations (C-Investigation Findings Code-Choice 2) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- C-Investigation Findings Code-Choice 3 --></label>
+        <label><!-- Findings/Results Choice 3 --></label>
         <name>C_Investigation_Findings_Code_Choice3__c</name>
         <relationshipLabel><!-- Investigations/Evaluations (C-Investigation Findings Code-Choice 3) --></relationshipLabel>
     </fields>
@@ -649,17 +649,17 @@
         <name>Count_of_Optional_Approvals__c</name>
     </fields>
     <fields>
-        <label><!-- D-Investigation Conclusion-Choice 1 --></label>
+        <label><!-- Root Cause/Conclusion Choice  1 --></label>
         <name>D_Investigation_Conclusion_Choice1__c</name>
         <relationshipLabel><!-- Investigations/Evaluations (D-Investigation Conclusion-Choice 1) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- D-Investigation Conclusion-Choice 2 --></label>
+        <label><!-- Root Cause/Conclusion Choice  2 --></label>
         <name>D_Investigation_Conclusion_Choice2__c</name>
         <relationshipLabel><!-- Investigations/Evaluations (D-Investigation Conclusion-Choice 2) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- D-Investigation Conclusion-Choice 3 --></label>
+        <label><!-- Root Cause/Conclusion Choice  3 --></label>
         <name>D_Investigation_Conclusion_Choice3__c</name>
         <relationshipLabel><!-- Investigations/Evaluations (D-Investigation Conclusion-Choice 3) --></relationshipLabel>
     </fields>
@@ -833,16 +833,16 @@
             <section>Expert Investigation</section>
         </sections>
         <sections>
+            <label><!-- Findings/Results of Investigation (Annex C) --></label>
+            <section>Findings/Results of Investigation (Annex C)</section>
+        </sections>
+        <sections>
             <label><!-- Investigation Core --></label>
             <section>Investigation Core</section>
         </sections>
         <sections>
             <label><!-- Investigation Steps --></label>
             <section>Investigation Steps</section>
-        </sections>
-        <sections>
-            <label><!-- Investigation findings (Annex C) --></label>
-            <section>Investigation findings (Annex C)</section>
         </sections>
         <sections>
             <label><!-- Investigation/Evaluation Detail --></label>
@@ -857,16 +857,16 @@
             <section>Product Return</section>
         </sections>
         <sections>
-            <label><!-- Type of investigation (Annex B) --></label>
-            <section>Type of investigation (Annex B)</section>
+            <label><!-- Root Cause/Conclusion of Investigation (Annex D) --></label>
+            <section>Root Cause/Conclusion of Investigation (Annex D)</section>
+        </sections>
+        <sections>
+            <label><!-- Type/Method of investigation (Annex B) --></label>
+            <section>Type/Method of investigation (Annex B)</section>
         </sections>
         <sections>
             <label><!-- Workflow Information --></label>
             <section>Workflow Information</section>
-        </sections>
-        <sections>
-            <label><!-- nvestigation conclusion (Annex D) --></label>
-            <section>nvestigation conclusion (Annex D)</section>
         </sections>
     </layouts>
     <layouts>
@@ -888,6 +888,10 @@
             <section>Expert Investigation</section>
         </sections>
         <sections>
+            <label><!-- Findings/Results of Investigation (Annex C) --></label>
+            <section>Findings/Results of Investigation (Annex C)</section>
+        </sections>
+        <sections>
             <label><!-- Investigation Core --></label>
             <section>Investigation Core</section>
         </sections>
@@ -900,8 +904,8 @@
             <section>Investigation/Evaluation Detail</section>
         </sections>
         <sections>
-            <label><!-- Investigation/Evaluation Detials (hidden) --></label>
-            <section>Investigation/Evaluation Detials (hidden)</section>
+            <label><!-- Investigation/Evaluation Details (hidden) --></label>
+            <section>Investigation/Evaluation Details (hidden)</section>
         </sections>
         <sections>
             <label><!-- New Section --></label>
@@ -912,16 +916,12 @@
             <section>Product Return</section>
         </sections>
         <sections>
-            <label><!-- Type of Investigation (Annex B) --></label>
-            <section>Type of Investigation (Annex B)</section>
+            <label><!-- Root Cause/Conclusion of Investigation (Annex D) --></label>
+            <section>Root Cause/Conclusion of Investigation (Annex D)</section>
         </sections>
         <sections>
-            <label><!-- Type of Investigation (Annex C) --></label>
-            <section>Type of Investigation (Annex C)</section>
-        </sections>
-        <sections>
-            <label><!-- Type of Investigation (Annex D) --></label>
-            <section>Type of Investigation (Annex D)</section>
+            <label><!-- Type/Method of Investigation (Annex B) --></label>
+            <section>Type/Method of Investigation (Annex B)</section>
         </sections>
         <sections>
             <label><!-- Workflow Information --></label>
