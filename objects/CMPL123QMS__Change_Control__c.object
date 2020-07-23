@@ -3585,6 +3585,15 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Release_Approved__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Release Approved</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Release_Approver_1__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -7965,7 +7974,7 @@ ISPICKVAL(Change_Level__c, "Project Transfer")) &amp;&amp;
         <errorConditionFormula>ISCHANGED( CMPL123_WF_Action__c ) &amp;&amp; 
 (CMPL123_WF_Action__c == "Implementation Complete" || CMPL123_WF_Action__c == "Approve Release (QA)") &amp;&amp;
 
-Implementation_Date__c &lt; TODAY()</errorConditionFormula>
+Implementation_Date__c &lt; TODAY() &amp;&amp; NOT ( Release_Approved__c )</errorConditionFormula>
         <errorMessage>Implementation Date must be the current date or a future date</errorMessage>
     </validationRules>
     <validationRules>
@@ -8052,6 +8061,13 @@ ISCHANGED(Total_Impact_Assessments_Completed__c))</errorConditionFormula>
         <description>When "Yes" is selected for Product Impacted, then either Product Item Number or Product Range must be populated.</description>
         <errorConditionFormula>ISPICKVAL(Product_Impacted__c, "Yes") &amp;&amp; (ISBLANK( Product_Item_Number__c) &amp;&amp; ISBLANK(Product_Range__c))</errorConditionFormula>
         <errorMessage>When "Yes" is selected for Product Impacted, then either Product Item Number or Product Range must be populated.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Release_APproved</fullName>
+        <active>true</active>
+        <description>This is to prevent field from being edited if checkbox field = true</description>
+        <errorConditionFormula>Ischanged ( Implementation_Date__c ) &amp;&amp;  Release_Approved__c</errorConditionFormula>
+        <errorMessage>If release is approved Implementation Date can not be edited</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Release_Approver_1_Must_Be_Populated</fullName>

@@ -5512,7 +5512,7 @@
         <locationX>6600</locationX>
         <locationY>100</locationY>
         <defaultConnector>
-            <targetReference>myWait_myRule_66</targetReference>
+            <targetReference>myRule_66_A1</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
         <rules>
@@ -5526,7 +5526,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myWait_myRule_66</targetReference>
+                <targetReference>myRule_66_A1</targetReference>
             </connector>
             <label>Previously Met - Null</label>
         </rules>
@@ -5606,7 +5606,7 @@
                 <stringValue>Today()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_54_myRule_52_A1_4510324342</name>
+        <name>formula_54_myRule_52_A1_7482135136</name>
         <dataType>Date</dataType>
         <expression>Today()</expression>
     </formulas>
@@ -5617,11 +5617,11 @@
                 <stringValue>Today()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_58_myRule_56_A1_3173955101</name>
+        <name>formula_58_myRule_56_A1_2060516205</name>
         <dataType>Date</dataType>
         <expression>Today()</expression>
     </formulas>
-    <interviewLabel>Change_Control_Custom_Processes-66_InterviewLabel</interviewLabel>
+    <interviewLabel>Change_Control_Custom_Processes-67_InterviewLabel</interviewLabel>
     <label>Change Control Custom Processes</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -7429,7 +7429,7 @@
             </processMetadataValues>
             <field>Closed_Date__c</field>
             <value>
-                <elementReference>formula_54_myRule_52_A1_4510324342</elementReference>
+                <elementReference>formula_54_myRule_52_A1_7482135136</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>
@@ -7512,7 +7512,7 @@
             </processMetadataValues>
             <field>Closed_Date__c</field>
             <value>
-                <elementReference>formula_58_myRule_56_A1_3173955101</elementReference>
+                <elementReference>formula_58_myRule_56_A1_2060516205</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>
@@ -7706,6 +7706,89 @@
             <field>CMPL123Task_Key_Value__c</field>
             <value>
                 <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <object>CMPL123QMS__Change_Control__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[CMPL123QMS__Change_Control__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_66_A1</name>
+        <label>Release Approved</label>
+        <locationX>6600</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myWait_myRule_66</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Release Approved</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Release_Approved__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </inputAssignments>
         <object>CMPL123QMS__Change_Control__c</object>

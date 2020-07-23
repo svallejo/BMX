@@ -19920,6 +19920,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123QMS__Change_Control__c.Release_Approved__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123QMS__Change_Control__c.Short_Description__c</field>
         <readable>true</readable>
     </fieldPermissions>

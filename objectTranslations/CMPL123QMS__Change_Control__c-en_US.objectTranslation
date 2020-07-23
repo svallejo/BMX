@@ -358,6 +358,10 @@
         <relationshipLabel><!-- Change Control --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Release Approved --></label>
+        <name>Release_Approved__c</name>
+    </fields>
+    <fields>
         <label><!-- Short Description --></label>
         <name>Short_Description__c</name>
     </fields>
@@ -2006,6 +2010,10 @@
     <validationRules>
         <errorMessage><!-- When &quot;Yes&quot; is selected for Product Impacted, then either Product Item Number or Product Range must be populated. --></errorMessage>
         <name>Product_Impacted_Required_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If release is approved Implementation Date can not be edited --></errorMessage>
+        <name>Release_APproved</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Required Qualification Description is required if Is a Qualification is Required is Yes --></errorMessage>
