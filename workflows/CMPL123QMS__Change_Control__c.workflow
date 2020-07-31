@@ -42,6 +42,21 @@
         <template>unfiled$public/Change_Request_Canceled</template>
     </alerts>
     <alerts>
+        <fullName>Internal_Manu_Impacted</fullName>
+        <description>Internal MFG Site Impacted</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Internal_Mfg_Site_Responsible_Person__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Quality_Approver__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Internal_Customer_Impacted</template>
+    </alerts>
+    <alerts>
         <fullName>Quality_Approver_Email</fullName>
         <description>Quality Approver Email</description>
         <protected>false</protected>
@@ -90,10 +105,6 @@
         <fullName>Internal_Customer_Impacted</fullName>
         <description>Internal Customer Impacted</description>
         <protected>false</protected>
-        <recipients>
-            <field>Internal_Mfg_Site_Responsible_Person__c</field>
-            <type>userLookup</type>
-        </recipients>
         <recipients>
             <field>Internal_Sub_Responsible_Person__c</field>
             <type>userLookup</type>
