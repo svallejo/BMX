@@ -1417,6 +1417,10 @@
         <name>Local_Assessment</name>
     </recordTypes>
     <validationRules>
+        <errorMessage><!-- if the Due Date is changed then Justification of Due Date change is mandatory --></errorMessage>
+        <name>Due_Date_change</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Global Assessment Classification is required. --></errorMessage>
         <name>Global_Assessment_Classification_Req</name>
     </validationRules>
@@ -1439,6 +1443,10 @@
     <validationRules>
         <errorMessage><!-- Record Locked --></errorMessage>
         <name>Prevent_Assessment_from_edit_for_audit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- if the Report Due to authority is changed then Justification of Report Due Change is mandatory --></errorMessage>
+        <name>Report_Due_to_Authority_Change</name>
     </validationRules>
     <webLinks>
         <label><!-- Share_Assessment --></label>

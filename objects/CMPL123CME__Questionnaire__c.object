@@ -9146,6 +9146,16 @@ If( CMPL123CME__Total_Score__c  &gt;  1, 'Local Assessment','Not Reportable')
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <validationRules>
+        <fullName>Due_Date_change</fullName>
+        <active>true</active>
+        <description>if Due Date is changed  - Justification
+of Due Date Change field is mandatory</description>
+        <errorConditionFormula>AND((ISBLANK(BMX_Justification_of_Due_Date_Change__c) ) ,
+OR (
+ISCHANGED(BMX_Due_Date__c)))</errorConditionFormula>
+        <errorMessage>if the Due Date is changed then Justification of Due Date change is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Global_Assessment_Classification_Req</fullName>
         <active>true</active>
         <description>Global Assessment Classification is required when Global Assessment Result is "Local Assessment" and "Submit for Approval" is being performed.</description>
@@ -9200,6 +9210,15 @@ ISBLANK( BMX_Local_Assessment_Country_4__c)
         <active>true</active>
         <errorConditionFormula>Audit__r.CMPL123_WF_Status__c =="Closed - Done"</errorConditionFormula>
         <errorMessage>Record Locked</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Report_Due_to_Authority_Change</fullName>
+        <active>true</active>
+        <description>if Report Due to authority is changed  then Justification of Due Date Change field is mandatory</description>
+        <errorConditionFormula>AND((ISBLANK(BMX_Justification_of_Report_Due_Change__c)) ,
+OR (
+ISCHANGED(BMX_Report_Due_to_Authority__c)))</errorConditionFormula>
+        <errorMessage>if the Report Due to authority is changed then Justification of Report Due Change is mandatory</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>
