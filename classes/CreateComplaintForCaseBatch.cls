@@ -153,7 +153,6 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
             codeGroupExIdSet.add(cs.SatisfactionCode_c__c);
             codeGroupExIdSet.add(cs.SoftwareCode_c__c);
             codeGroupExIdSet.add(cs.ActionCode_c__c);
-            codeGroupExIdSet.add(cs.ANALYZE_c__c);
             codeGroupExIdSet.add(cs.ErrorCode_c__c);
             codeGroupExIdSet.add(cs.NoInvestJustif_c__c);
             userExIdSet.add(cs.CreatedById__c);
@@ -476,10 +475,6 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                 cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.ActionCode_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'ActionCode_c__c');
             }
             
-            if(cs.ANALYZE_c__c <> null && codeGroupExMap.get(cs.ANALYZE_c__c) <> null && techComplaint) {
-                cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.ANALYZE_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'ANALYZE_c__c');
-            }                   
-            
             if(cs.ErrorCode_c__c <> null && codeGroupExMap.get(cs.ErrorCode_c__c) <> null) {
                 if(techComplaint) {
                     cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.ErrorCode_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'ErrorCode_c__c');
@@ -491,7 +486,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                     cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.NoInvestJustif_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'NoInvestJustif_c__c');
                 }
             }
-
+            
             if(cs.CreatedById__c <> null && userExMap.get(cs.CreatedById__c) <> null && techComplaint) {
                 cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, userExMap.get(cs.CreatedById__c), caseOtherObjMappingList, userExObjAPIName, isInsert, 'CreatedById__c');
             }
