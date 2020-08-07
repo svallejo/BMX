@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?><Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
+        <fullName>Notify_RQC_US_Approver_User_Group_when_emdr_is_WF_status_as_Review_In_Progress</fullName>
+        <description>Notify RQC US Approver  User Group when emdr is WF status as Review In Progress</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>BMX_RQC_Approver</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>BMX_Templates/Notify_RQC_US_Approver_User_Group_when_emdr_is_WF_status_as_Review_In_Progress</template>
+    </alerts>
+    <alerts>
         <fullName>Notify_US_User_Group_when_emdr_is_sent_back_for_Rework</fullName>
         <description>Notify US User Group when emdr is sent back for Rework</description>
         <protected>false</protected>
@@ -19,6 +30,21 @@
         <operation>Formula</operation>
         <protected>false</protected>
     </fieldUpdates>
+    <rules>
+        <fullName>Notify RQC US Approver User Group when emdr WF status as Review in Progress</fullName>
+        <actions>
+            <name>Notify_RQC_US_Approver_User_Group_when_emdr_is_WF_status_as_Review_In_Progress</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CMPL123CME__EMDR__c.CMPL123CME__CMPL123_WF_Status__c</field>
+            <operation>equals</operation>
+            <value>Review In Progress</value>
+        </criteriaItems>
+        <description>Notify RQC US Approver User Group when emdr WF status as Review in Progress</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
     <rules>
         <fullName>Notify US User Group when emdr is sent back for Rework</fullName>
         <actions>

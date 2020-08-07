@@ -122,9 +122,8 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                             SAPCustomerNumber_c__c,Priority__c,PRE5_c__c,PRE6_c__c,PRE4_c__c,PRE2P2_c__c,PRE3P2_c__c,PRE3_1_c__c,PRE1_c__c,PRE2_1_c__c,INVEST_c__c,Origin_c__c,
                             PRE_YesNo_c__c,MaterialCode_c__c,Description_c__c,LastL2toL1DeescalationDate_c__c,SAPAssetNumber_c__c,LastATCSentDateTime_c__c,InvQ6_c__c,InvQ5_c__c,
                             InvQ4_c__c,InvQ3_c__c,InvQ2_c__c,InvQ1_c__c,InvestSubmittedBy_c__c,IsInternalCase_c__c,FirstL2OwnershipTaken_c__c,AssetRecordType_c__c,
-                            LastL2EscalationDate_c__c,ContactId__c,EntitlementId__c,FunctionalLocation_c__c,LastModifiedById__c,ErrorCode_c__c,ANALYZE_c__c,SAMPLE_c__c,
-                            AssetId__c,ProductId__c,L1Owner_c__c,L2Owner_c__c,CreatedById__c,AccountId__c,ShipToLocation_c__c,SatisfactionCode_c__c,RESULT_c__c,SofwareVersion_c__c,
-                            NoInvestJustif_c__c,SoftwareCode_c__c,ActionCode_c__c,ParentId__c, OwnerId__c,LastModifiedDate__c,Case_First_Closed_Date_c__c,FixedOnPhone_c__c,
+                            LastL2EscalationDate_c__c,ContactId__c,EntitlementId__c,FunctionalLocation_c__c,LastModifiedById__c,RESULT_c__c,SAMPLE_c__c,SatisfactionCode_c__c,
+                            SoftwareCode_c__c,ActionCode_c__c,ANALYZE_c__c,ErrorCode_c__c,NoInvestJustif_c__c,AssetId__c,ProductId__c,L1Owner_c__c,L2Owner_c__c,CreatedById__c,AccountId__c,ShipToLocation_c__c,SofwareVersion_c__c,ParentId__c, OwnerId__c,LastModifiedDate__c,Case_First_Closed_Date_c__c,FixedOnPhone_c__c,
                             GDPR_L1Q2_c__c,GDPR_L2Q2_c__c,GDPR_L1Q1_c__c,GDPR_L2Q1_c__c,RE_c__c,ShipToLocation_c__r.VisitorAddressId__c,AccountId__r.Global_Reporting_Hierarchy_Level_3_c__c,
                             AccountId__r.Global_Reporting_Hierarchy_Level_2_c__c,AccountId__r.Key_Account_Hierarchy_c__c,AccountId__r.Pricing_Hierarchy_2_c__c,AccountId__r.Pricing_Hierarchy_c__c,
                             AccountId__r.Reporting_Hierarchy_c__c,AccountId__r.Global_Reporting_Hierarchy_Level_1_c__c,AccountId__r.RecordTypeId__c ,PRE1P2__c, NumberOfSamplesAffected__c,Product_Code_c__c  FROM Case__x 
@@ -153,6 +152,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
             codeGroupExIdSet.add(cs.SatisfactionCode_c__c);
             codeGroupExIdSet.add(cs.SoftwareCode_c__c);
             codeGroupExIdSet.add(cs.ActionCode_c__c);
+            codeGroupExIdSet.add(cs.ANALYZE_c__c);
             codeGroupExIdSet.add(cs.ErrorCode_c__c);
             codeGroupExIdSet.add(cs.NoInvestJustif_c__c);
             userExIdSet.add(cs.CreatedById__c);
@@ -473,6 +473,10 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
 
             if(cs.ActionCode_c__c <> null && codeGroupExMap.get(cs.ActionCode_c__c) <> null && techComplaint) {
                 cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.ActionCode_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'ActionCode_c__c');
+            }
+            
+            if(cs.ANALYZE_c__c <> null && codeGroupExMap.get(cs.ANALYZE_c__c) <> null && techComplaint) {
+                cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, codeGroupExMap.get(cs.ANALYZE_c__c), caseOtherObjMappingList, codeGroupExObjAPIName, isInsert, 'ANALYZE_c__c');
             }
             
             if(cs.ErrorCode_c__c <> null && codeGroupExMap.get(cs.ErrorCode_c__c) <> null) {
