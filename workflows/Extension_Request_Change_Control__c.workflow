@@ -4,7 +4,7 @@
         <description>Extension Request Approval</description>
         <protected>false</protected>
         <recipients>
-            <field>Extension_Requester__c</field>
+            <field>Approver__c</field>
             <type>userLookup</type>
         </recipients>
         <senderType>CurrentUser</senderType>
