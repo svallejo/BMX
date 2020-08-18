@@ -226,6 +226,14 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Update_Analyze_Name</fullName>
+        <field>BMX_Analyze__c</field>
+        <name>Update Analyze Name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Update_Customer_Contact_Date_Field</fullName>
         <field>BMX_Customer_Contact_Date__c</field>
         <formula>BMX_Customer_Contact_Date_Time__c</formula>
@@ -444,6 +452,16 @@
             <operation>equals</operation>
             <value>Submit for Review</value>
         </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Analyze name on complaint</fullName>
+        <actions>
+            <name>Update_Analyze_Name</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISBLANK(BMX_ANALYZE_External__c)</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>

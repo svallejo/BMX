@@ -10590,6 +10590,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__CVR__c.Global_Assessment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__CVR__c.Title__c</field>
         <readable>true</readable>
     </fieldPermissions>

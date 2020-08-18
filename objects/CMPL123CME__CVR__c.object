@@ -139,6 +139,19 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>BMX_AER_Classification__c</fullName>
         <externalId>false</externalId>
@@ -436,8 +449,8 @@
     <fields>
         <fullName>BMX_Time_to_Notify_the_CA__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( ISBLANK(BMX_Approved_Date__c), '',
-TEXT(DATEVALUE(BMX_Approved_Date__c) - CMPL123CME__Related_Complaint__r.BMX_Customer_Contact_Date__c)
+        <formula>IF( ISBLANK( Global_Assessment__r.BMX_Revised_Awareness_Date__c ), TEXT((BMX_Date_of_Submission__c ) -  CMPL123CME__Related_Complaint__r.BMX_Customer_Contact_Date__c) ,
+TEXT((BMX_Date_of_Submission__c ) - Global_Assessment__r.BMX_Revised_Awareness_Date__c)
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Time to Notify the CA</label>
@@ -1320,6 +1333,28 @@ company identification number
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Global_Assessment__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Global Assessment</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>CMPL123CME__Questionnaire__c.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Global Assessment</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123CME__Questionnaire__c</referenceTo>
+        <relationshipLabel>CVR (Global Assessment)</relationshipLabel>
+        <relationshipName>CVR1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Title__c</fullName>
         <externalId>false</externalId>
         <label>Title</label>
@@ -1330,31 +1365,7 @@ company identification number
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <label>CVR</label>
-    <nameField>
-        <displayFormat>CVR-{0000}</displayFormat>
-        <label>CVR Number</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
-    </nameField>
-    <pluralLabel>CVR</pluralLabel>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
-    <searchLayouts />
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
     <listViews>
         <fullName>CMPL123CME__All</fullName>
         <columns>NAME</columns>
@@ -1364,6 +1375,14 @@ company identification number
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <nameField>
+        <displayFormat>CVR-{0000}</displayFormat>
+        <label>CVR Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>CVR</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>BMX_Lock_CVR</fullName>
         <active>true</active>
@@ -1533,6 +1552,8 @@ company identification number
             </values>
         </picklistValues>
     </recordTypes>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
     <validationRules>
         <fullName>Prevent_Creation_or_Edit_of_CVR</fullName>
         <active>false</active>
@@ -1542,6 +1563,7 @@ AND(ISNEW(),  CMPL123CME__Related_Complaint__r.CMPL123CME__CMPL123_WF_Status__c 
 CMPL123CME__Related_Complaint__r.CMPL123CME__CMPL123_WF_Status__c ='Closed')</errorConditionFormula>
         <errorMessage>Cannot create/edit a CVR for closed Complaint</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
     <webLinks>
         <fullName>CMPL123CME__Print</fullName>
         <availability>online</availability>
