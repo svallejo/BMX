@@ -1018,6 +1018,7 @@
             <label>When &quot;Cancel&quot; action is performed</label>
         </rules>
     </decisions>
+    <description>Update Global Assesment</description>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
@@ -1026,7 +1027,7 @@
 , 255) </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_1186423068</name>
+        <name>formula_2_myRule_1_A1_6513660351</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visitor_Street__c} +&quot;,&quot;+{!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visitor_City__c} +&quot;,&quot;+{!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.BMX_Visitor_State__c} +&quot;,&quot;+{!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visitor_Postal_Code__c} +&quot;,&quot;+{!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.Visitor_Country__c} 
 , 255)</expression>
@@ -1038,7 +1039,7 @@
                 <stringValue>LEFT([CMPL123CME__CVR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.BMX_Contact_Phone__c  + &quot; /&quot; +[CMPL123CME__CVR__c].BMX_Local_Assessment__c.CMPL123CME__Complaint__c.BMX_Contact_Email__c , 255) </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_9156763658</name>
+        <name>formula_3_myRule_1_A1_2329476708</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.BMX_Contact_Phone__c}  + &quot; /&quot; +{!myVariable_current.BMX_Local_Assessment__r.CMPL123CME__Complaint__r.BMX_Contact_Email__c} , 255)</expression>
     </formulas>
@@ -1070,7 +1071,7 @@ ISCHANGED({!myVariable_current.BMX_Due_Date__c} ) ,
 ISCHANGED({!myVariable_current.CMPL123CME__Type_of_Report__c}) 
 )</expression>
     </formulas>
-    <interviewLabel>CVR_Automations-4_InterviewLabel</interviewLabel>
+    <interviewLabel>CVR_Automations-5_InterviewLabel</interviewLabel>
     <label>CVR Automations</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -1678,7 +1679,7 @@ ISCHANGED({!myVariable_current.CMPL123CME__Type_of_Report__c})
             </processMetadataValues>
             <field>CMPL123CME__Address__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_1186423068</elementReference>
+                <elementReference>formula_2_myRule_1_A1_6513660351</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -2002,7 +2003,7 @@ ISCHANGED({!myVariable_current.CMPL123CME__Type_of_Report__c})
             </processMetadataValues>
             <field>CMPL123CME__Telephone_No_Email_Address__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_9156763658</elementReference>
+                <elementReference>formula_3_myRule_1_A1_2329476708</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -2477,7 +2478,7 @@ ISCHANGED({!myVariable_current.CMPL123CME__Type_of_Report__c})
         <object>CMPL123CME__CVR__c</object>
     </recordUpdates>
     <startElementReference>isChangedDecision8_myRule_7_CMPL123_WF_Action_c</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
