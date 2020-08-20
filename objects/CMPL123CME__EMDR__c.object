@@ -242,9 +242,8 @@
     <fields>
         <fullName>BMX_Time_to_Notify_the_CA__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( 
-ISBLANK(BMX_Approved_Date__c ), '',
-TEXT(DATEVALUE(BMX_Approved_Date__c) - CMPL123CME__Complaint__r.BMX_Customer_Contact_Date__c ) 
+        <formula>IF( ISBLANK( BMX_Local_Assessment__r.BMX_Global_Assessment__r.BMX_Revised_Awareness_Date__c ), TEXT((DATEVALUE (CMPL123CME__Submitted_Date_Time__c)) - CMPL123CME__Complaint__r.BMX_Customer_Contact_Date__c) ,
+TEXT((DATEVALUE (CMPL123CME__Submitted_Date_Time__c)) - BMX_Local_Assessment__r.BMX_Global_Assessment__r.BMX_Revised_Awareness_Date__c)
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Time to Notify the CA</label>
