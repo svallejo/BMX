@@ -25,7 +25,7 @@
             <name>BMX_Update_to_locked_Record_Type</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>CMPL123CME__MEDDEV__c.CMPL123_WF_Status__c</field>
             <operation>equals</operation>
