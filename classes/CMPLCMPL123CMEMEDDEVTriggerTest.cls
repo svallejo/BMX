@@ -12,7 +12,7 @@ public   class CMPLCMPL123CMEMEDDEVTriggerTest{
         insert complaint;
         
         CMPL123CME__Complaint_Code__c cmplntCode = new CMPL123CME__Complaint_Code__c(Local_Subsidiary_Text__c = 'test',
-                                                                                    CMPL123CME__Type__c	= 'COUNTRY CODE');
+                                                                                    CMPL123CME__Type__c = 'COUNTRY CODE');
         insert cmplntCode;
         
         String globalRTId = Schema.SObjectType.CMPL123CME__Questionnaire__c.getRecordTypeInfosByName().get('Global Assessment').getRecordTypeId();
@@ -23,6 +23,7 @@ public   class CMPLCMPL123CMEMEDDEVTriggerTest{
         globalRecord.BMX_Description_of_Issue__c = 'test';
         globalRecord.Local_Subsidiary_Text__c = 'test';
         globalRecord.BMX_Revised_Awareness_Date__c = Date.newInstance(2018, 12, 8);
+        globalRecord.BMX_Justification_of_Due_Date_Change__c = 'test';
         insert globalRecord;
         system.debug('==globalRecord=='+globalRecord);
         
