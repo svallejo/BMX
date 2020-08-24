@@ -248,6 +248,24 @@
     </fields>
     <label>Workflow Rule</label>
     <listViews>
+        <fullName>Active_Workflow_rules</fullName>
+        <columns>NAME</columns>
+        <columns>CMPL123__Description__c</columns>
+        <columns>CMPL123__Record_Type__c</columns>
+        <columns>CMPL123__Is_Active__c</columns>
+        <columns>CMPL123__Target_Object_API_Name__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CMPL123__Is_Active__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Active Workflow rules</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
         <fullName>CMPL123__All</fullName>
         <columns>NAME</columns>
         <columns>CMPL123__Description__c</columns>
