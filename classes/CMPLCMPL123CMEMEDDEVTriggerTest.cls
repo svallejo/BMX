@@ -32,6 +32,7 @@ public   class CMPLCMPL123CMEMEDDEVTriggerTest{
         localRecord.RecordTypeId = localRTId;
         localRecord.BMX_Global_Assessment__c = globalRecord.Id;
         localRecord.BMX_Reportable_Country2__c = cmplntCode.Id;
+        localRecord.BMX_Justification_of_Report_Due_Change__c = 'test';
         system.debug('==localRecord=='+localRecord);
         insert localRecord;
         

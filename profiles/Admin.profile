@@ -4504,6 +4504,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ContentDocumentLinkTrigger_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ContentDocumentLinkValidator</apexClass>
         <enabled>true</enabled>
     </classAccesses>
