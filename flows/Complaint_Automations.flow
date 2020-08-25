@@ -1449,7 +1449,7 @@
                 <stringValue>[CMPL123CME__Complaint__c].BMX_Customer_Contact_Date__c +20</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_21_myRule_20_A1_4183429092</name>
+        <name>formula_21_myRule_20_A1_6569649844</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.BMX_Customer_Contact_Date__c} +20</expression>
     </formulas>
@@ -1460,7 +1460,7 @@
                 <stringValue>[CMPL123CME__Complaint__c].BMX_Customer_Contact_Date__c + 10</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_24_myRule_23_A1_7407755924</name>
+        <name>formula_24_myRule_23_A1_4916223484</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.BMX_Customer_Contact_Date__c} + 10</expression>
     </formulas>
@@ -1471,7 +1471,7 @@
                 <stringValue>[CMPL123CME__Complaint__c].BMX_Customer_Contact_Date__c + 1 </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_29_myRule_26_A1_7516867631</name>
+        <name>formula_29_myRule_26_A1_6753538038</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.BMX_Customer_Contact_Date__c} + 1</expression>
     </formulas>
@@ -1482,7 +1482,7 @@
                 <stringValue>IF([CMPL123CME__Complaint__c].BMX_Investigation__c.CMPL123_WF_Status__c = &quot;Closed - Done&quot;, TODAY(), NULL)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_9_myRule_7_A1_3967717751</name>
+        <name>formula_9_myRule_7_A1_1640285865</name>
         <dataType>Date</dataType>
         <expression>IF({!myVariable_current.BMX_Investigation__r.CMPL123_WF_Status__c} = &quot;Closed - Done&quot;, TODAY(), NULL)</expression>
     </formulas>
@@ -1644,14 +1644,46 @@ OR ( ISCHANGED([CMPL123CME__Complaint__c].Visitor_Country__c) ,
 
 	OR(
 	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;AUSTRIA&apos;,
-	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;FRENCH GUIANA&apos;,
-	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;FRENCH POLYNESIA&apos;,
-	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;FRENCH SOUTHERN AND ANTARCTIC LANDS&apos;,
-	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;GUADELOUPE&apos; ,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;BELGIUM&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;BULGARIA&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;SWITZERLAND&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;CYPRUS&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;CZECHREPUBLIC&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;GERMANY&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;DENMARK&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;SPAIN&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;ESTONIA&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;FINLAND&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;FRANCE&apos;,
+        UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;FRENCH POLYNESIA&apos;,
+        UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;FRENCH GUIANA&apos;,
+        UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;FRENCH SOUTHERN AND ANTARCTIC LANDS&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;UNITED KINGDOM&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;GREECE&apos;,
+        UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;GUADELOUPE&apos; ,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;CROATIA&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;HUNGARY&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;IRELAND&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;ICELAND&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;ITALY&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;LIECHTENSTEIN&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;LITHUANIA&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;LUXEMBOURG&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;LATVIA&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;MALTA&apos;,
         UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;MARTINIQUE&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;NETHERLANDS&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;NORWAY&apos;,
         UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;NEW CALEDONIA&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;POLAND&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;PORTUGAL&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;ROMANIA&apos;,
         UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;REUNION&apos;,
-        UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;SAN MARINO&apos;
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;SLOVAKIA&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;SLOVENIA&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;SWEDEN&apos;,
+        UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;SAN MARINO&apos;,
+	UPPER([CMPL123CME__Complaint__c].Visitor_Country__c) =&apos;TURKEY&apos;
 	)
 
 )</stringValue>
@@ -1679,14 +1711,46 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
 
 	OR(
 	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;AUSTRIA&apos;,
-	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;FRENCH GUIANA&apos;,
-	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;FRENCH POLYNESIA&apos;,
-	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;FRENCH SOUTHERN AND ANTARCTIC LANDS&apos;,
-	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;GUADELOUPE&apos; ,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;BELGIUM&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;BULGARIA&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;SWITZERLAND&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;CYPRUS&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;CZECHREPUBLIC&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;GERMANY&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;DENMARK&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;SPAIN&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;ESTONIA&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;FINLAND&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;FRANCE&apos;,
+        UPPER({!myVariable_current.Visitor_Country__c}) =&apos;FRENCH POLYNESIA&apos;,
+        UPPER({!myVariable_current.Visitor_Country__c}) =&apos;FRENCH GUIANA&apos;,
+        UPPER({!myVariable_current.Visitor_Country__c}) =&apos;FRENCH SOUTHERN AND ANTARCTIC LANDS&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;UNITED KINGDOM&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;GREECE&apos;,
+        UPPER({!myVariable_current.Visitor_Country__c}) =&apos;GUADELOUPE&apos; ,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;CROATIA&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;HUNGARY&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;IRELAND&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;ICELAND&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;ITALY&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;LIECHTENSTEIN&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;LITHUANIA&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;LUXEMBOURG&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;LATVIA&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;MALTA&apos;,
         UPPER({!myVariable_current.Visitor_Country__c}) =&apos;MARTINIQUE&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;NETHERLANDS&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;NORWAY&apos;,
         UPPER({!myVariable_current.Visitor_Country__c}) =&apos;NEW CALEDONIA&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;POLAND&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;PORTUGAL&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;ROMANIA&apos;,
         UPPER({!myVariable_current.Visitor_Country__c}) =&apos;REUNION&apos;,
-        UPPER({!myVariable_current.Visitor_Country__c}) =&apos;SAN MARINO&apos;
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;SLOVAKIA&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;SLOVENIA&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;SWEDEN&apos;,
+        UPPER({!myVariable_current.Visitor_Country__c}) =&apos;SAN MARINO&apos;,
+	UPPER({!myVariable_current.Visitor_Country__c}) =&apos;TURKEY&apos;
 	)
 
 )</expression>
@@ -1713,7 +1777,7 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
         <dataType>Boolean</dataType>
         <expression>AND((PRIORVALUE({!myVariable_old.BMX_PRE__c})=  &apos;Yes&apos;), ISPICKVAL({!myVariable_old.BMX_PRE__c} , &apos;No&apos;) )</expression>
     </formulas>
-    <interviewLabel>Complaint_Automations-6_InterviewLabel</interviewLabel>
+    <interviewLabel>Complaint_Automations-7_InterviewLabel</interviewLabel>
     <label>Complaint Automations</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -2082,7 +2146,7 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
             </processMetadataValues>
             <field>BMX_Due_Date__c</field>
             <value>
-                <elementReference>formula_21_myRule_20_A1_4183429092</elementReference>
+                <elementReference>formula_21_myRule_20_A1_6569649844</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Questionnaire__c</object>
@@ -2263,7 +2327,7 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
             </processMetadataValues>
             <field>BMX_Due_Date__c</field>
             <value>
-                <elementReference>formula_24_myRule_23_A1_7407755924</elementReference>
+                <elementReference>formula_24_myRule_23_A1_4916223484</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Questionnaire__c</object>
@@ -2444,7 +2508,7 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
             </processMetadataValues>
             <field>BMX_Due_Date__c</field>
             <value>
-                <elementReference>formula_29_myRule_26_A1_7516867631</elementReference>
+                <elementReference>formula_29_myRule_26_A1_6753538038</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Questionnaire__c</object>
@@ -2827,7 +2891,7 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
             </processMetadataValues>
             <field>BMX_Related_Investigation_linked_Date__c</field>
             <value>
-                <elementReference>formula_9_myRule_7_A1_3967717751</elementReference>
+                <elementReference>formula_9_myRule_7_A1_1640285865</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Complaint__c</object>

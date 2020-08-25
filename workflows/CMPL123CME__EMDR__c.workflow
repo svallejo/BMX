@@ -4,7 +4,7 @@
         <description>Notify RQC US Approver  User Group when emdr is WF status as Review In Progress</description>
         <protected>false</protected>
         <recipients>
-            <recipient>BMX_RQC_Approver</recipient>
+            <recipient>BMX_US_Approver</recipient>
             <type>group</type>
         </recipients>
         <senderType>CurrentUser</senderType>
