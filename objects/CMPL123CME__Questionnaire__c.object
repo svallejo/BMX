@@ -9213,7 +9213,7 @@ ISBLANK( BMX_Local_Assessment_Country_4__c)
         <fullName>Report_Due_to_Authority_Change</fullName>
         <active>true</active>
         <description>if Report Due to authority is changed  then Justification of Due Date Change field is mandatory</description>
-        <errorConditionFormula>AND(ISCHANGED(BMX_Report_Due_to_Authority__c), (ISBLANK(BMX_Justification_of_Report_Due_Change__c)))</errorConditionFormula>
+        <errorConditionFormula>AND(ISCHANGED(BMX_Report_Due_to_Authority__c), (NOT(ISNULL(CreatedDate)) || NOT(ISBLANK(OwnerId))), ISBLANK(BMX_Justification_of_Report_Due_Change__c) )</errorConditionFormula>
         <errorMessage>if the Report Due to authority is changed then Justification of Report Due Change is mandatory</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
