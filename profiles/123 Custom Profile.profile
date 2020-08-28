@@ -10113,6 +10113,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__EU_MIR__c.EUMIR_support__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__EU_MIR__c.Investigation_Evaluation__c</field>
         <readable>true</readable>
     </fieldPermissions>
