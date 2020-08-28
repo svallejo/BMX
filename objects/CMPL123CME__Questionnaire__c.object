@@ -9147,7 +9147,7 @@ If( CMPL123CME__Total_Score__c  &gt;  1, 'Local Assessment','Not Reportable')
     <sharingModel>Private</sharingModel>
     <validationRules>
         <fullName>Due_Date_change</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>if Due Date is changed  - Justification
 of Due Date Change field is mandatory</description>
         <errorConditionFormula>AND(ISCHANGED(BMX_Due_Date__c), (ISBLANK(BMX_Justification_of_Due_Date_Change__c)))</errorConditionFormula>
