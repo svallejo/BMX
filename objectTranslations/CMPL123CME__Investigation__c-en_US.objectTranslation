@@ -940,6 +940,10 @@
     </recordTypes>
     <validationRules>
         <errorMessage><!-- If Annex B Contains the picklist &quot;B21 - Type of Investigation Not Yet Determined&quot; Investigation cannot be closed --></errorMessage>
+        <name>Annex_BCD_Code_choice_should_not_be_in_B</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If Annex B Contains the picklist &quot;B21 - Type of Investigation Not Yet Determined&quot; Investigation cannot be closed --></errorMessage>
         <name>Annex_B_Code_choice_should_not_be_in_B21</name>
     </validationRules>
     <validationRules>
@@ -1001,6 +1005,10 @@
     <validationRules>
         <errorMessage><!-- Complete Investigation Steps --></errorMessage>
         <name>Check_Investigation_Steps_are_Completed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Root cause/conclusion 1 is mandatory before closing the investigation --></errorMessage>
+        <name>Conclusion_1_is_mandatory</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- One of the Expert investigator is required. --></errorMessage>

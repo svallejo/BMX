@@ -20,7 +20,7 @@
         <actionName>Assign_Global_Assessment_Due_Date</actionName>
         <actionType>flow</actionType>
         <connector>
-            <targetReference>myRule_1_A3</targetReference>
+            <targetReference>myWait_myRule_1</targetReference>
         </connector>
         <inputParameters>
             <processMetadataValues>
@@ -66,6 +66,22 @@
         </inputParameters>
     </actionCalls>
     <assignments>
+        <name>myWaitAssignment_myWait_myRule_1</name>
+        <label>myWaitAssignment_myWait_myRule_1</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>cancelWaits</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>myWait_myRule_1</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>myWaitAssignment_myWait_myRule_18</name>
         <label>myWaitAssignment_myWait_myRule_18</label>
         <locationX>0</locationX>
@@ -94,7 +110,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>myDecision</targetReference>
+            <targetReference>myPreWaitDecision_myWait_myRule_1</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -111,6 +127,22 @@
         </assignmentItems>
         <connector>
             <targetReference>myWait_myRule_18</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>myWaitEvent_myWait_myRule_1_event_0_postWaitExecutionAssignment</name>
+        <label>myWaitEvent_myWait_myRule_1_event_0_postWaitExecutionAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myWaitEvent_myWait_myRule_1_event_0_postActionExecutionVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myWait_myRule_1</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -315,7 +347,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_1_A1</targetReference>
+                <targetReference>myRule_1_pmetdec</targetReference>
             </connector>
             <label>New Global Assessment</label>
         </rules>
@@ -1612,6 +1644,31 @@
         </rules>
     </decisions>
     <decisions>
+        <name>myPostWaitDecision_myWaitEvent_myWait_myRule_1_event_0</name>
+        <label>myPostWaitDecision_myWaitEvent_myWait_myRule_1_event_0</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitEvent_myWait_myRule_1_event_0_postWaitExecutionAssignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPostWaitRule_myWaitEvent_myWait_myRule_1_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_current.CreatedDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myWaitEvent_myWait_myRule_1_event_0_SA1</targetReference>
+            </connector>
+            <label>myPostWaitRule_myWaitEvent_myWait_myRule_1_event_0</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>myPostWaitDecision_myWaitEvent_myWait_myRule_3_event_0</name>
         <label>myPostWaitDecision_myWaitEvent_myWait_myRule_3_event_0</label>
         <locationX>0</locationX>
@@ -1634,6 +1691,31 @@
                 <targetReference>myWaitEvent_myWait_myRule_3_event_0_SA1</targetReference>
             </connector>
             <label>myPostWaitRule_myWaitEvent_myWait_myRule_3_event_0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myPreWaitDecision_myWait_myRule_1</name>
+        <label>myPreWaitDecision_myWait_myRule_1</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitAssignment_myWait_myRule_1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPreWaitRule_myWait_myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myDecision</targetReference>
+            </connector>
+            <label>myPreWaitRule_myWait_myRule_1</label>
         </rules>
     </decisions>
     <decisions>
@@ -1798,7 +1880,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myDecision</targetReference>
+                <targetReference>myPreWaitDecision_myWait_myRule_1</targetReference>
             </connector>
             <label>myPreWaitRule_myWait_myRule_3</label>
         </rules>
@@ -1958,6 +2040,43 @@
         </rules>
     </decisions>
     <decisions>
+        <name>myRule_1_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_1_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_1_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>myRule_3_pmetdec</name>
         <label>Previously Met Decision</label>
         <locationX>300</locationX>
@@ -2002,7 +2121,7 @@
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Product_Name__c , 80)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_19_myWaitEvent_myWait_myRule_18_event_0_SA1_9401385091</name>
+        <name>formula_19_myWaitEvent_myWait_myRule_18_event_0_SA1_0835669012</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Product_Name__c} , 80)</expression>
     </formulas>
@@ -2013,7 +2132,7 @@
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Product_Name__c ,80)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_20_myWaitEvent_myWait_myRule_18_event_0_SA1_5294902311</name>
+        <name>formula_20_myWaitEvent_myWait_myRule_18_event_0_SA1_2857109376</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Product_Name__c} ,80)</expression>
     </formulas>
@@ -2024,7 +2143,7 @@
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Material_Code__c ,30 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_21_myWaitEvent_myWait_myRule_18_event_0_SA1_2701107681</name>
+        <name>formula_21_myWaitEvent_myWait_myRule_18_event_0_SA1_7379815623</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Material_Code__c} ,30 )</expression>
     </formulas>
@@ -2036,7 +2155,7 @@
 </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_22_myWaitEvent_myWait_myRule_18_event_0_SA1_4109905594</name>
+        <name>formula_22_myWaitEvent_myWait_myRule_18_event_0_SA1_7118200898</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Batch_Number_Reagent__c} , 100)</expression>
     </formulas>
@@ -2047,7 +2166,7 @@
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Serial_Number_Asset__c,30 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_23_myWaitEvent_myWait_myRule_18_event_0_SA1_0586942533</name>
+        <name>formula_23_myWaitEvent_myWait_myRule_18_event_0_SA1_5041447513</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Serial_Number_Asset__c},30 )</expression>
     </formulas>
@@ -2058,7 +2177,7 @@
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Street__c,30 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_24_myWaitEvent_myWait_myRule_18_event_0_SA1_9119169542</name>
+        <name>formula_24_myWaitEvent_myWait_myRule_18_event_0_SA1_6103808902</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Street__c},30 )</expression>
     </formulas>
@@ -2069,7 +2188,7 @@
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_City__c,30 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_25_myWaitEvent_myWait_myRule_18_event_0_SA1_1162665831</name>
+        <name>formula_25_myWaitEvent_myWait_myRule_18_event_0_SA1_3381215610</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.Visitor_City__c},30 )</expression>
     </formulas>
@@ -2080,7 +2199,7 @@
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Address_Name__c ,50)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_26_myWaitEvent_myWait_myRule_18_event_0_SA1_8782443072</name>
+        <name>formula_26_myWaitEvent_myWait_myRule_18_event_0_SA1_9702090242</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Address_Name__c} ,50)</expression>
     </formulas>
@@ -2094,7 +2213,7 @@
 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_27_myWaitEvent_myWait_myRule_18_event_0_SA1_5701181644</name>
+        <name>formula_27_myWaitEvent_myWait_myRule_18_event_0_SA1_1341606004</name>
         <dataType>String</dataType>
         <expression>IF(
      AND({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} &lt;&gt; null , UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}) == &quot;UNITED STATES&quot;),
@@ -2111,7 +2230,7 @@ UPPER([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.Visitor_Country__c
 </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_28_myWaitEvent_myWait_myRule_18_event_0_SA1_7583197186</name>
+        <name>formula_28_myWaitEvent_myWait_myRule_18_event_0_SA1_7773435190</name>
         <dataType>String</dataType>
         <expression>IF(
 AND( {!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}   &lt;&gt; null, 
@@ -2124,7 +2243,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_UDI_Code__c ,150)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_29_myWaitEvent_myWait_myRule_18_event_0_SA1_9216677722</name>
+        <name>formula_29_myWaitEvent_myWait_myRule_18_event_0_SA1_5809596906</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_UDI_Code__c} ,150)</expression>
     </formulas>
@@ -2137,7 +2256,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
 </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_34_myRule_33_A1_9631427939</name>
+        <name>formula_34_myRule_33_A1_3782990595</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Street__c}  +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_City__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.BMX_Visitor_State__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_Postal_Code__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c} 
 , 255)</expression>
@@ -2149,7 +2268,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>LEFT([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Contact_Phone__c  + &quot; /&quot; +[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Contact_Email__c , 255) </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_35_myRule_33_A1_6834942896</name>
+        <name>formula_35_myRule_33_A1_7510625063</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.BMX_Contact_Phone__c}  + &quot; /&quot; +{!myVariable_current.CMPL123CME__Complaint__r.BMX_Contact_Email__c} , 255)</expression>
     </formulas>
@@ -2162,7 +2281,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
 </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_38_myRule_37_A1_0303499398</name>
+        <name>formula_38_myRule_37_A1_7475686576</name>
         <dataType>String</dataType>
         <expression>LEFT({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Street__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_City__c}  +&quot;,&quot;+
 {!myVariable_current.CMPL123CME__Complaint__r.BMX_Visitor_State__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_Postal_Code__c} +&quot;,&quot;+{!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  , 255)</expression>
@@ -2174,7 +2293,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>IF (ISBLANK([CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Batch_Number_Reagent__c ) ,[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Serial_Number_Asset__c  ,[CMPL123CME__Questionnaire__c].CMPL123CME__Complaint__c.BMX_Batch_Number_Reagent__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_39_myRule_37_A1_2316978574</name>
+        <name>formula_39_myRule_37_A1_0737757398</name>
         <dataType>String</dataType>
         <expression>IF (ISBLANK({!myVariable_current.CMPL123CME__Complaint__r.BMX_Batch_Number_Reagent__c} ) ,{!myVariable_current.CMPL123CME__Complaint__r.BMX_Serial_Number_Asset__c}  ,{!myVariable_current.CMPL123CME__Complaint__r.BMX_Batch_Number_Reagent__c} )</expression>
     </formulas>
@@ -2185,7 +2304,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
                 <stringValue>IF([CMPL123CME__Questionnaire__c].BMX_Global_Assessment__c.CMPL123CME__Complaint__c.Is_Death_Harmed__c , [CMPL123CME__Questionnaire__c].BMX_Global_Assessment__c.Awareness_Date__c +1, IF([CMPL123CME__Questionnaire__c].BMX_Reportable_Country2__c.BMX_Is_Meddev__c , [CMPL123CME__Questionnaire__c].BMX_Global_Assessment__c.Awareness_Date__c +15, [CMPL123CME__Questionnaire__c].BMX_Global_Assessment__c.Awareness_Date__c + 30))</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_3_A1_3827586028</name>
+        <name>formula_4_myRule_3_A1_9942373551</name>
         <dataType>Date</dataType>
         <expression>IF({!myVariable_current.BMX_Global_Assessment__r.CMPL123CME__Complaint__r.Is_Death_Harmed__c} , {!myVariable_current.BMX_Global_Assessment__r.Awareness_Date__c} +1, IF({!myVariable_current.BMX_Reportable_Country2__r.BMX_Is_Meddev__c} , {!myVariable_current.BMX_Global_Assessment__r.Awareness_Date__c} +15, {!myVariable_current.BMX_Global_Assessment__r.Awareness_Date__c} + 30))</expression>
     </formulas>
@@ -2199,6 +2318,17 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
         <expression>ISNEW() &amp;&amp; {!myVariable_current.RecordType.DeveloperName} = &quot;Global_Assessment&quot;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>ISNEW() &amp;&amp; [CMPL123CME__Questionnaire__c].RecordType.DeveloperName = &quot;Global_Assessment&quot;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW() &amp;&amp; {!myVariable_old.RecordType.DeveloperName} = &quot;Global_Assessment&quot;</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
@@ -2222,7 +2352,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
         <dataType>Boolean</dataType>
         <expression>ISNEW() &amp;&amp; {!myVariable_old.RecordType.DeveloperName} = &quot;Local_Assessment&quot;</expression>
     </formulas>
-    <interviewLabel>Assessment_Automations-12_InterviewLabel</interviewLabel>
+    <interviewLabel>Assessment_Automations-13_InterviewLabel</interviewLabel>
     <label>Assessment Automations</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -3092,7 +3222,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__Address__c</field>
             <value>
-                <elementReference>formula_34_myRule_33_A1_9631427939</elementReference>
+                <elementReference>formula_34_myRule_33_A1_3782990595</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3416,7 +3546,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__Telephone_No_Email_Address__c</field>
             <value>
-                <elementReference>formula_35_myRule_33_A1_6834942896</elementReference>
+                <elementReference>formula_35_myRule_33_A1_7510625063</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3783,7 +3913,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__Healthcare_Facility_Address__c</field>
             <value>
-                <elementReference>formula_38_myRule_37_A1_0303499398</elementReference>
+                <elementReference>formula_38_myRule_37_A1_7475686576</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3999,7 +4129,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__Ser_or_Lot__c</field>
             <value>
-                <elementReference>formula_39_myRule_37_A1_2316978574</elementReference>
+                <elementReference>formula_39_myRule_37_A1_0737757398</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__TGA__c</object>
@@ -4988,7 +5118,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__D1_Brand_Name__c</field>
             <value>
-                <elementReference>formula_19_myWaitEvent_myWait_myRule_18_event_0_SA1_9401385091</elementReference>
+                <elementReference>formula_19_myWaitEvent_myWait_myRule_18_event_0_SA1_0835669012</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -5024,7 +5154,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__D2_Common_Device_Name__c</field>
             <value>
-                <elementReference>formula_20_myWaitEvent_myWait_myRule_18_event_0_SA1_5294902311</elementReference>
+                <elementReference>formula_20_myWaitEvent_myWait_myRule_18_event_0_SA1_2857109376</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -5060,7 +5190,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__D4_Catalog_No__c</field>
             <value>
-                <elementReference>formula_21_myWaitEvent_myWait_myRule_18_event_0_SA1_2701107681</elementReference>
+                <elementReference>formula_21_myWaitEvent_myWait_myRule_18_event_0_SA1_7379815623</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -5132,7 +5262,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__D4_Lot_No__c</field>
             <value>
-                <elementReference>formula_22_myWaitEvent_myWait_myRule_18_event_0_SA1_4109905594</elementReference>
+                <elementReference>formula_22_myWaitEvent_myWait_myRule_18_event_0_SA1_7118200898</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -5168,7 +5298,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__D4_Serial_No__c</field>
             <value>
-                <elementReference>formula_23_myWaitEvent_myWait_myRule_18_event_0_SA1_0586942533</elementReference>
+                <elementReference>formula_23_myWaitEvent_myWait_myRule_18_event_0_SA1_5041447513</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -5204,7 +5334,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__E1_Address_1__c</field>
             <value>
-                <elementReference>formula_24_myWaitEvent_myWait_myRule_18_event_0_SA1_9119169542</elementReference>
+                <elementReference>formula_24_myWaitEvent_myWait_myRule_18_event_0_SA1_6103808902</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -5240,7 +5370,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__E1_City__c</field>
             <value>
-                <elementReference>formula_25_myWaitEvent_myWait_myRule_18_event_0_SA1_1162665831</elementReference>
+                <elementReference>formula_25_myWaitEvent_myWait_myRule_18_event_0_SA1_3381215610</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -5276,7 +5406,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__E1_Facility_Name__c</field>
             <value>
-                <elementReference>formula_26_myWaitEvent_myWait_myRule_18_event_0_SA1_8782443072</elementReference>
+                <elementReference>formula_26_myWaitEvent_myWait_myRule_18_event_0_SA1_9702090242</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -5312,7 +5442,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__E1_Postal_Code__c</field>
             <value>
-                <elementReference>formula_27_myWaitEvent_myWait_myRule_18_event_0_SA1_5701181644</elementReference>
+                <elementReference>formula_27_myWaitEvent_myWait_myRule_18_event_0_SA1_1341606004</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -5348,7 +5478,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__E1_Zip_Code__c</field>
             <value>
-                <elementReference>formula_28_myWaitEvent_myWait_myRule_18_event_0_SA1_7583197186</elementReference>
+                <elementReference>formula_28_myWaitEvent_myWait_myRule_18_event_0_SA1_7773435190</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -5528,7 +5658,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>CMPL123CME__Unique_Identifier_UDI__c</field>
             <value>
-                <elementReference>formula_29_myWaitEvent_myWait_myRule_18_event_0_SA1_9216677722</elementReference>
+                <elementReference>formula_29_myWaitEvent_myWait_myRule_18_event_0_SA1_5809596906</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__EMDR__c</object>
@@ -6188,83 +6318,6 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
         <processMetadataValues>
             <name>referenceTargetField</name>
         </processMetadataValues>
-        <name>myRule_1_A3</name>
-        <label>Remove justification due date</label>
-        <locationX>100</locationX>
-        <locationY>400</locationY>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Justification of Due Date Change</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>GlobalConstant</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>BMX_Justification_of_Due_Date_Change__c</field>
-        </inputAssignments>
-        <object>CMPL123CME__Questionnaire__c</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>extraTypeInfo</name>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[CMPL123CME__Questionnaire__c]</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>referenceTargetField</name>
-        </processMetadataValues>
         <name>myRule_3_A1</name>
         <label>Local Assessment Autopopulations</label>
         <locationX>300</locationX>
@@ -6390,7 +6443,7 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
             </processMetadataValues>
             <field>BMX_Report_Due_to_Authority__c</field>
             <value>
-                <elementReference>formula_4_myRule_3_A1_3827586028</elementReference>
+                <elementReference>formula_4_myRule_3_A1_9942373551</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -6786,6 +6839,132 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
         <processMetadataValues>
             <name>evaluationType</name>
             <value>
+                <stringValue>criteria</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[CMPL123CME__Questionnaire__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myWaitEvent_myWait_myRule_1_event_0_SA1</name>
+        <label>Remove justification Due Date</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myWaitEvent_myWait_myRule_1_event_0_postWaitExecutionAssignment</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>inputDataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Due Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>operatorDataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>GlobalConstant</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Due_Date__c</field>
+            <operator>NotEqualTo</operator>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Justification of Due Date Change</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>GlobalConstant</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Justification_of_Due_Date_Change__c</field>
+        </inputAssignments>
+        <object>CMPL123CME__Questionnaire__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
                 <stringValue>always</stringValue>
             </value>
         </processMetadataValues>
@@ -6901,6 +7080,16 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
         </value>
     </variables>
     <variables>
+        <name>myWaitEvent_myWait_myRule_1_event_0_postActionExecutionVariable</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
         <name>myWaitEvent_myWait_myRule_3_event_0_postActionExecutionVariable</name>
         <dataType>Boolean</dataType>
         <isCollection>false</isCollection>
@@ -6918,6 +7107,65 @@ UPPER({!myVariable_current.CMPL123CME__Complaint__r.Visitor_Country__c}  ) == &q
         <isOutput>false</isOutput>
         <scale>2</scale>
     </variables>
+    <waits>
+        <name>myWait_myRule_1</name>
+        <label>myWait_myRule_1</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>defaultLabel</defaultConnectorLabel>
+        <waitEvents>
+            <processMetadataValues>
+                <name>inputParameterType</name>
+                <value>
+                    <stringValue>referenced</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>myWaitEvent_myWait_myRule_1_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myWaitEvent_myWait_myRule_1_event_0_postActionExecutionVariable</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myPostWaitDecision_myWaitEvent_myWait_myRule_1_event_0</targetReference>
+            </connector>
+            <eventType>DateRefAlarmEvent</eventType>
+            <inputParameters>
+                <name>TimeTableColumnEnumOrId</name>
+                <value>
+                    <stringValue>CMPL123CME__Questionnaire__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>EntityObjectId</name>
+                <value>
+                    <elementReference>myVariable_current.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffsetUnit</name>
+                <value>
+                    <stringValue>Hours</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffset</name>
+                <value>
+                    <numberValue>0.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeFieldColumnEnumOrId</name>
+                <value>
+                    <stringValue>CreatedDate</stringValue>
+                </value>
+            </inputParameters>
+            <label>myWaitEvent_myWait_myRule_1_event_0</label>
+        </waitEvents>
+    </waits>
     <waits>
         <name>myWait_myRule_18</name>
         <label>myWait_myRule_18</label>
