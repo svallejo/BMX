@@ -12079,23 +12079,22 @@ ISPICKVAL(B_Investigation_Type_Code_Choice_3__c	, 'B21 - Type of Investigation N
 ),
 
 OR(
+C_Investigation_Findings_Code_Choice1__c&lt;&gt;'C21 - Results Pending Completion of Investigation',
+C_Investigation_Findings_Code_Choice2__c&lt;&gt;'C21 - Results Pending Completion of Investigation',
+C_Investigation_Findings_Code_Choice3__c&lt;&gt;'C21 - Results Pending Completion of Investigation'
 
-CONTAINS(C_Investigation_Findings_Code_Choice1__c,'C21 - Results Pending Completion of Investigation'),
-CONTAINS(C_Investigation_Findings_Code_Choice2__c,'C21 - Results Pending Completion of Investigation'),
-CONTAINS(C_Investigation_Findings_Code_Choice3__c,'C21 - Results Pending Completion of Investigation')
 
 ),
 
 OR(
 
-CONTAINS(D_Investigation_Conclusion_Choice1__c,'D16 - Conclusion Not Yet Available'),
-CONTAINS(D_Investigation_Conclusion_Choice2__c,'D16 - Conclusion Not Yet Available'),
-CONTAINS(D_Investigation_Conclusion_Choice3__c,'D16 - Conclusion Not Yet Available')
-
+D_Investigation_Conclusion_Choice1__c&lt;&gt;'D16 - Conclusion Not Yet Available',
+D_Investigation_Conclusion_Choice2__c&lt;&gt;'D16 - Conclusion Not Yet Available',
+D_Investigation_Conclusion_Choice3__c&lt;&gt;'D16 - Conclusion Not Yet Available'
  )
 )</errorConditionFormula>
         <errorDisplayField>BMX_Additional_Information__c</errorDisplayField>
-        <errorMessage>If Annex B Contains the picklist "B21 - Type of Investigation Not Yet Determined" Investigation cannot be closed</errorMessage>
+        <errorMessage>If Annex BCD Contains the picklist "B21  - Type of Investigation Not Yet Determined" Investigation cannot be closed</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Annex_B_Code_choice_should_not_be_in_B21</fullName>
@@ -12235,7 +12234,7 @@ CMPL123CME__Complaint__r.CMPL123CME__CMPL123_WF_Status__c ='Closed')</errorCondi
         <fullName>Conclusion_1_is_mandatory</fullName>
         <active>true</active>
         <description>Root cause/conclusion 1 is mandatory before closing the investigation</description>
-        <errorConditionFormula>AND((CMPL123_WF_Status__c = 'Complete Investigation'),
+        <errorConditionFormula>AND(( CMPL123_WF_Action__c  = 'Complete Investigation'),
 ISBLANK(D_Investigation_Conclusion_Choice1__c))</errorConditionFormula>
         <errorMessage>Root cause/conclusion 1 is mandatory before closing the investigation</errorMessage>
     </validationRules>
