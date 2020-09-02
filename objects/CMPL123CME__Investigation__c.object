@@ -12065,6 +12065,39 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>
+        <fullName>Annex_BCD_Code_choice_should_not_B21_C21</fullName>
+        <active>true</active>
+        <description>If Annex BCD Contains the value "B21  , C21 ,D16 then Investigation cannot be closed</description>
+        <errorConditionFormula>AND(
+
+(CMPL123_WF_Status__c = 'Complete Investigation'),
+
+OR(
+
+ISPICKVAL(B_Investigation_Type_Code_Choice_1__c, 'B21 - Type of Investigation Not Yet Determined'),
+ISPICKVAL(B_Investigation_Type_Code_Choice_2__c	, 'B21 - Type of Investigation Not Yet Determined'),
+ISPICKVAL(B_Investigation_Type_Code_Choice_3__c	, 'B21 - Type of Investigation Not Yet Determined')
+),
+
+OR(
+C_Investigation_Findings_Code_Choice1__c&lt;&gt;'C21 - Results Pending Completion of Investigation',
+C_Investigation_Findings_Code_Choice2__c&lt;&gt;'C21 - Results Pending Completion of Investigation',
+C_Investigation_Findings_Code_Choice3__c&lt;&gt;'C21 - Results Pending Completion of Investigation'
+
+
+),
+
+OR(
+
+D_Investigation_Conclusion_Choice1__c&lt;&gt;'D16 - Conclusion Not Yet Available',
+D_Investigation_Conclusion_Choice2__c&lt;&gt;'D16 - Conclusion Not Yet Available',
+D_Investigation_Conclusion_Choice3__c&lt;&gt;'D16 - Conclusion Not Yet Available'
+ )
+)</errorConditionFormula>
+        <errorDisplayField>BMX_Additional_Information__c</errorDisplayField>
+        <errorMessage>If Annex BCD Contains the picklist "B21  - Type of Investigation Not Yet Determined" Investigation cannot be closed</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Annex_BCD_Code_choice_should_not_be_in_B</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
@@ -12098,7 +12131,7 @@ D_Investigation_Conclusion_Choice3__c&lt;&gt;'D16 - Conclusion Not Yet Available
     </validationRules>
     <validationRules>
         <fullName>Annex_B_Code_choice_should_not_be_in_B21</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND((CMPL123_WF_Status__c = 'Complete Investigation'),
 OR(
 ISPICKVAL(B_Investigation_Type_Code_Choice_1__c, 'B21 - Type of Investigation Not Yet Determined'),
@@ -12108,7 +12141,7 @@ ISPICKVAL(B_Investigation_Type_Code_Choice_3__c	, 'B21 - Type of Investigation N
     </validationRules>
     <validationRules>
         <fullName>Annex_C_Code_choice_should_not_be_in_C21</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND((CMPL123_WF_Status__c = 'Complete Investigation'),
 OR(
 ISPICKVAL(C_Investigation_Findings_Code_Choice_1__c, 'C21 - Results Pending Completion of Investigation'),
@@ -12121,7 +12154,7 @@ ISPICKVAL(C_Investigation_Findings_Code_Choice_6__c , 'C21 - Results Pending Com
     </validationRules>
     <validationRules>
         <fullName>Annex_D_Code_choice_should_not_be_in_D16</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND((CMPL123_WF_Status__c = 'Complete Investigation'),
 OR(
 ISPICKVAL(D_Investigation_Conclusion_Choice_1__c, 'D16 - Conclusion Not Yet Available'),

@@ -1449,7 +1449,7 @@
                 <stringValue>[CMPL123CME__Complaint__c].BMX_Customer_Contact_Date__c +20</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_21_myRule_20_A1_6569649844</name>
+        <name>formula_21_myRule_20_A1_3907596056</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.BMX_Customer_Contact_Date__c} +20</expression>
     </formulas>
@@ -1460,7 +1460,7 @@
                 <stringValue>[CMPL123CME__Complaint__c].BMX_Customer_Contact_Date__c + 10</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_24_myRule_23_A1_4916223484</name>
+        <name>formula_24_myRule_23_A1_1398042168</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.BMX_Customer_Contact_Date__c} + 10</expression>
     </formulas>
@@ -1471,7 +1471,7 @@
                 <stringValue>[CMPL123CME__Complaint__c].BMX_Customer_Contact_Date__c + 1 </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_29_myRule_26_A1_6753538038</name>
+        <name>formula_29_myRule_26_A1_0591018808</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.BMX_Customer_Contact_Date__c} + 1</expression>
     </formulas>
@@ -1482,7 +1482,7 @@
                 <stringValue>IF([CMPL123CME__Complaint__c].BMX_Investigation__c.CMPL123_WF_Status__c = &quot;Closed - Done&quot;, TODAY(), NULL)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_9_myRule_7_A1_1640285865</name>
+        <name>formula_9_myRule_7_A1_9503299893</name>
         <dataType>Date</dataType>
         <expression>IF({!myVariable_current.BMX_Investigation__r.CMPL123_WF_Status__c} = &quot;Closed - Done&quot;, TODAY(), NULL)</expression>
     </formulas>
@@ -1777,7 +1777,7 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
         <dataType>Boolean</dataType>
         <expression>AND((PRIORVALUE({!myVariable_old.BMX_PRE__c})=  &apos;Yes&apos;), ISPICKVAL({!myVariable_old.BMX_PRE__c} , &apos;No&apos;) )</expression>
     </formulas>
-    <interviewLabel>Complaint_Automations-7_InterviewLabel</interviewLabel>
+    <interviewLabel>Complaint_Automations-8_InterviewLabel</interviewLabel>
     <label>Complaint Automations</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -2000,7 +2000,7 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
         <locationX>2000</locationX>
         <locationY>200</locationY>
         <connector>
-            <targetReference>myDecision22</targetReference>
+            <targetReference>myRule_20_A2</targetReference>
         </connector>
         <filters>
             <processMetadataValues>
@@ -2146,8 +2146,170 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
             </processMetadataValues>
             <field>BMX_Due_Date__c</field>
             <value>
-                <elementReference>formula_21_myRule_20_A1_6569649844</elementReference>
+                <elementReference>formula_21_myRule_20_A1_3907596056</elementReference>
             </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Justification of Due Date Change</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Justification_of_Due_Date_Change__c</field>
+            <value>
+                <stringValue>Justification updated via Process builder</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CMPL123CME__Questionnaire__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>criteria</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[CMPL123CME__Complaint__c].CMPL123CME__Questionnaires__r</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_20_A2</name>
+        <label>Remove Justification Due Date</label>
+        <locationX>2000</locationX>
+        <locationY>300</locationY>
+        <connector>
+            <targetReference>myDecision22</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>inputDataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Due Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>operatorDataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>GlobalConstant</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Due_Date__c</field>
+            <operator>NotEqualTo</operator>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>CMPL123CME__Complaint__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Justification of Due Date Change</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>GlobalConstant</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Justification_of_Due_Date_Change__c</field>
         </inputAssignments>
         <object>CMPL123CME__Questionnaire__c</object>
     </recordUpdates>
@@ -2181,7 +2343,7 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
         <locationX>2300</locationX>
         <locationY>200</locationY>
         <connector>
-            <targetReference>myDecision25</targetReference>
+            <targetReference>myRule_23_A2</targetReference>
         </connector>
         <filters>
             <processMetadataValues>
@@ -2327,8 +2489,170 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
             </processMetadataValues>
             <field>BMX_Due_Date__c</field>
             <value>
-                <elementReference>formula_24_myRule_23_A1_4916223484</elementReference>
+                <elementReference>formula_24_myRule_23_A1_1398042168</elementReference>
             </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Justification of Due Date Change</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Justification_of_Due_Date_Change__c</field>
+            <value>
+                <stringValue>Justification updated via Process Builder</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CMPL123CME__Questionnaire__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>criteria</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[CMPL123CME__Complaint__c].CMPL123CME__Questionnaires__r</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_23_A2</name>
+        <label>Remove Justification Due Date</label>
+        <locationX>2300</locationX>
+        <locationY>300</locationY>
+        <connector>
+            <targetReference>myDecision25</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>inputDataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Due Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>operatorDataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>GlobalConstant</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Due_Date__c</field>
+            <operator>NotEqualTo</operator>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>CMPL123CME__Complaint__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Justification of Due Date Change</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>GlobalConstant</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Justification_of_Due_Date_Change__c</field>
         </inputAssignments>
         <object>CMPL123CME__Questionnaire__c</object>
     </recordUpdates>
@@ -2362,7 +2686,7 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
         <locationX>2600</locationX>
         <locationY>200</locationY>
         <connector>
-            <targetReference>myDecision30</targetReference>
+            <targetReference>myRule_26_A2</targetReference>
         </connector>
         <filters>
             <processMetadataValues>
@@ -2508,8 +2832,170 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
             </processMetadataValues>
             <field>BMX_Due_Date__c</field>
             <value>
-                <elementReference>formula_29_myRule_26_A1_6753538038</elementReference>
+                <elementReference>formula_29_myRule_26_A1_0591018808</elementReference>
             </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Justification of Due Date Change</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Justification_of_Due_Date_Change__c</field>
+            <value>
+                <stringValue>Justification updated via Process Builder</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CMPL123CME__Questionnaire__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>criteria</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[CMPL123CME__Complaint__c].CMPL123CME__Questionnaires__r</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_26_A2</name>
+        <label>Remove Justification of Due date</label>
+        <locationX>2600</locationX>
+        <locationY>300</locationY>
+        <connector>
+            <targetReference>myDecision30</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>inputDataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Due Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>operatorDataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>GlobalConstant</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Due_Date__c</field>
+            <operator>NotEqualTo</operator>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>CMPL123CME__Complaint__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Justification of Due Date Change</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>GlobalConstant</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BMX_Justification_of_Due_Date_Change__c</field>
         </inputAssignments>
         <object>CMPL123CME__Questionnaire__c</object>
     </recordUpdates>
@@ -2891,7 +3377,7 @@ OR ( ISCHANGED({!myVariable_current.Visitor_Country__c}) ,
             </processMetadataValues>
             <field>BMX_Related_Investigation_linked_Date__c</field>
             <value>
-                <elementReference>formula_9_myRule_7_A1_1640285865</elementReference>
+                <elementReference>formula_9_myRule_7_A1_9503299893</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Complaint__c</object>
