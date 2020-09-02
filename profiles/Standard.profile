@@ -25254,6 +25254,10 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123CME__EU_MIR_Code_Choices__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123CME__HHE__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
