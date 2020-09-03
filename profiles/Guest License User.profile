@@ -11995,6 +11995,10 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>EUMIR_support__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>Entitlement__x</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>

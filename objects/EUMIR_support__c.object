@@ -149,7 +149,7 @@
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
@@ -270,6 +270,11 @@
                     <default>false</default>
                     <label>Authorized</label>
                 </value>
+                <value>
+                    <fullName>Submitters</fullName>
+                    <default>false</default>
+                    <label>Submitters</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -287,13 +292,32 @@
         </valueSet>
     </fields>
     <label>EUMIR support</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>organisation_Name__c</columns>
+        <columns>Type__c</columns>
+        <columns>City_Name__c</columns>
+        <columns>Contact_first_Name__c</columns>
+        <columns>Contact_last_name__c</columns>
+        <columns>Country__c</columns>
+        <columns>E_mail__c</columns>
+        <columns>Phone__c</columns>
+        <columns>Postal_Code__c</columns>
+        <columns>Street__c</columns>
+        <columns>Street_number__c</columns>
+        <columns>CURRENCY_ISO_CODE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <displayFormat>EU-{0000}</displayFormat>
         <label>EUMIR support  Name</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>EUMIR supports</pluralLabel>
+    <pluralLabel>EUMIR support</pluralLabel>
     <searchLayouts />
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

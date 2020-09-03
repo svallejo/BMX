@@ -14558,6 +14558,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EU_MIR__c.Registered_commercial_name_of_company__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__EU_MIR__c.TestPicklist__c</field>
         <readable>true</readable>
@@ -35047,6 +35052,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Contact__x</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>EUMIR_support__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>

@@ -115,7 +115,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
         Map<Id, CMPL123CME__Complaint__c> cmpResultMap = new Map<Id, CMPL123CME__Complaint__c>();
         Map<Id, Case__x> caseExUpdMap = new Map<Id, Case__x>();
         
-        for(Case__x csx : [SELECT Id, CaseNumber_c__c, Entitlement_Name__c, Justificationdecision_make_c__c,TWComplaintNumber_c__c, ExternalId, BatchExpDate_c__c,SerialNumberAsset_c__c,Reason__c,ATC_c__c,
+        for(Case__x csx : [SELECT Id, CaseNumber_c__c, Entitlement_Name__c, Justificationdecision_make_c__c, ExternalId, BatchExpDate_c__c,SerialNumberAsset_c__c,Reason__c,ATC_c__c,
                             BatchNumber_c__c,UDI_Code_c__c,CaseNumber__c,FirstL2EscalationDate_c__c,DueDate_c__c,CVM_c__c,ClosedDate__c,CustomerContactDate_c__c,Product_c__c,
                             Initial_Software_Version_c__c,CurrentLevel_c__c,ContactEmail__c,isCreatedOnSite_c__c,ContactPhone__c,CatalogProfile_c__c,CaseHasWO_c__c,BatchNumberUnknown_c__c,
                             CreatedDate__c,BatchNumberStatus_c__c,WasEscalated_c__c,Type__c,SubOrigin_c__c,SIGcode_c__c,Subject__c,ShiptoLocationSapNumber_c__c,Status__c,
@@ -126,8 +126,8 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                             SoftwareCode_c__c,ActionCode_c__c,ANALYZE_c__c,ErrorCode_c__c,NoInvestJustif_c__c,AssetId__c,ProductId__c,L1Owner_c__c,L2Owner_c__c,CreatedById__c,AccountId__c,ShipToLocation_c__c,SofwareVersion_c__c,ParentId__c, OwnerId__c,LastModifiedDate__c,Case_First_Closed_Date_c__c,FixedOnPhone_c__c,
                             GDPR_L1Q2_c__c,GDPR_L2Q2_c__c,GDPR_L1Q1_c__c,GDPR_L2Q1_c__c,RE_c__c,ShipToLocation_c__r.VisitorAddressId__c,AccountId__r.Global_Reporting_Hierarchy_Level_3_c__c,
                             AccountId__r.Global_Reporting_Hierarchy_Level_2_c__c,AccountId__r.Key_Account_Hierarchy_c__c,AccountId__r.Pricing_Hierarchy_2_c__c,AccountId__r.Pricing_Hierarchy_c__c,
-                            AccountId__r.Reporting_Hierarchy_c__c,AccountId__r.Global_Reporting_Hierarchy_Level_1_c__c,AccountId__r.RecordTypeId__c ,PRE1P2__c, NumberOfSamplesAffected__c,Product_Code_c__c  FROM Case__x 
-                            WHERE TWComplaintNumber_c__c = null AND Id IN: caseQueryList]) {
+                            AccountId__r.Reporting_Hierarchy_c__c,AccountId__r.Global_Reporting_Hierarchy_Level_1_c__c,AccountId__r.RecordTypeId__c ,PRE1P2__c, NumberOfSamplesAffected__c FROM Case__x 
+                            WHERE Id IN: caseQueryList]) {
             
             // Filter out any cases that are created outside CRM - Case Number (CaseNumber__c) SAP Case Number (CaseNumber_c__c)
             if ( csx.CaseNumber_c__c == csx.CaseNumber__c) { // As of Winter 20' Direct field comparisons aren't allowed within SOQL

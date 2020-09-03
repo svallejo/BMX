@@ -25319,6 +25319,10 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>EUMIR_support__c</tab>
+        <visibility>DefaultOff</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>Entitlement__x</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
