@@ -12067,7 +12067,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
     <validationRules>
         <fullName>Annex_BCD_Code_choice_should_not_B21_C21</fullName>
         <active>true</active>
-        <description>If Annex BCD Contains the value "B21  , C21 ,D16 then Investigation cannot be closed</description>
+        <description>If Annex BCD Contains the value "B21 , C21 ,D16" then Investigation cannot be closed</description>
         <errorConditionFormula>AND(
 
 (CMPL123_WF_Status__c = 'Complete Investigation'),
@@ -12095,7 +12095,7 @@ D_Investigation_Conclusion_Choice3__c&lt;&gt;'D16 - Conclusion Not Yet Available
  )
 )</errorConditionFormula>
         <errorDisplayField>BMX_Additional_Information__c</errorDisplayField>
-        <errorMessage>If Annex BCD Contains the picklist "B21  - Type of Investigation Not Yet Determined" Investigation cannot be closed</errorMessage>
+        <errorMessage>If Annex BCD Contains the picklist "B21,C21,D16 - then Investigation cannot be closed</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Annex_BCD_Code_choice_should_not_be_in_B</fullName>
