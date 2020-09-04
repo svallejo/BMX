@@ -41,6 +41,7 @@ trigger EU_MIR_SupportAutoUpadte on CMPL123CME__EU_MIR__c (After insert,After up
             {
                 CMPL123CME__EU_MIR__c eumir=new CMPL123CME__EU_MIR__c();
                 eumir.Id=UM.Id;
+                eumir.CMPL123CME__Manufact_Contact_First_Name__c=suuumap.get(UM.Manufacturer_Organisation_name__c).organisation_Name__c;
                 eumir.CMPL123CME__Manufact_Contact_First_Name__c=suuumap.get(UM.Manufacturer_Organisation_name__c).Contact_first_Name__c;
                 eumir.CMPL123CME__Manufact_Contact_Last_Name__c = suuumap.get(UM.Manufacturer_Organisation_name__c).Contact_last_name__c;
                 eumir.CMPL123CME__Manufact_E_Mail__c = suuumap.get(UM.Manufacturer_Organisation_name__c).E_mail__c;
