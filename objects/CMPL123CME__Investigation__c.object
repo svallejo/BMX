@@ -12080,7 +12080,7 @@ ISPICKVAL(B_Investigation_Type_Code_Choice_3__c	, 'B21 - Type of Investigation N
 ),
 
 OR(
-C_Investigation_Findings_Code_Choice1__c&lt;&gt;'C21 - Results Pending Completion of Investigation',
+C_Investigation_Findings_Code_Choice1__r.Name &lt;&gt; "C21",
 C_Investigation_Findings_Code_Choice2__c&lt;&gt;'C21 - Results Pending Completion of Investigation',
 C_Investigation_Findings_Code_Choice3__c&lt;&gt;'C21 - Results Pending Completion of Investigation'
 
@@ -12094,7 +12094,6 @@ D_Investigation_Conclusion_Choice2__c&lt;&gt;'D16 - Conclusion Not Yet Available
 D_Investigation_Conclusion_Choice3__c&lt;&gt;'D16 - Conclusion Not Yet Available'
  )
 )</errorConditionFormula>
-        <errorDisplayField>BMX_Additional_Information__c</errorDisplayField>
         <errorMessage>If Annex BCD Contains the picklist "B21,C21,D16 - then Investigation cannot be closed</errorMessage>
     </validationRules>
     <validationRules>
