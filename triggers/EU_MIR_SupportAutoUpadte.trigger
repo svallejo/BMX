@@ -45,7 +45,7 @@ trigger EU_MIR_SupportAutoUpadte on CMPL123CME__EU_MIR__c (after insert,after up
             {
                 CMPL123CME__EU_MIR__c eumir=new CMPL123CME__EU_MIR__c();
                 eumir.Id=UM.Id;
-                eumir.Manufacturer_Organisation_name__c = suuumap.get(UM.Manufacturer_Organisation_name__c).organisation_Name__c;
+                eumir.CMPL123CME__Manufact_Organisation_Name__c = suuumap.get(UM.Manufacturer_Organisation_name__c).organisation_Name__c;
                 eumir.CMPL123CME__Manufact_Contact_First_Name__c=suuumap.get(UM.Manufacturer_Organisation_name__c).Contact_first_Name__c;
                 eumir.CMPL123CME__Manufact_Contact_Last_Name__c = suuumap.get(UM.Manufacturer_Organisation_name__c).Contact_last_name__c;
                 eumir.CMPL123CME__Manufact_E_Mail__c = suuumap.get(UM.Manufacturer_Organisation_name__c).E_mail__c;
@@ -81,7 +81,7 @@ trigger EU_MIR_SupportAutoUpadte on CMPL123CME__EU_MIR__c (after insert,after up
             {
                 CMPL123CME__EU_MIR__c eumir1=new CMPL123CME__EU_MIR__c();
                 eumir1.Id=UM.Id;
-                eumir1.Org_Name_of_Authorised_Representative__c=suuumap1.get(UM.Org_Name_of_Authorised_Representative__c).organisation_Name__c;
+                eumir1.CMPL123CME__Org_Name_Of_Authorised_Representative__c =suuumap1.get(UM.Org_Name_of_Authorised_Representative__c).organisation_Name__c;
                 eumir1.CMPL123CME__Author_Contact_First_Name__c=suuumap1.get(UM.Org_Name_of_Authorised_Representative__c).Contact_first_Name__c;
                 eumir1.CMPL123CME__Author_Contact_Last_Name__c = suuumap1.get(UM.Org_Name_of_Authorised_Representative__c).Contact_last_name__c;
                 eumir1.CMPL123CME__Author_E_mail__c = suuumap1.get(UM.Org_Name_of_Authorised_Representative__c).E_mail__c;
@@ -118,7 +118,7 @@ trigger EU_MIR_SupportAutoUpadte on CMPL123CME__EU_MIR__c (after insert,after up
             {
                 CMPL123CME__EU_MIR__c eumir2=new CMPL123CME__EU_MIR__c();
                 eumir2.Id=UM.Id;
-                eumir2.Registered_commercial_name_of_company__c=suuumap2.get(UM.Registered_commercial_name_of_company__c).organisation_Name__c;
+                eumir2.CMPL123CME__Registered_Commercial_Name_Of_Company__c =suuumap2.get(UM.Registered_commercial_name_of_company__c).organisation_Name__c;
                 eumir2.CMPL123CME__Submitter_Contact_First_Name__c=suuumap2.get(UM.Registered_commercial_name_of_company__c).Contact_first_Name__c;
                 eumir2.CMPL123CME__Submitter_Contact_Last_Name__c = suuumap2.get(UM.Registered_commercial_name_of_company__c).Contact_last_name__c;
                 eumir2.CMPL123CME__Submitter_E_Mail__c = suuumap2.get(UM.Registered_commercial_name_of_company__c).E_mail__c;

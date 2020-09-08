@@ -12068,31 +12068,20 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <fullName>Annex_BCD_Code_choice_should_not_B21_C21</fullName>
         <active>true</active>
         <description>If Annex BCD Contains the value "B21 , C21 ,D16" then Investigation cannot be closed</description>
-        <errorConditionFormula>AND(
+        <errorConditionFormula>OR(
 
-(CMPL123_WF_Status__c = 'Complete Investigation'),
-
-OR(
-
-ISPICKVAL(B_Investigation_Type_Code_Choice_1__c, 'B21 - Type of Investigation Not Yet Determined'),
-ISPICKVAL(B_Investigation_Type_Code_Choice_2__c	, 'B21 - Type of Investigation Not Yet Determined'),
-ISPICKVAL(B_Investigation_Type_Code_Choice_3__c	, 'B21 - Type of Investigation Not Yet Determined')
+AND(
+CMPL123_WF_Status__c = 'Complete Investigation', 
+OR(ISPICKVAL(B_Investigation_Type_Code_Choice_1__c, 'B21 - Type of Investigation Not Yet Determined'),
+ISPICKVAL(B_Investigation_Type_Code_Choice_2__c    , 'B21 - Type of Investigation Not Yet Determined'),
+ISPICKVAL(B_Investigation_Type_Code_Choice_3__c    , 'B21 - Type of Investigation Not Yet Determined'))
 ),
 
-OR(
-C_Investigation_Findings_Code_Choice1__r.Name &lt;&gt; 'C21',
-C_Investigation_Findings_Code_Choice2__c&lt;&gt;'C21 - Results Pending Completion of Investigation',
-C_Investigation_Findings_Code_Choice3__c&lt;&gt;'C21 - Results Pending Completion of Investigation'
+AND(
+CMPL123_WF_Action__c = 'Complete Investigation',
+OR(C_Investigation_Findings_Code_Choice1__r.Name &lt;&gt; "C21",C_Investigation_Findings_Code_Choice2__r.Name &lt;&gt; "C21")
+)
 
-
-),
-
-OR(
-
-D_Investigation_Conclusion_Choice1__c&lt;&gt;'D16 - Conclusion Not Yet Available',
-D_Investigation_Conclusion_Choice2__c&lt;&gt;'D16 - Conclusion Not Yet Available',
-D_Investigation_Conclusion_Choice3__c&lt;&gt;'D16 - Conclusion Not Yet Available'
- )
 )</errorConditionFormula>
         <errorMessage>If Annex BCD Contains the picklist "B21,C21,D16 - then Investigation cannot be closed</errorMessage>
     </validationRules>
