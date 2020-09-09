@@ -21,10 +21,15 @@ global class CreateNonComplaintForCaseBatch implements Database.Batchable <sObje
         }
         for(CMPL123CME__Investigation__c inv:[SELECT ID, CMPL123CME__Complaint__c FROM CMPL123CME__Investigation__c WHERE (Id In:invistigationIds OR CMPL123CME__Complaint__c IN: complaintIds) AND CMPL123_WF_Status__c != 'Closed-Canceled']){
             inv.CMPL123_WF_Status__c = 'Closed-Canceled';
+            inv.CMPL123Task_Key_Value__c = 'CANCELOPENINVEST';
             investigationList.add(inv);
             if(String.isNotBlank(inv.CMPL123CME__Complaint__c) && complaintsMap.containsKey(inv.CMPL123CME__Complaint__c)){
-                complaintsMap.put(inv.CMPL123CME__Complaint__c, new CMPL123CME__Complaint__c(Id = inv.CMPL123CME__Complaint__c,
-                                                                                             CMPL123CME__CMPL123_WF_Status__c = 'Closed-Canceled'));
+                
+            complaintsMap.put(inv.CMPL123CME__Complaint__c, new CMPL123CME__Complaint__c(Id = inv.CMPL123CME__Complaint__c,
+            CMPL123CME__CMPL123_WF_Status__c = 'Closed-Canceled'));
+                
+			complaintsMap.put(inv.CMPL123CME__Complaint__c, new CMPL123CME__Complaint__c(Id = inv.CMPL123CME__Complaint__c,
+            CMPL123Task_Key_Value__c = 'CANCELOPENCOMPLAINT'));            
             }
         }
         
