@@ -106,6 +106,10 @@
         <description>Internal Customer Impacted</description>
         <protected>false</protected>
         <recipients>
+            <field>Internal_Mfg_Site_Responsible_Person__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
             <field>Internal_Sub_Responsible_Person__c</field>
             <type>userLookup</type>
         </recipients>
