@@ -252,17 +252,17 @@
             <targetReference>Locked_Record_Type_Cannot_Be_Found</targetReference>
         </faultConnector>
         <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Locked</stringValue>
-            </value>
-        </filters>
-        <filters>
             <field>SobjectType</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Action_Item__c</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Locked</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>

@@ -104,6 +104,19 @@ ISCHANGED({!myVariable_current.BMX_Type__c} ) )</expression>
             <processMetadataValues>
                 <name>implicit</name>
                 <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Complaint__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
                     <booleanValue>false</booleanValue>
                 </value>
             </processMetadataValues>
@@ -147,19 +160,6 @@ ISCHANGED({!myVariable_current.BMX_Type__c} ) )</expression>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Opened</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Complaint__c</elementReference>
             </value>
         </filters>
         <inputAssignments>

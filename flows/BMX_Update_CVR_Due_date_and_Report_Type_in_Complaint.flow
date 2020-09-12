@@ -160,6 +160,19 @@ ISCHANGED({!myVariable_old.CMPL123CME__Type_of_Report__c})
             <processMetadataValues>
                 <name>implicit</name>
                 <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.CMPL123CME__Related_Complaint__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
                     <booleanValue>false</booleanValue>
                 </value>
             </processMetadataValues>
@@ -203,19 +216,6 @@ ISCHANGED({!myVariable_old.CMPL123CME__Type_of_Report__c})
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Opened</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.CMPL123CME__Related_Complaint__c</elementReference>
             </value>
         </filters>
         <inputAssignments>
