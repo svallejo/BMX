@@ -4325,6 +4325,14 @@
         <startAddress>0.0.0.0</startAddress>
     </loginIpRanges>
     <pageAccesses>
+        <apexPage>Action_ItemWorkflowPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Action_Item_cESignHistoryPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>AttachmentWorkflowPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -4761,6 +4769,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>Change_Control_cESignHistoryPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>CollaborationGroupRecordWorkflowPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -4781,6 +4793,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>Extension_Request_Change_Control_cESignH</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>Extension_Request_QEWorkflowPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -4797,11 +4813,27 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>Impact_AssessmentWorkflowPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Impact_Assessment_cESignHistoryPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>InquiryWorkflowPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>NoteWorkflowPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Predefined_Action_ItemWorkflowPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Predefined_Implementation_PlanWorkflowPa</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -26048,7 +26080,7 @@
         <layout>CMPL123QMS__Change_Control_Item__c-CMPL123QMS__Change Control Item Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>CMPL123QMS__Change_Control__c-CMPL123QMS__Change Control Layout</layout>
+        <layout>CMPL123QMS__Change_Control__c-Change Control Custom</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Deviation__c-CMPL123QMS__Deviation Layout</layout>
@@ -27734,14 +27766,15 @@
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
+        <personAccountDefault>true</personAccountDefault>
         <recordType>Action_Item__c.Action_Item</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Action_Item__c.Locked</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
