@@ -4319,6 +4319,22 @@
         <apexClass>CMPL123CME__MIRReportSummaryService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>SapCustomerReportController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SapInterfaceHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SapProductInformation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SapRelatedProductsHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <custom>true</custom>
     <loginIpRanges>
         <endAddress>255.255.255.255</endAddress>
