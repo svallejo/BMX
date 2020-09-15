@@ -3408,6 +3408,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__WFRelatedListCustomButtonController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__WFReportSettingsController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
