@@ -6909,7 +6909,7 @@
         <name>Workflow_Batch_Size__mdt</name>
     </customMetadataTypeAccesses>
     <loginIpRanges>
-        <description>Default IP Ranges</description>
+        <description>Default IP Range</description>
         <endAddress>255.255.255.255</endAddress>
         <startAddress>0.0.0.0</startAddress>
     </loginIpRanges>
