@@ -532,6 +532,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AIInferenceEndpointHttpMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__AIInsightAPI</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -3421,6 +3425,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__WFPlatformEventControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WFRelatedListCustomButtonController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
