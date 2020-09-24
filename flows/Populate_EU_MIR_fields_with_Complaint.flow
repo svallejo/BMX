@@ -481,7 +481,7 @@
                 <stringValue>[CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Description_of_Issue__c  &amp; BR() &amp; BR() &amp; [CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reporting_Decision_Justification__c </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_7581289660</name>
+        <name>formula_2_myRule_1_A1_8302490503</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.BMX_Local_Assessment__r.BMX_Description_of_Issue__c}  &amp; BR() &amp; BR() &amp; {!myVariable_current.BMX_Local_Assessment__r.BMX_Reporting_Decision_Justification__c}</expression>
     </formulas>
@@ -492,7 +492,7 @@
                 <stringValue>IF([CMPL123CME__EU_MIR__c].BMX_Local_Assessment__c.BMX_Reportable_Country_Name__c  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_7_myWaitEvent_myWait_myRule_6_event_0_SA1_1717334882</name>
+        <name>formula_7_myWaitEvent_myWait_myRule_6_event_0_SA1_6338127637</name>
         <dataType>Date</dataType>
         <expression>IF({!myVariable_current.BMX_Local_Assessment__r.BMX_Reportable_Country_Name__c}  = &apos;FRANCE&apos;,TODAY()+60,TODAY()+90)</expression>
     </formulas>
@@ -501,7 +501,7 @@
         <dataType>Boolean</dataType>
         <expression>true</expression>
     </formulas>
-    <interviewLabel>Populate_EU_MIR_fields_with_Complaint-17_InterviewLabel</interviewLabel>
+    <interviewLabel>Populate_EU_MIR_fields_with_Complaint-18_InterviewLabel</interviewLabel>
     <label>Autopopulate fields in EU MIR from Complaint and LA</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -822,7 +822,7 @@
             </processMetadataValues>
             <field>CMPL123CME__Incident_Description__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_7581289660</elementReference>
+                <elementReference>formula_2_myRule_1_A1_8302490503</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1716,7 +1716,7 @@
             </processMetadataValues>
             <field>CMPL123CME__Expected_Date_Of_Next_Report__c</field>
             <value>
-                <elementReference>formula_7_myWaitEvent_myWait_myRule_6_event_0_SA1_1717334882</elementReference>
+                <elementReference>formula_7_myWaitEvent_myWait_myRule_6_event_0_SA1_6338127637</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__EU_MIR__c</object>
