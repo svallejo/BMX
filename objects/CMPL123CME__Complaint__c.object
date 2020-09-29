@@ -5236,7 +5236,6 @@
         <active>true</active>
         <description>INV Reference Creation Justification field is mandatory when Master Investigation Field is available</description>
         <errorConditionFormula>AND( NOT(ISBLANK(BMX_Investigation__c)),
-ISBLANK(BMX_Reference__c),
 ISCHANGED(BMX_Investigation__c))</errorConditionFormula>
         <errorDisplayField>INV_Reference_Creation_Justification__c</errorDisplayField>
         <errorMessage>INV Reference Creation Justification field is mandatory when Master Investigation Field is available</errorMessage>

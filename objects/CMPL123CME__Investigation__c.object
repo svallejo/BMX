@@ -12140,6 +12140,18 @@ ISPICKVAL(B_Investigation_Type_Code_Choice_3__c    , 'B21 - Type of Investigatio
         <errorMessage>If Annex B Contains the picklist "B21 - Type of Investigation Not Yet Determined" Investigation cannot be closed</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Annex_B_and_C_Choice_1_Mandatory</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+CMPL123_WF_Action__c = 'Complete Investigation',
+  OR(ISPICKVAL(B_Investigation_Type_Code_Choice_1__c,''),
+     ISBLANK( C_Investigation_Findings_Code_Choice1__c)), 
+     ISPICKVAL(CMPL123CME__Complaint__r.BMX_PRE__c,'Yes'), 
+ OR(CONTAINS(CMPL123CME__Complaint__r.BMX_Is_Reportable__c,'Yes'),
+   ISBLANK(CMPL123CME__Complaint__r.BMX_Is_Reportable__c)))</errorConditionFormula>
+        <errorMessage>Please select Value for Choice 1 for Annex B &amp; Annex C</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Annex_C_Code_choice_should_not_be_in_C21</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
