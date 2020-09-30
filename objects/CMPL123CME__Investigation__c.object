@@ -12263,7 +12263,7 @@ CMPL123CME__Complaint__r.CMPL123CME__CMPL123_WF_Status__c ='Closed')</errorCondi
     </validationRules>
     <validationRules>
         <fullName>BMX_RCC_should_not_be_blank</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND(CMPL123_WF_Action__c = 'Complete Investigation', ISBLANK(     Root_Cause_Code__c ) )</errorConditionFormula>
         <errorDisplayField>Root_Cause_Code__c</errorDisplayField>
         <errorMessage>You must enter a value</errorMessage>
