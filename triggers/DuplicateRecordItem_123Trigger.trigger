@@ -6,7 +6,7 @@
 	Add your custom code before  X123TriggerHandler. X123TriggerHandler code should be on the last line.
 *********************************************************************************************************************/
 
-trigger FeedComment_123Trigger on FeedComment (before insert,after insert,before update,after update,before delete,after delete,after undelete){
+trigger DuplicateRecordItem_123Trigger on DuplicateRecordItem (before insert,after insert,before update,after update,before delete,after delete,after undelete){
 
 	CMPL123.X123TriggerHandler X123handler = new CMPL123.X123TriggerHandler();
 

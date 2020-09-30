@@ -310,6 +310,15 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Is_a_parent_code__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicate if this code is a parent of another EU MIR Code. If unchecked, this code is the lower level.</description>
+        <externalId>false</externalId>
+        <label>Is a parent code?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>EU MIR Code</label>
     <listViews>
         <fullName>CMPL123CME__A_Medical_Device_Problem_Codes</fullName>
@@ -528,4 +537,23 @@
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Audit_Trail</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Audit Trail</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/apex/CMPL123__UnifiedAuditTrail?id={!CMPL123CME__EU_MIR_Code__c.Id}</url>
+    </webLinks>
 </CustomObject>

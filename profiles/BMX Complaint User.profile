@@ -10399,6 +10399,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EU_MIR_Code__c.Is_a_parent_code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__EU_MIR_Required_Code_Type_and_Choice__mdt.CMPL123CME__EU_MIR_Code_Type_and_Choice__c</field>
         <readable>true</readable>
@@ -10665,12 +10670,32 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__EU_MIR__c.Manufacturer_Organisation_name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.NB_ID_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.NB_ID_2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EU_MIR__c.Org_Name_of_Authorised_Representative__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EU_MIR__c.Registered_commercial_name_of_company__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EU_MIR__c.Title__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

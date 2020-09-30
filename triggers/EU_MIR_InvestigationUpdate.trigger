@@ -13,7 +13,7 @@ trigger EU_MIR_InvestigationUpdate on CMPL123CME__EU_MIR__c (After insert,After 
     List<CMPL123CME__Investigation__c> Investlist=[select Id,CMPL123CME__Complaint__c,EU_MIR__c,CMPL123_WF_Status__c from CMPL123CME__Investigation__c where CMPL123CME__Complaint__c IN:cmptmap.keyset()];
     List<CMPL123CME__Investigation__c> InvestUptlist= new List<CMPL123CME__Investigation__c>();
     for(CMPL123CME__Investigation__c inv:Investlist){
-        if(inv.CMPL123_WF_Status__c=='Opened')
+        if(inv.CMPL123_WF_Status__c != 'Closed-Canceled'|| inv.CMPL123_WF_Status__c!= 'Closed - Done')
         {
             Invstmap.put(inv.CMPL123CME__Complaint__c,inv.Id);
             CMPL123CME__Investigation__c  inst= new CMPL123CME__Investigation__c();

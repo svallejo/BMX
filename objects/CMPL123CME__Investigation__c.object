@@ -12141,7 +12141,7 @@ ISPICKVAL(B_Investigation_Type_Code_Choice_3__c    , 'B21 - Type of Investigatio
     </validationRules>
     <validationRules>
         <fullName>Annex_B_and_C_Choice_1_Mandatory</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>AND(
 CMPL123_WF_Action__c = 'Complete Investigation',
   OR(ISPICKVAL(B_Investigation_Type_Code_Choice_1__c,''),
@@ -12149,7 +12149,7 @@ CMPL123_WF_Action__c = 'Complete Investigation',
      ISPICKVAL(CMPL123CME__Complaint__r.BMX_PRE__c,'Yes'), 
  OR(CONTAINS(CMPL123CME__Complaint__r.BMX_Is_Reportable__c,'Yes'),
    ISBLANK(CMPL123CME__Complaint__r.BMX_Is_Reportable__c)))</errorConditionFormula>
-        <errorMessage>Please select Value for Choice 1 for Annex B &amp; Annex C</errorMessage>
+        <errorMessage>Please select Value in Choice 1 for Annex B and Annex C</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Annex_C_Code_choice_should_not_be_in_C21</fullName>
@@ -12302,6 +12302,20 @@ ISCHANGED(CMPL123_WF_Action__c)
         <errorConditionFormula>AND(CMPL123_WF_Action__c = 'Complete Investigation', 
     ISBLANK(BMX_Investigation_Approver__c))</errorConditionFormula>
         <errorMessage>Investigation Approver must not be blank</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Justification_for_Annex_C</fullName>
+        <active>true</active>
+        <description>Justify use of a code for Findings that is not the most specific one of the hierarchy</description>
+        <errorConditionFormula>AND(OR(C_Investigation_Findings_Code_Choice1__r.Is_a_parent_code__c = true,C_Investigation_Findings_Code_Choice2__r.Is_a_parent_code__c = true,C_Investigation_Findings_Code_Choice3__r.Is_a_parent_code__c = true), ISBLANK(Justification_for_Annex_C__c ))</errorConditionFormula>
+        <errorMessage>One of the selected Finding is not the more specific of the hierarchy. Update to a more specific code, or enter a justification in "Justification for Annex C"</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Justification_for_Annex_D</fullName>
+        <active>true</active>
+        <description>Justify use of a code for Findings that is not the most specific one of the hierarchy</description>
+        <errorConditionFormula>AND(OR( D_Investigation_Conclusion_Choice1__r.Is_a_parent_code__c = true, D_Investigation_Conclusion_Choice2__r.Is_a_parent_code__c  = true, D_Investigation_Conclusion_Choice3__r.Is_a_parent_code__c = true), ISBLANK(Justification_for_Annex_D__c ))</errorConditionFormula>
+        <errorMessage>One of the selected Root Cause is not the more specific of the hierarchy. Update to a more specific code, or enter a justification in "Justification for Annex D"</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>

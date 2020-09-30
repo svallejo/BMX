@@ -4,17 +4,23 @@
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>false</detailHeading>
-        <editHeading>false</editHeading>
-        <label>Workflow Panel</label>
+        <editHeading>true</editHeading>
+        <label>Audit trail</label>
+        <layoutColumns/>
+        <layoutColumns/>
         <layoutColumns>
             <layoutItems>
-                <height>200</height>
-                <page>CMPL123CMEEU_MIR_CodeWorkflowPanel</page>
-                <showLabel>false</showLabel>
-                <showScrollbars>false</showScrollbars>
-                <width>100%</width>
+                <customLink>Audit_Trail</customLink>
             </layoutItems>
         </layoutColumns>
+        <style>CustomLinks</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>false</detailHeading>
+        <editHeading>false</editHeading>
+        <label>Workflow Panel</label>
+        <layoutColumns/>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -41,14 +47,14 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>OwnerId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Annex_Version__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CMPL123CME__Name_With_Code__c</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>CMPL123CME__Code_Type__c</field>
@@ -59,11 +65,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>CMPL123CME__Name_With_Code__c</field>
+                <field>CMPL123CME__Parent_Active__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>CMPL123CME__Parent_Active__c</field>
+                <behavior>Edit</behavior>
+                <field>Is_a_parent_code__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -86,16 +92,6 @@
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>false</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Custom Links</label>
-        <layoutColumns/>
-        <layoutColumns/>
-        <layoutColumns/>
-        <style>CustomLinks</style>
     </layoutSections>
     <miniLayout>
         <fields>Name</fields>

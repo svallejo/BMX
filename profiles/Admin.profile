@@ -7378,6 +7378,14 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>ContentDocumentLinkWorkflowPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DuplicateRecordItemWorkflowPanel</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>EventWorkflowPanel</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -14269,6 +14277,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__EU_MIR_Code__c.Annex_Version__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__EU_MIR_Code__c.Is_a_parent_code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
