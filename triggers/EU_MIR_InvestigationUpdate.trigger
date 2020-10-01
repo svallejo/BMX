@@ -1,5 +1,5 @@
 trigger EU_MIR_InvestigationUpdate on CMPL123CME__EU_MIR__c (After insert,After update) {
-    if(EU_Recursive_Avoid.flag)
+    if(EU_INV_Recursive_Avoid.flag1)
     {
     map<Id,Id> cmptmap= new map<Id,Id>();
     for(CMPL123CME__EU_MIR__c mir:Trigger.new)
@@ -22,7 +22,7 @@ trigger EU_MIR_InvestigationUpdate on CMPL123CME__EU_MIR__c (After insert,After 
             InvestUptlist.add(inst);
         }
     }
-    EU_Recursive_Avoid.flag=false;
+    EU_INV_Recursive_Avoid.flag1=false;
     if(!InvestUptlist.isEmpty())
     {
         update InvestUptlist;
@@ -37,7 +37,7 @@ trigger EU_MIR_InvestigationUpdate on CMPL123CME__EU_MIR__c (After insert,After 
         m.Investigation_Evaluation__c=Invstmap.get(mir.CMPL123CME__Complaint__c);
         MirUptlist.add(m);
     }
-    EU_Recursive_Avoid.flag=false;
+    EU_INV_Recursive_Avoid.flag1=false;
     if(!MirUptlist.isEmpty())
     {
         update MirUptlist;

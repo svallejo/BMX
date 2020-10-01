@@ -4544,6 +4544,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>EU_INV_Recursive_Avoid</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>EU_Recursive_Avoid</apexClass>
         <enabled>true</enabled>
     </classAccesses>
