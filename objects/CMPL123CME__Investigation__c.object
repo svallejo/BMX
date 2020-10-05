@@ -12182,14 +12182,14 @@ D_Investigation_Conclusion_Choice3__r.Name = "D16"
         <active>true</active>
         <errorConditionFormula>AND(ISPICKVAL( BMX_CAPA_Required__c, 'No'),ISBLANK(  BMX_CAPA_Justification__c ) )</errorConditionFormula>
         <errorDisplayField>BMX_CAPA_Justification__c</errorDisplayField>
-        <errorMessage>You must enter a value</errorMessage>
+        <errorMessage>You must enter a value in "CAPA Justification" as no CAPA is required.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>BMX_CAPA_Number_should_not_be_blank</fullName>
         <active>true</active>
         <errorConditionFormula>AND(ISPICKVAL( BMX_CAPA_Required__c, 'Yes'),ISBLANK(   BMX_CAPA_Number__c ) )</errorConditionFormula>
         <errorDisplayField>BMX_CAPA_Number__c</errorDisplayField>
-        <errorMessage>You must enter a value</errorMessage>
+        <errorMessage>You must enter a value in "CAPA Number" as a CAPA is required.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>BMX_Correction_Number_Required</fullName>
@@ -12205,7 +12205,7 @@ ISBLANK( Correction_Number__c ))</errorConditionFormula>
         <active>true</active>
         <errorConditionFormula>AND(ISPICKVAL(BMX_Product_Returned__c, 'Product Return Received'),   ISBLANK( BMX_Date_Product_Received__c ) )</errorConditionFormula>
         <errorDisplayField>BMX_Date_Product_Received__c</errorDisplayField>
-        <errorMessage>You must enter a value</errorMessage>
+        <errorMessage>You must enter a value in "Date Product Received" as it is indicated Product Return has been received.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>BMX_Evidence_of_Trend_should_nt_be_blank</fullName>
@@ -12213,14 +12213,14 @@ ISBLANK( Correction_Number__c ))</errorConditionFormula>
         <description>US-INV-029 change log</description>
         <errorConditionFormula>AND( ISPICKVAL(BMX_Is_there_a_trend__c, 'Yes'),   ISBLANK(BMX_Evidence_of_Trend__c) )</errorConditionFormula>
         <errorDisplayField>BMX_Evidence_of_Trend__c</errorDisplayField>
-        <errorMessage>You must enter a value</errorMessage>
+        <errorMessage>You must enter a value in "Evidence of Trend" as it is indicated a trend has been established.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>BMX_Fab_Justification_should_nt_be_blank</fullName>
         <active>true</active>
         <errorConditionFormula>AND(ISPICKVAL( BMX_FAB_Required__c , 'No'),   ISBLANK(  BMX_FAB_Justification__c ) )</errorConditionFormula>
         <errorDisplayField>BMX_FAB_Justification__c</errorDisplayField>
-        <errorMessage>You must enter a value.</errorMessage>
+        <errorMessage>You must enter a value.in "FAB Justification" as no FAB is required.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>BMX_Locked_record_when_status_is_Opened</fullName>
@@ -12238,7 +12238,7 @@ ISBLANK( Correction_Number__c ))</errorConditionFormula>
         <errorConditionFormula>AND(ISPICKVAL(BMX_Patient_Data_Copied_to_BMX_System__c,'Yes'),
 ISBLANK(TEXT(BMX_All_Copies_of_Patient_Data_Destroyed__c)))</errorConditionFormula>
         <errorDisplayField>BMX_All_Copies_of_Patient_Data_Destroyed__c</errorDisplayField>
-        <errorMessage>You must enter a value</errorMessage>
+        <errorMessage>You must enter a value in "If Yes, SOP 031664 followed".</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>BMX_Prevent_Edit_Investigation</fullName>
@@ -12266,7 +12266,7 @@ CMPL123CME__Complaint__r.CMPL123CME__CMPL123_WF_Status__c ='Closed')</errorCondi
         <active>false</active>
         <errorConditionFormula>AND(CMPL123_WF_Action__c = 'Complete Investigation', ISBLANK(     Root_Cause_Code__c ) )</errorConditionFormula>
         <errorDisplayField>Root_Cause_Code__c</errorDisplayField>
-        <errorMessage>You must enter a value</errorMessage>
+        <errorMessage>You must enter a value in Root Cause/Conclusion to complete the Investigation.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Check_Investigation_Steps_are_Completed</fullName>
