@@ -6612,6 +6612,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__Investigation__c.B_Investigation_Type_Code_Choice_5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Investigation__c.B_Investigation_Type_Code_Choice_6__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__Investigation__c.CMPL123CME__Complaint__c</field>
         <readable>true</readable>
     </fieldPermissions>
