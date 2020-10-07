@@ -14275,6 +14275,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__EU_MIR_Code_Choices__c.Investigation_Evaluation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__EU_MIR_Code_Setting__mdt.CMPL123CME__Mapped_Field_APIs__c</field>
         <readable>true</readable>
     </fieldPermissions>
