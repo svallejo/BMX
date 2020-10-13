@@ -56,20 +56,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>GeneratePdf</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>GeneratePdf</actionName>
-        <formFactor>Large</formFactor>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>GeneratePdf</actionName>
-        <formFactor>Small</formFactor>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -140,138 +126,37 @@
         <type>Default</type>
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <enableFeeds>true</enableFeeds>
+    <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>Address</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
+        <fullName>ActiveFrom</fullName>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>AssetId</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Description</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
+        <fullName>ActiveTo</fullName>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>Discount</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
+        <fullName>AssociatedLocationNumber</fullName>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>Duration</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
+        <fullName>CurrencyIsoCode</fullName>
         <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>DurationType</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>EndDate</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>IsClosed</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>ListPrice</fullName>
     </fields>
     <fields>
         <fullName>LocationId</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>OrderId</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ParentWorkOrderLineItemId</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PricebookEntryId</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Priority</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>Quantity</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>RootWorkOrderLineItemId</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ServiceAppointmentCount</fullName>
-    </fields>
-    <fields>
-        <fullName>StartDate</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>Status</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>StatusCategory</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>Subject</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>Subtotal</fullName>
-    </fields>
-    <fields>
-        <fullName>TotalPrice</fullName>
-    </fields>
-    <fields>
-        <fullName>UnitPrice</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>WorkOrderId</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
+        <fullName>ParentRecordId</fullName>
         <trackHistory>false</trackHistory>
         <type>MasterDetail</type>
     </fields>
-    <searchLayouts>
-        <customTabListAdditionalFields>WorkOrder</customTabListAdditionalFields>
-        <lookupDialogsAdditionalFields>WorkOrder</lookupDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>WorkOrder</lookupPhoneDialogsAdditionalFields>
-        <searchResultsAdditionalFields>WorkOrder</searchResultsAdditionalFields>
-    </searchLayouts>
+    <fields>
+        <fullName>Type</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
     <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>
