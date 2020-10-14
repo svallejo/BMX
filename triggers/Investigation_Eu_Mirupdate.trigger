@@ -98,6 +98,70 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after insert
         }
     }
     
+    if(choice3!=null && choice3!='')
+    {
+        string Choice='choice 3';
+        string code= choice3.substring(0,3);    
+        List<CMPL123CME__EU_MIR_Code__c> codelist=[select id,name,CMPL123CME__Name_With_Code__c from CMPL123CME__EU_MIR_Code__c where name=:code ];     
+        for(CMPL123CME__EU_MIR_Code__c cd:codelist)
+        {
+            CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
+            cdchoice.Name='B-Investigation Type Code'+' '+'-'+' '+Choice+' '+'-'+' '+cd.name;
+            cdchoice.CMPL123CME__Choice__c=Choice;
+            cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
+            cdchoice.CMPL123CME__Related_EU_MIR__c=MIRId[0];
+            cdchoicelist.add(cdchoice);
+        }
+    }
+    
+    if(choice4!=null && choice4!='')
+    {
+        string Choice='choice 4';
+        string code= choice4.substring(0,3);    
+        List<CMPL123CME__EU_MIR_Code__c> codelist=[select id,name,CMPL123CME__Name_With_Code__c from CMPL123CME__EU_MIR_Code__c where name=:code ];     
+        for(CMPL123CME__EU_MIR_Code__c cd:codelist)
+        {
+            CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
+            cdchoice.Name='B-Investigation Type Code'+' '+'-'+' '+Choice+' '+'-'+' '+cd.name;
+            cdchoice.CMPL123CME__Choice__c=Choice;
+            cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
+            cdchoice.CMPL123CME__Related_EU_MIR__c=MIRId[0];
+            cdchoicelist.add(cdchoice);
+        }
+    }
+    
+     if(choice5!=null && choice5!='')
+    {
+        string Choice='choice 5';
+        string code= choice5.substring(0,3);    
+        List<CMPL123CME__EU_MIR_Code__c> codelist=[select id,name,CMPL123CME__Name_With_Code__c from CMPL123CME__EU_MIR_Code__c where name=:code ];     
+        for(CMPL123CME__EU_MIR_Code__c cd:codelist)
+        {
+            CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
+            cdchoice.Name='B-Investigation Type Code'+' '+'-'+' '+Choice+' '+'-'+' '+cd.name;
+            cdchoice.CMPL123CME__Choice__c=Choice;
+            cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
+            cdchoice.CMPL123CME__Related_EU_MIR__c=MIRId[0];
+            cdchoicelist.add(cdchoice);
+        }
+    }
+    
+    if(choice6!=null && choice6!='')
+    {
+        string Choice='choice 6';
+        string code= choice6.substring(0,3);    
+        List<CMPL123CME__EU_MIR_Code__c> codelist=[select id,name,CMPL123CME__Name_With_Code__c from CMPL123CME__EU_MIR_Code__c where name=:code ];     
+        for(CMPL123CME__EU_MIR_Code__c cd:codelist)
+        {
+            CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
+            cdchoice.Name='B-Investigation Type Code'+' '+'-'+' '+Choice+' '+'-'+' '+cd.name;
+            cdchoice.CMPL123CME__Choice__c=Choice;
+            cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
+            cdchoice.CMPL123CME__Related_EU_MIR__c=MIRId[0];
+            cdchoicelist.add(cdchoice);
+        }
+    }
+    
     if(!cdchoicelist.isEmpty())
     {
         insert cdchoicelist;
