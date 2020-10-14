@@ -40,7 +40,7 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after insert
             }
             if(inv.B_Investigation_Type_Code_Choice_6__c!=null && inv.B_Investigation_Type_Code_Choice_6__c!='')
             {
-                choice5=inv.B_Investigation_Type_Code_Choice_6__c;
+                choice6=inv.B_Investigation_Type_Code_Choice_6__c;
             }
             
         }
@@ -130,7 +130,7 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after insert
         }
     }
     
-     if(choice5!=null && choice5!='')
+    if(choice5!=null && choice5!='')
     {
         string Choice='choice 5';
         string code= choice5.substring(0,3);    
@@ -146,7 +146,7 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after insert
         }
     }
     
-    if(choice6!=null && choice6!='')
+     if(choice6!=null && choice6!='')
     {
         string Choice='choice 6';
         string code= choice6.substring(0,3);    
@@ -161,6 +161,8 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after insert
             cdchoicelist.add(cdchoice);
         }
     }
+  
+   
     
     if(!cdchoicelist.isEmpty())
     {
