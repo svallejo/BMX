@@ -45,8 +45,25 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after insert
             
         }
     }
-    List<CMPL123CME__EU_MIR_Code_Choices__c> ChoiceCodedelete=[SELECT Id,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Id IN:Inv_Code_Choice_1Map.keyset()];
-    Delete ChoiceCodedelete;
+ 
+    List<CMPL123CME__EU_MIR_Code_Choices__c> ChoiceCodedelete1=[SELECT Id,Name,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Name like '%B-Investigation %' and CMPL123CME__Related_EU_MIR__c IN:MIRId];
+    List<CMPL123CME__EU_MIR_Code_Choices__c> ChoiceCodedelete2=[SELECT Id,Name,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Name like '%C-Investigation %' and CMPL123CME__Related_EU_MIR__c IN:MIRId];
+    List<CMPL123CME__EU_MIR_Code_Choices__c> ChoiceCodedelete3=[SELECT Id,Name,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Name like '%D-Investigation %' and CMPL123CME__Related_EU_MIR__c IN:MIRId];
+    
+    if(!ChoiceCodedelete1.isEmpty())
+    {
+        delete ChoiceCodedelete1;
+    }
+    
+    if(!ChoiceCodedelete2.isEmpty())
+    {
+        Delete ChoiceCodedelete2;
+    }
+    
+    if(!ChoiceCodedelete3.isEmpty())
+    {
+        Delete ChoiceCodedelete3;
+    }
     
     List<CMPL123CME__EU_MIR_Code_Choices__c> cdchoicelist= new List<CMPL123CME__EU_MIR_Code_Choices__c>();
     if(choice1!=null && choice1!='')
