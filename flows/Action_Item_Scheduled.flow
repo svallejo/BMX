@@ -174,45 +174,49 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>AND(NOT(ISBLANK([Action_Item__c].Target_Due_Date__c)),
-      OR([Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Canceled&apos;, 
-             [Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Done&apos;, 
-             [Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Approved&apos;
-            )
+                <stringValue>AND( 
+          NOT(ISBLANK([Action_Item__c].Target_Due_Date__c)),
+          NOT(ISBLANK([Action_Item__c].Assignee__c )),
+          [Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Canceled&apos;, 
+          [Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Done&apos;, 
+          [Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Approved&apos;            
 )</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
-        <expression>AND(NOT(ISBLANK({!myVariable_current.Target_Due_Date__c})),
-      OR({!myVariable_current.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Canceled&apos;, 
-             {!myVariable_current.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Done&apos;, 
-             {!myVariable_current.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Approved&apos;
-            )
+        <expression>AND( 
+          NOT(ISBLANK({!myVariable_current.Target_Due_Date__c})),
+          NOT(ISBLANK({!myVariable_current.Assignee__c} )),
+          {!myVariable_current.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Canceled&apos;, 
+          {!myVariable_current.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Done&apos;, 
+          {!myVariable_current.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Approved&apos;            
 )</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>AND(NOT(ISBLANK([Action_Item__c].Target_Due_Date__c)),
-      OR([Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Canceled&apos;, 
-             [Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Done&apos;, 
-             [Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Approved&apos;
-            )
+                <stringValue>AND( 
+          NOT(ISBLANK([Action_Item__c].Target_Due_Date__c)),
+          NOT(ISBLANK([Action_Item__c].Assignee__c )),
+          [Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Canceled&apos;, 
+          [Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Done&apos;, 
+          [Action_Item__c].CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Approved&apos;            
 )</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1_pmetrule</name>
         <dataType>Boolean</dataType>
-        <expression>AND(NOT(ISBLANK({!myVariable_old.Target_Due_Date__c})),
-      OR({!myVariable_old.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Canceled&apos;, 
-             {!myVariable_old.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Done&apos;, 
-             {!myVariable_old.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Approved&apos;
-            )
+        <expression>AND( 
+          NOT(ISBLANK({!myVariable_old.Target_Due_Date__c})),
+          NOT(ISBLANK({!myVariable_old.Assignee__c} )),
+          {!myVariable_old.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Canceled&apos;, 
+          {!myVariable_old.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Done&apos;, 
+          {!myVariable_old.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Approved&apos;            
 )</expression>
     </formulas>
-    <interviewLabel>Action_Item_Scheduled-1_InterviewLabel</interviewLabel>
+    <interviewLabel>Action_Item_Scheduled-3_InterviewLabel</interviewLabel>
     <label>Action Item Scheduled</label>
     <processMetadataValues>
         <name>ObjectType</name>
