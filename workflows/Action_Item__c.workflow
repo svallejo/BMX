@@ -89,4 +89,25 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/TrackWise_Digital_Change_Control_Action_Item_Reopened</template>
     </alerts>
+    <rules>
+        <fullName>Due Soon Notification</fullName>
+        <active>true</active>
+        <formula>AND( 
+          NOT(ISBLANK( Target_Due_Date__c )),
+          NOT(ISBLANK( Assignee__c  )),
+          CMPL123_WF_Status__c  &lt;&gt; 'Closed - Canceled', 
+          CMPL123_WF_Status__c &lt;&gt; 'Closed - Done', 
+          CMPL123_WF_Status__c &lt;&gt; 'Closed - Approved'            
+)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Action_item_is_due_5_days_before_target_due_date</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Action_Item__c.Target_Due_Date__c</offsetFromField>
+            <timeLength>-5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
 </Workflow>
