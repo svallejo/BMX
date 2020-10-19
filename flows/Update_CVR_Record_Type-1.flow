@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <interviewLabel>Update CVR Recprd Type {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update CVR Record Type</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_CVR_Record_Type_ID</name>
+        <label>Get CVR Record Type ID</label>
+        <locationX>188</locationX>
+        <locationY>51</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_CVR_Record</targetReference>
+        </connector>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>BMX_Lock_CVR</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CMPL123CME__CVR__c</stringValue>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <queriedFields>Id</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_CVR_Record</name>
+        <label>Update CVR Record</label>
+        <locationX>343</locationX>
+        <locationY>51</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CVR_Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_CVR_Record_Type_ID.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CMPL123CME__CVR__c</object>
+    </recordUpdates>
+    <startElementReference>Get_CVR_Record_Type_ID</startElementReference>
+    <variables>
+        <name>CVR_Record</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>CMPL123CME__CVR__c</objectType>
+    </variables>
+</Flow>

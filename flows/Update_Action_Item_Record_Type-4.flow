@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Updates Action Item&apos;s Record Type to Action Item to unlock page layout.</description>
+    <interviewLabel>Update Action Item Record Type {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Action Item Record Type</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Action_Item_Record_Type_ID</name>
+        <label>Get Action Item Record Type ID</label>
+        <locationX>188</locationX>
+        <locationY>50</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Action_Item_Record</targetReference>
+        </connector>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Action_Item</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Action_Item__c</stringValue>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <queriedFields>Id</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Action_Item_Record</name>
+        <label>Update Action Item Record</label>
+        <locationX>323</locationX>
+        <locationY>50</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ActionItemRecord.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Action_Item_Record_Type_ID.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Action_Item__c</object>
+    </recordUpdates>
+    <startElementReference>Get_Action_Item_Record_Type_ID</startElementReference>
+    <variables>
+        <description>Action Item Record Requiring Record Type Update</description>
+        <name>ActionItemRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Action_Item__c</objectType>
+    </variables>
+    <variables>
+        <name>Email</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Complaint_Creation_Batch_Time__c</objectType>
+    </variables>
+</Flow>

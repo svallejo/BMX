@@ -69,10 +69,15 @@
         <criteriaItems>
             <field>CMPL123CME__Questionnaire__c.CMPL123_WF_Status__c</field>
             <operation>equals</operation>
-            <value>Closed - Canceled</value>
+            <value>Closed - Done</value>
         </criteriaItems>
         <description>Local Assessment Closed Done</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <offsetFromField>CMPL123CME__Questionnaire__c.NOW_59MIN__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
     </rules>
     <rules>
         <fullName>Update Assessment Key Value</fullName>

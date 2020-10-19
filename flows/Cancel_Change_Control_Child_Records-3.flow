@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Send Error Email</description>
+        <name>Send_Error_Email</name>
+        <label>Send Error Email</label>
+        <locationX>294</locationX>
+        <locationY>328</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>error in cancel change control child records</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>laurence.giammarco@spartasystems.com, andrea.chan@spartasystems.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <assignments>
+        <name>Add_Action_Item_to_List</name>
+        <label>Add Action Item to List</label>
+        <locationX>946</locationX>
+        <locationY>450</locationY>
+        <assignmentItems>
+            <assignToReference>Listofupdatedactionitems</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>ActionItemTemp</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Looping_list_of_open_action_items</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assign Task Value CancelActionItem</description>
+        <name>AI_Assign_Task_Field_Update_Key_Value</name>
+        <label>Action Item Assign Task Field Update Key Value</label>
+        <locationX>700</locationX>
+        <locationY>466</locationY>
+        <assignmentItems>
+            <assignToReference>ActionItemTemp.CMPL123Task_Key_Value__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>CancelActionItem</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_Action_Item_to_List</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Are there any open action items?</description>
+        <name>Action_Items_Found</name>
+        <label>Action Items Found?</label>
+        <locationX>473</locationX>
+        <locationY>92</locationY>
+        <defaultConnectorLabel>No Open Action Items Found</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Open_Action_Items_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>List_of_open_action_items</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Looping_list_of_open_action_items</targetReference>
+            </connector>
+            <label>Yes Open Action Items Found</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Cancel Child Change Control Records {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Cancel Change Control Child Records</label>
+    <loops>
+        <description>Looping list of open action items</description>
+        <name>Looping_list_of_open_action_items</name>
+        <label>Looping list of open action items</label>
+        <locationX>700</locationX>
+        <locationY>89</locationY>
+        <assignNextValueToReference>ActionItemTemp</assignNextValueToReference>
+        <collectionReference>List_of_open_action_items</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AI_Assign_Task_Field_Update_Key_Value</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Action_Items</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Action Items For Change Control ID</description>
+        <name>Get_Action_Items</name>
+        <label>Get Action Items</label>
+        <locationX>266</locationX>
+        <locationY>86</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Action_Items_Found</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Send_Error_Email</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Change_Control__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ChangeControl.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>CMPL123_WF_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Open</stringValue>
+            </value>
+        </filters>
+        <object>Action_Item__c</object>
+        <outputReference>List_of_open_action_items</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>CMPL123Task_Key_Value__c</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updating action items with the key value</description>
+        <name>Update_Action_Items</name>
+        <label>Update Action Items</label>
+        <locationX>1153</locationX>
+        <locationY>136</locationY>
+        <inputReference>Listofupdatedactionitems</inputReference>
+    </recordUpdates>
+    <startElementReference>Get_Action_Items</startElementReference>
+    <variables>
+        <name>ActionItemTemp</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Action_Item__c</objectType>
+    </variables>
+    <variables>
+        <name>ChangeControl</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>CMPL123QMS__Change_Control__c</objectType>
+    </variables>
+    <variables>
+        <description>List of Open Action Items to Cancel</description>
+        <name>List_of_open_action_items</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Action_Item__c</objectType>
+    </variables>
+    <variables>
+        <name>Listofupdatedactionitems</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Action_Item__c</objectType>
+    </variables>
+</Flow>

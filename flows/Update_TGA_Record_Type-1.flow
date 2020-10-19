@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <interviewLabel>Update TGA Record Type {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update TGA Record Type</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_TGA_Record_Type_ID</name>
+        <label>Get TGA Record Type ID</label>
+        <locationX>188</locationX>
+        <locationY>51</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_TGA_Record</targetReference>
+        </connector>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>BMX_Lock_TGA</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CMPL123CME__TGA__c</stringValue>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <queriedFields>Id</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_TGA_Record</name>
+        <label>Update TGA Record</label>
+        <locationX>343</locationX>
+        <locationY>51</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>TGA_Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_TGA_Record_Type_ID.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CMPL123CME__TGA__c</object>
+    </recordUpdates>
+    <startElementReference>Get_TGA_Record_Type_ID</startElementReference>
+    <variables>
+        <name>TGA_Record</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>CMPL123CME__TGA__c</objectType>
+    </variables>
+</Flow>
