@@ -31,6 +31,15 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Is_Assessment_Closed_update</fullName>
+        <field>BMX_Is_Assessment_Closed__c</field>
+        <literalValue>1</literalValue>
+        <name>Is Assessment Closed ? update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Key_Value_Update</fullName>
         <field>CMPL123CME__Key_value__c</field>
         <formula>Questionnaire__r.CMPL123CME__Key_Value__c</formula>
@@ -50,6 +59,21 @@
         <protected>false</protected>
         <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
+    <rules>
+        <fullName>Local Assessment Closed Done</fullName>
+        <actions>
+            <name>Is_Assessment_Closed_update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>CMPL123CME__Questionnaire__c.CMPL123_WF_Status__c</field>
+            <operation>equals</operation>
+            <value>Closed - Canceled</value>
+        </criteriaItems>
+        <description>Local Assessment Closed Done</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
     <rules>
         <fullName>Update Assessment Key Value</fullName>
         <actions>
