@@ -343,14 +343,14 @@
                 <stringValue>Assign Investigation Record Type</stringValue>
             </value>
         </processMetadataValues>
-        <name>myWaitEvent_myWait_myRule_42_event_0_SA3</name>
+        <name>myWaitEvent_myWait_myRule_42_event_0_SA4</name>
         <label>Lock Record</label>
         <locationX>4200</locationX>
-        <locationY>400</locationY>
+        <locationY>500</locationY>
         <actionName>Assign_Investigation_Record_Type</actionName>
         <actionType>flow</actionType>
         <connector>
-            <targetReference>myWaitEvent_myWait_myRule_42_event_0_SA4</targetReference>
+            <targetReference>myWaitEvent_myWait_myRule_42_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
         <inputParameters>
             <processMetadataValues>
@@ -3960,7 +3960,7 @@
             <label>Previously Met - Prev</label>
         </rules>
     </decisions>
-    <description>WF Status = Closed/Master  rule- modification in lock record</description>
+    <description>WF Status = Closed/Master  rule- modification in lock record v2</description>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
@@ -3968,7 +3968,7 @@
                 <stringValue>TODAY()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_18_myWaitEvent_myWait_myRule_17_event_0_SA1_5285287398</name>
+        <name>formula_18_myWaitEvent_myWait_myRule_17_event_0_SA1_8037581342</name>
         <dataType>Date</dataType>
         <expression>TODAY()</expression>
     </formulas>
@@ -3979,7 +3979,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_25_myRule_23_A2_5735126932</name>
+        <name>formula_25_myRule_23_A2_5208777426</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -3990,7 +3990,7 @@
                 <stringValue>DATEVALUE([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_43_myWaitEvent_myWait_myRule_42_event_0_SA4_5876651705</name>
+        <name>formula_43_myWaitEvent_myWait_myRule_42_event_0_SA3_5254022087</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -4001,7 +4001,7 @@
                 <stringValue>DATEVALUE ([CMPL123CME__Investigation__c].CMPL123_WF_Action_Performed_On__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_44_myWaitEvent_myWait_myRule_42_event_0_SA4_9021326475</name>
+        <name>formula_44_myWaitEvent_myWait_myRule_42_event_0_SA3_6094761175</name>
         <dataType>Date</dataType>
         <expression>DATEVALUE ({!myVariable_current.CMPL123_WF_Action_Performed_On__c} )</expression>
     </formulas>
@@ -4016,7 +4016,7 @@
         <dataType>Boolean</dataType>
         <expression>ISNEW() &amp;&amp; NOT(ISBLANK({!myVariable_current.CMPL123CME__Complaint__c} )) &amp;&amp; NOT({!myVariable_current.BMX_Invest_Reference__c} )</expression>
     </formulas>
-    <interviewLabel>Investigation_Automations-17_InterviewLabel</interviewLabel>
+    <interviewLabel>Investigation_Automations-18_InterviewLabel</interviewLabel>
     <label>Investigation Automations</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -4488,7 +4488,7 @@
             </processMetadataValues>
             <field>BMX_Oldest_investigation_completed_date__c</field>
             <value>
-                <elementReference>formula_25_myRule_23_A2_5735126932</elementReference>
+                <elementReference>formula_25_myRule_23_A2_5208777426</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Complaint__c</object>
@@ -7040,7 +7040,7 @@
             </processMetadataValues>
             <field>BMX_Oldest_investigation_completed_date__c</field>
             <value>
-                <elementReference>formula_18_myWaitEvent_myWait_myRule_17_event_0_SA1_5285287398</elementReference>
+                <elementReference>formula_18_myWaitEvent_myWait_myRule_17_event_0_SA1_8037581342</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Complaint__c</object>
@@ -7070,12 +7070,12 @@
         <processMetadataValues>
             <name>referenceTargetField</name>
         </processMetadataValues>
-        <name>myWaitEvent_myWait_myRule_42_event_0_SA4</name>
+        <name>myWaitEvent_myWait_myRule_42_event_0_SA3</name>
         <label>Update First &amp; Last INV Closed dates</label>
         <locationX>4200</locationX>
-        <locationY>500</locationY>
+        <locationY>400</locationY>
         <connector>
-            <targetReference>myWaitEvent_myWait_myRule_42_event_0_postWaitExecutionAssignment</targetReference>
+            <targetReference>myWaitEvent_myWait_myRule_42_event_0_SA4</targetReference>
         </connector>
         <filters>
             <processMetadataValues>
@@ -7123,7 +7123,7 @@
             </processMetadataValues>
             <field>BMX_First_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_43_myWaitEvent_myWait_myRule_42_event_0_SA4_5876651705</elementReference>
+                <elementReference>formula_43_myWaitEvent_myWait_myRule_42_event_0_SA3_5254022087</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -7159,7 +7159,7 @@
             </processMetadataValues>
             <field>BMX_Investigation_Closed_Date__c</field>
             <value>
-                <elementReference>formula_44_myWaitEvent_myWait_myRule_42_event_0_SA4_9021326475</elementReference>
+                <elementReference>formula_44_myWaitEvent_myWait_myRule_42_event_0_SA3_6094761175</elementReference>
             </value>
         </inputAssignments>
         <object>CMPL123CME__Investigation__c</object>
