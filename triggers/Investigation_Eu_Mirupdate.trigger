@@ -1,7 +1,9 @@
 trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after insert,after update) {
 
     List<CMPL123CME__EU_MIR__c> EUMIRListupdt= new List<CMPL123CME__EU_MIR__c>();
-    map<Id,CMPL123CME__Investigation__c> Inv_Code_Choice_1Map= new map<Id,CMPL123CME__Investigation__c>();
+    map<Id,CMPL123CME__Investigation__c> Inv_OldMap= Trigger.Oldmap;
+    map<Id,CMPL123CME__Investigation__c> Inv_NewMap= Trigger.NewMap;
+    
     string choice1;
     string choice2;
     string choice3;
@@ -17,6 +19,20 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after insert
     Set<Id> RootChoice3= new Set<Id>();
     
     List<Id> MIRId= new List<Id>();
+    
+    /*Set<Id> InvIds=new Set<Id>();
+    
+     for(Id Key:Inv_OldMap.keyset())
+    {   
+        CMPL123CME__Investigation__c oldmap =Inv_OldMap.get(key);
+        CMPL123CME__Investigation__c newmap =Inv_NewMap.get(key);
+        
+        if(oldmap.CMPL123_WF_Status__c.equals('Closed - Done')!= newmap.CMPL123_WF_Status__c.equals('Closed - Done'))
+        {
+         InvIds.add(key);
+        }
+    } */
+    
     for(CMPL123CME__Investigation__c inv:Trigger.new)
     {   
         if(inv.CMPL123_WF_Status__c  == 'Closed - Done'){
