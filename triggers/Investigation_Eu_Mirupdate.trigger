@@ -1,7 +1,6 @@
 trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after update) {
 
-    List<CMPL123CME__EU_MIR__c> EUMIRListupdt= new List<CMPL123CME__EU_MIR__c>();
-    map<Id,CMPL123CME__Investigation__c> Inv_Code_Choice_1Map= new map<Id,CMPL123CME__Investigation__c>();
+    List<CMPL123CME__EU_MIR__c> EUMIRListupdt= new List<CMPL123CME__EU_MIR__c>();    
     string choice1;
     string choice2;
     string choice3;
@@ -15,6 +14,7 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after update
     Set<Id> RootChoice1= new Set<Id>();
     Set<Id> RootChoice2= new Set<Id>();
     Set<Id> RootChoice3= new Set<Id>();
+    
     map<Id,CMPL123CME__Investigation__c> MIRInvestmap= new map<Id,CMPL123CME__Investigation__c>();
     List<Id> MIRId= new List<Id>();
     for(CMPL123CME__Investigation__c inv:Trigger.new)
@@ -81,7 +81,6 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after update
             {
                 RootChoice3.add(inv.D_Investigation_Conclusion_Choice3__c);
             }
-            
         }
     }
     List<CMPL123CME__EU_MIR__c> EMIRlistupdt= new List<CMPL123CME__EU_MIR__c>();
