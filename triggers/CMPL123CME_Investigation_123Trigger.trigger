@@ -36,8 +36,10 @@ trigger CMPL123CME_Investigation_123Trigger on CMPL123CME__Investigation__c (bef
     /* After Update */
     else if(Trigger.isUpdate && Trigger.isAfter){
         
-        INV_EUMIRUpdate_TriggerHandler invEumirTrigHandler = new INV_EUMIRUpdate_TriggerHandler();
-            invEumirTrigHandler.updateINVEUMIR(trigger.newMap, trigger.oldMap); 
+        INV_EUMIRUpdate_TriggerHandler  invEumirTrigHandler = new INV_EUMIRUpdate_TriggerHandler();
+            System.debug('@@@invEumirTrigHandler'+invEumirTrigHandler);
+            invEumirTrigHandler.updateINVEUMIR(trigger.newMap, trigger.oldMap);         
+            //System.debug('@@@triggerNewMapOldMap,'+invEumirTrigHandler);
         
         CMPL123CME.Investigation_TriggerHandler investigationTrigHandler = new CMPL123CME.Investigation_TriggerHandler ();
         investigationTrigHandler.createInvestigationItems();
