@@ -1,5 +1,9 @@
-trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after update) {
+//trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after update) 
 
+public class INV_EUMIRUpdate_TriggerHandler{
+ 
+public void updateINVEUMIR(Map<Id,CMPL123CME__Investigation__c> oldMap, Map<Id,CMPL123CME__Investigation__c> newMap)
+{
     List<CMPL123CME__EU_MIR__c> EUMIRListupdt= new List<CMPL123CME__EU_MIR__c>();
     map<Id,CMPL123CME__Investigation__c> Inv_Code_Choice_1Map= new map<Id,CMPL123CME__Investigation__c>();
     map<Id,CMPL123CME__Investigation__c> MIRInvestmap= new map<Id,CMPL123CME__Investigation__c>();
@@ -7,10 +11,11 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after update
     LIst<string> choice_code= new List<String>();
     map<Id,string> choicecodemap= new map<Id,string>();
     
-    
-    for(CMPL123CME__Investigation__c inv:Trigger.new)
+    for(CMPL123CME__Investigation__c inv:newMap.values())    
+  //for(CMPL123CME__Investigation__c inv:Trigger.new) 
     {   
-        if(trigger.oldmap.get(inv.Id).CMPL123_WF_Status__c != inv.CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){               
+          if(oldmap.get(inv.Id).CMPL123_WF_Status__c != newMap.get(inv.Id).CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){   
+        //if(trigger.oldmap.get(inv.Id).CMPL123_WF_Status__c != inv.CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){               
             If((inv.Justification_for_Annex_B__c!=null && inv.Justification_for_Annex_B__c!='') || (inv.Justification_for_Annex_C__c!=null && inv.Justification_for_Annex_C__c!='') || (inv.Justification_for_Annex_D__c!=null && inv.Justification_for_Annex_D__c!='')  )
             {            
                 MIRInvestmap.put(inv.EU_MIR__c,inv);
@@ -173,3 +178,5 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after update
         insert cdchoicelist;
     }
  }
+ 
+}

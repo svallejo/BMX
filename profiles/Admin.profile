@@ -4568,6 +4568,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>INV_EUMIRUpdate_TriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>InternalAuditHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
