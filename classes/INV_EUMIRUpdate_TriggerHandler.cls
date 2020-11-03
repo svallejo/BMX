@@ -1,12 +1,11 @@
 //trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after update) - by Shekar 
 
 public class INV_EUMIRUpdate_TriggerHandler{
-    
-public static Set<Id> alreadyProcessed = new Set<Id>(); 
+
 @future(callout=true)
 //public void updateINVEUMIR(Map<Id,CMPL123CME__Investigation__c> oldMap, Map<Id,CMPL123CME__Investigation__c> newMap)
 //public void updateINVEUMIR(List<CMPL123CME__Investigation__c> invList)
-public static void updateINVEUMIR(List<Id> invIdList)
+public static void updateINVEUMIR(Set<Id> invIdList)
 {
     List<CMPL123CME__EU_MIR__c> EUMIRListupdt= new List<CMPL123CME__EU_MIR__c>();
     map<Id,CMPL123CME__Investigation__c> Inv_Code_Choice_1Map= new map<Id,CMPL123CME__Investigation__c>();
@@ -15,11 +14,10 @@ public static void updateINVEUMIR(List<Id> invIdList)
     LIst<string> choice_code= new List<String>();
     map<Id,string> choicecodemap= new map<Id,string>();
 
-     alreadyProcessed.addAll(invIdList);
-     List<CMPL123CME__Investigation__c> invupdatelist= new List<CMPL123CME__Investigation__c>();
+     
   //for(CMPL123CME__Investigation__c inv:newMap.values())    
   //for(CMPL123CME__Investigation__c inv:Trigger.new) - by Shekar 
-    for(CMPL123CME__Investigation__c inv : [Select id,CMPL123_WF_Status__c FROM CMPL123CME__Investigation__c WHERE Id IN : invIdList ])   
+    for(CMPL123CME__Investigation__c inv : [Select id,CMPL123_WF_Status__c,EU_MIR__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c FROM CMPL123CME__Investigation__c WHERE Id IN : invIdList ])   
     {
         //if(oldmap.get(inv.Id).CMPL123_WF_Status__c != newMap.get(inv.Id).CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){   
         //if(trigger.oldmap.get(inv.Id).CMPL123_WF_Status__c != inv.CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){  - by Shekar 
