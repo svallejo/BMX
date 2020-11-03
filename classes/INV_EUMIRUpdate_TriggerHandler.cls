@@ -1,8 +1,12 @@
-//trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after update) 
+//trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after update) - by Shekar 
 
 public class INV_EUMIRUpdate_TriggerHandler{
- 
-public void updateINVEUMIR(Map<Id,CMPL123CME__Investigation__c> oldMap, Map<Id,CMPL123CME__Investigation__c> newMap)
+    
+public static Set<Id> alreadyProcessed = new Set<Id>(); 
+@future(callout=true)
+//public void updateINVEUMIR(Map<Id,CMPL123CME__Investigation__c> oldMap, Map<Id,CMPL123CME__Investigation__c> newMap)
+//public void updateINVEUMIR(List<CMPL123CME__Investigation__c> invList)
+public static void updateINVEUMIR(List<Id> invIdList)
 {
     List<CMPL123CME__EU_MIR__c> EUMIRListupdt= new List<CMPL123CME__EU_MIR__c>();
     map<Id,CMPL123CME__Investigation__c> Inv_Code_Choice_1Map= new map<Id,CMPL123CME__Investigation__c>();
@@ -10,13 +14,18 @@ public void updateINVEUMIR(Map<Id,CMPL123CME__Investigation__c> oldMap, Map<Id,C
     List<Id> MIRId= new List<Id>();
     LIst<string> choice_code= new List<String>();
     map<Id,string> choicecodemap= new map<Id,string>();
-    
-    for(CMPL123CME__Investigation__c inv:newMap.values())    
-  //for(CMPL123CME__Investigation__c inv:Trigger.new) 
-    {   
-          if(oldmap.get(inv.Id).CMPL123_WF_Status__c != newMap.get(inv.Id).CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){   
-        //if(trigger.oldmap.get(inv.Id).CMPL123_WF_Status__c != inv.CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){               
-            If((inv.Justification_for_Annex_B__c!=null && inv.Justification_for_Annex_B__c!='') || (inv.Justification_for_Annex_C__c!=null && inv.Justification_for_Annex_C__c!='') || (inv.Justification_for_Annex_D__c!=null && inv.Justification_for_Annex_D__c!='')  )
+
+     alreadyProcessed.addAll(invIdList);
+     List<CMPL123CME__Investigation__c> invupdatelist= new List<CMPL123CME__Investigation__c>();
+  //for(CMPL123CME__Investigation__c inv:newMap.values())    
+  //for(CMPL123CME__Investigation__c inv:Trigger.new) - by Shekar 
+    for(CMPL123CME__Investigation__c inv : [Select id,CMPL123_WF_Status__c FROM CMPL123CME__Investigation__c WHERE Id IN : invIdList ])   
+    {
+        //if(oldmap.get(inv.Id).CMPL123_WF_Status__c != newMap.get(inv.Id).CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){   
+        //if(trigger.oldmap.get(inv.Id).CMPL123_WF_Status__c != inv.CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){  - by Shekar 
+      if(inv.CMPL123_WF_Status__c  == 'Closed - Done')
+      {           
+            if((inv.Justification_for_Annex_B__c!=null && inv.Justification_for_Annex_B__c!='') || (inv.Justification_for_Annex_C__c!=null && inv.Justification_for_Annex_C__c!='') || (inv.Justification_for_Annex_D__c!=null && inv.Justification_for_Annex_D__c!='')  )
             {            
                 MIRInvestmap.put(inv.EU_MIR__c,inv);
             }
@@ -81,26 +90,26 @@ public void updateINVEUMIR(Map<Id,CMPL123CME__Investigation__c> oldMap, Map<Id,C
                 choicecodemap.put(inv.D_Investigation_Conclusion_Choice3__c,'choice 3');
             }
         }
-        
     }
     
-        List<CMPL123CME__EU_MIR__c> EMIRlistupdt= new List<CMPL123CME__EU_MIR__c>();
-    if(!MIRInvestmap.isEmpty())
-    {
-        List<CMPL123CME__EU_MIR__c> EMIRlist=[select id,CMPL123CME__Explain_If_Investigation_Code_Missing__c,CMPL123CME__Manufacturer_s_Evaluation__c from CMPL123CME__EU_MIR__c where Id IN:MIRInvestmap.keyset()];
-        for(CMPL123CME__EU_MIR__c emr: EMIRlist)
+    List<CMPL123CME__EU_MIR__c> EMIRlistupdt= new List<CMPL123CME__EU_MIR__c>();
+        if(!MIRInvestmap.isEmpty())
         {
-            CMPL123CME__EU_MIR__c mr= new CMPL123CME__EU_MIR__c();
-            mr.Id=emr.Id;
-            mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c;
-            mr.CMPL123CME__Manufacturer_s_Evaluation__c=MIRInvestmap.get(emr.Id).BMX_Investigation_Answer__c;
-            EMIRlistupdt.add(mr);
+            List<CMPL123CME__EU_MIR__c> EMIRlist=[select id,CMPL123CME__Explain_If_Investigation_Code_Missing__c,CMPL123CME__Manufacturer_s_Evaluation__c from CMPL123CME__EU_MIR__c where Id IN:MIRInvestmap.keyset()];
+            for(CMPL123CME__EU_MIR__c emr: EMIRlist)
+            {
+                CMPL123CME__EU_MIR__c mr= new CMPL123CME__EU_MIR__c();
+                mr.Id=emr.Id;
+                mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c;
+                mr.CMPL123CME__Manufacturer_s_Evaluation__c=MIRInvestmap.get(emr.Id).BMX_Investigation_Answer__c;
+                EMIRlistupdt.add(mr);
+            }
         }
-    }
-    if(!EMIRlistupdt.isEmpty())
-    {
-        update EMIRlistupdt;
-    }
+        
+        if(!EMIRlistupdt.isEmpty())
+        {
+            update EMIRlistupdt;
+        }
     
     // Delete Existing Code choice
     List<CMPL123CME__EU_MIR_Code_Choices__c> ChoiceCodedelete1=[SELECT Id,Name,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Name like '%B-Investigation %' and CMPL123CME__Related_EU_MIR__c IN:MIRId];
