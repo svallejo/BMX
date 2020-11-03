@@ -22,6 +22,11 @@ trigger CMPL123CME_Investigation_123Trigger on CMPL123CME__Investigation__c (bef
 
     /* After Insert */
     else if(Trigger.isInsert && Trigger.isAfter){
+    
+        /*INV_EUMIRUpdate_TriggerHandler  invEumirTrigHandler = new INV_EUMIRUpdate_TriggerHandler();
+            System.debug('@@@invEumirTrigHandler'+invEumirTrigHandler);
+            invEumirTrigHandler.updateINVEUMIR(trigger.newMap, trigger.oldMap);
+            */
         CMPL123CME.Investigation_TriggerHandler investigationTrigHandler = new CMPL123CME.Investigation_TriggerHandler ();
         investigationTrigHandler.createInvestigationItems();
         X123handler.handleAfterInsert();
