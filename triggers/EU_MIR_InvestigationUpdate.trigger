@@ -8,15 +8,21 @@ trigger EU_MIR_InvestigationUpdate on CMPL123CME__EU_MIR__c (After insert) {
     {
         if(mir.CMPL123CME__Complaint__c!=null && mir.CMPL123CME__Type_Of_Report__c=='Initial' )
         {
+          System.debug('@@@@@'+' Inside the initial loop');
+
             cmptmap.put(mir.CMPL123CME__Complaint__c,mir.Id);
         }
     }
     map<Id,Id> Invstmap= new Map<Id,Id>();
     List<CMPL123CME__Investigation__c> Investlist=[select Id,CMPL123CME__Complaint__c,EU_MIR__c,CMPL123_WF_Status__c from CMPL123CME__Investigation__c where CMPL123CME__Complaint__c IN:cmptmap.keyset()];
+    System.debug('@@@@@'+' Investlist count');
     List<CMPL123CME__Investigation__c> InvestUptlist= new List<CMPL123CME__Investigation__c>();
     for(CMPL123CME__Investigation__c inv:Investlist){
-        if(inv.CMPL123_WF_Status__c != 'Closed-Canceled'|| inv.CMPL123_WF_Status__c!= 'Closed - Done')
-        {
+        if(inv.CMPL123_WF_Status__c != 'Closed - Canceled'|| inv.CMPL123_WF_Status__c!= 'Closed - Done')
+        {   
+                 System.debug('@@@@@ if condition' + inv.CMPL123_WF_Status__c);
+                 System.debug('@@@@@ if condition' + inv.id);
+
             Invstmap.put(inv.CMPL123CME__Complaint__c,inv.Id);
             CMPL123CME__Investigation__c  inst= new CMPL123CME__Investigation__c();
             inst.Id=inv.Id;
