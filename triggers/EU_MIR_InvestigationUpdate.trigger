@@ -1,4 +1,6 @@
-trigger EU_MIR_InvestigationUpdate on CMPL123CME__EU_MIR__c (After insert,After update) {
+//trigger EU_MIR_InvestigationUpdate on CMPL123CME__EU_MIR__c (After insert,After update) {
+trigger EU_MIR_InvestigationUpdate on CMPL123CME__EU_MIR__c (After insert) {
+
     if(EU_INV_Recursive_Avoid.flag1)
     {
     map<Id,Id> cmptmap= new map<Id,Id>();

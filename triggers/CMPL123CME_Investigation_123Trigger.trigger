@@ -36,12 +36,24 @@ trigger CMPL123CME_Investigation_123Trigger on CMPL123CME__Investigation__c (bef
     /* After Update */
     else if(Trigger.isUpdate && Trigger.isAfter){
         
-        INV_EUMIRUpdate_TriggerHandler  invEumirTrigHandler = new INV_EUMIRUpdate_TriggerHandler();
-            System.debug('@@@invEumirTrigHandler'+invEumirTrigHandler);
+        //INV_EUMIRUpdate_TriggerHandler  invEumirTrigHandler = new INV_EUMIRUpdate_TriggerHandler();
+            //System.debug('@@@invEumirTrigHandler'+invEumirTrigHandler);
             //invEumirTrigHandler.updateINVEUMIR(trigger.newMap, trigger.oldMap);           
-            invEumirTrigHandler.updateINVEUMIR(trigger.new);
-            
-        
+            //invEumirTrigHandler.updateINVEUMIR(trigger.new);
+            List<Id> invIdrecordlist = new List<Id>();
+            //System.debug('@@@invIdrecordlist'+invIdrecordlist);
+            for(CMPL123CME__Investigation__c i : Trigger.new)
+            {
+                if(i.CMPL123_WF_Status__c  == 'Closed - Done')
+                {
+                    invIdrecordlist.add(i.id);  
+                    
+                }
+            }
+            if(!invIdrecordlist.isEmpty()){
+            INV_EUMIRUpdate_TriggerHandler.updateINVEUMIR(invIdrecordlist);
+            //System.debug('@@@invEumirTrigHandler'+ INV_EUMIRUpdate_TriggerHandler.updateINVEUMIR(invIdrecordlist));
+            }
         CMPL123CME.Investigation_TriggerHandler investigationTrigHandler = new CMPL123CME.Investigation_TriggerHandler ();
         investigationTrigHandler.createInvestigationItems();
         X123handler.handleAfterUpdate();

@@ -2,10 +2,10 @@
 
 public class INV_EUMIRUpdate_TriggerHandler{
 
-@future(callout=true)
+@future
 //public void updateINVEUMIR(Map<Id,CMPL123CME__Investigation__c> oldMap, Map<Id,CMPL123CME__Investigation__c> newMap)
 //public void updateINVEUMIR(List<CMPL123CME__Investigation__c> invList)
-public static void updateINVEUMIR(Set<Id> invIdList)
+public static void updateINVEUMIR(List<Id> invIdList)
 {
     List<CMPL123CME__EU_MIR__c> EUMIRListupdt= new List<CMPL123CME__EU_MIR__c>();
     map<Id,CMPL123CME__Investigation__c> Inv_Code_Choice_1Map= new map<Id,CMPL123CME__Investigation__c>();
@@ -14,10 +14,10 @@ public static void updateINVEUMIR(Set<Id> invIdList)
     LIst<string> choice_code= new List<String>();
     map<Id,string> choicecodemap= new map<Id,string>();
 
-     
+    List<CMPL123CME__Investigation__c> invrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Id IN : invIdList ];
   //for(CMPL123CME__Investigation__c inv:newMap.values())    
   //for(CMPL123CME__Investigation__c inv:Trigger.new) - by Shekar 
-    for(CMPL123CME__Investigation__c inv : [Select id,CMPL123_WF_Status__c,EU_MIR__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c FROM CMPL123CME__Investigation__c WHERE Id IN : invIdList ])   
+    for(CMPL123CME__Investigation__c inv : invrecords )   
     {
         //if(oldmap.get(inv.Id).CMPL123_WF_Status__c != newMap.get(inv.Id).CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){   
         //if(trigger.oldmap.get(inv.Id).CMPL123_WF_Status__c != inv.CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){  - by Shekar 
