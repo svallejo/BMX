@@ -4548,6 +4548,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>EU_MIR_InvestigationUpdate</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>EU_Recursive_Avoid</apexClass>
         <enabled>true</enabled>
     </classAccesses>
