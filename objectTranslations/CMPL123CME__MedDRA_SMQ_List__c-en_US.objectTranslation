@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- MedDRA version to use in conjunction with this SMQ --></help>
+        <label><!-- MedDRA Version --></label>
+        <name>CMPL123CME__MedDRA_version__c</name>
+    </fields>
+    <fields>
+        <help><!-- Active Status of SMQ List --></help>
+        <label><!-- Active --></label>
+        <name>CMPL123CME__active__c</name>
+    </fields>
+    <fields>
+        <help><!-- If the SMQ was developed for use with an algorithm, the Boolean expression of the algorithm is included. “N” if the SMQ does not utilize an algorithm --></help>
+        <label><!-- SMQ Algorithm --></label>
+        <name>CMPL123CME__smq_algorithm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Description of the SMQ --></help>
+        <label><!-- SMQ Description --></label>
+        <name>CMPL123CME__smq_description__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value between 1 and 5 identifying the level of the SMQ within the hierarchy of SMQs; 1 is the most general, 5 is the most narrow --></help>
+        <label><!-- SMQ Level --></label>
+        <name>CMPL123CME__smq_level__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SMQ List Unique Key --></label>
+        <name>CMPL123CME__smq_list_unique_key__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name for the SMQ, each SMQ carries “(SMQ)” at the end of the name --></help>
+        <label><!-- SMQ Name --></label>
+        <name>CMPL123CME__smq_name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Note for users to better understand the scope and development process for the SMQ. The description of the algorithm used is included (if applicable), as well as the definition of categories --></help>
+        <label><!-- SMQ Note --></label>
+        <name>CMPL123CME__smq_note__c</name>
+    </fields>
+    <fields>
+        <help><!-- Source for the development of the SMQ (e.g., medical references) --></help>
+        <label><!-- SMQ Source --></label>
+        <name>CMPL123CME__smq_source__c</name>
+    </fields>
+    <fields>
+        <help><!-- Status of the SMQ. “A” = An active SMQ; “I” = An inactive SMQ --></help>
+        <label><!-- Status --></label>
+        <name>CMPL123CME__status__c</name>
+        <picklistValues>
+            <masterLabel>A(An active SMQ)</masterLabel>
+            <translation><!-- A(An active SMQ) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I(An inactive SMQ)</masterLabel>
+            <translation><!-- I(An inactive SMQ) --></translation>
+        </picklistValues>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__MedDRA_Version_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__SMQ_Algorithm_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- SMQ code should start with &quot;2&quot; and must be eight digit only --></errorMessage>
+        <name>CMPL123CME__SMQ_Code_should_start_with_2</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__SMQ_Description_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__SMQ_Level_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__Status_is_required_field</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -113,6 +113,16 @@
         <visibleLines>10</visibleLines>
     </fields>
     <fields>
+        <fullName>CMPL123__Assigned_To_Me__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used for a list views filter</description>
+        <externalId>false</externalId>
+        <formula>CMPL123__Assigned_To__r.Id=$User.Id</formula>
+        <label>Assigned To Me?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>CMPL123__Assigned_To__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <deprecated>false</deprecated>
@@ -213,4 +223,23 @@
     <searchLayouts />
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>CMPL123QMS__Print</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Print</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/apex/CMPL123__X123ReportTemplate?id={!CMPL123__Action__c.Id}</url>
+    </webLinks>
 </CustomObject>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- When enabled, the automated update of supplier user data via API is switched on. Please, do not enable this option if Supplier User Onboarding feature is not used. --></help>
+        <label><!-- Active --></label>
+        <name>CMPL123QMS__Active__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Email Encoding with which users will be created on this Org via API. --></help>
+        <label><!-- Email Encoding --></label>
+        <name>CMPL123QMS__Email_Encoding__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Language with which users will be created on this Org via API. --></help>
+        <label><!-- Language --></label>
+        <name>CMPL123QMS__Language__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Locale with which users will be created on this Org via API. --></help>
+        <label><!-- Locale --></label>
+        <name>CMPL123QMS__Locale__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Permission Set(s) that all users created on this Org via API will be assigned to. Please provide the name space (if exists) and separate multiple values with semicolon. For example: Permission_Set1; Namespace:Permission_Set2 --></help>
+        <label><!-- Permission Sets --></label>
+        <name>CMPL123QMS__Permission_Sets__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Profile that all users created on this Org via API will be assigned to. --></help>
+        <label><!-- Profile --></label>
+        <name>CMPL123QMS__Profile__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Public Group(s) that all users created on this Org via API will be assigned to. Please separate multiple values with semicolon. For example: Public_Group1;Public_Group2 --></help>
+        <label><!-- Public Groups --></label>
+        <name>CMPL123QMS__Public_Groups__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Time Zone with which users will be created on this Org via API. --></help>
+        <label><!-- Time Zone --></label>
+        <name>CMPL123QMS__Time_Zone__c</name>
+    </fields>
+    <fields>
+        <help><!-- The suffix that will be included in Username of users created via API. Please update as per your business needs. --></help>
+        <label><!-- Username Suffix --></label>
+        <name>CMPL123QMS__Username_Suffix__c</name>
+    </fields>
+    <layouts>
+        <layout>Supplier User Onboarding Settings Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Enable synchronization --></label>
+            <section>Enable synchronization</section>
+        </sections>
+        <sections>
+            <label><!-- Set default permissions --></label>
+            <section>Set default permissions</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Time Zone, Locale, Language and Email Encoding must be filled. --></errorMessage>
+        <name>CMPL123QMS__Time_Zone_And_Locale_Is_Not_Empty</name>
+    </validationRules>
+</CustomObjectTranslation>

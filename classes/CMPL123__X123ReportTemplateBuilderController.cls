@@ -90,6 +90,9 @@ global class LabelApiMap {
     global LabelApiMap(String label, String value, String dataType, String type, String formula) {
 
     }
+    global LabelApiMap(String label, String previousSavedLabel, String value, String dataType, String type, String formula) {
+
+    }
 }
 global class SectionDetail {
     global List<CMPL123.X123ReportTemplateBuilderController.LabelApiMap> fields;

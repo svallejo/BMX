@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>CMPL123CME__MedDRA_version__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MedDRA version to use in conjunction with this SMQ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>MedDRA version to use in conjunction with this SMQ</inlineHelpText>
+        <label>MedDRA Version</label>
+        <length>5</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Active Status of SMQ List</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Active Status of SMQ List</inlineHelpText>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__smq_algorithm__c</fullName>
+        <deprecated>false</deprecated>
+        <description>If the SMQ was developed for use with an algorithm, the Boolean expression of the algorithm is included. “N” if the SMQ does not utilize an algorithm</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the SMQ was developed for use with an algorithm, the Boolean expression of the algorithm is included. “N” if the SMQ does not utilize an algorithm</inlineHelpText>
+        <label>SMQ Algorithm</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__smq_description__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Description of the SMQ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description of the SMQ</inlineHelpText>
+        <label>SMQ Description</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__smq_level__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Value between 1 and 5 identifying the level of the SMQ within the hierarchy of SMQs; 1 is the most general, 5 is the most narrow</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Value between 1 and 5 identifying the level of the SMQ within the hierarchy of SMQs; 1 is the most general, 5 is the most narrow</inlineHelpText>
+        <label>SMQ Level</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__smq_list_unique_key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>SMQ List Unique Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__smq_name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Name for the SMQ, each SMQ carries “(SMQ)” at the end of the name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name for the SMQ, each SMQ carries “(SMQ)” at the end of the name</inlineHelpText>
+        <label>SMQ Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__smq_note__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Note for users to better understand the scope and development process for the SMQ. The description of the algorithm used is included (if applicable), as well as the definition of categories</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Note for users to better understand the scope and development process for the SMQ. The description of the algorithm used is included (if applicable), as well as the definition of categories</inlineHelpText>
+        <label>SMQ Note</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__smq_source__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Source for the development of the SMQ (e.g., medical references)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Source for the development of the SMQ (e.g., medical references)</inlineHelpText>
+        <label>SMQ Source</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Status of the SMQ. “A” = An active SMQ; “I” = An inactive SMQ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status of the SMQ. “A” = An active SMQ; “I” = An inactive SMQ</inlineHelpText>
+        <label>Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A(An active SMQ)</label>
+                </value>
+                <value>
+                    <fullName>I</fullName>
+                    <default>false</default>
+                    <label>I(An inactive SMQ)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>MedDRA SMQ List</label>
+    <nameField>
+        <label>SMQ Code</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MedDRA SMQ List</pluralLabel>
+    <searchLayouts />
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>CMPL123CME__MedDRA_Version_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__MedDRA_version__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__MedDRA_version__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__SMQ_Algorithm_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__smq_algorithm__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__smq_algorithm__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__SMQ_Code_should_start_with_2</fullName>
+        <active>true</active>
+        <description>Eight-digit numeric code assigned to the SMQ, which starts with “2”</description>
+        <errorConditionFormula>OR(NOT(BEGINS(Name, "2")),
+LEN(Name) &gt; 8,
+LEN(Name) &lt; 8
+)</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>SMQ code should start with "2" and must be eight digit only</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__SMQ_Description_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__smq_description__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__smq_description__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__SMQ_Level_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(TEXT(CMPL123CME__smq_level__c))</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__smq_level__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__Status_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(TEXT(CMPL123CME__status__c))</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__status__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Subordinate term code; it could be a code for MedDRA PT, LLT, or child SMQ --></help>
+        <label><!-- Subordinate Term Code (SMQ) --></label>
+        <name>CMPL123CME__Term_Code_SMQ__c</name>
+        <relationshipLabel><!-- MedDRA SMQ Content (Subordinate Term Code (SMQ)) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Active Status of MedDRA SMQ Content --></help>
+        <label><!-- Active --></label>
+        <name>CMPL123CME__active__c</name>
+    </fields>
+    <fields>
+        <help><!-- Eight-digit code assigned to the SMQ --></help>
+        <label><!-- SMQ Code --></label>
+        <name>CMPL123CME__smq_code__c</name>
+        <relationshipLabel><!-- MedDRA SMQ Content --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SMQ Content Unique Key --></label>
+        <name>CMPL123CME__smq_content_unique_key__c</name>
+    </fields>
+    <fields>
+        <help><!-- Identifies the version of MedDRA in which this term was added to the SMQ --></help>
+        <label><!-- Addition Version --></label>
+        <name>CMPL123CME__term_addition_version__c</name>
+    </fields>
+    <fields>
+        <help><!-- The category is assigned a single alphabetical letter depending upon the algorithm applied. If the SMQ does not use algorithms, then all Term_category values are assigned &quot;A.&quot; For a child SMQ, this field is assigned &quot;S.” --></help>
+        <label><!-- Term Category --></label>
+        <name>CMPL123CME__term_category__c</name>
+    </fields>
+    <fields>
+        <help><!-- Subordinate term code; it could be a code for MedDRA PT, LLT, or child SMQ --></help>
+        <label><!-- LLT Term Code --></label>
+        <name>CMPL123CME__term_code_LLT__c</name>
+        <relationshipLabel><!-- MedDRA SMQ Content --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Subordinate term code; it could be a code for MedDRA PT, LLT, or child SMQ --></help>
+        <label><!-- PT Term Code --></label>
+        <name>CMPL123CME__term_code_PT__c</name>
+        <relationshipLabel><!-- MedDRA SMQ Content --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Identifies the version of MedDRA in which this term was last modified in this SMQ --></help>
+        <label><!-- Last Modified Version --></label>
+        <name>CMPL123CME__term_last_modified_version__c</name>
+    </fields>
+    <fields>
+        <help><!-- MedDRA hierarchy level of the term (4=PT, 5=LLT) or 0 (zero) for a child SMQ --></help>
+        <label><!-- Hierarchy Level Of Term --></label>
+        <name>CMPL123CME__term_level__c</name>
+        <picklistValues>
+            <masterLabel>0( Zero)</masterLabel>
+            <translation><!-- 0( Zero) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4 (PT)</masterLabel>
+            <translation><!-- 4 (PT) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5 (LLT)</masterLabel>
+            <translation><!-- 5 (LLT) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Defines the MedDRA term as a member of the broad scope (1), narrow scope (2) of the SMQ search, or a child SMQ (0) (zero) --></help>
+        <label><!-- Term Scope --></label>
+        <name>CMPL123CME__term_scope__c</name>
+        <picklistValues>
+            <masterLabel>0(Zero)</masterLabel>
+            <translation><!-- 0(Zero) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1(Broad scope)</masterLabel>
+            <translation><!-- 1(Broad scope) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2(Narrow scope)</masterLabel>
+            <translation><!-- 2(Narrow scope) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Identifies a term as active within this SMQ or inactive within this SMQ. When a term is added to an SMQ, the value is set to “A” for Active. The term can be flagged as “I” for inactive if the term is no longer used in the SMQ. --></help>
+        <label><!-- Term Status --></label>
+        <name>CMPL123CME__term_status__c</name>
+        <picklistValues>
+            <masterLabel>A(Active)</masterLabel>
+            <translation><!-- A(Active) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I(Inactive)</masterLabel>
+            <translation><!-- I(Inactive) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Term weight is used for some SMQ algorithms. “0” is used as default --></help>
+        <label><!-- Term Weight --></label>
+        <name>CMPL123CME__term_weight__c</name>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__Addition_Version_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__Hierarchy_Level_Of_Term_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__LLT_Term_Code_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__Last_Modified_Ver_Of_Term_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__PT_Term_Code_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__SMQ_Code_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__Subordinate_Term_Code_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__Term_Category_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__Term_Scope_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__Term_Status_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__Term_Weight_is_required_field</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -56,6 +56,22 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__EMDRCodeRequiredController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EMDRCodeRequiredControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EMDRCodesValidationHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EMDRCodesValidationHandlerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__EMDRControllerMockFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -73,6 +89,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123CME__EMDRMandatoryFieldsController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EMDRRequiredFieldSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__EMDRRequiredFieldSelectorTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -136,6 +160,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__IEMDRRequiredFieldSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__IEUMIRRequiredCodesSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -148,7 +176,19 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__IUserRecordAccessSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__IUserRecordAccessService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__IWorkflowRuleSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__IWorkflowStepSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -189,6 +229,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123CME__MultipleEMDRRecordPrintControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__Must</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -308,6 +352,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__UserRecordAccessSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__UserRecordAccessSelectorFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__UserRecordAccessService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -320,11 +372,451 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__WorkflowRuleSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__WorkflowRuleSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__WorkflowStepSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__WorkflowStepSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__EQMSApplication</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__ISUORequestDispatcher</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__ISupplierUserOnboardingJunctionSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__IUserSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__Mocks</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123QMS__RedirectSFDCReportController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123QMS__SUOAcknowledgeGetOperation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOAcknowledgeGetOperationTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOBoundListPairTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOContext</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOContextInitializerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOCreateOperation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOCreateOperationTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUODatabaseAdapter</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUODatabaseAdapterTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUODisableOperation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUODisableOperationTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUODmlOperation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUODmlResponseBuilder</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOGetOperation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOGetOperationTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOIssueService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOLabelTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOOperation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOOperationFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOOperationFactoryTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOOperationValidator</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOReadOperation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOReadResponseBuilder</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUORequestDispatcher</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUORequestTransformer</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUORequestTransformerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUORequestValidatorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOResponseBuilder</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOResponseBuilderFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOSelectorFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOTestMocks</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOTestUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOUpdateOperation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOUpdateOperationTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOUserConverter</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOUserConverterTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOWebService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOWebServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SUOWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__SupplierUserOnboardingJunctionSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123QMS__Test_RedirectSFDCReportController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__Test_SuppressPackageTriggers</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__UserSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_Answer</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_AnswerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_AnyOrder</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_AnyOrderTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_ApexMocks</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_ApexMocksConfig</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_ApexMocksTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_ApexMocksUtils</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_ApexMocksUtilsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_Application</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_ApplicationTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_ArgumentCaptor</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_ArgumentCaptorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_IDGenerator</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_IDGeneratorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_IMatcher</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_ISObjectDomain</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_ISObjectSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_ISObjectUnitOfWork</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_InOrder</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_InOrderTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_Inheritor</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_InheritorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_InvocationOnMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_Match</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_MatchTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_MatcherDefinitions</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_MatcherDefinitionsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_MatchersReturnValue</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_MethodArgValues</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_MethodArgValuesTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_MethodCountRecorder</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_MethodReturnValue</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_MethodReturnValueRecorder</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_MethodVerifier</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_Mocks</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_MyList</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_QualifiedMethod</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_QualifiedMethodAndArgValues</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_QualifiedMethodTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_QueryFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_QueryFactoryTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SObjectDescribe</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SObjectDescribeTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SObjectDomain</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SObjectDomainTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SObjectMocks</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SObjectSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SObjectSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SObjectUnitOfWork</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SObjectUnitOfWorkTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SecurityUtils</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SecurityUtilsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_StringBuilder</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_StringBuilderTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_System</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_SystemTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123QMS__fflib_VerificationMode</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -592,6 +1084,46 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AuditContentDocumentHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditContentDocumentLinkHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditContentVersionHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditEntry</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditEntryParser</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditEntryParserException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditEntryParserLabel</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditEntryParserLabelTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditEntryParserTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AuditEntryTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__AuditEntryTestDataFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -728,6 +1260,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AuditTrailAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__AuditTrailConfig</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -848,6 +1384,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AuditedChangesDecorator</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__AuditedRelationship</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -945,6 +1485,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__CPMetadataResponseModel</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__CPMetadataResponseModelTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1077,6 +1621,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__ConsolidatedPrintQueryBuilder</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ConsolidatedPrintQueryBuilderTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1416,6 +1964,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__DefaultRFCWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__DeletionAuditedByChild</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1508,6 +2060,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__EmptyRFCWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__EncryptedTextChangeValidator</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1541,6 +2097,38 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__FLSSecurityException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FeatureCheckerBase</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FeatureCheckerBaseTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FeatureCheckerCache</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FeatureCheckerComponentController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FeatureCheckerComponentControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FeatureCheckerFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FeaturesConfigurationsSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FeaturesConfigurationsWrapper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1608,6 +2196,18 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__File</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FileDeletionAuditedByParent</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FileDeletionAuditedByParentTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__FileDetachmentController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1616,11 +2216,51 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__FileLinkChangeAuditedByParent</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FileLinkChangeAuditedByParentTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__FileProviderController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__FileProviderControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FileTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FileVersion</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FileVersionChangeAuditedByParent</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FileVersionChangeAuditedByParentTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FileVersionTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FilesAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FilesAPITest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__FilesTestDataFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1641,6 +2281,110 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__GroupSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGActionConfig</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGActionParamsConfig</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGColumnInfoDTO</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGColumnInfoDTOTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGConfigValidatorWrapperTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGFieldConfig</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGFieldConfigTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGFieldData</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGObjectConfig</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGObjectConfigTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGRecordHideWindowController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGRecordHideWindowControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGTableBuilder</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGTableBuilderTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGTableConfig</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGTableConfigTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGTableDTO</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGTreeNode</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HTGValidationRules</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HorizontalTreeGridConfigValidatorWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HorizontalTreeGridController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HorizontalTreeGridControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HorizontalTreeGridSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HtgRecordModalFormCtrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HtgRecordModalFormCtrlTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__HtgTestDataFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1768,6 +2512,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__IFeatureCheckerFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__IGroupMemberSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1776,7 +2524,15 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__IHorizontalTreeGridSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__IJobFieldMapSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IMDCAuditSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1793,6 +2549,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__IRDCAdvancedLookupSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__IReasonForChangeConfigSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -2012,6 +2772,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__LabelTranslatorController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__LabelUtil</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -2069,6 +2833,26 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__LookupFilterServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MDCAcknowledgementControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MDCAcknowledgementNoAccessException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MDCAcknowledgementNoAccessExceptionTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MDCAuditSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__MDCAuditSelectorTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -2368,6 +3152,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__RDCContextRFCWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__RDCDatabaseUtil</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -2445,6 +3233,30 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__RDCUtilsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RFCWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RFCWrapperTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ReasonForChangeConfigSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ReasonForChangeConfigWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ReasonForChangeContainer</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ReasonForChangeUtil</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -2605,6 +3417,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__Record_Access_Rule_Validation_Handler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecoveryUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RecoveryUtilTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -2784,6 +3604,22 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__SpecialAuditFields</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SpecialAuditFieldsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SpecialFieldChangeAuditedByParent</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__SpecialFieldChangeAuditedByParentTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__StackTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -2921,6 +3757,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__TimeZonesTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ToggleFeatureConstants</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ToggleFeatureException</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -3101,6 +3945,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__WFStepsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WhiteListStandardObjectsForUpdate</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -3397,6 +4245,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__WorkflowRule</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowRuleCache</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__WorkflowRuleCacheTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -3869,6 +4725,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>CMPL123CME__EMDRMedWatch2021</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>CMPL123CME__MultipleEMDRRecordPrint</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -3894,6 +4754,10 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>CMPL123__DRFRPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123__LabelTranslator</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -15584,6 +16448,54 @@
         <recordType>CMPL123CME__MEDDEV__c.BMX_Lock_Meddev</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Hierarchy__c-CMPL123CME__MedDRA Hierarchy Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Hierarchy_and_Lowest_Level_term__c-CMPL123CME__MedDRA Hierarchy and Lowest Level term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_High_Level_Group_Term__c-CMPL123CME__MedDRA High Level Group Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_High_Level_Term__c-CMPL123CME__MedDRA High Level Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_High_Level_and_Group_Term__c-CMPL123CME__MedDRA High Level  and Group Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_High_Level_and_Preferred_Term__c-CMPL123CME__MedDRA High Level and Preferred Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_International_Order__c-CMPL123CME__MedDRA International Order Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Link_Investigation__c-CMPL123CME__MedDRA Link Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Lowest_Level_Term__c-CMPL123CME__MedDRA Lowest Level Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Preferred_Term__c-CMPL123CME__MedDRA Preferred Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Release__c-CMPL123CME__MedDRA Release Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_SMQ_Content__c-CMPL123CME__MedDRA SMQ Content Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_SMQ_List__c-CMPL123CME__MedDRA SMQ List Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_SOC_and_Group_Term__c-CMPL123CME__MedDRA SOC and Group Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_System_Organ_Class__c-CMPL123CME__MedDRA System Organ Class Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Version_History__c-CMPL123CME__MedDRA History Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123CME__Questionnaire_Items__c-CMPL123CME__Questionnaire Items Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -15639,6 +16551,10 @@
         <recordType>CMPL123CME__TGA__c.BMX_Lock_TGA</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123CME__TGA__c-CMPL123CME__TGA Layout</layout>
+        <recordType>CMPL123CME__TGA__c.CMPL123CME__TGA_2020</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123CME__Upgrades_for_Complaints__mdt-CMPL123CME__Upgrade for Complaint Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -15657,6 +16573,50 @@
         <layout>CMPL123QMS__Deviation__c-CMPL123QMS__Deviation Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123QMS__FMEA__c-CMPL123QMS__FMEA Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__FMEA__c-CMPL123QMS__FMEA Layout</layout>
+        <recordType>CMPL123QMS__FMEA__c.CMPL123QMS__Design</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__FMEA__c-CMPL123QMS__FMEA Layout</layout>
+        <recordType>CMPL123QMS__FMEA__c.CMPL123QMS__Process</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__FMEA__c-CMPL123QMS__FMEA Layout</layout>
+        <recordType>CMPL123QMS__FMEA__c.CMPL123QMS__Use</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode_Effect__c-CMPL123QMS__Failure Mode Effect Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode_Effect__c-CMPL123QMS__Failure Mode Effect Layout</layout>
+        <recordType>CMPL123QMS__Failure_Mode_Effect__c.CMPL123QMS__Failure_Mode_Effect</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode_Hazardous_Situation__c-CMPL123QMS__Failure Mode-Hazardous Situation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode_Hazardous_Situation__c-CMPL123QMS__Failure Mode-Hazardous Situation Layout</layout>
+        <recordType>CMPL123QMS__Failure_Mode_Hazardous_Situation__c.CMPL123QMS__Failure_Mode_Hazardous_Situation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode__c-CMPL123QMS__Failure Mode Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode__c-CMPL123QMS__Failure Mode Design Layout</layout>
+        <recordType>CMPL123QMS__Failure_Mode__c.CMPL123QMS__Design</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode__c-CMPL123QMS__Failure Mode Layout</layout>
+        <recordType>CMPL123QMS__Failure_Mode__c.CMPL123QMS__Process</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode__c-CMPL123QMS__Failure Mode Use Layout</layout>
+        <recordType>CMPL123QMS__Failure_Mode__c.CMPL123QMS__Use</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123QMS__Functional_Area__c-CMPL123QMS__Functional Area Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -15668,6 +16628,55 @@
     <layoutAssignments>
         <layout>CMPL123QMS__Global_Change_Control__c-CMPL123QMS__Default Layout</layout>
         <recordType>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Default_Layout</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Harm_Code__c-CMPL123QMS__Harm Code Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Harm_Code__c-CMPL123QMS__Harm Code Layout</layout>
+        <recordType>CMPL123QMS__Harm_Code__c.CMPL123QMS__Harm_Code</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Harm__c-CMPL123QMS__Harm Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Harm__c-CMPL123QMS__Harm Layout</layout>
+        <recordType>CMPL123QMS__Harm__c.CMPL123QMS__Harm</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard_Analysis__c-CMPL123QMS__Hazard Analysis Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard_Analysis__c-CMPL123QMS__Hazard Analysis Layout</layout>
+        <recordType>CMPL123QMS__Hazard_Analysis__c.CMPL123QMS__Hazard_Analysis</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard_Type__c-CMPL123QMS__Hazard Type Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard_Type__c-CMPL123QMS__Hazard Type Layout</layout>
+        <recordType>CMPL123QMS__Hazard_Type__c.CMPL123QMS__Hazard_Type</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard__c-CMPL123QMS__Hazard Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard__c-CMPL123QMS__Hazard Layout</layout>
+        <recordType>CMPL123QMS__Hazard__c.CMPL123QMS__Hazard</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazardous_Situation_Category__c-CMPL123QMS__Hazardous Situation Category Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazardous_Situation_Category__c-CMPL123QMS__Hazardous Situation Category Layout</layout>
+        <recordType>CMPL123QMS__Hazardous_Situation_Category__c.CMPL123QMS__Hazardous_Situation_Category</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazardous_Situation__c-CMPL123QMS__Hazardous Situation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazardous_Situation__c-CMPL123QMS__Hazardous Situation Layout</layout>
+        <recordType>CMPL123QMS__Hazardous_Situation__c.CMPL123QMS__Hazardous_Situation</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Impacted_Lot__c-CMPL123QMS__Impacted Lot Layout</layout>
@@ -15685,6 +16694,31 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Investigation__c-CMPL123QMS__Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigated_Harm_Calculation__c-CMPL123QMS__Mitigated Harm Calculation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Action__c-CMPL123QMS__General Purpose Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Action__c-CMPL123QMS__General Purpose Layout</layout>
+        <recordType>CMPL123QMS__Mitigation_Action__c.CMPL123QMS__General_Purpose</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Action__c-CMPL123QMS__General Purpose Layout</layout>
+        <recordType>CMPL123QMS__Mitigation_Action__c.CMPL123QMS__ISO_14971</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Option__c-CMPL123QMS__General Purpose</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Option__c-CMPL123QMS__General Purpose</layout>
+        <recordType>CMPL123QMS__Mitigation_Option__c.CMPL123QMS__General_Purpose</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Option__c-CMPL123QMS__General Purpose</layout>
+        <recordType>CMPL123QMS__Mitigation_Option__c.CMPL123QMS__ISO_14971</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Non_Conformance__c-CMPL123QMS__Non Conformance Layout</layout>
@@ -15773,6 +16807,12 @@
         <layout>CMPL123QMS__Regulatory_Assessment__c-CMPL123QMS__Regulatory Assessment Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123QMS__Supplier_User_Onboarding_Junction__c-CMPL123QMS__Supplier User Onboarding Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Supplier_User_Onboarding_Settings__mdt-CMPL123QMS__Supplier User Onboarding Settings Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__AIInsightMock__mdt-CMPL123__AIInsightMock Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -15843,6 +16883,9 @@
         <layout>CMPL123__MDC_Acknowledgement_Entry__c-CMPL123__MDC Acknowledgement Entry Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__MDC_Audit__c-CMPL123__MDC Audit Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__MDC_Field_Mapping__c-CMPL123__MDC Field Mapping Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -15868,6 +16911,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Parent_Child_Audit_Trail_View__mdt-CMPL123__Parent Child Audit Trail View Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Platform_Features_Configuration__mdt-CMPL123__Platform Features Configuration Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Product__c-CMPL123__Product Layout</layout>
@@ -15928,7 +16974,13 @@
         <layout>CMPL123__TWD_Deletion_Whitelist__mdt-CMPL123__TWD Deletion Whitelist Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__TWD_Horizontal_Tree_Grid__mdt-CMPL123__TWD Horizontal Tree Grid Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__TWD_Platform_Connected_App_Settings__mdt-CMPL123__TWD Platform Connected App Settings Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__TWD_Reason_For_Change_Settings__mdt-CMPL123__TWD Reason For Change Settings Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Test_Child_Object__c-CMPL123__Test Child Object Layout</layout>
@@ -16500,7 +17552,42 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
+        <recordType>CMPL123CME__TGA__c.CMPL123CME__TGA_2020</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Failure_Mode_Effect__c.CMPL123QMS__Failure_Mode_Effect</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Failure_Mode_Hazardous_Situation__c.CMPL123QMS__Failure_Mode_Hazardous_Situation</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
         <recordType>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Default_Layout</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Harm_Code__c.CMPL123QMS__Harm_Code</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Hazard_Type__c.CMPL123QMS__Hazard_Type</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Hazardous_Situation_Category__c.CMPL123QMS__Hazardous_Situation_Category</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Hazardous_Situation__c.CMPL123QMS__Hazardous_Situation</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
@@ -16512,6 +17599,16 @@
         <default>true</default>
         <recordType>CMPL123QMS__Internal_Audit__c.Internal</recordType>
         <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Mitigation_Option__c.CMPL123QMS__General_Purpose</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Mitigation_Option__c.CMPL123QMS__ISO_14971</recordType>
+        <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -16782,16 +17879,64 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123QMS__FMEA__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Failure_Mode_Effect__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Failure_Mode__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123QMS__Functional_Area__c</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Global_Change_Assessment__c</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123QMS__Global_Change_Control__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123QMS__Harm_Code__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Harm__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Hazard_Analysis__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Hazard_Type__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Hazard__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Hazardous_Situation_Category__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123QMS__Internal_Audit__c</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Mitigation_Action__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Mitigation_Option__c</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123QMS__Non_Conformance__c</tab>
@@ -16808,6 +17953,10 @@
     <tabVisibilities>
         <tab>CMPL123QMS__Part_Information__c</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Regulatory_Assessment__c</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123__Address__c</tab>

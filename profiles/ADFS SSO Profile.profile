@@ -8587,6 +8587,54 @@
         <recordType>CMPL123CME__MEDDEV__c.BMX_Lock_Meddev</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Hierarchy__c-CMPL123CME__MedDRA Hierarchy Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Hierarchy_and_Lowest_Level_term__c-CMPL123CME__MedDRA Hierarchy and Lowest Level term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_High_Level_Group_Term__c-CMPL123CME__MedDRA High Level Group Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_High_Level_Term__c-CMPL123CME__MedDRA High Level Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_High_Level_and_Group_Term__c-CMPL123CME__MedDRA High Level  and Group Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_High_Level_and_Preferred_Term__c-CMPL123CME__MedDRA High Level and Preferred Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_International_Order__c-CMPL123CME__MedDRA International Order Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Link_Investigation__c-CMPL123CME__MedDRA Link Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Lowest_Level_Term__c-CMPL123CME__MedDRA Lowest Level Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Preferred_Term__c-CMPL123CME__MedDRA Preferred Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Release__c-CMPL123CME__MedDRA Release Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_SMQ_Content__c-CMPL123CME__MedDRA SMQ Content Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_SMQ_List__c-CMPL123CME__MedDRA SMQ List Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_SOC_and_Group_Term__c-CMPL123CME__MedDRA SOC and Group Term Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_System_Organ_Class__c-CMPL123CME__MedDRA System Organ Class Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Version_History__c-CMPL123CME__MedDRA History Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123CME__Questionnaire_Items__c-CMPL123CME__Questionnaire Items Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8642,6 +8690,10 @@
         <recordType>CMPL123CME__TGA__c.BMX_Lock_TGA</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123CME__TGA__c-CMPL123CME__TGA Layout</layout>
+        <recordType>CMPL123CME__TGA__c.CMPL123CME__TGA_2020</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123CME__Upgrades_for_Complaints__mdt-CMPL123CME__Upgrade for Complaint Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8660,6 +8712,50 @@
         <layout>CMPL123QMS__Deviation__c-CMPL123QMS__Deviation Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123QMS__FMEA__c-CMPL123QMS__FMEA Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__FMEA__c-CMPL123QMS__FMEA Layout</layout>
+        <recordType>CMPL123QMS__FMEA__c.CMPL123QMS__Design</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__FMEA__c-CMPL123QMS__FMEA Layout</layout>
+        <recordType>CMPL123QMS__FMEA__c.CMPL123QMS__Process</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__FMEA__c-CMPL123QMS__FMEA Layout</layout>
+        <recordType>CMPL123QMS__FMEA__c.CMPL123QMS__Use</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode_Effect__c-CMPL123QMS__Failure Mode Effect Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode_Effect__c-CMPL123QMS__Failure Mode Effect Layout</layout>
+        <recordType>CMPL123QMS__Failure_Mode_Effect__c.CMPL123QMS__Failure_Mode_Effect</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode_Hazardous_Situation__c-CMPL123QMS__Failure Mode-Hazardous Situation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode_Hazardous_Situation__c-CMPL123QMS__Failure Mode-Hazardous Situation Layout</layout>
+        <recordType>CMPL123QMS__Failure_Mode_Hazardous_Situation__c.CMPL123QMS__Failure_Mode_Hazardous_Situation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode__c-CMPL123QMS__Failure Mode Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode__c-CMPL123QMS__Failure Mode Design Layout</layout>
+        <recordType>CMPL123QMS__Failure_Mode__c.CMPL123QMS__Design</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode__c-CMPL123QMS__Failure Mode Layout</layout>
+        <recordType>CMPL123QMS__Failure_Mode__c.CMPL123QMS__Process</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Failure_Mode__c-CMPL123QMS__Failure Mode Use Layout</layout>
+        <recordType>CMPL123QMS__Failure_Mode__c.CMPL123QMS__Use</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123QMS__Functional_Area__c-CMPL123QMS__Functional Area Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8671,6 +8767,55 @@
     <layoutAssignments>
         <layout>CMPL123QMS__Global_Change_Control__c-CMPL123QMS__Default Layout</layout>
         <recordType>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Default_Layout</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Harm_Code__c-CMPL123QMS__Harm Code Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Harm_Code__c-CMPL123QMS__Harm Code Layout</layout>
+        <recordType>CMPL123QMS__Harm_Code__c.CMPL123QMS__Harm_Code</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Harm__c-CMPL123QMS__Harm Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Harm__c-CMPL123QMS__Harm Layout</layout>
+        <recordType>CMPL123QMS__Harm__c.CMPL123QMS__Harm</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard_Analysis__c-CMPL123QMS__Hazard Analysis Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard_Analysis__c-CMPL123QMS__Hazard Analysis Layout</layout>
+        <recordType>CMPL123QMS__Hazard_Analysis__c.CMPL123QMS__Hazard_Analysis</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard_Type__c-CMPL123QMS__Hazard Type Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard_Type__c-CMPL123QMS__Hazard Type Layout</layout>
+        <recordType>CMPL123QMS__Hazard_Type__c.CMPL123QMS__Hazard_Type</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard__c-CMPL123QMS__Hazard Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazard__c-CMPL123QMS__Hazard Layout</layout>
+        <recordType>CMPL123QMS__Hazard__c.CMPL123QMS__Hazard</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazardous_Situation_Category__c-CMPL123QMS__Hazardous Situation Category Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazardous_Situation_Category__c-CMPL123QMS__Hazardous Situation Category Layout</layout>
+        <recordType>CMPL123QMS__Hazardous_Situation_Category__c.CMPL123QMS__Hazardous_Situation_Category</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazardous_Situation__c-CMPL123QMS__Hazardous Situation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Hazardous_Situation__c-CMPL123QMS__Hazardous Situation Layout</layout>
+        <recordType>CMPL123QMS__Hazardous_Situation__c.CMPL123QMS__Hazardous_Situation</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Impacted_Lot__c-CMPL123QMS__Impacted Lot Layout</layout>
@@ -8688,6 +8833,31 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Investigation__c-CMPL123QMS__Investigation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigated_Harm_Calculation__c-CMPL123QMS__Mitigated Harm Calculation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Action__c-CMPL123QMS__General Purpose Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Action__c-CMPL123QMS__General Purpose Layout</layout>
+        <recordType>CMPL123QMS__Mitigation_Action__c.CMPL123QMS__General_Purpose</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Action__c-CMPL123QMS__General Purpose Layout</layout>
+        <recordType>CMPL123QMS__Mitigation_Action__c.CMPL123QMS__ISO_14971</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Option__c-CMPL123QMS__General Purpose</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Option__c-CMPL123QMS__General Purpose</layout>
+        <recordType>CMPL123QMS__Mitigation_Option__c.CMPL123QMS__General_Purpose</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Mitigation_Option__c-CMPL123QMS__General Purpose</layout>
+        <recordType>CMPL123QMS__Mitigation_Option__c.CMPL123QMS__ISO_14971</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Non_Conformance__c-CMPL123QMS__Non Conformance Layout</layout>
@@ -8776,6 +8946,12 @@
         <layout>CMPL123QMS__Regulatory_Assessment__c-CMPL123QMS__Regulatory Assessment Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123QMS__Supplier_User_Onboarding_Junction__c-CMPL123QMS__Supplier User Onboarding Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123QMS__Supplier_User_Onboarding_Settings__mdt-CMPL123QMS__Supplier User Onboarding Settings Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__AIInsightMock__mdt-CMPL123__AIInsightMock Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8846,6 +9022,9 @@
         <layout>CMPL123__MDC_Acknowledgement_Entry__c-CMPL123__MDC Acknowledgement Entry Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__MDC_Audit__c-CMPL123__MDC Audit Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__MDC_Field_Mapping__c-CMPL123__MDC Field Mapping Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8871,6 +9050,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Parent_Child_Audit_Trail_View__mdt-CMPL123__Parent Child Audit Trail View Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Platform_Features_Configuration__mdt-CMPL123__Platform Features Configuration Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Product__c-CMPL123__Product Layout</layout>
@@ -8931,7 +9113,13 @@
         <layout>CMPL123__TWD_Deletion_Whitelist__mdt-CMPL123__TWD Deletion Whitelist Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__TWD_Horizontal_Tree_Grid__mdt-CMPL123__TWD Horizontal Tree Grid Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__TWD_Platform_Connected_App_Settings__mdt-CMPL123__TWD Platform Connected App Settings Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__TWD_Reason_For_Change_Settings__mdt-CMPL123__TWD Reason For Change Settings Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Test_Child_Object__c-CMPL123__Test Child Object Layout</layout>
@@ -9513,7 +9701,42 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
+        <recordType>CMPL123CME__TGA__c.CMPL123CME__TGA_2020</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Failure_Mode_Effect__c.CMPL123QMS__Failure_Mode_Effect</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Failure_Mode_Hazardous_Situation__c.CMPL123QMS__Failure_Mode_Hazardous_Situation</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
         <recordType>CMPL123QMS__Global_Change_Control__c.CMPL123QMS__Default_Layout</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Harm_Code__c.CMPL123QMS__Harm_Code</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Hazard_Type__c.CMPL123QMS__Hazard_Type</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Hazardous_Situation_Category__c.CMPL123QMS__Hazardous_Situation_Category</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Hazardous_Situation__c.CMPL123QMS__Hazardous_Situation</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
@@ -9524,6 +9747,16 @@
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>CMPL123QMS__Internal_Audit__c.Internal</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Mitigation_Option__c.CMPL123QMS__General_Purpose</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CMPL123QMS__Mitigation_Option__c.CMPL123QMS__ISO_14971</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
@@ -9795,7 +10028,23 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123QMS__FMEA__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Failure_Mode_Effect__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Failure_Mode__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123QMS__Functional_Area__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Global_Change_Assessment__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -9803,7 +10052,39 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123QMS__Harm_Code__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Harm__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Hazard_Analysis__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Hazard_Type__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Hazard__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Hazardous_Situation_Category__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123QMS__Internal_Audit__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Mitigation_Action__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Mitigation_Option__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -9820,6 +10101,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123QMS__Part_Information__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123QMS__Regulatory_Assessment__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>

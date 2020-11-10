@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>CMPL123CME__Description__c</field>
-        <value xsi:type="xsd:string">Update EU MIR custom metadata type to Winter20 or Spring20.</value>
+        <value xsi:type="xsd:string">Update EU MIR custom metadata type to Winter20 or Spring20 onwards.</value>
     </values>
     <values>
         <field>CMPL123CME__Job_Status__c</field>

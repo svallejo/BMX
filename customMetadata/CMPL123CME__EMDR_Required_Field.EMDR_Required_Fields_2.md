@@ -4,7 +4,47 @@
     <label>EMDR required fields 2</label>
     <protected>false</protected>
     <values>
+        <field>CMPL123CME__Active__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>CMPL123CME__EMDR_Form_Version__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>CMPL123CME__F10_Codes__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>CMPL123CME__H6_Codes__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>CMPL123CME__RecordType__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>CMPL123CME__Required_Field_Name__c</field>
         <value xsi:type="xsd:string">NA</value>
+    </values>
+    <values>
+        <field>CMPL123CME__Sort_Order__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>CMPL123CME__TWD_Workflow_Action__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>CMPL123CME__TWD_Workflow_Key_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>CMPL123CME__TWD_Workflow_Start_Step__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>CMPL123CME__TWD_Workflow_Step__c</field>
+        <value xsi:nil="true"/>
     </values>
 </CustomMetadata>

@@ -1,4 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>EMDR Required Field</description>
+    <fields>
+        <fullName>CMPL123CME__Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>To activate and deactivate EMDR code required</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>To activate and deactivate EMDR code required</inlineHelpText>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__EMDR_Form_Version__c</fullName>
+        <deprecated>false</deprecated>
+        <description>EMDR Form Version</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>EMDR Form Version</inlineHelpText>
+        <label>EMDR Form Version</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__F10_Codes__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Codes required for F10 Section</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Codes required for F10 Section</inlineHelpText>
+        <label>F10 Codes</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__H6_Codes__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Codes required for H6 Section</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Codes required for H6 Section</inlineHelpText>
+        <label>H6 Codes</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__RecordType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>EMDR Object Record Type</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>EMDR Object Record Type</inlineHelpText>
+        <label>RecordType</label>
+        <length>25</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>CMPL123CME__Required_Field_Name__c</fullName>
         <deprecated>false</deprecated>
@@ -10,7 +74,72 @@
         <required>true</required>
         <type>TextArea</type>
     </fields>
-    <description>EMDR Required Field</description>
+    <fields>
+        <fullName>CMPL123CME__Sort_Order__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sort order of metadata record</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Sort order of metadata record</inlineHelpText>
+        <label>Sort Order</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__TWD_Workflow_Action__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Workflow Action at which EMDR Code need to made as required</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Workflow Action at which EMDR Code need to made as required</inlineHelpText>
+        <label>TWD Workflow Action</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__TWD_Workflow_Key_Value__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Workflow Rule name and key value at which EMDR Code need to made as required</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Workflow Rule name and key value at which EMDR Code need to made as required</inlineHelpText>
+        <label>TWD Workflow Key Value</label>
+        <length>200</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__TWD_Workflow_Start_Step__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Workflow Start Step at which EMDR Code need to made as required</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Workflow Start Step at which EMDR Code need to made as required</inlineHelpText>
+        <label>TWD Workflow Start Step</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__TWD_Workflow_Step__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Workflow End Step at which EMDR Code need to made as required</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Workflow End Step at which EMDR Code need to made as required</inlineHelpText>
+        <label>TWD Workflow End Step</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>EMDR Required Field</label>
     <pluralLabel>EMDR Required Fields</pluralLabel>
     <visibility>Public</visibility>

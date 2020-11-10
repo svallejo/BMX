@@ -9,8 +9,20 @@
     <apex:variable var="attachmentSelectValue" value="Attachment" />
     <!-- Below style is only working for Chrome -->
     <style type="text/css" media="print"> 
+        @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+            #audit-history-table, .selector:not(*:root) {
+                display: -webkit-box;
+                page-break-before: always;
+                margin-top: -95vh;
+            }
+        }
+
+        #audit-history-table tr td{
+            padding-right: 0.5rem;
+        }
+
         @page { 
-        size: landscape;
+           size: landscape;
         }
     </style>
     <script>
@@ -19,62 +31,101 @@
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
     $(document).ready(function() {
+        let aoColumns = [
+            { "mDataProp": "fieldName", sDefaultContent: "" },
+            { "mDataProp": "action", sDefaultContent: "" },
+            {
+                "mDataProp": "oldValue", sDefaultContent: "",
+                "render": function (data, type, row) {
+                    if (row.fieldType === 'RICHTEXTAREA') {
+                        var dataBefore = $('<span/>').html(data);
+                         /*
+                            SECURITY FALSE POSITIVE
+                            Salesforce already sanitizes rich text values. Escaping them further removes the formatting which is considered a material attribute of rich text audit trails.
+                         */
+                        return $('<div>').append($('<div class="{!if($CurrentPage.parameters.isClassic == "true", "audit-list-style-classic", "audit-rich-text-output")}">').append($(dataBefore))).html();
+                    }
+                    return data;
+                }
+            },
+            {
+                "mDataProp": "newValue", sDefaultContent: "",
+                "render": function (data, type, row) {
+                    if (row.fieldType === 'RICHTEXTAREA') {
+                        var dataAfter = $('<span/>').html(data);
+                         /*
+                            SECURITY FALSE POSITIVE
+                            Salesforce already sanitizes rich text values. Escaping them further removes the formatting which is considered a material attribute of rich text audit trails.
+                         */
+                        return $('<div>').append($('<div class="{!if($CurrentPage.parameters.isClassic == "true", "audit-list-style-classic audit-rich-text-output-align", "audit-rich-text-output audit-rich-text-output-align")}">').append($(dataAfter))).html();
+                    }
+                    return data;
+                }
+            },
+            {
+                "mDataProp": null, sDefaultContent: "",
+                "render": function (data, type, row) {
+                    if (!row.reasonForChangeText) {
+                        if (row.eSignApplied === '-') {
+                            return row.eSignApplied;
+                        }
+                        return getFormattedColumnData(
+							'{!JSINHTMLENCODE($Label.ESIGN_APPLIED)}', '{!JSINHTMLENCODE($Label.COMMENT)}',
+							row.eSignApplied, row.comment
+                        );
+                    }
+                    return getFormattedColumnData(
+						'{!JSINHTMLENCODE($Label.REASON_FOR_CHANGE)}', '{!JSINHTMLENCODE($Label.REASON_FOR_CHANGE_COMMENT)}',
+						row.reasonForChangeText, row.reasonForChangeComment
+                    );
+                }
+            },
+            {
+                "mDataProp": "createdBy", sDefaultContent: "",
+                "render": function (data, type, row, meta) {
+                    if (type === 'sort') {
+                        data = htmlEncode(data.userName);
+                    }
+                    else if (type === 'display') {
+                        //Unfriendly looking escape clause because we can't use JSINHTMLENCODE since we're in datatable land, not VF land
+                        let userName = htmlEncode(data.userName);
+                        if (userName === 'Automated Process') {
+                            data = userName;
+                        }
+                        else {
+                            data = userName + '<br/>' + '(' + data.userId + ')';
+                        }
+                    }
+                    return data;
+                }
+            },
+            { "mDataProp": "createdDate", sDefaultContent: "" }
+        ];
+
+        function getFormattedColumnData(dataLabel, commentLabel, text, commentText) {
+            if (!text) {
+                return text;
+            }
+            let formattedData = '<b>' + dataLabel + ':</b> ' + text;
+            if (commentText) {
+                formattedData += '<br/><b>' + commentLabel + ':</b> ' + commentText;
+            } 
+            return formattedData;
+        }
+
         table =  $("#audit-history-table").dataTable( {
             "paging":   false,
             "ordering": false,
             "info":     false,
             "searching": false,
             "data": JSON.parse("{! JSENCODE(auditList ) }"),
-            "aoColumns": [
-                { "mDataProp": "fieldName", sDefaultContent:"" },
-                { "mDataProp": "action", sDefaultContent:"" },
-                { "mDataProp": "oldValue", sDefaultContent:"",
-                 "render": function(data, type, row){
-                     if(row.fieldType === 'RICHTEXTAREA'){ 
-                         var dataBefore = $('<span/>').html(data);
-                         return $('<div>').append($('<div class="{!if($CurrentPage.parameters.isClassic == "true", "audit-list-style-classic", "audit-rich-text-output")}">').append($(dataBefore).text())).html();
-                     } 
-                     return data;
-                 }
-                },
-                { "mDataProp": "newValue", sDefaultContent:"",
-                 "render": function(data, type, row){
-                     if(row.fieldType === 'RICHTEXTAREA') {
-                         var dataAfter = $('<span/>').html(data);
-                         return $('<div>').append($('<div class="{!if($CurrentPage.parameters.isClassic == "true", "audit-list-style-classic audit-rich-text-output-align", "audit-rich-text-output audit-rich-text-output-align")}">').append($(dataAfter).text())).html();
-                     }
-                     return data;
-                 }
-                },
-                { "mDataProp": "eSignApplied", sDefaultContent:"" },
-                { "mDataProp": "comment", sDefaultContent:"" },
-                { "mDataProp": "createdBy", sDefaultContent:"" ,
-                 "render": function(data, type, row, meta) {
-                     if(type === 'sort') {
-                         data = htmlEncode(data.userName);
-                     }
-                     else if(type === 'display') {
-                         //Unfriendly looking escape clause because we can't use JSINHTMLENCODE since we're in datatable land, not VF land
-                         let userName = htmlEncode(data.userName);
-                         if(userName === 'Automated Process') {
-                             data = userName;
-                         }
-                         else {
-                             data =  userName +'<br/>'+'('+data.userId +')';
-                         }
-                     }
-                     return data;
-                 } 
-                },
-                { "mDataProp": "createdDate", sDefaultContent:"" }
-            ]
+            "aoColumns": aoColumns
         });
         window.print();
     });
     </script>
     
     <body>
-        
         <div class="header_center">
             <apex:outputLabel rendered="{!HTMLENCODE($CurrentPage.parameters.selectedValue) == 'Record'}"> {!HTMLENCODE($Label.cmpl123__audit_trail_history_of)} {!parentObjName}</apex:outputLabel>
             <apex:outputLabel rendered="{!HTMLENCODE($CurrentPage.parameters.selectedValue) == 'Note'}"> {!HTMLENCODE($Label.cmpl123__audit_trail_history_of_note_for)} {!parentObjName}</apex:outputLabel>
@@ -99,8 +150,7 @@
                             <th>{!HTMLENCODE($Label.cmpl123__action)}</th>
                             <th class="unified-oldValue">{!HTMLENCODE($Label.cmpl123__old_value)}</th>
                             <th class="unified-newValue">{!HTMLENCODE($Label.cmpl123__new_value)}</th>
-                            <th>{!HTMLENCODE($Label.cmpl123__esign_applied)}</th>
-                            <th>{!HTMLENCODE($Label.cmpl123__comment)}</th>
+                            <th>{!if(isRFCEnabled, HTMLENCODE($Label.cmpl123__notes), HTMLENCODE($Label.cmpl123__esign_comments))}</th>
                             <th>{!HTMLENCODE($Label.cmpl123__created_by)}</th>
                             <th>{!HTMLENCODE($Label.cmpl123__created_date)} <br/> ({!HTMLENCODE(userTimezoneOffset)})</th>
                         </tr> 

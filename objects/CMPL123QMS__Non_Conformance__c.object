@@ -705,10 +705,11 @@ CASE( CMPL123QMS__Detectability__c , "Easy to Detect", 1, "Can be Detected", 2, 
         <externalId>false</externalId>
         <formula>IF( CMPL123QMS__RPN_Score__c &gt; 26, IMAGE("/resource/CMPL123QMS__RedDot", "Red", 10, 10),
 IF( CMPL123QMS__RPN_Score__c &gt; 12, IMAGE("/resource/CMPL123QMS__YellowDot", "yellow", 10, 10),
+IF( ISBLANK(CMPL123QMS__RPN_Score__c),'',
 IMAGE("/resource/CMPL123QMS__GreenDot", "Green", 10, 10)
 )
+)
 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Risk Flag</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -888,7 +889,7 @@ IMAGE("/resource/CMPL123QMS__GreenDot", "Green", 10, 10)
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <label>Non Conformance</label>
+    <label>Nonconformance</label>
     <listViews>
         <fullName>CMPL123QMS__All</fullName>
         <columns>NAME</columns>
@@ -903,10 +904,10 @@ IMAGE("/resource/CMPL123QMS__GreenDot", "Green", 10, 10)
     </listViews>
     <nameField>
         <displayFormat>NC-{00000}</displayFormat>
-        <label>Non Conformance Number</label>
+        <label>Nonconformance Number</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Non Conformances</pluralLabel>
+    <pluralLabel>Nonconformances</pluralLabel>
     <recordTypes>
         <fullName>CMPL123QMS__Material_Nonconformance</fullName>
         <active>true</active>

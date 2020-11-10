@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>CMPL123CME__action__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Action</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A(Add)</label>
+                </value>
+                <value>
+                    <fullName>D</fullName>
+                    <default>false</default>
+                    <label>D(Delete)</label>
+                </value>
+                <value>
+                    <fullName>U</fullName>
+                    <default>false</default>
+                    <label>U(Update)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__history_unique_key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>History Unique Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__llt_currency__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>LLT Currency</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_addition_version__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Term Additional Version</label>
+        <length>5</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Term Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Term Type</label>
+        <length>4</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>MedDRA History</label>
+    <nameField>
+        <label>Term Code</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MedDRA History</pluralLabel>
+    <searchLayouts />
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>CMPL123CME__Action_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(TEXT(CMPL123CME__action__c))</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__action__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__Additional_Version_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__term_addition_version__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_addition_version__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__Term_Name_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__term_name__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_name__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__Term_Type_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__term_type__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_type__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

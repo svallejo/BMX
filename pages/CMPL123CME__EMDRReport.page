@@ -721,11 +721,11 @@
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!ResultMap['G6']}"/>
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G7. Type of Report</b>&nbsp;
-                    <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!IF(OR(CONTAINS(ResultMap['G7'],'5-day'),CONTAINS(ResultMap['G7'],'30-day'),CONTAINS(ResultMap['G7'],'7-day'),CONTAINS(ResultMap['G7'],'Periodic'),CONTAINS(ResultMap['G7'],'10-day'),CONTAINS(ResultMap['G7'],'Initial'),CONTAINS(ResultMap['G7'],'15-day'),CONTAINS(ResultMap['G7'],'Follow Up No.')),'',ResultMap['G7'])}"/>
+                    <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!IF(OR(BEGINS(ResultMap['G7'],'5-day'),CONTAINS(ResultMap['G7'],'30-day'),CONTAINS(ResultMap['G7'],'7-day'),CONTAINS(ResultMap['G7'],'Periodic'),CONTAINS(ResultMap['G7'],'10-day'),CONTAINS(ResultMap['G7'],'Initial'),CONTAINS(ResultMap['G7'],'15-day'),CONTAINS(ResultMap['G7'],'Follow Up No.')),'',ResultMap['G7'])}"/>
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G7']}" html-placeholder="Select Column"  html-autocomplete="on"/>                    
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
-                    <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!IF(CONTAINS(ResultMap['G7'],'5-day'),'[X]','[]')}"/>&nbsp;5-day
+                    <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!IF(BEGINS(ResultMap['G7'],'5-day'),'[X]','[]')}"/>&nbsp;5-day
                     <span style="margin-left:22px;"><apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!IF(CONTAINS(ResultMap['G7'],'30-day'),'[X]','[]')}"/>&nbsp;30-day </span>
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">

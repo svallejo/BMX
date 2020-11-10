@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Description --></label>
+        <name>CMPL123QMS__Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- HCOD Description --></label>
+        <name>CMPL123QMS__HCOD_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Harm Code --></label>
+        <name>CMPL123QMS__Harm_Code__c</name>
+        <relationshipLabel><!-- Harms --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Hazard Analysis --></label>
+        <name>CMPL123QMS__Hazard_Analysis__c</name>
+        <relationshipLabel><!-- Harms --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Hazardous Situation --></label>
+        <name>CMPL123QMS__Hazardous_Situation__c</name>
+        <relationshipLabel><!-- Harms --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- P2 Score Justification --></label>
+        <name>CMPL123QMS__P2_Score_Justification__c</name>
+    </fields>
+    <fields>
+        <label><!-- P2 Score --></label>
+        <name>CMPL123QMS__P2_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- PoH Score --></label>
+        <name>CMPL123QMS__PoH_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- RR Description --></label>
+        <name>CMPL123QMS__RR_Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- You can choose Risk Register (ISO 14971) records only. --></help>
+        <label><!-- Risk Register --></label>
+        <lookupFilter>
+            <errorMessage><!-- Value does not exist or does not match filter criteria.
+
+Please choose a Risk Register record with the ISO 14971 record type. --></errorMessage>
+            <informationalMessage><!-- You can choose Risk Register (ISO 14971) records only. --></informationalMessage>
+        </lookupFilter>
+        <name>CMPL123QMS__Risk_Register_Parent__c</name>
+        <relationshipLabel><!-- Harms --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Risk Score --></label>
+        <name>CMPL123QMS__Risk_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Short Description --></label>
+        <name>CMPL123QMS__Short_Description__c</name>
+    </fields>
+    <layouts>
+        <layout>Harm Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- General Information --></label>
+            <section>General Information</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Harm --></label>
+        <name>CMPL123QMS__Harm</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- P2 Score cannot be a negative number --></errorMessage>
+        <name>CMPL123QMS__Validation_Rule_for_P2_Score</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- 8-digit code to identify the High Level Group Term --></help>
+        <label><!-- High Level Group Term Code --></label>
+        <name>CMPL123CME__Hlgt_code__c</name>
+        <relationshipLabel><!-- MedDRA High Level  and Group Term --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Active Status of High Level and Group Term --></help>
+        <label><!-- Active --></label>
+        <name>CMPL123CME__active__c</name>
+    </fields>
+    <fields>
+        <help><!-- 8-digit code to identify the High Level Term --></help>
+        <label><!-- High Level Term Code --></label>
+        <name>CMPL123CME__hlt_code__c</name>
+        <relationshipLabel><!-- MedDRA High Level  and Group Term --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- HL and HLGT Unique Key --></label>
+        <name>CMPL123CME__hlt_hlgt_unique_key__c</name>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__High_Level_Group_Term_Code_is_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__High_Level_Term_Code_is_required_field</name>
+    </validationRules>
+</CustomObjectTranslation>

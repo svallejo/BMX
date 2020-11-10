@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>CMPL123CME__Term_Code_SMQ__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Subordinate term code; it could be a code for MedDRA PT, LLT, or child SMQ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Subordinate term code; it could be a code for MedDRA PT, LLT, or child SMQ</inlineHelpText>
+        <label>Subordinate Term Code (SMQ)</label>
+        <referenceTo>CMPL123CME__MedDRA_SMQ_List__c</referenceTo>
+        <relationshipLabel>MedDRA SMQ Content (Subordinate Term Code (SMQ))</relationshipLabel>
+        <relationshipName>MedDRA_SMQ_Content1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Active Status of MedDRA SMQ Content</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Active Status of MedDRA SMQ Content</inlineHelpText>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__smq_code__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Eight-digit code assigned to the SMQ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Eight-digit code assigned to the SMQ</inlineHelpText>
+        <label>SMQ Code</label>
+        <referenceTo>CMPL123CME__MedDRA_SMQ_List__c</referenceTo>
+        <relationshipLabel>MedDRA SMQ Content</relationshipLabel>
+        <relationshipName>MedDRA_SMQ_Content</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__smq_content_unique_key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>SMQ Content Unique Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_addition_version__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Identifies the version of MedDRA in which this term was added to the SMQ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifies the version of MedDRA in which this term was added to the SMQ</inlineHelpText>
+        <label>Addition Version</label>
+        <length>5</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_category__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The category is assigned a single alphabetical letter depending upon the algorithm applied. If the SMQ does not use algorithms, then all Term_category values are assigned "A." For a child SMQ, this field is assigned "S.”</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The category is assigned a single alphabetical letter depending upon the algorithm applied. If the SMQ does not use algorithms, then all Term_category values are assigned "A." For a child SMQ, this field is assigned "S.”</inlineHelpText>
+        <label>Term Category</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_code_LLT__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Subordinate term code; it could be a code for MedDRA PT, LLT, or child SMQ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Subordinate term code; it could be a code for MedDRA PT, LLT, or child SMQ</inlineHelpText>
+        <label>LLT Term Code</label>
+        <referenceTo>CMPL123CME__MedDRA_Lowest_Level_Term__c</referenceTo>
+        <relationshipLabel>MedDRA SMQ Content</relationshipLabel>
+        <relationshipName>MedDRA_SMQ_Content</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_code_PT__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Subordinate term code; it could be a code for MedDRA PT, LLT, or child SMQ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Subordinate term code; it could be a code for MedDRA PT, LLT, or child SMQ</inlineHelpText>
+        <label>PT Term Code</label>
+        <referenceTo>CMPL123CME__MedDRA_Preferred_Term__c</referenceTo>
+        <relationshipLabel>MedDRA SMQ Content</relationshipLabel>
+        <relationshipName>MedDRA_SMQ_Content</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_last_modified_version__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Identifies the version of MedDRA in which this term was last modified in this SMQ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifies the version of MedDRA in which this term was last modified in this SMQ</inlineHelpText>
+        <label>Last Modified Version</label>
+        <length>5</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_level__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MedDRA hierarchy level of the term (4=PT, 5=LLT) or 0 (zero) for a child SMQ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>MedDRA hierarchy level of the term (4=PT, 5=LLT) or 0 (zero) for a child SMQ</inlineHelpText>
+        <label>Hierarchy Level Of Term</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4 (PT)</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5 (LLT)</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0( Zero)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_scope__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Defines the MedDRA term as a member of the broad scope (1), narrow scope (2) of the SMQ search, or a child SMQ (0) (zero)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines the MedDRA term as a member of the broad scope (1), narrow scope (2) of the SMQ search, or a child SMQ (0) (zero)</inlineHelpText>
+        <label>Term Scope</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1(Broad scope)</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2(Narrow scope)</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0(Zero)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Identifies a term as active within this SMQ or inactive within this SMQ. When a term is added to an SMQ, the value is set to “A” for Active. The term can be flagged as “I” for inactive if the term is no longer used in the SMQ.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifies a term as active within this SMQ or inactive within this SMQ. When a term is added to an SMQ, the value is set to “A” for Active. The term can be flagged as “I” for inactive if the term is no longer used in the SMQ.</inlineHelpText>
+        <label>Term Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A(Active)</label>
+                </value>
+                <value>
+                    <fullName>I</fullName>
+                    <default>false</default>
+                    <label>I(Inactive)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__term_weight__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Term weight is used for some SMQ algorithms. “0” is used as default</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Term weight is used for some SMQ algorithms. “0” is used as default</inlineHelpText>
+        <label>Term Weight</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>MedDRA SMQ Content</label>
+    <nameField>
+        <label>MedDRA SMQ Content Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MedDRA SMQ Content</pluralLabel>
+    <searchLayouts />
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>CMPL123CME__Addition_Version_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__term_addition_version__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_addition_version__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__Hierarchy_Level_Of_Term_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(TEXT(CMPL123CME__term_level__c))</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_level__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__LLT_Term_Code_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__term_code_LLT__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_code_LLT__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__Last_Modified_Ver_Of_Term_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__term_last_modified_version__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_last_modified_version__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__PT_Term_Code_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__term_code_PT__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_code_PT__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__SMQ_Code_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__smq_code__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__smq_code__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__Subordinate_Term_Code_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__Term_Code_SMQ__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__Term_Code_SMQ__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__Term_Category_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(CMPL123CME__term_category__c)</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_category__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__Term_Scope_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(TEXT(CMPL123CME__term_scope__c))</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_scope__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__Term_Status_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(TEXT(CMPL123CME__term_status__c))</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_status__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__Term_Weight_is_required_field</fullName>
+        <active>true</active>
+        <description>The rule contains a field that is mandatory.</description>
+        <errorConditionFormula>ISBLANK(TEXT(CMPL123CME__term_weight__c))</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__term_weight__c</errorDisplayField>
+        <errorMessage>This field cannot be empty</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

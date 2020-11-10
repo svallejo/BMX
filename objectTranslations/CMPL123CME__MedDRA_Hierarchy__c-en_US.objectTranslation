@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Active --></label>
+        <name>CMPL123CME__active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hierarchy Unique Key --></label>
+        <name>CMPL123CME__hierarchy_unique_key__c</name>
+    </fields>
+    <fields>
+        <help><!-- 8-digit code to identify the High Level Group Term --></help>
+        <label><!-- HLGT Code --></label>
+        <name>CMPL123CME__hlgt_code__c</name>
+        <relationshipLabel><!-- MedDRA Hierarchy --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Full name of the High Level Group Term --></help>
+        <label><!-- HLGT Name --></label>
+        <name>CMPL123CME__hlgt_name__c</name>
+    </fields>
+    <fields>
+        <help><!-- 8-digit code to identify the High Level Term --></help>
+        <label><!-- HLT Code --></label>
+        <name>CMPL123CME__hlt_code__c</name>
+        <relationshipLabel><!-- MedDRA Hierarchy --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Full name of the High Level Term --></help>
+        <label><!-- HLT Name --></label>
+        <name>CMPL123CME__hlt_name__c</name>
+    </fields>
+    <fields>
+        <help><!-- MedDRA History/Version --></help>
+        <label><!-- MedDRA History --></label>
+        <name>CMPL123CME__meddra_history__c</name>
+        <relationshipLabel><!-- MedDRA Hierarchy --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- This field is null --></help>
+        <label><!-- Null field --></label>
+        <name>CMPL123CME__null_field__c</name>
+    </fields>
+    <fields>
+        <help><!-- Flag set to Y/N to indicate Primary SOC --></help>
+        <label><!-- Primary SOC Flag --></label>
+        <name>CMPL123CME__primary_soc_fg__c</name>
+        <picklistValues>
+            <masterLabel>N</masterLabel>
+            <translation><!-- N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Y</masterLabel>
+            <translation><!-- Y --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- 8-digit code to identify the Preferred Term --></help>
+        <label><!-- PT Code --></label>
+        <name>CMPL123CME__pt_code__c</name>
+        <relationshipLabel><!-- MedDRA Hierarchy --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Full name of the Preferred Term --></help>
+        <label><!-- PT Name --></label>
+        <name>CMPL123CME__pt_name__c</name>
+    </fields>
+    <fields>
+        <help><!-- The primary System Organ Class to which the Preferred Term is linked --></help>
+        <label><!-- PT SOC Code --></label>
+        <name>CMPL123CME__pt_soc_code__c</name>
+    </fields>
+    <fields>
+        <help><!-- System Organ Class abbreviation --></help>
+        <label><!-- SOC Abbreviation --></label>
+        <name>CMPL123CME__soc_abbrev__c</name>
+    </fields>
+    <fields>
+        <help><!-- 8-digit code to identify the System Organ Class --></help>
+        <label><!-- SOC Code --></label>
+        <name>CMPL123CME__soc_code__c</name>
+        <relationshipLabel><!-- MedDRA Hierarchy --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Full name of the System Organ Class --></help>
+        <label><!-- SOC Name --></label>
+        <name>CMPL123CME__soc_name__c</name>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__HLGT_Code_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__HLT_Code_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__Preferred_Term_Code_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__SOC_Abbreviation_is_required_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__SOC_Code_is_required_field</name>
+    </validationRules>
+</CustomObjectTranslation>

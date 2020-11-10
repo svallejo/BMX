@@ -13,7 +13,12 @@
                         redirectToMDR(id);    
                     }
                 }else{
-                    executeOnLoad();
+                    if(confirm("{!JSENCODE($Label.cmpl123cme__cmplt_first_supplemental_emdr_record)}")){
+                        executeOnLoad();
+                    }
+                    else{
+                        redirectToMDR(id);    
+                    } 
                 }
             }
         }   

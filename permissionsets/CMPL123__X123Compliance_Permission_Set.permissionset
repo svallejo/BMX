@@ -80,6 +80,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__RecoveryUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__Related_User_Trigger_Handler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -225,6 +229,10 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>CMPL123__ConsolidatedPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123__LabelTranslator</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -15991,6 +15999,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123__AuditTrail_Config__c.CMPL123__RFC_Comment_Fields__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123__AuditTrail_Config__c.CMPL123__RFC_Fields__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -18381,6 +18394,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123__Audit_Trail_Entry__c.CMPL123__Audit_Trail_RFC_JSON__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123__Audit_Trail_Entry__c.CMPL123__Created_By_Username__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -19617,6 +19635,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123__X123_Report_Template__c.CMPL123__Title__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123__X123_Report_Template__c.CMPL123__Use_Report_Template_Field_Label__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -28571,6 +28594,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>CMPL123__MDC_Acknowledgement_Entry__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>CMPL123__MDC_Audit__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>

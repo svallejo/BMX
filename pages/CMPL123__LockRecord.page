@@ -1,6 +1,7 @@
-<apex:page sidebar="false" showHeader="true" lightningStylesheets="true" standardStylesheets="false">    
-   
+<apex:page sidebar="false" showHeader="true" lightningStylesheets="true" standardStylesheets="false">
+
    <apex:includeLightning />
+   <apex:slds />
 
    <script>
         var uITheme = '{!JSENCODE($User.UIThemeDisplayed)}';
@@ -15,8 +16,20 @@
                    "uITheme"	:	uITheme
                },"LockRecord");
            });
-    </script>
 
-    <div id="LockRecord" />
+        function goBackToSObject () {
+            sforce.one.navigateToSObject('{!JSENCODE($CurrentPage.parameters.parentId)}', "related");
+        }
+    </script>
+    
+    <div id="LockRecord" class="slds-p-horizontal_medium slds-p-vertical_x-small">
+        <apex:outputPanel rendered="{!IF(JSENCODE($User.UIThemeDisplayed) != 'Theme3',true,false)}">
+            <a onclick="goBackToSObject()">{!$Label.cmpl123__back}</a>
+        </apex:outputPanel>
+    </div>
+
+    <div class="slds-text-align_center">
+        <span class="slds-text-heading_small">{!$Label.cmpl123__back_to_parent_record}</span>
+    </div>
 
 </apex:page>

@@ -725,7 +725,7 @@
                           <apex:variable var="count" value="{!0}"/>
                           <apex:repeat value="{!eventPatientCodes}" var="p">
                             <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                              {!IF(LEN(p) < 6, p, LEFT(p, 6))}
+                              {!LEFT(p, EMDR_CODE_MAX_LEN)}
                             </div>
                             <apex:variable var="count" value="{!count + 1}"/>
                             <span style="visibility:{!IF((count <= 2), 'visible', 'hidden')}">&nbsp;-&nbsp;</span>
@@ -735,7 +735,7 @@
                           <apex:variable var="count1" value="{!0}"/>
                           <apex:repeat value="{!eventDeviceCodes}" var="d">
                             <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                              {!if(LEN(d) < 6, d, LEFT(d, 6))}
+                              {!LEFT(d, EMDR_CODE_MAX_LEN)}
                             </div>
                             <apex:variable var="count1" value="{!count1 + 1}"/>
                             <span style="visibility:{!IF((count1 <= 2), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
@@ -953,7 +953,7 @@
                                               <tr>
                                                 <td>
                                                   &nbsp;&nbsp;
-                                                  <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains( mdr.CMPL123CME__G7_Type_of_Report_MultiSelect__c,'5-day' ),'/checkbox_yes.png','/checkbox_no.png'))}"/>
+                                                  <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(BEGINS( mdr.CMPL123CME__G7_Type_of_Report_MultiSelect__c,'5-day' ),'/checkbox_yes.png','/checkbox_no.png'))}"/>
                                                   5-day &nbsp;
                                                 </td>
                                                 <td>
@@ -1243,7 +1243,7 @@
                       <apex:variable var="count" value="{!0}"/>
                       <apex:repeat value="{!patientCodes}" var="p">
                         <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                          {!if(LEN(p) < 6, p, LEFT(p, 6))}
+                          {!LEFT(p, EMDR_CODE_MAX_LEN)}
                         </div>
                         <apex:variable var="count" value="{!count + 1}"/>
                         <span style="visibility:{!IF((count <= 2), 'visible', 'hidden')}">&nbsp;-&nbsp;</span>
@@ -1253,7 +1253,7 @@
                       Device code :&nbsp;&nbsp;
                       <apex:repeat value="{!deviceCodes}" var="d">
                         <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                          {!if(LEN(d) < 6, d, LEFT(d, 6))}
+                          {!LEFT(d, EMDR_CODE_MAX_LEN)}
                         </div>
                         <apex:variable var="count1" value="{!count1 + 1}"/>
                         <span style="visibility:{!IF((count1 <= 2), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
@@ -1263,7 +1263,7 @@
                       <apex:variable var="count2" value="{!0}"/>
                       <apex:repeat value="{!EvalMethodCodes}" var="m">
                         <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                          {!if(LEN(m) < 6, m, LEFT(m, 6))}
+                          {!LEFT(m, EMDR_CODE_MAX_LEN)}
                         </div>
                         <apex:variable var="count2" value="{!count2 + 1}"/>
                         <span style="visibility:{!IF((count2 <= 3), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
@@ -1273,7 +1273,7 @@
                       <apex:variable var="count3" value="{!0}"/>
                       <apex:repeat value="{!EvalResultCodes}" var="r">
                         <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                          {!if(LEN(r) < 6, r, LEFT(r, 6))}
+                          {!LEFT(r, EMDR_CODE_MAX_LEN)}
                         </div>
                         <apex:variable var="count3" value="{!count3 + 1}"/>
                         <span style="visibility:{!IF((count3 <= 3), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
@@ -1283,7 +1283,7 @@
                       <apex:variable var="count4" value="{!0}"/>
                       <apex:repeat value="{!EvalConCodes}" var="cs">
                         <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                          {!if(LEN(cs) < 6, cs, LEFT(cs, 6))}
+                          {!LEFT(cs, EMDR_CODE_MAX_LEN)}
                         </div>
                         <apex:variable var="count4" value="{!count4 + 1}"/>
                         <span style="visibility:{!IF((count4 <= 3), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>

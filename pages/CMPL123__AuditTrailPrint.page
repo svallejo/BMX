@@ -9,8 +9,20 @@
     <apex:variable var="attachmentSelectValue" value="Attachment" />
     <!-- Below style is only working for Chrome -->
     <style type="text/css" media="print"> 
+        @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+            #audit-history-table, .selector:not(*:root) {
+                display: -webkit-box;
+                page-break-before: always;
+                margin-top: -95vh;
+            }
+        }
+
+        #audit-history-table tr td{
+            padding-right: 0.5rem;
+        }
+
         @page {
-        size: landscape;
+            size: landscape;
         }
     </style>
     <script>
@@ -33,7 +45,11 @@
                  "render": function(data, type, row){
                      if(row.fieldType === 'RICHTEXTAREA'){ 
                          var dataBefore = $('<span/>').html(data);
-                         return $('<div>').append($('<div class="{!if($CurrentPage.parameters.isClassic == "true", "audit-list-style-classic", "audit-rich-text-output")}">').append($(dataBefore).text())).html();
+                         /*
+                            SECURITY FALSE POSITIVE
+                            Salesforce already sanitizes rich text values. Escaping them further removes the formatting which is considered a material attribute of rich text audit trails.
+                         */
+                         return $('<div>').append($('<div class="{!if($CurrentPage.parameters.isClassic == "true", "audit-list-style-classic", "audit-rich-text-output")}">').append($(dataBefore))).html();
                      } 
                      return data;
                  }
@@ -42,7 +58,11 @@
                  "render": function(data, type, row){
                      if(row.fieldType === 'RICHTEXTAREA') {
                          var dataAfter = $('<span/>').html(data);
-                         return $('<div>').append($('<div class="{!if($CurrentPage.parameters.isClassic == "true", "audit-list-style-classic audit-rich-text-output-align", "audit-rich-text-output audit-rich-text-output-align")}">').append($(dataAfter).text())).html();
+                         /*
+                            SECURITY FALSE POSITIVE
+                            Salesforce already sanitizes rich text values. Escaping them further removes the formatting which is considered a material attribute of rich text audit trails.
+                         */
+                         return $('<div>').append($('<div class="{!if($CurrentPage.parameters.isClassic == "true", "audit-list-style-classic audit-rich-text-output-align", "audit-rich-text-output audit-rich-text-output-align")}">').append($(dataAfter))).html();
                      }
                      return data;
                  }

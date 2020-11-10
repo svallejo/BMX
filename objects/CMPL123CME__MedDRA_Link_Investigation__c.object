@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>CMPL123CME__Investigation_Evaluation__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Investigation or Evaluation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Investigation or Evaluation</inlineHelpText>
+        <label>Investigation/Evaluation</label>
+        <referenceTo>CMPL123CME__Investigation__c</referenceTo>
+        <relationshipLabel>MedDRA Link Investigation</relationshipLabel>
+        <relationshipName>MedDRA_Link_Investigation</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__hlgt_code__c</fullName>
+        <deprecated>false</deprecated>
+        <description>8-digit code to identify the High Level Group Term</description>
+        <externalId>false</externalId>
+        <inlineHelpText>8-digit code to identify the High Level Group Term</inlineHelpText>
+        <label>HLGT Code</label>
+        <length>8</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__hlgt_name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Full name of the High Level Group Term</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Full name of the High Level Group Term</inlineHelpText>
+        <label>HLGT Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__hlt_code__c</fullName>
+        <deprecated>false</deprecated>
+        <description>High Level Term Code</description>
+        <externalId>false</externalId>
+        <inlineHelpText>High Level Term Code</inlineHelpText>
+        <label>HLT Code</label>
+        <length>8</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__hlt_name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Full name of the High Level Term</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Full name of the High Level Term</inlineHelpText>
+        <label>HLT Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__meddra_history__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MedDRA History/Version</description>
+        <externalId>false</externalId>
+        <inlineHelpText>MedDRA History/Version</inlineHelpText>
+        <label>MedDRA History</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__pt_code__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Preferred Term Code</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Preferred Term Code</inlineHelpText>
+        <label>PT Code</label>
+        <length>8</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__pt_name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Full name of the Preferred Term</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Full name of the Preferred Term</inlineHelpText>
+        <label>PT Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__soc_code__c</fullName>
+        <deprecated>false</deprecated>
+        <description>8-digit code to identify the System Organ Class</description>
+        <externalId>false</externalId>
+        <inlineHelpText>8-digit code to identify the System Organ Class</inlineHelpText>
+        <label>SOC Code</label>
+        <length>8</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__soc_name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Full name of the System Organ Class</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Full name of the System Organ Class</inlineHelpText>
+        <label>SOC Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>MedDRA Link Investigation</label>
+    <nameField>
+        <label>MedDRA Link Investigation Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MedDRA Link Investigation</pluralLabel>
+    <searchLayouts />
+    <sharingModel>Read</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

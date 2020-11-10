@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Active Status of Lowest Level Term --></help>
+        <label><!-- Active --></label>
+        <name>CMPL123CME__active__c</name>
+    </fields>
+    <fields>
+        <help><!-- Symbol allocated by the COSTART terminology --></help>
+        <label><!-- LLT COSTART Code --></label>
+        <name>CMPL123CME__llt_costart_sym__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates whether the Lowest Level Term is current or non-current --></help>
+        <label><!-- LLT Currency --></label>
+        <name>CMPL123CME__llt_currency__c</name>
+    </fields>
+    <fields>
+        <help><!-- Code allocated by the HARTS terminology --></help>
+        <label><!-- LLT HARTS Code --></label>
+        <name>CMPL123CME__llt_harts_code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Code allocated by the 10th Revision of the International Classification of Diseases, ICD-10 --></help>
+        <label><!-- LLT ICD-10 Code --></label>
+        <name>CMPL123CME__llt_icd10_code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Code allocated by the 9th Revision of the International Classification of Diseases, ICD-9 --></help>
+        <label><!-- LLT ICD-9 Code --></label>
+        <name>CMPL123CME__llt_icd9_code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Code allocated by the 9th Revision of the International Classification of Diseases, Clinical Modification, ICD-9-CM --></help>
+        <label><!-- LLT ICD-9-CM Code --></label>
+        <name>CMPL123CME__llt_icd9cm_code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Code allocated by the J-ART terminology --></help>
+        <label><!-- LLT J-ART Code --></label>
+        <name>CMPL123CME__llt_jart_code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Full name of the Lowest Level Term --></help>
+        <label><!-- LLT Name --></label>
+        <name>CMPL123CME__llt_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- LLT Unique Key --></label>
+        <name>CMPL123CME__llt_unique_key__c</name>
+    </fields>
+    <fields>
+        <help><!-- Code allocated by the WHO-ART terminology --></help>
+        <label><!-- LLT WHO-ART Code --></label>
+        <name>CMPL123CME__llt_whoart_code__c</name>
+    </fields>
+    <fields>
+        <help><!-- 8-digit code to identify the Preferred Term --></help>
+        <label><!-- PT Code --></label>
+        <name>CMPL123CME__pt_code__c</name>
+        <relationshipLabel><!-- MedDRA Lowest Level Term --></relationshipLabel>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- LLT Code value  must have 8 characters only --></errorMessage>
+        <name>CMPL123CME__LLT_Code_Should_Be_8_Characters_Only</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <name>CMPL123CME__LLT_Name_is_required_field</name>
+    </validationRules>
+</CustomObjectTranslation>

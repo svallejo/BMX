@@ -82,7 +82,7 @@
                                         <!-- Security false postive: The value in the outputText block is only run by the PDF renderer so there is no XSS risk here -->
                                         <apex:outputText value="{! if(len(field.label) == 0, '', if(field.dataType == 'MULTIPICKLIST', substitute(field.value,';','; '), field.value)) }"
                                                          styleClass="sparta-white-space-pre-line sparta-padding-left-5"
-                                                         escape="{! field.dataType != 'RICHTEXTAREA' }" />
+                                                         escape="{! AND(field.dataType != 'RICHTEXTAREA', field.dataType != 'IMAGESTRING') }" />
                                     </td>
                                 </tr>
                             </apex:repeat>
@@ -127,12 +127,14 @@
                                             
                                             <apex:outputText rendered="{! childRecordField.dataType == 'DATE' || 
                                                                           childRecordField.dataType == 'DATETIME' }"
-                                                                          value="{0,date,MMMM dd, yyyy}">
-
-                                                <apex:param value="{! childRecord[childRecordField.value] }" />
+                                                                          value="{! mapForDateValues[childRecord][childRecordField.value] }">
                                             </apex:outputText>
 
-                                            <apex:outputText rendered="{!childRecordField.dataType == 'REFERENCE'}" 
+                                            <apex:outputText rendered="{!childRecordField.dataType == 'REFERENCEDATE'}">
+                                                {!mapForDateValuesReferenceFieldsInRelatedSection[childRecord[childRecordField.value]]}
+                                            </apex:outputText>
+
+                                            <apex:outputText rendered="{!childRecordField.dataType == 'REFERENCE'}"
                                                              value="{! IF(AND(childRecord[childRecordField.referenceName] != null
                                                                     ,childRecord[childRecordField.referenceName] != '')
                                                                 ,childRecord[childRecordField.referenceName] + ' (' +  childRecord[childRecordField.value] + ')'
@@ -142,12 +144,18 @@
                                                                           childRecordField.dataType == 'RICHTEXTAREA'}" 
                                                               value="{!childRecord[childRecordField.value]}"
                                                               styleClass="sparta-white-space-pre-line sparta-padding-left-5" />
-                                            
+
+                                            <apex:outputText rendered="{!childRecordField.dataType == 'IMAGESTRING'}"
+                                                             value="{!childRecord[childRecordField.value]}"
+                                                             escape="false"/>
+
                                             <apex:outputText rendered="{! childRecordField.dataType != 'DATE' && 
                                                                           childRecordField.dataType != 'DATETIME' && 
                                                                           childRecordField.dataType != 'TEXTAREA' && 
                                                                           childRecordField.dataType != 'REFERENCE' && 
-                                                                          childRecordField.dataType != 'RICHTEXTAREA' }"
+                                                                          childRecordField.dataType != 'RICHTEXTAREA' &&
+                                                                          childRecordField.dataType != 'IMAGESTRING' &&
+                                                                          childRecordField.dataType != 'REFERENCEDATE' }"
                                                              value="{! if( len(childRecordField.label) == 0, 
                                                                             '', 
                                                                             if(childRecordField.dataType == 'MULTIPICKLIST', 

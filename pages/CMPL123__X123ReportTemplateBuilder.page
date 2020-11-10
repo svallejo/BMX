@@ -431,7 +431,7 @@
                 $scope.formObject.CMPL123__Object_Name__c =  $scope.selectedObjectApiName;
                 $scope.formObject.Name =  '{!JSENCODE($CurrentPage.parameters.label)}'+' {!JSINHTMLENCODE($Label.TEMPLATE)}';
                 $scope.formObject.CMPL123__Include_E_Signature_History__c =  false; //default the Include E Signature History checkbox
-
+                $scope.formObject.CMPL123__Use_Report_Template_Field_Label__c =  false;
                 if($scope.templateRecordId.length >0){
                     Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.getReportTemplatesDetail}','{!JSENCODE($CurrentPage.parameters.Id)}',function(result,event){
                         if(event.status){
@@ -576,7 +576,8 @@
                             $scope.formObject.CMPL123__Logo_Details__c.LogoName ='';
                         $scope.formObject.CMPL123__Logo_Details__c = JSON.stringify($scope.formObject.CMPL123__Logo_Details__c);
                         finalJson.templateDetail = $scope.formObject;
-                        finalJson.sectionDetail = $scope.sectionList;
+                        let handledSectionList = handleLabelChanges($scope.sectionList, $scope.formObject.CMPL123__Use_Report_Template_Field_Label__c);
+                        finalJson.sectionDetail = handledSectionList;
 
                         Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.saveReportTemplate}',angular.toJson(finalJson),function(result,event){
                             if(event.status){
@@ -958,6 +959,27 @@
                 };
             });
 
+            //if isUseReportTemplateFieldLabel === false => revert label UI changes.
+            function handleLabelChanges(sectionDetail, isUseReportTemplateFieldLabel){
+                let handledSectionDetail = angular.copy(sectionDetail);
+
+                if (handledSectionDetail !== undefined && handledSectionDetail !== null) {
+                    handledSectionDetail.forEach(function(sectionItem){
+                        if (sectionItem.fields !== undefined && sectionItem.fields!== null) {
+                            sectionItem.fields.forEach(function(fieldItem){
+                                if (!isUseReportTemplateFieldLabel && fieldItem.previousSavedLabel !== null && fieldItem.previousSavedLabel !== undefined) {
+                                    fieldItem.label = fieldItem.previousSavedLabel;
+                                }
+
+                                delete fieldItem.previousSavedLabel;
+                            });
+                        }
+                    });
+                }
+
+                return handledSectionDetail;
+            }
+
             //Filter record from Arrey List
             function showError(message) {
                 let errorDiv = document.getElementById('errorMessageDiv')
@@ -1133,6 +1155,11 @@
                                 <div class="col-md-3">
                                     <input type="checkbox" ng-model="formObject.CMPL123__Include_E_Signature_History__c"/>
                                     <label> {!$Label.INCLUDE_E_SIGNATURE_HISTORY} </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="checkbox" ng-model="formObject.CMPL123__Use_Report_Template_Field_Label__c"/>
+                                    <label> {!$Label.USE_REPORT_TEMPLATE_FIELD_LABEL} </label>
+                                    <br>{!$Label.DO_NOT_USE_QUICK_SAVE}</br>
                                 </div>
                             </div>
                         </div>

@@ -147,6 +147,7 @@ global class LookupData {
     }
 }
 global class PickList {
+    global Boolean disable;
     global String Label;
     global Boolean ticked;
     global String value;

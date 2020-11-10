@@ -30,6 +30,9 @@ global class FieldDescribe {
     global String getInlineHelpText() {
         return null;
     }
+    global String getLabel() {
+        return null;
+    }
     global Integer getLength() {
         return null;
     }

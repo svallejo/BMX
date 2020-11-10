@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>CMPL123QMS__Hazardous_Situation_Compact</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>CMPL123QMS__Hazardous_Situation_Compact</fullName>
+        <fields>Name</fields>
+        <fields>CMPL123QMS__Short_Description__c</fields>
+        <fields>CMPL123QMS__P1_Score__c</fields>
+        <fields>CMPL123QMS__HCAT_Description__c</fields>
+        <fields>CMPL123QMS__HAZA_Description__c</fields>
+        <label>Hazardous Situation Compact</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>CMPL123QMS__Concatenate_Hazard_Situation_fields__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Name  &amp; ' ' &amp; '|' &amp; ' ' &amp; LEFT( CMPL123QMS__Short_Description__c , 60) &amp; ' ' &amp; '|' &amp; ' ' &amp;TEXT(CMPL123QMS__P1_Score__c)</formula>
+        <label>Concatenate Hazard Situation fields</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Description__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__HAZA_Description__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A Cross-object formula field to display the Hazard Analysis Short Description field.</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(CMPL123QMS__Hazard_Analysis__r.CMPL123QMS__Short_Description__c),"n/a",CMPL123QMS__Hazard_Analysis__r.CMPL123QMS__Short_Description__c)</formula>
+        <label>HAZA Description</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__HCAT_Description__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A Cross-object formula field to display the Hazardous Situation Category Short Description field.</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(CMPL123QMS__Hazardous_Situation_Category__r.CMPL123QMS__Short_Description__c),"n/a",CMPL123QMS__Hazardous_Situation_Category__r.CMPL123QMS__Short_Description__c)</formula>
+        <label>HCAT Description</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Hazard_Analysis__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>A lookup filed to the Hazard Analysis object</description>
+        <externalId>false</externalId>
+        <label>Hazard Analysis</label>
+        <referenceTo>CMPL123QMS__Hazard_Analysis__c</referenceTo>
+        <relationshipLabel>Hazardous Situations</relationshipLabel>
+        <relationshipName>Hazardous_Situations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Hazard__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Hazard</label>
+        <referenceTo>CMPL123QMS__Hazard__c</referenceTo>
+        <relationshipLabel>Hazardous Situations</relationshipLabel>
+        <relationshipName>Hazardous_Situations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Hazardous_Situation_Category__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Hazardous Situation Category</label>
+        <referenceTo>CMPL123QMS__Hazardous_Situation_Category__c</referenceTo>
+        <relationshipLabel>Hazardous Situations</relationshipLabel>
+        <relationshipName>Hazardous_Situations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__P1_Score_Justification__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>P1 Score Justification</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__P1_Score__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>P1 Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Sequence_of_Events__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sequence of Events</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Short_Description__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Short Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Hazardous Situation</label>
+    <nameField>
+        <displayFormat>HSIT-{00000}</displayFormat>
+        <label>Hazard Situation Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Hazardous Situations</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypes>
+        <fullName>CMPL123QMS__Hazardous_Situation</fullName>
+        <active>true</active>
+        <label>Hazardous Situation</label>
+    </recordTypes>
+    <searchLayouts>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <searchResultsAdditionalFields>CMPL123QMS__Short_Description__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>CMPL123QMS__Validation_Rule_for_P1_Score</fullName>
+        <active>true</active>
+        <errorConditionFormula>CMPL123QMS__P1_Score__c &lt; 0</errorConditionFormula>
+        <errorDisplayField>CMPL123QMS__P1_Score__c</errorDisplayField>
+        <errorMessage>P1 Score cannot be a negative number</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

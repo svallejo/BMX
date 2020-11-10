@@ -106,6 +106,42 @@
         <name>CMPL123CME__A2_Patient_Years_Old__c</name>
     </fields>
     <fields>
+        <label><!-- A3 - Gender --></label>
+        <name>CMPL123CME__A3_Gender__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Female</masterLabel>
+            <translation><!-- Female --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intersex</masterLabel>
+            <translation><!-- Intersex --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Male</masterLabel>
+            <translation><!-- Male --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prefer not to disclose</masterLabel>
+            <translation><!-- Prefer not to disclose --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transgender</masterLabel>
+            <translation><!-- Transgender --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- A3 - Sex --></label>
         <name>CMPL123CME__A3_Sex__c</name>
         <picklistValues>
@@ -325,6 +361,22 @@
         <name>CMPL123CME__B3_Date_of_Event__c</name>
     </fields>
     <fields>
+        <label><!-- B4 - Report Date Null --></label>
+        <name>CMPL123CME__B4_Report_Date_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help><!-- Date of this Report (Device only) --></help>
         <label><!-- B4 - Report Date --></label>
         <name>CMPL123CME__B4_Report_Date__c</name>
@@ -438,6 +490,55 @@
     <fields>
         <label><!-- C2 - Concom Med Prod and Therapy Dates --></label>
         <name>CMPL123CME__C2_Concom_Med_Prod_and_Therapy_Dates__c</name>
+    </fields>
+    <fields>
+        <help><!-- List Medical Product and Treatment Given at the Same Time of the Event and Date --></help>
+        <label><!-- C2-Med Prod List and Treatment Date Time --></label>
+        <name>CMPL123CME__C2_Med_Prod_List_and_Treatment_Date_Time__c</name>
+    </fields>
+    <fields>
+        <help><!-- C3 - #1 Number of Separate Dosages Null --></help>
+        <label><!-- C3 - #1 Number of Separate Dosages Null --></label>
+        <name>CMPL123CME__C3_1_Number_of_Separate_Dosages_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C3 - #1 Number of Separate Dosages --></help>
+        <label><!-- C3 - #1 Number of Separate Dosages --></label>
+        <name>CMPL123CME__C3_1_Number_of_Separate_Dosages__c</name>
+    </fields>
+    <fields>
+        <help><!-- C3 - #2 Number of Separate Dosages Null --></help>
+        <label><!-- C3 - #2 Number of Separate Dosages Null --></label>
+        <name>CMPL123CME__C3_2_Number_of_Separate_Dosages_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C3 - #2 Number of Separate Dosages --></help>
+        <label><!-- C3 - #2 Number of Separate Dosages --></label>
+        <name>CMPL123CME__C3_2_Number_of_Separate_Dosages__c</name>
     </fields>
     <fields>
         <help><!-- Dose --></help>
@@ -1435,6 +1536,94 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- C4-#1 Treatment/Therapy Start Date Null --></help>
+        <label><!-- C4-#1 Treatment/Therapy Start Date Null --></label>
+        <name>CMPL123CME__C4_1_Therapy_Treatment_Start_Date_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C4-#1 Treatment/Therapy Start Date --></help>
+        <label><!-- C4-#1 Treatment/Therapy Start Date --></label>
+        <name>CMPL123CME__C4_1_Therapy_Treatment_Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- C4-#1 Treatment/Therapy Stop Date Null --></help>
+        <label><!-- C4-#1 Treatment/Therapy Stop Date Null --></label>
+        <name>CMPL123CME__C4_1_Therapy_Treatment_Stop_Date_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C4-#1 Treatment/Therapy Stop Date --></help>
+        <label><!-- C4-#1 Treatment/Therapy Stop Date --></label>
+        <name>CMPL123CME__C4_1_Therapy_Treatment_Stop_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- C4-#2 Treatment/Therapy Start Date Null --></help>
+        <label><!-- C4-#2 Treatment/Therapy Start Date Null --></label>
+        <name>CMPL123CME__C4_2_Therapy_Treatment_Start_Date_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C4-#2 Treatment/Therapy Start Date --></help>
+        <label><!-- C4-#2 Treatment/Therapy Start Date --></label>
+        <name>CMPL123CME__C4_2_Therapy_Treatment_Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- C4-#2 Treatment/Therapy Stop Date Null --></help>
+        <label><!-- C4-#2 Treatment/Therapy Stop Date Null --></label>
+        <name>CMPL123CME__C4_2_Therapy_Treatment_Stop_Date_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C4-#2 Treatment/Therapy Stop Date --></help>
+        <label><!-- C4-#2 Treatment/Therapy Stop Date --></label>
+        <name>CMPL123CME__C4_2_Therapy_Treatment_Stop_Date__c</name>
+    </fields>
+    <fields>
         <help><!-- C4 - #1 Therapy Dates - Stop Date --></help>
         <label><!-- C4 - #1 Therapy Dates - Stop Date --></label>
         <name>CMPL123CME__C4_Therapy_Date_Stop_Date1__c</name>
@@ -1566,6 +1755,108 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- C6 - #1 Product Type --></help>
+        <label><!-- C6 - #1 Product Type --></label>
+        <name>CMPL123CME__C6_Product_Type_1__c</name>
+        <picklistValues>
+            <masterLabel>Biosimilar</masterLabel>
+            <translation><!-- Biosimilar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compounded</masterLabel>
+            <translation><!-- Compounded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Generic</masterLabel>
+            <translation><!-- Generic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OTC</masterLabel>
+            <translation><!-- OTC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pre1938</masterLabel>
+            <translation><!-- Pre1938 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PreANDA</masterLabel>
+            <translation><!-- PreANDA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C6 - #2 Product Type --></help>
+        <label><!-- C6 - #2 Product Type --></label>
+        <name>CMPL123CME__C6_Product_Type_2__c</name>
+        <picklistValues>
+            <masterLabel>Biosimilar</masterLabel>
+            <translation><!-- Biosimilar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compounded</masterLabel>
+            <translation><!-- Compounded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Generic</masterLabel>
+            <translation><!-- Generic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OTC</masterLabel>
+            <translation><!-- OTC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pre1938</masterLabel>
+            <translation><!-- Pre1938 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PreANDA</masterLabel>
+            <translation><!-- PreANDA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C7 - #1 Exp. Date Null --></help>
+        <label><!-- C7 - #1 Exp. Date Null --></label>
+        <name>CMPL123CME__C7_1_Exp_Date_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C7 - #1 Exp. Date --></help>
+        <label><!-- C7 - #1 Exp. Date --></label>
+        <name>CMPL123CME__C7_1_Exp_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- C7 - #2 Exp. Date Null --></help>
+        <label><!-- C7 - #2 Exp. Date Null --></label>
+        <name>CMPL123CME__C7_2_Exp_Date_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C7 - #2 Exp. Date --></help>
+        <label><!-- C7 - #2 Exp. Date --></label>
+        <name>CMPL123CME__C7_2_Exp_Date__c</name>
+    </fields>
+    <fields>
         <help><!-- C7 - #1 Is the Product Over-the-Counter? --></help>
         <label><!-- C7 - #1 Is the Product Over-the-Counter? --></label>
         <name>CMPL123CME__C7_Is_the_Product_Over_the_Counter1__c</name>
@@ -1601,6 +1892,56 @@
         <picklistValues>
             <masterLabel>NA</masterLabel>
             <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C8 - #1 Event Abated After Use Stopped? --></help>
+        <label><!-- C8 - #1 Event Abated After Use Stopped? --></label>
+        <name>CMPL123CME__C8_1_Event_Abated_After_Use_Stopped__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Doesn't Apply</masterLabel>
+            <translation><!-- Doesn&apos;t Apply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C8 - #2 Event Abated After Use Stopped? --></help>
+        <label><!-- C8 - #2 Event Abated After Use Stopped? --></label>
+        <name>CMPL123CME__C8_2_Event_Abated_After_Use_Stopped__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Doesn't Apply</masterLabel>
+            <translation><!-- Doesn&apos;t Apply --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>NI</masterLabel>
@@ -1658,6 +1999,56 @@
         <help><!-- C8 - #2 Exp. Date --></help>
         <label><!-- C8 - #2 Exp. Date --></label>
         <name>CMPL123CME__C8_Exp_Date2__c</name>
+    </fields>
+    <fields>
+        <help><!-- C9 - #1 Event Reappeared After Reintro --></help>
+        <label><!-- C9 - #1 Event Reappeared After Reintro --></label>
+        <name>CMPL123CME__C9_1_Event_Reappeared_After_Reintro__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Doesn't Apply</masterLabel>
+            <translation><!-- Doesn&apos;t Apply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- C9 - #2 Event Reappeared After Reintro --></help>
+        <label><!-- C9 - #2 Event Reappeared After Reintro --></label>
+        <name>CMPL123CME__C9_2_Event_Reappeared_After_Reintro__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Doesn't Apply</masterLabel>
+            <translation><!-- Doesn&apos;t Apply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help><!-- C9 - #1 Evt Abated After Use Stopped? --></help>
@@ -1738,6 +2129,22 @@
         <label><!-- Complaint --></label>
         <name>CMPL123CME__Complaint__c</name>
         <relationshipLabel><!-- EMDR --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- D10 - Concomitant Product Null --></label>
+        <name>CMPL123CME__D10_Concomitant_Product_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- D10 - Date Returned to Mfg Null --></label>
@@ -2122,7 +2529,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- D5 - Other operator of Device --></label>
+        <label><!-- D5 - Other Operator of Device --></label>
         <name>CMPL123CME__D5_Other_operator_of_Device__c</name>
     </fields>
     <fields>
@@ -2146,6 +2553,46 @@
         <name>CMPL123CME__D6_Implant_Date__c</name>
     </fields>
     <fields>
+        <label><!-- D6a - Implant Date Null --></label>
+        <name>CMPL123CME__D6a_Implant_Date_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- D6a - Implant Date --></label>
+        <name>CMPL123CME__D6a_Implant_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- D6b - Explant Date Null --></label>
+        <name>CMPL123CME__D6b_Explant_Date_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- D6b - Explant Date --></label>
+        <name>CMPL123CME__D6b_Explant_Date__c</name>
+    </fields>
+    <fields>
         <label><!-- D7 - Explant Date Null --></label>
         <name>CMPL123CME__D7_Explant_Date_Null__c</name>
         <picklistValues>
@@ -2164,6 +2611,104 @@
     <fields>
         <label><!-- D7 - Explant Date --></label>
         <name>CMPL123CME__D7_Explant_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- D7a - Single Use Device --></label>
+        <name>CMPL123CME__D7a_Single_Use_Device__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- D7b - Address 1 --></label>
+        <name>CMPL123CME__D7b_Address_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- D7b - Address 2 --></label>
+        <name>CMPL123CME__D7b_Address_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- D7b - City --></label>
+        <name>CMPL123CME__D7b_City__c</name>
+    </fields>
+    <fields>
+        <label><!-- D7b - Country --></label>
+        <name>CMPL123CME__D7b_Country__c</name>
+        <relationshipLabel><!-- EMDR (D7b - Country) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- D7b - E-mail Null --></label>
+        <name>CMPL123CME__D7b_E_mail_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- D7b - E-mail --></label>
+        <name>CMPL123CME__D7b_E_mail__c</name>
+    </fields>
+    <fields>
+        <label><!-- D7b - Fax Number Null --></label>
+        <name>CMPL123CME__D7b_Fax_Number_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- D7b - Fax Number --></label>
+        <name>CMPL123CME__D7b_Fax_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- D7b - Name --></label>
+        <name>CMPL123CME__D7b_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- D7b - Postal Code --></label>
+        <name>CMPL123CME__D7b_Postal_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- D7b - Region State --></label>
+        <name>CMPL123CME__D7b_Region_State__c</name>
+        <relationshipLabel><!-- EMDR (D7b - Region State) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- D7b - Zip Code Extension --></label>
+        <name>CMPL123CME__D7b_Zip_Code_Extension__c</name>
+    </fields>
+    <fields>
+        <label><!-- D7b - Zip Code --></label>
+        <name>CMPL123CME__D7b_Zip_Code__c</name>
     </fields>
     <fields>
         <label><!-- D8 - Single Use Device Null --></label>
@@ -2214,6 +2759,26 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- D8 - Was device serviced by third party? --></label>
+        <name>CMPL123CME__D8_Was_device_serviced_by_third_party__c</name>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown</masterLabel>
+            <translation><!-- Unknown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- D9 - Address 2 --></label>
         <name>CMPL123CME__D9_Address2__c</name>
     </fields>
@@ -2229,6 +2794,50 @@
         <label><!-- D9 - Country --></label>
         <name>CMPL123CME__D9_Country__c</name>
         <relationshipLabel><!-- EMDR (D9 - Country) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- D9 - Date Returned to Mfg Null --></label>
+        <name>CMPL123CME__D9_Date_Returned_to_Mfg_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- D9 - Date Returned to Mfg --></label>
+        <name>CMPL123CME__D9_Date_returned_to_Mfg__c</name>
+    </fields>
+    <fields>
+        <label><!-- D9 - Device Available for Eval --></label>
+        <name>CMPL123CME__D9_Device_available_for_Eval__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- D9 - E-mail Null --></label>
@@ -2686,6 +3295,10 @@
         <name>CMPL123CME__EMDR_D7_Explant_Date_Formula__c</name>
     </fields>
     <fields>
+        <label><!-- EMDR D7b Postal Code --></label>
+        <name>CMPL123CME__EMDR_D7b_Postal_Code__c</name>
+    </fields>
+    <fields>
         <label><!-- EMDR D8 Single Use Device --></label>
         <name>CMPL123CME__EMDR_D8_Single_Use_Device__c</name>
     </fields>
@@ -2869,6 +3482,15 @@
     <fields>
         <label><!-- EMDR MFR # --></label>
         <name>CMPL123CME__EMDR_MFR__c</name>
+    </fields>
+    <fields>
+        <help><!-- Type Exemption Number --></help>
+        <label><!-- Exemption Number --></label>
+        <name>CMPL123CME__Exemption_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- F10 - Adverse Event Problem --></label>
+        <name>CMPL123CME__F10_Adverse_Event_Problem__c</name>
     </fields>
     <fields>
         <label><!-- F10 - Event Problem Codes --></label>
@@ -3316,7 +3938,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- F6 - Date facility/dist was aware --></label>
+        <label><!-- F6 - Date Facility/Dist was Aware --></label>
         <name>CMPL123CME__F6_Date_facility_dist_was_aware__c</name>
     </fields>
     <fields>
@@ -3402,6 +4024,11 @@
     <fields>
         <label><!-- F9 - Approximate Age of Device --></label>
         <name>CMPL123CME__F9_Approximate_Age_of_Device__c</name>
+    </fields>
+    <fields>
+        <help><!-- Type Form Code --></help>
+        <label><!-- Form Code --></label>
+        <name>CMPL123CME__Form_Code__c</name>
     </fields>
     <fields>
         <help><!-- G1 Compounding Outsourcing Facility 503B? --></help>
@@ -3496,6 +4123,26 @@
     <fields>
         <label><!-- G1 - Contact Office Middle Name --></label>
         <name>CMPL123CME__G1_Contact_Office_Middle_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- G1 - Contact Office Phone Number Null --></label>
+        <name>CMPL123CME__G1_Contact_Office_Phone_Number_Null__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- G1 - Contact Office Phone Number --></label>
+        <name>CMPL123CME__G1_Contact_Office_Phone_Number__c</name>
     </fields>
     <fields>
         <label><!-- G1 - Contact Office Postal Code --></label>
@@ -3617,6 +4264,66 @@
         <name>CMPL123CME__G2_Contact_Office_Phone__c</name>
     </fields>
     <fields>
+        <label><!-- G2 - Other Report Source --></label>
+        <name>CMPL123CME__G2_Other_Report_Source__c</name>
+    </fields>
+    <fields>
+        <label><!-- G2 - Report Source --></label>
+        <name>CMPL123CME__G2_Report_Source__c</name>
+        <picklistValues>
+            <masterLabel>ASKU</masterLabel>
+            <translation><!-- ASKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Company Representative</masterLabel>
+            <translation><!-- Company Representative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer</masterLabel>
+            <translation><!-- Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Foreign</masterLabel>
+            <translation><!-- Foreign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health Professional</masterLabel>
+            <translation><!-- Health Professional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Literature</masterLabel>
+            <translation><!-- Literature --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Study</masterLabel>
+            <translation><!-- Study --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Facility</masterLabel>
+            <translation><!-- User Facility --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- G3 - Date Received by Mfg --></label>
+        <name>CMPL123CME__G3_Date_received_by_Mfg__c</name>
+    </fields>
+    <fields>
         <label><!-- G3 - Other Report Source --></label>
         <name>CMPL123CME__G3_Report_Source_Other__c</name>
     </fields>
@@ -3673,8 +4380,65 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- G4 - ANDA # --></label>
+        <name>CMPL123CME__G4_ANDA__c</name>
+    </fields>
+    <fields>
+        <label><!-- G4 - BLA # --></label>
+        <name>CMPL123CME__G4_BLA__c</name>
+    </fields>
+    <fields>
+        <label><!-- G4 - Combination Product --></label>
+        <name>CMPL123CME__G4_Combination_Product__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- G4 - Date received by Mfg --></label>
         <name>CMPL123CME__G4_Date_received_by_MFG__c</name>
+    </fields>
+    <fields>
+        <label><!-- G4 - IND # --></label>
+        <name>CMPL123CME__G4_IND__c</name>
+    </fields>
+    <fields>
+        <help><!-- New Drug Application (NDA) number --></help>
+        <label><!-- G4 - NDA # --></label>
+        <name>CMPL123CME__G4_NDA__c</name>
+    </fields>
+    <fields>
+        <label><!-- G4 - OTC Product --></label>
+        <name>CMPL123CME__G4_OTC_Product__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- G4 - PMA/510(k) # --></label>
+        <name>CMPL123CME__G4_PMA_510_k__c</name>
+    </fields>
+    <fields>
+        <label><!-- G4 - Pre 1938 --></label>
+        <name>CMPL123CME__G4_Pre_1938__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- G5 - ANDA # --></label>
@@ -3707,6 +4471,10 @@
     <fields>
         <label><!-- G5 - IND # --></label>
         <name>CMPL123CME__G5_IND_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- G5 - If IND/PreANDA, Give Protocol # --></label>
+        <name>CMPL123CME__G5_If_IND_PreANDA_Give_protocol__c</name>
     </fields>
     <fields>
         <help><!-- New Drug Application (NDA) number --></help>
@@ -3770,8 +4538,48 @@
         <name>CMPL123CME__G5_STN_No__c</name>
     </fields>
     <fields>
+        <label><!-- G6 - Follow up No --></label>
+        <name>CMPL123CME__G6_Follow_up_No__c</name>
+    </fields>
+    <fields>
         <label><!-- G6 - If ind, protocol no --></label>
         <name>CMPL123CME__G6_If_ind_protocol_no__c</name>
+    </fields>
+    <fields>
+        <label><!-- G6 - Type of Report --></label>
+        <name>CMPL123CME__G6_Type_of_Report__c</name>
+        <picklistValues>
+            <masterLabel>15-day</masterLabel>
+            <translation><!-- 15-day --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>30-day</masterLabel>
+            <translation><!-- 30-day --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5-day</masterLabel>
+            <translation><!-- 5-day --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7-day</masterLabel>
+            <translation><!-- 7-day --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Follow Up</masterLabel>
+            <translation><!-- Follow Up --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Initial</masterLabel>
+            <translation><!-- Initial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Periodic</masterLabel>
+            <translation><!-- Periodic --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- G7 - Adverse Event Term(s) --></label>
+        <name>CMPL123CME__G7_Adverse_Event_Term_s__c</name>
     </fields>
     <fields>
         <label><!-- G7 - Follow up No --></label>
@@ -3819,6 +4627,10 @@
         <name>CMPL123CME__G8_Adverse_Event_Term__c</name>
     </fields>
     <fields>
+        <label><!-- G8 - Mfr Report # --></label>
+        <name>CMPL123CME__G8_MFR_Report_Number__c</name>
+    </fields>
+    <fields>
         <help><!-- Mfr Report# --></help>
         <label><!-- G9 - Mfr Report# --></label>
         <name>CMPL123CME__G9_MFR_Report_Number__c</name>
@@ -3830,6 +4642,32 @@
     <fields>
         <label><!-- H11 - Corrected Data --></label>
         <name>CMPL123CME__H11_Corrected_Data__c</name>
+    </fields>
+    <fields>
+        <help><!-- A measurement of the total number of events that have occurred. --></help>
+        <label><!-- H1 - Number of Events Summarized --></label>
+        <name>CMPL123CME__H1_NOE_Summary_Report__c</name>
+    </fields>
+    <fields>
+        <help><!-- Race --></help>
+        <label><!-- H1 - Type of Reportable Event --></label>
+        <name>CMPL123CME__H1_Type_of_Reportable_Event_2021__c</name>
+        <picklistValues>
+            <masterLabel>Death</masterLabel>
+            <translation><!-- Death --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malfunction</masterLabel>
+            <translation><!-- Malfunction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serious Injury</masterLabel>
+            <translation><!-- Serious Injury --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Summary Report</masterLabel>
+            <translation><!-- Summary Report --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- H1 - Type of Reportable Event --></label>
@@ -3980,7 +4818,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- H4 - Device Mfg date --></label>
+        <label><!-- H4 - Device Mfg Date --></label>
         <name>CMPL123CME__H4_Device_mfg_date__c</name>
     </fields>
     <fields>
@@ -4006,6 +4844,10 @@
             <masterLabel>Yes</masterLabel>
             <translation><!-- Yes --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- H6 - Adverse Event Problem --></label>
+        <name>CMPL123CME__H6_Adverse_Event_Problem__c</name>
     </fields>
     <fields>
         <label><!-- H6 - Evaluation Codes --></label>
@@ -4255,20 +5097,40 @@
         <name>CMPL123CME__A_1_GENERAL_INFORMATION</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- GENERAL INFORMATION --></label>
+        <name>CMPL123CME__A_1_GENERAL_INFORMATION_2021_NOV_30</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- A. PATIENT INFORMATION --></label>
         <name>CMPL123CME__A_PATIENT_INFORMATION</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- A. PATIENT INFORMATION --></label>
+        <name>CMPL123CME__A_PATIENT_INFORMATION_2021_NOV_30</name>
     </fieldSets>
     <fieldSets>
         <label><!-- B. ADVERSE EVENT OR PRODUCT PROBLEM --></label>
         <name>CMPL123CME__B_ADVERSE_EVENT_OR_PRODUCT_PROBLEM</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- B. ADVERSE EVENT OR PRODUCT PROBLEM --></label>
+        <name>CMPL123CME__B_ADVERSE_EVENT_OR_PRODUCT_PROBLEM_2021</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- C. SUSPECT PRODUCTS --></label>
         <name>CMPL123CME__C_SUSPECT_PRODUCTS</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- C. SUSPECT PRODUCTS --></label>
+        <name>CMPL123CME__C_SUSPECT_PRODUCTS_2020</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- D. SUSPECT MEDICAL DEVICE --></label>
         <name>CMPL123CME__D_SUSPECT_MEDICAL_DEVICE</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- D. SUSPECT MEDICAL DEVICE --></label>
+        <name>CMPL123CME__D_SUSPECT_MEDICAL_DEVICE_2021_Nov_30</name>
     </fieldSets>
     <fieldSets>
         <label><!-- E. INITIAL REPORTER --></label>
@@ -4283,12 +5145,24 @@
         <name>CMPL123CME__F_FOR_USE_BY_USER_FACILITY_IMPORTER_2018</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- F. FOR USE BY USER FACILITY/IMPORTER --></label>
+        <name>CMPL123CME__F_FOR_USE_BY_USER_FACILITY_IMPORTER_2020</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- G. ALL MANUFACTURERS --></label>
         <name>CMPL123CME__G_ALL_MANUFACTURERS</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- G. ALL MANUFACTURERS --></label>
+        <name>CMPL123CME__G_ALL_MANUFACTURERS_2021_NOV_30</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- H. DEVICE MANUFACTURERS ONLY --></label>
         <name>CMPL123CME__H_DEVICE_MANUFACTURERS_ONLY</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- H. DEVICE MANUFACTURERS ONLY --></label>
+        <name>CMPL123CME__H_DEVICE_MANUFACTURERS_ONLY_2020</name>
     </fieldSets>
     <fieldSets>
         <label><!-- Suplemental EMDR --></label>
@@ -4386,6 +5260,10 @@
     <validationRules>
         <errorMessage><!-- Catalog number cannot be greater than 11 characters Catalog number cannot be greater than 11 characters Catalog number cannot be greater than 11 characters Catalog number cannot be greater than 11 characters --></errorMessage>
         <name>CMPL123CME__CMPL123_TEST</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- G2 - Other Report Source max value is 40 --></errorMessage>
+        <name>CMPL123CME__G2_Other_Report_Source</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- G3 - Other Report Source max value is 40 --></errorMessage>

@@ -43,7 +43,8 @@
             var currentEnv;
             var userName = $("[id$=userName]").val();
             var passWord = $("[id$=passWord]").val();
-            var orgtype = 'https://'+$("[id$=orgtype]").val()+'.salesforce.com';
+            var orgtype = $("[id$=orgtype]").val();
+            var orgURL = 'https://' + $("[id$=orgtype]").val() + '.salesforce.com';
             if(userName.length == 0){
                //Added JSENCODE to fix error due to single and double quotes present in Label values.
                errorMessage('{!JSENCODE($Label.PLEASE_TYPE_USER_NAME)}');
@@ -53,7 +54,7 @@
                 obj.next().empty();
                 obj.next().show();
                 obj.next().append("&nbsp;&nbsp;<img src='/img/loading32.gif' />");
-                 Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ConfigController.doConnect}',userName,passWord,orgtype,function(result,event){
+                 Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ConfigController.doConnect}',userName,passWord,orgURL,function(result,event){
                     if(event.status){    
                         var requireLoginInfo =  JSON.parse($("<div />").html(result).text());    
                         if(requireLoginInfo["error"] != null || requireLoginInfo["error"] != undefined){
@@ -64,7 +65,7 @@
                             endpoint = requireLoginInfo["instance_url"];
                             createUserInfoDiv(requireLoginInfo);
                             if(appConfigDetail.length >0){
-                                 currentEnv = (orgtype == "Test" )? "https://test.salesforce.com":"https://login.salesforce.com";
+                                 currentEnv = (orgtype == "test" )? "https://test.salesforce.com":"https://login.salesforce.com";
                                  createCustomSetting(currentEnv);
                             }else{
                                 //Added JSENCODE to fix error due to single and double quotes present in Label values.

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This holds configuration for the Supplier User Onboarding feature of Trackwise Digital Platform</description>
+    <fields>
+        <fullName>CMPL123QMS__Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>When enabled, the automated update of supplier user data via API is switched on. Please, do not enable this option if Supplier User Onboarding feature is not used.</inlineHelpText>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Email_Encoding__c</fullName>
+        <defaultValue>"ISO-8859-1"</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The Email Encoding with which users will be created on this Org via API.</inlineHelpText>
+        <label>Email Encoding</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Language__c</fullName>
+        <defaultValue>"en_US"</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The Language with which users will be created on this Org via API.</inlineHelpText>
+        <label>Language</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Locale__c</fullName>
+        <defaultValue>"en_US"</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The Locale with which users will be created on this Org via API.</inlineHelpText>
+        <label>Locale</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Permission_Sets__c</fullName>
+        <defaultValue>"SQM_Vendor"</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The Permission Set(s) that all users created on this Org via API will be assigned to. Please provide the name space (if exists) and separate multiple values with semicolon. For example: Permission_Set1; Namespace:Permission_Set2</inlineHelpText>
+        <label>Permission Sets</label>
+        <required>true</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Profile__c</fullName>
+        <defaultValue>"Salesforce Platform Users for Vendors"</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The Profile that all users created on this Org via API will be assigned to.</inlineHelpText>
+        <label>Profile</label>
+        <length>80</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Public_Groups__c</fullName>
+        <defaultValue>"Vendor"</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The Public Group(s) that all users created on this Org via API will be assigned to. Please separate multiple values with semicolon. For example: Public_Group1;Public_Group2</inlineHelpText>
+        <label>Public Groups</label>
+        <required>true</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Time_Zone__c</fullName>
+        <defaultValue>"America/Los_Angeles"</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The Time Zone with which users will be created on this Org via API.</inlineHelpText>
+        <label>Time Zone</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123QMS__Username_Suffix__c</fullName>
+        <defaultValue>"user"</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The suffix that will be included in Username of users created via API. Please update as per your business needs.</inlineHelpText>
+        <label>Username Suffix</label>
+        <length>15</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Supplier User Onboarding Settings</label>
+    <pluralLabel>Supplier User Onboarding Settings</pluralLabel>
+    <validationRules>
+        <fullName>CMPL123QMS__Time_Zone_And_Locale_Is_Not_Empty</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR( ISBLANK( CMPL123QMS__Email_Encoding__c ),  ISBLANK( CMPL123QMS__Language__c ), ISBLANK( CMPL123QMS__Locale__c ), ISBLANK( CMPL123QMS__Time_Zone__c )   )</errorConditionFormula>
+        <errorMessage>Time Zone, Locale, Language and Email Encoding must be filled.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

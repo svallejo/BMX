@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>CMPL123CME__LLT_Code__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Lowest Level term with Common Preferred Term</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lowest Level term with Common Preferred Term</inlineHelpText>
+        <label>LLT Code</label>
+        <referenceTo>CMPL123CME__MedDRA_Lowest_Level_Term__c</referenceTo>
+        <relationshipLabel>MedDRA Hierarchy and Lowest Level term</relationshipLabel>
+        <relationshipName>Hierarchy_and_Lowest_Level_term</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__hierarchy_code__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Hierarchy Code with Common Preferred Term</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Hierarchy Code with Common Preferred Term</inlineHelpText>
+        <label>Hierarchy Code</label>
+        <referenceTo>CMPL123CME__MedDRA_Hierarchy__c</referenceTo>
+        <relationshipLabel>MedDRA Hierarchy and Lowest Level term</relationshipLabel>
+        <relationshipName>Hierarchy_and_Lowest_Level_term</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>MedDRA Hierarchy and Lowest Level term</label>
+    <nameField>
+        <label>Hierarchy and Lowest Level term Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MedDRA Hierarchy and Lowest Level term</pluralLabel>
+    <searchLayouts />
+    <sharingModel>Read</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

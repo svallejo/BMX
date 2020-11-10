@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>EUMIR Validation Configuration</description>
     <fields>
         <fullName>CMPL123CME__Conditional_Values__c</fullName>
         <deprecated>false</deprecated>
@@ -189,13 +190,30 @@
                     <default>false</default>
                     <label>ISNOTREQUIRED</label>
                 </value>
+                <value>
+                    <fullName>GREATERTHANEQUAL</fullName>
+                    <default>false</default>
+                    <label>GREATERTHANEQUAL</label>
+                </value>
+                <value>
+                    <fullName>LESSTHANEQUAL</fullName>
+                    <default>false</default>
+                    <label>LESSTHANEQUAL</label>
+                </value>
+                <value>
+                    <fullName>LOWERTHANTODAY</fullName>
+                    <default>false</default>
+                    <label>LOWERTHANTODAY</label>
+                </value>
+                <value>
+                    <fullName>LESSTHAN</fullName>
+                    <default>false</default>
+                    <label>LESSTHAN</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <description>EUMIR Validation Configuration</description>
     <label>EUMIR Validation Configuration</label>
-    <pluralLabel>EUMIR Validation Configurations</pluralLabel>
-    <visibility>Public</visibility>
     <listViews>
         <fullName>CMPL123CME__All</fullName>
         <columns>DeveloperName</columns>
@@ -211,4 +229,6 @@
         <label>All</label>
         <language>en_US</language>
     </listViews>
+    <pluralLabel>EUMIR Validation Configurations</pluralLabel>
+    <visibility>Public</visibility>
 </CustomObject>

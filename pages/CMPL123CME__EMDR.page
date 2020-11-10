@@ -86,8 +86,8 @@
                     padding:6px;
                 }
                 .errorMessage {
-                	text-align:center;
-                	color:red;
+                    text-align:center;
+                    color:red;
                 }
                 .esign-history-panel {
                     height: 100%;
@@ -97,19 +97,23 @@
                     margin-top: 12px;
                     margin-bottom: 12px;
                 }
-				.required-block-list {
-					border: 0px solid #ccc;
-					padding:0px;
-					padding-left: .2rem;
-					width:93%;
-				}
+                .required-block-list {
+                    border: 0px solid #ccc;
+                    padding:0px;
+                    padding-left: .2rem;
+                    width:93%;
+                }
+                .code-pill-width {
+                    /* Min width of the code pill to display the full code value without truncating.*/
+                    min-width: 100px;
+                }
             </style>
        </head>
        <body class="ng-cloak">
           
              <div class="container-fluid"  ng-controller="EMDRLayout" style="font-size:12px;"> 
                 <div class="row well" style="padding:12px;margin-bottom: 0px">
-                	<div class="errorMessage" ng-if = "{!HTMLENCODE(EMDR__c.VMSR__c) != null}" ng-hide = "isClone">
+                       <div class="errorMessage" ng-if = "{!HTMLENCODE(EMDR__c.VMSR__c) != null}" ng-hide = "isClone">
                         <span>{!HTMLENCODE($Label.CMPLT_RECORD_IS_LOCKED_AS_IT_IS_CONSOLIDATED_AS_VMSR)}</span>
                     </div> 
                     <div class="row">
@@ -213,7 +217,7 @@
                               <span ng-show="hide">{{order = $index}}</span>
                               <div ng-repeat="key1 in key.fieldList | filter : search track by $index" ng-show="key1.tabPosition == tabSelected;">
                                     <span ng-show="false" ng-if="key1.isRequired == 'true'"> {{key.class = key1.isRequired == 'true' ? 'requiredBlock':''}}  </span> 
-                                    <div class="col-md-5 col-md-offset-{{$customIndex%2 == 0 ? 0 : 0}}"  ng-if="fields[key1.apiName].type != 'LONGTEXTAREA' &&  key1.apiName != 'CMPL123CME__H6_Evaluation_Codes__c' &&  key1.apiName != 'CMPL123CME__F10_Event_Problem_Code__c'">
+                                    <div class="col-md-5 col-md-offset-{{$customIndex%2 == 0 ? 0 : 0}}"  ng-if="fields[key1.apiName].type != 'LONGTEXTAREA' &&  key1.apiName != 'CMPL123CME__H6_Evaluation_Codes__c' &&  key1.apiName != 'CMPL123CME__F10_Event_Problem_Code__c' &&  key1.apiName != 'CMPL123CME__H6_Adverse_Event_Problem__c' &&  key1.apiName != 'CMPL123CME__F10_Adverse_Event_Problem__c'">
                                         <label data-placement="right" data-toggle="popover" name="{{fields[key1.apiName].type}}"  content="{{placeHolderMap[key1.apiName]}}" data-html="true" createpopover=' ' data-trigger="hover" style="font-size:12px;font-weight:bold;">{{key1.label}}</label>&nbsp;&nbsp;
                                        
                                         <span ng-if="fields[key1.apiName].message.length > 0">
@@ -229,8 +233,7 @@
                                         </div>
                                         <img src="/img/loading32.gif" style="width:17px;margin-left:6px;height:17px;display:none;"  ng-if="key1.type == 'REFERENCE' && key1.isReadOnly == false"  />
 
-                                        <input style="width:92%;" class= "form-control" ng-keyup="changeTabColor(order);"  placeholder="{{recordTypeName == 'Supplemental' ? (placeHolderMap[key1.apiName] != null ? placeHolderMap[key1.apiName] : '')  : (key1.isReadOnly == true ? '':'Type '+key1.label)}}" ng-disabled="key1.isReadOnly" ng-if="fields[key1.apiName].type != 'REFERENCE' && fields[key1.apiName].type != 'MULTIPICKLIST' && fields[key1.apiName].type != 'PICKLIST' && fields[key1.apiName].type != 'DATE' && fields[key1.apiName].type != 'DATETIME' && fields[key1.apiName].type != 'BOOLEAN' && key1.apiName != 'CMPL123CME__C2_Concom_Med_Prod_and_Therapy_Dates__c'" type="text" ng-model="fields[key1.apiName].value"  name="{{key1.apiName}}{{order}}"  ng-required ="{{key1.isRequired}}" ng-maxlength="{{(key1.apiName == 'CMPL123CME__G3_Report_Source_Other__c') && fields['CMPL123CME__EMDR_Form_Version__c'].value =='2018' ? (fields[key1.apiName].value).length  > 40 ? key1.length = 255 : key1.length = 40 : key1.length > 0 ? key1.length : -1}}" />
-                                        
+										<input style="width:92%;" class= "form-control" ng-keyup="changeTabColor(order);"  placeholder="{{recordTypeName == 'Supplemental' ? (placeHolderMap[key1.apiName] != null ? placeHolderMap[key1.apiName] : '')  : (key1.isReadOnly == true ? '':'Type '+key1.label)}}" ng-disabled="key1.isReadOnly" ng-if="fields[key1.apiName].type != 'REFERENCE' && fields[key1.apiName].type != 'MULTIPICKLIST' && fields[key1.apiName].type != 'PICKLIST' && fields[key1.apiName].type != 'DATE' && fields[key1.apiName].type != 'DATETIME' && fields[key1.apiName].type != 'BOOLEAN' && key1.apiName != 'CMPL123CME__C2_Concom_Med_Prod_and_Therapy_Dates__c' &&  key1.apiName != 'CMPL123CME__C2_Med_Prod_List_and_Treatment_Date_Time__c'" type="text" ng-model="fields[key1.apiName].value"  name="{{key1.apiName}}{{order}}"  ng-required ="{{key1.isRequired}}" ng-maxlength="{{(((key1.apiName == 'CMPL123CME__G3_Report_Source_Other__c') && fields['CMPL123CME__EMDR_Form_Version__c'].value =='2018') || ((key1.apiName == 'CMPL123CME__G2_Other_Report_Source__c') && fields['CMPL123CME__EMDR_Form_Version__c'].value =='2021 Nov-30' )) ? (fields[key1.apiName].value).length  > 40 ? key1.length = 255 : key1.length = 40 : key1.length > 0 ? key1.length : -1}}" />                                        
                                         <div class="form-control" name="{{key1.apiName}}{{order}}"  ng-if="fields[key1.apiName].type == 'DATE'" style="border: 0px solid #ccc;padding:0px;" >
                                            <div class="form-group">
                                                     <div class='input-group date datetimepicker' datetimepicker=" " id="{{key1.apiName}}~{{order}}" type="date">
@@ -280,28 +283,38 @@
                                             </span>
                                          </div>
 
-                                       <input class="form-control" style="width:92%;" ng-model="fields[key1.apiName].formatValue" ng-required="key1.isRequired"  ng-disabled="true" ng-if="fields[key1.apiName].formatValue && (key1.apiName == 'RecordTypeId' || key1.apiName == 'OwnerId' || key1.apiName == 'CMPL123CME__C2_Concom_Med_Prod_and_Therapy_Dates__c')"  placeholder="{{key1.isReadOnly == true ? '': 'Type '+key1.label+' Name'}}" type="text" id="{{key1.apiName}}{{order}}"   name="{{key1.apiName}}{{order}}"  ng-keyup="getLookup(key1.apiName,order,$index);" />
+                                       <input class="form-control" style="width:92%;" ng-model="fields[key1.apiName].formatValue" ng-required="key1.isRequired"  ng-disabled="true" ng-if="fields[key1.apiName].formatValue && (key1.apiName == 'RecordTypeId' || key1.apiName == 'OwnerId' || key1.apiName == 'CMPL123CME__C2_Concom_Med_Prod_and_Therapy_Dates__c' || key1.apiName == 'CMPL123CME__C2_Med_Prod_List_and_Treatment_Date_Time__c')"  placeholder="{{key1.isReadOnly == true ? '': 'Type '+key1.label+' Name'}}" type="text" id="{{key1.apiName}}{{order}}"   name="{{key1.apiName}}{{order}}"  ng-keyup="getLookup(key1.apiName,order,$index);" />
 
                                        <!-- Added to disable the form format -->
                                        <input class="form-control" style="width:92%;" ng-model="fields[key1.apiName].value" ng-required="key1.isRequired"  ng-disabled="true" 
                                               ng-if="(key1.apiName == 'CMPL123CME__EMDR_Form_Version__c' 
-                                                     && ((recordTypeName == 'Initial' && id.length > 0) 
-                                                     || (recordTypeName == 'Supplemental' 
-                                                     && ( formVersionDisabled) )))"  placeholder="{{key1.isReadOnly == true ? '': '{!HTMLENCODE($Label.CMPLT_TYPE)} '+key1.label+' {!HTMLENCODE($Label.CMPLT_NAME)}'}}" type="text" name="{{key1.apiName}}{{order}}"  ng-keyup="getLookup(key1.apiName,order,$index);" />
+                                                     && ((recordTypeName == 'Initial' && id.length > 0)
+                                                     || (recordTypeName == 'Supplemental' && formVersionDisabled)
+                                                     || (isClone && fields[key1.apiName].value == '2021 Nov-30')))"  placeholder="{{key1.isReadOnly == true ? '': '{!HTMLENCODE($Label.CMPLT_TYPE)} '+key1.label+' {!HTMLENCODE($Label.CMPLT_NAME)}'}}" type="text" name="{{key1.apiName}}{{order}}"  ng-keyup="getLookup(key1.apiName,order,$index);" />
 
                                        
                                        <div class="form-control required-block-list"  name="{{key1.apiName}}{{order}}"  is-disabled="key1.isReadOnly == true ? true : false" ng-if="fields[key1.apiName].type == 'PICKLIST' && key1.apiName != 'CMPL123CME__EMDR_Form_Version__c'" isteven-multi-select=" "  input-model="fields[key1.apiName].pickVals"   output-model="picklistValue"  button-label="Label"  item-label="Label"  tick-property="ticked" selection-mode="single" on-item-click="setPicklistValue(data,key1,$index,order,key1.apiName,picklistValue);"  on-select-none="resetMultiselect(order,$index,key1.apiName);"  on-reset="resetMultiselect(order,$index,key1.apiName);"> </div>
                                        
-                                       <div class="form-control required-block-list multi-select-dropdown" name="{{key1.apiName}}{{order}}"  is-disabled="key1.isReadOnly == true ? true : false" ng-if="fields[key1.apiName].type == 'MULTIPICKLIST'" isteven-multi-select=" " input-model="fields[key1.apiName].pickVals"    output-model="picklistValue"  button-label="Label"  item-label="Label"  tick-property="ticked" on-item-click="setMultiPicklistValue(data,$index,picklistValue,order,key1.apiName);"  on-select-all="selectAll(data,$index,key1.pickVals,order,key1.apiName);" on-select-none="resetMultiselect(order,$index,key1.apiName);" on-reset="resetMultiselect(order,$index,key1.apiName);"> </div>
+                                       <div class="form-control required-block-list multi-select-dropdown" name="{{key1.apiName}}{{order}}"  is-disabled="key1.isReadOnly == true ? true : false" ng-if="fields[key1.apiName].type == 'MULTIPICKLIST' && key1.apiName != 'CMPL123CME__H1_Type_of_Reportable_Event_2021__c'" isteven-multi-select=" " input-model="fields[key1.apiName].pickVals"    output-model="picklistValue"  button-label="Label"  item-label="Label" disable-property="disable" tick-property="ticked" on-item-click="setMultiPicklistValue(data,$index,picklistValue,order,key1.apiName);"  on-select-all="selectAll(data,$index,key1.pickVals,order,key1.apiName);" on-select-none="resetMultiselect(order,$index,key1.apiName);" on-reset="resetMultiselect(order,$index,key1.apiName);"> </div>
 										
-									   <!-- Added to disable save button if mandatory pick list field is blank-->		
+									   <!-- Added to hide Select All and Select None for H1 Type of reportable event multiselect picklist -->
+                                       <div class="form-control required-block-list multi-select-dropdown" name="{{key1.apiName}}{{order}}"  
+                                            is-disabled="key1.isReadOnly == true ? true : false" 
+                                            ng-if="fields[key1.apiName].type == 'MULTIPICKLIST' && key1.apiName == 'CMPL123CME__H1_Type_of_Reportable_Event_2021__c'" 
+                                            onclick="disableSelectAllAndSelectNone(this);" isteven-multi-select=" " input-model="fields[key1.apiName].pickVals"    
+                                            output-model="picklistValue"  button-label="Label"  item-label="Label" disable-property="disable" 
+                                            tick-property="ticked" on-item-click="setMultiPicklistValueForH1(data,$index,picklistValue,order,key1.apiName);" 
+                                            on-reset="resetMultiselect(order,$index,key1.apiName);"> </div>
+
+                                       <!-- Added to disable save button if mandatory pick list field is blank-->		
                                        <input class="form-control" name="{{key1.apiName}}{{order}}" ng-disabled="key1.isReadOnly" ng-if="fields[key1.apiName].type == 'PICKLIST' || fields[key1.apiName].type == 'MULTIPICKLIST'" type="hidden" ng-model="fields[key1.apiName].value" ng-required ="{{key1.isRequired}}" />
                                        
                                        <!-- Added for EMDR Version picklist -->
                                        <div class="form-control required-block-list"  name="{{key1.apiName}}{{order}}" helper-elements=" "  
                                             ng-if="((fields[key1.apiName].type == 'PICKLIST' && key1.apiName == 'CMPL123CME__EMDR_Form_Version__c') 
                                                 && ((formVersionDisabled == false && recordTypeName == 'Supplemental') 
-                                                    || (recordTypeName == 'Initial' && id.length == 0)))" 
+                                                    || (recordTypeName == 'Initial' && id.length == 0 
+                                                    && (!isClone || fields[key1.apiName].value != '2021 Nov-30'))))" 
                                             isteven-multi-select=" "  input-model="fields[key1.apiName].pickVals" output-model="picklistValue"  button-label="Label"  item-label="Label"  tick-property="ticked" selection-mode="single" on-item-click="setPicklistValue(data,key1,$index,order,key1.apiName,picklistValue);"  on-select-none="resetMultiselect(order,$index,key1.apiName);" on-reset="resetMultiselect(order,$index,key1.apiName);"> </div>
                                       
                                        <div style="min-height:20px;color:red;">
@@ -329,7 +342,7 @@
                                             <span ng-show="loginForm[key1.apiName+order].$error.maxlength && loginForm[key1.apiName+order].$dirty">{{key1.label}} {!HTMLENCODE($Label.CMPLT_MAX_VAL)} {{key1.length}}.</span>
                                         </div>
                                     </div>
-                                     <div class="col-md-10" ng-if="key1.apiName =='CMPL123CME__F10_Event_Problem_Code__c' || key1.apiName == 'CMPL123CME__H6_Evaluation_Codes__c'" ng-show="key1.tabPosition == tabSelected">
+                                     <div class="col-md-10" ng-if="key1.apiName =='CMPL123CME__F10_Event_Problem_Code__c' || key1.apiName == 'CMPL123CME__H6_Evaluation_Codes__c' || key1.apiName == 'CMPL123CME__H6_Adverse_Event_Problem__c' || key1.apiName == 'CMPL123CME__F10_Adverse_Event_Problem__c'" ng-show="key1.tabPosition == tabSelected">
                                             <span ng-if="fields[key1.apiName].message.length > 0"><span ng-hide="true">{{key.isValid = true}}</span></span>
                                             <div class="panel panel-primary" style="border-color:white;">
                                                 <div>
@@ -345,18 +358,18 @@
                                                                 <div class="col-md-9" style="margin-top:10px;">
                                                                     <span data-placement="right" data-toggle="popover" name="code" content="{{initialCodeMap[key1.apiName][KeyType.type]}}" data-html="true" createpopover=' ' data-trigger="hover"  style="font-size:12px;font-weight:bold;">{{emdrCCode[KeyType.type]}}</span>
                                                                 </div>
-                                                                <div style="margin-top:10px;"><span  ng-hide="key1.isReadOnly" class="glyphicon glyphicon-plus-sign" ng-click="openCodePopup(KeyType.type,order,fldOrder,$index,key1.apiName);"  style="color:#337ab7;font-size: 15px;vertical-align:-2px;padding-left:14px;" ng-if="!({!HTMLENCODE(EMDR__c.Is_VMSR__c) == 'VMSR'} && (key1.apiName == 'CMPL123CME__H6_Evaluation_Codes__c' && KeyType.type == 'DEVICE CODE'))"></span></div>
+                                                                <div style="margin-top:10px;"><span  ng-hide="key1.isReadOnly" class="glyphicon glyphicon-plus-sign" ng-click="openCodePopup(KeyType.type,order,fldOrder,$index,key1.apiName);"  style="color:#337ab7;font-size: 15px;vertical-align:-2px;padding-left:14px;" ng-if="!({!HTMLENCODE(EMDR__c.Is_VMSR__c) == 'VMSR'} && ((key1.apiName == 'CMPL123CME__H6_Evaluation_Codes__c' || key1.apiName == 'CMPL123CME__H6_Adverse_Event_Problem__c') && KeyType.type == 'DEVICE CODE'))"></span></div>
                                                             </div>
                                                             <span style="display:none"> {{ filterval = (KeyType.codes | filter: {action: '!' +'D'}) }} </span>
                                                             <span style="display:none;" ng-if="filterval.length > 0 && key1.isCloneRequired =='true'">{{ key1.isCloneRequired = 'false' }}</span>
                                                             <div class="col-md-9">
-                                                                <div class="col-md-2" title="{{keyinn.code}}" style="margin-top:5px;margin-right:5px;" ng-repeat="keyinn in KeyType.codes track by $index" ng-show="keyinn.action != 'D'">
+                                                                <div class="col-md-2 code-pill-width" title="{{keyinn.code}}" style="margin-top:5px;margin-right:5px;" ng-repeat="keyinn in KeyType.codes track by $index" ng-show="keyinn.action != 'D'">
                                                                     <div class="row" style="border:1px solid #ccc;border-radius:4px;padding:4px">
                                                                         <div class="col-md-11" style="text-overflow:ellipsis;white-space:nowrap;overflow: hidden;padding-left:3px;">
                                                                             {{keyinn.code}}
                                                                         </div>
                                                                         <div class="col-md-1" style="padding:0px;">
-                                                                            <span style="color:grey;cursor:pointer;float:right;" ng-hide="key1.isReadOnly"  ng-click="checkRequired(tabSelected, fldOrder);removeCode($index,keyinn,KeyType.codes);changeTabColor(order);loginForm.$dirty = true;makeCodeDivDirty(order,fldOrder);" class="glyphicon glyphicon-remove" ng-if="!({!HTMLENCODE(EMDR__c.Is_VMSR__c) == 'VMSR'} && (key1.apiName == 'CMPL123CME__H6_Evaluation_Codes__c' && KeyType.type == 'DEVICE CODE'))"></span>
+                                                                            <span style="color:grey;cursor:pointer;float:right;" ng-hide="key1.isReadOnly"  ng-click="checkRequired(tabSelected, fldOrder);removeCode($index,keyinn,KeyType.codes);changeTabColor(order);loginForm.$dirty = true;makeCodeDivDirty(order,fldOrder);" class="glyphicon glyphicon-remove" ng-if="!({!HTMLENCODE(EMDR__c.Is_VMSR__c) == 'VMSR'} && ((key1.apiName == 'CMPL123CME__H6_Evaluation_Codes__c' || key1.apiName == 'CMPL123CME__H6_Adverse_Event_Problem__c') && KeyType.type == 'DEVICE CODE'))"></span>
                                                                         </div>
                                                                     </div>
                                                                 </div>

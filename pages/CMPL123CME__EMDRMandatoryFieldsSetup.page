@@ -1,4 +1,5 @@
 <apex:page controller="CMPL123CME.EMDRMandatoryFieldsController"  standardStylesheets="true">
+	<apex:includeLightning />
     <script>
         function changeVal(apiName, obj) {
             var elements = document.getElementsByClassName(apiName);
@@ -6,6 +7,16 @@
                 elements[i].checked =  obj.checked;
             }
         }
+		
+		$Lightning.use("CMPL123CME:EMDRMandatoryCodesApp", function() {
+        $Lightning.createComponent("CMPL123CME:EMDRCodeRequiredParent",
+									{},
+                                   "emdr-code-requiredness",
+                                   function(cmp) {  
+                                   }
+                                  );
+		});
+    
     </script>    
     <apex:form id="theFrm">
         <apex:pageBlock id="pb" tabStyle="EMDR__c" title="{!$Label.cmpl123cme__cmplt_select_fields_to_make_mandatory}">
@@ -23,6 +34,11 @@
                     </apex:repeat>
                 </apex:pageBlockSection>
             </apex:repeat>
+			<apex:pageBlockSection id="codeSection" columns="1" collapsible="true" title="{!$Label.cmpl123cme__cmplt_f10_and_h6_code}">
+                <apex:pageBlockSectionItem >
+                    <div id="emdr-code-requiredness" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
             <apex:outputPanel layout="block"  html-align="center" style="padding-bottom:10px">
                 <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!save}"/>
                 <apex:commandButton value="{!$Label.cmpl123cme__cmplt_cancel}" action="{!cancel}" immediate="true" style="margin-left:5px"/>
