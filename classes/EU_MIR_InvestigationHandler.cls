@@ -32,4 +32,23 @@ public class EU_MIR_InvestigationHandler {
             }
         }
     }
+    
+    public static void populateCompliantcode(List<CMPL123CME__EU_MIR__c> newList){
+    List<CMPL123CME__EU_MIR__c> mirlist= new List<CMPL123CME__EU_MIR__c>();
+    for(CMPL123CME__EU_MIR__c mir:[SELECT Id,BMX_Reportable_Country__r.BMX_Competent_Authority__c FROM CMPL123CME__EU_MIR__c WHERE Id IN:newList]){
+        if(mir.BMX_Reportable_Country__r.BMX_Competent_Authority__c!=null && mir.BMX_Reportable_Country__r.BMX_Competent_Authority__c!='')
+        {
+            
+            CMPL123CME__EU_MIR__c m= new CMPL123CME__EU_MIR__c();
+            m.ID= mir.Id;
+            m.CMPL123CME__Recipient_Name_Of_NCA__c=mir.BMX_Reportable_Country__r.BMX_Competent_Authority__c;
+            mirlist.add(m);
+        }
+    }
+    if(!mirlist.isEmpty())
+    {
+        update mirlist; 
+    }
+  }
+
 }

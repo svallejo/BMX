@@ -25,7 +25,7 @@ trigger CMPL123CME_EU_MIR_123Trigger on CMPL123CME__EU_MIR__c (before insert,aft
     /* Before Update */
     else if(Trigger.isUpdate && Trigger.isBefore){
         // Place your custom code here
-        EU_MIR_InvestigationHandler.populateInvistigationId(trigger.new); 
+        //EU_MIR_InvestigationHandler.populateInvistigationId(trigger.new); 
         X123handler.handleBeforeUpdate();
         
     }
