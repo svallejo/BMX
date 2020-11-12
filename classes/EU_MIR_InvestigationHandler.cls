@@ -2,7 +2,7 @@ public class EU_MIR_InvestigationHandler {
     
     public static void populateInvistigationId(List<CMPL123CME__EU_MIR__c> newList){
     
-        map<Id,Id> cmptmap= new map<Id,Id>();
+       // map<Id,Id> cmptmap= new map<Id,Id>();
         Set<Id> complaintIds = new Set<Id>();
         Set<Id> complaintcodeIds = new Set<Id>();
         
@@ -10,13 +10,16 @@ public class EU_MIR_InvestigationHandler {
             if(mir.Investigation_Evaluation__c == null && mir.CMPL123CME__Complaint__c !=null && mir.CMPL123CME__Type_Of_Report__c == 'Initial'){
                 System.debug('@@@@@'+' Inside the initial loop');
                 complaintIds.add(mir.CMPL123CME__Complaint__c);
-                cmptmap.put(mir.CMPL123CME__Complaint__c,mir.Id);
+                //cmptmap.put(mir.CMPL123CME__Complaint__c,mir.Id);
             }
-            if(mir.BMX_Reportable_Country__r.BMX_Competent_Authority__c!=null && mir.BMX_Reportable_Country__r.BMX_Competent_Authority__c!=''){
-              complaintcodeIds.add(mir.BMX_Reportable_Country__r.BMX_Competent_Authority__c);
+            if(mir.CMPL123CME__Complaint__c !=null && mir.BMX_Reportable_Country__c!=null){
+               complaintcodeIds.add(mir.CMPL123CME__Type_Of_Report__c);
             }
+         
         }
         
+        system.debug('MSR::complaintcodeIds...'+complaintcodeIds);
+        system.debug('MSR::complaintIds...'+complaintIds);
         
         if(!complaintIds.isEmpty()){
             Map<String, String> complainIdToInvstIdMap = new Map<String, String>();
@@ -40,24 +43,31 @@ public class EU_MIR_InvestigationHandler {
             }
         }
         
-        if(!complaintcodeIds.isEmpty()){
-            Map<Id, String> complaincodeIdToEUMap = new Map<Id, String>();
+        /*if(!complaintcodeIds.isEmpty()){
+        
+           Map<Id,String> complaincodeIdToEUMap = new Map<Id,String>();
+            
             for(CMPL123CME__EU_MIR__c mi:[SELECT Id,BMX_Reportable_Country__r.BMX_Competent_Authority__c from CMPL123CME__EU_MIR__c WHERE Id IN:complaintcodeIds]){
-            complaincodeIdToEUMap.put(mi.id,mi.BMX_Reportable_Country__r.BMX_Competent_Authority__c);
+            complaincodeIdToEUMap.put(mi.Id, mi.BMX_Reportable_Country__r.BMX_Competent_Authority__c);
             }
+            
+            system.debug('MSR@@@complaincodeIdToEUMap..'+complaincodeIdToEUMap);
+            
+            
             if(!complaincodeIdToEUMap.isEmpty()){
-               list<CMPL123CME__EU_MIR__c> Eu_Mirlist = new list<CMPL123CME__EU_MIR__c>();
-               for(CMPL123CME__EU_MIR__c mirc:newList){
-                   if(mirc.CMPL123CME__Type_Of_Report__c == 'Initial'){
+            list<CMPL123CME__EU_MIR__c> Eu_Mirlist = new list<CMPL123CME__EU_MIR__c>();
+            
+            for(CMPL123CME__EU_MIR__c mirc:newList){
+               
                       CMPL123CME__EU_MIR__c m =new CMPL123CME__EU_MIR__c();
                       m.CMPL123CME__Recipient_Name_Of_NCA__c = complaincodeIdToEUMap.get(mirc.BMX_Reportable_Country__r.BMX_Competent_Authority__c);
                       Eu_Mirlist.add(m);
-                   }   
                }
+               system.debug('MSR@@Eu_Mirlist...'+Eu_Mirlist);
                if(!Eu_Mirlist.isEmpty())
                 update Eu_Mirlist;
             }
-        }
+        }*/
     
     }
  }
