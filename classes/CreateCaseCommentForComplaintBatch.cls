@@ -52,8 +52,7 @@ global virtual class CreateCaseCommentForComplaintBatch implements Database.Batc
                 
                 CaseComment__x extCaseCommObj = (CaseComment__x) sObj;
                 if (extCaseCommObj.ParentId__r.CaseNumber_c__c == extCaseCommObj.ParentId__r.CaseNumber__c &&
-                    extCaseCommObj.ParentId__r.TWComplaintNumber_c__c == null && 
-                    extCaseCommObj.ParentId__r.Type__c == 'TechnicalComplaint') {
+                   extCaseCommObj.ParentId__r.Type__c == 'TechnicalComplaint') {
                     records.add(extCaseCommObj);
                 }
             }

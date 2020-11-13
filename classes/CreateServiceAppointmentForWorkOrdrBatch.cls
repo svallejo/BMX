@@ -55,8 +55,7 @@ global class CreateServiceAppointmentForWorkOrdrBatch implements Database.Batcha
             for(Sobject sObj: serviceAppointList){
                 ServiceAppointment__x extServiceAppointObj = (ServiceAppointment__x) sObj;
                 if (extServiceAppointObj.WorkOrder_c__r.CaseId__r.CaseNumber_c__c == extServiceAppointObj.WorkOrder_c__r.CaseId__r.CaseNumber__c &&
-                    extServiceAppointObj.WorkOrder_c__r.CaseId__r.TWComplaintNumber_c__c == null && 
-                    extServiceAppointObj.WorkOrder_c__r.CaseId__r.Type__c == 'TechnicalComplaint') {
+                   extServiceAppointObj.WorkOrder_c__r.CaseId__r.Type__c == 'TechnicalComplaint') {
                     records.add(extServiceAppointObj);
                 }
             }

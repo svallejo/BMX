@@ -51,7 +51,6 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
             for(Sobject sObj: workOrdrList){
                 WorkOrder__x extWorkOrdrObj = (WorkOrder__x) sObj;
                 if (extWorkOrdrObj.CaseId__r.CaseNumber_c__c == extWorkOrdrObj.CaseId__r.CaseNumber__c &&
-                    extWorkOrdrObj.CaseId__r.TWComplaintNumber_c__c == null && 
                     extWorkOrdrObj.CaseId__r.Type__c == 'TechnicalComplaint') {
                     records.add(extWorkOrdrObj);
                 }

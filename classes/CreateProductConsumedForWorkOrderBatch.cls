@@ -53,8 +53,7 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
             for(Sobject sObj: prodConsumedList){
                 ProductConsumed__x extProdConsumedObj = (ProductConsumed__x) sObj;
                 if (extProdConsumedObj.WorkOrderId__r.CaseId__r.CaseNumber_c__c == extProdConsumedObj.WorkOrderId__r.CaseId__r.CaseNumber__c &&
-                    extProdConsumedObj.WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c == null && 
-                    extProdConsumedObj.WorkOrderId__r.CaseId__r.Type__c == 'TechnicalComplaint') {
+                   extProdConsumedObj.WorkOrderId__r.CaseId__r.Type__c == 'TechnicalComplaint') {
                     records.add(extProdConsumedObj);
                 }
             }
