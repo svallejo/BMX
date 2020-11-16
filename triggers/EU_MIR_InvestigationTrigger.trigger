@@ -6,9 +6,13 @@ trigger EU_MIR_InvestigationTrigger on CMPL123CME__EU_MIR__c (before update,afte
     **/
     Set<Id> mirSetId= new Set<Id>();
     if(trigger.isafter && trigger.isupdate){
-        for(CMPL123CME__EU_MIR__c emr :trigger.new)
+        for(CMPL123CME__EU_MIR__c emuir:trigger.new)
         {
-            mirSetId.add(emr.Id);
+            //if(trigger.oldmap.get(emuir.Id).CMPL123CME__Type_Of_Report__c!=emuir.CMPL123CME__Type_Of_Report__c && emuir.CMPL123CME__Type_Of_Report__c == 'Initial' && trigger.oldmap.get(emuir.Id).CMPL123_WF_Status__c !=emuir.CMPL123_WF_Status__c && emuir.CMPL123_WF_Status__c == 'Closed-Submitted')
+            if((trigger.oldmap.get(emuir.Id).CMPL123_WF_Status__c !=emuir.CMPL123_WF_Status__c) && ( emuir.CMPL123CME__Type_Of_Report__c=='Initial' && emuir.CMPL123_WF_Status__c == 'Closed-Submitted') )
+            {  
+                mirSetId.add(emuir.Id);
+            }
         }
     }
     if(!mirSetId.isEmpty())
