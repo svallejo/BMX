@@ -5400,6 +5400,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>EUMIRInitalToFollowupHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>EUMIRInital_Followup_TriggerHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -5417,6 +5421,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>EU_Recursive_Avoid</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>EU_Recursive_Avoid_v1</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
