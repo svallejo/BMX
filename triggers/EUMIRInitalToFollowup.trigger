@@ -24,7 +24,7 @@ trigger EUMIRInitalToFollowup on CMPL123CME__EU_MIR__c (before update) {
         for(CMPL123CME__EU_MIR__c emr:eumirrecords){
             
                 CMPL123CME__EU_MIR__c mr= new CMPL123CME__EU_MIR__c();
-                mr.Id=emr.Id;
+                mr.Id= emr.Id;
                 mr.BMX_Local_Assessment__c = emr.BMX_Local_Assessment__c;
                 mr.CMPL123CME__Author_Address_Complement__c= emr.CMPL123CME__Author_Address_Complement__c;
                 mr.CMPL123CME__Author_City_Name__c= emr.CMPL123CME__Author_City_Name__c;
@@ -126,7 +126,7 @@ trigger EUMIRInitalToFollowup on CMPL123CME__EU_MIR__c (before update) {
                 EumirListinsert.add(mr);
         }
     }
-    if(!EumirListinsert.isEmpty()){
+    if(EumirListinsert.size() > 0){
         insert EumirListinsert;
     }
     
