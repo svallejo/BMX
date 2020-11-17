@@ -102,15 +102,16 @@ trigger EU_MIR_SupportAutoUpadte on CMPL123CME__EU_MIR__c (after insert,after up
         if(!eu_submMap.isEmpty())
         {
             map<string,EUMIR_support__c> suuumap2=new map<string,EUMIR_support__c>();
-            List<EUMIR_support__c> EmsupportList2=[Select Id,organisation_Name__c,Contact_first_Name__c,Contact_last_name__c,Country__c,E_mail__c,Phone__c,Postal_Code__c,Street__c,
+            List<EUMIR_support__c> EmsupportList2=[Select Id,organisation_Name__c,Country__c,E_mail__c,Postal_Code__c,Street__c,
             Street_number__c,Type__c,City_Name__c  from EUMIR_support__c WHERE organisation_Name__c IN:eu_submMap.keyset() AND Type__c='Submitters'];
-
+            //Remove fields from the query
+            /*Contact_first_Name__c,Phone__c,Contact_last_name__c*/
             for(EUMIR_support__c emsup2:EmsupportList2)
             {
                 suuumap2.put(emsup2.organisation_Name__c,emsup2);
             }
-            List<CMPL123CME__EU_MIR__c> emulist2=[SELECT Id,Registered_commercial_name_of_company__c,CMPL123CME__Submitter_Contact_First_Name__c,CMPL123CME__Submitter_Contact_Last_Name__c,CMPL123CME__Submitter_E_Mail__c,
-            CMPL123CME__Submitter_Phone__c,CMPL123CME__Submitter_Country__c,CMPL123CME__Submitter_Street__c,CMPL123CME__Submitter_Street_Number__c,
+            List<CMPL123CME__EU_MIR__c> emulist2=[SELECT Id,Registered_commercial_name_of_company__c,CMPL123CME__Submitter_E_Mail__c,
+            CMPL123CME__Submitter_Country__c,CMPL123CME__Submitter_Street__c,CMPL123CME__Submitter_Street_Number__c,
             CMPL123CME__Submitter_Address_Complement__c,CMPL123CME__Submitter_City_Name__c,CMPL123CME__Submitter_Postcode__c from CMPL123CME__EU_MIR__c WHERE Id IN:eu_submMap.values()];
 
 
@@ -119,10 +120,10 @@ trigger EU_MIR_SupportAutoUpadte on CMPL123CME__EU_MIR__c (after insert,after up
                 CMPL123CME__EU_MIR__c eumir2=new CMPL123CME__EU_MIR__c();
                 eumir2.Id=UM.Id;
                 eumir2.CMPL123CME__Registered_Commercial_Name_Of_Company__c =suuumap2.get(UM.Registered_commercial_name_of_company__c).organisation_Name__c;
-                eumir2.CMPL123CME__Submitter_Contact_First_Name__c=suuumap2.get(UM.Registered_commercial_name_of_company__c).Contact_first_Name__c;
-                eumir2.CMPL123CME__Submitter_Contact_Last_Name__c = suuumap2.get(UM.Registered_commercial_name_of_company__c).Contact_last_name__c;
+                //eumir2.CMPL123CME__Submitter_Contact_First_Name__c=suuumap2.get(UM.Registered_commercial_name_of_company__c).Contact_first_Name__c;
+                //eumir2.CMPL123CME__Submitter_Contact_Last_Name__c = suuumap2.get(UM.Registered_commercial_name_of_company__c).Contact_last_name__c;
                 eumir2.CMPL123CME__Submitter_E_Mail__c = suuumap2.get(UM.Registered_commercial_name_of_company__c).E_mail__c;
-                eumir2.CMPL123CME__Submitter_Phone__c = suuumap2.get(UM.Registered_commercial_name_of_company__c).Phone__c;
+                //eumir2.CMPL123CME__Submitter_Phone__c = suuumap2.get(UM.Registered_commercial_name_of_company__c).Phone__c;
                 eumir2.CMPL123CME__Submitter_Country__c = suuumap2.get(UM.Registered_commercial_name_of_company__c).Country__c;
                 eumir2.CMPL123CME__Submitter_Street__c = suuumap2.get(UM.Registered_commercial_name_of_company__c).Street__c;
                 eumir2.CMPL123CME__Submitter_Postcode__c = suuumap2.get(UM.Registered_commercial_name_of_company__c).Postal_Code__c;
