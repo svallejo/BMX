@@ -14,7 +14,8 @@ public class EUMIRInitalToFollowupHandler {
       system.debug('New List size@@@::'+eumirrecords.size() );  
        for(CMPL123CME__EU_MIR__c emr :eumirrecords)
        {                 
-            if(emr.CMPL123CME__Type_Of_Report__c == 'Initial' && emr.CMPL123_WF_Status__c == 'Closed-Submitted')            
+           // if(emr.CMPL123CME__Type_Of_Report__c == 'Initial' && emr.CMPL123_WF_Status__c == 'Closed-Submitted') 
+           if(emr.CMPL123CME__Type_Of_Report__c == 'Initial' || emr.CMPL123CME__Type_Of_Report__c == 'Follow up' && emr.CMPL123_WF_Status__c == 'Closed-Submitted')            
             {  
             
                 //mirId.add(emr.Id);     
