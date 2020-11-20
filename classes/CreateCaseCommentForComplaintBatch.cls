@@ -71,8 +71,7 @@ global virtual class CreateCaseCommentForComplaintBatch implements Database.Batc
             if(Test.isRunningTest() || 
             (caseCommX.ParentId__r.ExternalId != null && 
             caseCommX.ParentId__r.Type__c != null && 
-            caseCommX.ParentId__r.Type__c == VALID_CASE_TYPE &&
-            String.isEmpty(caseCommX.ParentId__r.TWComplaintNumber_c__c))){
+            caseCommX.ParentId__r.Type__c == VALID_CASE_TYPE )){
                 Case_Comment__c caseComm = new Case_Comment__c();
                 caseComm.ComplaintId__r = new CMPL123CME__Complaint__c(BMX_Case_External_Id__c = caseCommX.ParentId__r.ExternalId);
                 caseComm.CommentBody__c = caseCommX.CommentBody__c;
