@@ -2738,10 +2738,6 @@
         <label><!-- D8 - Single Use Device --></label>
         <name>CMPL123CME__D8_Single_Use_Device__c</name>
         <picklistValues>
-            <masterLabel>ASKU</masterLabel>
-            <translation><!-- ASKU --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>NA</masterLabel>
             <translation><!-- NA --></translation>
         </picklistValues>
@@ -3224,6 +3220,10 @@
         <picklistValues>
             <masterLabel>No</masterLabel>
             <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UnKnown</masterLabel>
+            <translation><!-- UnKnown --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Yes</masterLabel>
@@ -5304,6 +5304,10 @@
     <validationRules>
         <errorMessage><!-- You cannot submit this report. --></errorMessage>
         <name>Same_user_cant_perform_two_action</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select either Death or Serious Injury or Malfunction for H1 Type of Reportable Event before VMSR Submission. --></errorMessage>
+        <name>VMSR_Submission_Requires_H1_Value</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Register site must have a value --></errorMessage>

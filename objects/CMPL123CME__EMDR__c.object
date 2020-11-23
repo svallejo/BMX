@@ -5022,11 +5022,6 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
                     <default>false</default>
                     <label>NI</label>
                 </value>
-                <value>
-                    <fullName>ASKU</fullName>
-                    <default>false</default>
-                    <label>ASKU</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -6019,6 +6014,11 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
                     <fullName>ASKU</fullName>
                     <default>false</default>
                     <label>ASKU</label>
+                </value>
+                <value>
+                    <fullName>UnKnown</fullName>
+                    <default>false</default>
+                    <label>UnKnown</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -38680,10 +38680,6 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
         <picklistValues>
             <picklist>CMPL123CME__D8_Single_Use_Device__c</picklist>
             <values>
-                <fullName>ASKU</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>NA</fullName>
                 <default>false</default>
             </values>
@@ -39019,6 +39015,10 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
             <picklist>CMPL123CME__E4_Initial_Report_sent_to_FDA__c</picklist>
             <values>
                 <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UnKnown</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -42281,10 +42281,6 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
         <picklistValues>
             <picklist>CMPL123CME__D8_Single_Use_Device__c</picklist>
             <values>
-                <fullName>ASKU</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>NA</fullName>
                 <default>false</default>
             </values>
@@ -42612,6 +42608,10 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
             <picklist>CMPL123CME__E4_Initial_Report_sent_to_FDA__c</picklist>
             <values>
                 <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UnKnown</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -45834,10 +45834,6 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
         <picklistValues>
             <picklist>CMPL123CME__D8_Single_Use_Device__c</picklist>
             <values>
-                <fullName>ASKU</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>NA</fullName>
                 <default>false</default>
             </values>
@@ -46165,6 +46161,10 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
             <picklist>CMPL123CME__E4_Initial_Report_sent_to_FDA__c</picklist>
             <values>
                 <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UnKnown</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -49388,10 +49388,6 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
         <picklistValues>
             <picklist>CMPL123CME__D8_Single_Use_Device__c</picklist>
             <values>
-                <fullName>ASKU</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>NA</fullName>
                 <default>false</default>
             </values>
@@ -49727,6 +49723,10 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
             <picklist>CMPL123CME__E4_Initial_Report_sent_to_FDA__c</picklist>
             <values>
                 <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UnKnown</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -50995,6 +50995,31 @@ CMPL123CME__Complaint__r.CMPL123CME__CMPL123_WF_Status__c ='Closed')</errorCondi
  BMX_Submit_for_Review_Done_by__c  = $User.FirstName +' '+$User.LastName
 )</errorConditionFormula>
         <errorMessage>You cannot submit this report.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>VMSR_Submission_Requires_H1_Value</fullName>
+        <active>true</active>
+        <description>VMSR Submission requires another H1 Type of Reportable Event picklist value along with Summary Report.</description>
+        <errorConditionFormula>AND( 
+
+ISPICKVAL(CMPL123CME__EMDR_Form_Version__c, '2021 Nov-30'), 
+
+ISPICKVAL(CMPL123CME__Is_VMSR__c, 'VMSR'), 
+
+ISPICKVAL(CMPL123CME__MDR_Submission__c, 'Ready to submit'), 
+
+ISCHANGED(CMPL123CME__MDR_Submission__c), 
+
+NOT(INCLUDES( CMPL123CME__H1_Type_of_Reportable_Event_2021__c , 'Death')), 
+
+NOT(INCLUDES( CMPL123CME__H1_Type_of_Reportable_Event_2021__c , 'Malfunction')), 
+
+NOT(INCLUDES( CMPL123CME__H1_Type_of_Reportable_Event_2021__c , 'Serious Injury')), 
+
+INCLUDES( CMPL123CME__H1_Type_of_Reportable_Event_2021__c , 'Summary report') 
+
+)</errorConditionFormula>
+        <errorMessage>Please select either Death or Serious Injury or Malfunction for H1 Type of Reportable Event before VMSR Submission.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Validate_Register_Site</fullName>
