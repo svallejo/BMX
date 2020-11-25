@@ -7,15 +7,11 @@ trigger EU_MIR_InvestigationTrigger on CMPL123CME__EU_MIR__c (before update,afte
     if(trigger.isafter && trigger.isupdate){
         for(CMPL123CME__EU_MIR__c emuir:trigger.new)
         {
-            if(emuir.CMPL123CME__Type_Of_Report__c == 'Initial'&& emuir.Investigation_Evaluation__c == null && emuir.CMPL123CME__Complaint__c !=null )
+            
+            if(emuir.CMPL123CME__Type_Of_Report__c == 'Initial' && emuir.Investigation_Evaluation__c == null && emuir.CMPL123CME__Complaint__c !=null )
             {
                 EU_MIR_InvestigationHandler.populateInvistigationId(trigger.new);
             }
-            
-            /*if(emuir.CMPL123CME__Type_Of_Report__c == 'Follow up' && emuir.CMPL123CME__Complaint__c !=null )
-            {
-                EUMIRInitalToFollowupHandler.Initial_To_Followup_InvId(trigger.new);
-            } */
             
             if( (trigger.oldmap.get(emuir.Id).CMPL123_WF_Status__c !=emuir.CMPL123_WF_Status__c) && ( emuir.CMPL123CME__Type_Of_Report__c=='Initial' && emuir.CMPL123_WF_Status__c == 'Closed-Submitted') )
             {  
@@ -26,6 +22,7 @@ trigger EU_MIR_InvestigationTrigger on CMPL123CME__EU_MIR__c (before update,afte
             {  
                 EU_InvsetIds.add(emuir.Id);
             }
+
         }
        
     }
