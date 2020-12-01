@@ -2268,6 +2268,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__ESignatureHistoryClassicController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ESignatureHistoryController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__EmailNotification</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -11660,6 +11668,21 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__EUMIR_Configuration__mdt.CMPL123CME__Include_Export_Date_on_MIR_Report__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EU_MIR_Code_Choices__c.CMPL123CME__Choice__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EU_MIR_Code_Choices__c.CMPL123CME__Related_EU_MIR_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__EU_MIR_Code_Choices__c.CMPL123CME__Related_EU_MIR__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
