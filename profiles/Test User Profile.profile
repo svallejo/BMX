@@ -27712,6 +27712,9 @@
         <layout>PricebookEntry__x-Price Book Entry Layout %28BMX%29</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>ProcessException-Process Exception Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Product2-Product Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
