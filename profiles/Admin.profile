@@ -5424,6 +5424,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>EU_MIR_SupportAutoUpadte_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>EU_Recursive_Avoid</apexClass>
         <enabled>true</enabled>
     </classAccesses>

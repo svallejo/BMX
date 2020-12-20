@@ -1,6 +1,6 @@
 /*
 File Name: EU_MIR_InvestigationHandler_Test
-Author: Sekhar Malli
+Author: cognizant technology solutions
 Description: This test class used to get the code coverage for EU_MIR_InvestigationHandler.
 
 */
