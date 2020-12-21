@@ -15,10 +15,10 @@ public class EU_MIR_SupportAutoUpadte_Test {
             emailencodingkey='UTF-8', lastname='Testing', languagelocalekey='en_US',
             localesidkey='en_US', profileid = p.Id, country='United States',
             timezonesidkey='America/Los_Angeles', username='utest123@email.com');
-		insert u;
+        insert u;
         
-		CMPL123CME__Complaint__c cmplnt = new CMPL123CME__Complaint__c();
-		insert cmplnt;
+        CMPL123CME__Complaint__c cmplnt = new CMPL123CME__Complaint__c();
+        insert cmplnt;
         
         CMPL123CME__Investigation__c Invest=new CMPL123CME__Investigation__c();
         Invest.Name='TWD TestInvestigation';
@@ -94,9 +94,6 @@ public class EU_MIR_SupportAutoUpadte_Test {
         eu.CMPL123CME__Unit_Of_Use_UDI_DI__c='UDI device identifier/Eudamed';
         eu.CMPL123CME__Years_At_Time_Of_Incident__c=10;
         eu.Title__c='Test Followup';
-    
-        Insert eu;
-        
         eu.Manufacturer_Organisation_name__c='bioMérieux SA';
         eu.CMPL123CME__Manufact_Contact_First_Name__c='Sophie';
         eu.CMPL123CME__Manufact_Contact_Last_Name__c='BOBIN-DUBREUX';
@@ -108,6 +105,7 @@ public class EU_MIR_SupportAutoUpadte_Test {
         eu.CMPL123CME__Manufact_Street_Number__c='110';
         eu.Org_Name_of_Authorised_Representative__c='bioMérieux SA';
         eu.Registered_commercial_name_of_company__c='bioMérieux SA';
+        
         update eu;
         
     }
