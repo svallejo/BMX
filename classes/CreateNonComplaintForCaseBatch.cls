@@ -5,7 +5,7 @@ global class CreateNonComplaintForCaseBatch implements Database.Batchable <sObje
         
         //String query = 'SELECT Id, CaseNumber_c__c,Type__c,(Select Id,BMX_CaseNumber__c,CMPL123CME__CMPL123_WF_Status__c from RelatedComplaints__r WHERE BMX_CaseNumber__c!=Null AND CMPL123CME__CMPL123_WF_Status__c='\Opened\') from Case__x WHERE Type__c!='TechnicalComplaint' ';
         
-        String query='SELECT Id,BMX_Investigation__c FROM CMPL123CME__Complaint__c WHERE BMX_CaseNumber__c != null AND CMPL123CME__CMPL123_WF_Status__c =\'Opened\' AND BMX_Case_External__r.Type__c !=\'TechnicalComplaint\' AND CreatedDate>LAST_YEAR ';
+        String query='SELECT Id,BMX_Investigation__c FROM CMPL123CME__Complaint__c WHERE BMX_CaseNumber__c != null AND CMPL123CME__CMPL123_WF_Status__c =\'Opened\' AND BMX_Case_External__r.Type__c !=\'TechnicalComplaint\' AND CreatedDate>LAST_YEAR';
         return Database.getQueryLocator(query);
     }
     
@@ -28,7 +28,7 @@ global class CreateNonComplaintForCaseBatch implements Database.Batchable <sObje
             complaintsMap.put(inv.CMPL123CME__Complaint__c, new CMPL123CME__Complaint__c(Id = inv.CMPL123CME__Complaint__c,
             CMPL123CME__CMPL123_WF_Status__c = 'Closed-Canceled'));
                 
-			complaintsMap.put(inv.CMPL123CME__Complaint__c, new CMPL123CME__Complaint__c(Id = inv.CMPL123CME__Complaint__c,
+            complaintsMap.put(inv.CMPL123CME__Complaint__c, new CMPL123CME__Complaint__c(Id = inv.CMPL123CME__Complaint__c,
             CMPL123Task_Key_Value__c = 'CANCELOPENCOMPLAINT'));            
             }
         }

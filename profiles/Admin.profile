@@ -5468,6 +5468,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>InvestigationTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Investigation_Eu_Mirupdate_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>

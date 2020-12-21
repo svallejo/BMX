@@ -9746,11 +9746,22 @@ For a device that may receive events over its entire service life, the ideal den
     <listViews>
         <fullName>TODAY_EU_MIR</fullName>
         <columns>NAME</columns>
+        <columns>Investigation_Evaluation__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CREATED_DATE</field>
             <operation>equals</operation>
-            <value>TODAY</value>
+            <value>LAST_MONTH</value>
+        </filters>
+        <filters>
+            <field>CMPL123_WF_Status__c</field>
+            <operation>equals</operation>
+            <value>Opened</value>
+        </filters>
+        <filters>
+            <field>Investigation_Evaluation__c</field>
+            <operation>notEqual</operation>
+            <value>Null</value>
         </filters>
         <label>TODAY EU MIR</label>
         <language>en_US</language>
