@@ -1,13 +1,13 @@
-/*
-File Name :EU_MIR_SupportAutoUpadte_Test
-Author: cognizant technology solutions
-Description: This test class used to get the code coverage for EU_MIR_SupportAutoUpadte.
+/*File Name :CMPL123CME_Investigation_123Trigger_Test
+Author: cognizant Technology solutions
+Description: This test class used to get the code coverage for INV_EUMIRUpdate_TriggerHandler.
 */
+
 @isTest
-public class EU_MIR_SupportAutoUpadte_Test {
+public class CMPL123CME_Investigation_123Trigger_Test {
     
     public static testmethod void mytest(){
-    
+         
         // User initialization
         Profile p = [select id from profile where name='Standard User'];
 
@@ -19,53 +19,6 @@ public class EU_MIR_SupportAutoUpadte_Test {
         
         CMPL123CME__Complaint__c cmplnt = new CMPL123CME__Complaint__c();
         insert cmplnt;
-        
-        CMPL123CME__Investigation__c Invest=new CMPL123CME__Investigation__c();
-        Invest.Name='TWD TestInvestigation';
-        Invest.CMPL123CME__Complaint__c=cmplnt.Id;
-        invest.CMPL123_WF_Status__c='Open';
-        Insert Invest;
-        
-        EUMIR_support__c Eu_Support=new EUMIR_support__c();
-        Eu_Support.organisation_Name__c='bioMérieux SA';
-        Eu_Support.City_Name__c='Marcy- l’Etoile';
-        Eu_Support.Contact_first_Name__c='Sophie';
-        Eu_Support.Contact_last_name__c='BOBIN-DUBREUX';
-        Eu_Support.E_mail__c='sophie.bobin-dubreux@biomerieux.com';
-        Eu_Support.Country__c='France';
-        Eu_Support.Phone__c='+(33) 4 78 87 70 66';
-        Eu_Support.Street__c='Allée Louis Pasteur';
-        Eu_Support.Street_number__c='110';
-        Eu_Support.Type__c='Manufacturer';
-        Insert Eu_Support ;
-        
-        EUMIR_support__c Eu_Support1=new EUMIR_support__c();
-        Eu_Support1.organisation_Name__c='bioMérieux SA';
-        Eu_Support1.City_Name__c='Marcy- l’Etoile';
-        Eu_Support1.Contact_first_Name__c='Sophie';
-        Eu_Support1.Contact_last_name__c='BOBIN-DUBREUX';
-        Eu_Support1.E_mail__c='sophie.bobin-dubreux@biomerieux.com';
-        Eu_Support1.Country__c='France';
-        Eu_Support1.Phone__c='+(33) 4 78 87 70 66';
-        Eu_Support1.Street__c='Allée Louis Pasteur';
-        Eu_Support1.Street_number__c='110';
-        Eu_Support1.Type__c='Authorized';
-        Insert Eu_Support1 ;
-        
-        EUMIR_support__c Eu_Support2=new EUMIR_support__c();
-        Eu_Support2.organisation_Name__c='bioMérieux SA';
-        Eu_Support2.City_Name__c='Marcy- l’Etoile';
-        Eu_Support2.Contact_first_Name__c='Sophie';
-        Eu_Support2.Contact_last_name__c='BOBIN-DUBREUX';
-        Eu_Support2.E_mail__c='sophie.bobin-dubreux@biomerieux.com';
-        Eu_Support2.Country__c='France';
-        Eu_Support2.Phone__c='+(33) 4 78 87 70 66';
-        Eu_Support2.Street__c='Allée Louis Pasteur';
-        Eu_Support2.Street_number__c='110';
-        Eu_Support2.Type__c='Submitters';
-        Insert Eu_Support2;
-        
-        
         
         CMPL123CME__EU_MIR__c eu= new CMPL123CME__EU_MIR__c();
         eu.CMPL123CME__Complaint__c=cmplnt.Id;
@@ -147,7 +100,14 @@ public class EU_MIR_SupportAutoUpadte_Test {
         eu.Org_Name_of_Authorised_Representative__c='bioMérieux SA';
         eu.Registered_commercial_name_of_company__c='bioMérieux SA';
         
-        insert eu;
+        Insert eu;
+        
+        CMPL123CME__Investigation__c Invest=new CMPL123CME__Investigation__c();
+        Invest.Name='TWD TestInvestigation';
+        Invest.CMPL123CME__Complaint__c=cmplnt.Id;
+        invest.EU_MIR__c=eu.Id;
+        invest.CMPL123_WF_Status__c='Closed - Done';
+        Insert Invest;
         
     }
 

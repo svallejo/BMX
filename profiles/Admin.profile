@@ -88,6 +88,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME_Investigation_123Trigger_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__AASRAggregationController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -5461,6 +5465,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>InternalAuditHandler_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Investigation_Eu_Mirupdate_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
