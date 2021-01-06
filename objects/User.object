@@ -507,6 +507,7 @@ The Whole Enchilada: All notifications (Default)</inlineHelpText>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
+        <columns>EMPLOYEE_NUMBER</columns>
         <columns>CORE.USERS.LAST_LOGIN</columns>
         <columns>CORE.USER_ROLE.NAME</columns>
         <columns>CORE.USERS.ACTIVE</columns>
@@ -516,7 +517,13 @@ The Whole Enchilada: All notifications (Default)</inlineHelpText>
             <operation>equals</operation>
             <value>System Administrator</value>
         </filters>
-        <label>Admin Users</label>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Admin Users (Active)</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>All_Users</fullName>
