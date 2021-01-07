@@ -27,7 +27,7 @@ public class InvestigationTriggerHandler_Test {
         eu.CMPL123CME__Author_Phone__c='+(33) 4 78 87 70 66';
         eu.CMPL123CME__Author_Postcode__c='69280';
         eu.CMPL123CME__Author_Single_Registration_Number_SRN__c='64';
-        eu.CMPL123CME__Author_Street_Number__c='12345';
+        eu.CMPL123CME__Author_Street_Number__c='12345'; 
         eu.CMPL123CME__Author_Street__c='Allée Louis Pasteur';
         eu.CMPL123CME__Basic_UDI_DI__c='UDI deviceEudamed';
         eu.CMPL123CME__Classification_Of_Incident__c='Test';
@@ -92,10 +92,9 @@ public class InvestigationTriggerHandler_Test {
         eu.CMPL123CME__Manufact_Street__c='Allée Louis Pasteur';
         eu.CMPL123CME__Manufact_Postcode__c='69280';
         eu.CMPL123CME__Manufact_Street_Number__c='110';
-        eu.Investigation_Evaluation__c=null;
         eu.Org_Name_of_Authorised_Representative__c='bioMérieux SA';
         eu.Registered_commercial_name_of_company__c='bioMérieux SA';
-        eu.CMPL123_WF_Status__c='Opened';
+        
         insert eu;
         
         CMPL123CME__Investigation__c inv=new CMPL123CME__Investigation__c();
