@@ -21,8 +21,7 @@
             if (lexUtil.inLEX()) {
                 lexUtil.lexNavigateToURL(url); 
             } else {
-                window.open(baseUrl + url, '_blank');
-                window.history.back();
+                window.open(baseUrl + url, '_self');
             }
         }
     </script>

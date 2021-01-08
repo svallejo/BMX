@@ -32,7 +32,7 @@
                     <td width="50%"><span style="font-size: 13px;font-weight: bold;font-family: 'sans-serif';">eMDR Type: </span><span style="font-size: 13px;font-family: 'sans-serif';">{!EMDRIdDataMap[emdrId]['emdrType']}</span></td>
                     <td width="50%"><span style="font-size: 13px;font-weight: bold;font-family: 'sans-serif';">Format: </span><span style="font-size: 13px;font-family: 'sans-serif';">HL7 ICSR</span></td>
                 </tr>
-                <tr>
+                <tr>   
                     <td width="50%"><span style="font-size: 13px;font-weight: bold;font-family: 'sans-serif';">Report Type: </span><span style="font-size: 13px;font-family: 'sans-serif';">{!EMDRIdDataMap[emdrId]['emdrType']}-only</span></td>
                     <td width="50%"><span style="font-size: 13px;font-weight: bold;font-family: 'sans-serif';">Reference No: </span><span style="font-size: 13px;font-family: 'sans-serif';">{!EMDRIdDataMap[emdrId]['G9']}</span></td>
                 </tr>
@@ -40,7 +40,17 @@
             <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><c:PDFHeaderFooter type="header" showPageNumbers="true"></c:PDFHeaderFooter></div>
         </c:PDFHeaderFooter> 
         <div class="contentBody" style="{!if(emdrIds.size > 1,'height:auto','height:0')}">  
-           
+            <div style ="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30','display:block','display:none')}">
+                <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">GENERAL INFORMATION</div><br/>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>Form Code:</b> 
+                    <apex:outputText value="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                                            EMDRIdDataMap[emdrId]['GS1'],'')}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>Exemption Number:</b>  
+                    <apex:outputText value="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                                            EMDRIdDataMap[emdrId]['GS2'],'')}"/>
+                </div><br/>
+            </div>
             <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">A. PATIENT INFORMATION</div><br/>
             <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>A1. Patient Identifier:</b> 
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['A1']}"/>
@@ -51,13 +61,29 @@
             <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Age at Time of Event:</b> 
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['A2.1']}"/>
             </div>
-            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>A3. Sex:</b> 
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;
+                        {!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'display:block','display:none')}">
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Patient Age Units:</b>  
+                <apex:outputText value="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        EMDRIdDataMap[emdrId]['A2.2'],'')}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                <b>{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',  'A3. Gender:','A3. Sex:')}
+                   </b> 
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['A3']}"/>
             </div>
             <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>A4. Weight:</b> 
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['A4']}"/>
             </div>
-            <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;
+                        {!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'display:block','display:none')}">
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Patient Weight Units:</b>  
+                <apex:outputText value="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        EMDRIdDataMap[emdrId]['A4.1'],'')}"/>
+            </div>
+            <apex:outputPanel rendered="{!if(OR(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018',EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30'), true, false)}">
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>A5. Ethnicity:</b> 
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['A5.1']}"/>
                 </div>
@@ -132,10 +158,10 @@
 
             <!----------------------------------------------- C Section Information ------------------------------------------------------>
             
-             <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;"><apex:outputText value="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', 'C. SUSPECT PRODUCTS','C. SUSPECT PRODUCTS - NOT APPLICABLE')}"></apex:outputText> </div>
+             <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;"><apex:outputText value="{!if(OR(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018',EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30'), 'C. SUSPECT PRODUCTS','C. SUSPECT PRODUCTS - NOT APPLICABLE')}"></apex:outputText> </div>
             <br/>
             
-            <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+            <apex:outputPanel rendered="{!if(OR(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018',EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30'), true, false)}">
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C1. #1 Name and Strength:</b>&nbsp;</div>
                 <div class="fieldContainer">
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C1.1.1']}"/>
@@ -169,8 +195,9 @@
                 <div class="fieldContainer">
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C1.2.4']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C2. Concom Med Prod and Therapy Dates</b>&nbsp;
-                    Refer to D11
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'C2. Med Prod List and Treatment Date Time', 'C2. Concom Med Prod and Therapy Dates')}</b>&nbsp;
+                    <span>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'Refer to D10', 'Refer to D11')}</span>&nbsp;
                 </div>
                 <table border="0" width="100%" cellspacing="0" cellpadding="0">
                     <apex:repeat value="{!EMDRIdChildObjMap[emdrId]['C2']}" var="sObj" >
@@ -187,6 +214,11 @@
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Dose Units:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.1.1.2']}"/>
                 </div>
+                <div style="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'display:block', 'display:none')}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Number of Separate Dosages: </b>&nbsp;
+                    <apex:outputText value="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', EMDRIdDataMap[emdrId]['C3.1.4.1'],'')}"/>
+                    </div>
+                </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Frequency:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.1.2.1']}"/>
                 </div>
@@ -202,6 +234,11 @@
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Dose Units:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.2.1.2']}"/> 
                 </div>
+                <div style="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'display:block', 'display:none')}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Number of Separate Dosages: </b>&nbsp;
+                    <apex:outputText value="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', EMDRIdDataMap[emdrId]['C3.2.4.1'],'')}"/>
+                    </div>
+                </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Frequency:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.2.2.1']}"/>
                 </div>
@@ -211,16 +248,20 @@
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Route Used:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C3.2.3.1']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C4. #1 Therapy Dates - Start Date:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'C4. #1 Treatment/Therapy Start Date:', 'C4. #1 Therapy Dates - Start Date:')}</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C4.1.1']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Therapy Dates - End Date:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'margin-left:18px;', 'margin-left:22px;')}">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', '#1 Treatment/Therapy Stop Date:', 'Therapy Dates - End Date:')}</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C4.1.2']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Therapy Dates - Start Date:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'margin-left:18px;', 'margin-left:22px;')}">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', '#2 Treatment/Therapy Start Date:', '#2 Therapy Dates - Start Date:')}</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C4.2.1']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Therapy Dates - End Date:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'margin-left:18px;', 'margin-left:22px;')}">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', '#2 Treatment/Therapy Stop Date:', 'Therapy Dates - End Date:')}</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C4.2.2']}"/>
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C5. #1 Diagnosis for Use:</b>&nbsp;</div>
@@ -231,34 +272,44 @@
                 <div class="fieldContainer">
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C5.2']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C6. #1 Is the Product Compounded?:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'C6. #1 Product Type:', 'C6. #1 Is the Product Compounded?:')}</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C6.1']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Is the Product Compounded?:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', '#2 Product Type:', '#2 Is the Product Compounded?:')}</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C6.2']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C7. #1 Is the Product Over-the-Counter?:</b>&nbsp;
-                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C7.1']}"/>
+                <div style="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'display:none', 'display:block')}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C7. #1 Is the Product Over-the-Counter?:</b>&nbsp;
+                        <apex:outputText value="{!EMDRIdDataMap[emdrId]['C7.1']}"/>
+                    </div>
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Is the Product Over-the-Counter?:</b>&nbsp;
+                        <apex:outputText value="{!EMDRIdDataMap[emdrId]['C7.2']}"/>
+                    </div>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Is the Product Over-the-Counter?:</b>&nbsp;
-                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['C7.2']}"/>
-                </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C8. #1 Exp. Date:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'C7. #1 Exp. Date:', 'C8. #1 Exp. Date:')}</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C8.1']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Exp. Date:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', '#2 Exp. Date: ', '#2 Exp. Date:')}</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C8.2']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C9. #1 Evt Abated After Use Stopped?:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'C8. #1 Event Abated After Use Stopped?:', 'C9. #1 Evt Abated After Use Stopped?:')}</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C9.1']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Evt Abated After Use Stopped?:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;">
+                    <b>#2 Evt Abated After Use Stopped?:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C9.2']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>C10. #1 Event Reappeared After Reintro:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'C9. #1 Event Reappeared After Reintro:', 'C10. #1 Event Reappeared After Reintro:')}</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C10.1']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>#2 Event Reappeared After Reintro:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;">
+                    <b>#2 Event Reappeared After Reintro:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['C10.2']}"/>
                 </div><br/>
             </apex:outputPanel>
@@ -335,16 +386,30 @@
             <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Other Text:</b>&nbsp;
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['D5.1']}"/>
             </div>
-            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D6. Implant Date:</b>&nbsp;
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                    'D6a. Implant Date:', 'D6. Implant Date:')}
+                </b>&nbsp;
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['D6']}"/>
             </div>
-            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D7. Explant Date:</b>&nbsp;
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                    'D6b. Explant Date:', 'D7. Explant Date:')}
+                </b>&nbsp;
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['D7']}"/>
             </div>
-            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D8. Is this a Single-use Device that was Reprocessed and Reused on a Patient? </b>&nbsp;
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 
+                    'D7a. Is this a single-use device that was reprocessed and reused on a patient?:',
+                    'D8. Is this a Single-use Device that was Reprocessed and Reused on a Patient?')}
+                </b>&nbsp;
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['D8']}"/>
             </div>
-            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D9. Reprocessor Name and Address (if Yes to #8) </b>&nbsp;
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                    'D7b. Reprocessor Name and Address (if Yes to #D7a):',
+                    'D9. Reprocessor Name and Address (if Yes to #8) ')}
+                </b>&nbsp;
             </div>
             <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Name:</b>&nbsp;
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['D9.1']}"/>
@@ -373,13 +438,25 @@
             <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:22px;"><b>Fax:</b>&nbsp;
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['D9.9']}"/>
             </div>
-            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D10. Device Available for Evaluation:</b>&nbsp;
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;
+                        {!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'display:block', 'display:none')}">
+                <b>D8. Was device serviced by third party?:</b>&nbsp;
+                <apex:outputText value="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', EMDRIdDataMap[emdrId]['D8.1'],'')}"/>
+            </div>
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                    'D9. Device Available for Eval:', 'D10. Device Available for Evaluation:')}
+                </b>&nbsp;
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['D10']}"/>
             </div>
-	        <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 24px;"><b> Date returned to Mfg:</b>&nbsp;
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 24px;"><b> Date returned to Mfg:</b>&nbsp;
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['D10.1']}"/>
             </div>
-            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>D11. Concomitant Medical Products and Therapy Dates (Exclude treatment of event):</b>&nbsp;
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                    'D10. Concomitant Medical Products and Therapy Dates (Exclude treatment of event):', 
+                    'D11. Concomitant Medical Products and Therapy Dates (Exclude treatment of event):')}
+                </b>&nbsp;
                 <apex:outputText value="{!EMDRIdDataMap[emdrId]['D11_Null']}"/>
             </div>
             <table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -439,7 +516,7 @@
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Phone:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['E1.14']}"/>
                 </div>
-                <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+                <apex:outputPanel rendered="{!if(OR(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018',EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30'), true, false)}">
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>E2. Healthcare Professional:</b>&nbsp;
                         <apex:outputText value="{!EMDRIdDataMap[emdrId]['E2']}"/>
                     </div>
@@ -489,7 +566,7 @@
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['F3.7']}"/>
                 </div>
                 <!--Added F3 Contact Email field for 2018 EMDR-->
-                <apex:outputPanel rendered="{!(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018')}">
+                <apex:outputPanel rendered="{!if(OR(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018',EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30'), true, false)}">
                     <div class="fieldContainer fieldContainerMargin fieldContainerFontFamily"><span>Email</span>:   
                         <apex:outputText styleClass="leftPadding" value="{!EMDRIdDataMap[emdrId]['F3.8']}"/>
                     </div>
@@ -527,7 +604,8 @@
                     <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['F7'],'Initial'),'[X]','[]')}"/>&nbsp;Initial
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
-                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['F7'],'Follow Up'),'[X]','[]')}"/>&nbsp;Follow Up #<apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['F7'],'Follow Up'),EMDRIdDataMap[emdrId]['F7.3'],'')}"/>
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['F7'],'Follow Up'),'[X]','[]')}"/>&nbsp;Follow Up #
+                    <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['F7'],'Follow Up'),EMDRIdDataMap[emdrId]['F7.3'],'')}"/>
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F8. Date of This Report</b>:&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['F8']}"/>
@@ -535,17 +613,40 @@
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F9. Approximate Age of Device:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['F9']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F10. Event Problem Codes (Refer to coding manual)</b></div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;"><b>Patient Codes:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'F10. Adverse Event Problem ','F10. Event Problem Codes ')}
+                        (Refer to coding manual)</b>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'Health Effect - Clinical Code:','Patient Codes:')}</b>&nbsp;
                 </div>
                 <apex:repeat value="{!EMDRIdCodesMap[emdrId]['F10.1']}" var="code" >
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
                 </apex:repeat>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;"><b>Device Codes:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'Medical Device Problem Code:','Device Codes:')}</b>&nbsp;
                 </div>
                 <apex:repeat value="{!EMDRIdCodesMap[emdrId]['F10.2']}" var="code" >
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
                 </apex:repeat>
+                <div style="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'display:block', 'display:none')}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">
+                        <b>Health Effect - Impact Code:</b>&nbsp;
+                    </div>
+                    <apex:repeat value="{!EMDRIdCodesMap[emdrId]['F10.4']}" var="code" >
+                        <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                    </apex:repeat>
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">
+                        <b>Component Code:</b>&nbsp;
+                    </div>
+                    <apex:repeat value="{!EMDRIdCodesMap[emdrId]['F10.3']}" var="code" >
+                        <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                    </apex:repeat>
+                </div>
+            
                 <!--<div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;"><b>Component Codes:</b>&nbsp;
                 </div>
                 <apex:repeat value="{!EMDRIdCodesMap[emdrId]['F10.3']}" var="code" >
@@ -645,6 +746,11 @@
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Fax:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.12']}"/>
                 </div>
+                <div style="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'display:block', 'display:none')}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Phone Number:</b>&nbsp;
+                        <apex:outputText value="{!EMDRIdDataMap[emdrId]['G2']}"/>
+                    </div>
+                </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>Manufacturing Site (for Devices)</b></div>                              
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Site Name:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.13']}"/>
@@ -678,10 +784,15 @@
                         <apex:outputText value="{!EMDRIdDataMap[emdrId]['G1.23']}"/>
                     </div>
                 </apex:outputPanel>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G2. Phone Number:</b>&nbsp;
-                    <apex:outputText value="{!EMDRIdDataMap[emdrId]['G2']}"/>
+                <div style="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] != '2021 Nov-30', 'display:block', 'display:none')}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G2. Phone Number:</b>&nbsp;
+                        <apex:outputText value="{!EMDRIdDataMap[emdrId]['G2']}"/>
+                    </div>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G3. Report Source (check all that apply)</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'G2. Report Source (check all that apply): ', 'G3. Report Source (check all that apply)')}
+                    </b>&nbsp;
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
                     <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G3'],'Foreign'),'[X]','[]')}"/>&nbsp;Foreign
@@ -723,11 +834,17 @@
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Add'l Text:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['G3.1']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G4. Date Received by Manufacturer:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'G3. Date Received by Mfg:', 'G4. Date Received by Manufacturer:')}
+                    </b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['G4']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">G5.</div>
-                <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'G4. Premarket Application Numbers and Premarket Checkboxes', 'G5.')}
+                    </b>&nbsp;</div>
+                <apex:outputPanel rendered="{!if(OR(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018',EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30'), true, false)}">
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>NDA#:</b>&nbsp;
                         <apex:outputText value="{!EMDRIdDataMap[emdrId]['G5.8']}"/>
                     </div>
@@ -736,7 +853,7 @@
                 <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2015', true, false)}">
                 (A)NDA#:
                 </apex:outputPanel>
-                <apex:outputPanel rendered="{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018', true, false)}">
+                <apex:outputPanel rendered="{!if(OR(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2018',EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30'), true, false)}">
                 ANDA#:
                 </apex:outputPanel>
 
@@ -761,11 +878,19 @@
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>OTC Product:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['G5.7']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G6. If IND, Give Protocol #:</b>&nbsp;</div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'G5. If IND/PreANDA, Give Protocol #:',
+                        'G6. If IND, Give Protocol #:')} 
+                    </b>&nbsp;</div>
                 <div class="fieldContainer">
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['G6']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G7. Type of Report</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'G6. Type of Report:',
+                        'G7. Type of Report')} 
+                    </b>&nbsp;
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
                     <apex:outputText value="{!IF(AND(CONTAINS(EMDRIdDataMap[emdrId]['G7'] ,'5-day'),BEGINS(EMDRIdDataMap[emdrId]['G7'], '5-day')),'[X]','[]')}"/>&nbsp;5-day
@@ -794,11 +919,19 @@
                     <apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G7'],'Follow Up'),'[X]','[]')}"/>&nbsp;Follow Up #<apex:outputText value="{!IF(CONTAINS(EMDRIdDataMap[emdrId]['G7'],'Follow Up'),EMDRIdDataMap[emdrId]['G7.1'],'')}"/>
                     
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G8. Adverse Event Term(s):</b>&nbsp;</div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'G7. Adverse Event Term(s):',
+                        'G8. Adverse Event Term(s):')} 
+                    </b>&nbsp;</div>
                 <div class="fieldContainer">
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['G8']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>G9. Manufacturer Report Number:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!if(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'G8. Manufacturer Report Number:',
+                        'G9. Manufacturer Report Number:')} 
+                    </b>&nbsp;<b></b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['G9']}"/>
                 </div><br/>
 
@@ -807,6 +940,12 @@
                 <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">H. DEVICE MANUFACTURERS ONLY</div><br/>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H1. Type of Reportable Event:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['H1']}"/>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;
+                            {!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                            'display:block','display:none')}">
+                    <b>Number of Events Summarized:</b>&nbsp;
+                    <apex:outputText value="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',EMDRIdDataMap[emdrId]['H1.1'],'')}"/>
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H2. If Follow-up, What Type:</b>&nbsp; 
                     <apex:outputText value="{!IF(OR(CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Correction'),CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Additional Information'),CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Response to FDA Request'),CONTAINS(EMDRIdDataMap[emdrId]['H2'],'Device Evaluation')),'',EMDRIdDataMap[emdrId]['H2_Null'])}"/>
@@ -827,8 +966,8 @@
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H3. Device Evaluated by Manufacturer:</b>&nbsp;
                     <apex:outputText value="{!CASE(EMDRIdDataMap[emdrId]['H3'],'Yes','Y','No','N','Y','Y','N','N','')}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;">&nbsp;If Yes: &nbsp;<apex:outputText value="{!CASE(EMDRIdDataMap[emdrId]['H3.0.1'],'Yes','[x]','No','[]','Y','[x]','N','[]','[]')}"/><apex:outputText value=" Evaluation Summary Attached "/>&nbsp;</div> 
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;">&nbsp;<b>If No:</b>&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;font-weight:bold;">&nbsp;If Yes: &nbsp;<apex:outputText value="{!CASE(EMDRIdDataMap[emdrId]['H3.0.1'],'Yes','[x]','No','[]','Y','[x]','N','[]','[]')}"/><apex:outputText value=" Evaluation Summary Attached "/>&nbsp;</div>  
+            <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;">&nbsp;<b>If No:</b>&nbsp;
                     <apex:outputText value="{!if(OR(EMDRIdDataMap[emdrId]['H3'] == 'N',EMDRIdDataMap[emdrId]['H3'] == 'No'),EMDRIdDataMap[emdrId]['H3_No'],'')}"/>
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Add'l Text:</b>&nbsp;
@@ -843,31 +982,62 @@
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H5. Labeled for Single Use:</b>&nbsp;
                     <apex:outputText value="{!EMDRIdDataMap[emdrId]['H5']}"/>
                 </div>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H6. Evaluation Codes  (Refer to coding manual)</b></div>
-                
-                
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">Device Codes:&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
+                    <b>{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'H6. Adverse Event Problem (Refer to coding manual)',
+                        'H6. Evaluation Codes  (Refer to coding manual)')}
+                    </b>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">
+                    {!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'Medical Device Problem Code:',
+                        'Device Codes:')}&nbsp;
                 </div>
                 <apex:repeat value="{!EMDRIdCodesMap[emdrId]['H6.4']}" var="code" >
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
                 </apex:repeat>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">Patient Codes:&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">
+                    {!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'Health Effect - Clinical Code:',
+                        'Patient Codes:')}&nbsp;
                 </div>
                 <apex:repeat value="{!EMDRIdCodesMap[emdrId]['H6.5']}" var="code" >
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
                 </apex:repeat>
-                
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">Method Codes:&nbsp;
+                <div style="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', 'display:block','display:none')}">
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">
+                        Component Code:
+                    </div>
+                    <apex:repeat value="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', EMDRIdCodesMap[emdrId]['H6.7'],'')}" var="code" >
+                        <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                    </apex:repeat>
+                    <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">
+                        Health Effect - Impact Code:
+                    </div>
+                    <apex:repeat value="{!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30', EMDRIdCodesMap[emdrId]['H6.6'],'')}" var="code" >
+                        <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
+                    </apex:repeat>
+                </div>
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">
+                    {!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'Type of Investigation:',
+                        'Method Codes:')}&nbsp;
                 </div>
                 <apex:repeat value="{!EMDRIdCodesMap[emdrId]['H6.1']}" var="code" >
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
                 </apex:repeat>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">Results Codes:&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">
+                    {!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'Investigation Findings: ',
+                        'Results Codes:')}&nbsp;
                 </div>
                 <apex:repeat value="{!EMDRIdCodesMap[emdrId]['H6.2']}" var="code" >
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
                 </apex:repeat>
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">Conclusion Codes:&nbsp;
+                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;margin-left:23px;">
+                    {!IF(EMDRIdDataMap[emdrId]['emdrFormVersion'] == '2021 Nov-30',
+                        'Investigation Conclusions:',
+                        'Conclusion Codes:')}&nbsp;
                 </div>
                 <apex:repeat value="{!EMDRIdCodesMap[emdrId]['H6.3']}" var="code" >
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>

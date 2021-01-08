@@ -1,5 +1,6 @@
 <apex:page controller="CMPL123CME.EMDRMandatoryFieldsController"  standardStylesheets="true">
-	<apex:includeLightning />
+    <apex:includeLightning />
+    <apex:outputPanel id="loadScript" >
     <script>
         function changeVal(apiName, obj) {
             var elements = document.getElementsByClassName(apiName);
@@ -7,40 +8,89 @@
                 elements[i].checked =  obj.checked;
             }
         }
-		
-		$Lightning.use("CMPL123CME:EMDRMandatoryCodesApp", function() {
-        $Lightning.createComponent("CMPL123CME:EMDRCodeRequiredParent",
-									{},
-                                   "emdr-code-requiredness",
-                                   function(cmp) {  
-                                   }
-                                  );
-		});
-    
-    </script>    
+        
+        if("{!JSENCODE(selectedFormVersion)}" === '2021 Nov-30') {
+            $Lightning.use("CMPL123CME:EMDRMandatoryCodesApp", function() {
+                $Lightning.createComponent("CMPL123CME:EMDRCodeRequiredParent",
+                                            {},
+                                           "emdr-code-requiredness",
+                                           function(cmp) {  
+                                           }
+                                          );
+            });
+        }
+    </script>
+    </apex:outputPanel>
+    <style>
+        .margin {
+            margin-bottom: 20px;
+        }
+        .spinner-style {
+            z-index: 1001; margin: 15% 45%;
+        }
+        .spinner-base {
+            position: fixed; left: 0; top: 0; bottom: 0; right: 0;
+        }
+        .drop-shadow {
+             opacity: 0.25; z-index: 1000; background-color: black;
+        }
+        .spinner-container {
+            display: inline-block; padding: 2px; background-color: #fff; width: 125px;
+        }
+        .spinner {
+            float: left; margin: 8px;
+        }
+        .spinner-text {
+            display: inline-block; padding: 10px 0px;
+        }
+    </style>
     <apex:form id="theFrm">
         <apex:pageBlock id="pb" tabStyle="EMDR__c" title="{!$Label.cmpl123cme__cmplt_select_fields_to_make_mandatory}">
             <apex:outputPanel layout="block" html-align="center" style="padding-bottom:10px">
-                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!save}"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!save}" disabled="{!!isRefreshDisabled}"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_code_refresh}" action="{!refresh}" disabled="{!isRefreshDisabled}" style="margin-left:5px"/>
                 <apex:commandButton value="{!$Label.cmpl123cme__cmplt_cancel}" action="{!cancel}" immediate="true" style="margin-left:5px"/>
             </apex:outputPanel>
-            <apex:repeat value="{!fieldsetsWrapList}" var="flsWrap">
-                <apex:pageBlockSection id="pbs" collapsible="true" title="{!flsWrap.fieldSetLabel}" columns="2">
-                    <apex:repeat value="{!flsWrap.fieldsList}" var="fld">
-                        <apex:pageBlockSectionItem >
-                        <apex:outputLabel value="{!fld.fieldLabelName}"/>
-                        <apex:inputCheckbox value="{!fld.isSelected}" onchange="changeVal('{!JSENCODE(fld.fieldApiName)}', this)" styleClass="{!fld.fieldApiName}"/>
-                        </apex:pageBlockSectionItem>
-                    </apex:repeat>
+            <div class="margin">
+                <apex:outputLabel ><b>{!$ObjectType.EMDR__c.Fields.EMDR_Form_Version__c.Label}:</b>&nbsp;</apex:outputLabel>
+                <apex:selectList value="{!selectedFormVersion}" multiselect="false" size="1" disabled="{!!isRefreshDisabled}">
+                    <apex:selectOptions value="{!formVersionOptions}"/>
+                    <apex:actionsupport event="onchange" action="{!retrieveFormVersionFieldSets}" reRender="refresh, loadScript" status="refreshFieldSet"/>
+                    <apex:actionStatus id="refreshFieldSet">
+                        <apex:facet name="start">
+                            <div class="spinner-base drop-shadow">&nbsp;</div>
+                            <div class="spinner-base spinner-style">
+                                <div class="spinner-container">
+                                    <img src="/img/loading.gif" class="spinner" />
+                                    <span class="spinner-text">{!$Label.CMPLT_LOADING+'...'}</span>
+                                </div>
+                            </div>
+                        </apex:facet>
+                    </apex:actionStatus>
+                </apex:selectList>
+            </div>
+            <apex:outputPanel id="refresh" >
+                <apex:repeat value="{!fieldsetsWrapList}" var="flsWrap">
+                    <apex:pageBlockSection id="pbs" collapsible="true" title="{!flsWrap.fieldSetLabel}" columns="2">
+                        <apex:repeat value="{!flsWrap.fieldsList}" var="fld">
+                            <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!fld.fieldLabelName}"/>
+                            <apex:inputCheckbox value="{!fld.isSelected}" onchange="changeVal('{!JSENCODE(fld.fieldApiName)}', this)" styleClass="{!fld.fieldApiName}"/>
+                            </apex:pageBlockSectionItem>
+                        </apex:repeat>
+                    </apex:pageBlockSection>
+                </apex:repeat>
+                <apex:outputPanel rendered="{!selectedFormVersion == '2021 Nov-30'}">
+                <apex:pageBlockSection id="codeSection" columns="1" collapsible="true" title="{!$Label.cmpl123cme__cmplt_f10_and_h6_code}">
+                    <apex:pageBlockSectionItem >
+                        <div id="emdr-code-requiredness" />
+                    </apex:pageBlockSectionItem>
                 </apex:pageBlockSection>
-            </apex:repeat>
-			<apex:pageBlockSection id="codeSection" columns="1" collapsible="true" title="{!$Label.cmpl123cme__cmplt_f10_and_h6_code}">
-                <apex:pageBlockSectionItem >
-                    <div id="emdr-code-requiredness" />
-                </apex:pageBlockSectionItem>
-            </apex:pageBlockSection>
+                </apex:outputPanel>
+            </apex:outputPanel>
             <apex:outputPanel layout="block"  html-align="center" style="padding-bottom:10px">
-                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!save}"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_save}" action="{!save}" disabled="{!!isRefreshDisabled}"/>
+                <apex:commandButton value="{!$Label.cmpl123cme__cmplt_code_refresh}" action="{!refresh}" disabled="{!isRefreshDisabled}" style="margin-left:5px"/>
                 <apex:commandButton value="{!$Label.cmpl123cme__cmplt_cancel}" action="{!cancel}" immediate="true" style="margin-left:5px"/>
             </apex:outputPanel>
         </apex:pageBlock>

@@ -467,18 +467,21 @@
                                             <tr>
                                                 <th style="border-bottom:1px solid #000000;">3.</th>
                                                 <th style="border-bottom:1px solid #000000;">Dose</th>
+                                                <th style="border-bottom:1px solid #000000;font-size:6px;">Separate Dosages</th>
                                                 <th style="border-bottom:1px solid #000000;">Frequency</th>
                                                 <th style="border-bottom:1px solid #000000;">Route Used</th>
                                             </tr>
                                             <tr>
                                                 <th style="border-bottom:1px solid #000000;border-right:1px solid #000000;">#1</th>
                                                 <td class="colour-background" style="border-bottom:1px solid #000000;border-right:1px solid #000000;">{!mdr.C3_Dose1__c}&nbsp;{!mdr.C3_Dose_Units1__c}</td>
+                                                <td class="colour-background" style="border-bottom:1px solid #000000;border-right:1px solid #000000;">{!mdr.CMPL123CME__C3_1_Number_of_Separate_Dosages__c}</td>
                                                 <td class="colour-background" style="border-bottom:1px solid #000000;border-right:1px solid #000000;">{!mdr.C3_Frequency1__c}&nbsp;{!mdr.C3_Frequency_Units1__c}</td>
                                                 <td class="colour-background" style="border-bottom:1px solid #000000;">{!mdr.C3_Route_Used1__c}</td>
                                             </tr>
                                             <tr>
                                                 <th style="border-bottom:1px solid #000000;border-right:1px solid #000000;">#2</th>
                                                 <td class="colour-background" style="border-bottom:1px solid #000000;border-right:1px solid #000000;">{!mdr.C3_Dose2__c}&nbsp;{!mdr.C3_Dose_Units2__c}</td>
+                                                <td class="colour-background" style="border-bottom:1px solid #000000;border-right:1px solid #000000;">{!mdr.CMPL123CME__C3_2_Number_of_Separate_Dosages__c}</td>
                                                 <td class="colour-background" style="border-bottom:1px solid #000000;border-right:1px solid #000000;">{!mdr.C3_Frequency2__c}&nbsp;{!mdr.C3_Frequency_Units2__c}</td>
                                                 <td class="colour-background" style="border-bottom:1px solid #000000;">{!mdr.C3_Route_Used2__c}</td>
                                             </tr>
@@ -1299,43 +1302,63 @@
                                                 <td width="100%" style="height:60px;vertical-align:top;">
                                                     <table width="100%" cellspacing="1">
                                                         <tr>
-                                                            <td colspan="2"><b>10. Adverse Event Problem </b><i>(Refer to coding manual)</i><br/><br/></td>
+                                                            <td colspan="2"><b>10. Adverse Event Problem </b><i>(Refer to coding manual)</i><br/></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                Health Effect -<br/>
-                                                                Clinical Code &nbsp;&nbsp; 
-                                                                <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                                                                    <div class="colour-background"><apex:outputText value="{!LEFT(eventHealthEffectClinicalCodes[0], EMDR_CODE_MAX_LEN)}" /><br/></div>
-                                                                </div>
-                                                                <br/><br/> 
+                                                            <td style="width:21%;">
+                                                                Health Effect -<br/> Clinical Code:
                                                             </td>
                                                             <td>
-                                                                Health Effect -<br/> 
-                                                                Impact Code &nbsp;&nbsp;
-                                                                <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                                                                    <div class="colour-background"><apex:outputText value="{!LEFT(eventHealthEffectImpactCodes[0], EMDR_CODE_MAX_LEN)}" /><br/></div>
+                                                                <div>
+                                                                    <apex:variable var="eventHealthEffectClinicalCodesCounter" value="{!0}"/>
+                                                                    <apex:repeat value="{!eventHealthEffectClinicalCodes}" var="eventHealthEffectClinicalCodesRecord">
+                                                                        <apex:variable var="eventHealthEffectClinicalCodesCounter" value="{!eventHealthEffectClinicalCodesCounter + 1}"/>
+                                                                        <span style="display:{!IF(AND(eventHealthEffectClinicalCodesCounter != 1, eventHealthEffectClinicalCodesRecord != ''), 'inline', 'none')};">-&nbsp;</span>{!LEFT(eventHealthEffectClinicalCodesRecord, EMDR_CODE_MAX_LEN_2021)}
+                                                                    </apex:repeat>
                                                                 </div>
-                                                                <br/><br/> 
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                Medical Device <br/>
-                                                                Problem Code &nbsp;&nbsp;
-                                                                <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                                                                    <div class="colour-background"><apex:outputText value="{!LEFT(eventDeviceCodes[0], EMDR_CODE_MAX_LEN)}" /><br/></div>
-                                                                </div>
-                                                                <br/><br/>  
+                                                            <td style="width:21%;">
+                                                                Health Effect -<br/> Impact Code:
                                                             </td>
                                                             <td>
-                                                                Component <br/>
-                                                                Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                                                                    <div class="colour-background"><apex:outputText value="{!LEFT(eventComponentCodes[0], EMDR_CODE_MAX_LEN)}" /><br/></div>
+                                                                <div>
+                                                                    <apex:variable var="eventHealthEffectImpactCodesCounter" value="{!0}"/>
+                                                                    <apex:repeat value="{!eventHealthEffectImpactCodes}" var="eventHealthEffectImpactCodesRecord">
+                                                                        <apex:variable var="eventHealthEffectImpactCodesCounter" value="{!eventHealthEffectImpactCodesCounter + 1}"/>
+                                                                        <span style="display:{!IF(AND(eventHealthEffectImpactCodesCounter != 1, eventHealthEffectImpactCodesRecord != ''), 'inline', 'none')};">-&nbsp;</span>{!LEFT(eventHealthEffectImpactCodesRecord, EMDR_CODE_MAX_LEN_2021)}
+                                                                    </apex:repeat>
                                                                 </div>
-                                                                <br/><br/>
                                                             </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width:21%;">
+                                                                Medical Device <br/> Problem Code:
+                                                            </td>
+                                                            <td>
+                                                                <div>
+                                                                    <apex:variable var="eventDeviceCodesCounter" value="{!0}"/>
+                                                                    <apex:repeat value="{!eventDeviceCodes}" var="eventDeviceCodesRecord">
+                                                                        <apex:variable var="eventDeviceCodesCounter" value="{!eventDeviceCodesCounter + 1}"/>
+                                                                        <span style="display:{!IF(AND(eventDeviceCodesCounter != 1, eventDeviceCodesRecord != ''), 'inline', 'none')};">-&nbsp;</span>{!LEFT(eventDeviceCodesRecord, EMDR_CODE_MAX_LEN_2021)}
+                                                                    </apex:repeat>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width:21%;">
+                                                                Component Code:
+                                                            </td>
+                                                            <td>
+                                                                <div>
+                                                                    <apex:variable var="eventComponentCodesCounter" value="{!0}"/>
+                                                                    <apex:repeat value="{!eventComponentCodes}" var="eventComponentCodesRecord">
+                                                                        <apex:variable var="eventComponentCodesCounter" value="{!eventComponentCodesCounter + 1}"/>
+                                                                        <span style="display:{!IF(AND(eventComponentCodesCounter != 1, eventComponentCodesRecord != ''), 'inline', 'none')};">-&nbsp;</span>{!LEFT(eventComponentCodesRecord, EMDR_CODE_MAX_LEN_2021)}
+                                                                    </apex:repeat>
+                                                                </div>
+                                                            </td>                                               
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -1730,74 +1753,106 @@
                                     <td style="width:100%;height:150px;vertical-align:top;border-bottom:1px solid #000000;" >
                                         <table width="100%" >
                                             <tr>
-                                                <td><b>6. Adverse Event Problem </b> <i>(Refer to coding manual)</i><br/><br/></td>
+                                                <td colspan="2"><b>6. Adverse Event Problem </b> <i>(Refer to coding manual)</i><br/><br/></td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    Health Effect -<br/>
-                                                    Clinical Code &nbsp;&nbsp;
-                                                    <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                                                        <div class="colour-background"><apex:outputText value="{!LEFT(evalHealthEffectClinicalCodes[0], EMDR_CODE_MAX_LEN)}" /><br/></div>
-                                                    </div>
-                                                    <br/><br/> 
+                                                <td style="width:17%;">
+                                                    Health Effect -<br/> Clinical Code:
                                                 </td>
                                                 <td>
-                                                    Health Effect -<br/> 
-                                                    Impact Code &nbsp;&nbsp;
-                                                    <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                                                        <div class="colour-background"><apex:outputText value="{!LEFT(evalHealthEffectImpactCodes[0], EMDR_CODE_MAX_LEN)}" /><br/></div>
+                                                    <div>
+                                                        <apex:variable var="evalHealthEffectClinicalCodesCounter" value="{!0}"/>
+                                                        <apex:repeat value="{!evalHealthEffectClinicalCodes}" var="evalHealthEffectClinicalCodesRecord">
+                                                            <apex:variable var="evalHealthEffectClinicalCodesCounter" value="{!evalHealthEffectClinicalCodesCounter + 1}"/>
+                                                            <span style="display:{!IF(AND(evalHealthEffectClinicalCodesCounter != 1, evalHealthEffectClinicalCodesRecord != ''), 'inline', 'none')};">-&nbsp;</span>{!LEFT(evalHealthEffectClinicalCodesRecord, EMDR_CODE_MAX_LEN_2021)}
+                                                        </apex:repeat>
                                                     </div>
-                                                    <br/><br/>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    Medical Device<br/>
-                                                    Problem Code &nbsp;&nbsp; 
-                                                    <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                                                        <div class="colour-background"><apex:outputText value="{!LEFT(deviceCodes[0], EMDR_CODE_MAX_LEN)}" /><br/></div>
-                                                    </div>
-                                                    <br/><br/> 
+                                                <td style="width:17%;">
+                                                    Health Effect -<br/> Impact Code:
                                                 </td>
                                                 <td>
-                                                    Component<br/> 
-                                                    Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;">
-                                                        <div class="colour-background"><apex:outputText value="{!LEFT(evalComponentCodes[0], EMDR_CODE_MAX_LEN)}" /><br/></div>
+                                                    <div>
+                                                        <apex:variable var="evalHealthEffectImpactCodesCounter" value="{!0}"/>
+                                                        <apex:repeat value="{!evalHealthEffectImpactCodes}" var="evalHealthEffectImpactCodesRecord">
+                                                            <apex:variable var="evalHealthEffectImpactCodesCounter" value="{!evalHealthEffectImpactCodesCounter + 1}"/>
+                                                            <span style="display:{!IF(AND(evalHealthEffectImpactCodesCounter != 1, evalHealthEffectImpactCodesRecord != ''), 'inline', 'none')};">-&nbsp;</span>{!LEFT(evalHealthEffectImpactCodesRecord, EMDR_CODE_MAX_LEN_2021)}
+                                                        </apex:repeat>
                                                     </div>
-                                                    <br/><br/> 
                                                 </td>
                                             </tr>
-                                            &nbsp;Type of<br/>
-                                            &nbsp;Investigation : &nbsp;&nbsp;&nbsp;
-                                            <apex:variable var="count2" value="{!0}"/>
-                                            <apex:repeat value="{!EvalMethodCodes}" var="m">
-                                                <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" class="colour-background">
-                                                    {!LEFT(m, EMDR_CODE_MAX_LEN)}
-                                                </div>
-                                                <apex:variable var="count2" value="{!count2 + 1}"/>
-                                                <span style="visibility:{!IF((count2 <= 3), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
-                                            </apex:repeat><br/><br/>
-                                            &nbsp;Investigation<br/>
-                                            Findings :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <apex:variable var="count3" value="{!0}"/>
-                                            <apex:repeat value="{!EvalResultCodes}" var="r">
-                                                <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" class="colour-background">
-                                                    {!LEFT(r, EMDR_CODE_MAX_LEN)}
-                                                </div>
-                                                <apex:variable var="count3" value="{!count3 + 1}"/>
-                                                <span style="visibility:{!IF((count3 <= 3), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
-                                            </apex:repeat><br/><br/>
-                                            &nbsp;Investigation<br/>
-                                            &nbsp;Conclusions :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <apex:variable var="count4" value="{!0}"/>
-                                            <apex:repeat value="{!EvalConCodes}" var="cs">
-                                                <div style="display:inline-block;width:50px;height:10px;line-height:10px;border-right:1px solid #000000;border-left:1px solid #000000;border-top:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" class="colour-background">
-                                                    {!LEFT(cs, EMDR_CODE_MAX_LEN)}
-                                                </div>
-                                                <apex:variable var="count4" value="{!count4 + 1}"/>
-                                                <span style="visibility:{!IF((count4 <= 3), 'visible', 'hidden')};vertical-align:super;">&nbsp;-&nbsp;</span>
-                                            </apex:repeat><br/><br/>
+                                            <tr>
+                                                <td style="width:17%;">
+                                                    Medical Device <br/> Problem Code:
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <apex:variable var="deviceCodesCounter" value="{!0}"/>
+                                                        <apex:repeat value="{!deviceCodes}" var="deviceCodesRecord">
+                                                            <apex:variable var="deviceCodesCounter" value="{!deviceCodesCounter + 1}"/>
+                                                            <span style="display:{!IF(AND(deviceCodesCounter != 1, deviceCodesRecord != ''), 'inline', 'none')};">-&nbsp;</span>{!LEFT(deviceCodesRecord, EMDR_CODE_MAX_LEN_2021)}
+                                                        </apex:repeat>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:17%;">
+                                                    Component Code:
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <apex:variable var="evalComponentCodesCounter" value="{!0}"/>
+                                                        <apex:repeat value="{!evalComponentCodes}" var="evalComponentCodesRecord">
+                                                            <apex:variable var="evalComponentCodesCounter" value="{!evalComponentCodesCounter + 1}"/>
+                                                            <span style="display:{!IF(AND(evalComponentCodesCounter != 1, evalComponentCodesRecord != ''), 'inline', 'none')};">-&nbsp;</span>{!LEFT(evalComponentCodesRecord, EMDR_CODE_MAX_LEN_2021)}
+                                                        </apex:repeat>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:17%;">
+                                                    Type of Investigation:
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <apex:variable var="evalMethodCodesCounter" value="{!0}"/>
+                                                        <apex:repeat value="{!evalMethodCodes}" var="evalMethodCodesRecord">
+                                                            <apex:variable var="evalMethodCodesCounter" value="{!evalMethodCodesCounter + 1}"/>
+                                                            <span style="display:{!IF(AND(evalMethodCodesCounter != 1, evalMethodCodesRecord != ''), 'inline', 'none')};">-&nbsp;</span>{!LEFT(evalMethodCodesRecord, EMDR_CODE_MAX_LEN_2021)}
+                                                        </apex:repeat>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:17%;">
+                                                    Investigation Findings:
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <apex:variable var="evalResultCodesCounter" value="{!0}"/>
+                                                        <apex:repeat value="{!evalResultCodes}" var="evalResultCodesRecord">
+                                                            <apex:variable var="evalResultCodesCounter" value="{!evalResultCodesCounter + 1}"/>
+                                                            <span style="display:{!IF(AND(evalResultCodesCounter != 1, evalResultCodesRecord != ''), 'inline', 'none')};">-&nbsp;</span>{!LEFT(evalResultCodesRecord, EMDR_CODE_MAX_LEN_2021)}
+                                                        </apex:repeat>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:17%;">
+                                                    Investigation Conclusions:
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <apex:variable var="evalConCodesCounter" value="{!0}"/>
+                                                        <apex:repeat value="{!evalConCodes}" var="evalConCodesRecord">
+                                                            <apex:variable var="evalConCodesCounter" value="{!evalConCodesCounter + 1}"/>
+                                                            <span style="display:{!IF(AND(evalConCodesCounter != 1, evalConCodesRecord != ''), 'inline', 'none')};">-&nbsp;</span>{!LEFT(evalConCodesRecord, EMDR_CODE_MAX_LEN_2021)}
+                                                        </apex:repeat>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                         </table>
                                     </td>
                                 </tr>
@@ -1806,7 +1861,7 @@
                                         <table border="0" rules="cols" width="100%" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td style="width:55%;height:120px;vertical-align:top;border-right:1px solid #000000;">
-													<div style="margin-top:2px;"><b>7. If Remedial Action Initiated, Check Type </b></div>
+                                                    <div style="margin-top:2px;"><b>7. If Remedial Action Initiated, Check Type </b></div>
                                                     <div style="margin-top:3px;">
                                                     &nbsp;&nbsp;&nbsp;<apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Recall'),'/checkbox_yes.png','/checkbox_no.png'))}"/>Recall  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <apex:image width="10px" height="10px" url="{!URLFOR($Resource.CMPL123CME__MDR, if(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Notification'),'/checkbox_yes.png','/checkbox_no.png'))}"/>Notification <br/><br/>
@@ -1821,7 +1876,7 @@
                                                     <apex:outputPanel rendered="{!IF(contains(mdr.CMPL123CME__H7_If_Remedical_Action_Init__c, 'Other'), true, false)}">
                                                         <div width="100%">&nbsp;&nbsp;&nbsp;{!mdr.H7_Other_Remedial_Action__c}</div>
                                                     </apex:outputPanel>
-													</div>
+                                                    </div>
                                                 </td>
                                                 <td style="width:45%">
                                                     <table rules="rows" width="100%" cellspacing="0" cellpadding="0">
@@ -2142,7 +2197,7 @@
                                    </div>
                                  </td>
                             </tr>
-							<tr>
+                            <tr>
                                 <td style="height:150px">
                                     <b>Other Remarks  </b><i>(For continuation of H.10 and/or H.11)</i><br/>
                                     <div style="width:100%;">
