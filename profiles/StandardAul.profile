@@ -5123,6 +5123,7 @@
         <apexClass>CMPL123__test_MetadataServiceTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <custom>false</custom>
     <pageAccesses>
         <apexPage>CMPL123CME__AASRAggregation</apexPage>
         <enabled>true</enabled>
@@ -28563,4 +28564,5 @@
         <tab>CMPL123QMS__EQMS_Setup</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
+    <userLicense>Salesforce Platform</userLicense>
 </Profile>
