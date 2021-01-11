@@ -4703,7 +4703,6 @@
         <apexClass>CMPL123__fflib_VerificationMode</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <custom>false</custom>
     <pageAccesses>
         <apexPage>CMPL123CME__ComplaintSetup</apexPage>
         <enabled>true</enabled>
@@ -18389,5 +18388,4 @@
         <tab>CMPL123QMS__EQMS_Setup</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
-    <userLicense>Partner Community Login</userLicense>
 </Profile>
