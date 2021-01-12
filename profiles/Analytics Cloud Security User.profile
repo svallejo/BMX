@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><Profile xmlns="http://soap.sforce.com/2006/04/metadata">
+    <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.AccountSource</field>
@@ -26259,4 +26260,5 @@
         <apexPage>CMPL123__WFRuleLockedFields</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
+    <userLicense>Analytics Cloud Integration User</userLicense>
 </Profile>

@@ -5167,6 +5167,11 @@
         <apexClass>TaskPreventionHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <custom>true</custom>
+    <loginIpRanges>
+        <endAddress>255.255.255.255</endAddress>
+        <startAddress>0.0.0.0</startAddress>
+    </loginIpRanges>
     <pageAccesses>
         <apexPage>CMPL123CME__AASRAggregation</apexPage>
         <enabled>true</enabled>
@@ -30093,4 +30098,5 @@
         <tab>CMPL123QMS__EQMS_Setup</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
+    <userLicense>Salesforce</userLicense>
 </Profile>
