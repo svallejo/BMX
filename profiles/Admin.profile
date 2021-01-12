@@ -7779,12 +7779,6 @@
         <apexClass>fflib_VerificationMode</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <custom>false</custom>
-    <loginIpRanges>
-        <description>Default IP Range</description>
-        <endAddress>255.255.255.255</endAddress>
-        <startAddress>0.0.0.0</startAddress>
-    </loginIpRanges>
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>
         <enabled>true</enabled>
@@ -38288,5 +38282,4 @@
         <tab>CMPL123QMS__EQMS_Setup</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
-    <userLicense>Salesforce</userLicense>
 </Profile>

@@ -5151,11 +5151,6 @@
         <apexClass>SapRelatedProductsHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <custom>true</custom>
-    <loginIpRanges>
-        <endAddress>255.255.255.255</endAddress>
-        <startAddress>0.0.0.0</startAddress>
-    </loginIpRanges>
     <pageAccesses>
         <apexPage>Action_ItemWorkflowPanel</apexPage>
         <enabled>true</enabled>
@@ -30838,5 +30833,4 @@
         <tab>CMPL123__X123_Task_Dashboard</tab>
         <visibility>DefaultOff</visibility>
     </tabVisibilities>
-    <userLicense>Salesforce Platform</userLicense>
 </Profile>
