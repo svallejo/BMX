@@ -3791,6 +3791,26 @@ The Serial Number of the Asset is auto-populated --></help>
         <name>SourceId__c</name>
     </fields>
     <fields>
+        <label><!-- Source --></label>
+        <name>Source__c</name>
+        <picklistValues>
+            <masterLabel>Customer / Distributor</masterLabel>
+            <translation><!-- Customer / Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Outsourced Companies</masterLabel>
+            <translation><!-- Field Outsourced Companies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal</masterLabel>
+            <translation><!-- Internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regulatory Authorities</masterLabel>
+            <translation><!-- Regulatory Authorities --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- StatusDurationMin Assigned --></label>
         <name>StatusDurationMin_Assigned_c__c</name>
     </fields>
@@ -5294,6 +5314,17 @@ You can uncheck it to unflag the L2 deescalation and continue working on the Cas
         <label><!-- PRE1.2 If yes, describe in detail --></label>
         <name>PRE1P2__c</name>
     </fields>
+    <layouts>
+        <layout>Case Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
     <layouts>
         <layout>Case Layout (Review bMx)</layout>
         <sections>

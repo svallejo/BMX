@@ -30061,6 +30061,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Case__x.Source__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Case__x.StatusDurationMin_Assigned_c__c</field>
         <readable>true</readable>
     </fieldPermissions>

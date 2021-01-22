@@ -126,8 +126,8 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                             SoftwareCode_c__c,ActionCode_c__c,ANALYZE_c__c,ErrorCode_c__c,NoInvestJustif_c__c,AssetId__c,ProductId__c,L1Owner_c__c,L2Owner_c__c,CreatedById__c,AccountId__c,ShipToLocation_c__c,SofwareVersion_c__c,ParentId__c, OwnerId__c,LastModifiedDate__c,Case_First_Closed_Date_c__c,FixedOnPhone_c__c,
                             GDPR_L1Q2_c__c,GDPR_L2Q2_c__c,GDPR_L1Q1_c__c,GDPR_L2Q1_c__c,RE_c__c,ShipToLocation_c__r.VisitorAddressId__c,AccountId__r.Global_Reporting_Hierarchy_Level_3_c__c,
                             AccountId__r.Global_Reporting_Hierarchy_Level_2_c__c,AccountId__r.Key_Account_Hierarchy_c__c,AccountId__r.Pricing_Hierarchy_2_c__c,AccountId__r.Pricing_Hierarchy_c__c,
-                            AccountId__r.Reporting_Hierarchy_c__c,AccountId__r.Global_Reporting_Hierarchy_Level_1_c__c,AccountId__r.RecordTypeId__c ,PRE1P2__c, NumberOfSamplesAffected__c,Product_Code_c__c FROM Case__x 
-                            WHERE Id IN: caseQueryList]) {
+                            AccountId__r.Reporting_Hierarchy_c__c,AccountId__r.Global_Reporting_Hierarchy_Level_1_c__c,AccountId__r.RecordTypeId__c ,PRE1P2__c, NumberOfSamplesAffected__c,Product_Code_c__c,Source__c FROM Case__x 
+                            WHERE Id IN: caseQueryList AND ( TWComplaintNumber_c__c = NULL OR  TWComplaintNumber_c__c LIKE 'CN%' ) ]) {
             
             // Filter out any cases that are created outside CRM - Case Number (CaseNumber__c) SAP Case Number (CaseNumber_c__c)
             if ( csx.CaseNumber_c__c == csx.CaseNumber__c) { // As of Winter 20' Direct field comparisons aren't allowed within SOQL
@@ -327,7 +327,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                                             BMX_InvQ6_Trend_on_the_issue_acceptable__c,BMX_PRE1_Patient_or_operator_death__c,BMX_Priority__c,BMX_LastModifiedDate__c,BMX_Sub_Origin__c,
                                             BMX_PRE2_1_Patient_or_operator_harmed__c,BMX_Batch_Expiration_Date__c,BMX_Contact_Phone__c,BMX_GDPR_L2Q1__c,BMX_CVM__c,
                                             BMX_PRE6_Reported_to_local_Reg_Authority__c,BMX_PRE5_WrongResultsPRE_Guidance_014764__c,BMX_Is_Reportable__c,BMX_Last_ATC_Sent_Date__c,
-                                            Visitor_Postal_Code__c,NumberOfSamplesAffected__c,PRE1P2__c FROM CMPL123CME__Complaint__c WHERE BMX_Case_External__c IN : caseIdSet]) {
+                                            Visitor_Postal_Code__c,NumberOfSamplesAffected__c,PRE1P2__c,Source__c FROM CMPL123CME__Complaint__c WHERE BMX_Case_External__c IN : caseIdSet]) {
             cmpResultMap.put(cmp.BMX_Case_External__c, cmp);
         }
         
