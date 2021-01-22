@@ -69,7 +69,10 @@ global class CreateWorkOrderForComplaintBatch implements Database.Batchable<sObj
             if(Test.isRunningTest() || 
             (workOrdX.CaseId__r.ExternalId != null && 
             workOrdX.CaseId__r.Type__c != null && 
-            workOrdX.CaseId__r.Type__c == VALID_CASE_TYPE )){
+            workOrdX.CaseId__r.Type__c == VALID_CASE_TYPE &&
+            (  workOrdX.CaseId__r.TWComplaintNumber_c__c == null ||
+             workOrdX.CaseId__r.TWComplaintNumber_c__c.contains('CN')
+             ))){
                 //Integer cmplntCount = (!Test.isRunningTest()) ? [SELECT Count() FROM CMPL123CME__Complaint__c WHERE BMX_Case_External_Id__c =: workOrdX.CaseId__r.ExternalId LIMIT 1] : 1;
                 //If( cmplntCount > 0){
                     Work_Order__c workOrdr = new Work_Order__c();

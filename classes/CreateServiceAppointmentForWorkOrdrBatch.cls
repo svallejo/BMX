@@ -74,7 +74,9 @@ global class CreateServiceAppointmentForWorkOrdrBatch implements Database.Batcha
             if(Test.isRunningTest() || 
             (serviceAppointX.WorkOrder_c__r.ExternalId != null && 
             serviceAppointX.WorkOrder_c__r.CaseId__r.Type__c != null &&
-            serviceAppointX.WorkOrder_c__r.CaseId__r.Type__c == VALID_CASE_TYPE )){
+            serviceAppointX.WorkOrder_c__r.CaseId__r.Type__c == VALID_CASE_TYPE &&
+            (  serviceAppointX.WorkOrder_c__r.CaseId__r.TWComplaintNumber_c__c == null ||
+             serviceAppointX.WorkOrder_c__r.CaseId__r.TWComplaintNumber_c__c.contains('CN') ))){
                 Service_Appointment__c serviceAppoint = new Service_Appointment__c();
                 serviceAppoint.workOrderId__r = new Work_Order__c(ExternalId__c = serviceAppointX.WorkOrder_c__r.ExternalId);
                 serviceAppoint.ExternalId__c = serviceAppointX.ExternalId;

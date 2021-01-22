@@ -72,7 +72,9 @@ global class CreateProductConsumedForWorkOrderBatch implements Database.Batchabl
             if(Test.isRunningTest() || 
             (productconsumX.WorkOrderId__r.ExternalId != null && 
              productconsumX.WorkOrderId__r.CaseId__r.Type__c != null && 
-             productconsumX.WorkOrderId__r.CaseId__r.Type__c == VALID_CASE_TYPE )){
+             productconsumX.WorkOrderId__r.CaseId__r.Type__c == VALID_CASE_TYPE &&
+             ( productconsumX.WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c == null ||
+            productconsumX.WorkOrderId__r.CaseId__r.TWComplaintNumber_c__c.contains('CN')))){
                 Product_Consumed__c productConsumed = new Product_Consumed__c();
                 productConsumed.workOrderId__r = new Work_Order__c(ExternalId__c = productconsumX.WorkOrderId__r.ExternalId);
                 productConsumed.ExternalId__c = productconsumX.ExternalId;
