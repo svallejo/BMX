@@ -50646,10 +50646,10 @@ ISBLANK( CMPL123CME__D2b_Procode__c), CMPL123CME__CMPL123_WF_Status__c = 'Review
     </validationRules>
     <validationRules>
         <fullName>H1_Type_of_Reportable_can_not_be_blank</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>H1 - Type of Reportable Event is required for initial eMDRs before Submit Report</description>
         <errorConditionFormula>AND(RecordType.Name = "Initial",
-ISBLANK(TEXT( CMPL123CME__H1_Type_of_Reportable_Event__c )), CMPL123CME__CMPL123_WF_Status__c = 'Review In Progress')</errorConditionFormula>
+ISBLANK( CMPL123CME__H1_Type_of_Reportable_Event_2021__c ), CMPL123CME__CMPL123_WF_Status__c = 'Review In Progress')</errorConditionFormula>
         <errorDisplayField>CMPL123CME__H1_Type_of_Reportable_Event__c</errorDisplayField>
         <errorMessage>H1 - Type of Reportable Event  is a mandatory field.</errorMessage>
     </validationRules>
