@@ -11,7 +11,8 @@ trigger Investigation_Eu_Mirupdate on CMPL123CME__Investigation__c (after update
     for(CMPL123CME__Investigation__c inv:Trigger.new)
     {   
         if(trigger.oldmap.get(inv.Id).CMPL123_WF_Status__c != inv.CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){               
-            If((inv.Justification_for_Annex_B__c!=null && inv.Justification_for_Annex_B__c!='') || (inv.Justification_for_Annex_C__c!=null && inv.Justification_for_Annex_C__c!='') || (inv.Justification_for_Annex_D__c!=null && inv.Justification_for_Annex_D__c!='')  )
+            //if((inv.Justification_for_Annex_B__c!=null && inv.Justification_for_Annex_B__c!='') || (inv.Justification_for_Annex_C__c!=null && inv.Justification_for_Annex_C__c!='') || (inv.Justification_for_Annex_D__c!=null && inv.Justification_for_Annex_D__c!='')  )
+            if(String.isNotBlank(inv.Justification_for_Annex_B__c) || String.isNotBlank(inv.Justification_for_Annex_C__c) || String.isNotBlank(inv.Justification_for_Annex_D__c))
             {            
                 MIRInvestmap.put(inv.EU_MIR__c,inv);
             }
