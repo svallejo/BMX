@@ -1488,6 +1488,10 @@ Green: Case has all its WO Closed --></help>
         <name>Context_c__c</name>
     </fields>
     <fields>
+        <label><!-- Contract --></label>
+        <name>Contract__c</name>
+    </fields>
+    <fields>
         <help><!-- Tech field to count the number of Case&apos;s related AER with Adverse Event State&quot;=&quot;Closed Done or Closed Canceled&quot;
 Utilised in WF &quot;AER_CaseRE_No&quot; to update Case RE=No if AER Decision=Not Reportable --></help>
         <label><!-- Count AER Closed Done --></label>
@@ -3756,6 +3760,30 @@ The Serial Number of the Asset is auto-populated --></help>
         <name>ServiceResource_c__c</name>
     </fields>
     <fields>
+        <label><!-- Severity --></label>
+        <name>Severity__c</name>
+        <picklistValues>
+            <masterLabel>Critical</masterLabel>
+            <translation><!-- Critical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dangerous</masterLabel>
+            <translation><!-- Dangerous --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marginal</masterLabel>
+            <translation><!-- Marginal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moderate</masterLabel>
+            <translation><!-- Moderate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Determined</masterLabel>
+            <translation><!-- Not Determined --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Ship-to Location --></label>
         <name>ShipToLocation_c__c</name>
         <relationshipLabel><!-- Case --></relationshipLabel>
@@ -3775,6 +3803,18 @@ The Serial Number of the Asset is auto-populated --></help>
     <fields>
         <label><!-- Entitlement Process Start Time --></label>
         <name>SlaStartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Social Media Impact --></label>
+        <name>Social_Media_Impact__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Case Software Version --></label>

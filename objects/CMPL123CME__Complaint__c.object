@@ -3497,6 +3497,17 @@
         <type>TextArea</type>
     </fields>
     <fields>
+        <fullName>Contract__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Device_Name__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -3952,6 +3963,46 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Severity__c</fullName>
+        <externalId>false</externalId>
+        <label>Severity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Critical</fullName>
+                    <default>false</default>
+                    <label>Critical</label>
+                </value>
+                <value>
+                    <fullName>Dangerous</fullName>
+                    <default>false</default>
+                    <label>Dangerous</label>
+                </value>
+                <value>
+                    <fullName>Moderate</fullName>
+                    <default>false</default>
+                    <label>Moderate</label>
+                </value>
+                <value>
+                    <fullName>Marginal</fullName>
+                    <default>false</default>
+                    <label>Marginal</label>
+                </value>
+                <value>
+                    <fullName>Not Determined</fullName>
+                    <default>false</default>
+                    <label>Not Determined</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Sex__c</fullName>
         <externalId>false</externalId>
         <label>Sex</label>
@@ -3971,6 +4022,31 @@
                     <fullName>Female</fullName>
                     <default>false</default>
                     <label>Female</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Social_Media_Impact__c</fullName>
+        <externalId>false</externalId>
+        <label>Social Media Impact</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

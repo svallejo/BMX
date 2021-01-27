@@ -2258,6 +2258,18 @@ Green: Case has all its WO Closed</inlineHelpText>
         <type>TextArea</type>
     </fields>
     <fields>
+        <fullName>Contract__c</fullName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Contract</label>
+        <length>200</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CountAER_ClosedDone_c__c</fullName>
         <externalDeveloperName>CountAER_ClosedDone__c</externalDeveloperName>
         <externalId>false</externalId>
@@ -6374,6 +6386,47 @@ The Serial Number of the Asset is auto-populated</inlineHelpText>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Severity__c</fullName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Severity</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Critical</fullName>
+                    <default>false</default>
+                    <label>Critical</label>
+                </value>
+                <value>
+                    <fullName>Dangerous</fullName>
+                    <default>false</default>
+                    <label>Dangerous</label>
+                </value>
+                <value>
+                    <fullName>Moderate</fullName>
+                    <default>false</default>
+                    <label>Moderate</label>
+                </value>
+                <value>
+                    <fullName>Marginal</fullName>
+                    <default>false</default>
+                    <label>Marginal</label>
+                </value>
+                <value>
+                    <fullName>Not Determined</fullName>
+                    <default>false</default>
+                    <label>Not Determined</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>ShipToLocation_c__c</fullName>
         <externalDeveloperName>ShipToLocation__c</externalDeveloperName>
         <externalId>false</externalId>
@@ -6436,6 +6489,32 @@ The Serial Number of the Asset is auto-populated</inlineHelpText>
         <label>Entitlement Process Start Time</label>
         <required>false</required>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Social_Media_Impact__c</fullName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Social Media Impact</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>SoftwareCode_c__c</fullName>
