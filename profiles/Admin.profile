@@ -8931,6 +8931,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account__x.Customer_type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account__x.Dairy_cow_c__c</field>
         <readable>true</readable>
     </fieldPermissions>
