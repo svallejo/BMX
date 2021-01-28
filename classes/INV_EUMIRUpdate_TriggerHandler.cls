@@ -24,8 +24,8 @@ public static void updateINVEUMIR(List<Id> invIdList)
       if(inv.CMPL123_WF_Status__c  == 'Closed - Done')
       {           
             //if((inv.Justification_for_Annex_B__c!=null && inv.Justification_for_Annex_B__c!='') || (inv.Justification_for_Annex_C__c!=null && inv.Justification_for_Annex_C__c!='') || (inv.Justification_for_Annex_D__c!=null && inv.Justification_for_Annex_D__c!='')  ) update by Shiva
-            if(inv.Justification_for_Annex_B__c!=''|| inv.Justification_for_Annex_C__c!='' || inv.Justification_for_Annex_D__c!='') 
-            //if(String.isNotBlank(inv.Justification_for_Annex_B__c) || String.isNotBlank(inv.Justification_for_Annex_C__c) || String.isNotBlank(inv.Justification_for_Annex_D__c))
+            //if(inv.Justification_for_Annex_B__c!=''|| inv.Justification_for_Annex_C__c!='' || inv.Justification_for_Annex_D__c!='') 
+            if(String.isNotBlank(inv.Justification_for_Annex_B__c) || String.isNotBlank(inv.Justification_for_Annex_C__c) || String.isNotBlank(inv.Justification_for_Annex_D__c))
             {            
                 MIRInvestmap.put(inv.EU_MIR__c,inv);
             }
@@ -107,7 +107,7 @@ public static void updateINVEUMIR(List<Id> invIdList)
             }
         }
         
-        if(!EMIRlistupdt.isEmpty())
+        if(!EMIRlistupdt.isEmpty() && EMIRlistupdt.size()>0)
         {
             update EMIRlistupdt;
         }
