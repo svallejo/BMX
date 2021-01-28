@@ -523,10 +523,10 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
             
             // To check Entitlement is null
             
-            if(cs.EntitlementId__c == null && entitlementExMap.get(cs.EntitlementId__c) == null && techComplaint) {
+          /*  if(cs.EntitlementId__c == null && entitlementExMap.get(cs.EntitlementId__c) == null && techComplaint) {
                 cmplnt = Utils_CreateComplaintForCaseBatch.populateComplaintDetailsFromExternalObjects(cmplnt, entitlementExMap.get(cs.EntitlementId__c), caseOtherObjMappingList, entitlementExObjAPIName, isInsert, 'EntitlementId__c');
             }
-
+*/
             
             if(cs.AccountId__c <> null && accountExMap.get(cs.AccountId__c) <> null) {
                 if(techComplaint) {

@@ -106,7 +106,8 @@ public static void updateINVEUMIR(List<Id> invIdList)
                 EMIRlistupdt.add(mr);
             }
         }
-        
+        set<CMPL123CME__EU_MIR__c> removenull = new set<CMPL123CME__EU_MIR__c>(EMIRlistupdt);
+    	EMIRlistupdt=new list<CMPL123CME__EU_MIR__c>(removenull);
         if(!EMIRlistupdt.isEmpty() && EMIRlistupdt.size()>0)
         {
             update EMIRlistupdt;

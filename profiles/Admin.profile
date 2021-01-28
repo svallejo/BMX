@@ -29260,7 +29260,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Case__x.Contract__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -30045,7 +30045,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Case__x.Severity__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -30075,7 +30075,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Case__x.Social_Media_Impact__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -36055,7 +36055,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Case__x.PRE1P2__c</field>
         <readable>true</readable>
     </fieldPermissions>
