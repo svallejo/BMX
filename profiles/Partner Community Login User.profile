@@ -14406,6 +14406,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case__x.ProductId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case__x.SAPCustomerNumber_c__c</field>
         <readable>true</readable>
     </fieldPermissions>

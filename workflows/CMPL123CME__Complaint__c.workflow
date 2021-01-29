@@ -242,6 +242,22 @@
         <operation>Formula</operation>
         <protected>false</protected>
     </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Entitlement_name</fullName>
+        <field>BMX_Entitlement_Name__c</field>
+        <name>Update Entitlement name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Product_Name</fullName>
+        <field>BMX_Product_Name__c</field>
+        <name>Update Product Name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+    </fieldUpdates>
     <rules>
         <fullName>Approved</fullName>
         <actions>
@@ -476,5 +492,25 @@
             <operation>notEqual</operation>
         </criteriaItems>
         <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Entitlement name on complaint</fullName>
+        <actions>
+            <name>Update_Entitlement_name</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISBLANK(EntitlementId__c)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Product name on complaint</fullName>
+        <actions>
+            <name>Update_Product_Name</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISBLANK(BMX_Product_External__c)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>

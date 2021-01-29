@@ -327,7 +327,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                                             BMX_InvQ6_Trend_on_the_issue_acceptable__c,BMX_PRE1_Patient_or_operator_death__c,BMX_Priority__c,BMX_LastModifiedDate__c,BMX_Sub_Origin__c,
                                             BMX_PRE2_1_Patient_or_operator_harmed__c,BMX_Batch_Expiration_Date__c,BMX_Contact_Phone__c,BMX_GDPR_L2Q1__c,BMX_CVM__c,
                                             BMX_PRE6_Reported_to_local_Reg_Authority__c,BMX_PRE5_WrongResultsPRE_Guidance_014764__c,BMX_Is_Reportable__c,BMX_Last_ATC_Sent_Date__c,
-                                            Visitor_Postal_Code__c,NumberOfSamplesAffected__c,PRE1P2__c,Source__c,Contract__c,Severity__c,Social_Media_Impact__c FROM CMPL123CME__Complaint__c WHERE BMX_Case_External__c IN : caseIdSet]) {
+                                            Visitor_Postal_Code__c,NumberOfSamplesAffected__c,PRE1P2__c,Source__c,Contract__c,Severity__c,Social_Media_Impact__c,EntitlementId__c  FROM CMPL123CME__Complaint__c WHERE BMX_Case_External__c IN : caseIdSet]) {
             cmpResultMap.put(cmp.BMX_Case_External__c, cmp);
         }
         

@@ -3351,6 +3351,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Complaint__c.EntitlementId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__Complaint__c.Evaluation_Completed_By__c</field>
         <readable>true</readable>
@@ -19153,6 +19158,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case__x.Priority__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case__x.ProductId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
