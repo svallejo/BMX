@@ -8976,6 +8976,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Complaint__c.Customer_type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__Complaint__c.Device_Name__c</field>
         <readable>true</readable>
