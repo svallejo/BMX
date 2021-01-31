@@ -28,7 +28,9 @@ public static void updateINVEUMIR(List<Id> invIdList)
             if(String.isNotBlank(inv.Justification_for_Annex_B__c) || String.isNotBlank(inv.Justification_for_Annex_C__c) || String.isNotBlank(inv.Justification_for_Annex_D__c))
             {            
                 MIRInvestmap.put(inv.EU_MIR__c,inv);
+
             }
+            
             MIRId.add(inv.EU_MIR__c);
             if(inv.B_Investigation_Type_Code_Choice_1__c!=null && inv.B_Investigation_Type_Code_Choice_1__c!='')
             {
@@ -106,13 +108,11 @@ public static void updateINVEUMIR(List<Id> invIdList)
                 EMIRlistupdt.add(mr);
             }
         }
-        set<CMPL123CME__EU_MIR__c> removenull = new set<CMPL123CME__EU_MIR__c>(EMIRlistupdt);
-    	EMIRlistupdt=new list<CMPL123CME__EU_MIR__c>(removenull);
-        if(!EMIRlistupdt.isEmpty() && EMIRlistupdt.size()>0)
-        {
-            update EMIRlistupdt;
-        }
-    
+      
+      if(!EMIRlistupdt.isEmpty() && EMIRlistupdt.Size()>0){
+        update EMIRlistupdt;
+      }
+      
     // Delete Existing Code choice
     List<CMPL123CME__EU_MIR_Code_Choices__c> ChoiceCodedelete1=[SELECT Id,Name,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Name like '%B-Investigation %' and CMPL123CME__Related_EU_MIR__c IN:MIRId];
     
