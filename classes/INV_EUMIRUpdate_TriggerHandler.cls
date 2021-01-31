@@ -95,19 +95,32 @@ public static void updateINVEUMIR(List<Id> invIdList)
     }
     
     List<CMPL123CME__EU_MIR__c> EMIRlistupdt= new List<CMPL123CME__EU_MIR__c>();
-        if(!MIRInvestmap.isEmpty())
-        {
-            List<CMPL123CME__EU_MIR__c> EMIRlist=[select id,CMPL123CME__Explain_If_Investigation_Code_Missing__c,CMPL123CME__Manufacturer_s_Evaluation__c from CMPL123CME__EU_MIR__c where Id IN:MIRInvestmap.keyset()];
-            for(CMPL123CME__EU_MIR__c emr: EMIRlist)
+    if(!MIRInvestmap.isEmpty())
+    {
+        List<CMPL123CME__EU_MIR__c> EMIRlist=[select id,CMPL123CME__Explain_If_Investigation_Code_Missing__c,CMPL123CME__Manufacturer_s_Evaluation__c from CMPL123CME__EU_MIR__c where Id IN:MIRInvestmap.keyset()];
+        for(CMPL123CME__EU_MIR__c emr: EMIRlist)
+        {   string solutionB;
+            String justB=(MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c !=null || MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c !='' )? MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c:'';
+            if(justB.contains(null))
             {
-                CMPL123CME__EU_MIR__c mr= new CMPL123CME__EU_MIR__c();
-                mr.Id=emr.Id;
-               // mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c;
-                mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c+ '/' + MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c+ '/' +MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c;
-                mr.CMPL123CME__Manufacturer_s_Evaluation__c=MIRInvestmap.get(emr.Id).BMX_Investigation_Answer__c;
-                EMIRlistupdt.add(mr);
+                solutionB='';
             }
+            else
+            {
+              solutionB=MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c;  
+            }
+            
+            CMPL123CME__EU_MIR__c mr= new CMPL123CME__EU_MIR__c();
+            mr.Id=emr.Id;
+           // mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c;             
+            mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= solutionB +'/'+((MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c !=null || MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c !='null')? MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c:'')+'/'+((MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c !=null || MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c !='null')? MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c:'');
+            mr.CMPL123CME__Manufacturer_s_Evaluation__c=MIRInvestmap.get(emr.Id).BMX_Investigation_Answer__c;
+            EMIRlistupdt.add(mr);
         }
+        
+    }
+
+        
       
       if(!EMIRlistupdt.isEmpty() && EMIRlistupdt.Size()>0){
         update EMIRlistupdt;
