@@ -27,7 +27,7 @@ public class EU_MIR_InvestigationHandler {
                     List<CMPL123CME__Investigation__c> invstList = new List<CMPL123CME__Investigation__c>();
                     List<CMPL123CME__EU_MIR__c> eumirList = new List<CMPL123CME__EU_MIR__c>();
                     for(CMPL123CME__EU_MIR__c mir:newList){
-                        if(mir.CMPL123CME__Complaint__c !=null && (mir.CMPL123CME__Type_Of_Report__c == 'Initial'|| mir.CMPL123CME__Type_Of_Report__c=='Follow up')){
+                        if(mir.Investigation_Evaluation__c == null && mir.CMPL123CME__Complaint__c !=null && (mir.CMPL123CME__Type_Of_Report__c == 'Initial'|| mir.CMPL123CME__Type_Of_Report__c=='Follow up')){
                         
                             invstList.add(new CMPL123CME__Investigation__c(Id = complainIdToInvstIdMap.get(mir.CMPL123CME__Complaint__c), EU_MIR__c = mir.Id));
                             
@@ -45,4 +45,6 @@ public class EU_MIR_InvestigationHandler {
         }
     
     }
+    
+    
  }

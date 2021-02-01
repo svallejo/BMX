@@ -50659,7 +50659,7 @@ CMPL123CME__Complaint__r.CMPL123CME__CMPL123_WF_Status__c ='Closed')</errorCondi
     </validationRules>
     <validationRules>
         <fullName>Same_user_cant_perform_two_action</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Have system check and not allow a user to perform both "Submit for Review" and "Submit Report" (approving) for an eMDR.</description>
         <errorConditionFormula>AND( ISCHANGED(CMPL123CME__CMPL123_WF_Action__c) ,CMPL123CME__CMPL123_WF_Action__c ='Submit Report',
  BMX_Submit_for_Review_Done_by__c  = $User.FirstName +' '+$User.LastName
