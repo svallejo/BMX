@@ -103,8 +103,8 @@ public static void updateINVEUMIR(List<Id> invIdList)
             
             CMPL123CME__EU_MIR__c mr= new CMPL123CME__EU_MIR__c();
             mr.Id=emr.Id;
-            mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= (MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c==null)?'-':MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c;             
-            //mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= ((MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c !=null || MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c !='null')? MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c:'-')+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c !=null || MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c !='null')? MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c:'-')+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c !=null || MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c !='null')? MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c:'-');
+            //mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= ((MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c)+'/'+(MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c;             
+            mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= ((MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c);
             mr.CMPL123CME__Manufacturer_s_Evaluation__c=MIRInvestmap.get(emr.Id).BMX_Investigation_Answer__c;
             EMIRlistupdt.add(mr);
         }
