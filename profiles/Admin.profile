@@ -7544,6 +7544,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>checkRecursiveonEMIR</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>fflib_Answer</apexClass>
         <enabled>true</enabled>
     </classAccesses>
