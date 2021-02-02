@@ -9146,7 +9146,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint__c.Contract__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -9226,7 +9226,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint__c.Justification_Decision_Maker__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -9336,7 +9336,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint__c.Severity__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -9346,7 +9346,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint__c.Social_Media_Impact__c</field>
         <readable>true</readable>
     </fieldPermissions>
