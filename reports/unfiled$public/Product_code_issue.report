@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CMPL123CME__Complaint__c$Name</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c.CMPL123CME__Investigations__r$Name</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c$BMX_Product_Code__c</field>
+    </columns>
+    <columns>
+        <field>CMPL123CME__Complaint__c$BMX_Product_External__c.ProductCode__c</field>
+    </columns>
+    <currency>EUR</currency>
+    <format>Tabular</format>
+    <name>Product code issue</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Complaints_with_Investigations__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CMPL123CME__Complaint__c$BMX_Batch_Expiration_Date__c</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

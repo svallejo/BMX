@@ -8,11 +8,11 @@
     </values>
     <values>
         <field>Object_API_Name__c</field>
-        <value xsi:type="xsd:string">Account__x</value>
+        <value xsi:type="xsd:string">Case__x</value>
     </values>
     <values>
         <field>Relationship_Name__c</field>
-        <value xsi:type="xsd:string">Customer_type__c</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>TWD_Field_API_Name__c</field>
