@@ -3,8 +3,8 @@ trigger EU_MIR_InvestigationTrigger on CMPL123CME__EU_MIR__c (before insert,befo
 
     Set<Id> mirSetId= new Set<Id>();
     Set<Id> EU_InvsetIds= new Set<Id>();
-    Set<Id> EMITSetId =new Set<Id>();
-    if(trigger.isbefore && trigger.isinsert){
+    //Set<Id> EMITSetId =new Set<Id>();
+    /**if(trigger.isbefore && trigger.isinsert){
         for(CMPL123CME__EU_MIR__c emuir:trigger.new)
         {
             
@@ -14,8 +14,8 @@ trigger EU_MIR_InvestigationTrigger on CMPL123CME__EU_MIR__c (before insert,befo
             }
         }
     }
-    
-    EU_MIR_InvestigationHandler.populateInvistigationId(EMITSetId);
+    **/
+    //EU_MIR_InvestigationHandler.populateInvistigationId(EMITSetId);
     
     if(trigger.isafter && trigger.isupdate){
         for(CMPL123CME__EU_MIR__c emuir:trigger.new)
@@ -23,7 +23,7 @@ trigger EU_MIR_InvestigationTrigger on CMPL123CME__EU_MIR__c (before insert,befo
             
             if((emuir.CMPL123CME__Type_Of_Report__c == 'Initial'|| emuir.CMPL123CME__Type_Of_Report__c=='Follow up') && emuir.Investigation_Evaluation__c == null && emuir.CMPL123CME__Complaint__c !=null )
             {
-                //EU_MIR_InvestigationHandler.populateInvistigationId(trigger.new);
+                EU_MIR_InvestigationHandler.populateInvistigationId(trigger.new);
             }
             
             if( (trigger.oldmap.get(emuir.Id).CMPL123_WF_Status__c !=emuir.CMPL123_WF_Status__c) && ( emuir.CMPL123CME__Type_Of_Report__c=='Initial' && emuir.CMPL123_WF_Status__c == 'Closed-Submitted') )
