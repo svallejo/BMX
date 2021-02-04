@@ -251,6 +251,16 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Update_Product_Code</fullName>
+        <description>Update Product code</description>
+        <field>BMX_Product_Code__c</field>
+        <formula>IF(  ISBLANK(BMX_Material_Code__c) ,  Reagent_material_code__c ,  BMX_Material_Code__c )</formula>
+        <name>Update Product Code</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Update_Product_Name</fullName>
         <field>BMX_Product_Name__c</field>
         <name>Update Product Name</name>
@@ -501,6 +511,27 @@
         </actions>
         <active>true</active>
         <formula>ISBLANK(EntitlementId__c)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Product Code</fullName>
+        <actions>
+            <name>Update_Product_Code</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>CMPL123CME__Complaint__c.BMX_Material_Code__c</field>
+            <operation>equals</operation>
+            <value>null</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CMPL123CME__Complaint__c.Reagent_material_code__c</field>
+            <operation>equals</operation>
+            <value>null</value>
+        </criteriaItems>
+        <description>Update Product Code</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

@@ -13214,7 +13214,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__Complaint__c.Reagent_material_code__c</field>
         <readable>true</readable>
     </fieldPermissions>
