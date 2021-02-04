@@ -37690,6 +37690,7 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
+        <personAccountDefault>true</personAccountDefault>
         <recordType>CMPL123QMS__Change_Control__c.CC_Custom</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>

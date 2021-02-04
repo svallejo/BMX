@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>CRM_Field_API_Name__c</field>
-        <value xsi:type="xsd:string">CaseNumber__c</value>
+        <value xsi:type="xsd:string">ParentId__c</value>
     </values>
     <values>
         <field>Object_API_Name__c</field>

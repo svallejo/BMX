@@ -28451,7 +28451,7 @@
         <layout>CMPL123QMS__Change_Control_Item__c-CMPL123QMS__Change Control Item Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>CMPL123QMS__Change_Control__c-Change Control Custom_with metrics</layout>
+        <layout>CMPL123QMS__Change_Control__c-Change Control Custom</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123QMS__Change_Control__c-Change Control Custom</layout>
