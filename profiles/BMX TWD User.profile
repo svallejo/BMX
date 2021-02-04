@@ -9344,6 +9344,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__Complaint__c.Reagent_material_code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint__c.Reject_Complaint_By__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -25633,6 +25638,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Case__x.Material_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Case__x.NewComment_c__c</field>
         <readable>true</readable>
@@ -25715,6 +25725,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Case__x.Product_c__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case__x.Reagent_material_code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
