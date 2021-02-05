@@ -254,7 +254,7 @@
         <fullName>Update_Product_Code</fullName>
         <description>Update Product code</description>
         <field>BMX_Product_Code__c</field>
-        <formula>IF(  ISNULL(BMX_Material_Code__c) ,  Reagent_material_code__c ,  BMX_Material_Code__c )</formula>
+        <formula>IF(ISBLANK(BMX_Material_Code__c) ,  Reagent_material_code__c ,  BMX_Material_Code__c )</formula>
         <name>Update Product Code</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
@@ -519,8 +519,8 @@
             <name>Update_Product_Code</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
-        <booleanFilter>1 OR 2</booleanFilter>
+        <active>false</active>
+        <booleanFilter>1 OR 2 OR 3  OR 4</booleanFilter>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.BMX_Material_Code__c</field>
             <operation>notEqual</operation>
@@ -529,7 +529,35 @@
             <field>CMPL123CME__Complaint__c.Reagent_material_code__c</field>
             <operation>notEqual</operation>
         </criteriaItems>
+        <criteriaItems>
+            <field>CMPL123CME__Complaint__c.BMX_Material_Code__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CMPL123CME__Complaint__c.Reagent_material_code__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
         <description>Update Product Code</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Product Code_V1</fullName>
+        <actions>
+            <name>Update_Product_Code</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update Product Code</description>
+        <formula>OR(
+   NOT(ISBLANK(BMX_Material_Code__c)),
+   NOT(ISBLANK(Reagent_material_code__c)),
+   ISBLANK(BMX_Material_Code__c),
+   ISBLANK(Reagent_material_code__c),
+   NOT(ISNULL(BMX_Material_Code__c)),
+   NOT(ISNULL(Reagent_material_code__c)),
+   ISNULL(BMX_Material_Code__c),
+   ISNULL(Reagent_material_code__c)
+)</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

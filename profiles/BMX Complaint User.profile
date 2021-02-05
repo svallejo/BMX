@@ -25167,6 +25167,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Case__x.Product_Code_c__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Case__x.Product_c__c</field>
         <readable>true</readable>
     </fieldPermissions>
