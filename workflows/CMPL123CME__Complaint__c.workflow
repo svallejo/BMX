@@ -254,7 +254,7 @@
         <fullName>Update_Product_Code</fullName>
         <description>Update Product code</description>
         <field>BMX_Product_Code__c</field>
-        <formula>IF(  ISBLANK(BMX_Material_Code__c) ,  Reagent_material_code__c ,  BMX_Material_Code__c )</formula>
+        <formula>IF(  ISNULL(BMX_Material_Code__c) ,  Reagent_material_code__c ,  BMX_Material_Code__c )</formula>
         <name>Update Product Code</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
@@ -523,13 +523,11 @@
         <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.BMX_Material_Code__c</field>
-            <operation>equals</operation>
-            <value>null</value>
+            <operation>notEqual</operation>
         </criteriaItems>
         <criteriaItems>
             <field>CMPL123CME__Complaint__c.Reagent_material_code__c</field>
-            <operation>equals</operation>
-            <value>null</value>
+            <operation>notEqual</operation>
         </criteriaItems>
         <description>Update Product Code</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
