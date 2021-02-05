@@ -558,7 +558,7 @@
    ISNULL(BMX_Material_Code__c),
    ISNULL(Reagent_material_code__c)
 )</formula>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Update Product name on complaint</fullName>
