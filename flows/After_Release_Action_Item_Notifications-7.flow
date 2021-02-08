@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Email_AI_Assignee</name>
         <label>Email AI Assignee</label>
-        <locationX>1237</locationX>
-        <locationY>302</locationY>
+        <locationX>1235</locationX>
+        <locationY>260</locationY>
         <actionName>Action_Item__c.Action_Item_Assignee</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -19,15 +19,15 @@
     </actionCalls>
     <decisions>
         <name>Records_Found</name>
-        <label>Records Found?</label>
-        <locationX>739</locationX>
-        <locationY>75</locationY>
+        <label>Records Found</label>
+        <locationX>763</locationX>
+        <locationY>64</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Yes_Action_items_Found</name>
+            <name>Yes_Action_Items_Found</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_Prerelease_Action_Item_Records</leftValueReference>
+                <leftValueReference>Get_After_Release_Action_Item_Records</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -36,19 +36,19 @@
             <connector>
                 <targetReference>Email_Assignee</targetReference>
             </connector>
-            <label>Yes - Action items Found</label>
+            <label>Yes - Action Items Found</label>
         </rules>
     </decisions>
-    <description>Send notification to assignees of action items that are ready to be started after CRB Approval_V3</description>
-    <interviewLabel>Prerelease Action Items Notification {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Prerelease Action Items Notification</label>
+    <description>Version 7</description>
+    <interviewLabel>After Release Action Item Notifications {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>After Release Action Item Notifications</label>
     <loops>
         <name>Email_Assignee</name>
         <label>Email Assignee</label>
-        <locationX>1025</locationX>
-        <locationY>67</locationY>
+        <locationX>1021</locationX>
+        <locationY>64</locationY>
         <assignNextValueToReference>ActionItemLV</assignNextValueToReference>
-        <collectionReference>Get_Prerelease_Action_Item_Records</collectionReference>
+        <collectionReference>Get_After_Release_Action_Item_Records</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>Email_AI_Assignee</targetReference>
@@ -74,13 +74,47 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
-        <name>Get_Change_Control_Record</name>
-        <label>Get Change Control Record</label>
-        <locationX>393</locationX>
-        <locationY>73</locationY>
+        <name>Get_After_Release_Action_Item_Records</name>
+        <label>Get After Release Action Item Records</label>
+        <locationX>592</locationX>
+        <locationY>62</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Prerelease_Action_Item_Records</targetReference>
+            <targetReference>Records_Found</targetReference>
+        </connector>
+        <filters>
+            <field>Change_Control__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ChangeControlID</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>After_Release__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CMPL123_WF_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Open</stringValue>
+            </value>
+        </filters>
+        <object>Action_Item__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Assignee__c</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Change_Control_Record</name>
+        <label>Get Change Control Record</label>
+        <locationX>388</locationX>
+        <locationY>62</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_After_Release_Action_Item_Records</targetReference>
         </connector>
         <filters>
             <field>Id</field>
@@ -93,46 +127,11 @@
         <queriedFields>Id</queriedFields>
         <queriedFields>Name</queriedFields>
     </recordLookups>
-    <recordLookups>
-        <description>Retrieves all action items that are open (required) and are not marked for after release.</description>
-        <name>Get_Prerelease_Action_Item_Records</name>
-        <label>Get Prerelease Action Item Records</label>
-        <locationX>567</locationX>
-        <locationY>73</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Records_Found</targetReference>
-        </connector>
-        <filters>
-            <field>After_Release__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>CMPL123_WF_Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Open</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Change_Control__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>ChangeControlID</elementReference>
-            </value>
-        </filters>
-        <object>Action_Item__c</object>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Assignee__c</queriedFields>
-    </recordLookups>
     <startElementReference>Get_Change_Control_Record</startElementReference>
     <textTemplates>
         <name>EmailBody</name>
-        <text>Action items are ready to be started for Change Request {!Get_Change_Control_Record.Name}.
-Access change request by logging into Trackwise Digital and going to your dashboards.
+        <text>After Release Action Item is ready to be started for Change Request {!Get_Change_Control_Record.Name}.
+Access change requet by logging into Trackwise Digital and going to your dashboards.
 
 Do not reply to this e-Mail. Your e-Mail will not be read. This is an automatic message sent by the system.</text>
     </textTemplates>
@@ -150,6 +149,14 @@ Do not reply to this e-Mail. Your e-Mail will not be read. This is an automatic 
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>EmailTemplate</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>EmailTemplate</objectType>
     </variables>
     <variables>
         <name>ListofEmails</name>
