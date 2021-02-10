@@ -2657,6 +2657,16 @@
             <valueSetDefinition>
                 <sorted>true</sorted>
                 <value>
+                    <fullName>Adriatic</fullName>
+                    <default>false</default>
+                    <label>Adriatic</label>
+                </value>
+                <value>
+                    <fullName>Africa</fullName>
+                    <default>false</default>
+                    <label>Africa</label>
+                </value>
+                <value>
                     <fullName>Algeria</fullName>
                     <default>false</default>
                     <label>Algeria</label>
@@ -2721,6 +2731,11 @@
                     <label>Canada</label>
                 </value>
                 <value>
+                    <fullName>CEC</fullName>
+                    <default>false</default>
+                    <label>CEC</label>
+                </value>
+                <value>
                     <fullName>Chile</fullName>
                     <default>false</default>
                     <label>Chile</label>
@@ -2753,6 +2768,7 @@
                 <value>
                     <fullName>Denmark</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Denmark</label>
                 </value>
                 <value>
@@ -2761,8 +2777,14 @@
                     <label>Durham – Rodolphe St.</label>
                 </value>
                 <value>
+                    <fullName>Egypt</fullName>
+                    <default>false</default>
+                    <label>Egypt</label>
+                </value>
+                <value>
                     <fullName>Finland</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Finland</label>
                 </value>
                 <value>
@@ -2804,6 +2826,11 @@
                     <fullName>Hyderabad</fullName>
                     <default>false</default>
                     <label>Hyderabad</label>
+                </value>
+                <value>
+                    <fullName>Iberia</fullName>
+                    <default>false</default>
+                    <label>Iberia</label>
                 </value>
                 <value>
                     <fullName>IDC Saint Vulbas</fullName>
@@ -2852,6 +2879,11 @@
                     <label>Marcy</label>
                 </value>
                 <value>
+                    <fullName>METER</fullName>
+                    <default>false</default>
+                    <label>METER</label>
+                </value>
+                <value>
                     <fullName>Mexico</fullName>
                     <default>false</default>
                     <label>Mexico</label>
@@ -2860,6 +2892,11 @@
                     <fullName>NA ComOps</fullName>
                     <default>false</default>
                     <label>NA ComOps</label>
+                </value>
+                <value>
+                    <fullName>NEC</fullName>
+                    <default>false</default>
+                    <label>NEC</label>
                 </value>
                 <value>
                     <fullName>Nordics</fullName>
@@ -2925,6 +2962,16 @@
                     <fullName>Spain</fullName>
                     <default>false</default>
                     <label>Spain</label>
+                </value>
+                <value>
+                    <fullName>SSC Europe</fullName>
+                    <default>false</default>
+                    <label>SSC Europe</label>
+                </value>
+                <value>
+                    <fullName>SSC LATAM</fullName>
+                    <default>false</default>
+                    <label>SSC LATAM</label>
                 </value>
                 <value>
                     <fullName>St. Louis</fullName>
@@ -3064,6 +3111,14 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Adriatic</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Africa</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
                 <valueName>Algeria</valueName>
             </valueSettings>
             <valueSettings>
@@ -3092,6 +3147,10 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>CEC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
                 <valueName>Chile</valueName>
             </valueSettings>
             <valueSettings>
@@ -3105,6 +3164,10 @@
             <valueSettings>
                 <controllingFieldValue>Subsidiary</controllingFieldValue>
                 <valueName>Czech Republic</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Egypt</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Subsidiary</controllingFieldValue>
@@ -3128,6 +3191,10 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>Iberia</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
                 <valueName>India</valueName>
             </valueSettings>
             <valueSettings>
@@ -3140,11 +3207,19 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>METER</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
                 <valueName>Mexico</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Subsidiary</controllingFieldValue>
                 <valueName>NA ComOps</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>NEC</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Subsidiary</controllingFieldValue>
@@ -3181,6 +3256,14 @@
             <valueSettings>
                 <controllingFieldValue>Subsidiary</controllingFieldValue>
                 <valueName>Spain</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>SSC Europe</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subsidiary</controllingFieldValue>
+                <valueName>SSC LATAM</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Subsidiary</controllingFieldValue>
@@ -5036,6 +5119,14 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
         <picklistValues>
             <picklist>Origination_Location__c</picklist>
             <values>
+                <fullName>Adriatic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Africa</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Algeria</fullName>
                 <default>false</default>
             </values>
@@ -5061,6 +5152,10 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
             </values>
             <values>
                 <fullName>Brazil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CEC</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5092,15 +5187,11 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Denmark</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Durham %E2%80%93 Rodolphe St%2E</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Finland</fullName>
+                <fullName>Egypt</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5140,6 +5231,10 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Iberia</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>India</fullName>
                 <default>false</default>
             </values>
@@ -5164,6 +5259,10 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>METER</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Marcy</fullName>
                 <default>false</default>
             </values>
@@ -5173,6 +5272,10 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
             </values>
             <values>
                 <fullName>NA ComOps</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEC</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5197,6 +5300,14 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
             </values>
             <values>
                 <fullName>Russia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SSC Europe</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SSC LATAM</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6170,6 +6281,14 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
         <picklistValues>
             <picklist>Origination_Location__c</picklist>
             <values>
+                <fullName>Adriatic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Africa</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Algeria</fullName>
                 <default>false</default>
             </values>
@@ -6195,6 +6314,10 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
             </values>
             <values>
                 <fullName>Brazil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CEC</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6226,15 +6349,11 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Denmark</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Durham %E2%80%93 Rodolphe St%2E</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Finland</fullName>
+                <fullName>Egypt</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6274,6 +6393,10 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Iberia</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>India</fullName>
                 <default>false</default>
             </values>
@@ -6298,6 +6421,10 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>METER</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Marcy</fullName>
                 <default>false</default>
             </values>
@@ -6307,6 +6434,10 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
             </values>
             <values>
                 <fullName>NA ComOps</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEC</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6331,6 +6462,14 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
             </values>
             <values>
                 <fullName>Russia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SSC Europe</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SSC LATAM</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7352,15 +7491,7 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Denmark</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Durham %E2%80%93 Rodolphe St%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Finland</fullName>
                 <default>false</default>
             </values>
             <values>
