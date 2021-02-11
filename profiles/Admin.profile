@@ -5468,6 +5468,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Investchildupdate</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>InvestigationTriggerHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
