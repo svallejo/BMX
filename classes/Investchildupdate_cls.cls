@@ -1,8 +1,6 @@
-public class Investchildupdate 
+public class Investchildupdate_cls 
 {
-    
-    @InvocableMethod
-    public static void doProcessActions(List<InvestWrapper> InvestList) 
+    public static void doProcessActions(Set<Id> IvstIds) 
     {
 
         List<CMPL123CME__EU_MIR__c> EUMIRListupdt= new List<CMPL123CME__EU_MIR__c>();
@@ -12,14 +10,12 @@ public class Investchildupdate
         LIst<string> choice_code= new List<String>();
         map<Id,string> choicecodemap= new map<Id,string>();
         
-        List<CMPL123CME__Investigation__c> Childinvrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Master_Investigation__c=:InvestList[0].ParentId];
-        List<CMPL123CME__Investigation__c> invrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Id =:InvestList[0].ParentId ];
-        system.debug('MS::cdchoicelist::'+Childinvrecords);
+        //List<CMPL123CME__Investigation__c> Childinvrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Master_Investigation__c=:InvestList[0].ParentId];
+        List<CMPL123CME__Investigation__c> invrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Id IN: IvstIds];
+        //system.debug('MS::cdchoicelist::'+Childinvrecords);
         system.debug('MS::cdchoicelist::'+invrecords);
         for(CMPL123CME__Investigation__c inv : invrecords )   
-        {
-            //if(oldmap.get(inv.Id).CMPL123_WF_Status__c != newMap.get(inv.Id).CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){   
-            //if(trigger.oldmap.get(inv.Id).CMPL123_WF_Status__c != inv.CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){  - by Shekar 
+        { 
           if(inv.CMPL123_WF_Status__c  == 'Closed - Done')
           {           
                 //if((inv.Justification_for_Annex_B__c!=null && inv.Justification_for_Annex_B__c!='') || (inv.Justification_for_Annex_C__c!=null && inv.Justification_for_Annex_C__c!='') || (inv.Justification_for_Annex_D__c!=null && inv.Justification_for_Annex_D__c!='')  ) update by Shiva
@@ -92,25 +88,25 @@ public class Investchildupdate
         }
         
         List<CMPL123CME__EU_MIR__c> EMIRlistupdt= new List<CMPL123CME__EU_MIR__c>();
-            if(!MIRInvestmap.isEmpty())
+        if(!MIRInvestmap.isEmpty())
+        {
+            List<CMPL123CME__EU_MIR__c> EMIRlist=[select id,CMPL123CME__Explain_If_Investigation_Code_Missing__c,CMPL123CME__Manufacturer_s_Evaluation__c from CMPL123CME__EU_MIR__c where Id IN:MIRInvestmap.keyset()];
+            for(CMPL123CME__EU_MIR__c emr: EMIRlist)
             {
-                List<CMPL123CME__EU_MIR__c> EMIRlist=[select id,CMPL123CME__Explain_If_Investigation_Code_Missing__c,CMPL123CME__Manufacturer_s_Evaluation__c from CMPL123CME__EU_MIR__c where Id IN:MIRInvestmap.keyset()];
-                for(CMPL123CME__EU_MIR__c emr: EMIRlist)
-                {
-                    CMPL123CME__EU_MIR__c mr= new CMPL123CME__EU_MIR__c();
-                    mr.Id=emr.Id;
-                   // mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c;
-                    mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= ((MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c);
-                    mr.CMPL123CME__Manufacturer_s_Evaluation__c=MIRInvestmap.get(emr.Id).BMX_Investigation_Answer__c;
-                    EMIRlistupdt.add(mr);
-                }
+                CMPL123CME__EU_MIR__c mr= new CMPL123CME__EU_MIR__c();
+                mr.Id=emr.Id;
+               // mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c;
+                mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= ((MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c);
+                mr.CMPL123CME__Manufacturer_s_Evaluation__c=MIRInvestmap.get(emr.Id).BMX_Investigation_Answer__c;
+                EMIRlistupdt.add(mr);
             }
-            set<CMPL123CME__EU_MIR__c> removenull = new set<CMPL123CME__EU_MIR__c>(EMIRlistupdt);
-            EMIRlistupdt=new list<CMPL123CME__EU_MIR__c>(removenull);
-            if(!EMIRlistupdt.isEmpty() && EMIRlistupdt.size()>0)
-            {
-                update EMIRlistupdt;
-            }
+        }
+        set<CMPL123CME__EU_MIR__c> removenull = new set<CMPL123CME__EU_MIR__c>(EMIRlistupdt);
+        EMIRlistupdt=new list<CMPL123CME__EU_MIR__c>(removenull);
+        if(!EMIRlistupdt.isEmpty() && EMIRlistupdt.size()>0)
+        {
+            update EMIRlistupdt;
+        }
         
         // Delete Existing Code choice
         List<CMPL123CME__EU_MIR_Code_Choices__c> ChoiceCodedelete1=[SELECT Id,Name,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Name like '%B-Investigation %' and CMPL123CME__Related_EU_MIR__c IN:MIRId];
@@ -146,12 +142,15 @@ public class Investchildupdate
                 system.debug('MS::codelist::'+codelist);
                 for(CMPL123CME__EU_MIR_Code__c cd:codelist)
                 {
-                    CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
-                    cdchoice.Name='B-Investigation Type Code'+' '+'-'+' '+str.substring(0,8)+' '+'-'+' '+cd.name;
-                    cdchoice.CMPL123CME__Choice__c=str.substring(0,8);
-                    cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
-                    cdchoice.CMPL123CME__Related_EU_MIR__c=MIRId[0];
-                    cdchoicelist.add(cdchoice);
+                    for(Id emrids:MIRId)
+                    { 
+                        CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
+                        cdchoice.Name='B-Investigation Type Code'+' '+'-'+' '+str.substring(0,8)+' '+'-'+' '+cd.name;
+                        cdchoice.CMPL123CME__Choice__c=str.substring(0,8);
+                        cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
+                        cdchoice.CMPL123CME__Related_EU_MIR__c=emrids;
+                        cdchoicelist.add(cdchoice);
+                    }
                 }
             }
         }
@@ -162,22 +161,28 @@ public class Investchildupdate
             for(CMPL123CME__EU_MIR_Code__c cd:codelist)
             {
                 if(cd.Name.startsWith('C'))
-                {           
-                    CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
-                    cdchoice.Name='C-Investigation Type Code'+' '+'-'+' '+choicecodemap.get(cd.Id)+' '+'-'+' '+cd.name;
-                    cdchoice.CMPL123CME__Choice__c=choicecodemap.get(cd.Id);
-                    cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
-                    cdchoice.CMPL123CME__Related_EU_MIR__c=MIRId[0];
-                    cdchoicelist.add(cdchoice);
+                {    
+                    for(Id emrids:MIRId)
+                    {       
+                        CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
+                        cdchoice.Name='C-Investigation Type Code'+' '+'-'+' '+choicecodemap.get(cd.Id)+' '+'-'+' '+cd.name;
+                        cdchoice.CMPL123CME__Choice__c=choicecodemap.get(cd.Id);
+                        cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
+                        cdchoice.CMPL123CME__Related_EU_MIR__c=emrids;
+                        cdchoicelist.add(cdchoice);
+                    }
                 }
                 else
                 {
-                    CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
-                    cdchoice.Name='D-Investigation Type Code'+' '+'-'+' '+choicecodemap.get(cd.Id)+' '+'-'+' '+cd.name;
-                    cdchoice.CMPL123CME__Choice__c=choicecodemap.get(cd.Id);
-                    cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
-                    cdchoice.CMPL123CME__Related_EU_MIR__c=MIRId[0];
-                    cdchoicelist.add(cdchoice);
+                    for(Id emrids:MIRId)
+                    { 
+                        CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
+                        cdchoice.Name='D-Investigation Type Code'+' '+'-'+' '+choicecodemap.get(cd.Id)+' '+'-'+' '+cd.name;
+                        cdchoice.CMPL123CME__Choice__c=choicecodemap.get(cd.Id);
+                        cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
+                        cdchoice.CMPL123CME__Related_EU_MIR__c=emrids;
+                        cdchoicelist.add(cdchoice);
+                    }
                 }
             }
         
@@ -191,11 +196,5 @@ public class Investchildupdate
  
     }
     
-    public class InvestWrapper{
-    
-        @InvocableVariable
-        public Id ParentId;
-
-   
-    }    
+  
 }
