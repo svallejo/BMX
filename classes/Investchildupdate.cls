@@ -15,10 +15,7 @@ public class Investchildupdate
         List<CMPL123CME__Investigation__c> Childinvrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Master_Investigation__c=:InvestList[0].ParentId];
         for(CMPL123CME__Investigation__c chinvst:Childinvrecords)
         {
-            if(String.isNotBlank(chinvst.Justification_for_Annex_B__c) || String.isNotBlank(chinvst.Justification_for_Annex_C__c) || String.isNotBlank(chinvst.Justification_for_Annex_D__c))
-            {            
-                MIRInvestmap.put(chinvst.EU_MIR__c,chinvst);
-            }
+           
             MIRId.add(chinvst.EU_MIR__c);
         }
         List<CMPL123CME__Investigation__c> invrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Id =:InvestList[0].ParentId and Master_Investigation__c=null ];
@@ -26,16 +23,14 @@ public class Investchildupdate
         system.debug('MS::cdchoicelist::'+invrecords);
         for(CMPL123CME__Investigation__c inv : invrecords )   
         {
-            //if(oldmap.get(inv.Id).CMPL123_WF_Status__c != newMap.get(inv.Id).CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){   
-            //if(trigger.oldmap.get(inv.Id).CMPL123_WF_Status__c != inv.CMPL123_WF_Status__c && inv.CMPL123_WF_Status__c  == 'Closed - Done'){  - by Shekar 
+           
           if(inv.CMPL123_WF_Status__c  == 'Closed - Done')
           {           
-                //if((inv.Justification_for_Annex_B__c!=null && inv.Justification_for_Annex_B__c!='') || (inv.Justification_for_Annex_C__c!=null && inv.Justification_for_Annex_C__c!='') || (inv.Justification_for_Annex_D__c!=null && inv.Justification_for_Annex_D__c!='')  ) update by Shiva
-                //if(inv.Justification_for_Annex_B__c!=''|| inv.Justification_for_Annex_C__c!='' || inv.Justification_for_Annex_D__c!='') 
                 if(String.isNotBlank(inv.Justification_for_Annex_B__c) || String.isNotBlank(inv.Justification_for_Annex_C__c) || String.isNotBlank(inv.Justification_for_Annex_D__c))
                 {            
                     MIRInvestmap.put(inv.EU_MIR__c,inv);
                 }
+                
                 MIRId.add(inv.EU_MIR__c);
                 if(inv.B_Investigation_Type_Code_Choice_1__c!=null && inv.B_Investigation_Type_Code_Choice_1__c!='')
                 {
@@ -113,13 +108,12 @@ public class Investchildupdate
                     EMIRlistupdt.add(mr);
                 }
             }
-            set<CMPL123CME__EU_MIR__c> removenull = new set<CMPL123CME__EU_MIR__c>(EMIRlistupdt);
-            EMIRlistupdt=new list<CMPL123CME__EU_MIR__c>(removenull);
+            
             if(!EMIRlistupdt.isEmpty() && EMIRlistupdt.size()>0)
             {
                 update EMIRlistupdt;
             }
-        
+             
         // Delete Existing Code choice
         List<CMPL123CME__EU_MIR_Code_Choices__c> ChoiceCodedelete1=[SELECT Id,Name,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Name like '%B-Investigation %' and CMPL123CME__Related_EU_MIR__c IN:MIRId];
         
