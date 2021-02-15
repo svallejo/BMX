@@ -50,10 +50,10 @@ trigger CMPL123CME_Investigation_123Trigger on CMPL123CME__Investigation__c (bef
                     
                 }
             }
-            if(!invIdrecordlist.isEmpty()){
-            INV_EUMIRUpdate_TriggerHandler.updateINVEUMIR(invIdrecordlist);
+            //if(!invIdrecordlist.isEmpty()){
+            //INV_EUMIRUpdate_TriggerHandler.updateINVEUMIR(invIdrecordlist);
             //System.debug('@@@invEumirTrigHandler'+ INV_EUMIRUpdate_TriggerHandler.updateINVEUMIR(invIdrecordlist));
-            }
+            //}
         CMPL123CME.Investigation_TriggerHandler investigationTrigHandler = new CMPL123CME.Investigation_TriggerHandler ();
         investigationTrigHandler.createInvestigationItems();
         X123handler.handleAfterUpdate();

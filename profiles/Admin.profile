@@ -5360,6 +5360,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Childinvest_Eumir_Update</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ContentDocumentLinkSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>

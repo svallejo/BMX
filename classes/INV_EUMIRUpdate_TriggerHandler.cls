@@ -93,7 +93,6 @@ public static void updateINVEUMIR(List<Id> invIdList)
     }
     
     List<CMPL123CME__EU_MIR__c> EMIRlistupdt= new List<CMPL123CME__EU_MIR__c>();
-    system.debug('MIRInvestmap@@:::MSR'+MIRInvestmap);
         if(!MIRInvestmap.isEmpty())
         {
             List<CMPL123CME__EU_MIR__c> EMIRlist=[select id,CMPL123CME__Explain_If_Investigation_Code_Missing__c,CMPL123CME__Manufacturer_s_Evaluation__c from CMPL123CME__EU_MIR__c where Id IN:MIRInvestmap.keyset()];
@@ -113,8 +112,6 @@ public static void updateINVEUMIR(List<Id> invIdList)
         {
             update EMIRlistupdt;
         }
-        
-        system.debug('EMIRlistupdt@@:::MSR'+EMIRlistupdt);
     
     // Delete Existing Code choice
     List<CMPL123CME__EU_MIR_Code_Choices__c> ChoiceCodedelete1=[SELECT Id,Name,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Name like '%B-Investigation %' and CMPL123CME__Related_EU_MIR__c IN:MIRId];

@@ -15,7 +15,10 @@ public class Investchildupdate
         List<CMPL123CME__Investigation__c> Childinvrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Master_Investigation__c=:InvestList[0].ParentId];
         for(CMPL123CME__Investigation__c chinvst:Childinvrecords)
         {
-           
+            if(String.isNotBlank(chinvst.Justification_for_Annex_B__c) || String.isNotBlank(chinvst.Justification_for_Annex_C__c) || String.isNotBlank(chinvst.Justification_for_Annex_D__c))
+                {            
+                    MIRInvestmap.put(chinvst.EU_MIR__c,chinvst);
+                }
             MIRId.add(chinvst.EU_MIR__c);
         }
         List<CMPL123CME__Investigation__c> invrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Id =:InvestList[0].ParentId and Master_Investigation__c=null ];
@@ -94,7 +97,7 @@ public class Investchildupdate
             }
         }
         
-        List<CMPL123CME__EU_MIR__c> EMIRlistupdt= new List<CMPL123CME__EU_MIR__c>();
+            List<CMPL123CME__EU_MIR__c> EMIRlistupdt= new List<CMPL123CME__EU_MIR__c>();
             if(!MIRInvestmap.isEmpty())
             {
                 List<CMPL123CME__EU_MIR__c> EMIRlist=[select id,CMPL123CME__Explain_If_Investigation_Code_Missing__c,CMPL123CME__Manufacturer_s_Evaluation__c from CMPL123CME__EU_MIR__c where Id IN:MIRInvestmap.keyset()];
