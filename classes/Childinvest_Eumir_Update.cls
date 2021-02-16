@@ -1,11 +1,11 @@
 public class Childinvest_Eumir_Update
 {
-    @InvocableMethod
-    public static void ChildInvest_JustificationUpdate(List<ChildInvestWrapper> InvestList) 
+    //@InvocableMethod
+    public static void ChildInvest_JustificationUpdate(List<CMPL123CME__Investigation__c> InvestList) 
     {
         map<Id,CMPL123CME__Investigation__c> MIRInvestmap= new map<Id,CMPL123CME__Investigation__c>();
         
-        List<CMPL123CME__Investigation__c> Childinvrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Master_Investigation__c=:InvestList[0].ChildInvestId];
+        List<CMPL123CME__Investigation__c> Childinvrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Master_Investigation__c IN: InvestList];
         system.debug('MS::ChildInvestlist::'+Childinvrecords);
         
         for(CMPL123CME__Investigation__c inv :Childinvrecords)   
@@ -44,11 +44,11 @@ public class Childinvest_Eumir_Update
                 update EMIRlistupdt;
             }
     }
-    public class ChildInvestWrapper{
+    
+   /** public class ChildInvestWrapper{
     
         @InvocableVariable
         public Id ChildInvestId;
-
+   ***/
    
-    }    
-}
+    }
