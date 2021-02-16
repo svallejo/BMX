@@ -5,7 +5,5 @@ trigger InvestigationTrigger on CMPL123CME__Investigation__c (after insert) {
     if(trigger.isInsert && trigger.isafter){
         InvestigationTriggerHandler.InvestiToEumirupdate(trigger.new);
     }
-    if(trigger.isUpdate && Trigger.isBefore){
-    Childinvest_Eumir_Update.ChildInvest_JustificationUpdate(trigger.new);
-    }
+    
 }
