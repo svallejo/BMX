@@ -112,6 +112,9 @@ public class Investchildupdate
                 }
             }
             
+            system.debug('MIRInvestmap::MSR...'+MIRInvestmap.size());
+            system.debug('EU MIR List...'+EMIRlistupdt.size());
+            system.debug('EUMIRListofRecords...'+EMIRlistupdt);
             if(!EMIRlistupdt.isEmpty() && EMIRlistupdt.size()>0)
             {
                 update EMIRlistupdt;
