@@ -5424,6 +5424,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>EU_MIR_InvestigationHandler_Invocable</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>EU_MIR_InvestigationHandler_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>

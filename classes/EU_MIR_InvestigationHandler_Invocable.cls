@@ -1,11 +1,12 @@
-public class EU_MIR_InvestigationHandler {
+public class EU_MIR_InvestigationHandler_Invocable {
     
-    public static void populateInvistigationId(List<CMPL123CME__EU_MIR__c> EMIRSetId)
+    @InvocableMethod
+    public static void populateInvist_Updatein(List<EU_mirWrapper> EMIRSetId)
     {
     
         try 
         {
-            List<CMPL123CME__EU_MIR__c> mirlist=[Select id,CMPL123CME__Complaint__c,CMPL123CME__Type_Of_Report__c from CMPL123CME__EU_MIR__c where id IN: EMIRSetId];
+            List<CMPL123CME__EU_MIR__c> mirlist=[Select id,CMPL123CME__Complaint__c,CMPL123CME__Type_Of_Report__c from CMPL123CME__EU_MIR__c where id=:EMIRSetId[0].Eumirids];
             List<CMPL123CME__Investigation__c> invstList = new List<CMPL123CME__Investigation__c>();
             List<CMPL123CME__EU_MIR__c> eumirList = new List<CMPL123CME__EU_MIR__c>();
             if(checkRecursiveonEMIR.isFirstTime)
@@ -31,6 +32,7 @@ public class EU_MIR_InvestigationHandler {
                         
                     }
                 }
+                
                 system.debug('MSR::complainIdToInvstIdMap...'+complainIdToInvstIdMap);
                 if(!complainIdToInvstIdMap.isEmpty())
                 {
@@ -57,6 +59,12 @@ public class EU_MIR_InvestigationHandler {
             System.debug('The following exception has occurred: ' + e.getMessage());
         }
     
+    }
+    
+    Public class EU_mirWrapper
+    {
+        @InvocableVariable
+        public Id Eumirids;
     }
     
     
