@@ -6,6 +6,7 @@ public class EU_MIR_InvestigationHandler_Invocable {
     
         try 
         {
+            system.debug('MSR::EMIRSetId...'+EMIRSetId);
             List<CMPL123CME__EU_MIR__c> mirlist=[Select id,CMPL123CME__Complaint__c,CMPL123CME__Type_Of_Report__c from CMPL123CME__EU_MIR__c where id=:EMIRSetId[0].Eumirids];
             List<CMPL123CME__Investigation__c> invstList = new List<CMPL123CME__Investigation__c>();
             List<CMPL123CME__EU_MIR__c> eumirList = new List<CMPL123CME__EU_MIR__c>();
