@@ -1,17 +1,18 @@
 public class EU_MIR_InvestigationHandler {
     
+    @InvocableMethod
     public static void populateInvistigationId(List<CMPL123CME__EU_MIR__c> newList){
     
-        
+           
             Set<Id> complaintIds = new Set<Id>(); 
             
             for(CMPL123CME__EU_MIR__c mir:newList){
-                 if(mir.Investigation_Evaluation__c == null && mir.CMPL123CME__Complaint__c !=null && (mir.CMPL123CME__Type_Of_Report__c == 'Initial'|| mir.CMPL123CME__Type_Of_Report__c=='Follow up') ){
-                    System.debug('@@@@@'+' Inside the initial loop');
+                 //if(mir.Investigation_Evaluation__c == null && mir.CMPL123CME__Complaint__c !=null && (mir.CMPL123CME__Type_Of_Report__c == 'Initial'|| mir.CMPL123CME__Type_Of_Report__c=='Follow up') ){
+                 if(mir.CMPL123CME__Complaint__c !=null && (mir.CMPL123CME__Type_Of_Report__c == 'Initial'|| mir.CMPL123CME__Type_Of_Report__c=='Follow up') ){
+                  System.debug('@@@@@'+' Inside the initial loop');
                     complaintIds.add(mir.CMPL123CME__Complaint__c);
                     //cmptmap.put(mir.CMPL123CME__Complaint__c,mir.Id);
                  }
-
             }
             
             system.debug('MSR::complaintIds...'+complaintIds);
