@@ -12036,7 +12036,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__EU_MIR__c.Investigation_Evaluation__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -13433,6 +13433,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__Investigation__c.D_Investigation_Conclusion_Choice_6_del__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__Investigation__c.EU_MIR__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
