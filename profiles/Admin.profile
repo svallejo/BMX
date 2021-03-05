@@ -5480,6 +5480,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Investchildupdate_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Investchildupdate_cls</apexClass>
         <enabled>true</enabled>
     </classAccesses>
