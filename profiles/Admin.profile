@@ -17539,7 +17539,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__Investigation__c.Investigation_Approved_By_text_c__c</field>
         <readable>true</readable>
     </fieldPermissions>
