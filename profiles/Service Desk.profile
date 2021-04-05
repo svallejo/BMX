@@ -16632,6 +16632,21 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Investigation__c.G_Component_Code_Choice_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Investigation__c.G_Component_Code_Choice_2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Investigation__c.G_Component_Code_Choice_3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__Investigation__c.IMDRF_Annex_B__c</field>
         <readable>true</readable>
@@ -16644,6 +16659,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__Investigation__c.IMDRF_Annex_D__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Investigation__c.IMDRF_Annex_G__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -16684,6 +16704,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__Investigation__c.Justification_for_Annex_D__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Investigation__c.Justification_for_Annex_G__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
