@@ -12,16 +12,16 @@ public class Investchildupdate
         LIst<string> choice_code= new List<String>();
         map<Id,string> choicecodemap= new map<Id,string>();
         
-        List<CMPL123CME__Investigation__c> Childinvrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Master_Investigation__c=:InvestList[0].ParentId];
+        List<CMPL123CME__Investigation__c> Childinvrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,Justification_for_Annex_G__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c,G_Component_Code_Choice_1__c,G_Component_Code_Choice_2__c,G_Component_Code_Choice_3__c FROM CMPL123CME__Investigation__c WHERE Master_Investigation__c=:InvestList[0].ParentId];
         for(CMPL123CME__Investigation__c chinvst:Childinvrecords)
         {
-                if(String.isNotBlank(chinvst.Justification_for_Annex_B__c) || String.isNotBlank(chinvst.Justification_for_Annex_C__c) || String.isNotBlank(chinvst.Justification_for_Annex_D__c))
+                if(String.isNotBlank(chinvst.Justification_for_Annex_B__c) || String.isNotBlank(chinvst.Justification_for_Annex_C__c) || String.isNotBlank(chinvst.Justification_for_Annex_D__c)|| String.isNotBlank(chinvst.Justification_for_Annex_G__c))
                 {            
                     MIRInvestmap.put(chinvst.EU_MIR__c,chinvst);
                 }
                 MIRId.add(chinvst.EU_MIR__c);
         }
-        List<CMPL123CME__Investigation__c> invrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c FROM CMPL123CME__Investigation__c WHERE Id =:InvestList[0].ParentId and Master_Investigation__c=null ];
+        List<CMPL123CME__Investigation__c> invrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,Justification_for_Annex_G__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c,G_Component_Code_Choice_1__c,G_Component_Code_Choice_2__c,G_Component_Code_Choice_3__c FROM CMPL123CME__Investigation__c WHERE Id =:InvestList[0].ParentId and Master_Investigation__c=null ];
         system.debug('MS::cdchoicelist::'+Childinvrecords);
         system.debug('MS::cdchoicelist::'+invrecords);
         for(CMPL123CME__Investigation__c inv : invrecords )   
@@ -29,7 +29,7 @@ public class Investchildupdate
            
           if(inv.CMPL123_WF_Status__c  == 'Closed - Done')
           {           
-                if(String.isNotBlank(inv.Justification_for_Annex_B__c) || String.isNotBlank(inv.Justification_for_Annex_C__c) || String.isNotBlank(inv.Justification_for_Annex_D__c))
+                if(String.isNotBlank(inv.Justification_for_Annex_B__c) || String.isNotBlank(inv.Justification_for_Annex_C__c) || String.isNotBlank(inv.Justification_for_Annex_D__c)|| String.isNotBlank(inv.Justification_for_Annex_G__c))
                 {            
                     MIRInvestmap.put(inv.EU_MIR__c,inv);
                 }
@@ -94,6 +94,23 @@ public class Investchildupdate
                 {
                     choicecodemap.put(inv.D_Investigation_Conclusion_Choice3__c,'choice 3');
                 }
+                
+                if(inv.G_Component_Code_Choice_1__c!=null)
+                {
+                    choice_code.add('Choice 1' +inv.G_Component_Code_Choice_1__c);
+                    //choicecodemap.put(inv.G_Component_Code_Choice_1__c,'choice 1');
+                }
+                
+                if(inv.G_Component_Code_Choice_2__c!=null)
+                {
+                    choice_code.add('Choice 2' +inv.G_Component_Code_Choice_2__c);
+                    //choicecodemap.put(inv.G_Component_Code_Choice_2__c,'choice 2');
+                }
+                if(inv.G_Component_Code_Choice_3__c!=null)
+                {   
+                    choice_code.add('Choice 2' +inv.G_Component_Code_Choice_3__c);
+                    //choicecodemap.put(inv.G_Component_Code_Choice_3__c,'choice 3');
+                }
             }
         }
         
@@ -106,7 +123,7 @@ public class Investchildupdate
                     CMPL123CME__EU_MIR__c mr= new CMPL123CME__EU_MIR__c();
                     mr.Id=emr.Id;
                    // mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c;
-                    mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= ((MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c);
+                    mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= ((MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_G__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_G__c);
                     mr.CMPL123CME__Manufacturer_s_Evaluation__c=MIRInvestmap.get(emr.Id).BMX_Investigation_Answer__c;
                     EMIRlistupdt.add(mr);
                 }
@@ -126,6 +143,7 @@ public class Investchildupdate
         List<CMPL123CME__EU_MIR_Code_Choices__c> ChoiceCodedelete2=[SELECT Id,Name,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Name like '%C-Investigation %' and CMPL123CME__Related_EU_MIR__c IN:MIRId];
         
         List<CMPL123CME__EU_MIR_Code_Choices__c> ChoiceCodedelete3=[SELECT Id,Name,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Name like '%D-Investigation %' and CMPL123CME__Related_EU_MIR__c IN:MIRId];
+        List<CMPL123CME__EU_MIR_Code_Choices__c> GChoiceCodedelete4=[SELECT Id,Name,CMPL123CME__Related_EU_MIR__c from CMPL123CME__EU_MIR_Code_Choices__c WHERE Name like '%G-Investigation %' and CMPL123CME__Related_EU_MIR__c IN:MIRId];
         system.debug('MS::ChoiceCodedelete1::'+ChoiceCodedelete1.size());
         system.debug('MS::ChoiceCodedelete2::'+ChoiceCodedelete2.size());
         system.debug('MS::ChoiceCodedelete3::'+ChoiceCodedelete3.size());
@@ -143,6 +161,10 @@ public class Investchildupdate
         if(!ChoiceCodedelete3.isEmpty())
         {
             Delete ChoiceCodedelete3;
+        }
+         if(!GChoiceCodedelete4.isEmpty())
+        {
+            Delete GChoiceCodedelete4;
         }
         // End Deletion
         
@@ -166,6 +188,18 @@ public class Investchildupdate
                         cdchoice.CMPL123CME__Related_EU_MIR__c=emrids;
                         cdchoicelist.add(cdchoice);
                     }
+                    
+                    /**if(cd.Name.startsWith('G')){         
+                    for(Id emrids:MIRId)
+                        {
+                            CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
+                            cdchoice.Name='G-Component Code'+' '+'-'+' '+str.substring(0,8)+' '+'-'+' '+cd.name;
+                            cdchoice.CMPL123CME__Choice__c=str.substring(0,8);
+                            cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
+                            cdchoice.CMPL123CME__Related_EU_MIR__c=emrids;
+                            cdchoicelist.add(cdchoice);
+                        }
+                    }**/
                 }
             }
         }
@@ -175,6 +209,19 @@ public class Investchildupdate
             
             for(CMPL123CME__EU_MIR_Code__c cd:codelist)
             {
+               if(cd.Name.startsWith('G')){
+                
+                    for(Id emrids:MIRId)
+                        {
+                            CMPL123CME__EU_MIR_Code_Choices__c cdchoice= new CMPL123CME__EU_MIR_Code_Choices__c();
+                            cdchoice.Name='G-Component Code'+' '+'-'+' '+choicecodemap.get(cd.Id)+' '+'-'+' '+cd.name;
+                            cdchoice.CMPL123CME__Choice__c=choicecodemap.get(cd.Id);
+                            cdchoice.CMPL123CME__Related_EU_MIR_Code__c=cd.Id;
+                            cdchoice.CMPL123CME__Related_EU_MIR__c=emrids;
+                            cdchoicelist.add(cdchoice);
+                        }
+                   }
+                    
                 if(cd.Name.startsWith('C'))
                 {     
                     for(Id emrids:MIRId)
