@@ -2269,6 +2269,11 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
                 <operation>startsWith</operation>
                 <value>G</value>
             </filterItems>
+            <filterItems>
+                <field>CMPL123CME__EU_MIR_Code__c.CMPL123CME__Inactive__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </filterItems>
             <isOptional>true</isOptional>
         </lookupFilter>
         <referenceTo>CMPL123CME__EU_MIR_Code__c</referenceTo>
@@ -2291,6 +2296,11 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
                 <operation>startsWith</operation>
                 <value>G</value>
             </filterItems>
+            <filterItems>
+                <field>CMPL123CME__EU_MIR_Code__c.CMPL123CME__Inactive__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </filterItems>
             <isOptional>true</isOptional>
         </lookupFilter>
         <referenceTo>CMPL123CME__EU_MIR_Code__c</referenceTo>
@@ -2312,6 +2322,11 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
                 <field>CMPL123CME__EU_MIR_Code__c.Name</field>
                 <operation>startsWith</operation>
                 <value>G</value>
+            </filterItems>
+            <filterItems>
+                <field>CMPL123CME__EU_MIR_Code__c.CMPL123CME__Inactive__c</field>
+                <operation>equals</operation>
+                <value>False</value>
             </filterItems>
             <isOptional>true</isOptional>
         </lookupFilter>
@@ -2659,6 +2674,19 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
             <value>Closed-Canceled</value>
         </filters>
         <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Investigation_with_Complaints</fullName>
+        <columns>NAME</columns>
+        <columns>Investigation_Evaluation_Number__c</columns>
+        <columns>Priority__c</columns>
+        <columns>SIG_Code__c</columns>
+        <columns>Catalog_Profile__c</columns>
+        <columns>CMPL123_WF_Action__c</columns>
+        <columns>CMPL123_WF_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Investigation with Complaints</label>
         <language>en_US</language>
     </listViews>
     <listViews>
@@ -4084,6 +4112,19 @@ D_Investigation_Conclusion_Choice3__c&lt;&gt;'D16 - Conclusion Not Yet Available
         <errorMessage>If Annex BCD Contains the picklist "B21  - Type of Investigation Not Yet Determined" Investigation cannot be closed</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Annex_B_C_and_G_Choice_1_Mandatory</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+CMPL123_WF_Action__c = 'Complete Investigation',
+  OR(ISPICKVAL(B_Investigation_Type_Code_Choice_1__c,''),
+     ISBLANK( C_Investigation_Findings_Code_Choice1__c),
+     ISBLANK( G_Component_Code_Choice_1__c)),
+     ISPICKVAL(CMPL123CME__Complaint__r.BMX_PRE__c,'Yes'), 
+ OR(CONTAINS(CMPL123CME__Complaint__r.BMX_Is_Reportable__c,'Yes'),
+   ISBLANK(CMPL123CME__Complaint__r.BMX_Is_Reportable__c)))</errorConditionFormula>
+        <errorMessage>Please select Value in Choice 1 for Annex B and Annex C</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Annex_B_Code_choice_should_not_be_in_B21</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
@@ -4277,10 +4318,17 @@ ISCHANGED(CMPL123_WF_Action__c)
         <errorMessage>One of the selected Root Cause is not the more specific of the hierarchy. Update to a more specific code, or enter a justification in "Justification for Annex D"</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Justification_for_Annex_G</fullName>
+        <active>true</active>
+        <description>Justify use of a code for Findings that is not the most specific one of the hierarchy</description>
+        <errorConditionFormula>AND(OR(G_Component_Code_Choice_1__r.Is_a_parent_code__c = true,G_Component_Code_Choice_2__r.Is_a_parent_code__c = true,G_Component_Code_Choice_3__r.Is_a_parent_code__c= true), ISBLANK(Justification_for_Annex_G__c ))</errorConditionFormula>
+        <errorMessage>One of the selected Finding is not the more specific of the hierarchy. Update to a more specific code, or enter a justification in "Justification for Annex G"</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Justification_for_No_review</fullName>
         <active>true</active>
         <description>Justification for No review</description>
-        <errorConditionFormula>AND( ISPICKVAL( Review_of_Product_Risk_Analysis_File_req__c, "NO"), CMPL123_WF_Action__c = 'Complete Investigation')</errorConditionFormula>
+        <errorConditionFormula>AND( ISBLANK( Justification_for_No_Review__c ),ISPICKVAL( Review_of_Product_Risk_Analysis_File_req__c, "NO"), CMPL123_WF_Action__c = 'Complete Investigation')</errorConditionFormula>
         <errorDisplayField>Justification_for_No_Review__c</errorDisplayField>
         <errorMessage>Justification for no review is blank</errorMessage>
     </validationRules>

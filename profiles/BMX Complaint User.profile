@@ -13572,6 +13572,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__Investigation__c.Justification_for_No_Review__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__Investigation__c.Master_Investigation__c</field>
         <readable>true</readable>
     </fieldPermissions>
