@@ -8131,7 +8131,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>CMPL123CME__Complaint__c.BMX_Customer_Contact_Date_Time__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -9226,7 +9226,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__Complaint__c.Justification_Decision_Maker__c</field>
         <readable>true</readable>
     </fieldPermissions>
