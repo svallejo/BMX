@@ -13372,6 +13372,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__Investigation__c.Catalog_Profile__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__Investigation__c.Complaint_description__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -13572,6 +13577,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__Investigation__c.Priority__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__Investigation__c.RCA__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -13592,12 +13602,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__Investigation__c.Review_of_Product_Risk_Analysis_File_req__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__Investigation__c.Rework_Requested_By_text_c__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__Investigation__c.Root_Cause_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__Investigation__c.SIG_Code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

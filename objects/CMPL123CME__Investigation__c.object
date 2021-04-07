@@ -157,7 +157,7 @@
         <fullName>BMX_Additional_Information__c</fullName>
         <externalId>false</externalId>
         <label>Additional Information</label>
-        <length>3000</length>
+        <length>35000</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -286,7 +286,7 @@
         <fullName>BMX_CAPA_Justification__c</fullName>
         <externalId>false</externalId>
         <label>No CAPA Justification</label>
-        <length>1500</length>
+        <length>35000</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -439,7 +439,7 @@
         <fullName>BMX_Containment_Correction_Action__c</fullName>
         <externalId>false</externalId>
         <label>Containment/Correction Action</label>
-        <length>1000</length>
+        <length>35000</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -538,7 +538,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <fullName>BMX_Evidence_of_Trend__c</fullName>
         <externalId>false</externalId>
         <label>Evidence of Trend</label>
-        <length>1000</length>
+        <length>35000</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -548,7 +548,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <fullName>BMX_Expert_Investigation_Details__c</fullName>
         <externalId>false</externalId>
         <label>Expert Investigation Details</label>
-        <length>15000</length>
+        <length>35000</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -600,7 +600,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <fullName>BMX_FAB_Justification__c</fullName>
         <externalId>false</externalId>
         <label>No FAB Justification</label>
-        <length>1000</length>
+        <length>35000</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -655,7 +655,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <fullName>BMX_Impact_Analysis__c</fullName>
         <externalId>false</externalId>
         <label>Impact Analysis</label>
-        <length>1500</length>
+        <length>35000</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -726,7 +726,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <fullName>BMX_Investigation_Details__c</fullName>
         <externalId>false</externalId>
         <label>Investigation Details</label>
-        <length>25000</length>
+        <length>35000</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -956,7 +956,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <fullName>BMX_Return_Comments__c</fullName>
         <externalId>false</externalId>
         <label>Return Comments</label>
-        <length>1000</length>
+        <length>35000</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -1893,6 +1893,19 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Catalog_Profile__c</fullName>
+        <description>Catalog Profile data from Complaints</description>
+        <externalId>false</externalId>
+        <formula>TEXT(CMPL123CME__Complaint__r.BMX_Catalog_Profile__c)</formula>
+        <inlineHelpText>Catalog Profile data from Complaints</inlineHelpText>
+        <label>Catalog Profile</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Code_Type__c</fullName>
         <externalId>false</externalId>
         <label>Code Type</label>
@@ -2248,7 +2261,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <fullName>G_Component_Code_Choice_1__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>G-Component Code-Choice 1</label>
+        <label>Component Choice 1</label>
         <lookupFilter>
             <active>true</active>
             <filterItems>
@@ -2270,7 +2283,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <fullName>G_Component_Code_Choice_2__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>G-Component Code-Choice 2</label>
+        <label>Component Choice 2</label>
         <lookupFilter>
             <active>true</active>
             <filterItems>
@@ -2292,7 +2305,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <fullName>G_Component_Code_Choice_3__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>G-Component Code-Choice 3</label>
+        <label>Component Choice 3</label>
         <lookupFilter>
             <active>true</active>
             <filterItems>
@@ -2345,7 +2358,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
     </fields>
     <fields>
         <fullName>IMDRF_Annex_G__c</fullName>
-        <defaultValue>'www.imdrf.org/workitems/wi-aet-annex-b.asp'</defaultValue>
+        <defaultValue>'www.imdrf.org/workitems/wi-aet-annex-g.asp'</defaultValue>
         <externalId>false</externalId>
         <inlineHelpText>The hyperlink is only active while the form is not being edited</inlineHelpText>
         <label>IMDRF Annex G</label>
@@ -2446,7 +2459,19 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
     <fields>
         <fullName>Justification_for_Annex_G__c</fullName>
         <externalId>false</externalId>
+        <inlineHelpText>This field is mandatory if you have not select the most detailed level for Component</inlineHelpText>
         <label>Justification for Annex G</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Justification_for_No_Review__c</fullName>
+        <externalId>false</externalId>
+        <label>Justification for No Review</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -2477,6 +2502,19 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Priority__c</fullName>
+        <description>Priority data from Compliant object</description>
+        <externalId>false</externalId>
+        <formula>CMPL123CME__Complaint__r.BMX_Priority__c</formula>
+        <inlineHelpText>Priority data from Compliant object</inlineHelpText>
+        <label>Priority</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>RCA__c</fullName>
@@ -2522,6 +2560,31 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Review_of_Product_Risk_Analysis_File_req__c</fullName>
+        <externalId>false</externalId>
+        <label>Review of Product Risk Analysis File req</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>YES</fullName>
+                    <default>false</default>
+                    <label>YES</label>
+                </value>
+                <value>
+                    <fullName>NO</fullName>
+                    <default>false</default>
+                    <label>NO</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Rework_Requested_By_text_c__c</fullName>
         <externalId>false</externalId>
         <label>Rework Requested By</label>
@@ -2555,6 +2618,19 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>SIG_Code__c</fullName>
+        <description>SIG Code data from Complaints</description>
+        <externalId>false</externalId>
+        <formula>TEXT(CMPL123CME__Complaint__r.BMX_SIG_Code__c)</formula>
+        <inlineHelpText>SIG Code data from Complaints</inlineHelpText>
+        <label>SIG Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Workflow_Status_For_CRM__c</fullName>
         <description>If the workflow status is "Closed - Done" , then it will make it as "Closed done" else it will be as it is. This field value is send back to CRM.</description>
         <externalId>false</externalId>
@@ -2583,6 +2659,19 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
             <value>Closed-Canceled</value>
         </filters>
         <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Investigation_with_Compliants</fullName>
+        <columns>NAME</columns>
+        <columns>Investigation_Evaluation_Number__c</columns>
+        <columns>Priority__c</columns>
+        <columns>SIG_Code__c</columns>
+        <columns>Catalog_Profile__c</columns>
+        <columns>CMPL123_WF_Action__c</columns>
+        <columns>CMPL123_WF_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Investigation with Compliants</label>
         <language>en_US</language>
     </listViews>
     <listViews>
@@ -3255,6 +3344,17 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>Review_of_Product_Risk_Analysis_File_req__c</picklist>
+            <values>
+                <fullName>NO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YES</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Child_Investigation</fullName>
@@ -3900,6 +4000,17 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>Review_of_Product_Risk_Analysis_File_req__c</picklist>
+            <values>
+                <fullName>NO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YES</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <searchLayouts>
         <customTabListAdditionalFields>CMPL123_WF_Status__c</customTabListAdditionalFields>
@@ -4164,6 +4275,14 @@ ISCHANGED(CMPL123_WF_Action__c)
         <description>Justify use of a code for Findings that is not the most specific one of the hierarchy</description>
         <errorConditionFormula>AND(OR( D_Investigation_Conclusion_Choice1__r.Is_a_parent_code__c = true, D_Investigation_Conclusion_Choice2__r.Is_a_parent_code__c  = true, D_Investigation_Conclusion_Choice3__r.Is_a_parent_code__c = true), ISBLANK(Justification_for_Annex_D__c ))</errorConditionFormula>
         <errorMessage>One of the selected Root Cause is not the more specific of the hierarchy. Update to a more specific code, or enter a justification in "Justification for Annex D"</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Justification_for_No_review</fullName>
+        <active>true</active>
+        <description>Justification for No review</description>
+        <errorConditionFormula>AND( ISPICKVAL( Review_of_Product_Risk_Analysis_File_req__c, "NO"), CMPL123_WF_Action__c = 'Complete Investigation')</errorConditionFormula>
+        <errorDisplayField>Justification_for_No_Review__c</errorDisplayField>
+        <errorMessage>Justification for no review is blank</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>

@@ -653,6 +653,11 @@
         <name>Cancel_Investigation_By_text_c__c</name>
     </fields>
     <fields>
+        <help><!-- Catalog Profile data from Complaints --></help>
+        <label><!-- Catalog Profile --></label>
+        <name>Catalog_Profile__c</name>
+    </fields>
+    <fields>
         <label><!-- Code Type --></label>
         <name>Code_Type__c</name>
     </fields>
@@ -762,17 +767,17 @@
         <name>GCS_Approve_Approved__c</name>
     </fields>
     <fields>
-        <label><!-- G-Component Code-Choice 1 --></label>
+        <label><!-- Component Choice 1 --></label>
         <name>G_Component_Code_Choice_1__c</name>
         <relationshipLabel><!-- Investigations/Evaluations (G-Component Code-Choice 1) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- G-Component Code-Choice 2 --></label>
+        <label><!-- Component Choice 2 --></label>
         <name>G_Component_Code_Choice_2__c</name>
         <relationshipLabel><!-- Investigations/Evaluations (G-Component Code-Choice 2) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- G-Component Code-Choice 3 --></label>
+        <label><!-- Component Choice 3 --></label>
         <name>G_Component_Code_Choice_3__c</name>
         <relationshipLabel><!-- Investigations/Evaluations (G-Component Code-Choice 3) --></relationshipLabel>
     </fields>
@@ -833,8 +838,13 @@
         <name>Justification_for_Annex_D__c</name>
     </fields>
     <fields>
+        <help><!-- This field is mandatory if you have not select the most detailed level for Component --></help>
         <label><!-- Justification for Annex G --></label>
         <name>Justification_for_Annex_G__c</name>
+    </fields>
+    <fields>
+        <label><!-- Justification for No Review --></label>
+        <name>Justification_for_No_Review__c</name>
     </fields>
     <fields>
         <label><!-- Master Investigation --></label>
@@ -844,6 +854,11 @@
     <fields>
         <label><!-- NOW-59MIN --></label>
         <name>NOW_59MIN__c</name>
+    </fields>
+    <fields>
+        <help><!-- Priority data from Compliant object --></help>
+        <label><!-- Priority --></label>
+        <name>Priority__c</name>
     </fields>
     <fields>
         <label><!-- RCA --></label>
@@ -862,6 +877,18 @@
         <name>Require_Expert_Investigation_By_text_c__c</name>
     </fields>
     <fields>
+        <label><!-- Review of Product Risk Analysis File req --></label>
+        <name>Review_of_Product_Risk_Analysis_File_req__c</name>
+        <picklistValues>
+            <masterLabel>NO</masterLabel>
+            <translation><!-- NO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YES</masterLabel>
+            <translation><!-- YES --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Rework Requested By --></label>
         <name>Rework_Requested_By_text_c__c</name>
     </fields>
@@ -869,6 +896,11 @@
         <label><!-- Root Cause/Conclusion --></label>
         <name>Root_Cause_Code__c</name>
         <relationshipLabel><!-- Investigations/Evaluations (Root Cause Code) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- SIG Code data from Complaints --></help>
+        <label><!-- SIG Code --></label>
+        <name>SIG_Code__c</name>
     </fields>
     <fields>
         <label><!-- Workflow Status For CRM --></label>
@@ -881,8 +913,8 @@
             <section>Additional Information</section>
         </sections>
         <sections>
-            <label><!-- Annex G --></label>
-            <section>Annex G</section>
+            <label><!-- Component (Annex G) --></label>
+            <section>Component (Annex G)</section>
         </sections>
         <sections>
             <label><!-- Conclusion --></label>
@@ -912,8 +944,8 @@
             <section>Additional Information</section>
         </sections>
         <sections>
-            <label><!-- Annex G --></label>
-            <section>Annex G</section>
+            <label><!-- Component (Annex G) --></label>
+            <section>Component (Annex G)</section>
         </sections>
         <sections>
             <label><!-- Conclusion --></label>
@@ -967,8 +999,8 @@
             <section>Additional Information</section>
         </sections>
         <sections>
-            <label><!-- Annex G --></label>
-            <section>Annex G</section>
+            <label><!-- Component (Annex G) --></label>
+            <section>Component (Annex G)</section>
         </sections>
         <sections>
             <label><!-- Conclusion --></label>
@@ -1124,6 +1156,10 @@
     <validationRules>
         <errorMessage><!-- One of the selected Root Cause is not the more specific of the hierarchy. Update to a more specific code, or enter a justification in &quot;Justification for Annex D&quot; --></errorMessage>
         <name>Justification_for_Annex_D</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Justification for no review is blank --></errorMessage>
+        <name>Justification_for_No_review</name>
     </validationRules>
     <webLinks>
         <label><!-- BMX_Print_Investigation --></label>
