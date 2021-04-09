@@ -202,7 +202,8 @@ public class Investchildupdate
                         cdchoicelist.add(cdchoice);
                     }
                 }
-                else
+                
+                if(cd.Name.startsWith('D'))
                 {
                     for(Id emrids:MIRId)
                     {
@@ -213,8 +214,8 @@ public class Investchildupdate
                         cdchoice.CMPL123CME__Related_EU_MIR__c=emrids;
                         cdchoicelist.add(cdchoice);
                     }
-                }
-                
+                 }  
+                  
                 if(cd.Name.startsWith('G')){
                 
                     for(Id emrids:MIRId){
