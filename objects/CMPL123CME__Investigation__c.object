@@ -2577,7 +2577,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
     <fields>
         <fullName>Review_of_Product_Risk_Analysis_File_req__c</fullName>
         <externalId>false</externalId>
-        <label>Review of Product Risk Analysis File req</label>
+        <label>Review of product Risk analysis File ?</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -4164,6 +4164,13 @@ C_Investigation_Findings_Code_Choice3__r.Name  =  "C21")
         <errorMessage>If Annex C Contains the value C21 then Investigation cannot be closed</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Annex_D_Code3_MustContainD</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(OR( ISBLANK(D_Investigation_Conclusion_Choice3__r.Name),  CONTAINS( D_Investigation_Conclusion_Choice3__r.Name , "D")),FALSE,TRUE)</errorConditionFormula>
+        <errorDisplayField>D_Investigation_Conclusion_Choice3__c</errorDisplayField>
+        <errorMessage>Value does not exist or does not match filter criteria.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Annex_D_Code_choice_should_not_be_in_D16</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
@@ -4176,6 +4183,27 @@ D_Investigation_Conclusion_Choice3__r.Name = "D16"
 )
 )</errorConditionFormula>
         <errorMessage>If Annex D Contains the Value D16 Investigation cannot be closed</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Annex_G_Code1_MustContainG</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(OR(ISBLANK(G_Component_Code_Choice_1__r.Name), AND(G_Component_Code_Choice_1__r.CMPL123CME__Inactive__c =FALSE,CONTAINS( G_Component_Code_Choice_1__r.Name , "G"))),FALSE,TRUE)</errorConditionFormula>
+        <errorDisplayField>G_Component_Code_Choice_1__c</errorDisplayField>
+        <errorMessage>Value does not exist or does not match filter criteria.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Annex_G_Code2_MustContainG</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(OR(ISBLANK(G_Component_Code_Choice_2__r.Name), AND(G_Component_Code_Choice_2__r.CMPL123CME__Inactive__c =FALSE,CONTAINS( G_Component_Code_Choice_2__r.Name , "G"))),FALSE,TRUE)</errorConditionFormula>
+        <errorDisplayField>G_Component_Code_Choice_2__c</errorDisplayField>
+        <errorMessage>Value does not exist or does not match filter criteria.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Annex_G_Code3_MustContainG</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(OR(ISBLANK(G_Component_Code_Choice_3__r.Name), AND(G_Component_Code_Choice_3__r.CMPL123CME__Inactive__c =FALSE,CONTAINS( G_Component_Code_Choice_3__r.Name , "G"))),FALSE,TRUE)</errorConditionFormula>
+        <errorDisplayField>G_Component_Code_Choice_3__c</errorDisplayField>
+        <errorMessage>Value does not exist or does not match filter criteria.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>BMX_CAPA_Justification_should_not_blank</fullName>
@@ -4322,7 +4350,7 @@ ISCHANGED(CMPL123_WF_Action__c)
         <active>true</active>
         <description>Justify use of a code for Findings that is not the most specific one of the hierarchy</description>
         <errorConditionFormula>AND(OR(G_Component_Code_Choice_1__r.Is_a_parent_code__c = true,G_Component_Code_Choice_2__r.Is_a_parent_code__c = true,G_Component_Code_Choice_3__r.Is_a_parent_code__c= true), ISBLANK(Justification_for_Annex_G__c ))</errorConditionFormula>
-        <errorMessage>One of the selected Finding is not the more specific of the hierarchy. Update to a more specific code, or enter a justification in "Justification for Annex G"</errorMessage>
+        <errorMessage>One of the selected Component is not the more specific of the hierarchy. Update to a more specific code, or enter a justification in "Justification for Annex G"</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Justification_for_No_review</fullName>

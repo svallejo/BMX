@@ -877,7 +877,7 @@
         <name>Require_Expert_Investigation_By_text_c__c</name>
     </fields>
     <fields>
-        <label><!-- Review of Product Risk Analysis File req --></label>
+        <label><!-- Review of product Risk analysis File ? --></label>
         <name>Review_of_Product_Risk_Analysis_File_req__c</name>
         <picklistValues>
             <masterLabel>NO</masterLabel>
@@ -1086,8 +1086,24 @@
         <name>Annex_C_Code_choice_should_not_be_in_C21</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Value does not exist or does not match filter criteria. --></errorMessage>
+        <name>Annex_D_Code3_MustContainD</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- If Annex D Contains the Value D16 Investigation cannot be closed --></errorMessage>
         <name>Annex_D_Code_choice_should_not_be_in_D16</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Value does not exist or does not match filter criteria. --></errorMessage>
+        <name>Annex_G_Code1_MustContainG</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Value does not exist or does not match filter criteria. --></errorMessage>
+        <name>Annex_G_Code2_MustContainG</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Value does not exist or does not match filter criteria. --></errorMessage>
+        <name>Annex_G_Code3_MustContainG</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You must enter a value in &quot;CAPA Justification&quot; as no CAPA is required. --></errorMessage>
@@ -1162,7 +1178,7 @@
         <name>Justification_for_Annex_D</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- One of the selected Finding is not the more specific of the hierarchy. Update to a more specific code, or enter a justification in &quot;Justification for Annex G&quot; --></errorMessage>
+        <errorMessage><!-- One of the selected Component is not the more specific of the hierarchy. Update to a more specific code, or enter a justification in &quot;Justification for Annex G&quot; --></errorMessage>
         <name>Justification_for_Annex_G</name>
     </validationRules>
     <validationRules>
