@@ -4047,6 +4047,12 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>
+        <fullName>Additionnal_info_required_for_reclosure</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(AND( NOT(ISBLANK(BMX_First_Investigation_Closed_Date__c)),ISBLANK( BMX_Additional_Information__c ), CMPL123_WF_Action__c ="Complete Investigation"),TRUE ,FALSE)</errorConditionFormula>
+        <errorMessage>Additionnal Information is mandatory to close an Investigation previously reopened.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Annex_BCD_Code_choice_should_not_B21_C21</fullName>
         <active>false</active>
         <description>If Annex BCD Contains the value "B21 , C21 ,D16 then Investigation cannot be closed</description>
