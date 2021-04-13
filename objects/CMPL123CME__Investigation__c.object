@@ -4049,7 +4049,7 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
     <validationRules>
         <fullName>Additionnal_info_required_for_reclosure</fullName>
         <active>true</active>
-        <errorConditionFormula>IF(AND( NOT(ISBLANK(BMX_First_Investigation_Closed_Date__c)),ISBLANK( BMX_Additional_Information__c ), CMPL123_WF_Action__c ="Complete Investigation"),TRUE ,FALSE)</errorConditionFormula>
+        <errorConditionFormula>AND( NOT(ISBLANK(BMX_First_Investigation_Closed_Date__c)),ISBLANK( BMX_Additional_Information__c ), CMPL123_WF_Action__c ="Complete Investigation")</errorConditionFormula>
         <errorMessage>Additionnal Information is mandatory to close an Investigation previously reopened.</errorMessage>
     </validationRules>
     <validationRules>
