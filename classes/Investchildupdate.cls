@@ -121,6 +121,7 @@ public class Investchildupdate
                     mr.Id=emr.Id;
                    // mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c+MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c;
                    //mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= ((MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c);
+                   //mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= ((MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_G__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_G__c);
                     mr.CMPL123CME__Explain_If_Investigation_Code_Missing__c= ((MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_B__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_C__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_D__c)+' '+'/'+' '+((MIRInvestmap.get(emr.Id).Justification_for_Annex_G__c==null)?'':MIRInvestmap.get(emr.Id).Justification_for_Annex_G__c);
                     mr.CMPL123CME__Manufacturer_s_Evaluation__c=MIRInvestmap.get(emr.Id).BMX_Investigation_Answer__c;
                     EMIRlistupdt.add(mr);
@@ -128,6 +129,7 @@ public class Investchildupdate
             }
             
             system.debug('MIRInvestmap::MSR...'+MIRInvestmap.size());
+            system.debug('MIRInvestmapGValue::MSR...'+MIRInvestmap);
             system.debug('EU MIR List...'+EMIRlistupdt.size());
             system.debug('EUMIRListofRecords...'+EMIRlistupdt);
             if(!EMIRlistupdt.isEmpty() && EMIRlistupdt.size()>0)
