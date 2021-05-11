@@ -53,6 +53,25 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
+        <fullName>All_countries_identified_All_LA_created__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Brazil, China, and Japan require LA for events that occur outside of their country when the event is associated with death or serious deterioration in the state of health.  Brazil requires a LA for events that occur outside of Brazil when associated with a serious public health threat.</inlineHelpText>
+        <label>All countries identified&amp;All LA created?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>As_approver_All_LA_are_created__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>As approver : All LA are created?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Audit__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -593,6 +612,72 @@ If( CMPL123CME__Total_Score__c  &gt;  1, 'Local Assessment','Not Reportable')
         <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
         <relationshipLabel>Assessments (Local Assessment Country 4)</relationshipLabel>
         <relationshipName>Assessments4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Local_Assessment_Country_5__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Local Assessment Country 5</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Type__c</field>
+                <operation>equals</operation>
+                <value>COUNTRY CODE</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
+        <relationshipLabel>Assessments (Local Assessment Country 5)</relationshipLabel>
+        <relationshipName>Assessments5</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Local_Assessment_Country_6__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Local Assessment Country 6</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Type__c</field>
+                <operation>equals</operation>
+                <value>COUNTRY CODE</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
+        <relationshipLabel>Assessments (Local Assessment Country 6)</relationshipLabel>
+        <relationshipName>Assessments6</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BMX_Local_Assessment_Country_7__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Local Assessment Country 7</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Type__c</field>
+                <operation>equals</operation>
+                <value>COUNTRY CODE</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
+        <relationshipLabel>Assessments (Local Assessment Country 7)</relationshipLabel>
+        <relationshipName>Assessments7</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>

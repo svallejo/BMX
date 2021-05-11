@@ -16003,6 +16003,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Questionnaire__c.All_countries_identified_All_LA_created__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Questionnaire__c.As_approver_All_LA_are_created__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__Questionnaire__c.Audit__c</field>
         <readable>true</readable>
@@ -16150,6 +16160,21 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__Questionnaire__c.BMX_Local_Assessment_Country_4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Questionnaire__c.BMX_Local_Assessment_Country_5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Questionnaire__c.BMX_Local_Assessment_Country_6__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Questionnaire__c.BMX_Local_Assessment_Country_7__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
