@@ -9131,6 +9131,20 @@ If( CMPL123CME__Total_Score__c  &gt;  1, 'Local Assessment','Not Reportable')
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <validationRules>
+        <fullName>All_countries_identified_All_LA_created</fullName>
+        <active>true</active>
+        <description>All countries identified &amp; All LA created ? field is mandatory while performing Submit for Approval Action</description>
+        <errorConditionFormula>AND(CMPL123_WF_Action__c = 'Submit for Approval', ( All_countries_identified_All_LA_created__c = False))</errorConditionFormula>
+        <errorMessage>All countries identified &amp; All LA created ? field is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>As_approver_All_LA_are_created</fullName>
+        <active>true</active>
+        <description>As approver : All LA are created? field is mandatory while performing Submit for Approval Action</description>
+        <errorConditionFormula>AND(CMPL123_WF_Action__c = 'Approve Reporting Decision', (  As_approver_All_LA_are_created__c = False))</errorConditionFormula>
+        <errorMessage>As approver : All LA are created? field is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Due_Date_change</fullName>
         <active>true</active>
         <description>if Due Date is changed  - Justification
