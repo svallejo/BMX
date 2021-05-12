@@ -9174,6 +9174,31 @@ CMPL123_WF_Action__c = 'Submit for Approval',
         <errorMessage>Global Assessment Result must be either Not Reportable or Local Assessment prior to progressing the Assessment to Pending Approval.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>IF_Is_there_a_FSCA_Yes_KOR</fullName>
+        <active>false</active>
+        <description>If "Is there a FSCA" = Yes then in Local assessment country 1 to 7 fields, Canada and South Korea should exist.</description>
+        <errorConditionFormula>AND( 
+ISPICKVAL(BMX_Is_there_a_FSCA__c,'Yes'),
+OR(BMX_Local_Assessment_Country_1__c &lt;&gt; 'KOR',
+BMX_Local_Assessment_Country_2__c &lt;&gt; 'KOR',
+BMX_Local_Assessment_Country_3__c &lt;&gt; 'KOR',
+BMX_Local_Assessment_Country_4__c &lt;&gt; 'KOR',
+BMX_Local_Assessment_Country_5__c &lt;&gt; 'KOR',
+BMX_Local_Assessment_Country_6__c &lt;&gt; 'KOR',
+BMX_Local_Assessment_Country_7__c &lt;&gt; 'KOR'))</errorConditionFormula>
+        <errorMessage>If "Is there a FSCA" = Yes then in Local assessment country 1 to 7 fields, Canada and South Korea should exist.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>If_Is_there_a_FSCA_Yes_CAN</fullName>
+        <active>false</active>
+        <description>If "Is there a FSCA" = Yes then in Local assessment country 1 to 7 fields, Canada and South Korea should exist.</description>
+        <errorConditionFormula>AND( 
+ISPICKVAL(BMX_Is_there_a_FSCA__c,'Yes'),
+OR(BMX_Local_Assessment_Country_1__r.CMPL123CME__Name__c   &lt;&gt; 'CANADA',
+BMX_Local_Assessment_Country_2__r.CMPL123CME__Name__c   &lt;&gt; 'CANADA'))</errorConditionFormula>
+        <errorMessage>If "Is there a FSCA" = Yes then in Local assessment country 1 to 7 fields, Canada and South Korea should exist.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Justification_of_Due_Date_Change_is_Req</fullName>
         <active>false</active>
         <description>US-AER-081 : Deactivating as it is preventing Auto population of Due Date</description>
@@ -9191,7 +9216,10 @@ CMPL123_WF_Action__c = 'Submit for Approval',
 ISBLANK( BMX_Local_Assessment_Country_1__c),
 ISBLANK( BMX_Local_Assessment_Country_2__c),
 ISBLANK( BMX_Local_Assessment_Country_3__c), 
-ISBLANK( BMX_Local_Assessment_Country_4__c) 
+ISBLANK( BMX_Local_Assessment_Country_4__c),
+ISBLANK( BMX_Local_Assessment_Country_5__c),
+ISBLANK( BMX_Local_Assessment_Country_6__c),
+ISBLANK( BMX_Local_Assessment_Country_7__c)
 )</errorConditionFormula>
         <errorMessage>Any one of the Local Assessment Country required before Submitting for Approval</errorMessage>
     </validationRules>
