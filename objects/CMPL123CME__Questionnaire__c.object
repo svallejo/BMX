@@ -9175,28 +9175,21 @@ CMPL123_WF_Action__c = 'Submit for Approval',
     </validationRules>
     <validationRules>
         <fullName>IF_Is_there_a_FSCA_Yes_KOR</fullName>
-        <active>false</active>
-        <description>If "Is there a FSCA" = Yes then in Local assessment country 1 to 7 fields, Canada and South Korea should exist.</description>
+        <active>true</active>
+        <description>If "Is there a FSCA" = Yes then the Local assessment country 1 should be SOUTH KOREA.</description>
         <errorConditionFormula>AND( 
 ISPICKVAL(BMX_Is_there_a_FSCA__c,'Yes'),
-OR(BMX_Local_Assessment_Country_1__c &lt;&gt; 'KOR',
-BMX_Local_Assessment_Country_2__c &lt;&gt; 'KOR',
-BMX_Local_Assessment_Country_3__c &lt;&gt; 'KOR',
-BMX_Local_Assessment_Country_4__c &lt;&gt; 'KOR',
-BMX_Local_Assessment_Country_5__c &lt;&gt; 'KOR',
-BMX_Local_Assessment_Country_6__c &lt;&gt; 'KOR',
-BMX_Local_Assessment_Country_7__c &lt;&gt; 'KOR'))</errorConditionFormula>
-        <errorMessage>If "Is there a FSCA" = Yes then in Local assessment country 1 to 7 fields, Canada and South Korea should exist.</errorMessage>
+(BMX_Local_Assessment_Country_1__r.CMPL123CME__Name__c &lt;&gt; 'SOUTH KOREA'))</errorConditionFormula>
+        <errorMessage>If "Is there a FSCA" = Yes then the Local assessment country 1 should be SOUTH KOREA.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>If_Is_there_a_FSCA_Yes_CAN</fullName>
-        <active>false</active>
-        <description>If "Is there a FSCA" = Yes then in Local assessment country 1 to 7 fields, Canada and South Korea should exist.</description>
+        <active>true</active>
+        <description>If "Is there a FSCA" = Yes, then the Local assessment country 2 should be CANADA.</description>
         <errorConditionFormula>AND( 
 ISPICKVAL(BMX_Is_there_a_FSCA__c,'Yes'),
-OR(BMX_Local_Assessment_Country_1__r.CMPL123CME__Name__c   &lt;&gt; 'CANADA',
-BMX_Local_Assessment_Country_2__r.CMPL123CME__Name__c   &lt;&gt; 'CANADA'))</errorConditionFormula>
-        <errorMessage>If "Is there a FSCA" = Yes then in Local assessment country 1 to 7 fields, Canada and South Korea should exist.</errorMessage>
+(BMX_Local_Assessment_Country_2__r.CMPL123CME__Name__c &lt;&gt; 'CANADA'))</errorConditionFormula>
+        <errorMessage>If "Is there a FSCA" = Yes, then the Local assessment country 2 should be CANADA.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Justification_of_Due_Date_Change_is_Req</fullName>
