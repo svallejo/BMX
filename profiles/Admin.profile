@@ -20454,6 +20454,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__Questionnaire__c.Is_Canada_listed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__Questionnaire__c.Is_South_Korea_listed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__Questionnaire__c.Local_Subsidiary_Text__c</field>
         <readable>true</readable>

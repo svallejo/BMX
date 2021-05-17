@@ -2236,6 +2236,28 @@ If( CMPL123CME__Total_Score__c  &gt;  1, 'Local Assessment','Not Reportable')
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Is_Canada_listed__c</fullName>
+        <description>Check if Canada is included in local assessment countries</description>
+        <externalId>false</externalId>
+        <formula>OR( BMX_Local_Assessment_Country_1__r.Name ='CAN', BMX_Local_Assessment_Country_1__r.Name ='CAN', BMX_Local_Assessment_Country_2__r.Name ='CAN', BMX_Local_Assessment_Country_3__r.Name='CAN', BMX_Local_Assessment_Country_4__r.Name ='CAN', BMX_Local_Assessment_Country_5__r.Name ='CAN', BMX_Local_Assessment_Country_6__r.Name ='CAN', BMX_Local_Assessment_Country_7__r.Name = 'CAN')</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Canada listed?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_South_Korea_listed__c</fullName>
+        <description>Check if South Korea is included in local assessments required</description>
+        <externalId>false</externalId>
+        <formula>OR( BMX_Local_Assessment_Country_1__r.Name ='KOR', BMX_Local_Assessment_Country_1__r.Name ='KOR', BMX_Local_Assessment_Country_2__r.Name ='KOR', BMX_Local_Assessment_Country_3__r.Name='KOR', BMX_Local_Assessment_Country_4__r.Name ='KOR', BMX_Local_Assessment_Country_5__r.Name ='KOR', BMX_Local_Assessment_Country_6__r.Name ='KOR', BMX_Local_Assessment_Country_7__r.Name = 'KOR')</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is South Korea listed?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Local_Subsidiary_Text__c</fullName>
         <externalId>false</externalId>
         <label>Local Subsidiary</label>
@@ -9145,6 +9167,12 @@ If( CMPL123CME__Total_Score__c  &gt;  1, 'Local Assessment','Not Reportable')
         <errorMessage>As approver : All LA are created? field is mandatory</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>CAN_and_KOR_required_if_FSCA_is_Yes</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( ISPICKVAL(BMX_Is_there_a_FSCA__c,'Yes'), OR( Is_Canada_listed__c = False,  Is_South_Korea_listed__c = False))</errorConditionFormula>
+        <errorMessage>If field "Is there an FSCA?" = Yes, then Canada and South Korea need to be included in one of the 7 "Local Assessment Country" fields</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Due_Date_change</fullName>
         <active>true</active>
         <description>if Due Date is changed  - Justification
@@ -9175,7 +9203,7 @@ CMPL123_WF_Action__c = 'Submit for Approval',
     </validationRules>
     <validationRules>
         <fullName>IF_Is_there_a_FSCA_Yes_KOR</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>If "Is there a FSCA" = Yes then the Local assessment country 1 should be SOUTH KOREA.</description>
         <errorConditionFormula>AND( 
 ISPICKVAL(BMX_Is_there_a_FSCA__c,'Yes'),
@@ -9184,7 +9212,7 @@ ISPICKVAL(BMX_Is_there_a_FSCA__c,'Yes'),
     </validationRules>
     <validationRules>
         <fullName>If_Is_there_a_FSCA_Yes_CAN</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>If "Is there a FSCA" = Yes, then the Local assessment country 2 should be CANADA.</description>
         <errorConditionFormula>AND( 
 ISPICKVAL(BMX_Is_there_a_FSCA__c,'Yes'),

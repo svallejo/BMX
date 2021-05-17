@@ -1346,6 +1346,14 @@
         <name>CMPL123_WF_Status__c</name>
     </fields>
     <fields>
+        <label><!-- Is Canada listed? --></label>
+        <name>Is_Canada_listed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is South Korea listed? --></label>
+        <name>Is_South_Korea_listed__c</name>
+    </fields>
+    <fields>
         <label><!-- Local Subsidiary --></label>
         <name>Local_Subsidiary_Text__c</name>
     </fields>
@@ -1447,6 +1455,10 @@
     <validationRules>
         <errorMessage><!-- As approver : All LA are created? field is mandatory --></errorMessage>
         <name>As_approver_All_LA_are_created</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If field &quot;Is there an FSCA?&quot; = Yes, then Canada and South Korea need to be included in one of the 7 &quot;Local Assessment Country&quot; fields --></errorMessage>
+        <name>CAN_and_KOR_required_if_FSCA_is_Yes</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- if the Due Date is changed then Justification of Due Date change is mandatory --></errorMessage>
