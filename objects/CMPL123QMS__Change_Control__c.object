@@ -8140,6 +8140,13 @@ ISCHANGED(Total_Impact_Assessments_Completed__c))</errorConditionFormula>
         <errorMessage>Type of Training Required is required if Training will be Required is Yes</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Restrict_CRB_Approver1_to_CC_Editor</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISCHANGED(CRB_Approver_1__c),NOT(ISBLANK(CRB_Approver_1__c)),NOT(Includes(CRB_Approver_1__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
+        <errorDisplayField>CRB_Approver_1__c</errorDisplayField>
+        <errorMessage>User selected in "CRB Approver 1" doesn't have the needed role. Select another user.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Risk_Analysis_Reference_Required</fullName>
         <active>true</active>
         <description>Risk Analysis Reference Number required to be populated when "Yes" is selected for Risk Assessment</description>
