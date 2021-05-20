@@ -26,7 +26,7 @@ public class Investchildupdate
         for(CMPL123CME__Investigation__c inv : invrecords )   
         {
            
-          if(inv.CMPL123_WF_Status__c  == 'Closed - Done')
+          if(inv.CMPL123_WF_Status__c  == 'Closed - Done' && (inv.EU_MIR__r.CMPL123_WF_Status__c != 'Closed-Submitted' || inv.EU_MIR__r.CMPL123_WF_Status__c != 'Closed-Canceled') )
           {           
                 if(String.isNotBlank(inv.Justification_for_Annex_B__c) || String.isNotBlank(inv.Justification_for_Annex_C__c) || String.isNotBlank(inv.Justification_for_Annex_D__c) || String.isNotBlank(inv.Justification_for_Annex_G__c))
                 {            
