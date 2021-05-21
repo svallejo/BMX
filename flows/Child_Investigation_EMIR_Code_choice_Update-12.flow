@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>apexSelection</name>
+            <value>
+                <stringValue>Investchildupdate</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Investigation EMIR Update</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>Investchildupdate</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>ParentId</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>ParentId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_pmetdec</targetReference>
+            </connector>
+            <label>Investigation closed - done</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_1_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_1_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_1_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <description>Version 12</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(
+[CMPL123CME__Investigation__c].CMPL123_WF_Status__c  = &apos;Closed - Done&apos; ,
+AND(
+OR(
+[CMPL123CME__Investigation__c].EU_MIR__r.CMPL123_WF_Status__c &lt;&gt; &apos;Closed-Submitted&apos;,
+[CMPL123CME__Investigation__c].EU_MIR__r.CMPL123_WF_Status__c &lt;&gt; &apos;Closed-Canceled&apos; ,
+[CMPL123CME__Investigation__c].EU_MIR__r.CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Done&apos;
+)
+)
+) 
+</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!myVariable_current.CMPL123_WF_Status__c}  = &apos;Closed - Done&apos; ,
+AND(
+OR(
+{!myVariable_current.EU_MIR__r.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed-Submitted&apos;,
+{!myVariable_current.EU_MIR__r.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed-Canceled&apos; ,
+{!myVariable_current.EU_MIR__r.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Done&apos;
+)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(
+[CMPL123CME__Investigation__c].CMPL123_WF_Status__c  = &apos;Closed - Done&apos; ,
+AND(
+OR(
+[CMPL123CME__Investigation__c].EU_MIR__r.CMPL123_WF_Status__c &lt;&gt; &apos;Closed-Submitted&apos;,
+[CMPL123CME__Investigation__c].EU_MIR__r.CMPL123_WF_Status__c &lt;&gt; &apos;Closed-Canceled&apos; ,
+[CMPL123CME__Investigation__c].EU_MIR__r.CMPL123_WF_Status__c &lt;&gt; &apos;Closed - Done&apos;
+)
+)
+) 
+</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!myVariable_old.CMPL123_WF_Status__c}  = &apos;Closed - Done&apos; ,
+AND(
+OR(
+{!myVariable_old.EU_MIR__r.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed-Submitted&apos;,
+{!myVariable_old.EU_MIR__r.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed-Canceled&apos; ,
+{!myVariable_old.EU_MIR__r.CMPL123_WF_Status__c} &lt;&gt; &apos;Closed - Done&apos;
+)
+)
+)</expression>
+    </formulas>
+    <interviewLabel>Child_Investigation_EMIR_Code_choice_Update-12_InterviewLabel</interviewLabel>
+    <label>Child Investigation EMIR Code choice Update_V12</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>CMPL123CME__Investigation__c</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <startElementReference>myDecision</startElementReference>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>CMPL123CME__Investigation__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>CMPL123CME__Investigation__c</objectType>
+    </variables>
+</Flow>

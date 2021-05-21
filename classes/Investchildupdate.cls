@@ -3,7 +3,7 @@ public class Investchildupdate
     @InvocableMethod
     public static void doProcessActions(List<InvestWrapper> InvestList) 
     {
-
+        try{
         List<CMPL123CME__EU_MIR__c> EUMIRListupdt= new List<CMPL123CME__EU_MIR__c>();
         map<Id,CMPL123CME__Investigation__c> Inv_Code_Choice_1Map= new map<Id,CMPL123CME__Investigation__c>();
         map<Id,CMPL123CME__Investigation__c> MIRInvestmap= new map<Id,CMPL123CME__Investigation__c>();
@@ -11,7 +11,7 @@ public class Investchildupdate
         LIst<string> choice_code= new List<String>();
         map<Id,string> choicecodemap= new map<Id,string>();
         
-        List<CMPL123CME__Investigation__c> Childinvrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,EU_MIR__r.CMPL123_WF_Status__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,Justification_for_Annex_G__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c,G_Component_Code_Choice_1__c,G_Component_Code_Choice_2__c,G_Component_Code_Choice_3__c FROM CMPL123CME__Investigation__c WHERE Master_Investigation__c=:InvestList[0].ParentId];
+        List<CMPL123CME__Investigation__c> Childinvrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,Justification_for_Annex_G__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c,G_Component_Code_Choice_1__c,G_Component_Code_Choice_2__c,G_Component_Code_Choice_3__c FROM CMPL123CME__Investigation__c WHERE Master_Investigation__c=:InvestList[0].ParentId];
         for(CMPL123CME__Investigation__c chinvst:Childinvrecords)
         {
                 if(String.isNotBlank(chinvst.Justification_for_Annex_B__c) || String.isNotBlank(chinvst.Justification_for_Annex_C__c) || String.isNotBlank(chinvst.Justification_for_Annex_D__c) || String.isNotBlank(chinvst.Justification_for_Annex_G__c) )
@@ -20,13 +20,13 @@ public class Investchildupdate
                 }
                 MIRId.add(chinvst.EU_MIR__c);
         }
-        List<CMPL123CME__Investigation__c> invrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,EU_MIR__r.CMPL123_WF_Status__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,Justification_for_Annex_G__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c,G_Component_Code_Choice_1__c,G_Component_Code_Choice_2__c,G_Component_Code_Choice_3__c FROM CMPL123CME__Investigation__c WHERE Id =:InvestList[0].ParentId and Master_Investigation__c=null ];
+        List<CMPL123CME__Investigation__c> invrecords = [SELECT id,CMPL123_WF_Status__c,EU_MIR__c,BMX_Investigation_Answer__c,Justification_for_Annex_B__c,Justification_for_Annex_C__c,Justification_for_Annex_D__c,Justification_for_Annex_G__c,B_Investigation_Type_Code_Choice_1__c,B_Investigation_Type_Code_Choice_2__c,B_Investigation_Type_Code_Choice_3__c,B_Investigation_Type_Code_Choice_4__c,B_Investigation_Type_Code_Choice_5__c,B_Investigation_Type_Code_Choice_6__c,C_Investigation_Findings_Code_Choice1__c,C_Investigation_Findings_Code_Choice2__c,C_Investigation_Findings_Code_Choice3__c,D_Investigation_Conclusion_Choice1__c,D_Investigation_Conclusion_Choice2__c,D_Investigation_Conclusion_Choice3__c,G_Component_Code_Choice_1__c,G_Component_Code_Choice_2__c,G_Component_Code_Choice_3__c FROM CMPL123CME__Investigation__c WHERE Id =:InvestList[0].ParentId and Master_Investigation__c=null ];
         system.debug('MS::cdchoicelist::'+Childinvrecords);
         system.debug('MS::cdchoicelist::'+invrecords);
         for(CMPL123CME__Investigation__c inv : invrecords )   
         {
-           
-          if(inv.CMPL123_WF_Status__c  == 'Closed - Done' && (inv.EU_MIR__r.CMPL123_WF_Status__c != 'Closed-Submitted' || inv.EU_MIR__r.CMPL123_WF_Status__c != 'Closed-Canceled') )
+          
+          if(inv.CMPL123_WF_Status__c  == 'Closed - Done')
           {           
                 if(String.isNotBlank(inv.Justification_for_Annex_B__c) || String.isNotBlank(inv.Justification_for_Annex_C__c) || String.isNotBlank(inv.Justification_for_Annex_D__c) || String.isNotBlank(inv.Justification_for_Annex_G__c))
                 {            
@@ -249,7 +249,10 @@ public class Investchildupdate
             insert cdchoicelist;
         }
 
- 
+       }
+       catch(DmlException  e){
+           System.debug('Closed EMIR Records Connot be Updated : ' + e.getMessage());
+       }
     }
     
     public class InvestWrapper{
