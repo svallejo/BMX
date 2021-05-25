@@ -4320,6 +4320,31 @@ You can also manually uncheck it here or with the "Unflag" quick action in the f
         </valueSet>
     </fields>
     <fields>
+        <fullName>IMDRF_Annex_A_Code__c</fullName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>IMDRF Annex A Code</label>
+        <length>8</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IMDRF_Annex_A_Term__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Medical Device Problem (IMDRF Annex A) Term</inlineHelpText>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>IMDRF Annex A Term</label>
+        <length>60</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>INVEST_c__c</fullName>
         <externalDeveloperName>INVEST__c</externalDeveloperName>
         <externalId>false</externalId>
@@ -6927,6 +6952,19 @@ The Serial Number of the Asset is auto-populated</inlineHelpText>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Supplier_ticket_number__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>For Trade/OEM-OBL/OEM customized products: Ticket number provided by the supplier to whom the case was escalated</inlineHelpText>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Supplier ticket number</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>SystemModstamp__c</fullName>
         <externalDeveloperName>SystemModstamp</externalDeveloperName>
         <externalId>false</externalId>
@@ -7181,6 +7219,18 @@ The Serial Number of the Asset is auto-populated</inlineHelpText>
         <readOnlyProxy>true</readOnlyProxy>
         <type>LongTextArea</type>
         <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Trade_type__c</fullName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Trade type</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Type__c</fullName>
@@ -9019,7 +9069,7 @@ You can uncheck it to unflag the L2 deescalation and continue working on the Cas
         <isFilteringDisabled>false</isFilteringDisabled>
         <isNameField>false</isNameField>
         <isSortingDisabled>false</isSortingDisabled>
-        <label>Number of Sample affected</label>
+        <label>Number of patients/samples affected</label>
         <length>255</length>
         <required>false</required>
         <type>Text</type>

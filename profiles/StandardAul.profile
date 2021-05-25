@@ -24300,6 +24300,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case__x.IMDRF_Annex_A_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case__x.IMDRF_Annex_A_Term__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case__x.INVEST_c__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -24471,6 +24481,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case__x.Subject__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case__x.Supplier_ticket_number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case__x.Trade_type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

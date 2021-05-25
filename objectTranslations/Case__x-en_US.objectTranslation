@@ -2810,6 +2810,15 @@ You can also manually uncheck it here or with the &quot;Unflag&quot; quick actio
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- IMDRF Annex A Code --></label>
+        <name>IMDRF_Annex_A_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Medical Device Problem (IMDRF Annex A) Term --></help>
+        <label><!-- IMDRF Annex A Term --></label>
+        <name>IMDRF_Annex_A_Term__c</name>
+    </fields>
+    <fields>
         <help><!-- Decision tree auto-updates &quot;INVEST&quot; field to Yes or No.
 If &quot;INVEST&quot;=No, then &quot;No Invest Justification&quot; is mandatory --></help>
         <label><!-- INVEST --></label>
@@ -3975,6 +3984,11 @@ The Serial Number of the Asset is auto-populated --></help>
         <name>SuppliedPhone__c</name>
     </fields>
     <fields>
+        <help><!-- For Trade/OEM-OBL/OEM customized products: Ticket number provided by the supplier to whom the case was escalated --></help>
+        <label><!-- Supplier ticket number --></label>
+        <name>Supplier_ticket_number__c</name>
+    </fields>
+    <fields>
         <label><!-- System Modstamp --></label>
         <name>SystemModstamp__c</name>
     </fields>
@@ -4059,6 +4073,10 @@ The Serial Number of the Asset is auto-populated --></help>
         <help><!-- Tech to expose message on Chatter Post sent to L1+L2 Owner when Case RE=Yes or No (done with Process Builder CaseRE=YesNo_ChatterPost_L1+L2Owner) --></help>
         <label><!-- Tech_REYesNoSendPost --></label>
         <name>Tech_REYesNoSendPost_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trade type --></label>
+        <name>Trade_type__c</name>
     </fields>
     <fields>
         <label><!-- Case Type --></label>
@@ -5363,7 +5381,7 @@ You can uncheck it to unflag the L2 deescalation and continue working on the Cas
         <relationshipLabel><!-- Case --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Number of Sample affected --></label>
+        <label><!-- Number of patients/samples affected --></label>
         <name>NumberOfSamplesAffected__c</name>
     </fields>
     <fields>
