@@ -3232,6 +3232,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__Complaint__c.IMDRF_Annex_A_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Complaint__c.IMDRF_Annex_A_Term__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__Complaint__c.If_no_reason_for_the_non_complaint_st__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3402,7 +3412,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123CME__Complaint__c.Supplier_ticket_number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__Complaint__c.Symptom_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__Complaint__c.Trade_type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

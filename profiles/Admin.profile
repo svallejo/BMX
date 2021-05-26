@@ -13129,6 +13129,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__Complaint__c.IMDRF_Annex_A_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__Complaint__c.IMDRF_Annex_A_Term__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__Complaint__c.INV_Reference_Creation_Justification__c</field>
         <readable>true</readable>
@@ -13324,8 +13334,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__Complaint__c.Supplier_ticket_number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CMPL123CME__Complaint__c.Symptom_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__Complaint__c.Trade_type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
