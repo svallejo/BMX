@@ -127,7 +127,7 @@ global class CreateComplaintForCaseBatch implements Database.Batchable<sObject>,
                             GDPR_L1Q2_c__c,GDPR_L2Q2_c__c,GDPR_L1Q1_c__c,GDPR_L2Q1_c__c,RE_c__c,ShipToLocation_c__r.VisitorAddressId__c,AccountId__r.Global_Reporting_Hierarchy_Level_3_c__c,
                             AccountId__r.Global_Reporting_Hierarchy_Level_2_c__c,AccountId__r.Key_Account_Hierarchy_c__c,AccountId__r.Pricing_Hierarchy_2_c__c,AccountId__r.Pricing_Hierarchy_c__c,
                             AccountId__r.Reporting_Hierarchy_c__c,AccountId__r.Global_Reporting_Hierarchy_Level_1_c__c,AccountId__r.RecordTypeId__c , NumberOfSamplesAffected__c,Product_Code_c__c,PRE1P2__c,Source__c,Contract__c,Severity__c,Social_Media_Impact__c,Customer_type__c,ReagentMaterialCode_c__c,Supplier_ticket_number__c,Trade_type__c,IMDRF_Annex_A_Code__c,IMDRF_Annex_A_Term__c    FROM Case__x 
-                            WHERE Id IN: caseQueryList AND ( TWComplaintNumber_c__c = NULL OR  TWComplaintNumber_c__c LIKE 'CN%' ) ]) {
+                            WHERE Id IN: caseQueryList AND ( TWComplaintNumber_c__c = null OR  TWComplaintNumber_c__c LIKE 'CN%' OR TWComplaintNumber_c__c = '') ]) {
             
             // Filter out any cases that are created outside CRM - Case Number (CaseNumber__c) SAP Case Number (CaseNumber_c__c)
             if ( csx.CaseNumber_c__c == csx.CaseNumber__c) { // As of Winter 20' Direct field comparisons aren't allowed within SOQL

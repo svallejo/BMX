@@ -13129,12 +13129,12 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__Complaint__c.IMDRF_Annex_A_Code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__Complaint__c.IMDRF_Annex_A_Term__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -13334,7 +13334,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__Complaint__c.Supplier_ticket_number__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -13344,7 +13344,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__Complaint__c.Trade_type__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -30294,7 +30294,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Case__x.SlaExitDate__c</field>
         <readable>true</readable>
     </fieldPermissions>
