@@ -28825,6 +28825,9 @@
         <layout>Lead-Lead Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Location-Location Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Location__x-Location Layout %28BMX%29</layout>
     </layoutAssignments>
     <layoutAssignments>
