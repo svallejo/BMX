@@ -229,7 +229,8 @@
     <validationRules>
         <fullName>Proposed_Due_Date_cannot_be_in_the_past</fullName>
         <active>true</active>
-        <errorConditionFormula>Proposed_Due_Date__c &lt;  TODAY()</errorConditionFormula>
+        <errorConditionFormula>AND( Proposed_Due_Date__c &lt;  TODAY(),
+ISCHANGED ( Proposed_Due_Date__c ))</errorConditionFormula>
         <errorDisplayField>Proposed_Due_Date__c</errorDisplayField>
         <errorMessage>Proposed Due Date cannot be in the past.</errorMessage>
     </validationRules>
