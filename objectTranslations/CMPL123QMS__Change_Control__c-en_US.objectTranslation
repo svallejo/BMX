@@ -1974,10 +1974,6 @@
             <section>Product Related Details/Détails relatifs au produit</section>
         </sections>
         <sections>
-            <label><!-- Quality Management System/Système de gestion de la qualité --></label>
-            <section>Quality Management System/Système de gestion de la qualité</section>
-        </sections>
-        <sections>
             <label><!-- Release Approval/Approbation de version --></label>
             <section>Release Approval/Approbation de version</section>
         </sections>
@@ -2039,10 +2035,6 @@
         <sections>
             <label><!-- Product Related Details/Détails relatifs au produit --></label>
             <section>Product Related Details/Détails relatifs au produit</section>
-        </sections>
-        <sections>
-            <label><!-- Quality Management System/Système de gestion de la qualité --></label>
-            <section>Quality Management System/Système de gestion de la qualité</section>
         </sections>
         <sections>
             <label><!-- Release Approval/Approbation de version --></label>
@@ -2197,6 +2189,10 @@
     <validationRules>
         <errorMessage><!-- Release Approver 1 field must be populated if release approvals are required. --></errorMessage>
         <name>Release_Approver_1_Must_Be_Populated</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &quot; System Impacted &quot; field is mandatory when &quot;Change Impacts Quality System?&quot; = &quot;Yes&quot; --></errorMessage>
+        <name>System_Impacted_Required</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You cannot submit the change for review with assignees missing for action items --></errorMessage>

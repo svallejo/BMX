@@ -1901,10 +1901,6 @@
             <section>Product Related Details/Détails relatifs au produit</section>
         </sections>
         <sections>
-            <label>Système de gestion de la qualité</label>
-            <section>Quality Management System/Système de gestion de la qualité</section>
-        </sections>
-        <sections>
             <label>Approbation de version</label>
             <section>Release Approval/Approbation de version</section>
         </sections>
@@ -1966,10 +1962,6 @@
         <sections>
             <label>Détails relatifs au produit</label>
             <section>Product Related Details/Détails relatifs au produit</section>
-        </sections>
-        <sections>
-            <label>Système de gestion de la qualité</label>
-            <section>Quality Management System/Système de gestion de la qualité</section>
         </sections>
         <sections>
             <label>Approbation de version</label>
@@ -2228,6 +2220,10 @@
     <validationRules>
         <errorMessage>Champ Description Rollback à compléter pour CC inefficace</errorMessage>
         <name>Rollback_Plan_Summary_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &quot; System Impacted &quot; field is mandatory when &quot;Change Impacts Quality System?&quot; = &quot;Yes&quot; --></errorMessage>
+        <name>System_Impacted_Required</name>
     </validationRules>
     <validationRules>
         <errorMessage>Assignés manquants dans l'action</errorMessage>

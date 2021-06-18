@@ -4215,7 +4215,7 @@ IF(ISBLANK(Release_Approver_5__c ),0,1))</formula>
         <summaryFilterItems>
             <field>Impact_Assessment__c.CMPL123_WF_Status__c</field>
             <operation>contains</operation>
-            <value>Closed</value>
+            <value>Closed - Done</value>
         </summaryFilterItems>
         <summaryForeignKey>Impact_Assessment__c.Change_Control__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
@@ -8167,6 +8167,13 @@ ISCHANGED(Total_Impact_Assessments_Completed__c))</errorConditionFormula>
 )</errorConditionFormula>
         <errorDisplayField>Rollback_Plan_Summary__c</errorDisplayField>
         <errorMessage>Rollback Plan Summary must be populated if No is provided for the "Was the Change Successful?"</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>System_Impacted_Required</fullName>
+        <active>true</active>
+        <description>System Impacted is mandatory when "Change Impacts Quality System?" = "Yes"</description>
+        <errorConditionFormula>AND(ISPICKVAL( Change_impacts_Quality_System__c, 'Yes'), ISBLANK ( System_Impacted__c ))</errorConditionFormula>
+        <errorMessage>" System Impacted " field is mandatory when "Change Impacts Quality System?" = "Yes"</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>assignees_missing_in_action_items</fullName>
