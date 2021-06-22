@@ -35,16 +35,15 @@
         <componentInstances>
             <componentName>force:detailPanel</componentName>
         </componentInstances>
-        <mode>Replace</mode>
-        <name>detailTabContent</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <componentInstances>
-            <componentName>runtime_sales_activities:activityPanel</componentName>
+            <componentInstanceProperties>
+                <name>heightInPixels</name>
+                <value>160</value>
+            </componentInstanceProperties>
+            <componentName>CMPL123:eSignatureHistory</componentName>
         </componentInstances>
         <mode>Replace</mode>
-        <name>activityTabContent</name>
+        <name>detailTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -63,7 +62,8 @@
             </componentInstanceProperties>
             <componentName>force:relatedListContainer</componentName>
         </componentInstances>
-        <name>Facet-243416cb-e662-46cb-8496-c0fc949f5e41</name>
+        <mode>Replace</mode>
+        <name>activityTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -89,17 +89,6 @@
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>title</name>
-                <value>Standard.Tab.activity</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>Facet-243416cb-e662-46cb-8496-c0fc949f5e41</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
                 <value>Standard.Tab.relatedLists</value>
             </componentInstanceProperties>
             <componentName>flexipage:tab</componentName>
@@ -116,20 +105,13 @@
             </componentInstanceProperties>
             <componentName>flexipage:tabset</componentName>
         </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>heightInPixels</name>
-                <value>160</value>
-            </componentInstanceProperties>
-            <componentName>CMPL123:eSignatureHistory</componentName>
-        </componentInstances>
         <mode>Replace</mode>
         <name>main</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Investigation/Evaluation Record Page</masterLabel>
+    <masterLabel>Generic Report Record Page</masterLabel>
     <parentFlexiPage>force__Default_rec_simple</parentFlexiPage>
-    <sobjectType>CMPL123CME__Investigation__c</sobjectType>
+    <sobjectType>BMX_Generic_Report__c</sobjectType>
     <template>
         <name>flexipage:recordHomeSimpleViewTemplate</name>
     </template>

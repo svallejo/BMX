@@ -41,14 +41,6 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
-            <componentName>runtime_sales_activities:activityPanel</componentName>
-        </componentInstances>
-        <mode>Replace</mode>
-        <name>activityTabContent</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
             <componentInstanceProperties>
                 <name>relatedListComponentOverride</name>
                 <value>NONE</value>
@@ -63,7 +55,8 @@
             </componentInstanceProperties>
             <componentName>force:relatedListContainer</componentName>
         </componentInstances>
-        <name>Facet-243416cb-e662-46cb-8496-c0fc949f5e41</name>
+        <mode>Replace</mode>
+        <name>activityTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -86,17 +79,6 @@
             <componentInstanceProperties>
                 <name>body</name>
                 <value>activityTabContent</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>Standard.Tab.activity</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>Facet-243416cb-e662-46cb-8496-c0fc949f5e41</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>title</name>
@@ -127,9 +109,9 @@
         <name>main</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Investigation/Evaluation Record Page</masterLabel>
+    <masterLabel>Assessment Record Page</masterLabel>
     <parentFlexiPage>force__Default_rec_simple</parentFlexiPage>
-    <sobjectType>CMPL123CME__Investigation__c</sobjectType>
+    <sobjectType>CMPL123CME__Questionnaire__c</sobjectType>
     <template>
         <name>flexipage:recordHomeSimpleViewTemplate</name>
     </template>
