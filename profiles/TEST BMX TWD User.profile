@@ -27351,6 +27351,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>User.Read_Only_User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>User.TWD_Role__c</field>
         <readable>true</readable>
     </fieldPermissions>
