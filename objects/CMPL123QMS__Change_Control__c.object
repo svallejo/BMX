@@ -8150,7 +8150,7 @@ ISCHANGED(Total_Impact_Assessments_Completed__c))</errorConditionFormula>
         <fullName>Restrict_CRB_Approver2_to_CC_Editor</fullName>
         <active>true</active>
         <description>User selected in "CRB Approver 2" doesn't have the needed role. Select another user.</description>
-        <errorConditionFormula>AND(ISCHANGED(CRB_Approver_2__c),NOT(ISBLANK(CRB_Approver_2__c)),NOT(Includes(CRB_Approver_2__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
+        <errorConditionFormula>AND(ISCHANGED(CRB_Approver_2__c ),NOT(ISBLANK(CRB_Approver_2__c)),NOT(Includes( CRB_Approver_2__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
         <errorMessage>User selected in "CRB Approver 2" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
