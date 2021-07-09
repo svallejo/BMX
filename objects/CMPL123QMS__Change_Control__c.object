@@ -7925,13 +7925,13 @@ ISPICKVAL(Risk_Assessment__c, "")
     <validationRules>
         <fullName>Change_Impact_on_Validation_Required</fullName>
         <active>true</active>
-        <description>Change Impact on Validation Description is required if Change Impacts the Validation is Yes</description>
+        <description>Change Impact on Required Validation Description is required if Change Impacts the Validation is Yes</description>
         <errorConditionFormula>AND(
          ISPICKVAL(Change_impacts_the_validation__c, "Yes"),
          ISBLANK( Change_Impact_on_Validation_Description__c )
 )</errorConditionFormula>
         <errorDisplayField>Change_Impact_on_Validation_Description__c</errorDisplayField>
-        <errorMessage>Change Impact on Validation Description is required if Change Impacts the Validation is Yes</errorMessage>
+        <errorMessage>Change Impact on Required  Validation Description is required if Change Impacts the Validation is Yes</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Change_Successful</fullName>
@@ -8289,6 +8289,7 @@ ISCHANGED(Total_Impact_Assessments_Completed__c))</errorConditionFormula>
         <active>true</active>
         <description>System Impacted is mandatory when "Change Impacts Quality System?" = "Yes"</description>
         <errorConditionFormula>AND(ISPICKVAL( Change_impacts_Quality_System__c, 'Yes'), ISBLANK ( System_Impacted__c ))</errorConditionFormula>
+        <errorDisplayField>System_Impacted__c</errorDisplayField>
         <errorMessage>" System Impacted " field is mandatory when "Change Impacts Quality System?" = "Yes"</errorMessage>
     </validationRules>
     <validationRules>
