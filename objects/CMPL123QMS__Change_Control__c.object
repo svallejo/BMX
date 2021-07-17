@@ -8159,42 +8159,44 @@ ISCHANGED(Total_Impact_Assessments_Completed__c))</errorConditionFormula>
     </validationRules>
     <validationRules>
         <fullName>Restrict_CRB_Approver1_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND(ISCHANGED(CRB_Approver_1__c),NOT(ISBLANK(CRB_Approver_1__c)),NOT(Includes(CRB_Approver_1__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
         <errorDisplayField>CRB_Approver_1__c</errorDisplayField>
         <errorMessage>User selected in "CRB Approver 1" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_CRB_Approver2_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "CRB Approver 2" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(CRB_Approver_2__c ),NOT(ISBLANK(CRB_Approver_2__c)),NOT(Includes( CRB_Approver_2__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
         <errorMessage>User selected in "CRB Approver 2" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_CRB_Approver3_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "CRB Approver 3" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(CRB_Approver_3__c),NOT(ISBLANK(CRB_Approver_3__c)),NOT(Includes(CRB_Approver_3__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
+        <errorDisplayField>Affected_Areas__c</errorDisplayField>
         <errorMessage>User selected in "CRB Approver 3" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_CRB_Approver4_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "CRB Approver 4" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(CRB_Approver_4__c),NOT(ISBLANK(CRB_Approver_4__c)),NOT(Includes(CRB_Approver_4__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
         <errorMessage>User selected in "CRB Approver 4" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_CRB_Approver5_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "CRB Approver 5" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(CRB_Approver_5__c),NOT(ISBLANK(CRB_Approver_5__c)),NOT(Includes(CRB_Approver_5__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
+        <errorDisplayField>Affected_Areas__c</errorDisplayField>
         <errorMessage>User selected in "CRB Approver 5" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_CRB_Approver6_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "CRB Approver 6" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(CRB_Approver_6__c),NOT(ISBLANK(CRB_Approver_6__c)),NOT(Includes(CRB_Approver_6__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
         <errorMessage>User selected in "CRB Approver 6" doesn't have the needed role. Select another user.</errorMessage>
