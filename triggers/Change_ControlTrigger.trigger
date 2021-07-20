@@ -6,6 +6,7 @@ trigger Change_ControlTrigger on CMPL123QMS__Change_Control__c (before update){
     {
         for(CMPL123QMS__Change_Control__c ch:Trigger.new){
             parentIds.add(ch.CRB_Approver_1__c);
+            parentIds.add(ch.CRB_Approver_2__c);
         }
     }
 
@@ -22,5 +23,13 @@ trigger Change_ControlTrigger on CMPL123QMS__Change_Control__c (before update){
           c.CRB_Approver_1__c.addError('User selected in "CRB Approver 1" doesnt have the needed role. Select another user');
 
        }
+       
+        // if the parent id is in the map, that means the record save fails
+       if (parentMap.get(c.CRB_Approver_2__c) !=null)
+       { 
+          c.CRB_Approver_2__c.addError('User selected in "CRB Approver 2" doesnt have the needed role. Select another user');
+
+       }
+
     }
 }
