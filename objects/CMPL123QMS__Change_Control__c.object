@@ -8217,49 +8217,53 @@ ISCHANGED(Total_Impact_Assessments_Completed__c))</errorConditionFormula>
     </validationRules>
     <validationRules>
         <fullName>Restrict_Release_Approver1_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "Release Approver 1" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(Release_Approver_1__c), NOT(ISBLANK(Release_Approver_1__c)),NOT(Includes(Release_Approver_1__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
+        <errorDisplayField>Affected_Areas__c</errorDisplayField>
         <errorMessage>User selected in "Release Approver 1" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_Release_Approver2_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "Release Approver 2" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(Release_Approver_2__c), NOT(ISBLANK(Release_Approver_2__c)),NOT(Includes(Release_Approver_2__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
+        <errorDisplayField>Affected_Areas__c</errorDisplayField>
         <errorMessage>User selected in "Release Approver 2" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_Release_Approver3_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "Release Approver 3" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(Release_Approver_3__c), NOT(ISBLANK(Release_Approver_3__c)),NOT(Includes(Release_Approver_3__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
+        <errorDisplayField>Affected_Areas__c</errorDisplayField>
         <errorMessage>User selected in "Release Approver 3" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_Release_Approver4_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "Release Approver 4" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(Release_Approver_4__c), NOT(ISBLANK(Release_Approver_4__c)),NOT(Includes(Release_Approver_4__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
+        <errorDisplayField>Affected_Areas__c</errorDisplayField>
         <errorMessage>User selected in "Release Approver 4" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_Release_Approver5_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "Release Approver 5" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(Release_Approver_5__c), NOT(ISBLANK(Release_Approver_5__c)),NOT(Includes(Release_Approver_5__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
         <errorMessage>User selected in "Release Approver 5" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_Release_Approver6_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "Release Approver 6" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(Release_Approver_6__c), NOT(ISBLANK(Release_Approver_6__c)),NOT(Includes(Release_Approver_6__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
         <errorMessage>User selected in "Release Approver 6" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_Release_QA_Approver_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "Release QA Approver " doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(Release_QA_Approver__c), NOT(ISBLANK(Release_QA_Approver__c)),NOT(Includes(Release_QA_Approver__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
         <errorMessage>User selected in "Release QA Approver " doesn't have the needed role. Select another user.</errorMessage>
