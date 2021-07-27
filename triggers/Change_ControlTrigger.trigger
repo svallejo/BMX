@@ -22,7 +22,10 @@ trigger Change_ControlTrigger on CMPL123QMS__Change_Control__c (before update){
             ParentIds.add(Ch.Assigned_To__c);
             ParentIds.add(Ch.Quality_Contact__c);
             ParentIds.add(Ch.Supervisor_Manager__c);
-            
+            ParentIds.add(Ch.CMPL123QMS__QA_Contact__c);
+            ParentIds.add(Ch.CMPL123QMS__Main_Contact__c);
+            ParentIds.add(Ch.CMPL123QMS__Management_Approved_By__c);
+            ParentIds.add(Ch.CMPL123QMS__Manager__c);
             
         }
     }
@@ -124,6 +127,26 @@ trigger Change_ControlTrigger on CMPL123QMS__Change_Control__c (before update){
        if (parentMap.get(c.Supervisor_Manager__c) !=null)
        { 
           c.Supervisor_Manager__c.addError('User selected in "Final Approver 3" does not have the needed role. Select another user.');
+       }
+        
+       if (parentMap.get(c.CMPL123QMS__QA_Contact__c) !=null)
+       { 
+          c.CMPL123QMS__QA_Contact__c.addError('User selected in "Final (QA) Approver" does not have the needed role. Select another user.');
+       }
+        
+       if (parentMap.get(c.CMPL123QMS__Main_Contact__c) !=null)
+       { 
+          c.CMPL123QMS__Main_Contact__c.addError('User selected in "Final Approver 4" does not have the needed role. Select another user.');
+       }
+           
+       if (parentMap.get(c.CMPL123QMS__Management_Approved_By__c) !=null)
+       { 
+          c.CMPL123QMS__Management_Approved_By__c.addError('User selected in "Final Approver 5" does not have the needed role. Select another user.');
+       }
+        
+       if (parentMap.get(c.CMPL123QMS__Manager__c) !=null)
+       { 
+          c.CMPL123QMS__Manager__c.addError('User selected in "Final Approver 6" does not have the needed role. Select another user.');
        }
     }
 }
