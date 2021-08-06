@@ -37660,6 +37660,13 @@
         <layout>CMPL123CME__EU_MIR__c-EU MIR Layout %28BMX%29</layout>
         <recordType>CMPL123CME__EU_MIR__c.Unlock_EU_MIR</recordType>
     </layoutAssignments>
+    <profileActionOverrides>
+        <actionName>Tab</actionName>
+        <content>Home_Page_Default</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>standard-home</pageOrSobjectType>
+        <type>Flexipage</type>
+    </profileActionOverrides>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>BMX_Generic_Report__c.BMX_Lock_Generic_Report</recordType>
