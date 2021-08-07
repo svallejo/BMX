@@ -30978,13 +30978,6 @@
         <object>CMPL123CME__EU_MIR__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Home_Page_Default</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-    </profileActionOverrides>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>BMX_Generic_Report__c.BMX_Lock_Generic_Report</recordType>
