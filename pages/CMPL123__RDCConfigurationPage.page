@@ -7,11 +7,19 @@
     <script>
         let currentUrl = new URL(window.location.href);
         let activeTab = currentUrl.searchParams.get("activeTab");
+        let workflowId = currentUrl.searchParams.get("workflowId");
+        let workflowName = currentUrl.searchParams.get("workflowName");
+        let workflowKeyValue = currentUrl.searchParams.get("workflowKeyValue");
 
         $Lightning.use("CMPL123:RDCConfigurationPageApp", function() {
             $Lightning.createComponent("CMPL123:RDCConfigurationPage",
                 {
-                    "activeTab": activeTab
+                    "activeTab": activeTab,
+                    "workflowInfo" : {
+                        workflowId,
+                        workflowName,
+                        workflowKeyValue
+                    }
                 },
                 "lightning",
                 function(cmp) {});

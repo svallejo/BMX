@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Defaults to 15: The maximum number of API calls allowed per job. --></help>
+        <label><!-- Callouts Per Job --></label>
+        <name>CMPL123__Callouts_Per_Job__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select the object that you wish to configure Proactive Acceptance for. --></help>
+        <label><!-- Object --></label>
+        <name>CMPL123__Object__c</name>
+    </fields>
+    <fields>
+        <help><!-- Defaults to 10000. The maximum time (ms) allowed for each API call. --></help>
+        <label><!-- Timeout --></label>
+        <name>CMPL123__Timeout__c</name>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- Callout Per Job value must be between 1-100 --></errorMessage>
+        <name>CMPL123__Callouts_Per_Job_Size</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Timeout value must be between 1-120000 --></errorMessage>
+        <name>CMPL123__Timeout_Size</name>
+    </validationRules>
+</CustomObjectTranslation>

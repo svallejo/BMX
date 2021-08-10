@@ -1,0 +1,8 @@
+<apex:page showHeader="false"
+           sidebar="false"
+           controller="CMPL123.LabelsTranslatorController"
+           language="{!language}"
+           standardStylesheets="false"
+           contentType="application/json">
+    <apex:repeat value="{!labels}" var="label">{!HTMLENCODE(label)}{!innerLabelSeparator}{!HTMLENCODE($Label[label])}{!labelSeparator}</apex:repeat>
+</apex:page>

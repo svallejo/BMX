@@ -6,9 +6,17 @@
         <relationshipLabel><!-- MedDRA SMQ Content (Subordinate Term Code (SMQ)) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Transaction ID --></label>
+        <name>CMPL123CME__Transaction_ID__c</name>
+    </fields>
+    <fields>
         <help><!-- Active Status of MedDRA SMQ Content --></help>
         <label><!-- Active --></label>
         <name>CMPL123CME__active__c</name>
+    </fields>
+    <fields>
+        <label><!-- MedDRA Release Key --></label>
+        <name>CMPL123CME__meddra_release_key__c</name>
     </fields>
     <fields>
         <help><!-- Eight-digit code assigned to the SMQ --></help>
@@ -108,7 +116,7 @@
         <name>CMPL123CME__Hierarchy_Level_Of_Term_required_field</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- This field cannot be empty --></errorMessage>
+        <errorMessage><!-- Lowest Level Term or Preferred Term or Sub-ordinate SMQ term is required --></errorMessage>
         <name>CMPL123CME__LLT_Term_Code_is_required_field</name>
     </validationRules>
     <validationRules>

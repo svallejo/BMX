@@ -22,7 +22,9 @@
                     <apex:repeat value="{!statusesMap}" var="relation">
                         <tr class="slds-hint-parent">
                             <td>
-                                {!relation}
+                                <script type="text/javascript">
+                                    document.write('{!HTMLENCODE(relation)}'.replace(/\(.*\)/, ''));
+                                </script>
                             </td>
                             <td>
                                 <apex:repeat value="{!statusesMap[relation]}" var="status">

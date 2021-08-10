@@ -24,6 +24,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__ConfigureEUMIRSignatureSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__ConfigureEUMIRSignatureSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__DynamicReportController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -104,7 +112,31 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123CME__FileDeleteHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__FileDeleteHandlerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__IConfigureEUMIRSignatureSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__IMedDRAFileReadConfigurationSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__IMedDRAReleaseSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123CME__ITestUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__IWorkflowHistorySelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -117,6 +149,70 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123CME__MdrReportController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRACleanupBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRAFileReadConfigurationSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRAFileReadConfigurationSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRAImportController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRAImportControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRAImportUtilityService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRAImportUtilityServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRAReleaseSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRAReleaseSelectorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRARollbackController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRASearchController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRASearchControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRASearchUtility</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRATestDataFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MedDRAUtility</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__MeddraCleanUpBatchTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -153,6 +249,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123CME__TestUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__WorkflowHistorySelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123CME__WorkflowHistorySelectorTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -312,7 +416,15 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>CMPL123CME__ComplaintDeleteFile</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>CMPL123CME__EMDR</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CMPL123CME__EMDRDeleteFile</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -7964,6 +8076,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Hierarchy__c.CMPL123CME__Backup_JSON__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Hierarchy__c.CMPL123CME__Transaction_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_Hierarchy__c.CMPL123CME__active__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -7995,6 +8117,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__MedDRA_Hierarchy__c.CMPL123CME__meddra_history__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Hierarchy__c.CMPL123CME__meddra_release_key__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8044,7 +8171,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Hierarchy_and_Lowest_Level_term__c.CMPL123CME__Transaction_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_Hierarchy_and_Lowest_Level_term__c.CMPL123CME__hierarchy_code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Hierarchy_and_Lowest_Level_term__c.CMPL123CME__meddra_release_key__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Group_Term__c.CMPL123CME__Backup_JSON__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Group_Term__c.CMPL123CME__Transaction_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8084,6 +8231,26 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Group_Term__c.CMPL123CME__hlgt_kana1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Group_Term__c.CMPL123CME__hlgt_kana2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Group_Term__c.CMPL123CME__hlgt_kana__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Group_Term__c.CMPL123CME__hlgt_kanji__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_High_Level_Group_Term__c.CMPL123CME__hlgt_name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8095,6 +8262,21 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__MedDRA_High_Level_Group_Term__c.CMPL123CME__hlgt_whoart_code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Group_Term__c.CMPL123CME__meddra_release_key__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Term__c.CMPL123CME__Backup_JSON__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Term__c.CMPL123CME__Transaction_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8134,6 +8316,26 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Term__c.CMPL123CME__hlt_kana1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Term__c.CMPL123CME__hlt_kana2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Term__c.CMPL123CME__hlt_kana__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Term__c.CMPL123CME__hlt_kanji__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_High_Level_Term__c.CMPL123CME__hlt_name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8149,7 +8351,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_Term__c.CMPL123CME__meddra_release_key__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_and_Group_Term__c.CMPL123CME__Backup_JSON__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_High_Level_and_Group_Term__c.CMPL123CME__Hlgt_code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_and_Group_Term__c.CMPL123CME__Transaction_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8169,6 +8386,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_and_Group_Term__c.CMPL123CME__meddra_release_key__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_and_Preferred_Term__c.CMPL123CME__Backup_JSON__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_and_Preferred_Term__c.CMPL123CME__Transaction_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_High_Level_and_Preferred_Term__c.CMPL123CME__active__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8184,12 +8416,32 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_High_Level_and_Preferred_Term__c.CMPL123CME__meddra_release_key__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_High_Level_and_Preferred_Term__c.CMPL123CME__pt_code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_International_Order__c.CMPL123CME__Backup_JSON__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_International_Order__c.CMPL123CME__Transaction_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_International_Order__c.CMPL123CME__active__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_International_Order__c.CMPL123CME__meddra_release_key__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8203,53 +8455,178 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__Investigation_Evaluation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__Version__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__hlgt_code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__hlgt_kana1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__hlgt_kana2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__hlgt_kana__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__hlgt_name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__hlt_code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__hlt_kana1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__hlt_kana2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__hlt_kana__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__hlt_name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__llt_code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__llt_kana1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__llt_kana2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__llt_kana__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__llt_name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__meddra_history__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__null_field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__primary_soc_fg__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__pt_code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__pt_kana1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__pt_kana2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__pt_kana__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__pt_name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__pt_soc_code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__soc_abbrev__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__soc_code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__soc_kana1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__soc_kana2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__soc_kana__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__soc_name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CMPL123CME__MedDRA_Link_Investigation__c.CMPL123CME__unique_meddra_key__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Lowest_Level_Term__c.CMPL123CME__Backup_JSON__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Lowest_Level_Term__c.CMPL123CME__Transaction_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8294,6 +8671,26 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Lowest_Level_Term__c.CMPL123CME__llt_kana1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Lowest_Level_Term__c.CMPL123CME__llt_kana2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Lowest_Level_Term__c.CMPL123CME__llt_kana__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Lowest_Level_Term__c.CMPL123CME__llt_kanji__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_Lowest_Level_Term__c.CMPL123CME__llt_name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8309,12 +8706,32 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Lowest_Level_Term__c.CMPL123CME__meddra_release_key__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_Lowest_Level_Term__c.CMPL123CME__pt_code__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Preferred_Term__c.CMPL123CME__Backup_JSON__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Preferred_Term__c.CMPL123CME__Transaction_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_Preferred_Term__c.CMPL123CME__active__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Preferred_Term__c.CMPL123CME__meddra_release_key__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8354,6 +8771,26 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Preferred_Term__c.CMPL123CME__pt_kana1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Preferred_Term__c.CMPL123CME__pt_kana2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Preferred_Term__c.CMPL123CME__pt_kana__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Preferred_Term__c.CMPL123CME__pt_kanji__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_Preferred_Term__c.CMPL123CME__pt_name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8370,6 +8807,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__MedDRA_Preferred_Term__c.CMPL123CME__pt_whoart_code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Release__c.CMPL123CME__Transaction_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8399,7 +8841,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_SMQ_Content__c.CMPL123CME__Transaction_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_SMQ_Content__c.CMPL123CME__active__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_SMQ_Content__c.CMPL123CME__meddra_release_key__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8464,7 +8916,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_SMQ_List__c.CMPL123CME__Transaction_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_SMQ_List__c.CMPL123CME__active__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_SMQ_List__c.CMPL123CME__meddra_release_key__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8474,7 +8936,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_SMQ_List__c.CMPL123CME__smq_desc_kanji__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_SMQ_List__c.CMPL123CME__smq_description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_SMQ_List__c.CMPL123CME__smq_kanji__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8509,12 +8981,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_SOC_and_Group_Term__c.CMPL123CME__Backup_JSON__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_SOC_and_Group_Term__c.CMPL123CME__Transaction_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_SOC_and_Group_Term__c.CMPL123CME__active__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__MedDRA_SOC_and_Group_Term__c.CMPL123CME__hlgt_code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_SOC_and_Group_Term__c.CMPL123CME__meddra_release_key__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8529,7 +9016,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_System_Organ_Class__c.CMPL123CME__Backup_JSON__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_System_Organ_Class__c.CMPL123CME__Transaction_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_System_Organ_Class__c.CMPL123CME__active__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_System_Organ_Class__c.CMPL123CME__meddra_release_key__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8569,7 +9071,32 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CMPL123CME__MedDRA_System_Organ_Class__c.CMPL123CME__soc_kana1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_System_Organ_Class__c.CMPL123CME__soc_kana2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_System_Organ_Class__c.CMPL123CME__soc_kana__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_System_Organ_Class__c.CMPL123CME__soc_kanji__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CMPL123CME__MedDRA_System_Organ_Class__c.CMPL123CME__soc_name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_System_Organ_Class__c.CMPL123CME__soc_order__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8580,6 +9107,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__MedDRA_System_Organ_Class__c.CMPL123CME__soc_whoart_code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Version_History__c.CMPL123CME__Transaction_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8600,6 +9132,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CMPL123CME__MedDRA_Version_History__c.CMPL123CME__term_addition_version__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CMPL123CME__MedDRA_Version_History__c.CMPL123CME__term_kanji__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -30097,11 +30634,11 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
+        <modifyAllRecords>true</modifyAllRecords>
         <object>CMPL123CME__MedDRA_Link_Investigation__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>

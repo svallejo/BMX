@@ -50,14 +50,14 @@
         </c:PDFHeaderFooter>
         <div style="{!if(renderType != 'pdf','margin-left:20px;width:90%;height:auto;border:1px solid black;','width:100%;')}"  class="contentBody">
             <!-- Added General Information Section only for EMDR form version  2021 Nov-30 -->
-            <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
-                <div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">GENERAL INFORMATION</div><br/>
+			<apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
+            	<div style="font-size:12px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">GENERAL INFORMATION</div><br/>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;"><b>Form Code:</b> 
-                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['GS1']}" html-placeholder="Select Column"  html-autocomplete="on" />
+                	<apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['GS1']}" html-placeholder="Select Column"  html-autocomplete="on" />
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['GS1']}"/>
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:18px;"><b>Exemption Number:</b> 
-                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['GS2']}" html-placeholder="Select Column"  html-autocomplete="on" />
+              		<apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['GS2']}" html-placeholder="Select Column"  html-autocomplete="on" />
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['GS2']}"/>
                 </div><br/>
             </apex:outputPanel>
@@ -82,7 +82,7 @@
             </div>
             </apex:outputPanel>
             <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
-                <!--Added A3 Gender field for mapping in 2021 Nov-31 EMDR with new label-->
+				<!--Added A3 Gender field for mapping in 2021 Nov-31 EMDR with new label-->
                 <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
                     <b>A3. Gender:</b> 
                 </apex:outputPanel>
@@ -98,10 +98,10 @@
                 <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['A4']}"/>
             </div>
             <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Patient Weight Units:</b> 
-                    <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['A4.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
+				<div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Patient Weight Units:</b> 
+					<apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['A4.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['A4.1']}"/><br/>
-                </div>
+				</div>
             </apex:outputPanel>
             <apex:outputPanel rendered="{!if(emdrFormVersion == '2018' || emdrFormVersion == '2021 Nov-30', true, false)}">
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>A5. Ethnicity:</b> 
@@ -250,7 +250,7 @@
                 </div>
                 
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">
-                    <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
+					<apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
                         <b>C2. Med Prod List and Treatment Date Time:</b>&nbsp;{!$Label.CMPL123CME__CMPLT_C2_2021_LABEL}
                     </apex:outputPanel>
                     <apex:outputPanel rendered="{!if(emdrFormVersion != '2021 Nov-30', true, false)}">
@@ -401,7 +401,7 @@
                         <b>C7. #1 Is the Product Over-the-Counter?:</b>&nbsp;
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C7.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['C7.1']}"/> <!-- Added C7.1 to the consolidated print -->    
-                    </div>
+                	</div>
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <b>#2 Is the Product Over-the-Counter?:</b>&nbsp;
                         <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['C7.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
@@ -431,7 +431,7 @@
                         <b>C8. #1 Event Abated After Use Stopped?:</b>&nbsp;
                     </apex:outputPanel>
                     <apex:outputPanel rendered="{!if(emdrFormVersion != '2021 Nov-30', true, false)}">
-                        <b>C9. #1 Evt Abated After Use Stopped?:</b>&nbsp;
+                        <b>C9. #1 Event Abated After Use Stopped?:</b>&nbsp;
                     </apex:outputPanel>
                     <apex:inputText size="80"  value="{!emdrReportMap['C9.1']}" html-placeholder="Select Column"  html-autocomplete="on" />
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['C9.1']}"/> <!-- Added C9.1 to the consolidated print -->
@@ -441,7 +441,7 @@
                         <b>#2 Event Abated After Use Stopped?:</b>&nbsp;
                     </apex:outputPanel>
                     <apex:outputPanel rendered="{!if(emdrFormVersion != '2021 Nov-30', true, false)}">
-                        <b>#2 Evt Abated After Use Stopped?:</b>&nbsp;
+                        <b>#2 Event Abated After Use Stopped?:</b>&nbsp;
                     </apex:outputPanel>
                     <apex:inputText size="80"  value="{!emdrReportMap['C9.2']}" html-placeholder="Select Column"  html-autocomplete="on" />
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['C9.2']}"/> <!-- Added C9.2 to the consolidated print -->
@@ -633,7 +633,7 @@
                 <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['D9.9']}"/>
             </div>
             <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
-            <!--Added new field D8_Was_device_serviced_by_third_party__c for mapping in 2021 Nov-31 EMDR-->
+			<!--Added new field D8_Was_device_serviced_by_third_party__c for mapping in 2021 Nov-31 EMDR-->
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
                     <b>D8. Was device serviced by third party?:</b>&nbsp;
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['D8.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
@@ -855,12 +855,12 @@
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F9']}" html-placeholder="Select Column"  html-autocomplete="on"/>
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['F9']}"/>
                 </div>
-                <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
+            	<apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Approximate Age of Device Units: </b> 
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F9.1']}" html-placeholder="Select Column"  html-autocomplete="on"/><br/>
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['F9.1']}"/><br/>
                 </div>
-                </apex:outputPanel>
+            	</apex:outputPanel>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;">
                     <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
                         <b>F10. Adverse Event Problem (Refer to coding manual)</b>
@@ -870,7 +870,7 @@
                     </apex:outputPanel>
                 </div>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 23px;">
-                    <!--Added Health Effect - Clinical Code for mapping in 2021 Nov-31 EMDR-->
+					<!--Added Health Effect - Clinical Code for mapping in 2021 Nov-31 EMDR-->
                     <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
                         <b>Health Effect - Clinical Code:</b>&nbsp;
                     </apex:outputPanel>
@@ -895,8 +895,8 @@
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
                 </apex:repeat>
                 
-                <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
-                <!--Added Health Effect - Impact Code for mapping in 2021 Nov-31 EMDR-->
+            	<apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
+				<!--Added Health Effect - Impact Code for mapping in 2021 Nov-31 EMDR-->
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">
                         <b>Health Effect - Impact Code:</b>&nbsp;
                         <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F10.4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
@@ -906,7 +906,7 @@
                     </apex:repeat>
                 </apex:outputPanel>
                 
-                <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
+            	<apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">
                     <b>Component Code:</b>&nbsp;
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F10.3']}" html-placeholder="Select Column"  html-autocomplete="on"/>
@@ -914,7 +914,7 @@
                 <apex:repeat value="{!mdrCodesMap['F10.3']}" var="code" rendered="{!if(renderType != 'pdf',false,true)}">
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:23px;">{!code}</div>
                 </apex:repeat>  
-                </apex:outputPanel>
+            	</apex:outputPanel>
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>F11. Report Sent to FDA?</b>&nbsp;
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['F11']}" html-placeholder="Select Column"  html-autocomplete="on"/>
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['F11']}"/>
@@ -1038,7 +1038,7 @@
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G1.12']}" html-placeholder="Select Column"  html-autocomplete="on"/>
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['G1.12']}"/>
                 </div>
-                <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
+            	<apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left: 19px;"><b>Phone Number:</b>&nbsp;
                         <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['G2']}" html-placeholder="Select Column"  html-autocomplete="on"/>
                         <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['G2']}" />
@@ -1236,7 +1236,7 @@
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
                         <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!IF(CONTAINS(emdrResultMap['G7'],'10-day'),'[X]','[]')}"/>&nbsp;10-day
                     </div>
-                    </apex:outputPanel>
+                	</apex:outputPanel>
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;font-weight:bold;">
                         <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!IF(CONTAINS(emdrResultMap['G7'],'15-day'),'[X]','[]')}"/>&nbsp;15-day
                     </div>
@@ -1281,8 +1281,8 @@
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['H1']}"/>
                 </div>
-                <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
-                <!--Added new H1_NOE_Summary_Report__c field for mapping in 2021 Nov-31 EMDR-->
+            	<apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
+				<!--Added new H1_NOE_Summary_Report__c field for mapping in 2021 Nov-31 EMDR-->
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;"><b>Number of Events Summarized:</b>&nbsp;
                         <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H1.1']}" html-placeholder="Select Column"  html-autocomplete="on"/>
                         <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!emdrResultMap['H1.1']}"/>
@@ -1360,7 +1360,7 @@
                     </apex:outputPanel>
                 </div>
                 
-                <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;">
+            	<div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;">
                     <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
                         <b>Medical Device Problem Code:</b>&nbsp;
                         <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H6.4']}" html-placeholder="Select Column"  html-autocomplete="on"/>
@@ -1377,22 +1377,22 @@
                     </apex:outputPanel> 
                 </div>
                 
-                <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
+            	<apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;">
                         <b>Component Code:</b>&nbsp;
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H6.7']}" html-placeholder="Select Column"  html-autocomplete="on"/>
-                    </div>
+                	</div>
                     <apex:repeat value="{!mdrCodesMap['H6.7']}" var="code" rendered="{!if(renderType != 'pdf',false,true)}">
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;">{!code}</div>
-                    </apex:repeat>
+                	</apex:repeat>
                     
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;">
                         <b>Health Effect - Impact Code:</b>&nbsp;
                     <apex:inputText size="80" rendered="{!if(renderType != 'pdf',true,false)}" value="{!emdrReportMap['H6.6']}" html-placeholder="Select Column"  html-autocomplete="on"/>
-                    </div>
+                	</div>
                     <apex:repeat value="{!mdrCodesMap['H6.6']}" var="code" rendered="{!if(renderType != 'pdf',false,true)}">
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;">{!code}</div>
-                    </apex:repeat>
+                	</apex:repeat>
                 </apex:outputPanel>
                 
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;">
@@ -1423,7 +1423,7 @@
             
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;">
                     <apex:outputPanel rendered="{!if(emdrFormVersion == '2021 Nov-30', true, false)}">
-                        <b>Investigation Conclusions:</b>b>&nbsp;
+                        <b>Investigation Conclusions:</b>&nbsp;
                     </apex:outputPanel>
                     <apex:outputPanel rendered="{!if(emdrFormVersion != '2021 Nov-30', true, false)}">
                         <b>Conclusion Codes:</b>&nbsp;
@@ -1433,7 +1433,7 @@
                 <apex:repeat value="{!mdrCodesMap['H6.3']}" var="code" rendered="{!if(renderType != 'pdf',false,true)}">
                     <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;margin-left:19px;">{!code}</div>
                 </apex:repeat>
-                
+            	
             
                 <div style="font-size:10px;font-family:'Arial Unicode MS',sans-serif;"><b>H7. If Remedial Action Initiated:</b>&nbsp;
                     <apex:outputText rendered="{!if(renderType != 'pdf',false,true)}" value="{!IF(OR(CONTAINS(emdrResultMap['H7'],'Recall'),CONTAINS(emdrResultMap['H7'],'Relabeling'),CONTAINS(emdrResultMap['H7'],'Patient Monitoring'),CONTAINS(emdrResultMap['H7'],'Repair'),CONTAINS(emdrResultMap['H7'],'Notification'),CONTAINS(emdrResultMap['H7'],'Modification/Adjustment'),CONTAINS(emdrResultMap['H7'],'Replace'),CONTAINS(emdrResultMap['H7'],'Inspection'),CONTAINS(emdrResultMap['H7'],'Other')),'',emdrResultMap['H7'])}"/>

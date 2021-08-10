@@ -2052,7 +2052,7 @@
     </fields>
     <fields>
         <help><!-- C9 - #1 Evt Abated After Use Stopped? --></help>
-        <label><!-- C9 - #1 Evt Abated After Use Stopped? --></label>
+        <label><!-- C9 - #1 Event Abated After Use Stopped? --></label>
         <name>CMPL123CME__C9_Evt_Abated_After_Use_Stopped1__c</name>
         <picklistValues>
             <masterLabel>ASKU</masterLabel>
@@ -2077,7 +2077,7 @@
     </fields>
     <fields>
         <help><!-- C9 - #2 Evt Abated After Use Stopped? --></help>
-        <label><!-- C9 - #2 Evt Abated After Use Stopped? --></label>
+        <label><!-- C9 - #2 Event Abated After Use Stopped? --></label>
         <name>CMPL123CME__C9_Evt_Abated_After_Use_Stopped2__c</name>
         <picklistValues>
             <masterLabel>ASKU</masterLabel>
@@ -2642,7 +2642,7 @@
         <relationshipLabel><!-- EMDR (D7b - Country) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- D7b - E-mail Null --></label>
+        <label><!-- D7b - Email Null --></label>
         <name>CMPL123CME__D7b_E_mail_Null__c</name>
         <picklistValues>
             <masterLabel>ASKU</masterLabel>
@@ -2658,7 +2658,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- D7b - E-mail --></label>
+        <label><!-- D7b - Email --></label>
         <name>CMPL123CME__D7b_E_mail__c</name>
     </fields>
     <fields>
@@ -2828,7 +2828,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- D9 - E-mail Null --></label>
+        <label><!-- D9 - Email Null --></label>
         <name>CMPL123CME__D9_E_mail_Null__c</name>
         <picklistValues>
             <masterLabel>ASKU</masterLabel>
@@ -2844,7 +2844,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- D9 - E-mail --></label>
+        <label><!-- D9 - Email --></label>
         <name>CMPL123CME__D9_E_mail__c</name>
     </fields>
     <fields>
@@ -2906,7 +2906,7 @@
         <relationshipLabel><!-- EMDR (E1 - Country) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- E1 - E-Mail Null --></label>
+        <label><!-- E1 - Email Null --></label>
         <name>CMPL123CME__E1_E_Mail_Null__c</name>
         <picklistValues>
             <masterLabel>ASKU</masterLabel>
@@ -5258,6 +5258,14 @@
         <name>CMPL123CME__CMPL123_TEST</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Ph# format: “+”country_code“(”area_code“)”3 dgt prefix“-”4 dgt#“x” upto 5 dgt extn e.g. +1(240)276-0001x12345; if extn n/a, leave it; International# format e.g. “+”phone_country“(”phone_city“)”phone_local: +011(123)1234567890 /if no city: +011()1234567890 --></errorMessage>
+        <name>CMPL123CME__E1_Phone_Format_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Ph# format: “+”country_code“(”area_code“)”3 dgt prefix“-”4 dgt#“x” upto 5 dgt extn e.g. +1(240)276-0001x12345; if extn n/a, leave it; International# format e.g. “+”phone_country“(”phone_city“)”phone_local: +011(123)1234567890 /if no city: +011()1234567890 --></errorMessage>
+        <name>CMPL123CME__G1_Contact_Ofc_Phone_Format_Validation</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- G2 - Other Report Source max value is 40 --></errorMessage>
         <name>CMPL123CME__G2_Other_Report_Source</name>
     </validationRules>
@@ -5305,6 +5313,10 @@
         <errorMessage><!-- This record is locked as it is consolidated as VMSR. --></errorMessage>
         <name>CMPL123CME__Lock_EMDR_Record</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Delete_Attachments_Files --></label>
+        <name>CMPL123CME__Delete_Attachments_Files</name>
+    </webLinks>
     <webLinks>
         <label><!-- Multiple_EMDR_Print --></label>
         <name>CMPL123CME__Multiple_EMDR_Print</name>

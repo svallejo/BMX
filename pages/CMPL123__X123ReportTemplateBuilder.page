@@ -235,6 +235,11 @@
                 height: 800px;
                 background-color: #FFF;
             }
+
+            .checkbox-label{
+                word-wrap: break-word;
+            }
+
         </style>
         <script>
             var app =  angular.module('myApp',['ui.bootstrap','dndLists']);
@@ -432,6 +437,7 @@
                 $scope.formObject.Name =  '{!JSENCODE($CurrentPage.parameters.label)}'+' {!JSINHTMLENCODE($Label.TEMPLATE)}';
                 $scope.formObject.CMPL123__Include_E_Signature_History__c =  false; //default the Include E Signature History checkbox
                 $scope.formObject.CMPL123__Use_Report_Template_Field_Label__c =  false;
+                $scope.formObject.CMPL123__Hide_Salesforce_Unique_Identifiers__c =  false;
                 if($scope.templateRecordId.length >0){
                     Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.getReportTemplatesDetail}','{!JSENCODE($CurrentPage.parameters.Id)}',function(result,event){
                         if(event.status){
@@ -562,18 +568,27 @@
                 $scope.maxVal = 100;
                 $scope.hideLoading = false;
                 $scope.finalJson = function($event){
-                    if($scope.formObject.Name != undefined){
+
+                    var saveButtonsEnabled = getSaveButtonsEnabled();
+
+                    if($scope.formObject.Name != undefined && saveButtonsEnabled){
+                        setSaveButtonsEnabled(false);
+                        hideError();
+
                         if($event.target.id == 'quickSave'){
                             $scope.hideLoading = true;
                             $scope.dynamic +=50;
                         }
                         var finalJson = new Object();
-                        if($scope.formObject.CMPL123__Logo_Details__c.Height == undefined)
+                        if($scope.formObject.CMPL123__Logo_Details__c.Height == undefined){
                             $scope.formObject.CMPL123__Logo_Details__c.Height ='';
-                        if($scope.formObject.CMPL123__Logo_Details__c.Width == undefined)
-                            $scope.formObject.CMPL123__Logo_Details__c.Width=''
-                        if($scope.formObject.CMPL123__Logo_Details__c.LogoName == undefined)
+                        }
+                        if($scope.formObject.CMPL123__Logo_Details__c.Width == undefined){
+                            $scope.formObject.CMPL123__Logo_Details__c.Width='';
+                        }
+                        if($scope.formObject.CMPL123__Logo_Details__c.LogoName == undefined){
                             $scope.formObject.CMPL123__Logo_Details__c.LogoName ='';
+                        }
                         $scope.formObject.CMPL123__Logo_Details__c = JSON.stringify($scope.formObject.CMPL123__Logo_Details__c);
                         finalJson.templateDetail = $scope.formObject;
                         let handledSectionList = handleLabelChanges($scope.sectionList, $scope.formObject.CMPL123__Use_Report_Template_Field_Label__c);
@@ -593,9 +608,12 @@
                                         $scope.$apply();
                                     },1000);
                                     $scope.$apply();
+                                    setSaveButtonsEnabled(true);
                                 }
                             } else {
+                                $scope.formObject.CMPL123__Logo_Details__c = JSON.parse($scope.formObject.CMPL123__Logo_Details__c);
                                 showError(event.message);
+                                setSaveButtonsEnabled(true);
                             }
                         },{escape:true});
                     }else{
@@ -665,51 +683,70 @@
                 };
 
                 $scope.openSaveAsModel = function(templateId) {
-                    var modalInstance = $modal.open({
-                        templateUrl: 'saveAsModel.html',
-                        controller: 'saveAsModelController',
-                        size: 'lg',
-                        resolve: {
-                            templateName:function(){
-                                return $scope.formObject.Name;
-                            }
-                        }
-                    });
-                    modalInstance.result.then(function (selectedItem) {
-                        $scope.hideLoading = true;
-                        $scope.formObject.Name = selectedItem;
-                        $scope.formObject.Id = null;
-                        var finalJson = new Object();
-                        if($scope.formObject.CMPL123__Logo_Details__c.Height == undefined)
-                            $scope.formObject.Logo_Details__c.Height ='';
-                        if($scope.formObject.CMPL123__Logo_Details__c.Width == undefined)
-                            $scope.formObject.Logo_Details__c.Width=''
-                        if($scope.formObject.CMPL123__Logo_Details__c.LogoName == undefined)
-                            $scope.formObjectCMPL123__.Logo_Details__c.LogoName ='';
-                        $scope.formObject.CMPL123__Logo_Details__c = JSON.stringify($scope.formObject.CMPL123__Logo_Details__c);
-                        finalJson.templateDetail = $scope.formObject;
-                        finalJson.sectionDetail = $scope.sectionList;
-                        $scope.dynamic = 100;
-                        Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.saveAsReportTemplate}',angular.toJson(finalJson),function(result,event){
-                            if(event.status){
-                                $scope.formObject =  JSON.parse(JSON.parse(htmlDecode(result)).templateDetail);
-                                $scope.formObject.CMPL123__Logo_Details__c = JSON.parse($scope.formObject.CMPL123__Logo_Details__c);
-                                // $scope.sectionList = JSON.parse(JSON.parse(htmlDecode(result)).sectionDetail);
-                                $scope.dynamic = 100;
-                                setTimeout(function(){
-                                    $scope.hideLoading = false;
-                                    $scope.dynamic = 0;
-                                    $scope.$apply();
-                                },1000);
-                                $scope.$apply();
-                            }else {
-                                showError(event.message);
-                            }
-                        },{escape:true});
-                    }, function () {
-                    });
+                    var saveButtonsEnabled = getSaveButtonsEnabled();
 
+                    if(saveButtonsEnabled){
+                        setSaveButtonsEnabled(false);
+                        hideError();
+
+                        var modalInstance = $modal.open({
+                            templateUrl: 'saveAsModel.html',
+                            controller: 'saveAsModelController',
+                            size: 'lg',
+                            resolve: {
+                                templateName:function(){
+                                    return $scope.formObject.Name;
+                                }
+                            }
+                        });
+
+                        modalInstance.result.then(
+                            function (selectedItem) {
+                                $scope.hideLoading = true;
+                                $scope.formObject.Name = selectedItem;
+                                $scope.formObject.Id = null;
+                                var finalJson = new Object();
+                                if($scope.formObject.CMPL123__Logo_Details__c.Height == undefined){
+                                    $scope.formObject.Logo_Details__c.Height ='';
+                                }
+                                if($scope.formObject.CMPL123__Logo_Details__c.Width == undefined){
+                                    $scope.formObject.Logo_Details__c.Width='';
+                                }
+                                if($scope.formObject.CMPL123__Logo_Details__c.LogoName == undefined){
+                                    $scope.formObjectCMPL123__.Logo_Details__c.LogoName ='';
+                                }
+                                $scope.formObject.CMPL123__Logo_Details__c = JSON.stringify($scope.formObject.CMPL123__Logo_Details__c);
+                                finalJson.templateDetail = $scope.formObject;
+                                finalJson.sectionDetail = $scope.sectionList;
+                                $scope.dynamic = 100;
+
+                                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.X123ReportTemplateBuilderController.saveAsReportTemplate}',angular.toJson(finalJson),function(result,event){
+                                    if(event.status){
+                                        $scope.formObject =  JSON.parse(JSON.parse(htmlDecode(result)).templateDetail);
+                                        $scope.formObject.CMPL123__Logo_Details__c = JSON.parse($scope.formObject.CMPL123__Logo_Details__c);
+                                        $scope.dynamic = 100;
+                                        setTimeout(function(){
+                                            $scope.hideLoading = false;
+                                            $scope.dynamic = 0;
+                                            $scope.$apply();
+                                        },1000);
+                                        $scope.$apply();
+
+                                        setSaveButtonsEnabled(true);
+
+                                    }else {
+                                        $scope.formObject.CMPL123__Logo_Details__c = JSON.parse($scope.formObject.CMPL123__Logo_Details__c);
+                                        showError(event.message);
+                                    }
+                                },{escape:true});
+                            }, 
+                            function() {
+                                setSaveButtonsEnabled(true);
+                            }
+                        );
+                    }
                 };
+
                 $scope.openManageOrder = function() {
                     var modalInstance = $modal.open({
                         templateUrl: 'ManageOrder.html',
@@ -727,11 +764,14 @@
                     }, function () {
                     });
                 };
+
             });
             app.controller('saveAsModelController',function($scope,$modalInstance,templateName){
                 $scope.TemplateNameReq = "Copy of "+templateName ;
                 $scope.cancel = function () {
                     $modalInstance.dismiss('cancel');
+
+                    setSaveButtonsEnabled(true);
                 };
                 $scope.selected = {
                     item1:''
@@ -980,11 +1020,16 @@
                 return handledSectionDetail;
             }
 
-            //Filter record from Arrey List
             function showError(message) {
                 let errorDiv = document.getElementById('errorMessageDiv')
                 errorDiv.innerText = message;
                 errorDiv.style.display = 'block';
+            }
+            
+            function hideError(message) {
+                let errorDiv = document.getElementById('errorMessageDiv')
+                errorDiv.innerText = '';
+                errorDiv.style.display = 'none';
             }
 
             function filteResult(obj,type1){
@@ -1020,6 +1065,17 @@
                     }
                 }
                 return obj;
+            }
+
+            function setSaveButtonsEnabled(enable) {
+                document.getElementById("save").disabled = !enable;
+                document.getElementById("quickSave").disabled = !enable;
+                document.getElementById("saveButtonMenu").disabled = !enable;
+            }
+
+            function getSaveButtonsEnabled() {
+                var isSaveDisabled = document.getElementById("save").disabled || document.getElementById("quickSave").disabled || document.getElementById("saveButtonMenu").disabled;
+                return !isSaveDisabled;
             }
         </script>
     </head>
@@ -1058,7 +1114,7 @@
                         <div class="btn-group" style="float:right;">
                             <button type="button" id="quickSave" style="border-right:2px solid white;" class="btn btn-default btn-primary btn-sm" ng-click="finalJson($event);"> {!$Label.QUICK_SAVE}</button>
                             <button type="button" class="btn btn-primary btn-sm" id="save" ng-click="finalJson($event);">{!$Label.SAVE}</button>
-                            <button style="border-left: 1px solid white;border-right:1px solid white;" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;</button>
+                            <button id="saveButtonMenu" style="border-left: 1px solid white;border-right:1px solid white;" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;</button>
                             <ul class="dropdown-menu" style="padding:2px;">
                                 <li><a href="javascript:void(0)" ng-show="formObject.Id.length > 0" ng-click="openSaveAsModel(formObject.Id);">{!$Label.SAVE_AS}..</a></li>
                             </ul>
@@ -1153,13 +1209,23 @@
                             </div>
                             <div class="col-md-12" style="margin-top:2%;">
                                 <div class="col-md-3">
-                                    <input type="checkbox" ng-model="formObject.CMPL123__Include_E_Signature_History__c"/>
-                                    <label> {!$Label.INCLUDE_E_SIGNATURE_HISTORY} </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" ng-model="formObject.CMPL123__Include_E_Signature_History__c"/>
+                                        {!$Label.INCLUDE_E_SIGNATURE_HISTORY}
+                                    </label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="checkbox" ng-model="formObject.CMPL123__Use_Report_Template_Field_Label__c"/>
-                                    <label> {!$Label.USE_REPORT_TEMPLATE_FIELD_LABEL} </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" ng-model="formObject.CMPL123__Use_Report_Template_Field_Label__c"/>
+                                        {!$Label.USE_REPORT_TEMPLATE_FIELD_LABEL}
+                                    </label>
                                     <br>{!$Label.DO_NOT_USE_QUICK_SAVE}</br>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" ng-model="formObject.CMPL123__Hide_Salesforce_Unique_Identifiers__c" />
+                                        {!$Label.HIDE_SALESFORCE_UNIQUE_IDENTIFIERS}
+                                    </label>
                                 </div>
                             </div>
                         </div>

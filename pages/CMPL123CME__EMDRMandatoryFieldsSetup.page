@@ -1,5 +1,5 @@
 <apex:page controller="CMPL123CME.EMDRMandatoryFieldsController"  standardStylesheets="true">
-    <apex:includeLightning />
+	<apex:includeLightning />
     <apex:outputPanel id="loadScript" >
     <script>
         function changeVal(apiName, obj) {
@@ -8,40 +8,40 @@
                 elements[i].checked =  obj.checked;
             }
         }
-        
-        if("{!JSENCODE(selectedFormVersion)}" === '2021 Nov-30') {
+		
+    	if("{!JSENCODE(selectedFormVersion)}" === '2021 Nov-30') {
             $Lightning.use("CMPL123CME:EMDRMandatoryCodesApp", function() {
-                $Lightning.createComponent("CMPL123CME:EMDRCodeRequiredParent",
-                                            {},
-                                           "emdr-code-requiredness",
-                                           function(cmp) {  
-                                           }
-                                          );
-            });
-        }
+				$Lightning.createComponent("CMPL123CME:EMDRCodeRequiredParent",
+											{},
+										   "emdr-code-requiredness",
+										   function(cmp) {  
+										   }
+										  );
+			});
+    	}
     </script>
     </apex:outputPanel>
     <style>
-        .margin {
-            margin-bottom: 20px;
+	    .margin {
+        	margin-bottom: 20px;
         }
         .spinner-style {
-            z-index: 1001; margin: 15% 45%;
+        	z-index: 1001; margin: 15% 45%;
         }
         .spinner-base {
-            position: fixed; left: 0; top: 0; bottom: 0; right: 0;
+        	position: fixed; left: 0; top: 0; bottom: 0; right: 0;
         }
         .drop-shadow {
-             opacity: 0.25; z-index: 1000; background-color: black;
+        	 opacity: 0.25; z-index: 1000; background-color: black;
         }
         .spinner-container {
-            display: inline-block; padding: 2px; background-color: #fff; width: 125px;
+        	display: inline-block; padding: 2px; background-color: #fff; width: 125px;
         }
         .spinner {
-            float: left; margin: 8px;
+        	float: left; margin: 8px;
         }
         .spinner-text {
-            display: inline-block; padding: 10px 0px;
+        	display: inline-block; padding: 10px 0px;
         }
     </style>
     <apex:form id="theFrm">

@@ -1,5 +1,5 @@
 <apex:page controller="CMPL123.X123ConfigController">
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123,'/jquery-ui-1.12.1/js/jquery-3.4.0.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123,'/jquery-ui-1.12.1/js/jquery-3.5.1.min.js')}"/>
    
     <style>
          .form-input{background:white;border: 1px solid  #CCC;border-radius:5px;padding: 8px 27px 8px 10px;width:250px;}    
@@ -11,6 +11,29 @@
          .deployingStatus{width:230px;transition:all 1s;-o-transition:all 1s;color:white;-webkit-transition:all 1s;-moz-transition:all 1s;-webkit-transition:all 1s;opacity:0;height:0;padding-top:0.5%;z-index:3;border-radius:3px;background-color:#1797C0;text-align:center;font-weight:bold}
          .statusMsgeffect{opacity:1;height:25px;}
          .bPageBlock .detailList tr td, .bPageBlock .detailList tr th, .hoverDetail .bPageBlock .detailList tr td, .hoverDetail .bPageBlock .detailList tr th {border-bottom: none;}
+         .spinner{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-image: url("/img/loading32.gif");
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: top;
+            z-index: 4;
+            opacity: 1;
+            margin-bottom: 10px;
+        }
+        .maskBg{
+            width: 100%;
+            height: 100%;
+            opacity: .2;
+            z-index: 5;
+            background-color:grey;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            text-align: center;
+        }
     </style>
     <script>
         var sessionid,endpoint,checkedConfigTyp;var objectExist;var deploykey=0;
@@ -25,7 +48,8 @@
              });
             $("[id$=initialDeploy]").hide();
             $("[id$=checkConfig]").hide(); 
-            $("[id$=deployStatus]").hide();   
+            $("[id$=deployStatus]").hide();
+            $("#loading-mask").hide();  
                  
         })
         
@@ -148,7 +172,7 @@
             for(var key=0;key<configType.length;key++){
                 table += '<tr><td style="text-align:center;padding:0;"><input type="checkbox" value="'+configType[key]+'" class="checkedConfig" /></td><td style="color:#3E648D;font-weight:bold;padding:0;">'+configTypeMap[configType[key]]+'</td></tr>';
             }
-            table +='<tr><td></td><td><input type="button" value="{!JSINHTMLENCODE($Label.DEPLOY)}" style="padding:6px;" class="btn" onclick="deploy();" /></td></tr></table>';
+            table +='<tr><td></td><td><input type="button" id="deploy-btn" value="{!JSINHTMLENCODE($Label.DEPLOY)}" style="padding:6px;" class="btn" onclick="deploy();" /></td></tr></table>';
             $(".deployStart").append(table);
             $("[id$=checkConfig]").hide();
             $("[id$=initialDeploy]").show();
@@ -161,6 +185,7 @@
                 //Added JSENCODE to fix error due to single and double quotes present in Label values.
                 errorMessage('{!JSENCODE($Label.PLEASE_SELECT_ATLEAST_ONE_CHECKBOX)}')
             }else{
+                $("#deploy-btn").attr('disabled','disabled');
                 $('input[class="checkedConfig"]:checked').each(function(){
                     selectedConfig.push($(this).val());
                 });
@@ -182,6 +207,7 @@
          
          function callExtervalOrganization(configType){
             $(".deployingStatus").addClass("statusMsgeffect");
+            $("#loading-mask").show();
             var complaintSelectedObject ='';
             for(var key=0;key<configType.length;key++){
                 if(configType[key] == 'Workflow Rule Config'){
@@ -205,6 +231,8 @@
                             }
                             deploykey++;
                             callRestService('Workflow Rule Config',JSON.stringify(parseResult),deploykey);
+                        }else {
+                            handleError('Workflow Rule Config', event.message);
                         }
                     },{escape:true});
                 }else if(configType[key] == 'Task Config'){
@@ -213,6 +241,8 @@
                             deploykey++;
                             callRestService('Task Config',JSON.stringify(JSON.parse($("<div />").html(result).text())),deploykey);
                         
+                        }else {
+                            handleError('Task Config', event.message);
                         }
                     
                     },{escape:true});
@@ -223,6 +253,8 @@
                             deploykey++;
                             callRestService('Audit Config',JSON.stringify(JSON.parse($("<div />").html(result).text())),deploykey);
                         
+                        }else {
+                            handleError('Audit Config', event.message);
                         }
                     },{escape:true});
                    }else if(configType[key] == 'Record Access Rule Config'){
@@ -231,6 +263,8 @@
                             deploykey++;
                             callRestService('Record Access Rule Config',JSON.stringify(JSON.parse($("<div />").html(result).text())),deploykey);
                         
+                        }else {
+                            handleError('Record Access Rule Config', event.message);
                         }
                     },{escape:true});
                    }else if(configType[key] == 'Report Config'){
@@ -240,6 +274,8 @@
                            
                             callRestService('Report Config',JSON.stringify(JSON.parse($("<div />").html(result).text())),deploykey);
                         
+                        }else {
+                            handleError('Report Config', event.message);
                         }
                     },{escape:true});
                    
@@ -258,7 +294,21 @@
                  }
              }
             
-       }  
+       }
+       
+       function handleError(configKey, errMessage){
+            var configErr = configKey + '~' +'error';
+            errorOrSuccessMessage[configErr] =  errMessage;
+
+            // Format the error message
+            if (errorOrSuccessMessage[configErr].includes('CMPL123.ConfigurationDeploymentException: ')) {
+                errorOrSuccessMessage[configErr] = errorOrSuccessMessage[configErr].split('\n')[0].split('CMPL123.ConfigurationDeploymentException: ')[1];
+            }
+            deploykey++;
+            if(checkedConfigTyp == deploykey){
+                createMessage(errorOrSuccessMessage);
+            } 
+       }
         
         function errorMessage(msg){
             setTimeout(function(){
@@ -335,11 +385,14 @@
                 type:"POST",
                 data: requireJson,
                 url:"/services/proxy",
-                async:false,
                 error: function(error){
                     var requireKey = configType +'~'+'error';
-                    var key = JSON.parse(error["responseText"]);
-                    errorOrSuccessMessage[requireKey] =  key[0]["message"];
+                    try{
+                        var key = JSON.parse(error["responseText"]);
+                        errorOrSuccessMessage[requireKey] =  key[0]["message"];
+                    }catch(e){
+                        errorOrSuccessMessage[requireKey] = '{!JSENCODE($Label.DEPLOY_EXCEPTION)}';
+                    }
 
                     // Format the error message
                     if (errorOrSuccessMessage[requireKey].includes('CMPL123.ConfigurationDeploymentException: ')) {
@@ -370,6 +423,7 @@
         
         function createMessage(obj){
             $("[id$=errorMessage]").empty();
+            $("#loading-mask").hide();
             var table="<table style='width:80%;margin-left:10%;'><tr><td style='width:30%;font-weight:bold;'>{!JSINHTMLENCODE($Label.CONGIF_TYPE)}</td><td style='font-weight:bold;'>{!$Label.STATUS}</td></tr>";
             for(var key in obj){
                 if(key.split('~')[1] == 'success') {
@@ -385,9 +439,13 @@
             $("[id$=deployStatus]").show(); 
             $("[id$=initialDeploy]").hide();
             $(".deployingStatus").removeClass("statusMsgeffect");
+            $("#loading-mask").hide(); 
         }
         
     </script>
+    <div id="loading-mask">
+        <span class="maskBg"></span>  
+    </div>
     <div style="width:80%; display:none;"><apex:pageMessage summary="" severity="error" strength="1" id="errror"/></div>
     <apex:pageBlock title="{!$Label.cmpl123__configuration_deployment}" id="loginDiv">
         <div class="back" style="padding-left:20%;">
@@ -422,7 +480,8 @@
     <apex:pageBlock title="{!$Label.cmpl123__deployment_configuration_component}" id="initialDeploy">
         <div class="back">
             <div class="deployingStatus" style="margin-left:39%;">
-                <span class="color:#3C763D;font-weight:bold;">{!HTMLENCODE($Label.cmpl123__deploying)}...</span>
+                <span class="color:#3C763D;font-weight:bold;">{!HTMLENCODE($Label.CMPL123__deploying)}...</span>
+                <span class="spinner"></span>
             </div>  
             <div class="deployStart" style="padding-left:40%;margin-top:1%;">
             </div>

@@ -7,6 +7,7 @@
                 var isPanelEnabled = {!IF(showWFPanel, "true", "false")};
                 var vmsrLimitExceedError = {!IF(isB5LimitExceeded, "true", "false")};
                 var urlParams = JSON.parse('{!JSENCODE(urlParamsMapString)}');
+                var dateLocaleFormat = '{!JSENCODE(emdrDateLocaleFormat)}';
                 var dateFormat = '{!JSENCODE(dateLocaleFormat)}';
                 var dateTimeFormat = '{!JSENCODE(dateTimeLocaleFormat)}';
                 var dateLocaleCode = '{!JSENCODE(dateLocaleCode)}';
@@ -219,7 +220,11 @@
                                     <span ng-show="false" ng-if="key1.isRequired == 'true'"> {{key.class = key1.isRequired == 'true' ? 'requiredBlock':''}}  </span> 
                                     <div class="col-md-5 col-md-offset-{{$customIndex%2 == 0 ? 0 : 0}}"  ng-if="fields[key1.apiName].type != 'LONGTEXTAREA' &&  key1.apiName != 'CMPL123CME__H6_Evaluation_Codes__c' &&  key1.apiName != 'CMPL123CME__F10_Event_Problem_Code__c' &&  key1.apiName != 'CMPL123CME__H6_Adverse_Event_Problem__c' &&  key1.apiName != 'CMPL123CME__F10_Adverse_Event_Problem__c'">
                                         <label data-placement="right" data-toggle="popover" name="{{fields[key1.apiName].type}}"  content="{{placeHolderMap[key1.apiName]}}" data-html="true" createpopover=' ' data-trigger="hover" style="font-size:12px;font-weight:bold;">{{key1.label}}</label>&nbsp;&nbsp;
-                                       
+                                        
+                                        <span ng-hide="key1.helpText == null || key1.helpText == key1.label">
+                                            <img src="/s.gif" Class="emdr-helptext-img" title="{{key1.helpText}}" /> 
+                                        </span>
+
                                         <span ng-if="fields[key1.apiName].message.length > 0">
                                           <span  ng-show="hide">{{key.isValid = true}}</span>
                                         </span>
@@ -331,6 +336,9 @@
                                     <div class="col-md-10" ng-if="fields[key1.apiName].type == 'LONGTEXTAREA'" ng-show="key1.tabPosition == tabSelected">
                                         <span ng-hide="true" ng-if="fields[key1.apiName].message.length > 0">{{key.isValid = true}}</span>
                                         <label data-placement="right" data-toggle="popover" name="{{fields[key1.apiName].type}}"  content="{{placeHolderMap[key1.apiName]}}" data-html="true" createpopover=' ' data-trigger="hover" style="font-size:12px;font-weight:bold;">{{key1.label}}</label>&nbsp;&nbsp;
+                                        <span ng-hide="key1.helpText == null || key1.helpText == key1.label">
+                                            <img src="/s.gif" class="emdr-helptext-img" title="{{key1.helpText}}" />
+                                        </span>
                                         <textarea class="form-control" ng-style="{'border-left': key1.isRequired == 'true' ? '3px solid #c00': ''}" ng-change="changeTabColor(order);" ng-disabled="key1.isReadOnly" placeholder="{{recordTypeName == 'Supplemental' ? (placeHolderMap[key1.apiName] != null ? placeHolderMap[key1.apiName] : '')  : (key1.isReadOnly == true ? '':'{!HTMLENCODE($Label.CMPLT_TYPE)} '+key1.label)}}"  ng-model="fields[key1.apiName].value"  name="{{key1.apiName}}{{order}}"  ng-required ="{{key1.isRequired}}" ng-maxlength="{{key1.length}}"   />
                                         <div style="min-height:20px;color:red;">
                                           
@@ -348,6 +356,9 @@
                                                 <div>
                                                     <div>
                                                          <label style="font-size:12px;font-weight:bold;">{{key1.label}}</label>
+                                                         <span ng-hide="key1.helpText == null || key1.helpText == key1.label">
+                                                            <img src="/s.gif" class="emdr-helptext-img" title="{{key1.helpText}}" />
+                                                         </span>
                                                     </div>
                                                     <span ng-hide="true">{{fldOrder = $index}}</span>                                                    
                                                     <div class="panel-body panel-body{{order}}{{fldOrder}}" ng-style="{'border-left':cloneTab[tabSelected].fieldList[$index].isRequired == 'true' ? '2px solid #c00' : '1px solid #ccc'}" style="border:1px solid #ccc;padding:10px;" > 

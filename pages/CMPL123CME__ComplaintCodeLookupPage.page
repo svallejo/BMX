@@ -5,7 +5,7 @@
      <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__Keyboard)}" /> 
     <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'src/skin/ui.dynatree.css')}" /> 
     <!-- JS supports for Lightning Experience navigations -->
-    <apex:includeScript value="/support/console/26.0/integration.js"/>
+    <apex:includeScript value="/support/console/49.0/integration.js"/>
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
     <apex:stylesheet value="{!URLFOR($Resource.CMPL123CME__TreeStructure, 'jquery-ui/jquery-ui.min.css' )}" />
     <apex:includeScript value="{!$Resource.CMPL123CME__SecureFilters}"/>
@@ -120,8 +120,10 @@
         }
         
         function searchCode(){
-           jobtype = $("[id$=codeType]").val();
-           if(jobtype.length >0)
+            if($("[id$=codeType]").val() !== undefined){
+                jobtype = $("[id$=codeType]").val();
+            }
+            if(jobtype.length >0)
                getSearchResult(jobtype);
         }
         function getSearchResult(obj){

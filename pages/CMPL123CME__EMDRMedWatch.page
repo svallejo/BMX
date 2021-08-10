@@ -6,12 +6,15 @@
           .f12SectionPadding {
             padding-left: 6px;
           }
-
           .leftPadding {
             padding-left: 1px;
           }
           .g1-div-height{
             height: 10px;
+          }
+          .arialFontChange {
+            font-family: 'Arial Unicode MS';
+            font-size:7px;
           }
       </style>
     </head>
@@ -24,7 +27,7 @@
                 distributors and manufactures for<br/>
                 MANDATORY REPORTING<br/>
                 <br/>
-                <b>Page 1 of {!if(LEN(mdr.B5_Describe_Event_or_Problem__c) < 2055 && LEN(mdr.B6_Relevant_Test_Laboratory_Data__c) < 990 && LEN(mdr.B7_Other_Relevant_History__c) < 990 && LEN(mdr.H10_Addtl_Mfg_Narrative__c) < 365 && LEN(mdr.CMPL123CME__H11_Corrected_Data__c) < 365, '2', '3')}</b>
+                <b>Page 1 of {!if(LEN(mdr.B5_Describe_Event_or_Problem__c) < 2055 && LEN(mdr.B6_Relevant_Test_Laboratory_Data__c) < 990 && LEN(mdr.B7_Other_Relevant_History__c) < 990 && LEN(mdr.H10_Addtl_Mfg_Narrative__c) < 366 && LEN(mdr.CMPL123CME__H11_Corrected_Data__c) < 366, '2', '3')}</b>
                 </p>
             </div>
             <div id="righthead" style="float:right; width:34%">
@@ -34,7 +37,7 @@
                 </span>
                 <table border="0" rules="rows" width="100%" cellspacing="0" cellpadding="0" style="border-top:1px solid #000000;border-left:1px solid #000000;border-right:1px solid #000000;border-bottom:1px solid #000000;">
                     <tr><td style="border-bottom:1px solid #000000;">
-                        Mfr Report # &nbsp; {!if(LEN(mdr.G9_MFR_Report_Number__c) > 20,LEFT(mdr.G9_MFR_Report_Number__c,20), mdr.G9_MFR_Report_Number__c) }
+                        Mfr Report # &nbsp; {!mdr.CMPL123CME__G9_MFR_Report_Number__c}
                     </td></tr>
                     <tr><td style="border-bottom:1px solid #000000;">
                         UF/Importer Report # &nbsp; {!if(LEN(mdr.F2_UF_Importer_Report_Number__c) > 20,LEFT(mdr.F2_UF_Importer_Report_Number__c,20), mdr.F2_UF_Importer_Report_Number__c) }
@@ -369,13 +372,13 @@
                                     </tr>
                                     <tr>
                                         <th>#1</th>
-                                        <td>{!mdr.C3_Dose1__c}&nbsp;{!mdr.C3_Dose_Units1__c}</td>
+                                        <td>{!mdr.C3_Dose1__c}&nbsp;<span class="arialFontChange">{!mdr.C3_Dose_Units1__c}</span></td>
                                         <td>{!mdr.C3_Frequency1__c}&nbsp;{!mdr.C3_Frequency_Units1__c}</td>
                                         <td>{!mdr.C3_Route_Used1__c}</td>
                                     </tr>
                                     <tr>
                                         <th>#2</th>
-                                        <td>{!mdr.C3_Dose2__c}&nbsp;{!mdr.C3_Dose_Units2__c}</td>
+                                        <td>{!mdr.C3_Dose2__c}&nbsp;<span class="arialFontChange">{!mdr.C3_Dose_Units2__c}</span></td>
                                         <td>{!mdr.C3_Frequency2__c}&nbsp;{!mdr.C3_Frequency_Units2__c}</td>
                                         <td>{!mdr.C3_Route_Used2__c}</td>
                                     </tr>
@@ -774,7 +777,7 @@
             <div id="lefthead"  style="float:left; width:34%;"><apex:image url="{!URLFOR($Resource.CMPL123CME__MEDWATCH_Header2, '')}"/></div>
             <div  id="middlehead2" style="float:left; width:30%;">
                 <p style="text-align: center; vertical-align: bottom;">
-                <b>Page 2 of {!if(LEN(mdr.B5_Describe_Event_or_Problem__c) < 2055 && LEN(mdr.B6_Relevant_Test_Laboratory_Data__c  ) < 990 && LEN(mdr.B7_Other_Relevant_History__c  ) < 990 && LEN(mdr.H10_Addtl_Mfg_Narrative__c) < 365 && LEN(mdr.CMPL123CME__H11_Corrected_Data__c) < 365, '2', '3')}</b>
+                <b>Page 2 of {!if(LEN(mdr.B5_Describe_Event_or_Problem__c) < 2055 && LEN(mdr.B6_Relevant_Test_Laboratory_Data__c  ) < 990 && LEN(mdr.B7_Other_Relevant_History__c  ) < 990 && LEN(mdr.H10_Addtl_Mfg_Narrative__c) < 366 && LEN(mdr.CMPL123CME__H11_Corrected_Data__c) < 366, '2', '3')}</b>
                 </p>
             </div>
             
@@ -1272,7 +1275,7 @@
                                   </td>
                                   <td style="width:40%;">9. <b>Manufacturer Report Number </b><br/>
                                   <div style="width:100%; height:30px">
-                                      <apex:outputText value="{!if(LEN(mdr.CMPL123CME__G9_MFR_Report_Number__c) < 50, mdr.CMPL123CME__G9_MFR_Report_Number__c, LEFT(mdr.CMPL123CME__G9_MFR_Report_Number__c, 50))}" />  
+                                      <apex:outputText value="{!mdr.CMPL123CME__G9_MFR_Report_Number__c}" />  
                                   </div></td>
                               </tr>
                           </table>
@@ -1438,7 +1441,7 @@
     </div>
     
     <!------- Page 3 ------------->
-    <div style="page-break-before:always; font-size:10px;display:{!if(LEN(mdr.B5_Describe_Event_or_Problem__c) < 2055 && LEN(mdr.B6_Relevant_Test_Laboratory_Data__c  ) < 990 && LEN(mdr.B7_Other_Relevant_History__c  ) < 990 && LEN(mdr.H10_Addtl_Mfg_Narrative__c) < 365 && LEN(mdr.H11_Corrected_Data__c) < 365, 'none', 'block')}">
+    <div style="page-break-before:always; font-size:10px;display:{!if(LEN(mdr.B5_Describe_Event_or_Problem__c) < 2055 && LEN(mdr.B6_Relevant_Test_Laboratory_Data__c  ) < 990 && LEN(mdr.B7_Other_Relevant_History__c  ) < 990 && LEN(mdr.H10_Addtl_Mfg_Narrative__c) < 366 && LEN(mdr.H11_Corrected_Data__c) < 366, 'none', 'block')}">
         <div style="width:100%; float:left;">
             <div id="lefthead"  style="float:left; width:34%;"><apex:image url="{!URLFOR($Resource.CMPL123CME__MEDWATCH_Header2, '')}"/></div>
             <div  id="middlehead3" style="page-break-before:always; float:left; width:66%">
@@ -1547,8 +1550,8 @@
                             <td style="height:100px">
                             <b>Other Remarks  </b><i>(For continuation of H.10 and/or H.11)</i><br/>
                                 <div style="width:100%;">
-                                    <div style="word-wrap:break-word; width:700px;height:120px;"><b>H.10 </b>&nbsp;&nbsp;<apex:outputText value="{!if(LEN(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c) > 365, LEFT(MID(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c, IF(mdr.CMPL123CME__H11_Corrected_Data__c == null,4000,365), LEN(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c)-IF(mdr.CMPL123CME__H11_Corrected_Data__c == null,4000,365)),1360), '')}" /></div> 
-                                    <div style="word-wrap:break-word; width:700px;height:100px;"><b>H.11 </b>&nbsp;&nbsp;<apex:outputText value="{!if(LEN(mdr.CMPL123CME__H11_Corrected_Data__c) > 365, LEFT(MID(mdr.CMPL123CME__H11_Corrected_Data__c, IF(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c == null,4000,365), LEN(mdr.CMPL123CME__H11_Corrected_Data__c)-IF(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c == null,4000,365)),1360), '')}" /></div>  
+                                    <div style="word-wrap:break-word; width:700px;height:120px;"><b>H.10 </b>&nbsp;&nbsp;<apex:outputText value="{!if(LEN(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c) > 365,LEFT(MID(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c, 366,IF(mdr.CMPL123CME__H11_Corrected_Data__c != null ,LEN(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c)-IF(mdr.CMPL123CME__H11_Corrected_Data__c == null,4000,365),IF(LEN(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c)> 4000,LEN(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c)-4000,4000-LEN(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c)))),1360), '')}" /></div> 
+                                    <div style="word-wrap:break-word; width:700px;height:100px;"><b>H.11 </b>&nbsp;&nbsp;<apex:outputText value="{!if(LEN(mdr.CMPL123CME__H11_Corrected_Data__c) > 365,LEFT(MID(mdr.CMPL123CME__H11_Corrected_Data__c, 366,IF(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c != null ,LEN(mdr.CMPL123CME__H11_Corrected_Data__c)-IF(mdr.CMPL123CME__H10_Addtl_Mfg_Narrative__c == null,4000,365),IF(LEN(mdr.CMPL123CME__H11_Corrected_Data__c)> 4000,LEN(mdr.CMPL123CME__H11_Corrected_Data__c)-4000,4000-LEN(mdr.CMPL123CME__H11_Corrected_Data__c)))),1360), '')}" /></div>  
                                 </div>
                             </td>
                         </tr>

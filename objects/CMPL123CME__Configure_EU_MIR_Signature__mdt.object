@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CMPL123CME__Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This field signifies if the Workflow is Active ( when Checked) or Inactive (when Unchecked).</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Whether this configuration is Active or Inactive.</inlineHelpText>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__End_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Add the End Step.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Enter the End Status of the corresponding Workflow Step.</inlineHelpText>
+        <label>End Status</label>
+        <length>80</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Start_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Add the Start Step.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Enter the Start Status of the corresponding Workflow Step.</inlineHelpText>
+        <label>Start Status</label>
+        <length>80</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Workflow_Action__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Add the Workflow Action.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Enter the Workflow Action of the corresponding Workflow Step.</inlineHelpText>
+        <label>Workflow Action</label>
+        <length>80</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Workflow_Rule_Key_Value__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <description>Add the Workflow Rule Name and Key Value.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Enter Workflow Rule Name and Key Value of the Workflow Rule for which you want to configure the Signature in the format "Workflow Rule(Key Value)". Leave the key value blank if its unavailable.</inlineHelpText>
+        <label>Workflow Rule(Key Value)</label>
+        <length>200</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Configure EU MIR Signature</label>
+    <listViews>
+        <fullName>CMPL123CME__Config_Signature_Default</fullName>
+        <columns>MasterLabel</columns>
+        <columns>CMPL123CME__Workflow_Rule_Key_Value__c</columns>
+        <columns>CMPL123CME__Workflow_Action__c</columns>
+        <columns>CMPL123CME__Start_Status__c</columns>
+        <columns>CMPL123CME__End_Status__c</columns>
+        <columns>CMPL123CME__Active__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Config Signature (Default)</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>Configure EU MIR Signatures</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

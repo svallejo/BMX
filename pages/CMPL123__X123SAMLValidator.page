@@ -44,6 +44,11 @@
             padding-left: 10px;
             padding-right: 2px;
         }
+
+        .comment-length-validation-message {
+            display: none;
+            color: red;
+        }
     </style>
 
     <script>
@@ -102,8 +107,50 @@
                             <div class="form-group">
                                 <span style="display:{!if(isCommentReq,'inline','none')};font-weight:bold;color:red;font-size:15px;">*</span>&nbsp;
                                 <label>{!HTMLENCODE($Label.COMMENT)}</label>
-                                <apex:inputTextarea value="{!comment}" rendered="{!if(commentType == 'Dropdown',false,true)}" styleClass="form-control" rows="3"
-                                />
+                                <apex:inputTextarea value="{!comment}"
+                                                    rendered="{!if(commentType == 'Dropdown',false,true)}"
+                                                    styleClass="form-control sso-comment"
+                                                    rows="3"
+                                                    onkeyup="handleKeyUpEvent()"
+                                                    />
+                                <div class="comment-length-validation-message">
+                                    {!HTMLENCODE($Label.cmpl123__comment_cannot_exceed_255_characters)}
+                                </div>
+                                <script>
+                                    let commentInput = document.querySelector('.sso-comment');
+
+                                    commentInput.addEventListener('paste', function(event) {
+                                        let pasteContent = (event.clipboardData).getData('text');
+                                        let commentText = commentInput.value.concat(pasteContent);
+                                        validateCommentLength(commentText);
+                                    });
+
+                                    function handleKeyUpEvent() {
+                                        let commentText = commentInput.value;
+                                        validateCommentLength(commentText);
+                                    }
+
+                                    function validateCommentLength(commentText) {
+                                        let validationMessage = document.querySelector('.comment-length-validation-message');
+                                        let submitButton = document.querySelector('.complete-button');
+
+                                        if (commentText.length > 255) {
+                                            showValidationMessage(validationMessage, submitButton);
+                                        } else if (commentText.length <= 255) {
+                                            hideValidationMessage(validationMessage, submitButton);
+                                        }
+                                    }
+
+                                    function showValidationMessage(validationMessage, submitButton) {
+                                        validationMessage.style.display = "block";
+                                        submitButton.disabled = true;
+                                    }
+
+                                    function hideValidationMessage(validationMessage, submitButton) {
+                                        validationMessage.style.display = "none";
+                                        submitButton.disabled = false;
+                                    }
+                                </script>
                                 <apex:selectList value="{!comment}" rendered="{!if(commentType == 'Dropdown',true,false)}" size="1" styleClass="form-control">
                                     <apex:selectOptions value="{!comments}"></apex:selectOptions>
                                 </apex:selectList>
@@ -113,7 +160,7 @@
                                 <apex:actionStatus id="saveStatus">
                                     <apex:facet name="stop">
                                         <apex:commandButton value="{!HTMLENCODE($Label.cmpl123__complete)} {!HTMLENCODE($Label.cmpl123__e_signature)}" style="width:150px"
-                                            action="{!completeEsign}" status="saveStatus" styleClass="btn btn-base" oncomplete="closePopup({!isError})"
+                                            action="{!completeEsign}" status="saveStatus" styleClass="btn btn-base  complete-button" oncomplete="closePopup({!isError})"
                                             rerender="fm" />
                                     </apex:facet> 
                                     <apex:facet name="start">

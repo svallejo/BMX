@@ -1,82 +1,52 @@
-<apex:page title="{!$Label.cmpl123__report}" showHeader="false" sidebar="false" standardStylesheets="false" controller="CMPL123.DRFRPrintController">
-	<apex:includeScript value="{!URLFOR($Resource.CMPL123__PrintJS)}"/>
+<apex:page title="{!HTMLENCODE(reportName)}" showHeader="false" sidebar="false" standardStylesheets="false" controller="CMPL123.DRFRPrintController">
 
 	<style>
-		.document-embed {
-			position: fixed;
-			left: 0;
-			right: 0;
+		.dwnload-message-box {
+			top: 45%;
 			width: 100%;
-			height: 100%;
 		}
 	</style>
 
 	<script>
 		var renditionUrl = '{!JSENCODE(renditionUrl)}';
 
-		/* SECURITY FALSE POSITIVE: Rich text values in the following code are not escaped because styling is desired for print output. Since a browser does not
-		execute the code and only the PDF renderer does, there is no security risk. */
-		var isIE = {!isIE};
-
-		if (!isIE) {
-			if(renditionUrl != '') {
-				downloadFile(renditionUrl).then(function () {
-					if (downloadedFile != undefined) {
-						var data = downloadedFile;
-
-						printJS({
-							printable: data,
-							type: 'pdf',
-							base64: true,
-							onPrintDialogClose: printJobComplete,
-							onPdfOpen: printJobComplete
-						});
-					}
-				});
-			}
-		} else {
-			document.addEventListener('readystatechange', removeSpinner);
-		}
-
-		function printJobComplete() {
-			removeSpinner();
-			window.close();
-		}
-
 		function removeSpinner() {
 			var spinner = document.getElementsByClassName('slds-spinner_container')[0];
-			if (document.readyState === 'complete' && spinner) {
-				spinner.style = 'display: none';
-			}
+			spinner.style.display = 'none';
 		}
+
+		downloadFile(renditionUrl);
 
 		function downloadFile(filedownLoadURL) {
-			return new Promise( function(resolve, reject) {
-				var b64encoded;
-				var req = new XMLHttpRequest();
-				req.open('GET', filedownLoadURL, true);
-				req.responseType = 'arraybuffer';
-				req.onreadystatechange = function() {
+			var b64encoded;
+			var req = new XMLHttpRequest();
+			req.open('GET', filedownLoadURL, true);
+			req.responseType = 'blob';
+			req.onreadystatechange = function () {
 
-					if (req.readyState == 4 && req.status == 200) {
-						var strings = [], chunksize = 0xffff;
-						var uInt8Array = new Uint8Array(this.response);
-						var len = uInt8Array.length;
-						for (var i = 0; i * chunksize < len; i++){
-							strings.push(String.fromCharCode.apply(null, uInt8Array.subarray(i * chunksize, (i + 1) * chunksize)));
-						}
-						var base64Encoded = btoa(strings.join(''));
-						downloadedFile = base64Encoded;
+				if (req.readyState == 4 && req.status == 200) {
+					if (navigator.appVersion.toString().indexOf('.NET') > 0) {
+						/* 
+						* SECURITY FALSE POSITIVE.
+						* Justification: reportName variable properly escaped by JSENCODE function 
+						*/
+						window.navigator.msSaveBlob(this.response, '{!JSENCODE(reportName)}');
 					}
-				};
-
-				req.onload = function() { resolve(req.response); };
-				req.onerror = function() { reject(req.statusText); };
-				req.send();
-
-			});
+					else {
+						var a = document.getElementById('donwloadlink');
+						url = window.URL.createObjectURL(this.response);
+						a.href = url;
+						try {
+							a.click();
+						} catch (err) { console.info('Don\'t have an access for downloading automatically.') }
+					}
+					removeSpinner();
+				}
+			};
+			req.send();
 		}
 	</script>
+
 
 	<apex:form >
 		<apex:pageblock >
@@ -85,18 +55,26 @@
 
 		<apex:outputPanel rendered="{!showPdfPreview}">
 			<apex:slds />
-			<div id="spinner" class="slds-spinner_container" >
-				<div class="slds-spinner slds-spinner--large slds-spinner--brand">
+			<div id="spinner" class="slds-spinner_container">
+				<div class="slds-spinner slds-spinner_large slds-spinner_brand">
 					<div class="slds-spinner__dot-a"></div>
 					<div class="slds-spinner__dot-b"></div>
 				</div>
 			</div>
-
-			<apex:outputPanel rendered="{!isIE}">
-				<!-- SECURITY FALSE POSITIVE: Rich text values in the following code are not escaped because styling is desired for print output. Since a browser does not
-				execute the code and only the PDF renderer does, there is no security risk. -->
-				<iframe class="document-embed" src="{!renditionUrl}"/>
-			</apex:outputPanel>
+			<div class="slds-text-heading_medium slds-text-align_center slds-is-fixed dwnload-message-box">
+				{!HTMLENCODE($Label.CMPL123__CONSOLIDATED_PRINT_DOWNLOAD_REPORT_MESSAGE_PART1)}&nbsp;{!HTMLENCODE($Label.CMPL123__CONSOLIDATED_PRINT_DOWNLOAD_REPORT_MESSAGE_PART2)}
+				<!-- 
+					/* 
+					* SECURITY FALSE POSITIVE.
+					* Justification: reportName variable properly escaped by in controller and cannot be set outside of the controller 
+					*/
+				 -->
+				<a href="#" id="donwloadlink" download="{!reportName}">{!HTMLENCODE($Label.CMPL123__CONSOLIDATED_PRINT_DOWNLOAD_REPORT_MESSAGE_PART3)}</a>{!HTMLENCODE($Label.CMPL123__CONSOLIDATED_PRINT_DOWNLOAD_REPORT_MESSAGE_PART4)}&nbsp;
+				<apex:outputPanel rendered="{!showBackLink}">
+					<a href="#" onclick="window.history.back(); return false;">{!HTMLENCODE($Label.cmpl123__back_to_completed_reports)}</a>
+				</apex:outputPanel>
+			</div>
 		</apex:outputPanel>
 	</apex:form>
+
 </apex:page>

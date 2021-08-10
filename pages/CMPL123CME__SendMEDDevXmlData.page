@@ -25,25 +25,18 @@
     <script>
         
         window.onload = function loadFunction(){
-            var id = getParameterByName('id');
+            var id = '{!JSENCODE($CurrentPage.parameters.id)}';
             if(id != '' && id != null && (id.length == 15 || id.length == 18))
                 executeOnLoad();
-        }   
-        
-        function getParameterByName(name) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                results = regex.exec(location.search);
-            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         } 
         
         function backToRecord(){
-            var id = getParameterByName('id');
+            var id = '{!JSENCODE($CurrentPage.parameters.id)}';
             if(lexUtil.inLEX()) {
                 lexUtil.lexNavigateToSObject(id);
             }
             else {
-                window.location = '/' + id;
+                window.open(('/' + id), '_self');
             }
         }
         

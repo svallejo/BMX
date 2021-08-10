@@ -1,18 +1,11 @@
-<apex:page sidebar="false"  showHeader="false" readOnly="true" standardStylesheets="false">
+<apex:page >
+    <apex:slds />
 
-    <apex:includeLightning />
-    <div id="lightning"/>
-    <script>
-
-        $Lightning.use("CMPL123:UnifiedAuditReportApp", function () {
-
-            $Lightning.createComponent("CMPL123:UnifiedAuditReport", {'recordId': '{!JSENCODE($CurrentPage.parameters.id)}'}, "lightning", function (cmp) {
-
-
-            });
-        });
-    </script>
-
-
-
+    <div class="slds-scope">
+        <div class="slds-scoped-notification slds-media slds-media_center slds-theme_error" role="status">
+            <div class="slds-media__body">
+                <p>{!$Label.cmpl123__platform_deprecation_component}</p>
+            </div>
+        </div>
+    </div>
 </apex:page>

@@ -9,6 +9,10 @@
         <name>CMPL123__Criteria_Field__c</name>
     </fields>
     <fields>
+        <label><!-- Insufficient Threshold Value --></label>
+        <name>CMPL123__Insufficient_Threshold_Value__c</name>
+    </fields>
+    <fields>
         <label><!-- Model Deployment ID --></label>
         <name>CMPL123__Model_Deployment_ID__c</name>
     </fields>
@@ -29,9 +33,62 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Optional Source Text Field 10 --></label>
+        <name>CMPL123__Opt_Source_Text_Field_10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Optional Source Text Field 1 --></label>
+        <name>CMPL123__Opt_Source_Text_Field_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Optional Source Text Field 2 --></label>
+        <name>CMPL123__Opt_Source_Text_Field_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Optional Source Text Field 3 --></label>
+        <name>CMPL123__Opt_Source_Text_Field_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Optional Source Text Field 4 --></label>
+        <name>CMPL123__Opt_Source_Text_Field_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Optional Source Text Field 5 --></label>
+        <name>CMPL123__Opt_Source_Text_Field_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Optional Source Text Field 6 --></label>
+        <name>CMPL123__Opt_Source_Text_Field_6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Optional Source Text Field 7 --></label>
+        <name>CMPL123__Opt_Source_Text_Field_7__c</name>
+    </fields>
+    <fields>
+        <label><!-- Optional Source Text Field 8 --></label>
+        <name>CMPL123__Opt_Source_Text_Field_8__c</name>
+    </fields>
+    <fields>
+        <label><!-- Optional Source Text Field 9 --></label>
+        <name>CMPL123__Opt_Source_Text_Field_9__c</name>
+    </fields>
+    <fields>
         <help><!-- Order runs from lowest to highest.  Ties cannot be guaranteed to present in a particular order. --></help>
         <label><!-- Order --></label>
         <name>CMPL123__Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Proactive Classification Field --></label>
+        <name>CMPL123__Proactive_Classification_Field__c</name>
+    </fields>
+    <fields>
+        <help><!-- Checking this box indicates that the AI should automatically populate a suggested classification --></help>
+        <label><!-- Proactive Model --></label>
+        <name>CMPL123__Proactive_Model__c</name>
+    </fields>
+    <fields>
+        <label><!-- Probability Threshold --></label>
+        <name>CMPL123__Probability_Threshold__c</name>
     </fields>
     <fields>
         <help><!-- For fields with multiple values, specify each value with a new line --></help>
@@ -45,6 +102,11 @@
     <fields>
         <label><!-- Target Classification Field --></label>
         <name>CMPL123__Target_Classification_Field__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please input the name for the desired workflow status --></help>
+        <label><!-- Workflow Status --></label>
+        <name>CMPL123__Workflow_Status__c</name>
     </fields>
     <layouts>
         <layout>Sparta AI Component Config Layout</layout>
@@ -62,8 +124,16 @@
         </sections>
     </layouts>
     <validationRules>
+        <errorMessage><!-- This field is required for proactive AI models. --></errorMessage>
+        <name>CMPL123__Allow_Classification_If_Proactive_True</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- A Criteria Field must be specified if any secondary criteria is populated. --></errorMessage>
         <name>CMPL123__Allow_Criteria_If_Secondary_Populated</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate a whole number between 0 and 100. --></errorMessage>
+        <name>CMPL123__Allow_Only_Number_Between_0_and_100</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- The Criteria Field is limited to picklist or multi-picklist fields only --></errorMessage>
@@ -74,8 +144,52 @@
         <name>CMPL123__Allow_Only_Picklist_Fields_As_Target</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Source Text Field is limited to text, text area, and text area long. --></errorMessage>
+        <errorMessage><!-- Proactive Classification Field is limited to picklist or multi-picklist fields only. --></errorMessage>
+        <name>CMPL123__Allow_Only_Picklists_As_Classification</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Source Text Field is limited to text, text area, text area long, and rich text field types. --></errorMessage>
         <name>CMPL123__Allow_Only_Text_Fields_As_Source</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Source Text Fields are limited to text, text area, text area long, and rich text field types. --></errorMessage>
+        <name>CMPL123__Allow_Only_Text_Fields_As_Source_Field10</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Source Text Fields are limited to text, text area, text area long, and rich text field types. --></errorMessage>
+        <name>CMPL123__Allow_Only_Text_Fields_As_Source_Field_1</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Source Text Fields are limited to text, text area, text area long, and rich text field types. --></errorMessage>
+        <name>CMPL123__Allow_Only_Text_Fields_As_Source_Field_2</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Source Text Fields are limited to text, text area, text area long, and rich text field types. --></errorMessage>
+        <name>CMPL123__Allow_Only_Text_Fields_As_Source_Field_3</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Source Text Fields are limited to text, text area, text area long, and rich text field types. --></errorMessage>
+        <name>CMPL123__Allow_Only_Text_Fields_As_Source_Field_4</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Source Text Fields are limited to text, text area, text area long, and rich text field types. --></errorMessage>
+        <name>CMPL123__Allow_Only_Text_Fields_As_Source_Field_5</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Source Text Fields are limited to text, text area, text area long, and rich text field types. --></errorMessage>
+        <name>CMPL123__Allow_Only_Text_Fields_As_Source_Field_6</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Source Text Fields are limited to text, text area, text area long, and rich text field types. --></errorMessage>
+        <name>CMPL123__Allow_Only_Text_Fields_As_Source_Field_7</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Source Text Fields are limited to text, text area, text area long, and rich text field types. --></errorMessage>
+        <name>CMPL123__Allow_Only_Text_Fields_As_Source_Field_8</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Source Text Fields are limited to text, text area, text area long, and rich text field types. --></errorMessage>
+        <name>CMPL123__Allow_Only_Text_Fields_As_Source_Field_9</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- An Operator must be specified if any secondary criteria is populated. --></errorMessage>
@@ -84,5 +198,13 @@
     <validationRules>
         <errorMessage><!-- A Result Value must be specified if any secondary criteria is populated. --></errorMessage>
         <name>CMPL123__Allow_Result_If_Secondary_Populated</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field is required for proactive AI models. --></errorMessage>
+        <name>CMPL123__Allow_Threshold_If_Proactive_True</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field is required for proactive AI models. --></errorMessage>
+        <name>CMPL123__Allow_Workflow_Status_If_Proactive_True</name>
     </validationRules>
 </CustomObjectTranslation>

@@ -3508,10 +3508,10 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
     <fields>
         <fullName>CMPL123CME__C9_Evt_Abated_After_Use_Stopped1__c</fullName>
         <deprecated>false</deprecated>
-        <description>C9 - #1 Evt Abated After Use Stopped?</description>
+        <description>C9 - #1 Event Abated After Use Stopped?</description>
         <externalId>false</externalId>
         <inlineHelpText>C9 - #1 Evt Abated After Use Stopped?</inlineHelpText>
-        <label>C9 - #1 Evt Abated After Use Stopped?</label>
+        <label>C9 - #1 Event Abated After Use Stopped?</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -3550,10 +3550,10 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
     <fields>
         <fullName>CMPL123CME__C9_Evt_Abated_After_Use_Stopped2__c</fullName>
         <deprecated>false</deprecated>
-        <description>C9 - #2 Evt Abated After Use Stopped?</description>
+        <description>C9 - #2 Event Abated After Use Stopped?</description>
         <externalId>false</externalId>
         <inlineHelpText>C9 - #2 Evt Abated After Use Stopped?</inlineHelpText>
-        <label>C9 - #2 Evt Abated After Use Stopped?</label>
+        <label>C9 - #2 Event Abated After Use Stopped?</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -4776,7 +4776,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Used if reprocessor e-mail is not being provided in the report.</description>
         <externalId>false</externalId>
-        <label>D7b - E-mail Null</label>
+        <label>D7b - Email Null</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -4807,7 +4807,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor e-mail.</description>
         <externalId>false</externalId>
-        <label>D7b - E-mail</label>
+        <label>D7b - Email</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5207,7 +5207,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Used if reprocessor e-mail is not being provided in the report.</description>
         <externalId>false</externalId>
-        <label>D9 - E-mail Null</label>
+        <label>D9 - Email Null</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5238,7 +5238,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor e-mail.</description>
         <externalId>false</externalId>
-        <label>D9 - E-mail</label>
+        <label>D9 - Email</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5443,7 +5443,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Used if the initial reporter's e-mail is not being provided in the report.</description>
         <externalId>false</externalId>
-        <label>E1 - E-Mail Null</label>
+        <label>E1 - Email Null</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -27582,6 +27582,16 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
             <isRequired>false</isRequired>
         </availableFields>
         <availableFields>
+            <field>CMPL123CME__F2_USER_FACILITY_IMPORTER_RPT_NO_NULL__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>CMPL123CME__F3_UF_Importer_Email__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
             <field>CMPL123CME__F5_Contact_Email_Null__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -29183,6 +29193,16 @@ IF (CMPL123CME__MDR_Clock__c &gt;=11, "Due &gt; 10 Days","") ) ))</formula>
         </availableFields>
         <availableFields>
             <field>CMPL123CME__F1_Event_Location_Addl_Text__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>CMPL123CME__F2_USER_FACILITY_IMPORTER_RPT_NO_NULL__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>CMPL123CME__F3_UF_Importer_Email__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </availableFields>
@@ -50583,6 +50603,30 @@ ISBLANK(  CMPL123CME__A1_Patient_Identifier__c ), CMPL123CME__CMPL123_WF_Status_
         <errorMessage>Catalog number cannot be greater than 11 characters Catalog number cannot be greater than 11 characters Catalog number cannot be greater than 11 characters Catalog number cannot be greater than 11 characters</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>CMPL123CME__E1_Phone_Format_Validation</fullName>
+        <active>false</active>
+        <description>E1 Phone Format Validation</description>
+        <errorConditionFormula>AND( ISPICKVAL(CMPL123CME__EMDR_Form_Version__c, "2021 Nov-30"), NOT(ISBLANK(CMPL123CME__E1_Phone__c)),
+	NOT(REGEX( CMPL123CME__E1_Phone__c , "\\+\\d{1,3}\\(\\d{3}\\)\\d{3}\\-\\d{4}x\\d{1,5}$")),
+	NOT(REGEX( CMPL123CME__E1_Phone__c , "\\+\\d{1,3}\\(\\d{3}\\)\\d{3}\\-\\d{4}$")),
+	NOT(REGEX( CMPL123CME__E1_Phone__c , "\\+\\d{3}\\(\\d{3,4}\\)\\d{7,10}$")),
+	NOT(REGEX( CMPL123CME__E1_Phone__c , "\\+\\d{3}\\(\\)\\d{7,10}$")))</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__E1_Phone__c</errorDisplayField>
+        <errorMessage>Ph# format: “+”country_code“(”area_code“)”3 dgt prefix“-”4 dgt#“x” upto 5 dgt extn e.g. +1(240)276-0001x12345; if extn n/a, leave it; International# format e.g. “+”phone_country“(”phone_city“)”phone_local: +011(123)1234567890 /if no city: +011()1234567890</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CMPL123CME__G1_Contact_Ofc_Phone_Format_Validation</fullName>
+        <active>false</active>
+        <description>G1 - Contact Office Phone Number Format Validation</description>
+        <errorConditionFormula>AND( ISPICKVAL(CMPL123CME__EMDR_Form_Version__c, "2021 Nov-30"), NOT(ISBLANK( CMPL123CME__G1_Contact_Office_Phone_Number__c )),
+	NOT(REGEX( CMPL123CME__G1_Contact_Office_Phone_Number__c , "\\+\\d{1,3}\\(\\d{3}\\)\\d{3}\\-\\d{4}x\\d{1,5}$")),
+	NOT(REGEX( CMPL123CME__G1_Contact_Office_Phone_Number__c , "\\+\\d{1,3}\\(\\d{3}\\)\\d{3}\\-\\d{4}$")),
+	NOT(REGEX( CMPL123CME__G1_Contact_Office_Phone_Number__c , "\\+\\d{3}\\(\\d{3,4}\\)\\d{7,10}$")),
+	NOT(REGEX( CMPL123CME__G1_Contact_Office_Phone_Number__c , "\\+\\d{3}\\(\\)\\d{7,10}$")))</errorConditionFormula>
+        <errorDisplayField>CMPL123CME__G1_Contact_Office_Phone_Number__c</errorDisplayField>
+        <errorMessage>Ph# format: “+”country_code“(”area_code“)”3 dgt prefix“-”4 dgt#“x” upto 5 dgt extn e.g. +1(240)276-0001x12345; if extn n/a, leave it; International# format e.g. “+”phone_country“(”phone_city“)”phone_local: +011(123)1234567890 /if no city: +011()1234567890</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>CMPL123CME__G2_Other_Report_Source</fullName>
         <active>true</active>
         <description>Validation on G2 Other Report Source field value by providing more than 40 characters for EMDR 2018 version only.</description>
@@ -50699,6 +50743,17 @@ INCLUDES( CMPL123CME__H1_Type_of_Reportable_Event_2021__c , 'Summary report')
         <errorMessage>Register site must have a value</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>CMPL123CME__Delete_Attachments_Files</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Delete Attachments / Files</masterLabel>
+        <openType>replace</openType>
+        <page>CMPL123CME__EMDRDeleteFile</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
     <webLinks>
         <fullName>CMPL123CME__Multiple_EMDR_Print</fullName>
         <availability>online</availability>

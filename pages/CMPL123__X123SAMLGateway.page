@@ -1,5 +1,5 @@
 <!-- X123Gateway Page used as Site Active Home Page to receive the SAMLResponse from IDP SSO Server--> 
-<apex:page showHeader="false" controller="CMPL123.X123SAMLGatewayController">
+<apex:page showHeader="false" controller="CMPL123.X123SAMLGatewayController" action="{!redirectToEncryptedUrl}">
     <script>
         window.onload = function loadFunction(){
             if(!{!isError})

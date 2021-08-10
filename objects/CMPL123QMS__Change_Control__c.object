@@ -8203,14 +8203,14 @@ ISCHANGED(Total_Impact_Assessments_Completed__c))</errorConditionFormula>
     </validationRules>
     <validationRules>
         <fullName>Restrict_CRB_Qual_Approver_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "CRB Quality Approver" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(Quality_Approver__c), NOT(ISBLANK(Quality_Approver__c)),NOT(Includes(Quality_Approver__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
         <errorMessage>User selected in "CRB Quality Approver" doesn't have the needed role. Select another user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_Final_Approver1_to_CC_Editor</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>User selected in "Final Approver 1" doesn't have the needed role. Select another user.</description>
         <errorConditionFormula>AND(ISCHANGED(Assigned_To__c), NOT(ISBLANK(Assigned_To__c)),NOT(Includes(Assigned_To__r.TWD_Role__c ,'Change Control Editor')))</errorConditionFormula>
         <errorMessage>User selected in "Final Approver 1" doesn't have the needed role. Select another user.</errorMessage>

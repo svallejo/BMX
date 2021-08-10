@@ -1,6 +1,6 @@
-<apex:page StandardController="CMPL123CME__Questionnaire__c" extensions="CMPL123CME.CMPL_123_QItems" showheader="false" sidebar="false" id="pg" >
-    <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/jquery-ui-1.12.1/js/jquery-3.4.0.min.js')}"/>
-
+<apex:page StandardController="CMPL123CME__Questionnaire__c" extensions="CMPL123CME.CMPL_123_QItems" showheader="false" sidebar="false" id="pg"    >
+    <apex:includeScript value="{!URLFOR($Resource.CMPL123CME__AASRAggregation, '/js/jquery-3.5.1.min.js')}"/>
+    
     <style>
         .popupBackground {background-color:black;opacity: 0.20;filter: alpha(opacity = 20);position: absolute;width: 100%;height: 100%;top: 0;left: 0;z-index: 9998;}
         .custPopup {width: 480px;height:auto;left:25%;top:20px;background-color:white;border-width: 2px;border-style:solid;z-index: 9999;align:center;padding:10px;position: absolute;}
@@ -11,12 +11,8 @@
             margin-right:2%;
         }
     </style>
-    <script type="text/javascript">
-        var __sfdcSessionId = '{!GETSESSIONID()}';
-    </script>
-
-    <apex:includeScript value="/soap/ajax/26.0/connection.js"/>
-    <apex:includeScript value="/support/console/46.0/integration.js"/>
+	
+    <apex:includeScript value="/support/console/49.0/integration.js"/>
     <!-- JS supports for Lightning Experience navigations -->
     <apex:includeScript value="{!URLFOR($Resource.CMPL123__Compliance123, '/js/lexUtil.js')}"/>
 
@@ -59,13 +55,16 @@
             
             if (qtsArr.length > 0) {
                 Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.CMPL_123_QItems.setQts}',qtsArr,relatedId,function(result, event){
-                    if (event.status) {
-                        //Adding support for Lightning Experience and Classic in Console App
+                    if (event.status && event.result === 'Success') {
+                        //Fix supports for Lightning and Classic Console app.
                         if(lexUtil.isConsoleTheme()){
                             lexUtil.refreshFocusedParentTab();
                         }
-                        //Adding support for Lightning Experience and Classic
+                        //conditions to navigate based on user experience
                         lexUtil.navigateByUserTheme(recordId, pageId);
+                    } else {
+                        alert(event.result);
+                        setSaveButtonAsActive(elementObj, true);
                     }
                 }, {escape:true});
             } else {

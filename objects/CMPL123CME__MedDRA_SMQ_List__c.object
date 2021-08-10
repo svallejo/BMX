@@ -66,6 +66,18 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>CMPL123CME__Transaction_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to store an unique ID</description>
+        <externalId>false</externalId>
+        <label>Transaction ID</label>
+        <length>25</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CMPL123CME__active__c</fullName>
         <defaultValue>true</defaultValue>
         <deprecated>false</deprecated>
@@ -77,12 +89,36 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>CMPL123CME__meddra_release_key__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to store an release info</description>
+        <externalId>true</externalId>
+        <label>MedDRA Release Key</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CMPL123CME__smq_algorithm__c</fullName>
         <deprecated>false</deprecated>
         <description>If the SMQ was developed for use with an algorithm, the Boolean expression of the algorithm is included. “N” if the SMQ does not utilize an algorithm</description>
         <externalId>false</externalId>
         <inlineHelpText>If the SMQ was developed for use with an algorithm, the Boolean expression of the algorithm is included. “N” if the SMQ does not utilize an algorithm</inlineHelpText>
         <label>SMQ Algorithm</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__smq_desc_kanji__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Japanese translation of SMQ definition</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Japanese translation of SMQ definition</inlineHelpText>
+        <label>SMQ Description Kanji</label>
         <length>2000</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -99,6 +135,19 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__smq_kanji__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SMQ Kanji Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SMQ Kanji Name</inlineHelpText>
+        <label>SMQ Kanji</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>CMPL123CME__smq_level__c</fullName>

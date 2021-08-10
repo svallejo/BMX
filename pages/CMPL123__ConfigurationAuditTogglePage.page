@@ -1,0 +1,20 @@
+<apex:page id="ConfigurationAuditTogglePage">
+    <apex:includeLightning />
+    <apex:includeScript value="/lightning/lightning.out.js" />
+
+    <div id="lightning" />
+
+    <script>
+        let currentUrl = new URL(window.location.href);
+        let activeTab = currentUrl.searchParams.get("activeTab");
+
+        $Lightning.use("CMPL123:ConfigurationAuditToggleApp", function() {
+            $Lightning.createComponent("CMPL123:configurationAuditToggle",
+                {
+                    "activeTab": activeTab
+                },
+                "lightning",
+                function(cmp) {});
+        });
+    </script>
+</apex:page>

@@ -81,12 +81,18 @@
             <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__RDCConfigurationPage?activeTab=rdcAdminAdvancedLookupContainer', '/apex/RDCConfigurationPage?activeTab=rdcAdminAdvancedLookupContainer')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.TO_CONFIGURE_ENHANCED_LOOKUP_SEARCH}</span><br /><br />
             <!--Added support for redirecting URLs in Lightning Experience and Classic -->
             <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__RDCConfigurationPage?activeTab=rdcMultiEditConfiguration', '/apex/RDCConfigurationPage?activeTab=rdcMultiEditConfiguration')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.TO_CONFIGURE_MULTI_USER_NOTIFICATIONS}</span><br /><br />
+            <!--Added support for redirecting URLs in Lightning Experience and Classic -->
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__RDCConfigurationPage?activeTab=rdcFieldsVisibilityConfiguration', '/apex/RDCConfigurationPage?activeTab=rdcFieldsVisibilityConfiguration')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.TO_CONFIGURE_FIELDS_VISIBILITY}</span><br /><br />
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__RDCConfigurationPage?activeTab=rdcSectionsVisibilityConfiguration', '/apex/RDCConfigurationPage?activeTab=rdcSectionsVisibilityConfiguration')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!$Label.TO_CONFIGURE_SECTIONS_VISIBILITY}</span><br /><br />
             <!-- To add detail family report to setup starts here -->
             <apex:outputPanel rendered="{!IF(LEN(JSINHTMLENCODE(startURL)) > 0, true, false)}">
                 <span style="font-weight:bold;font-size:16px">7. {!HTMLENCODE($Label.CMPL123__DETAIL_FAMILY_RECORD_REPORT_ADMIN)}</span><br /><br />
                 <span style="font-size:14px"><apex:outputLink value="{!startURL}" style="color:blue" target="_blank">{!HTMLENCODE($Label.cmpl123__click_here)}</apex:outputLink> {!HTMLENCODE($Label.cmpl123__to_build_detail_family_record_reports)}</span><br/><br/>
             </apex:outputPanel>
             <!-- To add detail family report to setup ends here -->
+            <span style="font-weight:bold;font-size:16px">8. {!HTMLENCODE($Label.CAT_TWD_CONFIGURATION_AUDIT_TRAIL)}</span><br /><br />
+            <!--Added support for redirecting URLs in Lightning Experience and Classic -->
+            <span style="font-size:14px"><apex:outputLink value="{!if($User.UIThemeDisplayed == 'Theme4d', '/one/one.app#/alohaRedirect/apex/CMPL123__ConfigurationAuditTogglePage', '/apex/ConfigurationAuditTogglePage')}" style="color:blue" target="_blank">{!$Label.cmpl123__click_here}</apex:outputLink> {!HTMLENCODE($Label.CAT_TO_CONFIGURE_THE_CONFIGURATION_AUDIT_TRAIL)}</span><br /><br />
         </div>
     </apex:pageBlock>
     <script>

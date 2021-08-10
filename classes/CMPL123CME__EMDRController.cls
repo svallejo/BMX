@@ -120,6 +120,7 @@ global class ComplaintCode {
 }
 global class Field {
     global String apiName;
+    global String helpText;
     global Boolean isReadOnly;
     global String isRequired;
     global String label;
@@ -127,6 +128,9 @@ global class Field {
     global String referenceObjKeyPrefix;
     global String tabPosition;
     global Field(String label, Boolean isReadOnly, String tabPosition, String apiName, String isRequired, Integer length, String referenceObjKeyPrefix) {
+
+    }
+    global Field(String label, Boolean isReadOnly, String tabPosition, String apiName, String isRequired, Integer length, String referenceObjKeyPrefix, String helpText) {
 
     }
 }

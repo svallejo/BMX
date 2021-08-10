@@ -53,6 +53,30 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
+        <fullName>CMPL123CME__Backup_JSON__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This is a backend field for cleanup job</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is a backend field for cleanup job</inlineHelpText>
+        <label>Backup JSON</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__Transaction_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to store an unique ID</description>
+        <externalId>false</externalId>
+        <label>Transaction ID</label>
+        <length>25</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CMPL123CME__active__c</fullName>
         <defaultValue>true</defaultValue>
         <deprecated>false</deprecated>
@@ -61,6 +85,18 @@
         <label>Active</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__meddra_release_key__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to store an release info</description>
+        <externalId>true</externalId>
+        <label>MedDRA Release Key</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>CMPL123CME__soc_abbrev__c</fullName>
@@ -155,6 +191,58 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>CMPL123CME__soc_kana1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SOC Japanese reading (half-width kana). If there is another reading</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SOC Japanese reading (half-width kana). If there is another reading</inlineHelpText>
+        <label>SOC Kana1</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__soc_kana2__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SOC Japanese reading (half-width kana). If there is another reading</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SOC Japanese reading (half-width kana). If there is another reading</inlineHelpText>
+        <label>SOC Kana2</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__soc_kana__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SOC Japanese reading (half-width kana)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SOC Japanese reading (half-width kana)</inlineHelpText>
+        <label>SOC Kana</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__soc_kanji__c</fullName>
+        <deprecated>false</deprecated>
+        <description>SOC Kanji Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SOC Kanji Name</inlineHelpText>
+        <label>SOC Kanji</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CMPL123CME__soc_name__c</fullName>
         <deprecated>false</deprecated>
         <description>Full name of the System Organ Class</description>
@@ -165,6 +253,20 @@
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__soc_order__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Internationally agreed SOC sequence number</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Internationally agreed SOC sequence number</inlineHelpText>
+        <label>SOC Order</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>

@@ -134,16 +134,22 @@
                                                 {!mapForDateValuesReferenceFieldsInRelatedSection[childRecord[childRecordField.value]]}
                                             </apex:outputText>
 
-                                            <apex:outputText rendered="{!childRecordField.dataType == 'REFERENCE'}"
+                                            <apex:outputText rendered="{!childRecordField.dataType == 'REFERENCE' && isHideSalesforceUniqueIdentifiers}" 
+                                                            value="{! IF(AND(childRecord[childRecordField.referenceName] != null
+                                                                ,childRecord[childRecordField.referenceName] != '')
+                                                                ,childRecord[childRecordField.referenceName]
+                                                                ,childRecord[childRecordField.value])}" />
+
+                                            <apex:outputText rendered="{!childRecordField.dataType == 'REFERENCE' && !isHideSalesforceUniqueIdentifiers}"
                                                              value="{! IF(AND(childRecord[childRecordField.referenceName] != null
-                                                                    ,childRecord[childRecordField.referenceName] != '')
+                                                                ,childRecord[childRecordField.referenceName] != '')
                                                                 ,childRecord[childRecordField.referenceName] + ' (' +  childRecord[childRecordField.value] + ')'
-                                                                ,childRecord[childRecordField.value])}"/> 
-                                            
-                                            <apex:outputField rendered="{!childRecordField.dataType == 'TEXTAREA' || 
-                                                                          childRecordField.dataType == 'RICHTEXTAREA'}" 
-                                                              value="{!childRecord[childRecordField.value]}"
-                                                              styleClass="sparta-white-space-pre-line sparta-padding-left-5" />
+                                                                ,childRecord[childRecordField.value])}"/>
+
+                                            <apex:outputField rendered="{! AND (childRecordField.dataType == 'TEXTAREA' || 
+                                                                childRecordField.dataType == 'RICHTEXTAREA', childRecord[childRecordField.value] != null)}" 
+                                                            value="{!childRecord[childRecordField.value]}"
+                                                            styleClass="sparta-white-space-pre-line sparta-padding-left-5" />
 
                                             <apex:outputText rendered="{!childRecordField.dataType == 'IMAGESTRING'}"
                                                              value="{!childRecord[childRecordField.value]}"

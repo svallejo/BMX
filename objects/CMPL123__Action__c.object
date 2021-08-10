@@ -148,7 +148,7 @@
         <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Due Date</label>
-        <required>true</required>
+        <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -242,4 +242,12 @@
         <showsStatus>false</showsStatus>
         <url>/apex/CMPL123__X123ReportTemplate?id={!CMPL123__Action__c.Id}</url>
     </webLinks>
+    <validationRules>
+        <fullName>CMPL123__Due_Date_Required</fullName>
+        <active>true</active>
+        <description>Due Date is required when validation is active.</description>
+        <errorConditionFormula>ISBLANK( CMPL123__Due_Date__c )</errorConditionFormula>
+        <errorDisplayField>CMPL123__Due_Date__c</errorDisplayField>
+        <errorMessage>Due Date is required.</errorMessage>
+    </validationRules>
 </CustomObject>

@@ -1389,11 +1389,16 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <externalId>false</externalId>
         <label>Findings Code</label>
         <lookupFilter>
-            <active>false</active>
+            <active>true</active>
             <filterItems>
                 <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Type__c</field>
                 <operation>equals</operation>
                 <value>FINDING CODE</value>
+            </filterItems>
+            <filterItems>
+                <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Inactive__c</field>
+                <operation>equals</operation>
+                <value>False</value>
             </filterItems>
             <isOptional>true</isOptional>
         </lookupFilter>
@@ -1478,13 +1483,18 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <externalId>false</externalId>
         <label>Root Cause Code</label>
         <lookupFilter>
-            <active>false</active>
+            <active>true</active>
             <filterItems>
                 <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Type__c</field>
                 <operation>equals</operation>
                 <value>ROOT CAUSE CODE</value>
             </filterItems>
-            <isOptional>false</isOptional>
+            <filterItems>
+                <field>CMPL123CME__Complaint_Code__c.CMPL123CME__Inactive__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </filterItems>
+            <isOptional>true</isOptional>
         </lookupFilter>
         <referenceTo>CMPL123CME__Complaint_Code__c</referenceTo>
         <relationshipLabel>Investigations/Evaluations (Root Cause Code)</relationshipLabel>

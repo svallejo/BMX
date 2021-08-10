@@ -5977,6 +5977,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CMPL123__Action__c.CMPL123__Due_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CMPL123__Address__c.CMPL123__Address_Line_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8182,6 +8187,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>WorkOrder.LocationId</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>WorkOrder.ParentWorkOrderId</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8459,6 +8469,9 @@
         <layout>CMPL123CME__Concomitant_Product__c-CMPL123CME__Concomitant Product Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123CME__Configure_EU_MIR_Signature__mdt-CMPL123CME__Configure EU MIR Signature Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123CME__EMDR_Required_Field__mdt-CMPL123CME__EMDR Required Field Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8537,6 +8550,12 @@
     <layoutAssignments>
         <layout>CMPL123CME__MEDDEV__c-CMPL123CME__MEDDEV Layout</layout>
         <recordType>CMPL123CME__MEDDEV__c.BMX_Lock_Meddev</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRAFileReadConfiguration__mdt-CMPL123CME__MedDRAFileReadConfiguration Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123CME__MedDRA_Child_Object_Mapping__mdt-CMPL123CME__MedDRA Child Object Mapping Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123CME__MedDRA_Hierarchy__c-CMPL123CME__MedDRA Hierarchy Layout</layout>
@@ -8910,6 +8929,9 @@
         <layout>CMPL123__AI_Insights_Config__mdt-CMPL123__AI Insights Config Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__AI_Root_Cause_Advisor_Config__mdt-CMPL123__AI Root Cause Advisor Config Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__AcknowledgementMapping__c-CMPL123__AcknowledgmentMapping Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8946,6 +8968,12 @@
         <layout>CMPL123__Audit_Trail_Entry__c-CMPL123__Audit Trial Entry Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__Configuration_Audit_Trail_Entry__c-CMPL123__Configuration Audit Trail Entry Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Configuration_Audit_Trail_Error_Log__c-CMPL123__Configuration Audit Trail Error Log Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__Consolidated_Report_Config__mdt-CMPL123__Consolidated Report Config Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8960,6 +8988,15 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Device__c-CMPL123__Device Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__File_Visibility_Whitelist__mdt-CMPL123__File Visibility Whitelist Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Integration_Log__c-CMPL123__Integration Log Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Intelligent_Forms_Config_Item__mdt-CMPL123__Intelligent Forms Config Item Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__Job_Field_Map__c-CMPL123__Job Field Map Layout</layout>
@@ -9010,6 +9047,12 @@
         <layout>CMPL123__Product__c-CMPL123__Product Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__QuarticIntegrationConfiguration__mdt-CMPL123__Quartic Integration Configuration Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__Quartic_Integration_Config__mdt-CMPL123__Quartic Integration Config Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__RAR_Child2_Test_Object__c-CMPL123__RAR Child2 Test  Object Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -9053,6 +9096,9 @@
         <layout>CMPL123__Session_State_Insights__c-CMPL123__Session State Insight Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CMPL123__Sparta_Proactive_AI_Object_Settings__mdt-CMPL123__Sparta Proactive AI Object Settings Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>CMPL123__TWDLog__c-CMPL123__TWDLog Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -9063,6 +9109,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__TWD_Deletion_Whitelist__mdt-CMPL123__TWD Deletion Whitelist Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__TWD_Heat_Map_Configuration__mdt-CMPL123__TWD Heat Map Configuration Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__TWD_Horizontal_Tree_Grid__mdt-CMPL123__TWD Horizontal Tree Grid Layout</layout>
@@ -9087,6 +9136,15 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__WF_History__c-CMPL123__Workflow History Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__WF_Phase_Status__c-CMPL123__Workflow Phase Status Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__WF_Phase__c-CMPL123__Workflow Phase Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>CMPL123__WF_Rule_Phase__c-CMPL123__Workflow Rule Phase Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CMPL123__WF_Rule__c-CMPL123__Workflow Rule Layout</layout>
@@ -9929,6 +9987,10 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123CME__MedDRA_Import</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123CME__Questionnaire__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -10081,6 +10143,10 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>CMPL123__Configuration_Audit_Trail_Entry__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>CMPL123__Contact__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -10126,6 +10192,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>CMPL123__WF_Action__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>CMPL123__WF_Phase__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>

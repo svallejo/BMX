@@ -68,6 +68,18 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>CMPL123CME__Transaction_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to store an unique ID</description>
+        <externalId>false</externalId>
+        <label>Transaction ID</label>
+        <length>25</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CMPL123CME__active__c</fullName>
         <defaultValue>true</defaultValue>
         <deprecated>false</deprecated>
@@ -77,6 +89,18 @@
         <label>Active</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CMPL123CME__meddra_release_key__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to store an release info</description>
+        <externalId>true</externalId>
+        <label>MedDRA Release Key</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>CMPL123CME__smq_code__c</fullName>
@@ -304,9 +328,12 @@
         <fullName>CMPL123CME__LLT_Term_Code_is_required_field</fullName>
         <active>true</active>
         <description>The rule contains a field that is mandatory.</description>
-        <errorConditionFormula>ISBLANK(CMPL123CME__term_code_LLT__c)</errorConditionFormula>
+        <errorConditionFormula>AND(
+	    ISBLANK(CMPL123CME__term_code_LLT__c), 
+	    ISBLANK(CMPL123CME__term_code_PT__c), 
+	    ISBLANK(CMPL123CME__Term_Code_SMQ__c))</errorConditionFormula>
         <errorDisplayField>CMPL123CME__term_code_LLT__c</errorDisplayField>
-        <errorMessage>This field cannot be empty</errorMessage>
+        <errorMessage>Lowest Level Term or Preferred Term or Sub-ordinate SMQ term is required</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>CMPL123CME__Last_Modified_Ver_Of_Term_required_field</fullName>
