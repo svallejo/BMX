@@ -5,6 +5,7 @@ trigger Change_ControlTrigger on CMPL123QMS__Change_Control__c (before update){
     if(trigger.isbefore && trigger.isupdate)
     {
         for(CMPL123QMS__Change_Control__c ch:Trigger.new){
+            parentIds.add(ch.Change_Owner__c);
             parentIds.add(ch.CRB_Approver_1__c);
             parentIds.add(ch.CRB_Approver_2__c);
             parentIds.add(ch.CRB_Approver_3__c);
@@ -37,6 +38,11 @@ trigger Change_ControlTrigger on CMPL123QMS__Change_Control__c (before update){
 
     for (CMPL123QMS__Change_Control__c c : Trigger.new)
     {
+        if (parentMap.get(c.Change_Owner__c) !=null)
+       { 
+          c.Change_Owner__c.addError('User selected in "Change Owner" does not have the needed role. Select another user');
+       }
+       
        // if the parent id is in the map, that means the record save fails
        if (parentMap.get(c.CRB_Approver_1__c) !=null)
        { 
@@ -69,7 +75,7 @@ trigger Change_ControlTrigger on CMPL123QMS__Change_Control__c (before update){
           c.CRB_Approver_6__c.addError('User selected in "CRB Approver 6" does not have the needed role. Select another user');
        }
         
-	   if (parentMap.get(c.Quality_Approver__c) !=null)
+       if (parentMap.get(c.Quality_Approver__c) !=null)
        { 
           c.Quality_Approver__c.addError('User selected in "CRB Quality Approver" does not have the needed role. Select another user.');
        }
