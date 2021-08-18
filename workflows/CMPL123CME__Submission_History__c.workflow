@@ -5,6 +5,10 @@
         <description>Email notification when submission history is "Failed"</description>
         <protected>false</protected>
         <recipients>
+            <recipient>BMX_US_Approver</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
             <recipient>BMX_US_User</recipient>
             <type>group</type>
         </recipients>
