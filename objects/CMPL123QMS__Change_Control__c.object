@@ -8029,13 +8029,13 @@ ISPICKVAL(Risk_Assessment__c, "")
     <validationRules>
         <fullName>Change_Impact_on_Validation_Required</fullName>
         <active>true</active>
-        <description>Change Impact on Required Validation Description is required if Change Impacts the Validation is Yes</description>
+        <description>Required Validation Description is required if Change Impacts the Validation is Yes</description>
         <errorConditionFormula>AND(
          ISPICKVAL(Change_impacts_the_validation__c, "Yes"),
          ISBLANK( Change_Impact_on_Validation_Description__c )
 )</errorConditionFormula>
         <errorDisplayField>Change_Impact_on_Validation_Description__c</errorDisplayField>
-        <errorMessage>Change Impact on Required  Validation Description is required if Change Impacts the Validation is Yes</errorMessage>
+        <errorMessage>Required  Validation Description is required if Change Impacts the Validation is Yes</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Change_Successful</fullName>
