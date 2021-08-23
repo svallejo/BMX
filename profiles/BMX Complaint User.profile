@@ -1316,6 +1316,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AIModelConfigDTO</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AIModelConfigDTOTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__AIRcaAnalysis</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1428,6 +1436,38 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AISuggestionColumnHeaderDTO</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AISuggestionColumnHeaderDTOTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AISuggestionContainerController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AISuggestionContainerControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AISuggestionContainerDTO</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AISuggestionContainerDTOTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AISuggestionDTO</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AISuggestionDTOTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__AISuggestionProactiveService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -1436,11 +1476,35 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__AISuggestionTableDTO</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AISuggestionTableDTOTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__AISuggestionTriggerHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__AISuggestionTriggerHandlerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AcceptPairDTO</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AcceptPairDTOTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AcceptResultDTO</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__AcceptResultDTOTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -2077,6 +2141,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__ChildRelationshipDescribes</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ColumnDefinition</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__ColumnDefinitionTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -3724,6 +3796,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__MDCAcknowledgementController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__MDCAcknowledgementControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -4600,6 +4676,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__RowActionsDefinition</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__RowActionsDefinitionTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__SObjectDescribe</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -4808,6 +4892,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CMPL123__TableData</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__TableDataTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CMPL123__TaskAuditHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -5013,6 +5105,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CMPL123__UserControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__UserDetailController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CMPL123__UserDetailControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
