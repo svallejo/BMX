@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>CMPL123__Enabled_Status__c</field>
-        <value xsi:type="xsd:string">Off</value>
+        <value xsi:type="xsd:string">On</value>
     </values>
     <values>
         <field>CMPL123__Level__c</field>
