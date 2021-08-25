@@ -158,7 +158,6 @@ TEXT((DATEVALUE (CMPL123CME__Submitted_Date_Time__c)) - BMX_Local_Assessment__r.
         <deprecated>false</deprecated>
         <description>Unique patient identifier assigned by the reporter.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Patient Identifier</inlineHelpText>
         <label>A1 - Patient Identifier</label>
         <length>10</length>
         <required>false</required>
@@ -172,6 +171,7 @@ TEXT((DATEVALUE (CMPL123CME__Submitted_Date_Time__c)) - BMX_Local_Assessment__r.
         <deprecated>false</deprecated>
         <description>Units of patient age.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Age Unit</inlineHelpText>
         <label>A2 - Age Units (Patient)</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -223,6 +223,7 @@ TEXT((DATEVALUE (CMPL123CME__Submitted_Date_Time__c)) - BMX_Local_Assessment__r.
         <deprecated>false</deprecated>
         <description>Patient's age when the event occurred.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Age</inlineHelpText>
         <label>A2 - Age at Time of Event</label>
         <precision>5</precision>
         <required>false</required>
@@ -268,6 +269,7 @@ TEXT((DATEVALUE (CMPL123CME__Submitted_Date_Time__c)) - BMX_Local_Assessment__r.
         <deprecated>false</deprecated>
         <description>Patient's date of birth.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Date of Birth</inlineHelpText>
         <label>A2 - DOB</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -507,7 +509,6 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Ethnicity</description>
         <externalId>false</externalId>
-        <inlineHelpText>Ethnicity</inlineHelpText>
         <label>A5a - Ethnicity</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -549,7 +550,6 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Race</description>
         <externalId>false</externalId>
-        <inlineHelpText>Race</inlineHelpText>
         <label>A5b - Race</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -607,7 +607,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>The type of event being reported.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Adverse Event/Product Problem</inlineHelpText>
+        <inlineHelpText>Report Type</inlineHelpText>
         <label>B1 - Adverse Event/Product Problem</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -708,6 +708,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Resulting patient conditions due to the adverse event(s) being reported.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Outcomes attributed to adverse event</inlineHelpText>
         <label>B2 - Outcomes Attributed to AE</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -832,7 +833,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Date the report is submitted to FDA. Review this with Rosalind compared to HL7 spreadsheet.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Date of this Report (Device only)</inlineHelpText>
+        <inlineHelpText>Date of this Report</inlineHelpText>
         <label>B4 - Report Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -868,6 +869,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Other known patient conditions including preexisting medical diagnoses. Used only for adverse event reports.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Other relevant history, including preexisting medical conditions</inlineHelpText>
         <label>B7 - Other Relevant  History</label>
         <length>32765</length>
         <trackHistory>false</trackHistory>
@@ -1202,7 +1204,6 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>C3 - #1 Dose</description>
         <externalId>false</externalId>
-        <inlineHelpText>Dose</inlineHelpText>
         <label>C3 - #1 Dose</label>
         <precision>7</precision>
         <required>false</required>
@@ -1626,7 +1627,6 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Frequency</description>
         <externalId>false</externalId>
-        <inlineHelpText>Frequency</inlineHelpText>
         <label>C3 - #1 Frequency</label>
         <precision>3</precision>
         <required>false</required>
@@ -2588,7 +2588,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>C4-#1 Treatment/Therapy Start Date</description>
         <externalId>false</externalId>
-        <inlineHelpText>C4-#1 Treatment/Therapy Start Date</inlineHelpText>
+        <inlineHelpText>Treatment Dates/Therapy Dates - Start Date</inlineHelpText>
         <label>C4-#1 Treatment/Therapy Start Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -2632,7 +2632,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>C4-#1 Treatment/Therapy Stop Date</description>
         <externalId>false</externalId>
-        <inlineHelpText>C4-#1 Treatment/Therapy Stop Date</inlineHelpText>
+        <inlineHelpText>Treatment Dates/Therapy Dates - Stop Date</inlineHelpText>
         <label>C4-#1 Treatment/Therapy Stop Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -2676,7 +2676,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>C4-#2 Treatment/Therapy Start Date</description>
         <externalId>false</externalId>
-        <inlineHelpText>C4-#2 Treatment/Therapy Start Date</inlineHelpText>
+        <inlineHelpText>Treatment Dates/Therapy Dates - Start Date</inlineHelpText>
         <label>C4-#2 Treatment/Therapy Start Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -2720,7 +2720,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>C4-#2 Treatment/Therapy Stop Date</description>
         <externalId>false</externalId>
-        <inlineHelpText>C4-#2 Treatment/Therapy Stop Date</inlineHelpText>
+        <inlineHelpText>Treatment Dates/Therapy Dates - Stop Date</inlineHelpText>
         <label>C4-#2 Treatment/Therapy Stop Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -3114,7 +3114,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>C7 - #1 Exp. Date</description>
         <externalId>false</externalId>
-        <inlineHelpText>C7 - #1 Exp. Date</inlineHelpText>
+        <inlineHelpText>Expiration date</inlineHelpText>
         <label>C7 - #1 Exp. Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -3158,7 +3158,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>C7 - #2 Exp. Date</description>
         <externalId>false</externalId>
-        <inlineHelpText>C7 - #2 Exp. Date</inlineHelpText>
+        <inlineHelpText>Expiration date</inlineHelpText>
         <label>C7 - #2 Exp. Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -3254,7 +3254,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>C8 - #1 Event Abated After Use Stopped?</description>
         <externalId>false</externalId>
-        <inlineHelpText>C8 - #1 Event Abated After Use Stopped?</inlineHelpText>
+        <inlineHelpText>Event Abated After Use Stopped or Dose Reduced?</inlineHelpText>
         <label>C8 - #1 Event Abated After Use Stopped?</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -3296,7 +3296,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>C8 - #2 Event Abated After Use Stopped?</description>
         <externalId>false</externalId>
-        <inlineHelpText>C8 - #2 Event Abated After Use Stopped?</inlineHelpText>
+        <inlineHelpText>Event Abated After Use Stopped or Dose Reduced?</inlineHelpText>
         <label>C8 - #2 Event Abated After Use Stopped?</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -3426,7 +3426,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>C9 - #1 Event Reappeared After Reintro</description>
         <externalId>false</externalId>
-        <inlineHelpText>C9 - #1 Event Reappeared After Reintro</inlineHelpText>
+        <inlineHelpText>Event Reappeared After Reintroduction</inlineHelpText>
         <label>C9 - #1 Event Reappeared After Reintro</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -3468,7 +3468,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>C9 - #2 Event Reappeared After Reintro</description>
         <externalId>false</externalId>
-        <inlineHelpText>C9 - #2 Event Reappeared After Reintro</inlineHelpText>
+        <inlineHelpText>Event Reappeared After Reintroduction</inlineHelpText>
         <label>C9 - #2 Event Reappeared After Reintro</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -3705,6 +3705,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Used if no concomitant products were reported.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Concomitant Medical Products and Therapy Dates</inlineHelpText>
         <label>D10 - Concomitant Product Null</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -3889,6 +3890,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Manufacturer address, line 2.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Address Street Line 2</inlineHelpText>
         <label>D3 - Address 2</label>
         <length>30</length>
         <required>false</required>
@@ -3902,6 +3904,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Manufacturer address, line 1.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Address Street Line 1</inlineHelpText>
         <label>D3 - Address 1</label>
         <length>30</length>
         <required>false</required>
@@ -3915,6 +3918,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Manufacturer city.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer City</inlineHelpText>
         <label>D3 - City</label>
         <length>30</length>
         <required>false</required>
@@ -3929,6 +3933,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Manufacturer country.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Country Code</inlineHelpText>
         <label>D3 - Country</label>
         <lookupFilter>
             <active>true</active>
@@ -3989,6 +3994,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Manufacturer email.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Email</inlineHelpText>
         <label>D3 - Email</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4032,6 +4038,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Manufacturer fax number.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Fax Number</inlineHelpText>
         <label>D3 - Fax Number</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4043,6 +4050,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Manufacturer name.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Name</inlineHelpText>
         <label>D3 - Name</label>
         <length>50</length>
         <required>false</required>
@@ -4098,6 +4106,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Manufacturer postal code ouside USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Postal Code</inlineHelpText>
         <label>D3 - Postal Code</label>
         <length>10</length>
         <required>false</required>
@@ -4112,6 +4121,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Manufacturer state within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer State Code</inlineHelpText>
         <label>D3 - Region State</label>
         <lookupFilter>
             <active>true</active>
@@ -4141,6 +4151,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Manufacturer zip code within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Zip Code Extension</inlineHelpText>
         <label>D3 - Zip Code Extension</label>
         <length>4</length>
         <required>false</required>
@@ -4154,6 +4165,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Manufacturer zip code within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Zip Code</inlineHelpText>
         <label>D3 - Zip Code</label>
         <length>5</length>
         <required>false</required>
@@ -4167,6 +4179,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Exact number as it appears in the manufacturer's catalog, device labeling, or accompanying packaging.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Catalog Number</inlineHelpText>
         <label>D4 - Catalog No</label>
         <length>30</length>
         <required>false</required>
@@ -4222,6 +4235,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Device lot number which can be found on device label or accompanying packaging.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Lot Number</inlineHelpText>
         <label>D4 - Lot No</label>
         <length>100</length>
         <required>false</required>
@@ -4261,6 +4275,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Number assigned by the manufacturer specific to individual device which can be found on the device label or accompanying packaging.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Serial Number</inlineHelpText>
         <label>D4 - Serial No</label>
         <length>30</length>
         <required>false</required>
@@ -4274,6 +4289,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Type of person operating/using the device on the patient at the time of the event.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Operator of device - Code</inlineHelpText>
         <label>D5 - Operator of Device</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4485,6 +4501,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>To be completed if "Other" is selected.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Operator of Device - Other</inlineHelpText>
         <label>D5 - Other Operator of Device</label>
         <length>40</length>
         <required>false</required>
@@ -4571,6 +4588,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Date of implantation of the device.</description>
         <externalId>false</externalId>
+        <inlineHelpText>If Implanted give date</inlineHelpText>
         <label>D6a - Implant Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4613,6 +4631,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Date of explantation of the device.</description>
         <externalId>false</externalId>
+        <inlineHelpText>If explanted, give date</inlineHelpText>
         <label>D6b - Explant Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4666,6 +4685,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Used if a device labeled for single-use only was reprocessed and reused on a patient.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Is this a single-use device that was reprocessed and reused on a patient?</inlineHelpText>
         <label>D7a - Single Use Device</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4702,6 +4722,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor address line 1.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Reprocessor Address Street Line 1</inlineHelpText>
         <label>D7b - Address 1</label>
         <length>30</length>
         <required>false</required>
@@ -4729,6 +4750,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor city.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Reprocessor City</inlineHelpText>
         <label>D7b - City</label>
         <length>30</length>
         <required>false</required>
@@ -4743,6 +4765,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor country.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Reprocessor Country Code</inlineHelpText>
         <label>D7b - Country</label>
         <lookupFilter>
             <active>true</active>
@@ -4803,6 +4826,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor e-mail.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Reprocessor Email</inlineHelpText>
         <label>D7b - Email</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4846,6 +4870,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor fax number.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Reprocessor Fax Number</inlineHelpText>
         <label>D7b - Fax Number</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4857,6 +4882,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor name.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Reprocessor Name</inlineHelpText>
         <label>D7b - Name</label>
         <length>80</length>
         <required>false</required>
@@ -4870,6 +4896,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor postal code outside USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Reprocessor Postal Code</inlineHelpText>
         <label>D7b - Postal Code</label>
         <length>10</length>
         <required>false</required>
@@ -4884,6 +4911,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor state within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Reprocessor State Code</inlineHelpText>
         <label>D7b - Region State</label>
         <lookupFilter>
             <active>true</active>
@@ -4913,6 +4941,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor zip code extension within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Reprocessor Zip Code Extension</inlineHelpText>
         <label>D7b - Zip Code Extension</label>
         <length>4</length>
         <required>false</required>
@@ -4926,6 +4955,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Reprocessor zip code within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Reprocessor Zip Code</inlineHelpText>
         <label>D7b - Zip Code</label>
         <length>5</length>
         <required>false</required>
@@ -5015,6 +5045,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <fullName>CMPL123CME__D8_Was_device_serviced_by_third_party__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
+        <inlineHelpText>Was this Device serviced by a third party?</inlineHelpText>
         <label>D8 - Was device serviced by third party?</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -5151,6 +5182,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Date that the manufacturer received the affected device.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Date device returned to manufacturer</inlineHelpText>
         <label>D9 - Date Returned to Mfg</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -5162,6 +5194,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Indicates if the affected device is available for evaluation by the manufacturer.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Device available for evaluation? Date returned to Manufacturer</inlineHelpText>
         <label>D9 - Device Available for Eval</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -5370,6 +5403,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's address line 2.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Address Street Line 2</inlineHelpText>
         <label>E1 - Address 2</label>
         <length>30</length>
         <required>false</required>
@@ -5383,6 +5417,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's address line 1.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Street Address Line 1</inlineHelpText>
         <label>E1 - Address 1</label>
         <length>30</length>
         <required>false</required>
@@ -5396,6 +5431,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's city.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter City</inlineHelpText>
         <label>E1 - City</label>
         <length>30</length>
         <required>false</required>
@@ -5410,6 +5446,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's country.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Country Code</inlineHelpText>
         <label>E1 - Country</label>
         <lookupFilter>
             <active>true</active>
@@ -5470,6 +5507,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's e-mail.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Email</inlineHelpText>
         <label>E1 - Email</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -5482,6 +5520,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's facility name.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Facility Name</inlineHelpText>
         <label>E1 - Facility Name</label>
         <length>50</length>
         <required>false</required>
@@ -5526,6 +5565,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's fax number.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Fax Number</inlineHelpText>
         <label>E1 - Fax Number</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -5537,6 +5577,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's first name.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter First Name</inlineHelpText>
         <label>E1 - First Name</label>
         <length>15</length>
         <required>false</required>
@@ -5550,6 +5591,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's last name</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Last Name</inlineHelpText>
         <label>E1 - Last Name</label>
         <length>25</length>
         <required>false</required>
@@ -5563,6 +5605,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's middle name.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Middle Name</inlineHelpText>
         <label>E1 - Middle Name</label>
         <length>15</length>
         <required>false</required>
@@ -5621,6 +5664,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's phone number.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Phone #</inlineHelpText>
         <label>E1 - Phone</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -5632,6 +5676,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's postal code ouside USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Postal Code</inlineHelpText>
         <label>E1 - Postal Code</label>
         <length>10</length>
         <required>false</required>
@@ -5646,6 +5691,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's state within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter State Code</inlineHelpText>
         <label>E1 - Region State</label>
         <lookupFilter>
             <active>true</active>
@@ -5675,6 +5721,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's title.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Title</inlineHelpText>
         <label>E1 - Title</label>
         <length>4</length>
         <required>false</required>
@@ -5688,6 +5735,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's zip code extension within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Zip Code Extension</inlineHelpText>
         <label>E1 - Zip Code Extension</label>
         <length>4</length>
         <required>false</required>
@@ -5701,6 +5749,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Initial reporter's zip code within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial Reporter Zip Code</inlineHelpText>
         <label>E1 - Zip Code</label>
         <length>5</length>
         <required>false</required>
@@ -5968,6 +6017,7 @@ IF( MONTH(CMPL123CME__B3_Date_of_Event__c) &gt; MONTH(CMPL123CME__A2_DOB__c),
         <deprecated>false</deprecated>
         <description>Indicates whether the initial reporter also reported the event to FDA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Initial reporter also sent report to FDA</inlineHelpText>
         <label>E4 - Initial Report sent to FDA</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -6366,6 +6416,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <externalId>false</externalId>
         <formula>CASE(TEXT(CMPL123CME__E3_Occupation__c), "Dental Assistant", "Y","Dental Hygienist","Y","Dentist","Y","Dietician","Y","Emergency Medical Technician","Y","Health Professional","Y","Home Health Aide","Y","Medical Assistant","Y","Nurse","Y","Nursing Assistant","Y","Occupational Therapist","Y","Other Health Care Professional","Y","Paramedic","Y","Physical Therapist","Y","Physician","Y","Physician Assistant","Y","Respiratory Therapist","Y","N")</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Health Professional?</inlineHelpText>
         <label>EMDR E2 - Healthcare Professional</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -6858,7 +6909,6 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <fullName>CMPL123CME__Exemption_Number__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <inlineHelpText>Type Exemption Number</inlineHelpText>
         <label>Exemption Number</label>
         <length>30</length>
         <required>false</required>
@@ -6872,6 +6922,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>This field contains the EMDR Codes used in 2021 Nov-30 version of EMDR.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Event problem codes</inlineHelpText>
         <label>F10 - Adverse Event Problem</label>
         <length>250</length>
         <required>false</required>
@@ -6897,6 +6948,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Indicates the date the report was sent to FDA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Date Report Sent</inlineHelpText>
         <label>F11 - Date Report Sent to FDA</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -6939,6 +6991,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Indicates whether a report is being sent to FDA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Report sent to FDA?</inlineHelpText>
         <label>F11 - Report Sent to FDA</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -6980,6 +7033,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Used if "Other" is selected for location where event occurred.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Location where event occurred\text to explain OTHER</inlineHelpText>
         <label>F12 - Other Location Where Event Occ</label>
         <length>40</length>
         <required>false</required>
@@ -7115,6 +7169,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Indicates the date the report was sent to the manufacturer.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Date Sent to Manufacturer</inlineHelpText>
         <label>F13 - Date Report Sent to Mfg</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -7126,6 +7181,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Indicates whether a report is being sent to the device manufacturer.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Report sent to manufacturer?</inlineHelpText>
         <label>F13 - Report Sent to Mfg</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -7167,6 +7223,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's address line 2.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Address Street Line 2</inlineHelpText>
         <label>F14 - Address 2</label>
         <length>30</length>
         <required>false</required>
@@ -7180,6 +7237,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's address line 1.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Address Street Line 1</inlineHelpText>
         <label>F14 - Address 1</label>
         <length>30</length>
         <required>false</required>
@@ -7193,6 +7251,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's city.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer City</inlineHelpText>
         <label>F14 - City</label>
         <length>30</length>
         <required>false</required>
@@ -7207,6 +7266,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's country.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Country Code</inlineHelpText>
         <label>F14 - Country</label>
         <lookupFilter>
             <active>true</active>
@@ -7267,6 +7327,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's email.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Email</inlineHelpText>
         <label>F14 - Email</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -7310,6 +7371,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's fax number.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Fax Number</inlineHelpText>
         <label>F14 - Fax</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -7321,6 +7383,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's name.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Name</inlineHelpText>
         <label>F14 - Name</label>
         <length>50</length>
         <required>false</required>
@@ -7334,6 +7397,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's postal code outside of USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Postal Code</inlineHelpText>
         <label>F14 - Postal Code</label>
         <length>10</length>
         <required>false</required>
@@ -7348,6 +7412,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's state within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer State Code</inlineHelpText>
         <label>F14 - Region (State)</label>
         <lookupFilter>
             <active>true</active>
@@ -7377,6 +7442,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's zip code extension within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Zip Code Extension</inlineHelpText>
         <label>F14 - Zip Code Extension</label>
         <length>4</length>
         <required>false</required>
@@ -7390,6 +7456,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's zip code within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Zip Code</inlineHelpText>
         <label>F14 - Zip Code</label>
         <length>5</length>
         <required>false</required>
@@ -7415,6 +7482,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Indicates who originated the report.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Check one: user facility, importer</inlineHelpText>
         <label>F1 - Type of Reporter</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -7456,7 +7524,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>UF/Importer Report#</description>
         <externalId>false</externalId>
-        <inlineHelpText>UF/Importer Report#</inlineHelpText>
+        <inlineHelpText>UF/Distributor (Importer) Report Number</inlineHelpText>
         <label>F2 - UF/Importer Report#</label>
         <length>21</length>
         <required>false</required>
@@ -7501,6 +7569,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>User Facility/Importer address line 2.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Address Street Line 2</inlineHelpText>
         <label>F3 - Address 2</label>
         <length>30</length>
         <required>false</required>
@@ -7514,6 +7583,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>User Facility/Importer address line 1.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Address Street Line 1</inlineHelpText>
         <label>F3 - Address 1</label>
         <length>30</length>
         <required>false</required>
@@ -7527,6 +7597,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>User Facility/Importer city.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility City</inlineHelpText>
         <label>F3 - City</label>
         <length>30</length>
         <required>false</required>
@@ -7571,6 +7642,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>MDR contact person's email.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Contact Email</inlineHelpText>
         <label>F3 - Contact Email</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -7584,6 +7656,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>User Facility/Importer country.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Country Code</inlineHelpText>
         <label>F3 - Country</label>
         <lookupFilter>
             <active>true</active>
@@ -7613,6 +7686,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>User Facility/Importer name.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Name</inlineHelpText>
         <label>F3 - Name</label>
         <length>50</length>
         <required>false</required>
@@ -7626,6 +7700,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>User Facility/Importer postal code ouside USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Postal Code</inlineHelpText>
         <label>F3  - Postal Code</label>
         <length>10</length>
         <required>false</required>
@@ -7640,6 +7715,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>User Facility/Importer state within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility State Code</inlineHelpText>
         <label>F3 - Region State</label>
         <lookupFilter>
             <active>true</active>
@@ -7680,6 +7756,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>User Facility/Importer zip code extension within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Zip Code Extension</inlineHelpText>
         <label>F3 - Zip Code Extension</label>
         <length>4</length>
         <required>false</required>
@@ -7693,6 +7770,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>User Facility/Importer zip code within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Zip Code</inlineHelpText>
         <label>F3 - Zip Code</label>
         <length>5</length>
         <required>false</required>
@@ -7749,6 +7827,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>MDR contact person's first name.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Contact First Name</inlineHelpText>
         <label>F4 - Contact First Name</label>
         <length>15</length>
         <required>false</required>
@@ -7762,6 +7841,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>MDR contact person's last name.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Contact Last Name</inlineHelpText>
         <label>F4 - Contact Last Name</label>
         <length>25</length>
         <required>false</required>
@@ -7775,6 +7855,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>MDR contact person's middle name.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Contact Middle Initial</inlineHelpText>
         <label>F4 - Contact Middle Name</label>
         <length>15</length>
         <required>false</required>
@@ -7802,6 +7883,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>MDR contact person's title.</description>
         <externalId>false</externalId>
+        <inlineHelpText>User Facility Contact Title</inlineHelpText>
         <label>F4 - Contact Title</label>
         <length>4</length>
         <required>false</required>
@@ -7889,6 +7971,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>MDR contact person's phone number.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Phone Number</inlineHelpText>
         <label>F5 - Phone</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -7930,6 +8013,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Date the user facility or importer became aware that the device may have caused or contributed to the reported event.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Date user facility or Distributor (importer) became aware of event</inlineHelpText>
         <label>F6 - Date Facility/Dist was Aware</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -7941,6 +8025,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>If the MDR is a follow up, indicates the number of follow up MDRs submitted.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Type of Report\Follow-up Number</inlineHelpText>
         <label>F7 - Follow up No</label>
         <length>3</length>
         <required>false</required>
@@ -7954,6 +8039,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Indicates MDR type.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Type of report</inlineHelpText>
         <label>F7 - Type of Report - Device</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -8101,7 +8187,6 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <fullName>CMPL123CME__Form_Code__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <inlineHelpText>Type Form Code</inlineHelpText>
         <label>Form Code</label>
         <length>30</length>
         <required>false</required>
@@ -8147,6 +8232,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's contact office address line 2.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Address Street Line 2</inlineHelpText>
         <label>G1 - Contact Office Address 2</label>
         <length>30</length>
         <required>false</required>
@@ -8160,6 +8246,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's contact office address line 1.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Address Street Line 1</inlineHelpText>
         <label>G1 - Contact Office Address 1</label>
         <length>30</length>
         <required>false</required>
@@ -8173,6 +8260,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's contact office city.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact City</inlineHelpText>
         <label>G1 - Contact Office City</label>
         <length>30</length>
         <required>false</required>
@@ -8187,6 +8275,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's contact office country.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Country Code</inlineHelpText>
         <label>G1 - Contact Office Country</label>
         <lookupFilter>
             <active>true</active>
@@ -8260,6 +8349,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Regeristered site's contact office e-mail.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Email</inlineHelpText>
         <label>G1 - Contact Office E-mail</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -8272,6 +8362,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Registered site's faility name.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Facility Name</inlineHelpText>
         <label>G1 - Contact Office Facility Name</label>
         <length>60</length>
         <required>false</required>
@@ -8316,6 +8407,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Registered site's contact office fax number.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Fax Number</inlineHelpText>
         <label>G1 - Contact Office Fax Number</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -8327,6 +8419,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>First name of person in the registered site's contact office.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact First Name</inlineHelpText>
         <label>G1 - Contact Office First Name</label>
         <length>15</length>
         <required>false</required>
@@ -8340,6 +8433,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Last name of person in the registered site's contact office.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Last Name</inlineHelpText>
         <label>G1 - Contact Office Last Name</label>
         <length>25</length>
         <required>false</required>
@@ -8353,6 +8447,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Middle name of person in the registered site's contact office.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Middle Name</inlineHelpText>
         <label>G1 - Contact Office Middle Name</label>
         <length>15</length>
         <required>false</required>
@@ -8397,6 +8492,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Manufacturer's contact office phone number.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Phone number</inlineHelpText>
         <label>G1 - Contact Office Phone Number</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -8408,6 +8504,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Registered site's contact office postal code ouside of USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Postal Code</inlineHelpText>
         <label>G1 - Contact Office Postal Code</label>
         <length>10</length>
         <required>false</required>
@@ -8422,6 +8519,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Registered site's contact office state within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact State Code</inlineHelpText>
         <label>G1 - Contact Office Region State</label>
         <lookupFilter>
             <active>true</active>
@@ -8451,6 +8549,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Title of person in the registered site's contact office.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Title</inlineHelpText>
         <label>G1 - Contact Office Title</label>
         <length>4</length>
         <required>false</required>
@@ -8464,6 +8563,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Registered site's contact office zip code extension within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Zip Code Extension</inlineHelpText>
         <label>G1 - Contact Office Zip Code Extension</label>
         <length>4</length>
         <required>false</required>
@@ -8477,6 +8577,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Registered site's contact office zip code within USA.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Manufacturer Contact Zip Code</inlineHelpText>
         <label>G1 - Contact Office Zip Code</label>
         <length>5</length>
         <required>false</required>
@@ -8856,6 +8957,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Date that the report was received.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Date received by manufacturer</inlineHelpText>
         <label>G3 - Date Received by Mfg</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -9031,7 +9133,6 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>New Drug Application (NDA) number</description>
         <externalId>false</externalId>
-        <inlineHelpText>New Drug Application (NDA) number</inlineHelpText>
         <label>G4 - NDA #</label>
         <length>255</length>
         <required>false</required>
@@ -9310,6 +9411,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>If the MDR is a follow up, indicates the number of follow up MDRs submitted for 2021 Nov-30 form version.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Type of Report\Follow-up Number</inlineHelpText>
         <label>G6 - Follow up No</label>
         <length>3</length>
         <required>false</required>
@@ -9509,6 +9611,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Any additional information, evaluation, or clarification of data in the report.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Additional manufacturer narrative</inlineHelpText>
         <label>H10 - Addtl Mfg Narrative</label>
         <length>32765</length>
         <trackHistory>false</trackHistory>
@@ -9533,7 +9636,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>A measurement of the total number of events that have occurred.</description>
         <externalId>false</externalId>
-        <inlineHelpText>A measurement of the total number of events that have occurred.</inlineHelpText>
+        <inlineHelpText>No. of events (NOE) summarized</inlineHelpText>
         <label>H1 - Number of Events Summarized</label>
         <precision>18</precision>
         <required>false</required>
@@ -9547,7 +9650,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <fullName>CMPL123CME__H1_Type_of_Reportable_Event_2021__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <inlineHelpText>Race</inlineHelpText>
+        <inlineHelpText>Type of reportable event</inlineHelpText>
         <label>H1 - Type of Reportable Event</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -9696,6 +9799,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Identifies if any devices were evaluated by the manufacturer associated with the reported event(s).</description>
         <externalId>false</externalId>
+        <inlineHelpText>Device evaluated by mfr? Summary Attached YES/NO</inlineHelpText>
         <label>H3 - Device Evaluated by Manufacturer?</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -9722,6 +9826,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Indicates if the affected device was returned to the manufacturer for evaluation.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Device Not Returned to Manufacturer for Evaluation?</inlineHelpText>
         <label>H3 - Device Returned to Manufacturer?</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -9748,6 +9853,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Identifies if a device evaluation summary is being submitted with the report.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Device evaluated by mfr? Evaluation Summary or reason for not evaluating</inlineHelpText>
         <label>H3 - Evaluation Summary Attached</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -9774,6 +9880,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Provides an explanation if a device is available for evaluation but no evaluation is conducted.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Device manufacture date</inlineHelpText>
         <label>H3 - Reason Device Not Evaluated by Mfg</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -9883,6 +9990,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Indicates if the device is labeled for single-use only.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Labeled for single use?</inlineHelpText>
         <label>H5 - Labeled for Single Use</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -9924,6 +10032,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>This field contains the EMDR Codes used in 2021 Nov-30 version of EMDR.</description>
         <externalId>false</externalId>
+        <inlineHelpText>Adverse Event Problem Codes</inlineHelpText>
         <label>H6 - Adverse Event Problem</label>
         <length>250</length>
         <required>false</required>
@@ -9980,6 +10089,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Indicates the type of remedial action initiated.</description>
         <externalId>false</externalId>
+        <inlineHelpText>If remedial action initiated, check type</inlineHelpText>
         <label>H7 - If Remedial Action Initiated</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -10042,6 +10152,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Used if "Other" is selected for remedial action initiated.</description>
         <externalId>false</externalId>
+        <inlineHelpText>If remedial action initiated, check type\Explanation for Other</inlineHelpText>
         <label>H7 - Other Remedial Action</label>
         <length>40</length>
         <required>false</required>
@@ -10096,7 +10207,7 @@ LPAD(TEXT(MONTH( CMPL123CME__D10_Date_returned_to_MFG__c )),2,'0')
         <deprecated>false</deprecated>
         <description>Correction/Removal Report No</description>
         <externalId>false</externalId>
-        <inlineHelpText>Corrective action number assigned by FDA or the reporting firm.</inlineHelpText>
+        <inlineHelpText>If action reported to FDA under 21 USC 360i(f), list correction/removal reporting number</inlineHelpText>
         <label>H9 - Corrective Action Number</label>
         <length>24</length>
         <required>false</required>

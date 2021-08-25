@@ -33,11 +33,11 @@
         <name>BMX_Time_to_Notify_the_CA__c</name>
     </fields>
     <fields>
-        <help><!-- Patient Identifier --></help>
         <label><!-- A1 - Patient Identifier --></label>
         <name>CMPL123CME__A1_Patient_Identifier__c</name>
     </fields>
     <fields>
+        <help><!-- Age Unit --></help>
         <label><!-- A2 - Age Units (Patient) --></label>
         <name>CMPL123CME__A2_Age_Units_Patient__c</name>
         <picklistValues>
@@ -70,6 +70,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Age --></help>
         <label><!-- A2 - Age at Time of Event --></label>
         <name>CMPL123CME__A2_Age_at_Time_of_Event__c</name>
     </fields>
@@ -90,6 +91,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Date of Birth --></help>
         <label><!-- A2 - DOB --></label>
         <name>CMPL123CME__A2_DOB__c</name>
     </fields>
@@ -198,7 +200,6 @@
         <name>CMPL123CME__A4_Weight__c</name>
     </fields>
     <fields>
-        <help><!-- Ethnicity --></help>
         <label><!-- A5a - Ethnicity --></label>
         <name>CMPL123CME__A5A_Ethnicity__c</name>
         <picklistValues>
@@ -223,7 +224,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Race --></help>
         <label><!-- A5b - Race --></label>
         <name>CMPL123CME__A5B_Race__c</name>
         <picklistValues>
@@ -260,7 +260,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Adverse Event/Product Problem --></help>
+        <help><!-- Report Type --></help>
         <label><!-- B1 - Adverse Event/Product Problem --></label>
         <name>CMPL123CME__B1_AdverseEvent_ProductProblem__c</name>
         <picklistValues>
@@ -309,6 +309,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Outcomes attributed to adverse event --></help>
         <label><!-- B2 - Outcomes Attributed to AE --></label>
         <name>CMPL123CME__B2_Outcomes_attributed_to_AE__c</name>
         <picklistValues>
@@ -377,7 +378,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Date of this Report (Device only) --></help>
+        <help><!-- Date of this Report --></help>
         <label><!-- B4 - Report Date --></label>
         <name>CMPL123CME__B4_Report_Date__c</name>
     </fields>
@@ -390,6 +391,7 @@
         <name>CMPL123CME__B6_Relevant_Test_Laboratory_Data__c</name>
     </fields>
     <fields>
+        <help><!-- Other relevant history, including preexisting medical conditions --></help>
         <label><!-- B7 - Other Relevant  History --></label>
         <name>CMPL123CME__B7_Other_Relevant_History__c</name>
     </fields>
@@ -541,7 +543,6 @@
         <name>CMPL123CME__C3_2_Number_of_Separate_Dosages__c</name>
     </fields>
     <fields>
-        <help><!-- Dose --></help>
         <label><!-- C3 - #1 Dose --></label>
         <name>CMPL123CME__C3_Dose1__c</name>
     </fields>
@@ -849,7 +850,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Frequency --></help>
         <label><!-- C3 - #1 Frequency --></label>
         <name>CMPL123CME__C3_Frequency1__c</name>
     </fields>
@@ -1553,7 +1553,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- C4-#1 Treatment/Therapy Start Date --></help>
+        <help><!-- Treatment Dates/Therapy Dates - Start Date --></help>
         <label><!-- C4-#1 Treatment/Therapy Start Date --></label>
         <name>CMPL123CME__C4_1_Therapy_Treatment_Start_Date__c</name>
     </fields>
@@ -1575,7 +1575,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- C4-#1 Treatment/Therapy Stop Date --></help>
+        <help><!-- Treatment Dates/Therapy Dates - Stop Date --></help>
         <label><!-- C4-#1 Treatment/Therapy Stop Date --></label>
         <name>CMPL123CME__C4_1_Therapy_Treatment_Stop_Date__c</name>
     </fields>
@@ -1597,7 +1597,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- C4-#2 Treatment/Therapy Start Date --></help>
+        <help><!-- Treatment Dates/Therapy Dates - Start Date --></help>
         <label><!-- C4-#2 Treatment/Therapy Start Date --></label>
         <name>CMPL123CME__C4_2_Therapy_Treatment_Start_Date__c</name>
     </fields>
@@ -1619,7 +1619,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- C4-#2 Treatment/Therapy Stop Date --></help>
+        <help><!-- Treatment Dates/Therapy Dates - Stop Date --></help>
         <label><!-- C4-#2 Treatment/Therapy Stop Date --></label>
         <name>CMPL123CME__C4_2_Therapy_Treatment_Stop_Date__c</name>
     </fields>
@@ -1830,7 +1830,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- C7 - #1 Exp. Date --></help>
+        <help><!-- Expiration date --></help>
         <label><!-- C7 - #1 Exp. Date --></label>
         <name>CMPL123CME__C7_1_Exp_Date__c</name>
     </fields>
@@ -1852,7 +1852,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- C7 - #2 Exp. Date --></help>
+        <help><!-- Expiration date --></help>
         <label><!-- C7 - #2 Exp. Date --></label>
         <name>CMPL123CME__C7_2_Exp_Date__c</name>
     </fields>
@@ -1907,7 +1907,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- C8 - #1 Event Abated After Use Stopped? --></help>
+        <help><!-- Event Abated After Use Stopped or Dose Reduced? --></help>
         <label><!-- C8 - #1 Event Abated After Use Stopped? --></label>
         <name>CMPL123CME__C8_1_Event_Abated_After_Use_Stopped__c</name>
         <picklistValues>
@@ -1932,7 +1932,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- C8 - #2 Event Abated After Use Stopped? --></help>
+        <help><!-- Event Abated After Use Stopped or Dose Reduced? --></help>
         <label><!-- C8 - #2 Event Abated After Use Stopped? --></label>
         <name>CMPL123CME__C8_2_Event_Abated_After_Use_Stopped__c</name>
         <picklistValues>
@@ -2001,7 +2001,7 @@
         <name>CMPL123CME__C8_Exp_Date2__c</name>
     </fields>
     <fields>
-        <help><!-- C9 - #1 Event Reappeared After Reintro --></help>
+        <help><!-- Event Reappeared After Reintroduction --></help>
         <label><!-- C9 - #1 Event Reappeared After Reintro --></label>
         <name>CMPL123CME__C9_1_Event_Reappeared_After_Reintro__c</name>
         <picklistValues>
@@ -2026,7 +2026,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- C9 - #2 Event Reappeared After Reintro --></help>
+        <help><!-- Event Reappeared After Reintroduction --></help>
         <label><!-- C9 - #2 Event Reappeared After Reintro --></label>
         <name>CMPL123CME__C9_2_Event_Reappeared_After_Reintro__c</name>
         <picklistValues>
@@ -2131,6 +2131,7 @@
         <relationshipLabel><!-- EMDR --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- Concomitant Medical Products and Therapy Dates --></help>
         <label><!-- D10 - Concomitant Product Null --></label>
         <name>CMPL123CME__D10_Concomitant_Product_Null__c</name>
         <picklistValues>
@@ -2219,18 +2220,22 @@
         <name>CMPL123CME__D2b_Procode__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Address Street Line 2 --></help>
         <label><!-- D3 - Address 2 --></label>
         <name>CMPL123CME__D3_Address2__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Address Street Line 1 --></help>
         <label><!-- D3 - Address 1 --></label>
         <name>CMPL123CME__D3_Address__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer City --></help>
         <label><!-- D3 - City --></label>
         <name>CMPL123CME__D3_City__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Country Code --></help>
         <label><!-- D3 - Country --></label>
         <name>CMPL123CME__D3_Country__c</name>
         <relationshipLabel><!-- EMDR (D3 - Country) --></relationshipLabel>
@@ -2252,6 +2257,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Manufacturer Email --></help>
         <label><!-- D3 - Email --></label>
         <name>CMPL123CME__D3_Email__c</name>
     </fields>
@@ -2272,10 +2278,12 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Manufacturer Fax Number --></help>
         <label><!-- D3 - Fax Number --></label>
         <name>CMPL123CME__D3_Fax_Number__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Name --></help>
         <label><!-- D3 - Name --></label>
         <name>CMPL123CME__D3_Name__c</name>
     </fields>
@@ -2300,23 +2308,28 @@
         <name>CMPL123CME__D3_Phone_Number__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Postal Code --></help>
         <label><!-- D3 - Postal Code --></label>
         <name>CMPL123CME__D3_Postal_Code__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer State Code --></help>
         <label><!-- D3 - Region State --></label>
         <name>CMPL123CME__D3_Region_State__c</name>
         <relationshipLabel><!-- EMDR (D3 - Region State) --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- Manufacturer Zip Code Extension --></help>
         <label><!-- D3 - Zip Code Extension --></label>
         <name>CMPL123CME__D3_Zip_Code_Ext__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Zip Code --></help>
         <label><!-- D3 - Zip Code --></label>
         <name>CMPL123CME__D3_Zip_Code__c</name>
     </fields>
     <fields>
+        <help><!-- Catalog Number --></help>
         <label><!-- D4 - Catalog No --></label>
         <name>CMPL123CME__D4_Catalog_No__c</name>
     </fields>
@@ -2341,6 +2354,7 @@
         <name>CMPL123CME__D4_Expiration_Date__c</name>
     </fields>
     <fields>
+        <help><!-- Lot Number --></help>
         <label><!-- D4 - Lot No --></label>
         <name>CMPL123CME__D4_Lot_No__c</name>
     </fields>
@@ -2353,10 +2367,12 @@
         <name>CMPL123CME__D4_Other_No__c</name>
     </fields>
     <fields>
+        <help><!-- Serial Number --></help>
         <label><!-- D4 - Serial No --></label>
         <name>CMPL123CME__D4_Serial_No__c</name>
     </fields>
     <fields>
+        <help><!-- Operator of device - Code --></help>
         <label><!-- D5 - Operator of Device --></label>
         <name>CMPL123CME__D5_Operator_of_Device__c</name>
         <picklistValues>
@@ -2517,6 +2533,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Operator of Device - Other --></help>
         <label><!-- D5 - Other Operator of Device --></label>
         <name>CMPL123CME__D5_Other_operator_of_Device__c</name>
     </fields>
@@ -2557,6 +2574,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- If Implanted give date --></help>
         <label><!-- D6a - Implant Date --></label>
         <name>CMPL123CME__D6a_Implant_Date__c</name>
     </fields>
@@ -2577,6 +2595,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- If explanted, give date --></help>
         <label><!-- D6b - Explant Date --></label>
         <name>CMPL123CME__D6b_Explant_Date__c</name>
     </fields>
@@ -2601,6 +2620,7 @@
         <name>CMPL123CME__D7_Explant_Date__c</name>
     </fields>
     <fields>
+        <help><!-- Is this a single-use device that was reprocessed and reused on a patient? --></help>
         <label><!-- D7a - Single Use Device --></label>
         <name>CMPL123CME__D7a_Single_Use_Device__c</name>
         <picklistValues>
@@ -2621,6 +2641,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Reprocessor Address Street Line 1 --></help>
         <label><!-- D7b - Address 1 --></label>
         <name>CMPL123CME__D7b_Address_1__c</name>
     </fields>
@@ -2630,10 +2651,12 @@
         <name>CMPL123CME__D7b_Address_2__c</name>
     </fields>
     <fields>
+        <help><!-- Reprocessor City --></help>
         <label><!-- D7b - City --></label>
         <name>CMPL123CME__D7b_City__c</name>
     </fields>
     <fields>
+        <help><!-- Reprocessor Country Code --></help>
         <label><!-- D7b - Country --></label>
         <name>CMPL123CME__D7b_Country__c</name>
         <relationshipLabel><!-- EMDR (D7b - Country) --></relationshipLabel>
@@ -2655,6 +2678,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Reprocessor Email --></help>
         <label><!-- D7b - Email --></label>
         <name>CMPL123CME__D7b_E_mail__c</name>
     </fields>
@@ -2675,27 +2699,33 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Reprocessor Fax Number --></help>
         <label><!-- D7b - Fax Number --></label>
         <name>CMPL123CME__D7b_Fax_Number__c</name>
     </fields>
     <fields>
+        <help><!-- Reprocessor Name --></help>
         <label><!-- D7b - Name --></label>
         <name>CMPL123CME__D7b_Name__c</name>
     </fields>
     <fields>
+        <help><!-- Reprocessor Postal Code --></help>
         <label><!-- D7b - Postal Code --></label>
         <name>CMPL123CME__D7b_Postal_Code__c</name>
     </fields>
     <fields>
+        <help><!-- Reprocessor State Code --></help>
         <label><!-- D7b - Region State --></label>
         <name>CMPL123CME__D7b_Region_State__c</name>
         <relationshipLabel><!-- EMDR (D7b - Region State) --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- Reprocessor Zip Code Extension --></help>
         <label><!-- D7b - Zip Code Extension --></label>
         <name>CMPL123CME__D7b_Zip_Code_Extension__c</name>
     </fields>
     <fields>
+        <help><!-- Reprocessor Zip Code --></help>
         <label><!-- D7b - Zip Code --></label>
         <name>CMPL123CME__D7b_Zip_Code__c</name>
     </fields>
@@ -2744,6 +2774,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Was this Device serviced by a third party? --></help>
         <label><!-- D8 - Was device serviced by third party? --></label>
         <name>CMPL123CME__D8_Was_device_serviced_by_third_party__c</name>
         <picklistValues>
@@ -2797,10 +2828,12 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Date device returned to manufacturer --></help>
         <label><!-- D9 - Date Returned to Mfg --></label>
         <name>CMPL123CME__D9_Date_returned_to_Mfg__c</name>
     </fields>
     <fields>
+        <help><!-- Device available for evaluation? Date returned to Manufacturer --></help>
         <label><!-- D9 - Device Available for Eval --></label>
         <name>CMPL123CME__D9_Device_available_for_Eval__c</name>
         <picklistValues>
@@ -2886,18 +2919,22 @@
         <name>CMPL123CME__D9_Zip_Code__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Address Street Line 2 --></help>
         <label><!-- E1 - Address 2 --></label>
         <name>CMPL123CME__E1_Address2__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Street Address Line 1 --></help>
         <label><!-- E1 - Address 1 --></label>
         <name>CMPL123CME__E1_Address_1__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter City --></help>
         <label><!-- E1 - City --></label>
         <name>CMPL123CME__E1_City__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Country Code --></help>
         <label><!-- E1 - Country --></label>
         <name>CMPL123CME__E1_Country__c</name>
         <relationshipLabel><!-- EMDR (E1 - Country) --></relationshipLabel>
@@ -2919,10 +2956,12 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Email --></help>
         <label><!-- E1 - Email --></label>
         <name>CMPL123CME__E1_Email__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Facility Name --></help>
         <label><!-- E1 - Facility Name --></label>
         <name>CMPL123CME__E1_Facility_Name__c</name>
     </fields>
@@ -2943,18 +2982,22 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Fax Number --></help>
         <label><!-- E1 - Fax Number --></label>
         <name>CMPL123CME__E1_Fax__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter First Name --></help>
         <label><!-- E1 - First Name --></label>
         <name>CMPL123CME__E1_First_Name__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Last Name --></help>
         <label><!-- E1 - Last Name --></label>
         <name>CMPL123CME__E1_Last_Name__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Middle Name --></help>
         <label><!-- E1 - Middle Name --></label>
         <name>CMPL123CME__E1_Middle_Name__c</name>
     </fields>
@@ -2979,27 +3022,33 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Phone # --></help>
         <label><!-- E1 - Phone --></label>
         <name>CMPL123CME__E1_Phone__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Postal Code --></help>
         <label><!-- E1 - Postal Code --></label>
         <name>CMPL123CME__E1_Postal_Code__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter State Code --></help>
         <label><!-- E1 - Region State --></label>
         <name>CMPL123CME__E1_Region_State__c</name>
         <relationshipLabel><!-- EMDR (E1 - Region State) --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Title --></help>
         <label><!-- E1 - Title --></label>
         <name>CMPL123CME__E1_Title__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Zip Code Extension --></help>
         <label><!-- E1 - Zip Code Extension --></label>
         <name>CMPL123CME__E1_Zip_Code_Ext__c</name>
     </fields>
     <fields>
+        <help><!-- Initial Reporter Zip Code --></help>
         <label><!-- E1 - Zip Code --></label>
         <name>CMPL123CME__E1_Zip_Code__c</name>
     </fields>
@@ -3192,6 +3241,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Initial reporter also sent report to FDA --></help>
         <label><!-- E4 - Initial Report sent to FDA --></label>
         <name>CMPL123CME__E4_Initial_Report_sent_to_FDA__c</name>
         <picklistValues>
@@ -3324,6 +3374,7 @@
         <name>CMPL123CME__EMDR_E1_Postal_Code__c</name>
     </fields>
     <fields>
+        <help><!-- Health Professional? --></help>
         <label><!-- EMDR E2 - Healthcare Professional --></label>
         <name>CMPL123CME__EMDR_E2_Healthcare_Professional__c</name>
     </fields>
@@ -3477,11 +3528,11 @@
         <name>CMPL123CME__EMDR_MFR__c</name>
     </fields>
     <fields>
-        <help><!-- Type Exemption Number --></help>
         <label><!-- Exemption Number --></label>
         <name>CMPL123CME__Exemption_Number__c</name>
     </fields>
     <fields>
+        <help><!-- Event problem codes --></help>
         <label><!-- F10 - Adverse Event Problem --></label>
         <name>CMPL123CME__F10_Adverse_Event_Problem__c</name>
     </fields>
@@ -3490,6 +3541,7 @@
         <name>CMPL123CME__F10_Event_Problem_Code__c</name>
     </fields>
     <fields>
+        <help><!-- Date Report Sent --></help>
         <label><!-- F11 - Date Report Sent to FDA --></label>
         <name>CMPL123CME__F11_Date_Report_Sent_to_FDA__c</name>
     </fields>
@@ -3510,6 +3562,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Report sent to FDA? --></help>
         <label><!-- F11 - Report Sent to FDA --></label>
         <name>CMPL123CME__F11_Report_Sent_to_FDA__c</name>
         <picklistValues>
@@ -3534,6 +3587,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Location where event occurred\text to explain OTHER --></help>
         <label><!-- F12 - Other Location Where Event Occ --></label>
         <name>CMPL123CME__F12_Loc_where_event_occured_other__c</name>
     </fields>
@@ -3618,10 +3672,12 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Date Sent to Manufacturer --></help>
         <label><!-- F13 - Date Report Sent to Mfg --></label>
         <name>CMPL123CME__F13_Date_Report_Sent_to_MFG__c</name>
     </fields>
     <fields>
+        <help><!-- Report sent to manufacturer? --></help>
         <label><!-- F13 - Report Sent to Mfg --></label>
         <name>CMPL123CME__F13_Report_Sent_to_MFG__c</name>
         <picklistValues>
@@ -3646,18 +3702,22 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Manufacturer Address Street Line 2 --></help>
         <label><!-- F14 - Address 2 --></label>
         <name>CMPL123CME__F14_Address2__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Address Street Line 1 --></help>
         <label><!-- F14 - Address 1 --></label>
         <name>CMPL123CME__F14_Address__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer City --></help>
         <label><!-- F14 - City --></label>
         <name>CMPL123CME__F14_City__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Country Code --></help>
         <label><!-- F14 - Country --></label>
         <name>CMPL123CME__F14_Country__c</name>
         <relationshipLabel><!-- EMDR (F14 - Country) --></relationshipLabel>
@@ -3679,6 +3739,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Manufacturer Email --></help>
         <label><!-- F14 - Email --></label>
         <name>CMPL123CME__F14_Email__c</name>
     </fields>
@@ -3699,27 +3760,33 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Manufacturer Fax Number --></help>
         <label><!-- F14 - Fax --></label>
         <name>CMPL123CME__F14_Fax__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Name --></help>
         <label><!-- F14 - Name --></label>
         <name>CMPL123CME__F14_Name__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Postal Code --></help>
         <label><!-- F14 - Postal Code --></label>
         <name>CMPL123CME__F14_Postal_Code__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer State Code --></help>
         <label><!-- F14 - Region (State) --></label>
         <name>CMPL123CME__F14_Region_State__c</name>
         <relationshipLabel><!-- EMDR (F14 - Region (State)) --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- Manufacturer Zip Code Extension --></help>
         <label><!-- F14 - Zip Code Extension --></label>
         <name>CMPL123CME__F14_Zip_Code_Ext__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Zip Code --></help>
         <label><!-- F14 - Zip Code --></label>
         <name>CMPL123CME__F14_Zip_Code__c</name>
     </fields>
@@ -3728,6 +3795,7 @@
         <name>CMPL123CME__F1_Event_Location_Addl_Text__c</name>
     </fields>
     <fields>
+        <help><!-- Check one: user facility, importer --></help>
         <label><!-- F1 - Type of Reporter --></label>
         <name>CMPL123CME__F1_Type_of_Reporter__c</name>
         <picklistValues>
@@ -3752,7 +3820,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- UF/Importer Report# --></help>
+        <help><!-- UF/Distributor (Importer) Report Number --></help>
         <label><!-- F2 - UF/Importer Report# --></label>
         <name>CMPL123CME__F2_UF_Importer_Report_Number__c</name>
     </fields>
@@ -3773,14 +3841,17 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- User Facility Address Street Line 2 --></help>
         <label><!-- F3 - Address 2 --></label>
         <name>CMPL123CME__F3_Address2__c</name>
     </fields>
     <fields>
+        <help><!-- User Facility Address Street Line 1 --></help>
         <label><!-- F3 - Address 1 --></label>
         <name>CMPL123CME__F3_Address__c</name>
     </fields>
     <fields>
+        <help><!-- User Facility City --></help>
         <label><!-- F3 - City --></label>
         <name>CMPL123CME__F3_City__c</name>
     </fields>
@@ -3801,23 +3872,28 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- User Facility Contact Email --></help>
         <label><!-- F3 - Contact Email --></label>
         <name>CMPL123CME__F3_Contact_Email__c</name>
     </fields>
     <fields>
+        <help><!-- User Facility Country Code --></help>
         <label><!-- F3 - Country --></label>
         <name>CMPL123CME__F3_Country__c</name>
         <relationshipLabel><!-- EMDR (F3 - Country) --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- User Facility Name --></help>
         <label><!-- F3 - Name --></label>
         <name>CMPL123CME__F3_Name__c</name>
     </fields>
     <fields>
+        <help><!-- User Facility Postal Code --></help>
         <label><!-- F3  - Postal Code --></label>
         <name>CMPL123CME__F3_Postal_Code__c</name>
     </fields>
     <fields>
+        <help><!-- User Facility State Code --></help>
         <label><!-- F3 - Region State --></label>
         <name>CMPL123CME__F3_Region_State__c</name>
         <relationshipLabel><!-- EMDR (F3 - Region State) --></relationshipLabel>
@@ -3827,10 +3903,12 @@
         <name>CMPL123CME__F3_UF_Importer_Email__c</name>
     </fields>
     <fields>
+        <help><!-- User Facility Zip Code Extension --></help>
         <label><!-- F3 - Zip Code Extension --></label>
         <name>CMPL123CME__F3_Zip_Code_Ext__c</name>
     </fields>
     <fields>
+        <help><!-- User Facility Zip Code --></help>
         <label><!-- F3 - Zip Code --></label>
         <name>CMPL123CME__F3_Zip_Code__c</name>
     </fields>
@@ -3855,14 +3933,17 @@
         <name>CMPL123CME__F4_Contact_Email__c</name>
     </fields>
     <fields>
+        <help><!-- User Facility Contact First Name --></help>
         <label><!-- F4 - Contact First Name --></label>
         <name>CMPL123CME__F4_Contact_First_Name__c</name>
     </fields>
     <fields>
+        <help><!-- User Facility Contact Last Name --></help>
         <label><!-- F4 - Contact Last Name --></label>
         <name>CMPL123CME__F4_Contact_Last_Name__c</name>
     </fields>
     <fields>
+        <help><!-- User Facility Contact Middle Initial --></help>
         <label><!-- F4 - Contact Middle Name --></label>
         <name>CMPL123CME__F4_Contact_Middle_Name__c</name>
     </fields>
@@ -3871,6 +3952,7 @@
         <name>CMPL123CME__F4_Contact_Name__c</name>
     </fields>
     <fields>
+        <help><!-- User Facility Contact Title --></help>
         <label><!-- F4 - Contact Title --></label>
         <name>CMPL123CME__F4_Contact_Title__c</name>
     </fields>
@@ -3911,6 +3993,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Phone Number --></help>
         <label><!-- F5 - Phone --></label>
         <name>CMPL123CME__F5_Phone__c</name>
     </fields>
@@ -3931,14 +4014,17 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Date user facility or Distributor (importer) became aware of event --></help>
         <label><!-- F6 - Date Facility/Dist was Aware --></label>
         <name>CMPL123CME__F6_Date_facility_dist_was_aware__c</name>
     </fields>
     <fields>
+        <help><!-- Type of Report\Follow-up Number --></help>
         <label><!-- F7 - Follow up No --></label>
         <name>CMPL123CME__F7_Follow_up_No__c</name>
     </fields>
     <fields>
+        <help><!-- Type of report --></help>
         <label><!-- F7 - Type of Report - Device --></label>
         <name>CMPL123CME__F7_Type_Report_Device__c</name>
         <picklistValues>
@@ -4019,7 +4105,6 @@
         <name>CMPL123CME__F9_Approximate_Age_of_Device__c</name>
     </fields>
     <fields>
-        <help><!-- Type Form Code --></help>
         <label><!-- Form Code --></label>
         <name>CMPL123CME__Form_Code__c</name>
     </fields>
@@ -4041,18 +4126,22 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Address Street Line 2 --></help>
         <label><!-- G1 - Contact Office Address 2 --></label>
         <name>CMPL123CME__G1_Contact_Office_Address2__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Address Street Line 1 --></help>
         <label><!-- G1 - Contact Office Address 1 --></label>
         <name>CMPL123CME__G1_Contact_Office_Address__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact City --></help>
         <label><!-- G1 - Contact Office City --></label>
         <name>CMPL123CME__G1_Contact_Office_City__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Country Code --></help>
         <label><!-- G1 - Contact Office Country --></label>
         <name>CMPL123CME__G1_Contact_Office_Country__c</name>
         <relationshipLabel><!-- EMDR (G1 Contact Office Country) --></relationshipLabel>
@@ -4078,10 +4167,12 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Email --></help>
         <label><!-- G1 - Contact Office E-mail --></label>
         <name>CMPL123CME__G1_Contact_Office_E_mail__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Facility Name --></help>
         <label><!-- G1 - Contact Office Facility Name --></label>
         <name>CMPL123CME__G1_Contact_Office_Facility_Name__c</name>
     </fields>
@@ -4102,18 +4193,22 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Fax Number --></help>
         <label><!-- G1 - Contact Office Fax Number --></label>
         <name>CMPL123CME__G1_Contact_Office_Fax_Number__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact First Name --></help>
         <label><!-- G1 - Contact Office First Name --></label>
         <name>CMPL123CME__G1_Contact_Office_First_Name__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Last Name --></help>
         <label><!-- G1 - Contact Office Last Name --></label>
         <name>CMPL123CME__G1_Contact_Office_Last_Name__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Middle Name --></help>
         <label><!-- G1 - Contact Office Middle Name --></label>
         <name>CMPL123CME__G1_Contact_Office_Middle_Name__c</name>
     </fields>
@@ -4134,27 +4229,33 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Phone number --></help>
         <label><!-- G1 - Contact Office Phone Number --></label>
         <name>CMPL123CME__G1_Contact_Office_Phone_Number__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Postal Code --></help>
         <label><!-- G1 - Contact Office Postal Code --></label>
         <name>CMPL123CME__G1_Contact_Office_Postal_Code__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact State Code --></help>
         <label><!-- G1 - Contact Office Region State --></label>
         <name>CMPL123CME__G1_Contact_Office_Region_State__c</name>
         <relationshipLabel><!-- EMDR (G1 - Contact Office Region State) --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Title --></help>
         <label><!-- G1 - Contact Office Title --></label>
         <name>CMPL123CME__G1_Contact_Office_Title__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Zip Code Extension --></help>
         <label><!-- G1 - Contact Office Zip Code Extension --></label>
         <name>CMPL123CME__G1_Contact_Office_Zip_Code_Extension__c</name>
     </fields>
     <fields>
+        <help><!-- Manufacturer Contact Zip Code --></help>
         <label><!-- G1 - Contact Office Zip Code --></label>
         <name>CMPL123CME__G1_Contact_Office_Zip_Code__c</name>
     </fields>
@@ -4313,6 +4414,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Date received by manufacturer --></help>
         <label><!-- G3 - Date Received by Mfg --></label>
         <name>CMPL123CME__G3_Date_received_by_Mfg__c</name>
     </fields>
@@ -4401,7 +4503,6 @@
         <name>CMPL123CME__G4_IND__c</name>
     </fields>
     <fields>
-        <help><!-- New Drug Application (NDA) number --></help>
         <label><!-- G4 - NDA # --></label>
         <name>CMPL123CME__G4_NDA__c</name>
     </fields>
@@ -4531,6 +4632,7 @@
         <name>CMPL123CME__G5_STN_No__c</name>
     </fields>
     <fields>
+        <help><!-- Type of Report\Follow-up Number --></help>
         <label><!-- G6 - Follow up No --></label>
         <name>CMPL123CME__G6_Follow_up_No__c</name>
     </fields>
@@ -4629,6 +4731,7 @@
         <name>CMPL123CME__G9_MFR_Report_Number__c</name>
     </fields>
     <fields>
+        <help><!-- Additional manufacturer narrative --></help>
         <label><!-- H10 - Addtl Mfg Narrative --></label>
         <name>CMPL123CME__H10_Addtl_Mfg_Narrative__c</name>
     </fields>
@@ -4637,12 +4740,12 @@
         <name>CMPL123CME__H11_Corrected_Data__c</name>
     </fields>
     <fields>
-        <help><!-- A measurement of the total number of events that have occurred. --></help>
+        <help><!-- No. of events (NOE) summarized --></help>
         <label><!-- H1 - Number of Events Summarized --></label>
         <name>CMPL123CME__H1_NOE_Summary_Report__c</name>
     </fields>
     <fields>
-        <help><!-- Race --></help>
+        <help><!-- Type of reportable event --></help>
         <label><!-- H1 - Type of Reportable Event --></label>
         <name>CMPL123CME__H1_Type_of_Reportable_Event_2021__c</name>
         <picklistValues>
@@ -4719,6 +4822,7 @@
         <name>CMPL123CME__H3_DEVICE_EVAL_ADDL_TEXT__c</name>
     </fields>
     <fields>
+        <help><!-- Device evaluated by mfr? Summary Attached YES/NO --></help>
         <label><!-- H3 - Device Evaluated by Manufacturer? --></label>
         <name>CMPL123CME__H3_DEVICE_EVAL_BY_MFG__c</name>
         <picklistValues>
@@ -4731,6 +4835,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Device Not Returned to Manufacturer for Evaluation? --></help>
         <label><!-- H3 - Device Returned to Manufacturer? --></label>
         <name>CMPL123CME__H3_Device_Returned__c</name>
         <picklistValues>
@@ -4743,6 +4848,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Device evaluated by mfr? Evaluation Summary or reason for not evaluating --></help>
         <label><!-- H3 - Evaluation Summary Attached --></label>
         <name>CMPL123CME__H3_Evaluation_Summary_Attached__c</name>
         <picklistValues>
@@ -4755,6 +4861,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Device manufacture date --></help>
         <label><!-- H3 - Reason Device Not Evaluated by Mfg --></label>
         <name>CMPL123CME__H3_REASON_NO_EVAL_BY_MFG__c</name>
         <picklistValues>
@@ -4815,6 +4922,7 @@
         <name>CMPL123CME__H4_Device_mfg_date__c</name>
     </fields>
     <fields>
+        <help><!-- Labeled for single use? --></help>
         <label><!-- H5 - Labeled for Single Use --></label>
         <name>CMPL123CME__H5_Labeled_for_Single_Use__c</name>
         <picklistValues>
@@ -4839,6 +4947,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Adverse Event Problem Codes --></help>
         <label><!-- H6 - Adverse Event Problem --></label>
         <name>CMPL123CME__H6_Adverse_Event_Problem__c</name>
     </fields>
@@ -4863,6 +4972,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- If remedial action initiated, check type --></help>
         <label><!-- H7 - If Remedial Action Initiated --></label>
         <name>CMPL123CME__H7_If_Remedical_Action_Init__c</name>
         <picklistValues>
@@ -4903,6 +5013,7 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- If remedial action initiated, check type\Explanation for Other --></help>
         <label><!-- H7 - Other Remedial Action --></label>
         <name>CMPL123CME__H7_Other_Remedial_Action__c</name>
     </fields>
@@ -4931,7 +5042,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Corrective action number assigned by FDA or the reporting firm. --></help>
+        <help><!-- If action reported to FDA under 21 USC 360i(f), list correction/removal reporting number --></help>
         <label><!-- H9 - Corrective Action Number --></label>
         <name>CMPL123CME__H9_Correction_Removal_Report_No__c</name>
     </fields>
