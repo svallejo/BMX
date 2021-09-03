@@ -203,6 +203,38 @@
     </layoutSections>
     <miniLayout>
         <fields>BMX_Priority__c</fields>
+        <fields>BMX_Case_External__c</fields>
+        <fields>BMX_Customer_Contact_Date_Time__c</fields>
+        <relatedLists>
+            <fields>NAME</fields>
+            <fields>RECORDTYPE</fields>
+            <fields>CMPL123CME__MDR_Due_Date__c</fields>
+            <relatedList>CMPL123CME__EMDR__c.CMPL123CME__Complaint__c</relatedList>
+        </relatedLists>
+        <relatedLists>
+            <fields>NAME</fields>
+            <fields>CMPL123CME__Type_Of_Report__c</fields>
+            <fields>BMX_Due_Date__c</fields>
+            <relatedList>CMPL123CME__EU_MIR__c.CMPL123CME__Complaint__c</relatedList>
+        </relatedLists>
+        <relatedLists>
+            <fields>NAME</fields>
+            <fields>CMPL123CME__Report_Type__c</fields>
+            <fields>BMX_Due_Date__c</fields>
+            <relatedList>CMPL123CME__TGA__c.CMPL123CME__Complaint__c</relatedList>
+        </relatedLists>
+        <relatedLists>
+            <fields>NAME</fields>
+            <fields>CMPL123CME__Type_of_Report__c</fields>
+            <fields>BMX_Due_Date__c</fields>
+            <relatedList>CMPL123CME__CVR__c.CMPL123CME__Related_Complaint__c</relatedList>
+        </relatedLists>
+        <relatedLists>
+            <fields>NAME</fields>
+            <fields>BMX_Type__c</fields>
+            <fields>BMX_Due_Date__c</fields>
+            <relatedList>BMX_Generic_Report__c.Complaint__c</relatedList>
+        </relatedLists>
     </miniLayout>
     <platformActionList>
         <actionListContext>Record</actionListContext>

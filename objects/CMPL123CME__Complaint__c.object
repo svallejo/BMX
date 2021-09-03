@@ -44,7 +44,7 @@
         <type>Flexipage</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>Complaint_details</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <deprecated>false</deprecated>
     <enableActivities>true</enableActivities>
@@ -5368,4 +5368,18 @@ ISCHANGED(BMX_Investigation__c), ISBLANK( INV_Reference_Creation_Justification__
         <protected>false</protected>
         <url>/_ui/core/email/author/EmailAuthor?p3_lkid={!CMPL123CME__Complaint__c.CMPL123CME__CustomerId__c}&amp;retURL=/{!CMPL123CME__Complaint__c.Id}</url>
     </webLinks>
+    <compactLayouts>
+        <fullName>Complaint_details</fullName>
+        <fields>Name</fields>
+        <fields>BMX_CaseNumber__c</fields>
+        <fields>BMX_Case_External__c</fields>
+        <fields>BMX_Customer_Contact_Date_Time__c</fields>
+        <fields>BMX_Priority__c</fields>
+        <fields>BMX_eMDR_Due_Date__c</fields>
+        <fields>BMX_EU_MIR_Due_Date__c</fields>
+        <fields>BMX_CVR_Due_Date__c</fields>
+        <fields>BMX_TGA_Due_Date__c</fields>
+        <fields>BMX_Generic_Report_Due_Date__c</fields>
+        <label>Complaint details</label>
+    </compactLayouts>
 </CustomObject>
