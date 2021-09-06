@@ -6528,6 +6528,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Test_ChangecontrolTrigger</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>UpdateNonComplaintForCaseBatch</apexClass>
         <enabled>true</enabled>
     </classAccesses>
