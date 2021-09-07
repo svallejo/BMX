@@ -1,9 +1,9 @@
 @isTest
 public Class Test_ActionItemTrigger{
     
-    @isTest
-    public static void ActionItemTest(){
+    Static testmethod void ActionItemTest(){
         try{
+        
         Profile p = [select id from profile where name='System Administrator'];
         
         User u = new User(alias = 'saham', email='shabhir.ahamed@ext.biomerieux.com',
@@ -21,8 +21,9 @@ public Class Test_ActionItemTrigger{
         ccobj.Due_Date__c=system.today()+10;
         Insert ccobj;
         
-        Action_Item__c acItem=new Action_Item__c();
+        List<Action_Item__c> acclist=new list<Action_Item__c>();  
             
+        Action_Item__c acItem=new Action_Item__c();
         acItem.Change_Control__c=ccobj.id;
         acItem.Assignee__c=u.Id;
         acItem.Required__c=TRUE;
@@ -33,8 +34,8 @@ public Class Test_ActionItemTrigger{
         acItem.Approver_4__c=u.id;
         acItem.Approver_5__c=u.id;
         acItem.Approver_6__c=u.id;
-        
-        Insert acItem;
+        acclist.add(acItem);
+        insert acclist;
         }
         catch(Exception e){
             system.debug('get the Error message'+e.getMessage());
