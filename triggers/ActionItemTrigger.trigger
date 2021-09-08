@@ -12,7 +12,7 @@ trigger ActionItemTrigger on Action_Item__c (before update){
             parentIds.add(aid.Approver_4__c);
             parentIds.add(aid.Approver_5__c);
             parentIds.add(aid.Approver_6__c);
-            
+             
         }
     }
     Map<Id,User> parentMap=new Map<Id,User>();
@@ -59,4 +59,5 @@ trigger ActionItemTrigger on Action_Item__c (before update){
        }
        
     }
+ 
 }

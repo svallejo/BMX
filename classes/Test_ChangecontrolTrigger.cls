@@ -1,5 +1,5 @@
 @isTest
-public class Test_ChangecontrolTrigger {
+public class Test_ChangecontrolTrigger { 
     @isTest
     public static void BeforeUpdate(){
         Profile p = [select id from profile where name='Standard User'];
