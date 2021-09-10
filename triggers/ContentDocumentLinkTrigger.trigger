@@ -6,7 +6,7 @@
  * @Last Modified By   : Jon Astemborski
  * @Last Modified On   : 3/30/2020, 10:06:59 PM
  * @Modification Log   : 
- * Ver       Date            Author      		    Modification
+ * Ver       Date            Author                 Modification
  * 1.0    3/30/2020   Jon Astemborski     Initial Version
 **/
 trigger ContentDocumentLinkTrigger on ContentDocumentLink (
