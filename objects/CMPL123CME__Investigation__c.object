@@ -4054,6 +4054,8 @@ IF(ISBLANK(BMX_Approver_4__c),0,1))</formula>
         <customTabListAdditionalFields>CMPL123_WF_Status__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>Investigation_Evaluation_Number__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Investigation_Evaluation_Number__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CMPL123CME__Complaint__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>
@@ -4482,4 +4484,10 @@ ISCHANGED(CMPL123_WF_Action__c)
         <showsStatus>false</showsStatus>
         <url>http://www.imdrf.org/workitems/wi-aet.asp</url>
     </webLinks>
+    <compactLayouts>
+        <fullName>Investigation_layout</fullName>
+        <fields>Investigation_Evaluation_Number__c</fields>
+        <fields>Name</fields>
+        <label>Investigation layout</label>
+    </compactLayouts>
 </CustomObject>
